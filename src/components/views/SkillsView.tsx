@@ -238,7 +238,7 @@ export const SkillsView: React.FC = () => {
     <div className="space-y-12 py-6">
       {/* Page Header */}
       <div className="space-y-3 border-b border-[var(--border-subtle)] pb-8">
-        <p className="text-xs font-mono text-[#3b82f6] font-medium">
+        <p className="text-xs font-mono text-[#60a5fa] font-medium">
           01 · Technical Architecture &amp; Operational Competencies
         </p>
         <h1
@@ -247,7 +247,7 @@ export const SkillsView: React.FC = () => {
         >
           Technical Mastery &amp; Core Competencies
         </h1>
-        <p className="text-base text-[var(--text-secondary)] max-w-3xl leading-relaxed">
+        <p className="text-base text-[#cbd5e1] max-w-3xl leading-relaxed">
           Structured F-pattern competency matrix organized by Core Competencies, Platform Tools, and Methodologies for rapid recruiter evaluation.
         </p>
       </div>
@@ -262,7 +262,7 @@ export const SkillsView: React.FC = () => {
             >
               Competency &amp; Tooling Architecture
             </h2>
-            <p className="text-sm text-[var(--text-secondary)]">
+            <p className="text-sm text-[#cbd5e1]">
               Segmented into clear domain groups on an 8-pixel (`0.5rem`) grid layout with tactile icon-led badges.
             </p>
           </div>
@@ -298,7 +298,7 @@ export const SkillsView: React.FC = () => {
               <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-[var(--border-subtle)] pb-3">
                 <div className="space-y-1">
                   <div className="flex items-center gap-2">
-                    <span className="text-xs font-mono text-[#3b82f6] font-semibold">
+                    <span className="text-xs font-mono text-[#60a5fa] font-semibold">
                       {group.index}
                     </span>
                     <span className="text-xs font-mono text-[var(--text-tertiary)]">·</span>
@@ -306,9 +306,9 @@ export const SkillsView: React.FC = () => {
                       {group.label}
                     </h3>
                   </div>
-                  <p className="text-xs text-[var(--text-secondary)]">{group.subtitle}</p>
+                  <p className="text-xs text-[#cbd5e1]">{group.subtitle}</p>
                 </div>
-                <span className="text-xs font-mono text-[var(--text-tertiary)] tabular-nums shrink-0">
+                <span className="text-xs font-mono text-[var(--text-secondary)] tabular-nums shrink-0">
                   {group.categories.reduce((acc, c) => acc + c.skills.length, 0)} Verified Items
                 </span>
               </div>
@@ -383,7 +383,7 @@ export const SkillsView: React.FC = () => {
       {/* SECTION 2: Power Platform Architecture Suite */}
       <section className="space-y-4">
         <div className="border-b border-[var(--border-subtle)] pb-3">
-          <p className="text-xs font-mono text-[#3b82f6] font-medium">02 · Core Platform Stack</p>
+          <p className="text-xs font-mono text-[#60a5fa] font-medium">02 · Core Platform Stack</p>
           <h2
             className="font-medium text-[var(--text-primary)] tracking-tight mt-1"
             style={{ fontSize: 'var(--text-h2)', lineHeight: 1.25 }}
@@ -470,7 +470,7 @@ export const SkillsView: React.FC = () => {
       {/* SECTION 3: Pro-Code Extensions & Development Stack */}
       <section className="space-y-4">
         <div className="border-b border-[var(--border-subtle)] pb-3">
-          <p className="text-xs font-mono text-[#3b82f6] font-medium">03 · Pro-Code Engineering</p>
+          <p className="text-xs font-mono text-[#60a5fa] font-medium">03 · Pro-Code Engineering</p>
           <h2
             className="font-medium text-[var(--text-primary)] tracking-tight mt-1"
             style={{ fontSize: 'var(--text-h2)', lineHeight: 1.25 }}
@@ -573,7 +573,7 @@ export const SkillsView: React.FC = () => {
       {/* SECTION 5: Technology Utilization Telemetry across Production Apps */}
       <section className="bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-[var(--radius-lg)] p-6 sm:p-8 space-y-6 shadow-[var(--shadow-card)]">
         <div className="space-y-1">
-          <p className="text-xs font-mono text-[#3b82f6] font-medium">04 · Production Footprint</p>
+          <p className="text-xs font-mono text-[#60a5fa] font-medium">04 · Production Footprint</p>
           <h2 className="text-lg sm:text-xl font-medium text-[var(--text-primary)] tracking-tight">
             Technology Utilization Matrix Across 16+ Rebuilt Systems
           </h2>

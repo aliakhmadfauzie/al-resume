@@ -1,4 +1,4 @@
-import { ProjectItem, MigrationSlice, ExperienceItem, DevStackItem, GovernanceItem, BusinessCompetency, InterviewTopic } from '../types';
+import { ProjectItem, MigrationSlice, ExperienceItem, DevStackItem, GovernanceItem, BusinessCompetency, InterviewTopic, TransformationMetric, TrustSignal, ThoughtLeadershipItem } from '../types';
 
 export const PERSONAL_INFO = {
   name: "Ali Akhmad Fauzie",
@@ -1265,3 +1265,115 @@ localData.forEach(b => {
     keyArtifacts: ["0ms Sync Hydration", "4-Pocket Atomic Ledger", "24h Lazy Stock TTL", "Guest PII Auto-Purge"]
   }
 ];
+
+export const POSITIONING_STATEMENT = {
+  headline: "Enterprise Modernization Architect & AI Systems Builder",
+  statement:
+    "I architect and deliver high-compliance digital transformations across complex, multi-plant and multi-entity organizations. By combining Microsoft 365 & Power Platform governance with full-stack TypeScript/Python engineering and deterministic AI guardrails, I turn legacy operational bottlenecks into auditable, zero-downtime systems.",
+  highlights: [
+    "365+ Legacy Lotus Domino Applications Modernized",
+    "$960K+/yr Saved via Standard-Connector Architecture",
+    "10-Gate Deterministic AI & Compliance Guardrails",
+    "26 Production Enterprise & Full-Stack Case Studies"
+  ]
+};
+
+export const TRANSFORMATION_METRICS: TransformationMetric[] = [
+  {
+    label: "Legacy Application Estate",
+    baseline: "365+ Siloed Lotus Notes DBs",
+    result: "Unified M365 & Power Platform",
+    description: "Consolidated 28 business units into governed SharePoint MainDB schemas and 878 Canvas YAML screens with zero lost audit records."
+  },
+  {
+    label: "Financial Rebate Approvals",
+    baseline: "14-Day Manual Email Chains",
+    result: "< 15 Mins Automated Routing",
+    description: "7-component statutory rebate calculator enforcing RM 0.20/tonne ceiling with isolated Dataverse security and immutable audit logs."
+  },
+  {
+    label: "Power Platform Licensing",
+    baseline: "$40/User/Mo Premium Connectors",
+    result: "$960K+/Yr Cost Avoidance",
+    description: "Engineered Single MainDB_{Dept} SharePoint lists with indexed FormCode discriminators to run 100% on standard M365 licenses."
+  },
+  {
+    label: "Ticket Triage & Knowledge Ops",
+    baseline: "45-Min Manual SOP Lookup",
+    result: "-65% Handling Time via AI",
+    description: "Trained AI Builder & Gemini RAG routers across 120+ SOP categories with an 85% confidence human-in-the-loop gate."
+  },
+  {
+    label: "Industrial SHE & CAPA Audits",
+    baseline: "Paper Forms & Delayed CAPA",
+    result: "Real-Time DOSH 5×5 HIRADC",
+    description: "Digitized chemical plant safety matrices, 5-Whys investigations, and multi-plant PPE reorder alerts across Penang and Johor."
+  },
+  {
+    label: "Workshop & B2B ERP Sync",
+    baseline: "6,070ms TBT & Ledger Drift",
+    result: "0ms Sync Hydration & 4-Pocket",
+    description: "Offline-first PWA architecture with timestamp conflict resolution, atomic writeBatch ledgers, and 24h lazy stock expiration."
+  }
+];
+
+export const TRUST_SIGNALS: TrustSignal[] = [
+  {
+    icon: "award",
+    title: "365+ Enterprise Apps Modernized",
+    detail: "Led end-to-end discovery, schema consolidation, and zero-downtime cutover across 28 business units at IOI Oleochemical.",
+    category: "program"
+  },
+  {
+    icon: "groups",
+    title: "Cross-Regional Operations Leadership",
+    detail: "9+ years leading technical delivery, BPO operations, and executive stakeholder alignment across Malaysia and Indonesia.",
+    category: "leadership"
+  },
+  {
+    icon: "school",
+    title: "CoE Governance & Static AST Linting",
+    detail: "Authored automated PAC CLI pipelines and Python YAML validators guarding 7,878 Canvas screens and DLP compliance.",
+    category: "certification"
+  },
+  {
+    icon: "verified",
+    title: "ISO 9001 / 27001 & DOSH Audit Ready",
+    detail: "Designed immutable audit trails, RBAC security matrices, and statutory chemical safety platforms passing external inspections.",
+    category: "award"
+  }
+];
+
+export const THOUGHT_LEADERSHIP: ThoughtLeadershipItem[] = [
+  {
+    icon: "route",
+    title: "6-Slice Legacy Migration Playbook",
+    summary: "How to retire hundreds of entrenched Lotus Domino databases without halting daily plant and supply chain operations.",
+    points: [
+      "Triage 54+ system reports into High/Medium/Low complexity slices before writing a single screen",
+      "Unify cross-department variants using parameterized routing tables and MainDB FormCode discriminators",
+      "Enforce pre-pack static YAML AST validation (_validate_pa.py) to eliminate runtime formula regressions"
+    ]
+  },
+  {
+    icon: "account_tree",
+    title: "Deterministic Guardrails for Enterprise AI",
+    summary: "Why production AI workflows require regex SSOT cross-referencing, confidence gating, and multi-provider failover.",
+    points: [
+      "Never trust raw LLM numbers—cross-reference every extracted metric against a canonical Single Source of Truth",
+      "Decouple fast interactive queries (Groq Llama-3.3) from structured schema synthesis (Gemini 2.5) with fcntl locks",
+      "Gate automated actions at >= 85% confidence and route edge cases to human-in-the-loop review queues"
+    ]
+  },
+  {
+    icon: "lightbulb",
+    title: "Offline-First Industrial & B2B PWAs",
+    summary: "Designing zero-latency field and workshop applications that survive intermittent plant floor connectivity.",
+    points: [
+      "Hydrate UI synchronously in 0ms from localStorage while racing cloud reads against a 2,500ms timeout",
+      "Resolve offline-to-online sync conflicts deterministically via item-level updatedAt >= serverTime comparisons",
+      "Enforce role-based financial isolation (Kas Profit segregation) at the state provider boundary"
+    ]
+  }
+];
+

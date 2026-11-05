@@ -198,7 +198,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
     <div className="space-y-8 py-6">
       {/* Page Header */}
       <div className="space-y-3 border-b border-[var(--border-subtle)] pb-8">
-        <p className="text-xs font-mono text-[#3b82f6] font-medium">
+        <p className="text-xs font-mono text-[#60a5fa] font-medium">
           01 · Interactive Enterprise Application Sandbox
         </p>
         <h1
@@ -207,7 +207,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
         >
           Live Operational Prototypes &amp; Simulations
         </h1>
-        <p className="text-base text-[var(--text-secondary)] max-w-3xl leading-relaxed">
+        <p className="text-base text-[#cbd5e1] max-w-3xl leading-relaxed">
           Interactive simulations of Ali's production Power Platform applications, including the FinOps spend matrix, ITSM lifecycle, warehouse photo inspections, server audit checkers, and the formula-capped rebate engine.
         </p>
       </div>
@@ -238,7 +238,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
         <div className="space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[var(--bg-surface)] p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)]">
             <div>
-              <span className="text-xs font-mono text-[#3b82f6] font-medium">
+              <span className="text-xs font-mono text-[#60a5fa] font-medium">
                 Executive FinOps Dashboard
               </span>
               <h2 className="text-xl font-semibold text-[var(--text-primary)]">
@@ -248,7 +248,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
             <div className="flex items-center space-x-3 text-xs font-mono text-[var(--text-secondary)]">
               <span>Reporting Period: FY2025-Q1</span>
               <span aria-hidden="true">·</span>
-              <span className="text-[#3b82f6] font-medium">Dataverse Live Sync</span>
+              <span className="text-[#60a5fa] font-medium">Dataverse Live Sync</span>
             </div>
           </div>
 

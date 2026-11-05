@@ -1,5 +1,7 @@
 import React from 'react';
 import { ProjectItem, MigrationSlice } from '../../types';
+import { ProjectGallery } from '../ProjectGallery';
+import { getGalleryForItem } from '../../data/projectGalleries';
 import { 
   X, 
   ExternalLink, 
@@ -36,6 +38,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
   const solutionText = project.solution;
   const impactText = project.impact;
   const tools = project.tools;
+  const galleryPlaceholders = getGalleryForItem(project);
 
   return (
     <div className="fixed inset-0 z-50 overflow-hidden flex justify-end bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
@@ -87,16 +90,26 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
                   {(project as MigrationSlice).appCount} Applications Rebuilt
                 </span>
               )}
+              {'repoUrl' in project && project.repoUrl && (
+                <a
+                  href={project.repoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center space-x-1.5 text-xs font-mono text-[#a3c9ff] hover:text-white bg-[#0078d4]/15 hover:bg-[#0078d4]/30 px-3 py-1 rounded-lg border border-[#0078d4]/40 transition-colors"
+                >
+                  <ExternalLink className="w-3.5 h-3.5" />
+                  <span>Repository</span>
+                </a>
+              )}
             </div>
           </div>
 
-          {/* Interactive Mockup Placeholder */}
-          <div className="w-full h-48 sm:h-64 rounded-xl bg-[#1a1c20] border border-[#282a2e] flex flex-col items-center justify-center overflow-hidden relative group">
-            <div className="absolute inset-0 bg-gradient-to-tr from-[#0078d4]/10 to-[#5c2d91]/10 group-hover:opacity-100 transition-opacity"></div>
-            <Layers className="w-12 h-12 text-[#282a2e] group-hover:text-[#0078d4] transition-colors mb-2 z-10" />
-            <span className="text-[10px] font-mono text-[#555962] uppercase tracking-widest z-10">Interactive Prototype / System Mockup</span>
-            <span className="text-xs text-[#c0c7d4] mt-2 font-medium z-10">{itemTitle} Visual Architecture</span>
-          </div>
+          {/* Interactive ProjectGallery with Image Placeholders, Lightbox Modal & Thumbnail Navigation */}
+          <ProjectGallery
+            item={project}
+            images={galleryPlaceholders}
+            projectTitle={itemTitle}
+          />
 
           {/* Tools Grid */}
           <div className="space-y-2">
@@ -181,6 +194,17 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
                   </ul>
                 </div>
               </details>
+            </div>
+          )}
+
+          {'codeSnippet' in project && project.codeSnippet && (
+            <div className="space-y-2 pt-2">
+              <h4 className="text-[11px] font-mono uppercase tracking-widest text-[#a3c9ff] font-semibold">
+                Verified Implementation Excerpt
+              </h4>
+              <pre className="p-4 rounded-xl bg-[#0a0b0d] border border-[#282a2e] text-[11px] font-mono text-[#e2e2e8] overflow-x-auto leading-relaxed">
+                <code>{project.codeSnippet}</code>
+              </pre>
             </div>
           )}
 

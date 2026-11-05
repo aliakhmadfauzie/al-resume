@@ -26,7 +26,7 @@ export const ExperienceView: React.FC = () => {
     <div className="space-y-12 py-6">
       {/* Header */}
       <div className="space-y-3 border-b border-[var(--border-subtle)] pb-8">
-        <p className="text-xs font-mono text-[#3b82f6] font-medium">
+        <p className="text-xs font-mono text-[#60a5fa] font-medium">
           01 · Track Record &amp; Operations Leadership
         </p>
         <h1
@@ -35,7 +35,7 @@ export const ExperienceView: React.FC = () => {
         >
           Professional Experience &amp; Leadership History
         </h1>
-        <p className="text-base text-[var(--text-secondary)] max-w-3xl leading-relaxed">
+        <p className="text-base text-[#cbd5e1] max-w-3xl leading-relaxed">
           Over 9 years driving enterprise modernizations, managing international cross-functional squads across 7 global markets, and architecting mission-critical digital workflows.
         </p>
       </div>
@@ -83,12 +83,12 @@ export const ExperienceView: React.FC = () => {
                       {item.role}
                     </h3>
                     {item.isCurrent && (
-                      <span className="text-xs font-mono text-[#3b82f6] font-medium">
+                      <span className="text-xs font-mono text-[#60a5fa] font-medium">
                         · Active Role
                       </span>
                     )}
                   </div>
-                  <p className="text-sm font-medium text-[#3b82f6]">{item.company}</p>
+                  <p className="text-sm font-medium text-[#60a5fa]">{item.company}</p>
                 </div>
 
                 <div className="flex flex-col sm:items-end space-y-1 font-mono text-xs text-[var(--text-secondary)]">

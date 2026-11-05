@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { CORE_PROJECTS, MIGRATION_OVERVIEW, MIGRATION_SLICES } from '../../data/portfolioData';
 import { ProjectItem, MigrationSlice } from '../../types';
 import { ImpactTooltip } from '../ImpactTooltip';
+import { ProjectCardGalleryPreview } from '../ProjectGallery';
 import {
   Search,
   Database,
@@ -72,7 +73,7 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
     <div className="space-y-12 py-6">
       {/* Page Header */}
       <div className="space-y-3 border-b border-[var(--border-subtle)] pb-8">
-        <p className="text-xs font-mono text-[#3b82f6] font-medium">
+        <p className="text-xs font-mono text-[#60a5fa] font-medium">
           01 · Enterprise Case Studies &amp; Cutover Architecture
         </p>
         <h1
@@ -81,7 +82,7 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
         >
           Enterprise Projects &amp; Migration Architecture
         </h1>
-        <p className="text-base text-[var(--text-secondary)] max-w-3xl leading-relaxed">
+        <p className="text-base text-[#cbd5e1] max-w-3xl leading-relaxed">
           Standardized architectural documentation covering end-to-end Power Platform systems, legacy Lotus Domino modernizations, financial approval engines, and AI workflow integrations.
         </p>
       </div>
@@ -90,14 +91,14 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
       <section className="bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-[var(--radius-lg)] p-6 sm:p-8 space-y-6 shadow-[var(--shadow-card)]">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-[var(--border-subtle)] pb-6">
           <div className="space-y-1.5">
-            <div className="flex items-center space-x-2 text-xs font-mono text-[#3b82f6] font-medium">
+            <div className="flex items-center space-x-2 text-xs font-mono text-[#60a5fa] font-medium">
               <Database className="w-3.5 h-3.5" />
               <span>Flagship Enterprise Migration · 365+ Applications</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-semibold text-[var(--text-primary)] tracking-tight">
               {MIGRATION_OVERVIEW.title}
             </h2>
-            <p className="text-xs text-[var(--text-secondary)] font-mono">
+            <p className="text-xs text-[#cbd5e1] font-mono">
               {MIGRATION_OVERVIEW.period} · {MIGRATION_OVERVIEW.role}
             </p>
           </div>
@@ -378,12 +379,15 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
                         <TrendingUp className="w-4 h-4 text-[var(--text-tertiary)] group-hover:text-[#3b82f6] transition-colors" />
                       </div>
 
+                      {/* Project Gallery Preview Strip */}
+                      <ProjectCardGalleryPreview item={proj} />
+
                       <div>
-                        <h3 className="text-lg font-semibold text-[var(--text-primary)] leading-snug group-hover:text-[#3b82f6] transition-colors">
+                        <h3 className="text-lg font-semibold text-[var(--text-primary)] leading-snug group-hover:text-[#60a5fa] transition-colors">
                           {proj.title}
                         </h3>
                         {proj.subtitle && (
-                          <p className="text-xs text-[#3b82f6] font-medium mt-0.5">{proj.subtitle}</p>
+                          <p className="text-xs text-[#60a5fa] font-medium mt-0.5">{proj.subtitle}</p>
                         )}
                       </div>
 

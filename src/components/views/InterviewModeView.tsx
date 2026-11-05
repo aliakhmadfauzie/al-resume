@@ -12,7 +12,7 @@ export const InterviewModeView: React.FC = () => {
     <div className="space-y-10 py-6">
       {/* Header */}
       <div className="space-y-3 border-b border-[var(--border-subtle)] pb-8">
-        <p className="text-xs font-mono text-[#3b82f6] font-medium">
+        <p className="text-xs font-mono text-[#60a5fa] font-medium">
           01 · Hiring Manager &amp; Technical Interview Console
         </p>
         <h1
@@ -21,7 +21,7 @@ export const InterviewModeView: React.FC = () => {
         >
           Architectural Deep Dives &amp; Technical Defense
         </h1>
-        <p className="text-base text-[var(--text-secondary)] max-w-3xl leading-relaxed">
+        <p className="text-base text-[#cbd5e1] max-w-3xl leading-relaxed">
           Structured answers to enterprise modernization scenarios, real-world technical tradeoffs, Domino-to-Dataverse cutovers, and pro-code ALM deployment strategies.
         </p>
       </div>
@@ -46,7 +46,7 @@ export const InterviewModeView: React.FC = () => {
                       : 'bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:bg-[var(--bg-surface-elevated)] border-[var(--border-subtle)]'
                   }`}
                 >
-                  <span className="text-xs font-mono text-[#3b82f6] font-medium">
+                  <span className="text-xs font-mono text-[#60a5fa] font-medium">
                     {topic.category}
                   </span>
                   <p className="text-sm font-medium text-[var(--text-primary)] mt-1 leading-snug">
@@ -61,7 +61,7 @@ export const InterviewModeView: React.FC = () => {
         {/* Right Content: Deep Dive Architecture Response */}
         <div className="lg:col-span-8 glass-card p-6 sm:p-8 space-y-6">
           <div className="space-y-2 border-b border-[var(--border-subtle)] pb-4">
-            <span className="text-xs font-mono text-[#3b82f6] font-medium">
+            <span className="text-xs font-mono text-[#60a5fa] font-medium">
               {currentTopic.category}
             </span>
             <h2 className="text-xl sm:text-2xl font-semibold text-[var(--text-primary)] tracking-tight">
@@ -71,7 +71,7 @@ export const InterviewModeView: React.FC = () => {
 
           {/* Executive Summary */}
           <div className="p-5 rounded-[var(--radius-md)] bg-[var(--bg-primary)] border border-[var(--border-subtle)] space-y-2">
-            <h3 className="text-xs font-mono text-[#3b82f6] font-medium flex items-center space-x-1.5">
+            <h3 className="text-xs font-mono text-[#60a5fa] font-medium flex items-center space-x-1.5">
               <Sparkles className="w-3.5 h-3.5" />
               <span>Executive Architectural Summary</span>
             </h3>

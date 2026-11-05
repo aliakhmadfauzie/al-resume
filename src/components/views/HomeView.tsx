@@ -1,6 +1,7 @@
 import React from 'react';
 import { PERSONAL_INFO, KEY_METRICS, CORE_PROJECTS, MIGRATION_OVERVIEW, MIGRATION_SLICES, POSITIONING_STATEMENT, TRANSFORMATION_METRICS, TRUST_SIGNALS, THOUGHT_LEADERSHIP } from '../../data/portfolioData';
 import { NavTab, ProjectItem, MigrationSlice } from '../../types';
+import { ProjectCardGalleryPreview } from '../ProjectGallery';
 import { 
   ArrowRight, 
   Layers, 
@@ -83,7 +84,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
               Enterprise Architect specializing in Microsoft 365, Power Platform, Dataverse, and AI-driven modernization — trusted to deliver large-scale transformation across hundreds of business-critical applications.
             </p>
 
-            <p className="text-sm text-[#c0c7d4] leading-relaxed max-w-3xl">
+            <p className="text-sm text-[#cbd5e1] leading-relaxed max-w-3xl">
               From Lotus Domino migrations and enterprise workflow modernization to AI-powered knowledge systems, I help organizations reduce operational complexity, strengthen governance, and accelerate business performance.
             </p>
           </div>
@@ -147,7 +148,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
                       {metric.value}
                     </div>
                     <div className="text-xs font-bold text-white mt-3 uppercase tracking-wider">{metric.label}</div>
-                    <p className="text-[11px] text-[#c0c7d4] mt-1.5 font-medium leading-relaxed">{metric.subtext}</p>
+                    <p className="text-[11px] text-[#cbd5e1] mt-1.5 font-medium leading-relaxed">{metric.subtext}</p>
                   </div>
                 )
               })}
@@ -289,13 +290,13 @@ export const HomeView: React.FC<HomeViewProps> = ({
           {TRANSFORMATION_METRICS.map((metric, idx) => (
             <div key={idx} className="glass-card p-5 rounded-2xl space-y-3 hover:border-[#00dbe7]/40 transition-all">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-mono uppercase tracking-wider text-[#c0c7d4] font-bold">{metric.label}</span>
+                <span className="text-xs font-mono uppercase tracking-wider text-[#cbd5e1] font-bold">{metric.label}</span>
                 <TrendingUp className="w-4 h-4 text-[#00dbe7]" />
               </div>
               <div className="flex items-center space-x-3">
                 <div className="flex-1 space-y-1">
-                  <p className="text-[10px] font-mono uppercase text-[#555962] font-bold">Before</p>
-                  <p className="text-sm text-[#c0c7d4] line-through decoration-[#5c2d91]/60 font-medium">{metric.baseline}</p>
+                  <p className="text-[10px] font-mono uppercase text-[#94a3b8] font-bold">Before</p>
+                  <p className="text-sm text-[#cbd5e1] line-through decoration-[#a855f7]/70 font-medium">{metric.baseline}</p>
                 </div>
                 <ArrowRight className="w-4 h-4 text-[#00dbe7] shrink-0" />
                 <div className="flex-1 space-y-1">
@@ -303,7 +304,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
                   <p className="text-base font-black text-white leading-snug">{metric.result}</p>
                 </div>
               </div>
-              <p className="text-xs text-[#c0c7d4] leading-relaxed pt-2 border-t border-[#282a2e]">{metric.description}</p>
+              <p className="text-xs text-[#cbd5e1] leading-relaxed pt-2 border-t border-[#282a2e]">{metric.description}</p>
             </div>
           ))}
         </div>
@@ -395,6 +396,8 @@ export const HomeView: React.FC<HomeViewProps> = ({
                   </span>
                   <span className="text-[11px] font-mono text-[#c0c7d4] font-medium">{proj.date}</span>
                 </div>
+
+                <ProjectCardGalleryPreview item={proj} />
 
                 <div>
                   <h4 className="text-xl font-bold text-white group-hover:text-[#00dbe7] transition-colors">{proj.title}</h4>
@@ -528,7 +531,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
           <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
             Let's Discuss Enterprise Transformation
           </h3>
-          <p className="text-xs sm:text-sm text-[#c0c7d4] leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#cbd5e1] leading-relaxed">
             Whether retiring legacy platforms, modernizing business-critical workflows, or deploying AI-enabled operating models — let's talk about what transformation means for your organization.
           </p>
         </div>

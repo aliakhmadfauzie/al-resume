@@ -1,5 +1,13 @@
 export type NavTab = 'home' | 'projects' | 'skills' | 'experience' | 'demos' | 'interview';
 
+export interface ProjectGalleryItem {
+  id: string;
+  title: string;
+  caption: string;
+  imageUrl?: string;
+  expectedPath: string;
+}
+
 export interface ProjectItem {
   id: string;
   title: string;
@@ -16,6 +24,7 @@ export interface ProjectItem {
   systemDesign?: string;
   repoUrl?: string;
   codeSnippet?: string;
+  gallery?: ProjectGalleryItem[];
   liveDemoId?:
     | 'finops'
     | 'it-service'
@@ -42,6 +51,7 @@ export interface MigrationSlice {
   impact: string;
   examples: string[];
   keyHighlights: string[];
+  gallery?: ProjectGalleryItem[];
 }
 
 export interface ExperienceItem {
