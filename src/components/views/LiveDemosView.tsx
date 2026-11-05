@@ -1,30 +1,21 @@
 import React, { useState } from 'react';
-import { 
-  MonitorPlay, 
-  Layers, 
-  Search, 
-  CheckCircle2, 
-  AlertCircle, 
-  Clock, 
-  TrendingUp, 
-  DollarSign, 
-  Cpu, 
-  HardDrive, 
-  ShieldCheck, 
-  Sparkles, 
-  Server, 
-  Box, 
-  Truck, 
-  Check, 
+import {
+  Layers,
+  CheckCircle2,
+  AlertCircle,
+  TrendingUp,
+  DollarSign,
+  Cpu,
+  Sparkles,
+  Server,
+  Box,
+  Truck,
+  Check,
   ArrowRight,
-  Filter,
-  Plus,
   RefreshCw,
   FileText,
-  Building2,
-  Target,
-  Briefcase,
-  BadgeCheck
+  Terminal,
+  ShieldCheck
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
@@ -32,161 +23,66 @@ interface LiveDemosViewProps {
   initialDemo?: string;
 }
 
-// ─── Enterprise Transformation Framework — strategic layers ───
-const TRANSFORMATION_LAYERS = [
-  {
-    label: 'Business Transformation Domains',
-    items: ['Finance', 'Operations', 'Compliance', 'Warehousing', 'Service Management', 'AI'],
-    icon: Building2
-  },
-  {
-    label: 'Transformation Challenges Solved',
-    items: ['Cost Control', 'Governance', 'Process Efficiency', 'Legacy Modernization'],
-    icon: Target
-  },
-  {
-    label: 'Interactive Enterprise Demonstrations',
-    items: ['FinOps', 'ITSM', 'ERP', 'Warehouse', 'Compliance'],
-    icon: MonitorPlay
-  },
-  {
-    label: 'Technology Foundation',
-    items: ['Microsoft 365', 'Dataverse', 'Power Platform', 'AI'],
-    icon: Layers
-  }
-];
-
-// ─── Architecture Strategy per demonstration (Challenge → Approach → Result) ───
-const DEMO_STRATEGIES: Record<string, { challenge: string; approach: string; result: string; benefits: string[] }> = {
-  finops: {
-    challenge: 'Disparate cloud purchases created fragmented oversight and licensing inefficiencies.',
-    approach: 'Designed a centralized governance framework integrating procurement workflows, approval chains, spending analytics, and executive reporting.',
-    result: 'Enabled transparent spending management and stronger operational governance.',
-    benefits: ['Reduced approval delays', 'Improved policy compliance', 'Increased visibility into operational costs', 'Faster reporting cycles', 'Stronger audit readiness']
-  },
-  'it-service': {
-    challenge: 'Service requests were tracked across fragmented tools, creating SLA risk and limited operational visibility.',
-    approach: 'Consolidated incident, request, and governance workflows into a single service operations platform with SLA monitoring and governed acceptance windows.',
-    result: 'Zero SLA breaches with a governed 72-hour acceptance window across mapped operational processes.',
-    benefits: ['Reduced service downtime', 'Faster incident resolution', 'Improved IT governance', 'Clearer operational accountability']
-  },
-  erp: {
-    challenge: 'Procurement and staff requisitions relied on manual approval chains with limited audit trails.',
-    approach: 'Automated a four-tier approval flow with mandatory internal lockouts, ERP synchronization, and policy enforcement.',
-    result: 'Accelerated procurement cycles while preserving compliance and audit integrity.',
-    benefits: ['Faster procurement cycles', 'Stronger audit trails', 'Consistent policy enforcement', 'Reduced manual reconciliation']
-  },
-  warehouse: {
-    challenge: 'Pre-loading inspections and stock movements were paper-based, creating demurrage risk and compliance gaps.',
-    approach: 'Digitized container inspections with geo-tagged photo evidence, automated gate passes, and ERP-synchronized stock movement logging.',
-    result: 'Zero demurrage delays with 100% inspection evidence captured in-field.',
-    benefits: ['Reduced demurrage penalties', 'Improved inspection compliance', 'Real-time stock visibility', 'Faster gate release']
-  },
-  maintenance: {
-    challenge: 'Asset reliability and server health checks were reactive, risking unplanned downtime and audit findings.',
-    approach: 'Built a unified command center combining plant telemetry, preventative maintenance work orders, and automated server audit checklists.',
-    result: 'Proactive reliability management with verified recovery targets and audit-ready records.',
-    benefits: ['Reduced unplanned downtime', 'Improved asset reliability', 'Audit-ready evidence', 'Faster issue detection']
-  },
-  rebate: {
-    challenge: 'Multi-component commercial rebates were calculated manually, creating errors, disputes, and slow approval cycles.',
-    approach: 'Engineered a governed calculation engine applying seven formula components with statutory caps and multi-level approval scheduling.',
-    result: 'Reduced approval cycle time from days to ~15 minutes with policy-enforced ceiling controls.',
-    benefits: ['Faster commercial approvals', 'Eliminated calculation errors', 'Policy-enforced caps', 'Improved partner trust']
-  },
-  'cs-resolver': {
-    challenge: 'Customer inquiries were routed manually across 120+ SOP categories, inflating handling time and inconsistency.',
-    approach: 'Deployed an AI-enabled classification engine that routes issues to the correct SOP and deep-links operators to resolution workspaces.',
-    result: '50–80% handling time reduction with consistent, audit-tracked issue resolution.',
-    benefits: ['Reduced handling time', 'Consistent classifications', 'Faster decision-making', 'Scalable knowledge operations']
-  }
-};
-
-const StrategyBlock: React.FC<{ demoId: string }> = ({ demoId }) => {
-  const strategy = DEMO_STRATEGIES[demoId];
-  if (!strategy) return null;
-  return (
-    <div className="glass-card p-5 sm:p-6 rounded-2xl border border-[#282a2e] space-y-5 animate-in fade-in duration-200">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-        <div className="flex items-center space-x-2">
-          <Briefcase className="w-4 h-4 text-[#00dbe7]" />
-          <h3 className="text-sm font-bold text-white uppercase tracking-wide">Architecture Strategy</h3>
-        </div>
-        <span className="text-[10px] font-mono text-[#c0c7d4] bg-[#111318] px-3 py-1.5 rounded-lg border border-[#282a2e] max-w-md leading-relaxed">
-          Representative enterprise-scale operating model — governance workflows, budget controls, and approval processes commonly used in large organizations.
-        </span>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div className="p-4 rounded-xl bg-[#111318] border border-[#282a2e] space-y-2">
-          <p className="text-[10px] font-mono uppercase text-amber-400 font-bold flex items-center space-x-1.5">
-            <AlertCircle className="w-3.5 h-3.5" />
-            <span>Business Challenge</span>
-          </p>
-          <p className="text-xs text-[#c0c7d4] leading-relaxed">{strategy.challenge}</p>
-        </div>
-        <div className="p-4 rounded-xl bg-[#111318] border border-[#282a2e] space-y-2">
-          <p className="text-[10px] font-mono uppercase text-[#a3c9ff] font-bold flex items-center space-x-1.5">
-            <Layers className="w-3.5 h-3.5" />
-            <span>Transformation Approach</span>
-          </p>
-          <p className="text-xs text-[#c0c7d4] leading-relaxed">{strategy.approach}</p>
-        </div>
-        <div className="p-4 rounded-xl bg-[#111318] border border-[#282a2e] space-y-2">
-          <p className="text-[10px] font-mono uppercase text-emerald-400 font-bold flex items-center space-x-1.5">
-            <TrendingUp className="w-3.5 h-3.5" />
-            <span>Business Result</span>
-          </p>
-          <p className="text-xs text-[#c0c7d4] leading-relaxed">{strategy.result}</p>
-        </div>
-      </div>
-
-      <div className="space-y-2">
-        <p className="text-[10px] font-mono uppercase tracking-widest text-[#00dbe7] font-bold">Potential Enterprise Benefits</p>
-        <div className="flex flex-wrap gap-2">
-          {strategy.benefits.map((benefit) => (
-            <span key={benefit} className="text-[11px] px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center space-x-1.5">
-              <Check className="w-3 h-3" />
-              <span>{benefit}</span>
-            </span>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-};
-
 export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'finops' }) => {
   const [activeDemo, setActiveDemo] = useState<string>(initialDemo);
 
   // State for Rebate Calculator
   const [rebateBaseRate, setRebateBaseRate] = useState<number>(0.08);
-  const [rebateVolume, setRebateVolume] = useState<number>(1200); // tonnes
+  const [rebateVolume, setRebateVolume] = useState<number>(1200);
   const [rebateDistance, setRebateDistance] = useState<number>(0.03);
   const [rebateSpecialTerm, setRebateSpecialTerm] = useState<number>(0.02);
   const [rebateSeasonal, setRebateSeasonal] = useState<number>(0.01);
-  const [rebateTax, setRebateTax] = useState<number>(0.01);
+  const [rebateTax] = useState<number>(0.01);
   const [rebateCreditDeduction, setRebateCreditDeduction] = useState<number>(0.01);
   const [rebateApproved, setRebateApproved] = useState<boolean>(false);
 
-  // Rebate calculations
-  const rawRebatePerTonne = Math.max(0, rebateBaseRate + rebateDistance + rebateSpecialTerm + rebateSeasonal + rebateTax - rebateCreditDeduction);
+  const rawRebatePerTonne = Math.max(
+    0,
+    rebateBaseRate + rebateDistance + rebateSpecialTerm + rebateSeasonal + rebateTax - rebateCreditDeduction
+  );
   const cappedRebatePerTonne = Math.min(rawRebatePerTonne, 0.20);
   const isCapped = rawRebatePerTonne > 0.20;
   const totalRebateAmountRM = (cappedRebatePerTonne * rebateVolume).toFixed(2);
 
   // State for AI SOP Classifier
-  const [ticketSubject, setTicketSubject] = useState<string>('Batch 402 Palm Stearin melting point deviation during high temperature filtration');
-  const [classifiedCategory, setClassifiedCategory] = useState<string>('Quality Assurance / Non-Conformance (CAPA)');
+  const [ticketSubject, setTicketSubject] = useState<string>(
+    'Batch 402 Palm Stearin melting point deviation during high temperature filtration'
+  );
+  const [classifiedCategory, setClassifiedCategory] = useState<string>(
+    'Quality Assurance / Non-Conformance (CAPA)'
+  );
   const [confidenceScore, setConfidenceScore] = useState<number>(94.8);
-  const [recommendedSOP, setRecommendedSOP] = useState<string>('SOP-QA-042: Filtration & High Temp Non-Conformance Protocol');
+  const [recommendedSOP, setRecommendedSOP] = useState<string>(
+    'SOP-QA-042: Filtration & High Temp Non-Conformance Protocol'
+  );
   const [isClassifying, setIsClassifying] = useState<boolean>(false);
 
   // State for IT Service Request Hub
   const [itTickets, setItTickets] = useState([
-    { id: 'INC-2025-084', title: 'Dataverse Production Entity Sync Timeout', priority: 'High', status: 'In Progress', requester: 'Finance Ops', sla: '4.2h left' },
-    { id: 'REQ-2025-112', title: 'SAP Gateway Connector Permission Upgrade', priority: 'Medium', status: 'Pending Review', requester: 'Logistics Lead', sla: '22h left' },
-    { id: 'INC-2025-079', title: 'Domino QMS Archived Database Read-Only Mount', priority: 'Low', status: 'Resolved (Accepting)', requester: 'QA Audit', sla: '72h rating window' }
+    {
+      id: 'INC-2025-084',
+      title: 'Dataverse Production Entity Sync Timeout',
+      priority: 'High',
+      status: 'In Progress',
+      requester: 'Finance Ops',
+      sla: '4.2h left'
+    },
+    {
+      id: 'REQ-2025-112',
+      title: 'SAP Gateway Connector Permission Upgrade',
+      priority: 'Medium',
+      status: 'Pending Review',
+      requester: 'Logistics Lead',
+      sla: '22h left'
+    },
+    {
+      id: 'INC-2025-079',
+      title: 'Domino QMS Archived Database Read-Only Mount',
+      priority: 'Low',
+      status: 'Resolved (Accepting)',
+      requester: 'QA Audit',
+      sla: '72h rating window'
+    }
   ]);
   const [newTicketTitle, setNewTicketTitle] = useState('');
 
@@ -210,15 +106,27 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
     setIsClassifying(true);
     setTimeout(() => {
       setIsClassifying(false);
-      if (ticketSubject.toLowerCase().includes('server') || ticketSubject.toLowerCase().includes('disk') || ticketSubject.toLowerCase().includes('patch')) {
+      if (
+        ticketSubject.toLowerCase().includes('server') ||
+        ticketSubject.toLowerCase().includes('disk') ||
+        ticketSubject.toLowerCase().includes('patch')
+      ) {
         setClassifiedCategory('Infrastructure & IT Server Health');
         setConfidenceScore(96.2);
         setRecommendedSOP('SOP-IT-018: Weekly Server Audit & Capacity Threshold Protocol');
-      } else if (ticketSubject.toLowerCase().includes('rebate') || ticketSubject.toLowerCase().includes('po') || ticketSubject.toLowerCase().includes('invoice')) {
+      } else if (
+        ticketSubject.toLowerCase().includes('rebate') ||
+        ticketSubject.toLowerCase().includes('po') ||
+        ticketSubject.toLowerCase().includes('invoice')
+      ) {
         setClassifiedCategory('Commercial & Sales Rebates (Tasek Engine)');
         setConfidenceScore(98.4);
         setRecommendedSOP('SOP-FIN-009: 7-Component Tiered Rebate Formula Governance');
-      } else if (ticketSubject.toLowerCase().includes('container') || ticketSubject.toLowerCase().includes('warehouse') || ticketSubject.toLowerCase().includes('pallet')) {
+      } else if (
+        ticketSubject.toLowerCase().includes('container') ||
+        ticketSubject.toLowerCase().includes('warehouse') ||
+        ticketSubject.toLowerCase().includes('pallet')
+      ) {
         setClassifiedCategory('Warehouse & Logistics Operations (Slice D)');
         setConfidenceScore(93.5);
         setRecommendedSOP('SOP-LOG-027: Pre-Loading Container Inspection & Seal Verification');
@@ -227,179 +135,202 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
         setConfidenceScore(95.1);
         setRecommendedSOP('SOP-QA-042: Filtration & High Temp Non-Conformance Protocol');
       }
-    }, 600);
+    }, 500);
   };
 
+  // State for ATS Automation & Q1-Q10 Governance Simulator
+  const [atsTrack, setAtsTrack] = useState<'Track A' | 'Track B'>('Track A');
+  const [atsTaskMode, setAtsTaskMode] = useState<'structured' | 'fast'>('structured');
+  const [atsBulletInput, setAtsBulletInput] = useState<string>(
+    'Architected 84 production enterprise applications across 167 legacy Domino databases, reducing manual cycle time by 70% while maintaining 99.9% SLA reliability.'
+  );
+  const [simulatedGroqExhausted, setSimulatedGroqExhausted] = useState<boolean>(false);
+
+  const ssotAllowedNumbers = ['84', '167', '99.9%', '70%', '60+', '1000+', '1,000+', '22', '15', '12', '14', '6', '7', '10'];
+  const extractedMetrics: string[] = atsBulletInput.match(/\b\d+(?:\.\d+)?%\+?|\b\d+\+?/g) || [];
+  const unauthorizedMetrics = extractedMetrics.filter(
+    (m) => !ssotAllowedNumbers.includes(m.replace(/,/g, ''))
+  );
+  const isSsotValid = unauthorizedMetrics.length === 0;
+
+  const activeAiEngine =
+    atsTaskMode === 'fast'
+      ? simulatedGroqExhausted
+        ? 'Gemini 1.5 Flash (Fallback · Schema Prompt-Inlined)'
+        : 'Groq llama-3.3-70b-versatile (Primary Fast Route)'
+      : 'Gemini gemini-flash-latest (Primary Structured Route)';
+
+  // State for Putri GarmentHub 4-Pocket & SPK QC Simulator
+  const [garmentActiveRole, setGarmentActiveRole] = useState<'owner' | 'keuangan' | 'produksi'>('owner');
+  const [spkReceivedLusin, setSpkReceivedLusin] = useState<number>(40);
+  const [spkRatePerLusin, setSpkRatePerLusin] = useState<number>(180000);
+  const [spkBsFatal, setSpkBsFatal] = useState<number>(2);
+  const [spkBsRepair, setSpkBsRepair] = useState<number>(3);
+  const [garmentInvoiceIDR, setGarmentInvoiceIDR] = useState<number>(24000000);
+
+  const spkPassedQC = Math.max(0, spkReceivedLusin - (spkBsFatal + spkBsRepair));
+  const spkGrossWage = spkPassedQC * spkRatePerLusin;
+  const spkDefectPenalty = spkBsFatal * 50000;
+  const spkNetWage = Math.max(0, spkGrossWage - spkDefectPenalty);
+  const spkCatalogRestockRatio = spkReceivedLusin > 0 ? ((spkPassedQC / spkReceivedLusin) * 100).toFixed(1) : '100.0';
+
+  // State for IOI Acidchem DOSH 5x5 HIRADC Risk Matrix Simulator
+  const [hiradcLikelihood, setHiradcLikelihood] = useState<number>(4);
+  const [hiradcSeverity, setHiradcSeverity] = useState<number>(4);
+  const [hiradcPlant, setHiradcPlant] = useState<'PENANG_PLANT' | 'JOHOR_PLANT'>('PENANG_PLANT');
+  const hiradcScore = hiradcLikelihood * hiradcSeverity;
+  const hiradcLevel = hiradcScore >= 15 ? 'HIGH RISK (STOP WORK / LOTO)' : hiradcScore >= 5 ? 'MEDIUM RISK (ENGINEERING CONTROL)' : 'LOW RISK (PPE & ADMIN)';
+
   const demosList = [
-    { id: 'finops', title: 'Cloud Cost Governance', icon: <DollarSign className="w-4 h-4" />, badge: 'FinOps' },
-    { id: 'it-service', title: 'Enterprise Service Operations', icon: <Cpu className="w-4 h-4" />, badge: 'ITSM' },
-    { id: 'erp', title: 'Financial Process Automation', icon: <Layers className="w-4 h-4" />, badge: 'ERP' },
-    { id: 'warehouse', title: 'Warehouse Compliance & Inspection', icon: <Box className="w-4 h-4" />, badge: 'Logistics' },
-    { id: 'maintenance', title: 'Asset Reliability Management', icon: <Server className="w-4 h-4" />, badge: 'Reliability' },
-    { id: 'rebate', title: 'Commercial Pricing Governance', icon: <TrendingUp className="w-4 h-4" />, badge: 'Policy Capped' },
-    { id: 'cs-resolver', title: 'AI-Enabled Decision Support', icon: <Sparkles className="w-4 h-4" />, badge: 'AI / NLP' }
+    { id: 'ats-automation', title: 'ATS Automation & Q1–Q10 Gate', icon: <Terminal className="w-4 h-4" /> },
+    { id: 'she-matrix', title: 'IOI DOSH 5×5 SHE Matrix', icon: <ShieldCheck className="w-4 h-4" /> },
+    { id: 'garment-erp', title: 'Putri 4-Pocket & SPK ERP', icon: <Layers className="w-4 h-4" /> },
+    { id: 'finops', title: 'FinOps Spend Portal', icon: <DollarSign className="w-4 h-4" /> },
+    { id: 'it-service', title: 'Industrial Nexus ITSM', icon: <Cpu className="w-4 h-4" /> },
+    { id: 'erp', title: 'Enterprise Core ERP', icon: <Layers className="w-4 h-4" /> },
+    { id: 'warehouse', title: 'Warehouse Central', icon: <Box className="w-4 h-4" /> },
+    { id: 'maintenance', title: 'Server Audit Command', icon: <Server className="w-4 h-4" /> },
+    { id: 'rebate', title: 'Tasek Rebate Simulator', icon: <TrendingUp className="w-4 h-4" /> },
+    { id: 'cs-resolver', title: 'AI SOP Classifier', icon: <Sparkles className="w-4 h-4" /> }
   ];
 
   return (
-    <div className="space-y-8 py-6 animate-in fade-in duration-300">
-      
-      {/* Page Header — Enterprise Transformation Solutions in Action */}
-      <div className="space-y-3">
-        <div className="flex items-center space-x-2 text-xs font-mono uppercase tracking-widest text-[#00dbe7] font-bold">
-          <MonitorPlay className="w-4 h-4" />
-          <span>Enterprise Transformation Solutions in Action</span>
-        </div>
-        <h1 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-          See Enterprise Modernization in Action
+    <div className="space-y-8 py-6">
+      {/* Page Header */}
+      <div className="space-y-3 border-b border-[var(--border-subtle)] pb-8">
+        <p className="text-xs font-mono text-[#3b82f6] font-medium">
+          01 · Interactive Enterprise Application Sandbox
+        </p>
+        <h1
+          className="font-semibold text-[var(--text-primary)] tracking-tight"
+          style={{ fontSize: 'var(--text-h1)', lineHeight: 1.2 }}
+        >
+          Live Operational Prototypes &amp; Simulations
         </h1>
-        <p className="text-xs sm:text-sm text-[#c0c7d4] max-w-3xl leading-relaxed">
-          Unlike static portfolios, this site includes interactive business platforms demonstrating real-world modernization patterns built using Microsoft 365, Power Platform, Dataverse, SharePoint Online, and AI services. Each experience showcases how legacy processes can be transformed into scalable, governed enterprise solutions.
+        <p className="text-base text-[var(--text-secondary)] max-w-3xl leading-relaxed">
+          Interactive simulations of Ali's production Power Platform applications, including the FinOps spend matrix, ITSM lifecycle, warehouse photo inspections, server audit checkers, and the formula-capped rebate engine.
         </p>
-      </div>
-
-      {/* Trust & Provenance — derived from production patterns */}
-      <div className="flex items-start space-x-3 bg-[#0078d4]/10 border border-[#0078d4]/30 rounded-2xl p-4 sm:p-5">
-        <BadgeCheck className="w-4 h-4 text-[#a3c9ff] mt-0.5 shrink-0" />
-        <p className="text-xs text-[#c0c7d4] leading-relaxed">
-          These demonstrations are derived from <strong className="text-white">production patterns and enterprise transformation initiatives</strong> delivered across manufacturing, operations, governance, and Microsoft ecosystem modernization programs. Sensitive business data and proprietary details have been anonymized.
-        </p>
-      </div>
-
-      {/* Enterprise Transformation Framework — strategic layers */}
-      <div className="glass-card p-5 sm:p-6 rounded-2xl border border-[#282a2e] space-y-3">
-        <div className="flex items-center space-x-2">
-          <Briefcase className="w-4 h-4 text-[#00dbe7]" />
-          <h3 className="text-sm font-bold text-white uppercase tracking-wide">Enterprise Transformation Framework</h3>
-        </div>
-        <p className="text-xs text-[#c0c7d4] leading-relaxed">
-          Every demonstration follows the same operating pattern — a business domain, a transformation challenge, an interactive solution, and the Microsoft technology foundation beneath it.
-        </p>
-        <div className="space-y-1">
-          {TRANSFORMATION_LAYERS.map((layer, idx) => {
-            const LayerIcon = layer.icon;
-            return (
-              <div key={layer.label}>
-                <div className="flex items-start space-x-3 bg-[#111318] border border-[#282a2e] rounded-xl p-3.5">
-                  <LayerIcon className="w-4 h-4 text-[#00dbe7] mt-0.5 shrink-0" />
-                  <div className="space-y-2">
-                    <p className="text-[10px] font-mono uppercase tracking-widest text-[#c0c7d4] font-bold">{layer.label}</p>
-                    <div className="flex flex-wrap gap-1.5">
-                      {layer.items.map((item) => (
-                        <span key={item} className="text-[11px] px-2.5 py-1 rounded-full bg-[#1a1c20] text-white border border-[#282a2e]">
-                          {item}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-                {idx < TRANSFORMATION_LAYERS.length - 1 && (
-                  <div className="flex justify-center py-0.5 text-[#0078d4]">
-                    <ArrowRight className="w-4 h-4 rotate-90" />
-                  </div>
-                )}
-              </div>
-            );
-          })}
-        </div>
       </div>
 
       {/* Demo Selector Tabs */}
-      <div className="flex items-center space-x-2 overflow-x-auto pb-2 border-b border-[#282a2e]">
+      <div className="flex items-center space-x-2 overflow-x-auto pb-2 border-b border-[var(--border-subtle)]">
         {demosList.map((d) => {
           const isActive = activeDemo === d.id;
           return (
             <button
               key={d.id}
               onClick={() => setActiveDemo(d.id)}
-              className={`flex items-center space-x-2 px-4 py-2.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all ${
+              className={`flex items-center space-x-2 px-4 py-2.5 rounded-[var(--radius-sm)] text-xs font-medium whitespace-nowrap transition-colors ${
                 isActive
-                  ? 'bg-[#0078d4] text-white shadow-lg shadow-[#0078d4]/30'
-                  : 'bg-[#161b22] text-[#c0c7d4] hover:text-white hover:bg-[#1a1c20] border border-[#282a2e]'
+                  ? 'bg-[var(--accent-blue)] text-white'
+                  : 'bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-surface-elevated)] border border-[var(--border-subtle)]'
               }`}
             >
               <span>{d.icon}</span>
               <span>{d.title}</span>
-              <span className={`text-[9px] px-1.5 py-0.2 rounded font-mono ${
-                isActive ? 'bg-white/20 text-white' : 'bg-[#282a2e] text-[#a3c9ff]'
-              }`}>
-                {d.badge}
-              </span>
             </button>
           );
         })}
       </div>
 
-      {/* DEMO 1: FinOps Spend Portal (Image 3 Style) */}
+      {/* DEMO 1: FinOps Spend Portal */}
       {activeDemo === 'finops' && (
-        <div className="space-y-6 animate-in fade-in duration-200">
-          
-          {/* Top Bar */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#161b22] p-5 rounded-2xl border border-[#282a2e]">
+        <div className="space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[var(--bg-surface)] p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)]">
             <div>
-              <span className="text-[10px] font-mono uppercase text-[#00dbe7] font-semibold">Executive FinOps Dashboard</span>
-              <h2 className="text-xl font-bold text-white">FinOps Governance Platform</h2>
-              <p className="text-[11px] text-[#c0c7d4] mt-1 max-w-xl leading-relaxed">
-                Centralized visibility into cloud spending, licensing investment, procurement approvals, and operational accountability.
+              <span className="text-xs font-mono text-[#3b82f6] font-medium">
+                Executive FinOps Dashboard
+              </span>
+              <h2 className="text-xl font-semibold text-[var(--text-primary)]">
+                Cloud Infrastructure &amp; Licensing Capital
+              </h2>
+            </div>
+            <div className="flex items-center space-x-3 text-xs font-mono text-[var(--text-secondary)]">
+              <span>Reporting Period: FY2025-Q1</span>
+              <span aria-hidden="true">·</span>
+              <span className="text-[#3b82f6] font-medium">Dataverse Live Sync</span>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 font-mono tabular-nums">
+            <div className="bg-[var(--bg-surface)] p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-1">
+              <p className="text-xs font-sans text-[var(--text-secondary)]">Total Allocated Budget</p>
+              <p className="text-2xl font-semibold text-[var(--text-primary)]">$3,200,000</p>
+              <p className="text-xs font-sans text-[#3b82f6]">+4.5% vs Prior Quarter</p>
+            </div>
+            <div className="bg-[var(--bg-surface)] p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-1">
+              <p className="text-xs font-sans text-[var(--text-secondary)]">Actual MTD Spend</p>
+              <p className="text-2xl font-semibold text-[var(--text-primary)]">$2,847,500</p>
+              <p className="text-xs font-sans text-[var(--text-secondary)]">88.9% Burn Rate (On Track)</p>
+            </div>
+            <div className="bg-[var(--bg-surface)] p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-1">
+              <p className="text-xs font-sans text-[var(--text-secondary)]">SaaS &amp; M365 Licenses</p>
+              <p className="text-2xl font-semibold text-[var(--text-primary)]">$642,100</p>
+              <p className="text-xs font-sans text-[#3b82f6]">Optimized via CoE Starter Kit</p>
+            </div>
+            <div className="bg-[var(--bg-surface)] p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-1">
+              <p className="text-xs font-sans text-[var(--text-secondary)]">Actionable Requisitions</p>
+              <p className="text-2xl font-semibold text-[#3b82f6]">
+                {Object.values(approvals).filter((v) => !v).length} Pending
               </p>
-            </div>
-            <div className="flex items-center space-x-3 text-xs font-mono">
-              <span className="text-[#c0c7d4]">Reporting Period: <strong className="text-white">FY2025-Q1</strong></span>
-              <span className="px-2.5 py-1 rounded bg-[#0078d4]/20 text-[#a3c9ff] border border-[#0078d4]/40 font-bold">Live Sync</span>
+              <p className="text-xs font-sans text-[var(--text-secondary)]">Requires Executive Sign-Off</p>
             </div>
           </div>
 
-          {/* Metric Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="bg-[#1a1c20] p-5 rounded-2xl border border-[#282a2e] space-y-1">
-              <p className="text-xs text-[#c0c7d4]">Total Allocated Budget</p>
-              <p className="text-2xl font-black text-white font-mono">$3,200,000</p>
-              <p className="text-[11px] text-[#00dbe7] font-medium">+4.5% vs Prior Quarter</p>
+          <div className="bg-[var(--bg-surface)] rounded-[var(--radius-md)] border border-[var(--border-subtle)] overflow-hidden">
+            <div className="px-6 py-4 border-b border-[var(--border-subtle)] flex items-center justify-between">
+              <h3 className="text-sm font-semibold text-[var(--text-primary)]">
+                Pending Executive Requisitions (SmartFlow Engine)
+              </h3>
+              <span className="text-xs text-[var(--text-tertiary)] font-mono">3 Records</span>
             </div>
-            <div className="bg-[#1a1c20] p-5 rounded-2xl border border-[#282a2e] space-y-1">
-              <p className="text-xs text-[#c0c7d4]">Actual MTD Spend</p>
-              <p className="text-2xl font-black text-[#a3c9ff] font-mono">$2,847,500</p>
-              <p className="text-[11px] text-[#c0c7d4] font-medium">88.9% Burn Rate (On Track)</p>
-            </div>
-            <div className="bg-[#1a1c20] p-5 rounded-2xl border border-[#282a2e] space-y-1">
-              <p className="text-xs text-[#c0c7d4]">SaaS &amp; M365 Licenses</p>
-              <p className="text-2xl font-black text-[#dab9ff] font-mono">$642,100</p>
-              <p className="text-[11px] text-[#00dbe7] font-medium">Optimized via CoE Starter Kit</p>
-            </div>
-            <div className="bg-[#1a1c20] p-5 rounded-2xl border border-[#282a2e] space-y-1">
-              <p className="text-xs text-[#c0c7d4]">Actionable Requisitions</p>
-              <p className="text-2xl font-black text-amber-400 font-mono">3 Pending</p>
-              <p className="text-[11px] text-amber-400 font-medium">Requires Executive Signature</p>
-            </div>
-          </div>
-
-          {/* Pending Approvals Table */}
-          <div className="bg-[#161b22] rounded-2xl border border-[#282a2e] overflow-hidden">
-            <div className="px-6 py-4 border-b border-[#282a2e] flex items-center justify-between">
-              <h3 className="text-sm font-bold text-white">Pending Executive Requisitions (SmartFlow Engine)</h3>
-              <span className="text-xs text-[#c0c7d4] font-mono">3 Records</span>
-            </div>
-            <div className="divide-y divide-[#282a2e]">
+            <div className="divide-y divide-[var(--border-subtle)]">
               {[
-                { id: 'REQ-4921', name: 'Azure OpenAI GPT-4o Dedicated Deployment', dept: 'Enterprise Automation', amount: '$42,500', requester: 'Ali Akhmad Fauzie' },
-                { id: 'REQ-4922', name: 'Dataverse Storage Capacity Add-on (50GB)', dept: 'IOI Domino Cutover', amount: '$18,000', requester: 'Cloud Ops Lead' },
-                { id: 'REQ-4923', name: 'Power BI Premium Per Capacity Node P1', dept: 'Global Operations', amount: '$59,940', requester: 'BI Team Lead' }
+                {
+                  id: 'REQ-4921',
+                  name: 'Azure OpenAI GPT-4o Dedicated Deployment',
+                  dept: 'Enterprise Automation',
+                  amount: '$42,500',
+                  requester: 'Ali Akhmad Fauzie'
+                },
+                {
+                  id: 'REQ-4922',
+                  name: 'Dataverse Storage Capacity Add-on (50GB)',
+                  dept: 'IOI Domino Cutover',
+                  amount: '$18,000',
+                  requester: 'Cloud Ops Lead'
+                },
+                {
+                  id: 'REQ-4923',
+                  name: 'Power BI Premium Per Capacity Node P1',
+                  dept: 'Global Operations',
+                  amount: '$59,940',
+                  requester: 'BI Team Lead'
+                }
               ].map((req) => (
-                <div key={req.id} className="p-4 sm:px-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:bg-[#1a1c20] transition-colors">
+                <div
+                  key={req.id}
+                  className="p-4 sm:px-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:bg-[var(--bg-surface-elevated)] transition-colors"
+                >
                   <div className="space-y-1">
                     <div className="flex items-center space-x-2">
-                      <span className="font-mono text-xs font-bold text-[#a3c9ff]">{req.id}</span>
-                      <span className="text-xs font-bold text-white">{req.name}</span>
+                      <span className="font-mono text-xs font-semibold text-[#3b82f6]">{req.id}</span>
+                      <span className="text-sm font-medium text-[var(--text-primary)]">{req.name}</span>
                     </div>
-                    <p className="text-xs text-[#c0c7d4]">{req.dept} • Requested by <span className="text-white">{req.requester}</span></p>
+                    <p className="text-xs text-[var(--text-secondary)]">
+                      {req.dept} · Requested by {req.requester}
+                    </p>
                   </div>
                   <div className="flex items-center space-x-4">
-                    <span className="text-sm font-bold font-mono text-white">{req.amount}</span>
+                    <span className="text-sm font-semibold font-mono tabular-nums text-[var(--text-primary)]">
+                      {req.amount}
+                    </span>
                     <button
                       onClick={() => setApprovals({ ...approvals, [req.id]: !approvals[req.id] })}
-                      className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+                      className={`px-3.5 py-1.5 rounded-[var(--radius-sm)] text-xs font-medium transition-colors whitespace-nowrap ${
                         approvals[req.id]
-                          ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/40'
-                          : 'bg-[#0078d4] text-white hover:bg-[#0086ea]'
+                          ? 'bg-[var(--bg-primary)] text-[#3b82f6] border border-[var(--border-focus)]'
+                          : 'bg-[var(--accent-blue)] text-white hover:bg-[var(--accent-blue-hover)]'
                       }`}
                     >
                       {approvals[req.id] ? '✓ Approved' : 'Sign & Approve'}
@@ -412,303 +343,363 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
         </div>
       )}
 
-      {/* DEMO 2: Industrial Nexus / IT Service Request (Image 4 Style) */}
+      {/* DEMO 2: Industrial Nexus / IT Service Request */}
       {activeDemo === 'it-service' && (
-        <div className="space-y-6 animate-in fade-in duration-200">
-          
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#161b22] p-5 rounded-2xl border border-[#282a2e]">
+        <div className="space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[var(--bg-surface)] p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)]">
             <div>
-              <span className="text-[10px] font-mono uppercase text-[#00dbe7] font-semibold">ITSM Operations • 56 Mapped Columns</span>
-              <h2 className="text-xl font-bold text-white">Industrial Nexus Service Desk</h2>
+              <span className="text-xs font-mono text-[#3b82f6] font-medium">
+                ITSM Operations · 56 Mapped Columns
+              </span>
+              <h2 className="text-xl font-semibold text-[var(--text-primary)]">
+                Industrial Nexus Service Desk
+              </h2>
             </div>
-            <div className="flex items-center space-x-2">
-              <span className="text-xs text-emerald-400 font-mono bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/30">
-                ● 0% SLA Breaches
-              </span>
-              <span className="text-xs text-[#a3c9ff] font-mono bg-[#0078d4]/20 px-3 py-1 rounded-full border border-[#0078d4]/40">
-                72h Accept Window
-              </span>
+            <div className="flex items-center space-x-3 text-xs font-mono text-[var(--text-secondary)]">
+              <span>0% SLA Breaches</span>
+              <span aria-hidden="true">·</span>
+              <span className="text-[#3b82f6]">72h Accept Window</span>
             </div>
           </div>
 
-          {/* Quick Ticket Submission */}
-          <div className="bg-[#1a1c20] p-4 rounded-2xl border border-[#282a2e] flex flex-col sm:flex-row items-center gap-3">
+          <div className="bg-[var(--bg-surface)] p-4 rounded-[var(--radius-md)] border border-[var(--border-subtle)] flex flex-col sm:flex-row items-center gap-3">
             <input
               type="text"
               placeholder="Log new IT incident or service request (e.g. Lotus Notes DB replication latency)..."
               value={newTicketTitle}
               onChange={(e) => setNewTicketTitle(e.target.value)}
-              className="flex-1 w-full px-3.5 py-2.5 rounded-xl bg-[#111318] border border-[#282a2e] focus:border-[#0078d4] focus:outline-none text-xs text-white placeholder-[#555962]"
+              className="flex-1 w-full px-3.5 py-2.5 rounded-[var(--radius-sm)] bg-[var(--bg-primary)] border border-[var(--border-subtle)] focus:border-[var(--border-focus)] focus:outline-none text-xs text-[var(--text-primary)] placeholder-[var(--text-tertiary)]"
             />
             <button
               onClick={() => {
                 if (!newTicketTitle.trim()) return;
                 setItTickets([
-                  { id: `INC-2025-${Math.floor(Math.random() * 800 + 100)}`, title: newTicketTitle, priority: 'High', status: 'Submitted (Admin Triage)', requester: 'Local Station', sla: '48.0h left' },
+                  {
+                    id: `INC-2025-${Math.floor(Math.random() * 800 + 100)}`,
+                    title: newTicketTitle,
+                    priority: 'High',
+                    status: 'Submitted (Admin Triage)',
+                    requester: 'Local Station',
+                    sla: '48.0h left'
+                  },
                   ...itTickets
                 ]);
                 setNewTicketTitle('');
               }}
-              className="px-5 py-2.5 rounded-xl bg-[#0078d4] hover:bg-[#0086ea] text-white text-xs font-semibold whitespace-nowrap"
+              className="px-5 py-2.5 rounded-[var(--radius-sm)] bg-[var(--accent-blue)] hover:bg-[var(--accent-blue-hover)] text-white text-xs font-medium whitespace-nowrap"
             >
-              + Submit Ticket
+              Submit Ticket
             </button>
           </div>
 
-          {/* Ticket Queue */}
-          <div className="bg-[#161b22] rounded-2xl border border-[#282a2e] overflow-hidden">
-            <div className="px-6 py-4 border-b border-[#282a2e] flex items-center justify-between">
-              <h3 className="text-sm font-bold text-white">Active Operational Incidents &amp; Governance Queue</h3>
-              <span className="text-xs text-[#c0c7d4] font-mono">{itTickets.length} Active Tickets</span>
+          <div className="bg-[var(--bg-surface)] rounded-[var(--radius-md)] border border-[var(--border-subtle)] overflow-hidden">
+            <div className="px-6 py-4 border-b border-[var(--border-subtle)] flex items-center justify-between">
+              <h3 className="text-sm font-semibold text-[var(--text-primary)]">
+                Active Operational Incidents &amp; Governance Queue
+              </h3>
+              <span className="text-xs text-[var(--text-tertiary)] font-mono tabular-nums">
+                {itTickets.length} Active Tickets
+              </span>
             </div>
-            <div className="divide-y divide-[#282a2e]">
+            <div className="divide-y divide-[var(--border-subtle)]">
               {itTickets.map((t) => (
-                <div key={t.id} className="p-4 sm:px-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:bg-[#1a1c20] transition-colors">
+                <div
+                  key={t.id}
+                  className="p-4 sm:px-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:bg-[var(--bg-surface-elevated)] transition-colors"
+                >
                   <div className="space-y-1">
                     <div className="flex items-center space-x-2">
-                      <span className="font-mono text-xs font-bold text-[#00dbe7]">{t.id}</span>
-                      <span className="text-xs font-bold text-white">{t.title}</span>
-                      <span className="text-[10px] px-2 py-0.5 rounded bg-red-500/20 text-red-400 font-mono font-bold">
-                        {t.priority}
+                      <span className="font-mono text-xs font-semibold text-[#3b82f6]">{t.id}</span>
+                      <span className="text-sm font-medium text-[var(--text-primary)]">{t.title}</span>
+                      <span className="text-xs font-mono text-[var(--text-tertiary)]">
+                        · {t.priority} Priority
                       </span>
                     </div>
-                    <p className="text-xs text-[#c0c7d4]">Requester: <span className="text-white">{t.requester}</span> • SLA Timer: <span className="text-amber-400 font-mono">{t.sla}</span></p>
+                    <p className="text-xs text-[var(--text-secondary)]">
+                      Requester: {t.requester} · SLA Timer: <span className="font-mono">{t.sla}</span>
+                    </p>
                   </div>
-                  <div className="flex items-center space-x-2">
-                    <span className="text-xs font-mono px-3 py-1 rounded-full bg-[#111318] text-[#a3c9ff] border border-[#282a2e]">
-                      {t.status}
-                    </span>
+                  <div className="text-xs font-mono text-[var(--text-secondary)]">
+                    {t.status}
                   </div>
                 </div>
               ))}
             </div>
           </div>
-
         </div>
       )}
 
-      {/* DEMO 3: Enterprise Core ERP (Image 5 Style) */}
+      {/* DEMO 3: Enterprise Core ERP */}
       {activeDemo === 'erp' && (
-        <div className="space-y-6 animate-in fade-in duration-200">
-          <div className="bg-[#161b22] p-5 rounded-2xl border border-[#282a2e] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="space-y-6">
+          <div className="bg-[var(--bg-surface)] p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
-              <span className="text-[10px] font-mono uppercase text-[#dab9ff] font-semibold">Enterprise Core ERP • Purchase Orders &amp; Staff Requisitions</span>
-              <h2 className="text-xl font-bold text-white">Procurement &amp; Governance Center</h2>
+              <span className="text-xs font-mono text-[#3b82f6] font-medium">
+                Enterprise Core ERP · Purchase Orders &amp; Staff Requisitions
+              </span>
+              <h2 className="text-xl font-semibold text-[var(--text-primary)]">
+                Procurement &amp; Governance Center
+              </h2>
             </div>
-            <span className="text-xs font-mono bg-[#111318] px-3 py-1.5 rounded-lg border border-[#282a2e] text-[#c0c7d4]">
-              4-Tier Approval Flow • 5-Day Lockout
+            <span className="text-xs font-mono text-[var(--text-secondary)]">
+              4-Tier Approval Flow · 5-Day Internal Lockout
             </span>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="bg-[#1a1c20] p-5 rounded-2xl border border-[#282a2e] space-y-2">
-              <span className="text-xs font-mono text-[#a3c9ff]">PO-2025-9941</span>
-              <h4 className="text-sm font-bold text-white">Refined Bleached Palm Oil Processing Unit</h4>
-              <p className="text-xs text-[#c0c7d4]">Vendor: Alfa Laval Separation Sdn Bhd</p>
-              <div className="pt-2 flex items-center justify-between text-xs">
-                <span className="font-mono font-bold text-white">RM 340,000</span>
-                <span className="text-emerald-400 font-medium">✓ CFO Approved</span>
+            <div className="bg-[var(--bg-surface)] p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-2">
+              <span className="text-xs font-mono text-[#3b82f6]">PO-2025-9941</span>
+              <h4 className="text-sm font-semibold text-[var(--text-primary)]">
+                Refined Bleached Palm Oil Processing Unit
+              </h4>
+              <p className="text-xs text-[var(--text-secondary)]">
+                Vendor: Alfa Laval Separation Sdn Bhd
+              </p>
+              <div className="pt-2 border-t border-[var(--border-subtle)] flex items-center justify-between text-xs">
+                <span className="font-mono font-semibold text-[var(--text-primary)]">RM 340,000</span>
+                <span className="text-[#3b82f6] font-medium">✓ CFO Approved</span>
               </div>
             </div>
 
-            <div className="bg-[#1a1c20] p-5 rounded-2xl border border-[#282a2e] space-y-2">
-              <span className="text-xs font-mono text-[#00dbe7]">REQ-STAFF-014</span>
-              <h4 className="text-sm font-bold text-white">Senior Process Control Engineer (QA Lab)</h4>
-              <p className="text-xs text-[#c0c7d4]">Internal Lockout: Day 3 of 5 (Mandatory Posting)</p>
-              <div className="pt-2 flex items-center justify-between text-xs">
-                <span className="font-mono font-bold text-white">Headcount: 1 FTE</span>
-                <span className="text-amber-400 font-medium">HR Review Active</span>
+            <div className="bg-[var(--bg-surface)] p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-2">
+              <span className="text-xs font-mono text-[#3b82f6]">REQ-STAFF-014</span>
+              <h4 className="text-sm font-semibold text-[var(--text-primary)]">
+                Senior Process Control Engineer (QA Lab)
+              </h4>
+              <p className="text-xs text-[var(--text-secondary)]">
+                Internal Lockout: Day 3 of 5 (Mandatory Posting)
+              </p>
+              <div className="pt-2 border-t border-[var(--border-subtle)] flex items-center justify-between text-xs">
+                <span className="font-mono font-semibold text-[var(--text-primary)]">Headcount: 1 FTE</span>
+                <span className="text-[var(--text-secondary)] font-medium">HR Review Active</span>
               </div>
             </div>
 
-            <div className="bg-[#1a1c20] p-5 rounded-2xl border border-[#282a2e] space-y-2">
-              <span className="text-xs font-mono text-[#dab9ff]">PO-2025-9948</span>
-              <h4 className="text-sm font-bold text-white">GHS Safety Labeling &amp; Calibration Tooling</h4>
-              <p className="text-xs text-[#c0c7d4]">Master Reference Slice E Sync</p>
-              <div className="pt-2 flex items-center justify-between text-xs">
-                <span className="font-mono font-bold text-white">RM 24,500</span>
-                <span className="text-emerald-400 font-medium">✓ Validated</span>
+            <div className="bg-[var(--bg-surface)] p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-2">
+              <span className="text-xs font-mono text-[#3b82f6]">PO-2025-9948</span>
+              <h4 className="text-sm font-semibold text-[var(--text-primary)]">
+                GHS Safety Labeling &amp; Calibration Tooling
+              </h4>
+              <p className="text-xs text-[var(--text-secondary)]">
+                Master Reference Slice E Sync
+              </p>
+              <div className="pt-2 border-t border-[var(--border-subtle)] flex items-center justify-between text-xs">
+                <span className="font-mono font-semibold text-[var(--text-primary)]">RM 24,500</span>
+                <span className="text-[#3b82f6] font-medium">✓ Validated</span>
               </div>
             </div>
           </div>
         </div>
       )}
 
-      {/* DEMO 4: Warehouse Central (Image 6 Style) */}
+      {/* DEMO 4: Warehouse Central */}
       {activeDemo === 'warehouse' && (
-        <div className="space-y-6 animate-in fade-in duration-200">
-          <div className="bg-[#161b22] p-5 rounded-2xl border border-[#282a2e] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="space-y-6">
+          <div className="bg-[var(--bg-surface)] p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
-              <span className="text-[10px] font-mono uppercase text-[#00dbe7] font-semibold">Slice D Logistics Operations</span>
-              <h2 className="text-xl font-bold text-white">Warehouse Central &amp; Pre-Loading Inspection Hub</h2>
+              <span className="text-xs font-mono text-[#3b82f6] font-medium">
+                Slice D Logistics Operations
+              </span>
+              <h2 className="text-xl font-semibold text-[var(--text-primary)]">
+                Warehouse Central &amp; Pre-Loading Inspection Hub
+              </h2>
             </div>
-            <div className="flex items-center space-x-2 text-xs font-mono">
-              <span className="text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-lg border border-emerald-500/30">Zero Demurrage Delay</span>
-            </div>
+            <span className="text-xs font-mono text-[#3b82f6]">Zero Demurrage Delay</span>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            
-            {/* Left: Container Pre-Loading Inspection Simulator */}
-            <div className="glass-card p-6 rounded-2xl space-y-4">
+            <div className="glass-card p-6 space-y-4">
               <div className="flex items-center justify-between">
-                <h3 className="text-sm font-bold text-white flex items-center space-x-2">
-                  <Truck className="w-4 h-4 text-[#00dbe7]" />
+                <h3 className="text-sm font-semibold text-[var(--text-primary)] flex items-center space-x-2">
+                  <Truck className="w-4 h-4 text-[#3b82f6]" />
                   <span>Container Pre-Loading Inspection</span>
                 </h3>
-                <span className="text-xs font-mono text-[#a3c9ff]">CNTR-MY-88421</span>
+                <span className="text-xs font-mono text-[var(--text-secondary)]">CNTR-MY-88421</span>
               </div>
 
               <div className="space-y-3 text-xs">
-                <div className="p-3 rounded-xl bg-[#111318] border border-[#282a2e] space-y-2">
-                  <p className="font-semibold text-white">Digital Photo Seal Verification</p>
-                  <div className="h-28 rounded-lg bg-[#1a1c20] border border-dashed border-[#282a2e] flex flex-col items-center justify-center text-[#c0c7d4] space-y-1">
-                    <CheckCircle2 className="w-6 h-6 text-[#00dbe7]" />
-                    <span className="text-[11px]">Seal #ML-99042 captured via Power Apps Mobile</span>
-                    <span className="text-[10px] text-[#00dbe7] font-mono">Geo-tagged &amp; Timestamped</span>
+                <div className="p-4 rounded-[var(--radius-sm)] bg-[var(--bg-primary)] border border-[var(--border-subtle)] space-y-2">
+                  <p className="font-medium text-[var(--text-primary)]">Digital Photo Seal Verification</p>
+                  <div className="h-28 rounded-[var(--radius-sm)] bg-[var(--bg-surface)] border border-dashed border-[var(--border-subtle)] flex flex-col items-center justify-center text-[var(--text-secondary)] space-y-1">
+                    <CheckCircle2 className="w-6 h-6 text-[#3b82f6]" />
+                    <span className="text-xs">Seal #ML-99042 captured via Power Apps Mobile</span>
+                    <span className="text-[11px] text-[var(--text-tertiary)] font-mono">
+                      Geo-tagged &amp; Timestamped
+                    </span>
                   </div>
                 </div>
 
                 <div className="grid grid-cols-2 gap-2 text-xs">
-                  <div className="p-2.5 rounded-lg bg-[#111318] border border-[#282a2e]">
-                    <span className="text-[#c0c7d4]">Pallet Integrity:</span>
-                    <p className="font-bold text-emerald-400">100% Passed</p>
+                  <div className="p-3 rounded-[var(--radius-sm)] bg-[var(--bg-primary)] border border-[var(--border-subtle)]">
+                    <span className="text-[var(--text-secondary)]">Pallet Integrity</span>
+                    <p className="font-semibold text-[var(--text-primary)] mt-0.5">100% Passed</p>
                   </div>
-                  <div className="p-2.5 rounded-lg bg-[#111318] border border-[#282a2e]">
-                    <span className="text-[#c0c7d4]">Gate Pass:</span>
-                    <p className="font-bold text-[#a3c9ff]">AUTO-ISSUED</p>
+                  <div className="p-3 rounded-[var(--radius-sm)] bg-[var(--bg-primary)] border border-[var(--border-subtle)]">
+                    <span className="text-[var(--text-secondary)]">Gate Pass</span>
+                    <p className="font-semibold text-[#3b82f6] font-mono mt-0.5">AUTO-ISSUED</p>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Right: Real-time Stock Movements */}
-            <div className="glass-card p-6 rounded-2xl space-y-4">
+            <div className="glass-card p-6 space-y-4">
               <div className="flex items-center justify-between">
-                <h3 className="text-sm font-bold text-white flex items-center space-x-2">
-                  <Box className="w-4 h-4 text-[#dab9ff]" />
+                <h3 className="text-sm font-semibold text-[var(--text-primary)] flex items-center space-x-2">
+                  <Box className="w-4 h-4 text-[#3b82f6]" />
                   <span>Live Stock &amp; Batch Movement Log</span>
                 </h3>
-                <span className="text-xs font-mono text-[#dab9ff]">SAP Synchronized</span>
+                <span className="text-xs font-mono text-[var(--text-secondary)]">SAP Synchronized</span>
               </div>
 
               <div className="space-y-2.5 text-xs">
                 {[
-                  { batch: 'B-8491', product: 'Refined Palm Stearin (Bag 25kg)', bay: 'Bay 14-A', qty: '480 Bags', status: 'Staged' },
-                  { batch: 'B-8492', product: 'Glycerine USP 99.7% Drums', bay: 'Bay 02-C', qty: '80 Drums', status: 'Ready for Gate Pass' },
-                  { batch: 'B-8493', product: 'Lauric Acid Distilled Flakes', bay: 'Bay 09-F', qty: '320 Bags', status: 'Inspected' }
+                  {
+                    batch: 'B-8491',
+                    product: 'Refined Palm Stearin (Bag 25kg)',
+                    bay: 'Bay 14-A',
+                    qty: '480 Bags',
+                    status: 'Staged'
+                  },
+                  {
+                    batch: 'B-8492',
+                    product: 'Glycerine USP 99.7% Drums',
+                    bay: 'Bay 02-C',
+                    qty: '80 Drums',
+                    status: 'Ready for Gate Pass'
+                  },
+                  {
+                    batch: 'B-8493',
+                    product: 'Lauric Acid Distilled Flakes',
+                    bay: 'Bay 09-F',
+                    qty: '320 Bags',
+                    status: 'Inspected'
+                  }
                 ].map((item, idx) => (
-                  <div key={idx} className="p-3 rounded-xl bg-[#111318] border border-[#282a2e] flex items-center justify-between">
+                  <div
+                    key={idx}
+                    className="p-3 rounded-[var(--radius-sm)] bg-[var(--bg-primary)] border border-[var(--border-subtle)] flex items-center justify-between"
+                  >
                     <div>
-                      <p className="font-bold text-white">{item.product}</p>
-                      <p className="text-[11px] text-[#c0c7d4] font-mono">{item.batch} • {item.bay} • {item.qty}</p>
+                      <p className="font-medium text-[var(--text-primary)]">{item.product}</p>
+                      <p className="text-[11px] text-[var(--text-secondary)] font-mono mt-0.5">
+                        {item.batch} · {item.bay} · {item.qty}
+                      </p>
                     </div>
-                    <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#0078d4]/20 text-[#a3c9ff] border border-[#0078d4]/30">
-                      {item.status}
-                    </span>
+                    <span className="text-xs font-mono text-[#3b82f6]">{item.status}</span>
                   </div>
                 ))}
               </div>
             </div>
-
           </div>
         </div>
       )}
 
-      {/* DEMO 5: Maintenance HQ Command & Server Audit (Image 12 Style) */}
+      {/* DEMO 5: Maintenance HQ Command & Server Audit */}
       {activeDemo === 'maintenance' && (
-        <div className="space-y-6 animate-in fade-in duration-200">
-          <div className="bg-[#161b22] p-5 rounded-2xl border border-[#282a2e] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="space-y-6">
+          <div className="bg-[var(--bg-surface)] p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
-              <span className="text-[10px] font-mono uppercase text-[#00dbe7] font-semibold">IT Security &amp; Plant Reliability</span>
-              <h2 className="text-xl font-bold text-white">Maintenance HQ Command Center &amp; Server Audit Register</h2>
+              <span className="text-xs font-mono text-[#3b82f6] font-medium">
+                IT Security &amp; Plant Reliability
+              </span>
+              <h2 className="text-xl font-semibold text-[var(--text-primary)]">
+                Maintenance Command Center &amp; Server Audit Register
+              </h2>
             </div>
-            <div className="flex items-center space-x-3 text-xs font-mono">
-              <span className="text-white">OEE Overall: <strong className="text-emerald-400">78.4%</strong></span>
-              <span className="px-2.5 py-1 rounded bg-[#0078d4]/20 text-[#a3c9ff] border border-[#0078d4]/40">Active Telemetry</span>
+            <div className="flex items-center space-x-3 text-xs font-mono text-[var(--text-secondary)]">
+              <span>OEE Overall: 78.4%</span>
+              <span aria-hidden="true">·</span>
+              <span className="text-[#3b82f6]">100% Audit Adherence</span>
             </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            
-            {/* Server Audit Numbering */}
-            <div className="bg-[#1a1c20] p-5 rounded-2xl border border-[#282a2e] space-y-3">
-              <span className="text-[10px] font-mono uppercase text-[#a3c9ff] font-semibold">Server Checklist Numbering</span>
-              <p className="font-mono text-sm font-bold text-white bg-[#111318] p-2.5 rounded-lg border border-[#282a2e]">
+            <div className="bg-[var(--bg-surface)] p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-3">
+              <span className="text-xs font-mono text-[#3b82f6] font-medium">
+                Server Checklist Numbering
+              </span>
+              <p className="font-mono text-xs font-semibold text-[var(--text-primary)] bg-[var(--bg-primary)] p-2.5 rounded-[var(--radius-sm)] border border-[var(--border-subtle)]">
                 Server Checklist-2025-W12-004
               </p>
-              <ul className="space-y-1 text-xs text-[#c0c7d4]">
-                <li>• CPU Load: 18.2% (Normal)</li>
-                <li>• RAM Allocation: 48.4 GB / 64 GB (75%)</li>
-                <li>• C:\ Drive Free Space: 142 GB (Healthy)</li>
+              <ul className="space-y-1 text-xs text-[var(--text-secondary)]">
+                <li>· CPU Load: 18.2% (Normal)</li>
+                <li>· RAM Allocation: 48.4 GB / 64 GB (75%)</li>
+                <li>· C:\ Drive Free Space: 142 GB (Healthy)</li>
               </ul>
-              <span className="inline-block text-[10px] text-emerald-400 font-mono">✓ Systems Manager Signed Off</span>
+              <span className="inline-block text-xs text-[#3b82f6] font-mono">
+                ✓ Systems Manager Signed Off
+              </span>
             </div>
 
-            {/* Critical Asset 2 */}
-            <div className="bg-[#1a1c20] p-5 rounded-2xl border border-[#282a2e] space-y-3">
-              <span className="text-[10px] font-mono uppercase text-[#00dbe7] font-semibold">Fractionation Chiller Unit 3</span>
-              <p className="font-mono text-sm font-bold text-white bg-[#111318] p-2.5 rounded-lg border border-[#282a2e]">
+            <div className="bg-[var(--bg-surface)] p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-3">
+              <span className="text-xs font-mono text-[#3b82f6] font-medium">
+                Fractionation Chiller Unit 3
+              </span>
+              <p className="font-mono text-xs font-semibold text-[var(--text-primary)] bg-[var(--bg-primary)] p-2.5 rounded-[var(--radius-sm)] border border-[var(--border-subtle)]">
                 WO-MECH-2025-0819
               </p>
-              <ul className="space-y-1 text-xs text-[#c0c7d4]">
-                <li>• Vibration Sensor: 0.12 mm/s (Optimal)</li>
-                <li>• Coolant Pressure: 4.8 bar</li>
-                <li>• Next Preventative PM: in 14 Days</li>
+              <ul className="space-y-1 text-xs text-[var(--text-secondary)]">
+                <li>· Vibration Sensor: 0.12 mm/s (Optimal)</li>
+                <li>· Coolant Pressure: 4.8 bar</li>
+                <li>· Next Preventative PM: in 14 Days</li>
               </ul>
-              <span className="inline-block text-[10px] text-emerald-400 font-mono">✓ Online &amp; Operational</span>
+              <span className="inline-block text-xs text-[#3b82f6] font-mono">
+                ✓ Online &amp; Operational
+              </span>
             </div>
 
-            {/* Critical Asset 3 */}
-            <div className="bg-[#1a1c20] p-5 rounded-2xl border border-[#282a2e] space-y-3">
-              <span className="text-[10px] font-mono uppercase text-[#dab9ff] font-semibold">Dataverse Backup &amp; Disaster Recovery</span>
-              <p className="font-mono text-sm font-bold text-white bg-[#111318] p-2.5 rounded-lg border border-[#282a2e]">
+            <div className="bg-[var(--bg-surface)] p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-3">
+              <span className="text-xs font-mono text-[#3b82f6] font-medium">
+                Dataverse Backup &amp; Disaster Recovery
+              </span>
+              <p className="font-mono text-xs font-semibold text-[var(--text-primary)] bg-[var(--bg-primary)] p-2.5 rounded-[var(--radius-sm)] border border-[var(--border-subtle)]">
                 DR-HEALTH-CHECK-OK
               </p>
-              <ul className="space-y-1 text-xs text-[#c0c7d4]">
-                <li>• Last Immutable Snapshot: 2 hours ago</li>
-                <li>• RPO: &lt; 15 minutes</li>
-                <li>• RTO: &lt; 1 hour verified</li>
+              <ul className="space-y-1 text-xs text-[var(--text-secondary)]">
+                <li>· Last Immutable Snapshot: 2 hours ago</li>
+                <li>· RPO: &lt; 15 minutes</li>
+                <li>· RTO: &lt; 1 hour verified</li>
               </ul>
-              <span className="inline-block text-[10px] text-[#00dbe7] font-mono">✓ ISO 27001 Certified Audit</span>
+              <span className="inline-block text-xs text-[#3b82f6] font-mono">
+                ✓ ISO 27001 Certified Audit
+              </span>
             </div>
-
           </div>
         </div>
       )}
 
       {/* DEMO 6: Interactive Tasek Cement Rebate Calculator */}
       {activeDemo === 'rebate' && (
-        <div className="space-y-6 animate-in fade-in duration-200">
-          <div className="bg-[#161b22] p-5 rounded-2xl border border-[#282a2e] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="space-y-6">
+          <div className="bg-[var(--bg-surface)] p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
-              <span className="text-[10px] font-mono uppercase text-[#00dbe7] font-semibold">Tasek Cement Commercial Approval Engine</span>
-              <h2 className="text-xl font-bold text-white">7-Component Dynamic Rebate Formula Simulator</h2>
+              <span className="text-xs font-mono text-[#3b82f6] font-medium">
+                Tasek Cement Commercial Approval Engine
+              </span>
+              <h2 className="text-xl font-semibold text-[var(--text-primary)]">
+                7-Component Dynamic Rebate Formula Simulator
+              </h2>
             </div>
-            <div className="flex items-center space-x-2 text-xs font-mono">
-              <span className="px-2.5 py-1 rounded bg-[#0078d4]/20 text-[#a3c9ff] border border-[#0078d4]/40 font-bold">
-                Cap Limit: RM 0.20 / Tonne
-              </span>
-              <span className="px-2.5 py-1 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 font-bold">
-                Cycle Time: ~15 Min
-              </span>
+            <div className="flex items-center space-x-3 text-xs font-mono text-[var(--text-secondary)]">
+              <span>Statutory Ceiling: RM 0.20 / Tonne</span>
+              <span aria-hidden="true">·</span>
+              <span className="text-[#3b82f6]">Cycle Time: ~15 Min</span>
             </div>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-            
-            {/* Input Controls */}
-            <div className="lg:col-span-7 bg-[#1a1c20] p-6 rounded-2xl border border-[#282a2e] space-y-4">
-              <h3 className="text-xs font-mono uppercase tracking-widest text-[#a3c9ff] font-bold">
+            <div className="lg:col-span-7 bg-[var(--bg-surface)] p-6 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-4">
+              <h3 className="text-xs font-mono text-[var(--text-primary)] font-medium">
                 Formula Variables Configuration
               </h3>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
-                
-                <div className="space-y-1">
-                  <label className="text-[#c0c7d4] flex justify-between">
+                <div className="space-y-1.5">
+                  <label className="text-[var(--text-secondary)] flex justify-between">
                     <span>Base Tier Rate (RM/t)</span>
-                    <span className="font-mono text-white">RM {rebateBaseRate.toFixed(2)}</span>
+                    <span className="font-mono text-[var(--text-primary)] tabular-nums">
+                      RM {rebateBaseRate.toFixed(2)}
+                    </span>
                   </label>
                   <input
                     type="range"
@@ -717,14 +708,16 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
                     step="0.01"
                     value={rebateBaseRate}
                     onChange={(e) => setRebateBaseRate(parseFloat(e.target.value))}
-                    className="w-full accent-[#0078d4]"
+                    className="w-full accent-[#2563eb]"
                   />
                 </div>
 
-                <div className="space-y-1">
-                  <label className="text-[#c0c7d4] flex justify-between">
+                <div className="space-y-1.5">
+                  <label className="text-[var(--text-secondary)] flex justify-between">
                     <span>Order Volume (Metric Tonnes)</span>
-                    <span className="font-mono text-white">{rebateVolume} tonnes</span>
+                    <span className="font-mono text-[var(--text-primary)] tabular-nums">
+                      {rebateVolume} tonnes
+                    </span>
                   </label>
                   <input
                     type="range"
@@ -733,14 +726,16 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
                     step="100"
                     value={rebateVolume}
                     onChange={(e) => setRebateVolume(parseInt(e.target.value))}
-                    className="w-full accent-[#0078d4]"
+                    className="w-full accent-[#2563eb]"
                   />
                 </div>
 
-                <div className="space-y-1">
-                  <label className="text-[#c0c7d4] flex justify-between">
+                <div className="space-y-1.5">
+                  <label className="text-[var(--text-secondary)] flex justify-between">
                     <span>Logistics Distance Adj (RM/t)</span>
-                    <span className="font-mono text-white">RM {rebateDistance.toFixed(2)}</span>
+                    <span className="font-mono text-[var(--text-primary)] tabular-nums">
+                      RM {rebateDistance.toFixed(2)}
+                    </span>
                   </label>
                   <input
                     type="range"
@@ -749,14 +744,16 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
                     step="0.01"
                     value={rebateDistance}
                     onChange={(e) => setRebateDistance(parseFloat(e.target.value))}
-                    className="w-full accent-[#00dbe7]"
+                    className="w-full accent-[#2563eb]"
                   />
                 </div>
 
-                <div className="space-y-1">
-                  <label className="text-[#c0c7d4] flex justify-between">
+                <div className="space-y-1.5">
+                  <label className="text-[var(--text-secondary)] flex justify-between">
                     <span>Special Contract Terms (RM/t)</span>
-                    <span className="font-mono text-white">RM {rebateSpecialTerm.toFixed(2)}</span>
+                    <span className="font-mono text-[var(--text-primary)] tabular-nums">
+                      RM {rebateSpecialTerm.toFixed(2)}
+                    </span>
                   </label>
                   <input
                     type="range"
@@ -765,14 +762,16 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
                     step="0.01"
                     value={rebateSpecialTerm}
                     onChange={(e) => setRebateSpecialTerm(parseFloat(e.target.value))}
-                    className="w-full accent-[#dab9ff]"
+                    className="w-full accent-[#2563eb]"
                   />
                 </div>
 
-                <div className="space-y-1">
-                  <label className="text-[#c0c7d4] flex justify-between">
+                <div className="space-y-1.5">
+                  <label className="text-[var(--text-secondary)] flex justify-between">
                     <span>Seasonal Incentive (RM/t)</span>
-                    <span className="font-mono text-white">RM {rebateSeasonal.toFixed(2)}</span>
+                    <span className="font-mono text-[var(--text-primary)] tabular-nums">
+                      RM {rebateSeasonal.toFixed(2)}
+                    </span>
                   </label>
                   <input
                     type="range"
@@ -781,14 +780,16 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
                     step="0.01"
                     value={rebateSeasonal}
                     onChange={(e) => setRebateSeasonal(parseFloat(e.target.value))}
-                    className="w-full accent-[#a3c9ff]"
+                    className="w-full accent-[#2563eb]"
                   />
                 </div>
 
-                <div className="space-y-1">
-                  <label className="text-[#c0c7d4] flex justify-between">
+                <div className="space-y-1.5">
+                  <label className="text-[var(--text-secondary)] flex justify-between">
                     <span>Credit Risk Deduction (RM/t)</span>
-                    <span className="font-mono text-red-400">- RM {rebateCreditDeduction.toFixed(2)}</span>
+                    <span className="font-mono text-[var(--text-primary)] tabular-nums">
+                      - RM {rebateCreditDeduction.toFixed(2)}
+                    </span>
                   </label>
                   <input
                     type="range"
@@ -797,131 +798,152 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
                     step="0.01"
                     value={rebateCreditDeduction}
                     onChange={(e) => setRebateCreditDeduction(parseFloat(e.target.value))}
-                    className="w-full accent-red-400"
+                    className="w-full accent-[#2563eb]"
                   />
                 </div>
-
               </div>
             </div>
 
-            {/* Calculation Output Card */}
-            <div className="lg:col-span-5 glass-card p-6 rounded-2xl space-y-5 flex flex-col justify-between">
+            <div className="lg:col-span-5 glass-card p-6 space-y-5 flex flex-col justify-between">
               <div className="space-y-3">
-                <span className="text-[10px] font-mono uppercase tracking-widest text-[#00dbe7] font-semibold">
-                  Real-time Governance Evaluation
+                <span className="text-xs font-mono text-[#3b82f6] font-medium">
+                  Real-Time Governance Evaluation
                 </span>
 
-                <div className="p-4 rounded-xl bg-[#111318] border border-[#282a2e] space-y-2">
-                  <div className="flex justify-between text-xs text-[#c0c7d4]">
+                <div className="p-4 rounded-[var(--radius-sm)] bg-[var(--bg-primary)] border border-[var(--border-subtle)] space-y-2">
+                  <div className="flex justify-between text-xs text-[var(--text-secondary)]">
                     <span>Raw Formula Output:</span>
-                    <span className="font-mono text-white">RM {rawRebatePerTonne.toFixed(2)} / t</span>
+                    <span className="font-mono text-[var(--text-primary)] tabular-nums">
+                      RM {rawRebatePerTonne.toFixed(2)} / t
+                    </span>
                   </div>
-                  <div className="flex justify-between text-xs text-[#c0c7d4]">
+                  <div className="flex justify-between text-xs text-[var(--text-secondary)]">
                     <span>Statutory Capped Rate:</span>
-                    <span className="font-mono font-bold text-[#a3c9ff]">RM {cappedRebatePerTonne.toFixed(2)} / t</span>
+                    <span className="font-mono font-semibold text-[#3b82f6] tabular-nums">
+                      RM {cappedRebatePerTonne.toFixed(2)} / t
+                    </span>
                   </div>
                   {isCapped && (
-                    <div className="text-[11px] text-amber-400 bg-amber-500/10 p-2 rounded border border-amber-500/20 flex items-center space-x-1.5">
-                      <AlertCircle className="w-3.5 h-3.5 shrink-0" />
-                      <span>Governance rule active: Capped at RM 0.20 maximum ceiling!</span>
+                    <div className="text-xs text-[var(--text-primary)] bg-[var(--bg-surface-elevated)] p-2.5 rounded-[var(--radius-sm)] border border-[var(--border-focus)] flex items-center space-x-2">
+                      <AlertCircle className="w-4 h-4 text-[#3b82f6] shrink-0" />
+                      <span>Governance ceiling enforced: Capped at RM 0.20/tonne</span>
                     </div>
                   )}
                 </div>
 
                 <div className="text-center py-2 space-y-1">
-                  <p className="text-xs text-[#c0c7d4]">Total Customer Rebate Value</p>
-                  <p className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#a3c9ff] to-[#00dbe7] font-mono">
+                  <p className="text-xs text-[var(--text-secondary)]">Total Customer Rebate Value</p>
+                  <p className="text-3xl font-semibold text-[var(--text-primary)] font-mono tabular-nums">
                     RM {totalRebateAmountRM}
                   </p>
-                  <p className="text-[11px] text-[#c0c7d4] font-mono">Based on {rebateVolume} Metric Tonnes</p>
+                  <p className="text-xs text-[var(--text-tertiary)] font-mono tabular-nums">
+                    Based on {rebateVolume} Metric Tonnes
+                  </p>
                 </div>
               </div>
 
-              <div className="space-y-2">
-                <button
-                  onClick={triggerApproveRebate}
-                  className={`w-full py-3 rounded-xl text-xs font-bold transition-all shadow-lg flex items-center justify-center space-x-2 ${
-                    rebateApproved
-                      ? 'bg-emerald-600 text-white shadow-emerald-500/30'
-                      : 'bg-[#0078d4] hover:bg-[#0086ea] text-white shadow-[#0078d4]/30'
-                  }`}
-                >
-                  {rebateApproved ? (
-                    <>
-                      <Check className="w-4 h-4" />
-                      <span>Rebate Authorized by Group COO (15-Min Sched)</span>
-                    </>
-                  ) : (
-                    <>
-                      <Sparkles className="w-4 h-4" />
-                      <span>Submit Multi-Level Rebate Approval</span>
-                    </>
-                  )}
-                </button>
-              </div>
-
+              <button
+                onClick={triggerApproveRebate}
+                className={`w-full py-3 rounded-[var(--radius-sm)] text-xs font-medium transition-colors flex items-center justify-center space-x-2 ${
+                  rebateApproved
+                    ? 'bg-[var(--bg-primary)] text-[#3b82f6] border border-[var(--border-focus)]'
+                    : 'bg-[var(--accent-blue)] hover:bg-[var(--accent-blue-hover)] text-white'
+                }`}
+              >
+                {rebateApproved ? (
+                  <>
+                    <Check className="w-4 h-4" />
+                    <span>Rebate Authorized by Group COO (15-Min SLA)</span>
+                  </>
+                ) : (
+                  <>
+                    <Sparkles className="w-4 h-4" />
+                    <span>Submit Multi-Level Rebate Approval</span>
+                  </>
+                )}
+              </button>
             </div>
-
           </div>
         </div>
       )}
 
-      {/* DEMO 7: AI Builder SOP Classifier & Live Ticket Resolver */}
+      {/* DEMO 7: AI Builder SOP Classifier */}
       {activeDemo === 'cs-resolver' && (
-        <div className="space-y-6 animate-in fade-in duration-200">
-          <div className="bg-[#161b22] p-5 rounded-2xl border border-[#282a2e] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="space-y-6">
+          <div className="bg-[var(--bg-surface)] p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
-              <span className="text-[10px] font-mono uppercase text-[#00dbe7] font-semibold">AI Builder NLP Model • 120+ SOP Categories</span>
-              <h2 className="text-xl font-bold text-white">Customer Service Resolver &amp; SOP Recommendation Engine</h2>
-            </div>
-            <div className="flex items-center space-x-2 text-xs font-mono">
-              <span className="px-2.5 py-1 rounded bg-[#5c2d91]/20 text-[#dab9ff] border border-[#5c2d91]/40 font-bold">
-                50–80% Handling Time Reduction
+              <span className="text-xs font-mono text-[#3b82f6] font-medium">
+                AI Builder NLP Model · 120+ SOP Categories
               </span>
+              <h2 className="text-xl font-semibold text-[var(--text-primary)]">
+                Customer Service Resolver &amp; SOP Recommendation Engine
+              </h2>
             </div>
+            <span className="text-xs font-mono text-[#3b82f6]">
+              50–80% Handling Time Reduction
+            </span>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-            
-            {/* Input Inquiry */}
-            <div className="lg:col-span-6 bg-[#1a1c20] p-6 rounded-2xl border border-[#282a2e] space-y-4">
+            <div className="lg:col-span-6 bg-[var(--bg-surface)] p-6 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-4">
               <div className="space-y-1">
-                <label className="text-xs font-bold text-white">Inbound Customer / Operator Issue Description</label>
-                <p className="text-[11px] text-[#c0c7d4]">Type or select any scenario to test real-time NLP classification</p>
+                <label className="text-sm font-semibold text-[var(--text-primary)]">
+                  Inbound Customer / Operator Issue Description
+                </label>
+                <p className="text-xs text-[var(--text-secondary)]">
+                  Type or select any scenario to test real-time NLP classification
+                </p>
               </div>
 
               <textarea
                 rows={3}
                 value={ticketSubject}
                 onChange={(e) => setTicketSubject(e.target.value)}
-                className="w-full px-3.5 py-2.5 rounded-xl bg-[#111318] border border-[#282a2e] focus:border-[#0078d4] focus:outline-none text-xs text-white placeholder-[#555962] resize-none"
+                className="w-full px-3.5 py-2.5 rounded-[var(--radius-sm)] bg-[var(--bg-primary)] border border-[var(--border-subtle)] focus:border-[var(--border-focus)] focus:outline-none text-xs text-[var(--text-primary)] placeholder-[var(--text-tertiary)] resize-none"
               />
 
-              {/* Sample Scenario Buttons */}
               <div className="space-y-1.5">
-                <span className="text-[10px] font-mono uppercase text-[#c0c7d4]">Sample Test Scenarios:</span>
-                <div className="flex flex-wrap gap-1.5">
+                <span className="text-xs font-mono text-[var(--text-tertiary)]">
+                  Sample Test Scenarios:
+                </span>
+                <div className="flex flex-wrap gap-2">
                   <button
-                    onClick={() => setTicketSubject('Batch 402 Palm Stearin melting point deviation during high temperature filtration')}
-                    className="text-[10px] px-2.5 py-1 rounded bg-[#111318] text-[#a3c9ff] border border-[#282a2e] hover:border-[#a3c9ff]"
+                    onClick={() =>
+                      setTicketSubject(
+                        'Batch 402 Palm Stearin melting point deviation during high temperature filtration'
+                      )
+                    }
+                    className="text-xs px-2.5 py-1.5 rounded-[var(--radius-sm)] bg-[var(--bg-primary)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--border-subtle)] hover:border-[var(--border-focus)] transition-colors"
                   >
                     QA Deviation (Slice B)
                   </button>
                   <button
-                    onClick={() => setTicketSubject('Primary Domain Controller server memory exceeded 85% with pending patch reboot')}
-                    className="text-[10px] px-2.5 py-1 rounded bg-[#111318] text-[#00dbe7] border border-[#282a2e] hover:border-[#00dbe7]"
+                    onClick={() =>
+                      setTicketSubject(
+                        'Primary Domain Controller server memory exceeded 85% with pending patch reboot'
+                      )
+                    }
+                    className="text-xs px-2.5 py-1.5 rounded-[var(--radius-sm)] bg-[var(--bg-primary)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--border-subtle)] hover:border-[var(--border-focus)] transition-colors"
                   >
                     IT Server Checklist
                   </button>
                   <button
-                    onClick={() => setTicketSubject('Special volume contract rebate exceeded standard tier with regional distance credit')}
-                    className="text-[10px] px-2.5 py-1 rounded bg-[#111318] text-[#dab9ff] border border-[#282a2e] hover:border-[#dab9ff]"
+                    onClick={() =>
+                      setTicketSubject(
+                        'Special volume contract rebate exceeded standard tier with regional distance credit'
+                      )
+                    }
+                    className="text-xs px-2.5 py-1.5 rounded-[var(--radius-sm)] bg-[var(--bg-primary)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--border-subtle)] hover:border-[var(--border-focus)] transition-colors"
                   >
                     Tasek Rebate
                   </button>
                   <button
-                    onClick={() => setTicketSubject('Pre-loading container inspection photo damaged pallet seal at Bay 04')}
-                    className="text-[10px] px-2.5 py-1 rounded bg-[#111318] text-white border border-[#282a2e] hover:border-white"
+                    onClick={() =>
+                      setTicketSubject(
+                        'Pre-loading container inspection photo damaged pallet seal at Bay 04'
+                      )
+                    }
+                    className="text-xs px-2.5 py-1.5 rounded-[var(--radius-sm)] bg-[var(--bg-primary)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--border-subtle)] hover:border-[var(--border-focus)] transition-colors"
                   >
                     Logistics Slice D
                   </button>
@@ -931,7 +953,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
               <button
                 onClick={handleClassifyTicket}
                 disabled={isClassifying}
-                className="w-full py-2.5 rounded-xl bg-[#0078d4] hover:bg-[#0086ea] text-white text-xs font-semibold flex items-center justify-center space-x-2"
+                className="w-full py-2.5 rounded-[var(--radius-sm)] bg-[var(--accent-blue)] hover:bg-[var(--accent-blue-hover)] text-white text-xs font-medium flex items-center justify-center space-x-2 transition-colors"
               >
                 {isClassifying ? (
                   <>
@@ -947,78 +969,589 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
               </button>
             </div>
 
-            {/* AI Output Card */}
-            <div className="lg:col-span-6 glass-card p-6 rounded-2xl space-y-4">
-              <span className="text-[10px] font-mono uppercase tracking-widest text-[#00dbe7] font-semibold">
+            <div className="lg:col-span-6 glass-card p-6 space-y-4">
+              <span className="text-xs font-mono text-[#3b82f6] font-medium">
                 AI Builder Model Inference Output
               </span>
 
               <div className="space-y-3">
-                <div className="p-4 rounded-xl bg-[#111318] border border-[#282a2e] space-y-2">
-                  <div className="flex justify-between items-center">
-                    <span className="text-xs text-[#c0c7d4]">Classified Category:</span>
-                    <span className="text-xs font-mono font-bold text-white">{classifiedCategory}</span>
+                <div className="p-4 rounded-[var(--radius-sm)] bg-[var(--bg-primary)] border border-[var(--border-subtle)] space-y-2.5">
+                  <div className="flex justify-between items-center gap-2">
+                    <span className="text-xs text-[var(--text-secondary)]">Classified Category:</span>
+                    <span className="text-xs font-mono font-semibold text-[var(--text-primary)] text-right">
+                      {classifiedCategory}
+                    </span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-xs text-[#c0c7d4]">Confidence Score:</span>
-                    <span className="text-xs font-mono font-bold text-emerald-400">{confidenceScore}%</span>
+                    <span className="text-xs text-[var(--text-secondary)]">Confidence Score:</span>
+                    <span className="text-xs font-mono font-semibold text-[#3b82f6] tabular-nums">
+                      {confidenceScore}%
+                    </span>
                   </div>
-                  <div className="w-full bg-[#1e2024] h-2 rounded-full overflow-hidden">
-                    <div className="bg-emerald-400 h-full" style={{ width: `${confidenceScore}%` }}></div>
+                  <div className="skill-bar">
+                    <div className="skill-progress" style={{ width: `${confidenceScore}%` }} />
                   </div>
                 </div>
 
-                <div className="p-4 rounded-xl bg-[#0078d4]/10 border border-[#0078d4]/30 space-y-2">
-                  <p className="text-xs font-bold text-[#a3c9ff] flex items-center space-x-1.5">
-                    <FileText className="w-4 h-4 text-[#00dbe7]" />
+                <div className="p-4 rounded-[var(--radius-sm)] bg-[var(--bg-primary)] border border-[var(--border-subtle)] space-y-2">
+                  <p className="text-xs font-semibold text-[var(--text-primary)] flex items-center space-x-1.5">
+                    <FileText className="w-4 h-4 text-[#3b82f6]" />
                     <span>Recommended Standard Operating Procedure</span>
                   </p>
-                  <p className="text-xs font-mono text-white font-medium">{recommendedSOP}</p>
-                  <div className="pt-1 flex items-center space-x-2 text-[11px] text-[#00dbe7]">
-                    <ArrowRight className="w-3.5 h-3.5" />
+                  <p className="text-xs font-mono text-[#3b82f6] font-medium">{recommendedSOP}</p>
+                  <div className="pt-1 flex items-center space-x-2 text-xs text-[var(--text-secondary)]">
+                    <ArrowRight className="w-3.5 h-3.5 text-[#3b82f6]" />
                     <span>Direct deep-link routed to agent workspace in Microsoft Teams</span>
                   </div>
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       )}
 
-      {/* Architecture Strategy for the active demonstration */}
-      <StrategyBlock demoId={activeDemo} />
+      {/* DEMO 8: ATS Automation — Tri-Engine Router, SSOT Regex Gate & Q1-Q10 PDF Validator */}
+      {activeDemo === 'ats-automation' && (
+        <div className="space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[var(--bg-surface)] p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)]">
+            <div>
+              <span className="text-xs font-mono text-[#3b82f6] font-medium">
+                ai_gateway.py · tailor_to_jd.py · verify_pdfs.py · app_bot_v6.py
+              </span>
+              <h2 className="text-xl font-semibold text-[var(--text-primary)]">
+                ATS Automation: Tri-Engine AI Router &amp; 10-Gate PDF Governance
+              </h2>
+            </div>
+            <div className="flex items-center space-x-3 text-xs font-mono text-[var(--text-secondary)]">
+              <span>Lock: fcntl.flock(.usage_stats.lock)</span>
+              <span aria-hidden="true">·</span>
+              <span className="text-[#3b82f6] font-medium">Workday v6.0 Ready</span>
+            </div>
+          </div>
 
-      {/* Enterprise Capability Coverage */}
-      <div className="glass-card p-5 sm:p-6 rounded-2xl border border-[#282a2e] space-y-4">
-        <div className="flex items-center space-x-2">
-          <Building2 className="w-4 h-4 text-[#00dbe7]" />
-          <h3 className="text-sm font-bold text-white uppercase tracking-wide">Enterprise Capability Coverage</h3>
-        </div>
-        <p className="text-xs text-[#c0c7d4] leading-relaxed max-w-3xl">
-          The showcased systems represent common enterprise transformation domains. Together they demonstrate how modern Microsoft platforms can replace fragmented legacy systems with governed, scalable operating models.
-        </p>
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-          {[
-            { label: 'Finance & FinOps', icon: DollarSign },
-            { label: 'Governance & Compliance', icon: ShieldCheck },
-            { label: 'IT Service Management', icon: Cpu },
-            { label: 'ERP Integration', icon: Layers },
-            { label: 'Warehouse Operations', icon: Box },
-            { label: 'Asset Management', icon: Server },
-            { label: 'AI-Enabled Decision Support', icon: Sparkles }
-          ].map((domain) => {
-            const DomainIcon = domain.icon;
-            return (
-              <div key={domain.label} className="p-3.5 rounded-xl bg-[#111318] border border-[#282a2e] flex items-center space-x-2.5 hover:border-[#0078d4]/50 transition-colors">
-                <DomainIcon className="w-4 h-4 text-[#00dbe7] shrink-0" />
-                <span className="text-xs text-white font-semibold">{domain.label}</span>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            {/* Left Column: Tri-Engine AI Gateway & SSOT Regex Hallucination Firewall */}
+            <div className="lg:col-span-7 space-y-6">
+              {/* Tri-Engine Router Control */}
+              <div className="bg-[var(--bg-surface)] p-6 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-4">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-mono text-[#3b82f6] font-medium">
+                    01 · Tri-Engine AI Gateway &amp; Rate-Limit Failover
+                  </span>
+                  <span className="text-[11px] font-mono text-[var(--text-tertiary)]">
+                    Pydantic JSON Schema Enforced
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-mono text-[var(--text-secondary)]">
+                      Target Career Track (Dual-Track Pipeline)
+                    </label>
+                    <div className="grid grid-cols-2 gap-2">
+                      {(['Track A', 'Track B'] as const).map((track) => (
+                        <button
+                          key={track}
+                          onClick={() => setAtsTrack(track)}
+                          className={`px-3 py-2 rounded-[var(--radius-sm)] text-xs font-mono border transition-colors ${
+                            atsTrack === track
+                              ? 'bg-[var(--accent-blue)] text-white border-[var(--border-focus)]'
+                              : 'bg-[var(--bg-primary)] text-[var(--text-secondary)] border-[var(--border-subtle)]'
+                          }`}
+                        >
+                          {track === 'Track A' ? 'Track A · Architect' : 'Track B · Ops/QA'}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-mono text-[var(--text-secondary)]">
+                      Task Routing Mode (task_type)
+                    </label>
+                    <div className="grid grid-cols-2 gap-2">
+                      {(['structured', 'fast'] as const).map((mode) => (
+                        <button
+                          key={mode}
+                          onClick={() => setAtsTaskMode(mode)}
+                          className={`px-3 py-2 rounded-[var(--radius-sm)] text-xs font-mono border transition-colors ${
+                            atsTaskMode === mode
+                              ? 'bg-[var(--accent-blue)] text-white border-[var(--border-focus)]'
+                              : 'bg-[var(--bg-primary)] text-[var(--text-secondary)] border-[var(--border-subtle)]'
+                          }`}
+                        >
+                          {mode === 'structured' ? "'structured' (JD)" : "'fast' (Form Fill)"}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="p-4 rounded-[var(--radius-sm)] bg-[var(--bg-primary)] border border-[var(--border-subtle)] space-y-3 font-mono text-xs">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[var(--text-secondary)]">Resolved Active Provider:</span>
+                    <span className="text-[#3b82f6] font-semibold">{activeAiEngine}</span>
+                  </div>
+                  <div className="grid grid-cols-3 gap-2 pt-1 text-[11px]">
+                    <div className="p-2.5 rounded-[var(--radius-sm)] bg-[var(--bg-surface)] border border-[var(--border-subtle)]">
+                      <div className="text-[var(--text-secondary)]">Gemini Flash</div>
+                      <div className="text-[var(--text-primary)] font-semibold mt-0.5">4 / 15 RPM</div>
+                      <div className="text-[10px] text-[var(--text-tertiary)]">182 / 1,500 RPD</div>
+                    </div>
+                    <div className="p-2.5 rounded-[var(--radius-sm)] bg-[var(--bg-surface)] border border-[var(--border-subtle)]">
+                      <div className="text-[var(--text-secondary)]">Groq Llama-3.3</div>
+                      <div className="text-[var(--text-primary)] font-semibold mt-0.5">
+                        {simulatedGroqExhausted ? '30 / 30 RPM (429)' : '11 / 30 RPM'}
+                      </div>
+                      <div className="text-[10px] text-[var(--text-tertiary)]">410 / 1,000 RPD</div>
+                    </div>
+                    <div className="p-2.5 rounded-[var(--radius-sm)] bg-[var(--bg-surface)] border border-[var(--border-subtle)]">
+                      <div className="text-[var(--text-secondary)]">OpenCode Zen</div>
+                      <div className="text-[var(--text-primary)] font-semibold mt-0.5">1 / 60 RPM</div>
+                      <div className="text-[10px] text-[var(--text-tertiary)]">Standby Tier 3</div>
+                    </div>
+                  </div>
+                  <div className="flex items-center justify-between pt-1">
+                    <span className="text-[11px] text-[var(--text-tertiary)]">
+                      Simulate Groq 30 RPM Exhaustion (Test Failover Chain):
+                    </span>
+                    <button
+                      onClick={() => setSimulatedGroqExhausted(!simulatedGroqExhausted)}
+                      className="px-2.5 py-1 rounded-[var(--radius-sm)] bg-[var(--bg-surface)] hover:bg-[var(--bg-surface-elevated)] text-[var(--text-primary)] border border-[var(--border-subtle)] text-[11px]"
+                    >
+                      {simulatedGroqExhausted ? 'Reset Groq Quota' : 'Trigger 429 Failover'}
+                    </button>
+                  </div>
+                </div>
               </div>
-            );
-          })}
-        </div>
-      </div>
 
+              {/* Zero-Hallucination SSOT Metric Firewall */}
+              <div className="bg-[var(--bg-surface)] p-6 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-4">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-mono text-[#3b82f6] font-medium">
+                    02 · Zero-Hallucination SSOT Metric Firewall (tailor_to_jd.py)
+                  </span>
+                  <span className="text-xs font-mono text-[var(--text-tertiary)]">
+                    Regex: \b\d+%\+?|\b\d+\+
+                  </span>
+                </div>
+
+                <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+                  Edit the tailored resume bullet below. Any numerical claim not anchored in{' '}
+                  <code className="font-mono text-[var(--text-primary)]">Master_Profile_SSOT.md</code>{' '}
+                  (e.g., try typing <code className="font-mono text-[#3b82f6]">450%</code> or{' '}
+                  <code className="font-mono text-[#3b82f6]">999</code>) is automatically flagged and rejected before PDF compilation.
+                </p>
+
+                <textarea
+                  rows={3}
+                  value={atsBulletInput}
+                  onChange={(e) => setAtsBulletInput(e.target.value)}
+                  className="w-full rounded-[var(--radius-sm)] bg-[var(--bg-primary)] border border-[var(--border-subtle)] focus:border-[var(--border-focus)] p-3 text-xs font-mono text-[var(--text-primary)] outline-none"
+                />
+
+                <div className="flex flex-wrap items-center justify-between gap-2 p-3.5 rounded-[var(--radius-sm)] bg-[var(--bg-primary)] border border-[var(--border-subtle)] font-mono text-xs">
+                  <div className="flex items-center space-x-2">
+                    {isSsotValid ? (
+                      <CheckCircle2 className="w-4 h-4 text-[#3b82f6]" />
+                    ) : (
+                      <AlertCircle className="w-4 h-4 text-amber-400" />
+                    )}
+                    <span className="text-[var(--text-primary)]">
+                      {isSsotValid
+                        ? 'SSOT Verification PASSED: All metrics anchored in Master Dossier'
+                        : `HALLUCINATION BLOCKED: Unverified metric(s) [${unauthorizedMetrics.join(', ')}]`}
+                    </span>
+                  </div>
+                  <span className="text-[11px] text-[var(--text-tertiary)]">
+                    Extracted: [{extractedMetrics.join(', ')}]
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column: 10-Gate PDF Governance Validator (Q1-Q10) */}
+            <div className="lg:col-span-5 bg-[var(--bg-surface)] p-6 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-4">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center space-x-2">
+                  <ShieldCheck className="w-4 h-4 text-[#3b82f6]" />
+                  <span className="text-xs font-mono text-[#3b82f6] font-medium">
+                    03 · 10-Gate PDF Governance (verify_pdfs.py)
+                  </span>
+                </div>
+                <span className="text-xs font-mono text-[var(--text-primary)]">
+                  {atsTrack} · 2 Pages
+                </span>
+              </div>
+
+              <div className="space-y-2 font-mono text-xs">
+                {[
+                  { gate: 'Q1', name: 'File Existence & Byte Integrity', spec: 'size > 10,240 bytes (28.4 KB)' },
+                  { gate: 'Q2', name: 'Page Budget Enforcement', spec: 'Resume == 2 pages · Cover == 1 page' },
+                  { gate: 'Q3', name: 'Identity Header Verification', spec: 'ALI AKHMAD FAUZIE anchored on Page 1' },
+                  { gate: 'Q4', name: 'Zero Raw Markdown Bleed', spec: '0 occurrences of **bold** or # headers' },
+                  { gate: 'Q5', name: 'Zero Encoding / Mojibake Artifacts', spec: 'UTF-8 clean · 0 U+FFFD replacement chars' },
+                  { gate: 'Q6', name: 'Required Structural Sections', spec: 'SUMMARY · COMPETENCIES · EXPERIENCE · EDUCATION' },
+                  { gate: 'Q7', name: 'Clickable Hyperlink URI Layer', spec: '/Annots /Subtype /Link verified via pypdf' },
+                  { gate: 'Q8', name: 'Final-Page Density Floor', spec: 'last_page_lines >= 8 (19 lines rendered)' },
+                  { gate: 'Q9', name: 'Content Completeness & Contact', spec: 'Email · Phone · 5/5 Employers present' },
+                  { gate: 'Q10', name: 'Visual Layout Balance', spec: 'ReportLab KeepTogether · 0 orphan headings' }
+                ].map((item) => (
+                  <div
+                    key={item.gate}
+                    className="flex items-center justify-between p-2.5 rounded-[var(--radius-sm)] bg-[var(--bg-primary)] border border-[var(--border-subtle)]"
+                  >
+                    <div className="flex items-center space-x-2.5">
+                      <span className="text-[#3b82f6] font-semibold">{item.gate}</span>
+                      <div>
+                        <div className="text-[var(--text-primary)] font-sans text-xs font-medium">
+                          {item.name}
+                        </div>
+                        <div className="text-[10px] text-[var(--text-tertiary)]">{item.spec}</div>
+                      </div>
+                    </div>
+                    <span className="px-2 py-0.5 rounded-[var(--radius-sm)] bg-[var(--bg-surface)] text-[#3b82f6] border border-[var(--border-subtle)] text-[10px]">
+                      PASS
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* DEMO 9: Putri GarmentHub 4-Pocket Cash Sharding & SPK Multi-Drop QC Engine */}
+      {activeDemo === 'garment-erp' && (
+        <div className="space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[var(--bg-surface)] p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)]">
+            <div>
+              <span className="text-xs font-mono text-[#3b82f6] font-medium">
+                Putri GarmentHub v2.12.11 · calculations.ts · CashFlowContext.tsx
+              </span>
+              <h2 className="text-xl font-semibold text-[var(--text-primary)]">
+                SPK Multi-Drop QC Defect Engine &amp; 4-Pocket RBAC Cash Ledger
+              </h2>
+            </div>
+            <div className="flex items-center space-x-2">
+              {(['owner', 'keuangan', 'produksi'] as const).map((role) => (
+                <button
+                  key={role}
+                  onClick={() => setGarmentActiveRole(role)}
+                  className={`px-3 py-1.5 rounded-[var(--radius-sm)] text-xs font-mono uppercase border transition-colors ${
+                    garmentActiveRole === role
+                      ? 'bg-[var(--accent-blue)] text-white border-[var(--border-focus)]'
+                      : 'bg-[var(--bg-primary)] text-[var(--text-secondary)] border-[var(--border-subtle)]'
+                  }`}
+                >
+                  Role: {role}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            {/* SPK Partial Drop & QC Defect Wage Calculator */}
+            <div className="lg:col-span-6 bg-[var(--bg-surface)] p-6 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-4">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-mono text-[#3b82f6] font-medium">
+                  01 · Partial Drop QC Defect &amp; Pro-Rata Catalog Sync
+                </span>
+                <span className="text-xs font-mono text-[var(--text-tertiary)]">
+                  calculateDropWageAndDefects()
+                </span>
+              </div>
+
+              <div className="space-y-3 text-xs">
+                <div>
+                  <div className="flex justify-between font-mono mb-1">
+                    <span className="text-[var(--text-secondary)]">Gross Tailor Drop Received (Lusin):</span>
+                    <span className="text-[var(--text-primary)] font-semibold">{spkReceivedLusin} Lusin ({spkReceivedLusin * 12} pcs)</span>
+                  </div>
+                  <input
+                    type="range"
+                    min={10}
+                    max={100}
+                    value={spkReceivedLusin}
+                    onChange={(e) => setSpkReceivedLusin(Number(e.target.value))}
+                    className="w-full accent-[#2563eb]"
+                  />
+                </div>
+
+                <div className="grid grid-cols-2 gap-3">
+                  <div>
+                    <div className="flex justify-between font-mono mb-1">
+                      <span className="text-[var(--text-secondary)]">BS Fatal (Kain Rusak):</span>
+                      <span className="text-amber-400 font-semibold">{spkBsFatal} Lusin</span>
+                    </div>
+                    <input
+                      type="range"
+                      min={0}
+                      max={10}
+                      value={spkBsFatal}
+                      onChange={(e) => setSpkBsFatal(Number(e.target.value))}
+                      className="w-full accent-[#2563eb]"
+                    />
+                  </div>
+                  <div>
+                    <div className="flex justify-between font-mono mb-1">
+                      <span className="text-[var(--text-secondary)]">BS Repair (Re-work):</span>
+                      <span className="text-[#3b82f6] font-semibold">{spkBsRepair} Lusin</span>
+                    </div>
+                    <input
+                      type="range"
+                      min={0}
+                      max={10}
+                      value={spkBsRepair}
+                      onChange={(e) => setSpkBsRepair(Number(e.target.value))}
+                      className="w-full accent-[#2563eb]"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <div className="flex justify-between font-mono mb-1">
+                    <span className="text-[var(--text-secondary)]">Sewing Rate / Lusin (IDR):</span>
+                    <span className="text-[var(--text-primary)] font-semibold">Rp {spkRatePerLusin.toLocaleString()}</span>
+                  </div>
+                  <input
+                    type="range"
+                    min={120000}
+                    max={300000}
+                    step={10000}
+                    value={spkRatePerLusin}
+                    onChange={(e) => setSpkRatePerLusin(Number(e.target.value))}
+                    className="w-full accent-[#2563eb]"
+                  />
+                </div>
+              </div>
+
+              <div className="p-4 rounded-[var(--radius-sm)] bg-[var(--bg-primary)] border border-[var(--border-subtle)] space-y-2 font-mono text-xs">
+                <div className="flex justify-between">
+                  <span className="text-[var(--text-secondary)]">Passed QC (Restocked to Catalog):</span>
+                  <span className="text-[#3b82f6] font-semibold">{spkPassedQC} Lusin ({spkCatalogRestockRatio}% pass ratio)</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-[var(--text-secondary)]">Gross Sewing Wage:</span>
+                  <span className="text-[var(--text-primary)]">Rp {spkGrossWage.toLocaleString()}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-[var(--text-secondary)]">BS Fatal Penalty (Rp 50k/Lusin):</span>
+                  <span className="text-amber-400">- Rp {spkDefectPenalty.toLocaleString()}</span>
+                </div>
+                <div className="pt-2 border-t border-[var(--border-subtle)] flex justify-between text-sm font-semibold">
+                  <span className="text-[var(--text-primary)]">Net Tailor Payout (Slip WA):</span>
+                  <span className="text-[#3b82f6]">Rp {spkNetWage.toLocaleString()}</span>
+                </div>
+              </div>
+            </div>
+
+            {/* 4-Pocket Cash Sharding & Role-Gated Profit Isolation */}
+            <div className="lg:col-span-6 bg-[var(--bg-surface)] p-6 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-4">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-mono text-[#3b82f6] font-medium">
+                  02 · Arus Kas 4 Kantong &amp; RBAC Profit Isolation
+                </span>
+                <span className="text-xs font-mono text-[var(--text-tertiary)]">
+                  canViewProfit: {garmentActiveRole === 'owner' ? 'true' : 'false'}
+                </span>
+              </div>
+
+              <div>
+                <div className="flex justify-between font-mono text-xs mb-1">
+                  <span className="text-[var(--text-secondary)]">Batch Revenue Inflow (IDR):</span>
+                  <span className="text-[var(--text-primary)] font-semibold">Rp {garmentInvoiceIDR.toLocaleString()}</span>
+                </div>
+                <input
+                  type="range"
+                  min={5000000}
+                  max={50000000}
+                  step={1000000}
+                  value={garmentInvoiceIDR}
+                  onChange={(e) => setGarmentInvoiceIDR(Number(e.target.value))}
+                  className="w-full accent-[#2563eb]"
+                />
+              </div>
+
+              {garmentActiveRole === 'produksi' ? (
+                <div className="p-6 rounded-[var(--radius-sm)] bg-[var(--bg-primary)] border border-[var(--border-subtle)] text-center space-y-2">
+                  <AlertCircle className="w-6 h-6 text-amber-400 mx-auto" />
+                  <p className="text-sm font-semibold text-[var(--text-primary)]">
+                    RoleGateCard: Module Locked for Role &apos;produksi&apos;
+                  </p>
+                  <p className="text-xs text-[var(--text-secondary)]">
+                    Floor cutting &amp; SPK operators have full access to SPK Batches, Fabrics, and Catalog Stock, but zero visibility into Arus Kas 4 Kantong.
+                  </p>
+                </div>
+              ) : (
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 font-mono text-xs">
+                  <div className="p-3.5 rounded-[var(--radius-sm)] bg-[var(--bg-primary)] border border-[var(--border-subtle)]">
+                    <div className="text-[var(--text-secondary)]">1. Kas Bahan (40%)</div>
+                    <div className="text-base font-semibold text-[var(--text-primary)] mt-1">
+                      Rp {Math.round(garmentInvoiceIDR * 0.4).toLocaleString()}
+                    </div>
+                    <div className="text-[10px] text-[var(--text-tertiary)] mt-0.5">Fabric Rolls, Thread, Labels</div>
+                  </div>
+                  <div className="p-3.5 rounded-[var(--radius-sm)] bg-[var(--bg-primary)] border border-[var(--border-subtle)]">
+                    <div className="text-[var(--text-secondary)]">2. Kas Operasional (30%)</div>
+                    <div className="text-base font-semibold text-[var(--text-primary)] mt-1">
+                      Rp {Math.round(garmentInvoiceIDR * 0.3).toLocaleString()}
+                    </div>
+                    <div className="text-[10px] text-[var(--text-tertiary)] mt-0.5">Tailor Payroll, PLN, Packaging</div>
+                  </div>
+                  <div className="p-3.5 rounded-[var(--radius-sm)] bg-[var(--bg-primary)] border border-[var(--border-subtle)]">
+                    <div className="text-[var(--text-secondary)]">3. Kas Iklan (10%)</div>
+                    <div className="text-base font-semibold text-[var(--text-primary)] mt-1">
+                      Rp {Math.round(garmentInvoiceIDR * 0.1).toLocaleString()}
+                    </div>
+                    <div className="text-[10px] text-[var(--text-tertiary)] mt-0.5">Shopee / TikTok Shop Ads</div>
+                  </div>
+                  {garmentActiveRole === 'owner' ? (
+                    <div className="p-3.5 rounded-[var(--radius-sm)] bg-[var(--bg-primary)] border border-[var(--border-focus)]">
+                      <div className="text-[#3b82f6]">4. Kas Profit (20% · Owner Only)</div>
+                      <div className="text-base font-semibold text-[#3b82f6] mt-1">
+                        Rp {Math.round(garmentInvoiceIDR * 0.2).toLocaleString()}
+                      </div>
+                      <div className="text-[10px] text-[var(--text-tertiary)] mt-0.5">50/50 Putri &amp; Rival Split: Rp {Math.round(garmentInvoiceIDR * 0.1).toLocaleString()} ea</div>
+                    </div>
+                  ) : (
+                    <div className="p-3.5 rounded-[var(--radius-sm)] bg-[var(--bg-primary)] border border-[var(--border-subtle)] opacity-75">
+                      <div className="text-[var(--text-tertiary)]">4. Kas Profit (Filtered by RBAC)</div>
+                      <div className="text-xs font-sans text-[var(--text-secondary)] mt-1">
+                        Hidden from &apos;keuangan&apos; staff at Context boundary (FR-4.2)
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* DEMO 10: IOI Acidchem DOSH/SIRIM 5x5 HIRADC Risk Matrix Simulator */}
+      {activeDemo === 'she-matrix' && (
+        <div className="space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[var(--bg-surface)] p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)]">
+            <div>
+              <span className="text-xs font-mono text-[#3b82f6] font-medium">
+                ioi-she-platform · MainDB_SHE · DEC-2026-001 ($960K/yr License Saved)
+              </span>
+              <h2 className="text-xl font-semibold text-[var(--text-primary)]">
+                IOI Acidchem DOSH/SIRIM 5×5 HIRADC Chemical Risk Calculator
+              </h2>
+            </div>
+            <div className="flex items-center space-x-2">
+              {(['PENANG_PLANT', 'JOHOR_PLANT'] as const).map((plant) => (
+                <button
+                  key={plant}
+                  onClick={() => setHiradcPlant(plant)}
+                  className={`px-3 py-1.5 rounded-[var(--radius-sm)] text-xs font-mono border transition-colors ${
+                    hiradcPlant === plant
+                      ? 'bg-[var(--accent-blue)] text-white border-[var(--border-focus)]'
+                      : 'bg-[var(--bg-primary)] text-[var(--text-secondary)] border-[var(--border-subtle)]'
+                  }`}
+                >
+                  {plant === 'PENANG_PLANT' ? 'Penang Prai Plant' : 'Johor Pan-Century'}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            <div className="lg:col-span-6 bg-[var(--bg-surface)] p-6 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-4">
+              <span className="text-xs font-mono text-[#3b82f6] font-medium">
+                01 · L × S Chemical Process Risk Parameters ({hiradcPlant === 'PENANG_PLANT' ? 'HIRADC-PEN-PRD-2026-001' : 'HIRADC-JOH-LOG-2026-004'})
+              </span>
+
+              <div className="space-y-4 text-xs">
+                <div>
+                  <div className="flex justify-between font-mono mb-1">
+                    <span className="text-[var(--text-secondary)]">Likelihood (L ∈ 1..5):</span>
+                    <span className="text-[var(--text-primary)] font-semibold">{hiradcLikelihood} / 5</span>
+                  </div>
+                  <input
+                    type="range"
+                    min={1}
+                    max={5}
+                    value={hiradcLikelihood}
+                    onChange={(e) => setHiradcLikelihood(Number(e.target.value))}
+                    className="w-full accent-[#2563eb]"
+                  />
+                </div>
+
+                <div>
+                  <div className="flex justify-between font-mono mb-1">
+                    <span className="text-[var(--text-secondary)]">Severity (S ∈ 1..5):</span>
+                    <span className="text-[var(--text-primary)] font-semibold">{hiradcSeverity} / 5</span>
+                  </div>
+                  <input
+                    type="range"
+                    min={1}
+                    max={5}
+                    value={hiradcSeverity}
+                    onChange={(e) => setHiradcSeverity(Number(e.target.value))}
+                    className="w-full accent-[#2563eb]"
+                  />
+                </div>
+              </div>
+
+              <div className="p-4 rounded-[var(--radius-sm)] bg-[var(--bg-primary)] border border-[var(--border-subtle)] space-y-2 font-mono text-xs">
+                <div className="flex justify-between">
+                  <span className="text-[var(--text-secondary)]">Computed Risk Score (L × S):</span>
+                  <span className="text-lg font-semibold text-[#3b82f6]">{hiradcScore} / 25</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-[var(--text-secondary)]">DOSH Classification:</span>
+                  <span className={`font-semibold ${hiradcScore >= 15 ? 'text-amber-400' : 'text-[#3b82f6]'}`}>
+                    {hiradcLevel}
+                  </span>
+                </div>
+                <div className="pt-2 border-t border-[var(--border-subtle)] text-[11px] text-[var(--text-secondary)] font-sans">
+                  {hiradcPlant === 'PENANG_PLANT'
+                    ? 'Active Process: 240°C Fatty Acid Distillation Sampling · Required: Closed-Loop Cooler + Full Face Shield'
+                    : 'Active Process: Pressurized 50% NaOH Bulk Tanker Unloading · Required: LOTO Interlock + Chemical Suit'}
+                </div>
+              </div>
+            </div>
+
+            <div className="lg:col-span-6 bg-[var(--bg-surface)] p-6 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-4">
+              <span className="text-xs font-mono text-[#3b82f6] font-medium">
+                02 · Interactive 5×5 DOSH/SIRIM Heatmap (Click Any Cell)
+              </span>
+              <div className="grid grid-cols-5 gap-2 font-mono text-xs">
+                {[5, 4, 3, 2, 1].map((sev) =>
+                  [1, 2, 3, 4, 5].map((lik) => {
+                    const cellScore = lik * sev;
+                    const isSelected = lik === hiradcLikelihood && sev === hiradcSeverity;
+                    return (
+                      <button
+                        key={`${sev}-${lik}`}
+                        onClick={() => {
+                          setHiradcLikelihood(lik);
+                          setHiradcSeverity(sev);
+                        }}
+                        className={`p-2.5 rounded-[var(--radius-sm)] border text-center transition-all ${
+                          isSelected
+                            ? 'bg-[var(--accent-blue)] text-white border-white scale-105 font-bold'
+                            : cellScore >= 15
+                            ? 'bg-[var(--bg-primary)] text-amber-400 border-amber-500/40 hover:border-amber-400'
+                            : cellScore >= 5
+                            ? 'bg-[var(--bg-primary)] text-[#3b82f6] border-[var(--border-subtle)] hover:border-[var(--border-focus)]'
+                            : 'bg-[var(--bg-primary)] text-[var(--text-secondary)] border-[var(--border-subtle)]'
+                        }`}
+                      >
+                        <div>{cellScore}</div>
+                        <div className="text-[9px] opacity-75">L{lik}×S{sev}</div>
+                      </button>
+                    );
+                  })
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

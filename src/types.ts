@@ -14,7 +14,19 @@ export interface ProjectItem {
   impactMetrics?: { label: string; value: string }[];
   technicalDetails?: string[];
   systemDesign?: string;
-  liveDemoId?: 'finops' | 'it-service' | 'erp' | 'warehouse' | 'maintenance' | 'rebate' | 'cs-resolver';
+  repoUrl?: string;
+  codeSnippet?: string;
+  liveDemoId?:
+    | 'finops'
+    | 'it-service'
+    | 'erp'
+    | 'warehouse'
+    | 'maintenance'
+    | 'rebate'
+    | 'cs-resolver'
+    | 'ats-automation'
+    | 'garment-erp'
+    | 'she-matrix';
   featured?: boolean;
 }
 

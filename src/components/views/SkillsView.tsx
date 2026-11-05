@@ -1,273 +1,660 @@
-import React, { useMemo } from 'react';
-import { DEV_STACK, GOVERNANCE_ITEMS, BUSINESS_COMPETENCIES, CORE_PROJECTS, MIGRATION_SLICES, KEY_METRICS } from '../../data/portfolioData';
-import { 
-  Terminal, 
-  Layers, 
-  Cpu, 
-  ShieldCheck, 
-  CheckCircle2, 
-  Workflow, 
-  Database, 
-  Sparkles, 
-  Code2, 
-  GitBranch, 
-  TrendingUp,
+import React, { useMemo, useState } from 'react';
+import { motion } from 'motion/react';
+import {
+  DEV_STACK,
+  GOVERNANCE_ITEMS,
+  BUSINESS_COMPETENCIES,
+  ADDITIONAL_COMPETENCIES,
+  CORE_PROJECTS,
+  MIGRATION_SLICES,
+  KEY_METRICS
+} from '../../data/portfolioData';
+import {
+  Terminal,
+  Layers,
+  ShieldCheck,
+  Workflow,
+  Database,
+  Sparkles,
+  Code2,
+  GitBranch,
   BarChart,
-  Target
+  Target,
+  Briefcase,
+  FileText,
+  MonitorPlay,
+  Globe,
+  Sliders,
+  Users,
+  Activity,
+  CheckCircle2,
+  Gauge,
+  MessageSquare,
+  Video,
+  PieChart,
+  AlertTriangle,
+  TrendingUp,
+  UserCheck,
+  Award
 } from 'lucide-react';
 
 export const SkillsView: React.FC = () => {
+  const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [mobileTab, setMobileTab] = useState<'tools' | 'impact'>('tools');
+
   // Aggregate technology usage from all projects and migration slices
   const techUsage = useMemo(() => {
     const counts: Record<string, number> = {};
     const processTools = (tools: string[]) => {
-      tools.forEach(t => {
+      tools.forEach((t) => {
         counts[t] = (counts[t] || 0) + 1;
       });
     };
 
-    CORE_PROJECTS.forEach(p => processTools(p.tools));
-    MIGRATION_SLICES.forEach(m => processTools(m.tools));
+    CORE_PROJECTS.forEach((p) => processTools(p.tools));
+    MIGRATION_SLICES.forEach((m) => processTools(m.tools));
 
     return Object.entries(counts).sort((a, b) => b[1] - a[1]);
   }, []);
 
+  // Icon-led badge resolver for tools and competencies
+  const getCompetencyBadgeMeta = (category: string, skill: string) => {
+    const lc = skill.toLowerCase();
+
+    // Support Tools & Platforms
+    if (lc.includes('salesforce')) {
+      return {
+        icon: <Database className="w-3.5 h-3.5 text-[#3b82f6] shrink-0" />,
+        tag: 'CRM'
+      };
+    }
+    if (lc.includes('jira')) {
+      return {
+        icon: <Layers className="w-3.5 h-3.5 text-[#3b82f6] shrink-0" />,
+        tag: 'Agile / Issue'
+      };
+    }
+    if (lc.includes('zendesk')) {
+      return {
+        icon: <MessageSquare className="w-3.5 h-3.5 text-[#3b82f6] shrink-0" />,
+        tag: 'Ticketing'
+      };
+    }
+    if (lc.includes('tableau')) {
+      return {
+        icon: <PieChart className="w-3.5 h-3.5 text-[#3b82f6] shrink-0" />,
+        tag: 'Visual BI'
+      };
+    }
+    if (lc.includes('power bi')) {
+      return {
+        icon: <BarChart className="w-3.5 h-3.5 text-[#3b82f6] shrink-0" />,
+        tag: 'Analytics'
+      };
+    }
+    if (lc.includes('excel')) {
+      return {
+        icon: <FileText className="w-3.5 h-3.5 text-[#3b82f6] shrink-0" />,
+        tag: 'Data Modeling'
+      };
+    }
+    if (lc.includes('teams')) {
+      return {
+        icon: <MonitorPlay className="w-3.5 h-3.5 text-[#3b82f6] shrink-0" />,
+        tag: 'M365 Collab'
+      };
+    }
+    if (lc.includes('slack')) {
+      return {
+        icon: <Terminal className="w-3.5 h-3.5 text-[#3b82f6] shrink-0" />,
+        tag: 'Ops Comms'
+      };
+    }
+    if (lc.includes('zoom')) {
+      return {
+        icon: <Video className="w-3.5 h-3.5 text-[#3b82f6] shrink-0" />,
+        tag: 'Conferencing'
+      };
+    }
+
+    // Customer Service Management
+    if (lc.includes('sla') || lc.includes('kpi')) {
+      return {
+        icon: <Gauge className="w-3.5 h-3.5 text-[#3b82f6] shrink-0" />,
+        tag: '>98% Target'
+      };
+    }
+    if (lc.includes('escalation')) {
+      return {
+        icon: <AlertTriangle className="w-3.5 h-3.5 text-[#3b82f6] shrink-0" />,
+        tag: 'Triage'
+      };
+    }
+    if (lc.includes('quality assurance')) {
+      return {
+        icon: <ShieldCheck className="w-3.5 h-3.5 text-[#3b82f6] shrink-0" />,
+        tag: 'ISO / QA'
+      };
+    }
+
+    // Team Leadership & Development
+    if (category === 'Team Leadership & Development') {
+      if (lc.includes('hiring') || lc.includes('attrition')) {
+        return {
+          icon: <UserCheck className="w-3.5 h-3.5 text-[#3b82f6] shrink-0" />,
+          tag: 'Retention'
+        };
+      }
+      return {
+        icon: <Users className="w-3.5 h-3.5 text-[#3b82f6] shrink-0" />,
+        tag: 'Leadership'
+      };
+    }
+
+    // Process Automation & Analytics
+    if (category === 'Process Automation & Analytics') {
+      if (lc.includes('dashboard')) {
+        return {
+          icon: <Activity className="w-3.5 h-3.5 text-[#3b82f6] shrink-0" />,
+          tag: 'Live Telemetry'
+        };
+      }
+      return {
+        icon: <Sliders className="w-3.5 h-3.5 text-[#3b82f6] shrink-0" />,
+        tag: 'Automation'
+      };
+    }
+
+    // Languages
+    if (category === 'Languages') {
+      return {
+        icon: <Globe className="w-3.5 h-3.5 text-[#3b82f6] shrink-0" />,
+        tag: lc.includes('native') ? 'Native' : 'Fluent'
+      };
+    }
+
+    return {
+      icon: <CheckCircle2 className="w-3.5 h-3.5 text-[#3b82f6] shrink-0" />,
+      tag: 'Core'
+    };
+  };
+
+  const getCategoryIcon = (category: string) => {
+    switch (category) {
+      case 'Customer Service Management':
+        return <ShieldCheck className="w-4 h-4 text-[#3b82f6]" />;
+      case 'Team Leadership & Development':
+        return <Users className="w-4 h-4 text-[#3b82f6]" />;
+      case 'Support Tools & Platforms':
+        return <Terminal className="w-4 h-4 text-[#3b82f6]" />;
+      case 'Process Automation & Analytics':
+        return <Workflow className="w-4 h-4 text-[#3b82f6]" />;
+      case 'Languages':
+        return <Globe className="w-4 h-4 text-[#3b82f6]" />;
+      default:
+        return <Briefcase className="w-4 h-4 text-[#3b82f6]" />;
+    }
+  };
+
+  const competencyGroups = useMemo(
+    () => [
+      {
+        id: 'core-competencies',
+        index: '01',
+        label: 'Core Competencies',
+        subtitle: 'Service delivery governance, SLA & KPI management, contact center operations, and cross-functional team leadership.',
+        categories: ADDITIONAL_COMPETENCIES.filter((c) =>
+          ['Customer Service Management', 'Team Leadership & Development'].includes(c.category)
+        )
+      },
+      {
+        id: 'platform-tools',
+        index: '02',
+        label: 'Platform Tools',
+        subtitle: 'Enterprise CRM, issue tracking, business intelligence, and collaborative communication platforms.',
+        categories: ADDITIONAL_COMPETENCIES.filter((c) =>
+          ['Support Tools & Platforms'].includes(c.category)
+        )
+      },
+      {
+        id: 'methodologies',
+        index: '03',
+        label: 'Methodologies',
+        subtitle: 'Workflow automation, incident command, escalation triage, process optimization, and regional language capabilities.',
+        categories: ADDITIONAL_COMPETENCIES.filter((c) =>
+          ['Process Automation & Analytics', 'Languages'].includes(c.category)
+        )
+      }
+    ],
+    []
+  );
+
+  const visibleGroups = useMemo(() => {
+    if (selectedCategory === 'all') return competencyGroups;
+    return competencyGroups.filter((g) => g.id === selectedCategory);
+  }, [selectedCategory, competencyGroups]);
+
   return (
-    <div className="space-y-12 py-6 animate-in fade-in duration-300">
-      
-      {/* Header matching Image 8 */}
-      <div className="space-y-3">
-        <div className="flex items-center space-x-2 text-xs font-mono uppercase tracking-widest text-[#00dbe7] font-bold">
-          <Terminal className="w-4 h-4" />
-          <span>Technical Architecture &amp; Enterprise Governance</span>
-        </div>
-        <h1 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+    <div className="space-y-12 py-6">
+      {/* Page Header */}
+      <div className="space-y-3 border-b border-[var(--border-subtle)] pb-8">
+        <p className="text-xs font-mono text-[#3b82f6] font-medium">
+          01 · Technical Architecture &amp; Operational Competencies
+        </p>
+        <h1
+          className="font-semibold text-[var(--text-primary)] tracking-tight"
+          style={{ fontSize: 'var(--text-h1)', lineHeight: 1.2 }}
+        >
           Technical Mastery &amp; Core Competencies
         </h1>
-        <p className="text-xs sm:text-sm text-[#c0c7d4] max-w-3xl leading-relaxed">
-          Comprehensive breakdown of Power Platform architecture, pro-dev extensions (React PCF, TypeScript), automated CI/CD ALM pipelines, and executive service delivery leadership.
+        <p className="text-base text-[var(--text-secondary)] max-w-3xl leading-relaxed">
+          Structured F-pattern competency matrix organized by Core Competencies, Platform Tools, and Methodologies for rapid recruiter evaluation.
         </p>
       </div>
 
-      {/* NEW SECTION: Technology Utilization Dashboard & Key Achievements */}
-      <section className="bg-gradient-to-br from-[#161b22] to-[#111318] border border-[#282a2e] rounded-3xl p-6 sm:p-8 space-y-8 shadow-2xl relative overflow-hidden">
-        <div className="glow-circle w-96 h-96 bg-[#0078d4]/10 -top-20 -right-20"></div>
-        
-        <div className="relative z-10 space-y-8">
-          <div className="space-y-2">
-            <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight flex items-center space-x-2">
-              <BarChart className="w-6 h-6 text-[#00dbe7]" />
-              <span>Technology Utilization Dashboard</span>
+      {/* SECTION 1: Categorized Competency Grids (Core Competencies, Platform Tools, Methodologies) */}
+      <section className="space-y-10">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4 border-b border-[var(--border-subtle)] pb-4">
+          <div className="space-y-1">
+            <h2
+              className="font-medium text-[var(--text-primary)] tracking-tight"
+              style={{ fontSize: 'var(--text-h2)', lineHeight: 1.25 }}
+            >
+              Competency &amp; Tooling Architecture
             </h2>
-            <p className="text-xs text-[#c0c7d4]">Real-time analysis of technology stack distribution across the 16+ production architectures.</p>
+            <p className="text-sm text-[var(--text-secondary)]">
+              Segmented into clear domain groups on an 8-pixel (`0.5rem`) grid layout with tactile icon-led badges.
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            
-            {/* Tech Stack Distribution */}
-            <div className="space-y-4">
-              <h3 className="text-xs font-mono uppercase tracking-widest text-[#a3c9ff] font-bold">Tools &amp; Platforms Deployed</h3>
-              <div className="grid grid-cols-2 gap-3">
-                {techUsage.slice(0, 10).map(([tech, count], idx) => (
-                  <div key={tech} className="bg-[#1a1c20] p-3 rounded-xl border border-[#282a2e] flex items-center justify-between group hover:border-[#0078d4]/50 transition-colors">
-                    <span className="text-xs font-semibold text-white truncate max-w-[70%] group-hover:text-[#a3c9ff] transition-colors">{tech}</span>
-                    <span className="text-[10px] font-mono bg-[#111318] text-[#00dbe7] px-2 py-0.5 rounded-md border border-[#282a2e]">
-                      {count} {count === 1 ? 'App' : 'Apps'}
+          {/* Interactive Group Filter Bar */}
+          <div className="flex flex-wrap gap-2">
+            {[
+              { id: 'all', label: 'All Categories' },
+              { id: 'core-competencies', label: 'Core Competencies' },
+              { id: 'platform-tools', label: 'Platform Tools' },
+              { id: 'methodologies', label: 'Methodologies' }
+            ].map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setSelectedCategory(tab.id)}
+                className={`px-3.5 py-1.5 rounded-[var(--radius-sm)] text-xs font-medium transition-colors whitespace-nowrap shrink-0 ${
+                  selectedCategory === tab.id
+                    ? 'bg-[var(--accent-blue)] text-white'
+                    : 'bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--border-subtle)]'
+                }`}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Categorized Header Labels & Grid Sections */}
+        <div className="space-y-10">
+          {visibleGroups.map((group) => (
+            <div key={group.id} className="space-y-4">
+              {/* Categorized Header Label Above Grid Section */}
+              <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-[var(--border-subtle)] pb-3">
+                <div className="space-y-1">
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs font-mono text-[#3b82f6] font-semibold">
+                      {group.index}
                     </span>
+                    <span className="text-xs font-mono text-[var(--text-tertiary)]">·</span>
+                    <h3 className="text-lg font-semibold text-[var(--text-primary)] tracking-tight">
+                      {group.label}
+                    </h3>
                   </div>
-                ))}
+                  <p className="text-xs text-[var(--text-secondary)]">{group.subtitle}</p>
+                </div>
+                <span className="text-xs font-mono text-[var(--text-tertiary)] tabular-nums shrink-0">
+                  {group.categories.reduce((acc, c) => acc + c.skills.length, 0)} Verified Items
+                </span>
               </div>
-            </div>
 
-            {/* Key Measurable Impacts */}
-            <div className="space-y-4">
-              <h3 className="text-xs font-mono uppercase tracking-widest text-[#dab9ff] font-bold">Quantifiable Business Impact</h3>
-              <div className="space-y-3">
-                {KEY_METRICS.map((metric, idx) => (
-                  <div key={idx} className="bg-[#1a1c20] p-3.5 rounded-xl border border-[#282a2e] flex items-center space-x-4">
-                    <div className="w-12 h-12 shrink-0 rounded-lg bg-[#5c2d91]/20 border border-[#5c2d91]/40 flex items-center justify-center">
-                      <Target className="w-5 h-5 text-[#dab9ff]" />
-                    </div>
-                    <div>
-                      <div className="flex items-center space-x-2">
-                        <span className="text-lg font-black text-transparent bg-clip-text bg-gradient-to-r from-[#a3c9ff] to-[#00dbe7] font-mono">{metric.value}</span>
-                        <span className="text-xs font-bold text-white uppercase">{metric.label}</span>
+              {/* Grid Section under the Categorized Header */}
+              <div
+                className={`grid gap-4 ${
+                  group.categories.length === 1
+                    ? 'grid-cols-1'
+                    : 'grid-cols-1 lg:grid-cols-2'
+                }`}
+              >
+                {group.categories.map((category) => (
+                  <div
+                    key={category.category}
+                    className="bg-[var(--bg-surface)] p-6 rounded-[var(--radius-md)] border border-[var(--border-subtle)] hover:border-[var(--border-focus)] transition-colors space-y-4 shadow-[var(--shadow-card)]"
+                  >
+                    {/* Sub-Category Header */}
+                    <div className="flex items-center justify-between border-b border-[var(--border-subtle)] pb-3">
+                      <div className="flex items-center gap-2.5">
+                        <div className="w-8 h-8 rounded-[var(--radius-sm)] bg-[var(--bg-surface-elevated)] border border-[var(--border-subtle)] flex items-center justify-center">
+                          {getCategoryIcon(category.category)}
+                        </div>
+                        <h4 className="text-sm font-semibold text-[var(--text-primary)] tracking-tight">
+                          {category.category}
+                        </h4>
                       </div>
-                      <p className="text-[11px] text-[#c0c7d4] mt-0.5">{metric.subtext}</p>
+                      <span className="text-xs font-mono text-[var(--text-tertiary)] tabular-nums">
+                        {category.skills.length} items
+                      </span>
+                    </div>
+
+                    {/* 8px-Spaced Grid (gap-2 = 8px) for F-Pattern Scanning */}
+                    <div
+                      className={`grid gap-2 ${
+                        group.categories.length === 1
+                          ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'
+                          : 'grid-cols-1 sm:grid-cols-2'
+                      }`}
+                    >
+                      {category.skills.map((skill, sIdx) => {
+                        const badgeMeta = getCompetencyBadgeMeta(category.category, skill);
+                        return (
+                          <motion.div
+                            key={sIdx}
+                            whileHover={{ scale: 1.025 }}
+                            whileTap={{ scale: 0.99 }}
+                            transition={{ duration: 0.16, ease: [0.16, 1, 0.3, 1] }}
+                            className="px-3 py-2.5 rounded-[var(--radius-sm)] bg-[var(--bg-primary)] hover:bg-[var(--bg-surface-elevated)] border border-[var(--border-subtle)] hover:border-[var(--border-focus)] flex items-center justify-between gap-2 transition-colors group cursor-default"
+                          >
+                            <div className="flex items-center gap-2 min-w-0">
+                              {badgeMeta.icon}
+                              <span className="text-xs font-medium text-[var(--text-primary)] truncate">
+                                {skill}
+                              </span>
+                            </div>
+                            <span className="text-[11px] font-mono text-[var(--text-tertiary)] group-hover:text-[var(--text-secondary)] shrink-0">
+                              {badgeMeta.tag}
+                            </span>
+                          </motion.div>
+                        );
+                      })}
                     </div>
                   </div>
                 ))}
               </div>
             </div>
-
-          </div>
+          ))}
         </div>
       </section>
 
-      {/* Section 1: Power Platform Architecture Suite */}
+      {/* SECTION 2: Power Platform Architecture Suite */}
       <section className="space-y-4">
-        <h2 className="text-xs font-mono uppercase tracking-widest text-[#a3c9ff] font-bold flex items-center space-x-2">
-          <Layers className="w-4 h-4" />
-          <span>Power Platform Architecture</span>
-        </h2>
+        <div className="border-b border-[var(--border-subtle)] pb-3">
+          <p className="text-xs font-mono text-[#3b82f6] font-medium">02 · Core Platform Stack</p>
+          <h2
+            className="font-medium text-[var(--text-primary)] tracking-tight mt-1"
+            style={{ fontSize: 'var(--text-h2)', lineHeight: 1.25 }}
+          >
+            Power Platform Architecture Suite
+          </h2>
+        </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          
-          {/* Card 1: Power Apps */}
-          <div className="glass-card p-6 rounded-2xl space-y-4">
-            <div className="w-10 h-10 rounded-xl bg-[#5c2d91]/20 border border-[#5c2d91]/40 flex items-center justify-center text-[#dab9ff]">
-              <Layers className="w-5 h-5" />
+          <div className="glass-card p-6 space-y-4 flex flex-col justify-between">
+            <div className="space-y-3">
+              <div className="w-9 h-9 rounded-[var(--radius-sm)] bg-[var(--bg-surface-elevated)] border border-[var(--border-subtle)] flex items-center justify-center text-[#3b82f6]">
+                <Layers className="w-4 h-4" />
+              </div>
+              <div>
+                <h3 className="text-base font-semibold text-[var(--text-primary)]">Power Apps</h3>
+                <p className="text-xs text-[var(--text-tertiary)] font-mono mt-0.5">Canvas · Model-Driven</p>
+              </div>
+              <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
+                Responsive, accessible canvas applications and complex model-driven architectures with custom business process flows (BPFs) and role-tailored forms.
+              </p>
             </div>
-            <div className="space-y-1">
-              <h3 className="text-base font-bold text-white">Power Apps</h3>
-              <p className="text-xs text-[#dab9ff] font-mono">Canvas &amp; Model-Driven</p>
-            </div>
-            <p className="text-xs text-[#c0c7d4] leading-relaxed">
-              Design of responsive, accessible canvas applications and complex model-driven architectures with custom business process flows (BPFs) and role-tailored forms.
-            </p>
-            <div className="pt-2 border-t border-[#282a2e] flex flex-wrap gap-1">
-              <span className="text-[10px] px-2 py-0.5 rounded bg-[#1e2024] text-[#c0c7d4]">Responsive UI</span>
-              <span className="text-[10px] px-2 py-0.5 rounded bg-[#1e2024] text-[#c0c7d4]">Offline Sync</span>
-              <span className="text-[10px] px-2 py-0.5 rounded bg-[#1e2024] text-[#c0c7d4]">PCF Controls</span>
+            <div className="pt-3 border-t border-[var(--border-subtle)] text-xs text-[var(--text-tertiary)] font-mono">
+              Responsive UI · Offline Sync · PCF Controls
             </div>
           </div>
 
-          {/* Card 2: Power Automate */}
-          <div className="glass-card p-6 rounded-2xl space-y-4">
-            <div className="w-10 h-10 rounded-xl bg-[#0078d4]/20 border border-[#0078d4]/40 flex items-center justify-center text-[#a3c9ff]">
-              <Workflow className="w-5 h-5" />
+          <div className="glass-card p-6 space-y-4 flex flex-col justify-between">
+            <div className="space-y-3">
+              <div className="w-9 h-9 rounded-[var(--radius-sm)] bg-[var(--bg-surface-elevated)] border border-[var(--border-subtle)] flex items-center justify-center text-[#3b82f6]">
+                <Workflow className="w-4 h-4" />
+              </div>
+              <div>
+                <h3 className="text-base font-semibold text-[var(--text-primary)]">Power Automate</h3>
+                <p className="text-xs text-[var(--text-tertiary)] font-mono mt-0.5">Cloud Flows · Desktop RPA</p>
+              </div>
+              <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
+                Automated multi-stage approval matrices, scheduled Domino agent replacements, exception handlers, REST API webhooks, and desktop RPA.
+              </p>
             </div>
-            <div className="space-y-1">
-              <h3 className="text-base font-bold text-white">Power Automate</h3>
-              <p className="text-xs text-[#a3c9ff] font-mono">Cloud &amp; Desktop RPA</p>
-            </div>
-            <p className="text-xs text-[#c0c7d4] leading-relaxed">
-              Automated multi-stage approval matrices, scheduled agent replacements, exception handlers, REST API webhooks, and desktop robotic process automation.
-            </p>
-            <div className="pt-2 border-t border-[#282a2e] flex flex-wrap gap-1">
-              <span className="text-[10px] px-2 py-0.5 rounded bg-[#1e2024] text-[#c0c7d4]">Error Tracing</span>
-              <span className="text-[10px] px-2 py-0.5 rounded bg-[#1e2024] text-[#c0c7d4]">Adaptive Cards</span>
-              <span className="text-[10px] px-2 py-0.5 rounded bg-[#1e2024] text-[#c0c7d4]">OData Filters</span>
-            </div>
-          </div>
-
-          {/* Card 3: Dataverse */}
-          <div className="glass-card p-6 rounded-2xl space-y-4">
-            <div className="w-10 h-10 rounded-xl bg-[#00dbe7]/20 border border-[#00dbe7]/40 flex items-center justify-center text-[#00dbe7]">
-              <Database className="w-5 h-5" />
-            </div>
-            <div className="space-y-1">
-              <h3 className="text-base font-bold text-white">Microsoft Dataverse</h3>
-              <p className="text-xs text-[#00dbe7] font-mono">Relational Enterprise Data</p>
-            </div>
-            <p className="text-xs text-[#c0c7d4] leading-relaxed">
-              Enterprise relational data modeling, custom tables, 1:N &amp; N:N relationships, business rules, field-level encryption, environment isolation, and role-based access.
-            </p>
-            <div className="pt-2 border-t border-[#282a2e] flex flex-wrap gap-1">
-              <span className="text-[10px] px-2 py-0.5 rounded bg-[#1e2024] text-[#c0c7d4]">Security Roles</span>
-              <span className="text-[10px] px-2 py-0.5 rounded bg-[#1e2024] text-[#c0c7d4]">Audit Trails</span>
-              <span className="text-[10px] px-2 py-0.5 rounded bg-[#1e2024] text-[#c0c7d4]">Elastic Tables</span>
+            <div className="pt-3 border-t border-[var(--border-subtle)] text-xs text-[var(--text-tertiary)] font-mono">
+              Error Tracing · Adaptive Cards · OData
             </div>
           </div>
 
-          {/* Card 4: AI Builder */}
-          <div className="glass-card p-6 rounded-2xl space-y-4">
-            <div className="w-10 h-10 rounded-xl bg-[#cda2ff]/20 border border-[#cda2ff]/40 flex items-center justify-center text-[#cda2ff]">
-              <Sparkles className="w-5 h-5" />
+          <div className="glass-card p-6 space-y-4 flex flex-col justify-between">
+            <div className="space-y-3">
+              <div className="w-9 h-9 rounded-[var(--radius-sm)] bg-[var(--bg-surface-elevated)] border border-[var(--border-subtle)] flex items-center justify-center text-[#3b82f6]">
+                <Database className="w-4 h-4" />
+              </div>
+              <div>
+                <h3 className="text-base font-semibold text-[var(--text-primary)]">Microsoft Dataverse</h3>
+                <p className="text-xs text-[var(--text-tertiary)] font-mono mt-0.5">Relational Enterprise Data</p>
+              </div>
+              <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
+                Enterprise relational data modeling, custom tables, 1:N &amp; N:N relationships, business rules, field-level security, and database isolation.
+              </p>
             </div>
-            <div className="space-y-1">
-              <h3 className="text-base font-bold text-white">AI Builder &amp; Copilot</h3>
-              <p className="text-xs text-[#cda2ff] font-mono">Intelligent Automation</p>
-            </div>
-            <p className="text-xs text-[#c0c7d4] leading-relaxed">
-              Custom prompt engineering, document processing, text classification, semantic search ranking, sentiment analysis, and Copilot Studio conversational agents.
-            </p>
-            <div className="pt-2 border-t border-[#282a2e] flex flex-wrap gap-1">
-              <span className="text-[10px] px-2 py-0.5 rounded bg-[#1e2024] text-[#c0c7d4]">NLP Classifier</span>
-              <span className="text-[10px] px-2 py-0.5 rounded bg-[#1e2024] text-[#c0c7d4]">SOP Extraction</span>
-              <span className="text-[10px] px-2 py-0.5 rounded bg-[#1e2024] text-[#c0c7d4]">RAG Search</span>
+            <div className="pt-3 border-t border-[var(--border-subtle)] text-xs text-[var(--text-tertiary)] font-mono">
+              Security Roles · Audit Trails · Isolation
             </div>
           </div>
 
+          <div className="glass-card p-6 space-y-4 flex flex-col justify-between">
+            <div className="space-y-3">
+              <div className="w-9 h-9 rounded-[var(--radius-sm)] bg-[var(--bg-surface-elevated)] border border-[var(--border-subtle)] flex items-center justify-center text-[#3b82f6]">
+                <Sparkles className="w-4 h-4" />
+              </div>
+              <div>
+                <h3 className="text-base font-semibold text-[var(--text-primary)]">AI Builder &amp; Copilot</h3>
+                <p className="text-xs text-[var(--text-tertiary)] font-mono mt-0.5">Intelligent Automation</p>
+              </div>
+              <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
+                Custom prompt engineering, document processing, NLP classification across 120+ SOP categories, semantic search ranking, and Copilot Studio agents.
+              </p>
+            </div>
+            <div className="pt-3 border-t border-[var(--border-subtle)] text-xs text-[var(--text-tertiary)] font-mono">
+              NLP Classifier · SOP Extraction · RAG
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Section 2: Development Stack with Percentage Gauges */}
+      {/* SECTION 3: Pro-Code Extensions & Development Stack */}
       <section className="space-y-4">
-        <h2 className="text-xs font-mono uppercase tracking-widest text-[#00dbe7] font-bold flex items-center space-x-2">
-          <Code2 className="w-4 h-4" />
-          <span>Development Stack &amp; Pro-Code Extensions</span>
-        </h2>
+        <div className="border-b border-[var(--border-subtle)] pb-3">
+          <p className="text-xs font-mono text-[#3b82f6] font-medium">03 · Pro-Code Engineering</p>
+          <h2
+            className="font-medium text-[var(--text-primary)] tracking-tight mt-1"
+            style={{ fontSize: 'var(--text-h2)', lineHeight: 1.25 }}
+          >
+            Development Stack &amp; Custom PCF Extensions
+          </h2>
+        </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {DEV_STACK.map((item, idx) => (
-            <div key={idx} className="bg-[#161b22] p-4 rounded-2xl border border-[#282a2e] space-y-3">
+            <div
+              key={idx}
+              className="bg-[var(--bg-surface)] p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] hover:border-[var(--border-focus)] transition-colors space-y-3"
+            >
               <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-2.5">
-                  <span className="w-8 h-8 rounded-lg bg-[#1e2024] text-xs font-mono font-bold flex items-center justify-center border border-[#282a2e]" style={{ color: item.color }}>
+                <div className="flex items-center gap-2.5">
+                  <span className="w-8 h-8 rounded-[var(--radius-sm)] bg-[var(--bg-surface-elevated)] text-xs font-mono font-semibold flex items-center justify-center border border-[var(--border-subtle)] text-[#3b82f6]">
                     {item.code}
                   </span>
-                  <span className="text-xs font-bold text-white">{item.name}</span>
+                  <span className="text-sm font-medium text-[var(--text-primary)]">{item.name}</span>
                 </div>
-                <span className="text-xs font-mono font-bold" style={{ color: item.color }}>{item.percentage}%</span>
+                <span className="text-xs font-mono font-semibold text-[var(--text-secondary)] tabular-nums">
+                  {item.percentage}%
+                </span>
               </div>
 
-              {/* Progress Bar */}
               <div className="skill-bar">
-                <div 
-                  className="skill-progress" 
-                  style={{ width: `${item.percentage}%`, backgroundColor: item.color }}
-                ></div>
+                <div className="skill-progress" style={{ width: `${item.percentage}%` }} />
               </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Section 3: ALM & Enterprise Governance matching Image 8 */}
-      <section className="space-y-4">
-        <h2 className="text-xs font-mono uppercase tracking-widest text-[#dab9ff] font-bold flex items-center space-x-2">
-          <GitBranch className="w-4 h-4" />
-          <span>ALM &amp; Enterprise Governance</span>
-        </h2>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {GOVERNANCE_ITEMS.map((gov, idx) => (
-            <div key={idx} className="bg-[#161b22] p-5 rounded-2xl border border-[#282a2e] space-y-3 hover:border-[#0078d4]/40 transition-all">
-              <div className="w-9 h-9 rounded-xl bg-[#1e2024] border border-[#282a2e] flex items-center justify-center text-[#a3c9ff]">
-                <span className="material-symbols-outlined text-lg">{gov.icon}</span>
-              </div>
-              <div>
-                <h3 className="text-sm font-bold text-white">{gov.name}</h3>
-                <p className="text-xs text-[#c0c7d4] mt-1 leading-relaxed">{gov.description}</p>
-              </div>
+      {/* SECTION 4: ALM & Enterprise Governance + Core Business Competencies */}
+      <section className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* ALM & Governance */}
+        <div className="bg-[var(--bg-surface)] p-6 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-4">
+          <div className="flex items-center justify-between border-b border-[var(--border-subtle)] pb-3">
+            <div className="flex items-center gap-2">
+              <GitBranch className="w-4 h-4 text-[#3b82f6]" />
+              <h3 className="text-sm font-semibold text-[var(--text-primary)]">
+                ALM &amp; Enterprise Governance
+              </h3>
             </div>
-          ))}
+            <span className="text-xs font-mono text-[var(--text-tertiary)]">CI/CD &amp; DLP</span>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            {GOVERNANCE_ITEMS.map((gov, idx) => (
+              <div
+                key={idx}
+                className="p-3.5 rounded-[var(--radius-sm)] bg-[var(--bg-primary)] border border-[var(--border-subtle)] space-y-1.5"
+              >
+                <div className="flex items-center gap-2">
+                  <Code2 className="w-3.5 h-3.5 text-[#3b82f6] shrink-0" />
+                  <h4 className="text-xs font-semibold text-[var(--text-primary)]">{gov.name}</h4>
+                </div>
+                <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+                  {gov.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Core Business Competencies */}
+        <div className="bg-[var(--bg-surface)] p-6 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-4">
+          <div className="flex items-center justify-between border-b border-[var(--border-subtle)] pb-3">
+            <div className="flex items-center gap-2">
+              <Award className="w-4 h-4 text-[#3b82f6]" />
+              <h3 className="text-sm font-semibold text-[var(--text-primary)]">
+                Executive Service Delivery Pillars
+              </h3>
+            </div>
+            <span className="text-xs font-mono text-[var(--text-tertiary)]">Operations</span>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            {BUSINESS_COMPETENCIES.map((comp, idx) => (
+              <div
+                key={idx}
+                className="p-3.5 rounded-[var(--radius-sm)] bg-[var(--bg-primary)] border border-[var(--border-subtle)] space-y-1.5"
+              >
+                <div className="flex items-center gap-2">
+                  <TrendingUp className="w-3.5 h-3.5 text-[#3b82f6] shrink-0" />
+                  <h4 className="text-xs font-semibold text-[var(--text-primary)]">
+                    {comp.title}
+                  </h4>
+                </div>
+                <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+                  {comp.description}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Section 4: Core Business Competencies matching Image 8 */}
-      <section className="space-y-4">
-        <h2 className="text-xs font-mono uppercase tracking-widest text-[#00dbe7] font-bold flex items-center space-x-2">
-          <ShieldCheck className="w-4 h-4" />
-          <span>Core Business Competencies</span>
-        </h2>
+      {/* SECTION 5: Technology Utilization Telemetry across Production Apps */}
+      <section className="bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-[var(--radius-lg)] p-6 sm:p-8 space-y-6 shadow-[var(--shadow-card)]">
+        <div className="space-y-1">
+          <p className="text-xs font-mono text-[#3b82f6] font-medium">04 · Production Footprint</p>
+          <h2 className="text-lg sm:text-xl font-medium text-[var(--text-primary)] tracking-tight">
+            Technology Utilization Matrix Across 16+ Rebuilt Systems
+          </h2>
+        </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {BUSINESS_COMPETENCIES.map((comp, idx) => (
-            <div key={idx} className="bg-[#161b22] p-5 rounded-2xl border border-[#282a2e] space-y-3">
-              <div className="w-9 h-9 rounded-xl bg-[#0078d4]/20 border border-[#0078d4]/40 flex items-center justify-center text-[#a3c9ff]">
-                <span className="material-symbols-outlined text-lg">{comp.icon}</span>
-              </div>
-              <div>
-                <h3 className="text-xs font-bold text-white uppercase tracking-wider">{comp.title}</h3>
-                <p className="text-xs text-[#c0c7d4] mt-1 leading-relaxed">{comp.description}</p>
-              </div>
+        {/* Mobile Tabs */}
+        <div className="flex lg:hidden bg-[var(--bg-primary)] p-1 rounded-[var(--radius-sm)] border border-[var(--border-subtle)]">
+          <button
+            onClick={() => setMobileTab('tools')}
+            className={`flex-1 py-2 text-xs font-medium rounded-[4px] transition-colors whitespace-nowrap ${
+              mobileTab === 'tools'
+                ? 'bg-[var(--bg-surface-elevated)] text-[var(--text-primary)] border border-[var(--border-subtle)]'
+                : 'text-[var(--text-secondary)]'
+            }`}
+          >
+            Tools &amp; Platforms
+          </button>
+          <button
+            onClick={() => setMobileTab('impact')}
+            className={`flex-1 py-2 text-xs font-medium rounded-[4px] transition-colors whitespace-nowrap ${
+              mobileTab === 'impact'
+                ? 'bg-[var(--bg-surface-elevated)] text-[var(--text-primary)] border border-[var(--border-subtle)]'
+                : 'text-[var(--text-secondary)]'
+            }`}
+          >
+            Business Impact
+          </button>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {/* Tech Stack Distribution (8px gap-2 grid) */}
+          <div className={`space-y-3 ${mobileTab === 'tools' ? 'block' : 'hidden'} lg:block`}>
+            <h3 className="text-xs font-mono text-[var(--text-secondary)] font-medium">
+              Deployed Platforms by System Count
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              {techUsage.slice(0, 10).map(([tech, count]) => (
+                <div
+                  key={tech}
+                  className="bg-[var(--bg-primary)] px-3.5 py-2.5 rounded-[var(--radius-sm)] border border-[var(--border-subtle)] flex items-center justify-between hover:border-[var(--border-focus)] transition-colors"
+                >
+                  <span className="text-xs font-medium text-[var(--text-primary)] truncate pr-2">
+                    {tech}
+                  </span>
+                  <span className="text-xs font-mono text-[#3b82f6] tabular-nums shrink-0">
+                    {count} {count === 1 ? 'App' : 'Apps'}
+                  </span>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
+
+          {/* Key Measurable Impacts (8px gap-2 grid) */}
+          <div className={`space-y-3 ${mobileTab === 'impact' ? 'block' : 'hidden'} lg:block`}>
+            <h3 className="text-xs font-mono text-[var(--text-secondary)] font-medium">
+              Verified Enterprise KPIs
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              {KEY_METRICS.map((metric, idx) => (
+                <div
+                  key={idx}
+                  className="bg-[var(--bg-primary)] p-4 rounded-[var(--radius-sm)] border border-[var(--border-subtle)] flex flex-col justify-between space-y-2"
+                >
+                  <div className="flex items-baseline justify-between gap-2">
+                    <span className="text-2xl font-semibold text-[var(--text-primary)] font-mono tabular-nums">
+                      {metric.value}
+                    </span>
+                    <Target className="w-4 h-4 text-[#3b82f6] shrink-0" />
+                  </div>
+                  <div>
+                    <div className="text-xs font-medium text-[var(--text-primary)]">
+                      {metric.label}
+                    </div>
+                    <p className="text-xs text-[var(--text-secondary)] mt-0.5">{metric.subtext}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
-
     </div>
   );
 };

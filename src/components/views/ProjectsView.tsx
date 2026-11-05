@@ -2,22 +2,16 @@ import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { CORE_PROJECTS, MIGRATION_OVERVIEW, MIGRATION_SLICES } from '../../data/portfolioData';
 import { ProjectItem, MigrationSlice } from '../../types';
-import { 
-  Briefcase, 
-  Search, 
-  Filter, 
-  Layers, 
-  Database, 
-  CheckCircle2, 
-  TrendingUp, 
-  ArrowRight, 
-  Cpu, 
-  Sparkles, 
-  ShieldCheck, 
+import { ImpactTooltip } from '../ImpactTooltip';
+import {
+  Search,
+  Database,
+  TrendingUp,
+  ArrowRight,
   MonitorPlay,
-  FileSpreadsheet,
   AlertTriangle,
-  FolderGit2
+  FolderGit2,
+  Layers
 } from 'lucide-react';
 
 interface ProjectsViewProps {
@@ -30,6 +24,7 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
   onLaunchDemo
 }) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [projectTechFilter, setProjectTechFilter] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [sliceCategoryFilter, setSliceCategoryFilter] = useState<string>('all');
   const [sliceTechFilter, setSliceTechFilter] = useState<string>('all');
@@ -37,17 +32,26 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
   const filteredProjects = useMemo(() => {
     return CORE_PROJECTS.filter((proj) => {
       const matchesCategory = selectedCategory === 'all' || proj.category === selectedCategory;
-      const matchesSearch = 
+
+      let matchesTech = true;
+      if (projectTechFilter !== 'all') {
+        matchesTech = proj.tools.some((t) =>
+          t.toLowerCase().includes(projectTechFilter.toLowerCase())
+        );
+      }
+
+      const matchesSearch =
         proj.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         proj.problem.toLowerCase().includes(searchQuery.toLowerCase()) ||
         proj.solution.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        proj.tools.some(t => t.toLowerCase().includes(searchQuery.toLowerCase()));
-      return matchesCategory && matchesSearch;
+        proj.tools.some((t) => t.toLowerCase().includes(searchQuery.toLowerCase()));
+
+      return matchesCategory && matchesTech && matchesSearch;
     });
-  }, [selectedCategory, searchQuery]);
+  }, [selectedCategory, projectTechFilter, searchQuery]);
 
   const filteredSlices = useMemo(() => {
-    return MIGRATION_SLICES.filter(slice => {
+    return MIGRATION_SLICES.filter((slice) => {
       let matchesCat = true;
       if (sliceCategoryFilter === 'quality') matchesCat = ['A', 'B'].includes(slice.letter);
       else if (sliceCategoryFilter === 'operations') matchesCat = ['C', 'D'].includes(slice.letter);
@@ -55,7 +59,9 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
 
       let matchesTech = true;
       if (sliceTechFilter !== 'all') {
-        matchesTech = slice.tools.some(t => t.toLowerCase().includes(sliceTechFilter.toLowerCase()));
+        matchesTech = slice.tools.some((t) =>
+          t.toLowerCase().includes(sliceTechFilter.toLowerCase())
+        );
       }
 
       return matchesCat && matchesTech;
@@ -63,89 +69,119 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
   }, [sliceCategoryFilter, sliceTechFilter]);
 
   return (
-    <div className="space-y-12 py-6 animate-in fade-in duration-300">
-      
+    <div className="space-y-12 py-6">
       {/* Page Header */}
-      <div className="space-y-3">
-        <div className="flex items-center space-x-2 text-xs font-mono uppercase tracking-widest text-[#00dbe7] font-bold">
-          <Briefcase className="w-4 h-4" />
-          <span>Modernization Case Studies</span>
-        </div>
-        <h1 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-          Enterprise Transformation &amp; Case Studies
+      <div className="space-y-3 border-b border-[var(--border-subtle)] pb-8">
+        <p className="text-xs font-mono text-[#3b82f6] font-medium">
+          01 · Enterprise Case Studies &amp; Cutover Architecture
+        </p>
+        <h1
+          className="font-semibold text-[var(--text-primary)] tracking-tight"
+          style={{ fontSize: 'var(--text-h1)', lineHeight: 1.2 }}
+        >
+          Enterprise Projects &amp; Migration Architecture
         </h1>
-        <p className="text-xs sm:text-sm text-[#c0c7d4] max-w-3xl leading-relaxed">
-          Each case study follows Challenge → Strategy → Result: the business problem, the transformation approach, and the measurable outcomes delivered across legacy modernization, financial workflows, and AI-enabled operations.
+        <p className="text-base text-[var(--text-secondary)] max-w-3xl leading-relaxed">
+          Standardized architectural documentation covering end-to-end Power Platform systems, legacy Lotus Domino modernizations, financial approval engines, and AI workflow integrations.
         </p>
       </div>
 
       {/* Flagship Banner: IOI Oleo Domino Migration */}
-      <section className="bg-gradient-to-br from-[#161b22] via-[#1a1c20] to-[#111318] border border-[#282a2e] rounded-3xl p-6 sm:p-8 space-y-6 shadow-xl">
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-[#282a2e] pb-6">
+      <section className="bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-[var(--radius-lg)] p-6 sm:p-8 space-y-6 shadow-[var(--shadow-card)]">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-[var(--border-subtle)] pb-6">
           <div className="space-y-1.5">
-            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded bg-[#0078d4]/20 border border-[#0078d4]/40 text-xs font-mono text-[#a3c9ff] font-semibold">
+            <div className="flex items-center space-x-2 text-xs font-mono text-[#3b82f6] font-medium">
               <Database className="w-3.5 h-3.5" />
-              <span>MAJOR ENTERPRISE MIGRATION • 365+ APPLICATIONS</span>
+              <span>Flagship Enterprise Migration · 365+ Applications</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">{MIGRATION_OVERVIEW.title}</h2>
-            <p className="text-xs text-[#00dbe7] font-mono">{MIGRATION_OVERVIEW.period} • {MIGRATION_OVERVIEW.role}</p>
+            <h2 className="text-2xl sm:text-3xl font-semibold text-[var(--text-primary)] tracking-tight">
+              {MIGRATION_OVERVIEW.title}
+            </h2>
+            <p className="text-xs text-[var(--text-secondary)] font-mono">
+              {MIGRATION_OVERVIEW.period} · {MIGRATION_OVERVIEW.role}
+            </p>
           </div>
 
-          <div className="grid grid-cols-3 gap-2 sm:gap-4 shrink-0 font-mono">
-            <div className="bg-[#111318] p-3 rounded-xl border border-[#282a2e] text-center">
-              <span className="text-lg sm:text-xl font-bold text-[#a3c9ff]">24</span>
-              <p className="text-[10px] text-[#c0c7d4]">High Complexity</p>
+          <div className="grid grid-cols-3 gap-3 shrink-0 font-mono tabular-nums">
+            <div className="bg-[var(--bg-primary)] p-3.5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] text-center">
+              <span className="text-xl font-semibold text-[var(--text-primary)]">24</span>
+              <p className="text-[11px] text-[var(--text-tertiary)] mt-0.5">High Complexity</p>
             </div>
-            <div className="bg-[#111318] p-3 rounded-xl border border-[#282a2e] text-center">
-              <span className="text-lg sm:text-xl font-bold text-[#00dbe7]">28</span>
-              <p className="text-[10px] text-[#c0c7d4]">Medium Complexity</p>
+            <div className="bg-[var(--bg-primary)] p-3.5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] text-center">
+              <span className="text-xl font-semibold text-[#3b82f6]">28</span>
+              <p className="text-[11px] text-[var(--text-tertiary)] mt-0.5">Medium Complexity</p>
             </div>
-            <div className="bg-[#111318] p-3 rounded-xl border border-[#282a2e] text-center">
-              <span className="text-lg sm:text-xl font-bold text-[#dab9ff]">12</span>
-              <p className="text-[10px] text-[#c0c7d4]">Low Complexity</p>
+            <div className="bg-[var(--bg-primary)] p-3.5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] text-center">
+              <span className="text-xl font-semibold text-[var(--text-secondary)]">12</span>
+              <p className="text-[11px] text-[var(--text-tertiary)] mt-0.5">Low Complexity</p>
             </div>
           </div>
         </div>
 
-        <p className="text-xs sm:text-sm text-[#c0c7d4] leading-relaxed">
+        <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
           {MIGRATION_OVERVIEW.scope} {MIGRATION_OVERVIEW.sliceDelivery} {MIGRATION_OVERVIEW.evidence}
         </p>
 
         {/* Consolidation Strategy Section */}
         {MIGRATION_OVERVIEW.consolidationStats && (
-          <div className="pt-4 space-y-4">
-            <h3 className="text-xs font-mono uppercase tracking-widest text-[#00dbe7] font-bold flex items-center space-x-2">
-              <FolderGit2 className="w-4 h-4" />
-              <span>Consolidation & Modernization Strategy</span>
+          <div className="pt-2 space-y-4">
+            <h3 className="text-xs font-mono text-[var(--text-primary)] font-medium flex items-center space-x-2">
+              <FolderGit2 className="w-4 h-4 text-[#3b82f6]" />
+              <span>Consolidation &amp; Schema Modernization Telemetry</span>
             </h3>
-            
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 font-mono">
-              <div className="bg-[#111318] p-4 rounded-xl border border-[#282a2e] flex flex-col justify-between">
-                <span className="text-2xl font-extrabold text-white">{MIGRATION_OVERVIEW.consolidationStats.uniqueGroups}</span>
-                <span className="text-[10px] text-[#c0c7d4] uppercase mt-1">Unique App Groups Analyzed</span>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 font-mono tabular-nums">
+              <div className="bg-[var(--bg-primary)] p-4 rounded-[var(--radius-md)] border border-[var(--border-subtle)]">
+                <span className="text-2xl font-semibold text-[var(--text-primary)]">
+                  {MIGRATION_OVERVIEW.consolidationStats.uniqueGroups}
+                </span>
+                <p className="text-xs text-[var(--text-secondary)] mt-1 font-sans">
+                  Unique App Groups Analyzed
+                </p>
               </div>
-              <div className="bg-[#111318] p-4 rounded-xl border border-[#282a2e] flex flex-col justify-between">
-                <span className="text-2xl font-extrabold text-[#a3c9ff]">{MIGRATION_OVERVIEW.consolidationStats.sharedCrossDepartment}</span>
-                <span className="text-[10px] text-[#c0c7d4] uppercase mt-1">Cross-Dept Shared Apps Merged</span>
+              <div className="bg-[var(--bg-primary)] p-4 rounded-[var(--radius-md)] border border-[var(--border-subtle)]">
+                <span className="text-2xl font-semibold text-[#3b82f6]">
+                  {MIGRATION_OVERVIEW.consolidationStats.sharedCrossDepartment}
+                </span>
+                <p className="text-xs text-[var(--text-secondary)] mt-1 font-sans">
+                  Cross-Dept Shared Apps Merged
+                </p>
               </div>
-              <div className="bg-[#111318] p-4 rounded-xl border border-[#282a2e] flex flex-col justify-between">
-                <span className="text-2xl font-extrabold text-[#00dbe7]">{MIGRATION_OVERVIEW.consolidationStats.sameDepartmentVariants}</span>
-                <span className="text-[10px] text-[#c0c7d4] uppercase mt-1">Same-Dept Variants Unified</span>
+              <div className="bg-[var(--bg-primary)] p-4 rounded-[var(--radius-md)] border border-[var(--border-subtle)]">
+                <span className="text-2xl font-semibold text-[var(--text-primary)]">
+                  {MIGRATION_OVERVIEW.consolidationStats.sameDepartmentVariants}
+                </span>
+                <p className="text-xs text-[var(--text-secondary)] mt-1 font-sans">
+                  Same-Dept Variants Unified
+                </p>
               </div>
-              <div className="bg-[#111318] p-4 rounded-xl border border-[#282a2e] flex flex-col justify-between">
-                <span className="text-2xl font-extrabold text-[#dab9ff]">{MIGRATION_OVERVIEW.consolidationStats.routingDifferencesResolved}</span>
-                <span className="text-[10px] text-[#c0c7d4] uppercase mt-1">Routing Conflicts Resolved</span>
+              <div className="bg-[var(--bg-primary)] p-4 rounded-[var(--radius-md)] border border-[var(--border-subtle)]">
+                <span className="text-2xl font-semibold text-[#3b82f6]">
+                  {MIGRATION_OVERVIEW.consolidationStats.routingDifferencesResolved}
+                </span>
+                <p className="text-xs text-[var(--text-secondary)] mt-1 font-sans">
+                  Routing Conflicts Resolved
+                </p>
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {MIGRATION_OVERVIEW.highlightedConsolidations?.map((highlight, idx) => (
-                <div key={idx} className="bg-[#1a1c20] p-4 rounded-xl border border-[#282a2e] space-y-2">
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold text-white">{highlight.name}</span>
-                    <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#1e2024] text-[#a3c9ff] border border-[#282a2e]">{highlight.type}</span>
+                <div
+                  key={idx}
+                  className="bg-[var(--bg-primary)] p-4 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-1.5"
+                >
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="text-sm font-semibold text-[var(--text-primary)]">
+                      {highlight.name}
+                    </span>
+                    <span className="text-xs font-mono text-[var(--text-tertiary)] shrink-0">
+                      {highlight.type}
+                    </span>
                   </div>
-                  <p className="text-[11px] text-[#e2e2e8] leading-relaxed">{highlight.resolution}</p>
+                  <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+                    {highlight.resolution}
+                  </p>
                 </div>
               ))}
             </div>
@@ -153,29 +189,27 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
         )}
 
         {/* 6 Migration Slices Grid */}
-        <div className="space-y-4 pt-4">
-          <div className="flex flex-col gap-3">
-            <h3 className="text-xs font-mono uppercase tracking-widest text-[#a3c9ff] font-bold">
-              Migration Slices (Interactive Breakdown)
+        <div className="space-y-4 pt-4 border-t border-[var(--border-subtle)]">
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
+            <h3 className="text-sm font-semibold text-[var(--text-primary)]">
+              Migration Slices (Interactive Domain Breakdown)
             </h3>
-            
-            <div className="flex flex-col sm:flex-row gap-3">
-              {/* Business Unit Filter Tabs */}
-              <div className="flex flex-wrap gap-1.5 p-1 rounded-xl bg-[#111318] border border-[#282a2e] items-center">
-                <span className="text-[10px] text-[#555962] font-mono px-2 uppercase">Business Unit</span>
+
+            <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-1 p-1 rounded-[var(--radius-sm)] bg-[var(--bg-primary)] border border-[var(--border-subtle)] items-center">
                 {[
                   { id: 'all', label: 'All BUs' },
                   { id: 'quality', label: 'Quality & QA' },
                   { id: 'operations', label: 'Operations & IT' },
-                  { id: 'governance', label: 'Finance & HR' }
+                  { id: 'governance', label: 'Master Data & CI' }
                 ].map((filter) => (
                   <button
                     key={filter.id}
                     onClick={() => setSliceCategoryFilter(filter.id)}
-                    className={`px-3 py-1.5 rounded-lg text-[10px] font-mono font-bold transition-all ${
+                    className={`px-3 py-1 rounded-[4px] text-xs font-medium transition-colors whitespace-nowrap ${
                       sliceCategoryFilter === filter.id
-                        ? 'bg-[#0078d4] text-white shadow-md'
-                        : 'text-[#c0c7d4] hover:text-white hover:bg-[#1a1c20]'
+                        ? 'bg-[var(--accent-blue)] text-white'
+                        : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
                     }`}
                   >
                     {filter.label}
@@ -183,9 +217,7 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
                 ))}
               </div>
 
-              {/* Tech Stack Filter Tabs */}
-              <div className="flex flex-wrap gap-1.5 p-1 rounded-xl bg-[#111318] border border-[#282a2e] items-center">
-                <span className="text-[10px] text-[#555962] font-mono px-2 uppercase">Tech Stack</span>
+              <div className="flex flex-wrap gap-1 p-1 rounded-[var(--radius-sm)] bg-[var(--bg-primary)] border border-[var(--border-subtle)] items-center">
                 {[
                   { id: 'all', label: 'All Tech' },
                   { id: 'power apps', label: 'Power Apps' },
@@ -195,10 +227,10 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
                   <button
                     key={filter.id}
                     onClick={() => setSliceTechFilter(filter.id)}
-                    className={`px-3 py-1.5 rounded-lg text-[10px] font-mono font-bold transition-all ${
+                    className={`px-3 py-1 rounded-[4px] text-xs font-medium transition-colors whitespace-nowrap ${
                       sliceTechFilter === filter.id
-                        ? 'bg-[#5c2d91] text-white shadow-md'
-                        : 'text-[#c0c7d4] hover:text-white hover:bg-[#1a1c20]'
+                        ? 'bg-[var(--bg-surface-elevated)] text-[var(--text-primary)] border border-[var(--border-focus)]'
+                        : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
                     }`}
                   >
                     {filter.label}
@@ -213,70 +245,82 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
               {filteredSlices.map((slice) => (
                 <motion.div
                   layout
-                  initial={{ opacity: 0, scale: 0.95, y: 10 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.95, y: -10 }}
-                  transition={{ duration: 0.2 }}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 0.16 }}
                   key={slice.id}
-                  onClick={() => onOpenProjectDetail(slice)}
-                  className="glass-card p-5 rounded-2xl space-y-3 cursor-pointer group flex flex-col justify-between"
                 >
-                <div className="space-y-2">
-                  <div className="flex items-center justify-between">
-                    <span className="w-10 h-10 rounded-lg bg-[#0078d4]/20 border border-[#0078d4]/40 text-[#a3c9ff] font-mono font-bold text-lg flex items-center justify-center group-hover:scale-110 transition-transform shadow-[0_0_15px_rgba(0,120,212,0.3)]">
-                      {slice.letter}
-                    </span>
-                    <span className="text-xs font-mono text-[#00dbe7] font-bold bg-[#111318] px-3 py-1.5 rounded-full border border-[#282a2e]">
-                      {slice.appCount} Apps
-                    </span>
-                  </div>
+                  <ImpactTooltip impact={slice.impact} className="h-full">
+                    <div
+                      onClick={() => onOpenProjectDetail(slice)}
+                      className="h-full bg-[var(--bg-primary)] hover:bg-[var(--bg-surface-elevated)] p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] hover:border-[var(--border-focus)] space-y-3 cursor-pointer group flex flex-col justify-between transition-colors"
+                    >
+                      <div className="space-y-2.5">
+                        <div className="flex items-center justify-between">
+                          <span className="w-8 h-8 rounded-[var(--radius-sm)] bg-[var(--bg-surface)] border border-[var(--border-subtle)] text-[#3b82f6] font-mono font-semibold text-sm flex items-center justify-center">
+                            {slice.letter}
+                          </span>
+                          <span className="text-xs font-mono text-[var(--text-secondary)] tabular-nums">
+                            {slice.appCount} Rebuilt Apps
+                          </span>
+                        </div>
 
-                  <h4 className="text-lg font-bold text-white group-hover:text-[#a3c9ff] transition-colors leading-snug">
-                    {slice.title}
-                  </h4>
+                        <h4 className="text-base font-semibold text-[var(--text-primary)] group-hover:text-[#3b82f6] transition-colors">
+                          {slice.title}
+                        </h4>
 
-                  <p className="text-sm text-[#e2e2e8] line-clamp-3 leading-relaxed">
-                    {slice.problem}
-                  </p>
-                </div>
+                        <p className="text-xs text-[var(--text-secondary)] line-clamp-3 leading-relaxed">
+                          {slice.problem}
+                        </p>
+                      </div>
 
-                <div className="pt-3 border-t border-[#282a2e] space-y-2">
-                  <div className="flex items-center space-x-1.5 text-xs text-[#00dbe7] font-bold">
-                    <TrendingUp className="w-4 h-4 shrink-0" />
-                    <span className="truncate">{slice.impact}</span>
-                  </div>
+                      <div className="pt-3 border-t border-[var(--border-subtle)] space-y-2">
+                        <div className="flex items-center space-x-1.5 text-xs text-[var(--text-primary)] font-medium">
+                          <TrendingUp className="w-3.5 h-3.5 text-[#3b82f6] shrink-0" />
+                          <span className="truncate">{slice.impact}</span>
+                        </div>
 
-                  <div className="flex items-center justify-between text-xs font-semibold text-[#a3c9ff]">
-                    <span>View Rebuild Slice Details</span>
-                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+                        <div className="flex items-center justify-between text-xs font-medium text-[#3b82f6]">
+                          <span>Inspect Slice Architecture</span>
+                          <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                        </div>
+                      </div>
+                    </div>
+                  </ImpactTooltip>
+                </motion.div>
+              ))}
             </AnimatePresence>
           </motion.div>
         </div>
       </section>
 
-      {/* Filter and Search Bar */}
-      <section className="space-y-6 pt-4">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-[#161b22] p-4 rounded-2xl border border-[#282a2e]">
-          
-          {/* Category Tabs */}
-          <div className="flex flex-wrap gap-1.5">
+      {/* Filter and Search Bar for Standalone & Core Projects */}
+      <section className="space-y-6 pt-2">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 bg-[var(--bg-surface)] p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)]">
+          <div className="flex flex-wrap gap-2">
             {[
-              { id: 'all', label: 'All Projects' },
-              { id: 'core', label: 'Core Automation' },
-              { id: 'standalone', label: 'Financial & Standalone' },
-              { id: 'security', label: 'IT Security & Governance' }
+              { id: 'all', label: `All Case Studies (${CORE_PROJECTS.length})` },
+              {
+                id: 'core',
+                label: `Core & AI Systems (${CORE_PROJECTS.filter((p) => p.category === 'core').length})`
+              },
+              {
+                id: 'standalone',
+                label: `Full-Stack & SaaS (${CORE_PROJECTS.filter((p) => p.category === 'standalone').length})`
+              },
+              {
+                id: 'security',
+                label: `IT Security & Governance (${CORE_PROJECTS.filter((p) => p.category === 'security').length})`
+              }
             ].map((cat) => (
               <button
                 key={cat.id}
                 onClick={() => setSelectedCategory(cat.id)}
-                className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+                className={`px-3.5 py-1.5 rounded-[var(--radius-sm)] text-xs font-medium transition-colors whitespace-nowrap ${
                   selectedCategory === cat.id
-                    ? 'bg-[#0078d4] text-white shadow-sm'
-                    : 'bg-[#1e2024] text-[#c0c7d4] hover:text-white'
+                    ? 'bg-[var(--accent-blue)] text-white'
+                    : 'bg-[var(--bg-primary)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--border-subtle)]'
                 }`}
               >
                 {cat.label}
@@ -284,15 +328,14 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
             ))}
           </div>
 
-          {/* Search Box */}
-          <div className="relative min-w-[240px]">
-            <Search className="w-4 h-4 text-[#c0c7d4] absolute left-3 top-1/2 -translate-y-1/2" />
+          <div className="relative w-full lg:w-72 shrink-0">
+            <Search className="w-4 h-4 text-[var(--text-tertiary)] absolute left-3 top-1/2 -translate-y-1/2" />
             <input
               type="text"
-              placeholder="Search by keyword, tool, problem..."
+              placeholder="Filter by keyword, tool, problem..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-3.5 py-2 rounded-xl bg-[#111318] border border-[#282a2e] focus:border-[#0078d4] focus:outline-none text-xs text-white placeholder-[#555962]"
+              className="w-full pl-9 pr-3.5 py-2 rounded-[var(--radius-sm)] bg-[var(--bg-primary)] border border-[var(--border-subtle)] focus:border-[var(--border-focus)] focus:outline-none text-xs text-[var(--text-primary)] placeholder-[var(--text-tertiary)] transition-colors"
             />
           </div>
         </div>
@@ -303,114 +346,111 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
             {filteredProjects.map((proj) => (
               <motion.div
                 layout
-                initial={{ opacity: 0, scale: 0.95, y: 10 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.95, y: -10 }}
-                transition={{ duration: 0.2 }}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.16 }}
                 key={proj.id}
-                className="glass-card p-8 rounded-3xl space-y-5 flex flex-col justify-between hover:border-[#0078d4]/50 transition-all cursor-pointer shadow-lg"
-                onClick={() => onOpenProjectDetail(proj)}
               >
-              <div className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-mono uppercase px-2.5 py-1 rounded bg-[#1e2024] text-[#a3c9ff] border border-[#282a2e] font-bold">
-                    {proj.category}
-                  </span>
-                  <span className="text-[11px] font-mono text-[#c0c7d4] font-medium">{proj.date}</span>
-                </div>
-
-                <div>
-                  <h3 className="text-xl font-bold text-white group-hover:text-[#00dbe7] transition-colors leading-snug">{proj.title}</h3>
-                  {proj.subtitle && (
-                    <p className="text-sm text-[#00dbe7] font-bold mt-1">{proj.subtitle}</p>
-                  )}
-                </div>
-
-                {/* Problem snippet */}
-                <div className="space-y-1.5">
-                  <p className="text-[10px] font-mono uppercase text-[#e2e2e8] font-bold flex items-center space-x-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-red-400"></span>
-                    <span>The Challenge</span>
-                  </p>
-                  <p className="text-sm text-[#e2e2e8] leading-relaxed line-clamp-2">
-                    {proj.problem}
-                  </p>
-                </div>
-
-                {/* Solution snippet */}
-                <div className="space-y-1.5">
-                  <p className="text-[10px] font-mono uppercase text-[#a3c9ff] font-bold flex items-center space-x-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#0078d4]"></span>
-                    <span>The Strategy</span>
-                  </p>
-                  <p className="text-sm text-[#e2e2e8] leading-relaxed line-clamp-2">
-                    {proj.solution}
-                  </p>
-                </div>
-
-                {/* Impact Highlight */}
-                <div className="p-4 rounded-xl bg-[#111318] border border-[#282a2e] space-y-2">
-                  <div className="flex items-center space-x-1.5 text-[10px] font-mono uppercase text-[#00dbe7] font-bold">
-                    <TrendingUp className="w-4 h-4" />
-                    <span>Business Results</span>
-                  </div>
-                  <p className="text-sm text-white font-bold leading-snug">{proj.impact}</p>
-                </div>
-
-                {/* Tools */}
-                <div className="flex flex-wrap gap-2 pt-2">
-                  {proj.tools.map((tool, idx) => (
-                    <span key={idx} className="text-[11px] font-medium px-2.5 py-1 rounded-md bg-[#1a1c20] text-[#c0c7d4] border border-[#282a2e]">
-                      {tool}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* Actions */}
-              <div className="pt-5 border-t border-[#282a2e] flex items-center justify-between">
-                <button
-                  className="text-xs font-bold text-white hover:text-[#a3c9ff] flex items-center space-x-1"
-                >
-                  <span>Full Case Study</span>
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-
-                {proj.liveDemoId && (
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      onLaunchDemo(proj.liveDemoId!);
-                    }}
-                    className="flex items-center space-x-2 px-3 py-1.5 rounded-lg bg-[#0078d4]/20 hover:bg-[#0078d4]/40 text-[#a3c9ff] text-xs font-bold border border-[#0078d4]/30 transition-colors"
+                <ImpactTooltip impact={proj.impact} className="h-full">
+                  <div
+                    className="h-full glass-card p-6 space-y-5 flex flex-col justify-between cursor-pointer group"
+                    onClick={() => onOpenProjectDetail(proj)}
                   >
-                    <MonitorPlay className="w-4 h-4" />
-                    <span>Run Simulation</span>
-                  </button>
-                )}
-              </div>
-            </motion.div>
-          ))}
+                    <div className="space-y-3.5">
+                      {/* Project Architectural Thumbnail Header */}
+                      <div className="p-3.5 rounded-[var(--radius-md)] bg-[var(--bg-primary)] border border-[var(--border-subtle)] group-hover:border-[var(--border-focus)] transition-colors flex items-center justify-between">
+                        <div className="flex items-center gap-2.5">
+                          <div className="w-8 h-8 rounded-[var(--radius-sm)] bg-[var(--bg-surface)] border border-[var(--border-subtle)] flex items-center justify-center text-[#3b82f6]">
+                            <Layers className="w-4 h-4" />
+                          </div>
+                          <div>
+                            <div className="text-[11px] font-mono text-[var(--text-tertiary)] uppercase">
+                              {proj.category} · {proj.date}
+                            </div>
+                            <div className="text-xs font-mono text-[#3b82f6] font-medium">
+                              {proj.impactMetrics?.[0]
+                                ? `${proj.impactMetrics[0].value} ${proj.impactMetrics[0].label}`
+                                : 'Hover for Impact Statement'}
+                            </div>
+                          </div>
+                        </div>
+                        <TrendingUp className="w-4 h-4 text-[var(--text-tertiary)] group-hover:text-[#3b82f6] transition-colors" />
+                      </div>
+
+                      <div>
+                        <h3 className="text-lg font-semibold text-[var(--text-primary)] leading-snug group-hover:text-[#3b82f6] transition-colors">
+                          {proj.title}
+                        </h3>
+                        {proj.subtitle && (
+                          <p className="text-xs text-[#3b82f6] font-medium mt-0.5">{proj.subtitle}</p>
+                        )}
+                      </div>
+
+                      <div className="space-y-1">
+                        <p className="text-xs font-mono text-[var(--text-tertiary)]">Challenge</p>
+                        <p className="text-xs text-[var(--text-secondary)] leading-relaxed line-clamp-2">
+                          {proj.problem}
+                        </p>
+                      </div>
+
+                      <div className="space-y-1">
+                        <p className="text-xs font-mono text-[var(--text-tertiary)]">Architected Solution</p>
+                        <p className="text-xs text-[var(--text-secondary)] leading-relaxed line-clamp-2">
+                          {proj.solution}
+                        </p>
+                      </div>
+
+                      <div className="pt-1 text-xs font-mono text-[var(--text-tertiary)] truncate">
+                        {proj.tools.join(' · ')}
+                      </div>
+                    </div>
+
+                    <div className="pt-4 border-t border-[var(--border-subtle)] flex items-center justify-between">
+                      <span className="text-xs font-medium text-[var(--text-secondary)] group-hover:text-[var(--text-primary)] flex items-center space-x-1">
+                        <span>Detailed Specs</span>
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </span>
+
+                      {proj.liveDemoId && (
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            onLaunchDemo(proj.liveDemoId!);
+                          }}
+                          className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-[var(--radius-sm)] bg-[var(--bg-surface-elevated)] hover:border-[var(--border-focus)] text-[var(--text-primary)] text-xs font-medium border border-[var(--border-subtle)] transition-colors whitespace-nowrap"
+                        >
+                          <MonitorPlay className="w-3.5 h-3.5 text-[#3b82f6]" />
+                          <span>Run Simulation</span>
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                </ImpactTooltip>
+              </motion.div>
+            ))}
           </AnimatePresence>
         </motion.div>
 
         {filteredProjects.length === 0 && (
-          <div className="text-center py-12 bg-[#161b22] rounded-2xl border border-[#282a2e] space-y-3">
-            <AlertTriangle className="w-8 h-8 text-[#00dbe7] mx-auto" />
-            <p className="text-sm font-semibold text-white">No projects found matching criteria</p>
+          <div className="text-center py-12 bg-[var(--bg-surface)] rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-3">
+            <AlertTriangle className="w-7 h-7 text-[#3b82f6] mx-auto" />
+            <p className="text-sm font-medium text-[var(--text-primary)]">
+              No projects found matching filter criteria
+            </p>
             <button
               onClick={() => {
                 setSelectedCategory('all');
+                setProjectTechFilter('all');
                 setSearchQuery('');
               }}
-              className="text-xs text-[#a3c9ff] underline"
+              className="text-xs text-[#3b82f6] underline"
             >
-              Clear filters
+              Reset all filters
             </button>
           </div>
         )}
       </section>
-
     </div>
   );
 };

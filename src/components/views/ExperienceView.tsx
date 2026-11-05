@@ -1,86 +1,60 @@
 import React, { useState } from 'react';
-import { WORK_EXPERIENCE, PERSONAL_INFO } from '../../data/portfolioData';
-import { 
-  ShieldCheck, 
-  Briefcase, 
-  MapPin, 
-  Calendar, 
-  Award, 
-  TrendingUp, 
-  CheckCircle2,
-  Filter,
-  Layers,
-  Sparkles
-} from 'lucide-react';
+import { WORK_EXPERIENCE } from '../../data/portfolioData';
+import { Briefcase, MapPin, Filter } from 'lucide-react';
 
 export const ExperienceView: React.FC = () => {
   const [selectedTag, setSelectedTag] = useState<string>('all');
 
-  const allTags = ['all', 'Six Sigma Green Belt', 'Dataverse', 'Power Apps', 'Power BI', 'SLA Management', 'ALM Pipelines'];
+  const allTags = [
+    'all',
+    'Six Sigma Green Belt',
+    'Dataverse',
+    'Power Apps',
+    'Power BI',
+    'SLA Management',
+    'ALM Pipelines'
+  ];
 
-  const filteredExperience = selectedTag === 'all'
-    ? WORK_EXPERIENCE
-    : WORK_EXPERIENCE.filter(exp => exp.tags.some(t => t.toLowerCase() === selectedTag.toLowerCase()));
+  const filteredExperience =
+    selectedTag === 'all'
+      ? WORK_EXPERIENCE
+      : WORK_EXPERIENCE.filter((exp) =>
+          exp.tags.some((t) => t.toLowerCase() === selectedTag.toLowerCase())
+        );
 
   return (
-    <div className="space-y-12 py-6 animate-in fade-in duration-300">
-      
-      {/* Header matching Image 7 */}
-      <div className="space-y-3">
-        <div className="flex items-center space-x-2 text-xs font-mono uppercase tracking-widest text-[#00dbe7] font-bold">
-          <ShieldCheck className="w-4 h-4" />
-          <span>Transformation Leadership</span>
-        </div>
-        <h1 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-          Leadership &amp; Program Delivery Track Record
+    <div className="space-y-12 py-6">
+      {/* Header */}
+      <div className="space-y-3 border-b border-[var(--border-subtle)] pb-8">
+        <p className="text-xs font-mono text-[#3b82f6] font-medium">
+          01 · Track Record &amp; Operations Leadership
+        </p>
+        <h1
+          className="font-semibold text-[var(--text-primary)] tracking-tight"
+          style={{ fontSize: 'var(--text-h1)', lineHeight: 1.2 }}
+        >
+          Professional Experience &amp; Leadership History
         </h1>
-        <p className="text-xs sm:text-sm text-[#c0c7d4] max-w-3xl leading-relaxed">
-          Over 9 years leading enterprise modernizations, managing international cross-functional teams across 7 global markets, and owning multi-year transformation programs from executive buy-in to operational cutover.
+        <p className="text-base text-[var(--text-secondary)] max-w-3xl leading-relaxed">
+          Over 9 years driving enterprise modernizations, managing international cross-functional squads across 7 global markets, and architecting mission-critical digital workflows.
         </p>
       </div>
 
-      {/* Leadership Credibility Strip */}
-      <section className="bg-[#161b22] border border-[#282a2e] rounded-3xl p-6 sm:p-8 space-y-5">
-        <h3 className="text-xs font-mono uppercase tracking-widest text-[#dab9ff] font-bold">Program &amp; Team Leadership</h3>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <div className="bg-[#1a1c20] p-4 rounded-xl border border-[#282a2e] space-y-1">
-            <p className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-[#a3c9ff] font-mono">34</p>
-            <p className="text-xs font-bold text-white">Direct Reports Led</p>
-            <p className="text-[11px] text-[#c0c7d4]">Multilingual teams across 7 international markets</p>
-          </div>
-          <div className="bg-[#1a1c20] p-4 rounded-xl border border-[#282a2e] space-y-1">
-            <p className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-[#00dbe7] font-mono">380%</p>
-            <p className="text-xs font-bold text-white">Team Capacity Growth</p>
-            <p className="text-[11px] text-[#c0c7d4]">Scaled 9 → 34 agents in 18 months with 98%+ SLA</p>
-          </div>
-          <div className="bg-[#1a1c20] p-4 rounded-xl border border-[#282a2e] space-y-1">
-            <p className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-[#dab9ff] font-mono">28+</p>
-            <p className="text-xs font-bold text-white">Stakeholder Business Units</p>
-            <p className="text-[11px] text-[#c0c7d4]">Executive engagement across a multi-year migration program</p>
-          </div>
-          <div className="bg-[#1a1c20] p-4 rounded-xl border border-[#282a2e] space-y-1">
-            <p className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-[#00dbe7] font-mono">98%+</p>
-            <p className="text-xs font-bold text-white">SLA Compliance</p>
-            <p className="text-[11px] text-[#c0c7d4]">Sustained across 361 applications and 2,000+ users</p>
-          </div>
-        </div>
-      </section>
-
       {/* Tag Filters */}
       <div className="flex items-center space-x-2 overflow-x-auto pb-2">
-        <span className="text-xs font-mono text-[#c0c7d4] uppercase tracking-wider shrink-0 flex items-center space-x-1">
+        <span className="text-xs font-mono text-[var(--text-tertiary)] shrink-0 flex items-center space-x-1.5">
           <Filter className="w-3.5 h-3.5" />
-          <span>Filter Focus:</span>
+          <span>Filter Competency:</span>
         </span>
         <div className="flex items-center space-x-1.5">
           {allTags.map((tag) => (
             <button
               key={tag}
               onClick={() => setSelectedTag(tag)}
-              className={`px-3 py-1 rounded-lg text-xs font-medium whitespace-nowrap transition-all ${
+              className={`px-3 py-1.5 rounded-[var(--radius-sm)] text-xs font-medium whitespace-nowrap transition-colors ${
                 selectedTag === tag
-                  ? 'bg-[#0078d4] text-white shadow-sm'
-                  : 'bg-[#1a1c20] text-[#c0c7d4] hover:text-white border border-[#282a2e]'
+                  ? 'bg-[var(--accent-blue)] text-white'
+                  : 'bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--border-subtle)]'
               }`}
             >
               {tag === 'all' ? 'All Roles' : tag}
@@ -89,51 +63,39 @@ export const ExperienceView: React.FC = () => {
         </div>
       </div>
 
-      {/* Timeline Section matching Image 7 */}
-      <div className="relative pl-6 md:pl-16 space-y-10">
-        <div className="timeline-track"></div>
+      {/* Timeline Section */}
+      <div className="relative pl-6 md:pl-16 space-y-8">
+        <div className="timeline-track" />
 
-        {filteredExperience.map((item, idx) => (
+        {filteredExperience.map((item) => (
           <div key={item.id} className="relative group">
-            
             {/* Timeline Node Icon */}
-            <div className="absolute -left-[30px] md:-left-[54px] top-1.5 w-10 h-10 rounded-xl bg-[#1e2024] border-2 border-[#0078d4] p-1 flex items-center justify-center shadow-lg shadow-[#0078d4]/20 group-hover:scale-110 transition-transform">
-              <img
-                src={item.iconUrl}
-                alt={item.company}
-                referrerPolicy="no-referrer"
-                onError={(e) => {
-                  const target = e.target as HTMLElement;
-                  target.style.display = 'none';
-                }}
-                className="w-full h-full object-contain rounded-lg"
-              />
-              <Briefcase className="w-4 h-4 text-[#a3c9ff] hidden fallback-icon" />
+            <div className="absolute -left-[30px] md:-left-[54px] top-1.5 w-10 h-10 rounded-[var(--radius-sm)] bg-[var(--bg-surface)] border border-[var(--border-focus)] p-1.5 flex items-center justify-center">
+              <Briefcase className="w-4 h-4 text-[#3b82f6]" />
             </div>
 
             {/* Experience Card */}
-            <div className="glass-card p-6 sm:p-8 rounded-3xl space-y-4">
-              
-              <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2 border-b border-[#282a2e] pb-4">
+            <div className="glass-card p-6 sm:p-8 space-y-4">
+              <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2 border-b border-[var(--border-subtle)] pb-4">
                 <div className="space-y-1">
                   <div className="flex flex-wrap items-center gap-2">
-                    <h3 className="text-lg sm:text-xl font-bold text-white tracking-tight">{item.role}</h3>
+                    <h3 className="text-lg sm:text-xl font-semibold text-[var(--text-primary)] tracking-tight">
+                      {item.role}
+                    </h3>
                     {item.isCurrent && (
-                      <span className="px-2 py-0.5 rounded-full bg-[#00dbe7]/20 text-[#00dbe7] border border-[#00dbe7]/40 text-[10px] font-mono font-bold uppercase">
-                        Current Role
+                      <span className="text-xs font-mono text-[#3b82f6] font-medium">
+                        · Active Role
                       </span>
                     )}
                   </div>
-                  <p className="text-sm font-semibold text-[#a3c9ff]">{item.company}</p>
+                  <p className="text-sm font-medium text-[#3b82f6]">{item.company}</p>
                 </div>
 
-                <div className="flex flex-col sm:items-end space-y-1 font-mono text-xs text-[#c0c7d4]">
-                  <span className="bg-[#111318] px-3 py-1 rounded-full border border-[#282a2e] font-bold text-white">
-                    {item.period}
-                  </span>
+                <div className="flex flex-col sm:items-end space-y-1 font-mono text-xs text-[var(--text-secondary)]">
+                  <span className="text-[var(--text-primary)] font-medium">{item.period}</span>
                   {item.location && (
-                    <span className="flex items-center space-x-1 text-[11px] text-[#c0c7d4]">
-                      <MapPin className="w-3 h-3 text-[#dab9ff]" />
+                    <span className="flex items-center space-x-1 text-[11px] text-[var(--text-tertiary)]">
+                      <MapPin className="w-3 h-3" />
                       <span>{item.location}</span>
                     </span>
                   )}
@@ -141,33 +103,23 @@ export const ExperienceView: React.FC = () => {
               </div>
 
               {/* Bullet Points */}
-              <ul className="space-y-2.5 text-xs sm:text-sm text-[#c0c7d4] leading-relaxed">
+              <ul className="space-y-2.5 text-sm text-[var(--text-secondary)] leading-relaxed">
                 {item.bulletPoints.map((bullet, bIdx) => (
                   <li key={bIdx} className="flex items-start space-x-2.5">
-                    <span className="text-[#00dbe7] mt-1 shrink-0 font-bold">•</span>
+                    <span className="text-[#3b82f6] mt-1 shrink-0 font-mono">·</span>
                     <span>{bullet}</span>
                   </li>
                 ))}
               </ul>
 
-              {/* Tags */}
-              <div className="pt-3 border-t border-[#282a2e] flex flex-wrap gap-1.5">
-                {item.tags.map((tag, tIdx) => (
-                  <span
-                    key={tIdx}
-                    className="text-[11px] px-2.5 py-1 rounded-lg bg-[#111318] text-[#c0c7d4] border border-[#282a2e] font-medium"
-                  >
-                    {tag}
-                  </span>
-                ))}
+              {/* Unboxed Metadata Tags */}
+              <div className="pt-3 border-t border-[var(--border-subtle)] text-xs font-mono text-[var(--text-tertiary)]">
+                {item.tags.join(' · ')}
               </div>
-
             </div>
-
           </div>
         ))}
       </div>
-
     </div>
   );
 };

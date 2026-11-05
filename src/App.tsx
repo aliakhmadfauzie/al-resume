@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence, useScroll, useSpring } from 'motion/react';
 import { NavTab, ProjectItem, MigrationSlice } from './types';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
@@ -21,7 +21,13 @@ export default function App() {
   const [isContactOpen, setIsContactOpen] = useState<boolean>(false);
   const [activeDemoId, setActiveDemoId] = useState<string>('finops');
 
-  // Scroll to top on tab change
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 120,
+    damping: 30,
+    restDelta: 0.001
+  });
+
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [currentTab]);
@@ -37,26 +43,33 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#111318] text-[#e2e2e8]">
-      {/* Top Navigation - Sticky for CTA accessibility */}
-      <div className="sticky top-0 z-50">
-        <Navbar
-          currentTab={currentTab}
-          onSelectTab={setCurrentTab}
-          onOpenResume={() => setIsResumeOpen(true)}
-          onOpenContact={() => setIsContactOpen(true)}
-        />
-      </div>
+    <div className="min-h-screen flex flex-col bg-[var(--bg-primary)] text-[var(--text-primary)] relative">
+      {/* Thin Fixed Scroll-Progress Indicator */}
+      <motion.div
+        style={{ scaleX }}
+        className="fixed top-0 left-0 right-0 h-[2px] bg-[#3b82f6] origin-left z-[60] pointer-events-none"
+      />
+
+      {/* Top Radial Accent Glow */}
+      <div className="pointer-events-none fixed inset-x-0 top-0 h-[520px] antigravity-hero-glow z-0" />
+
+      {/* Top Navigation */}
+      <Navbar
+        currentTab={currentTab}
+        onSelectTab={setCurrentTab}
+        onOpenResume={() => setIsResumeOpen(true)}
+        onOpenContact={() => setIsContactOpen(true)}
+      />
 
       {/* Main Page View Container */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-4 overflow-x-hidden">
+      <main className="relative z-10 flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 overflow-x-hidden">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentTab}
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3, ease: 'easeOut' }}
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
             className="w-full"
           >
             {currentTab === 'home' && (
