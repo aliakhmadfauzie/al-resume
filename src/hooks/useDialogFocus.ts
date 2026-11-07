@@ -10,6 +10,8 @@ export function useDialogFocus(isOpen: boolean, onClose: () => void) {
     const previous = document.activeElement instanceof HTMLElement ? document.activeElement : null;
     const dialog = dialogRef.current;
     if (!dialog) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
     const items = () => Array.from(dialog.querySelectorAll<HTMLElement>(
       'a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])'
     )).filter(el => el.getClientRects().length > 0);
@@ -26,7 +28,11 @@ export function useDialogFocus(isOpen: boolean, onClose: () => void) {
       }
     };
     document.addEventListener('keydown', onKeyDown);
-    return () => { document.removeEventListener('keydown', onKeyDown); previous?.focus(); };
+    return () => {
+      document.removeEventListener('keydown', onKeyDown);
+      document.body.style.overflow = previousOverflow;
+      previous?.focus();
+    };
   }, [isOpen]);
   return dialogRef;
 }
