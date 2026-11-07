@@ -34,7 +34,8 @@ import {
   Zap,
   MonitorPlay,
   Award,
-  ExternalLink
+  ExternalLink,
+  Linkedin
 } from 'lucide-react';
 
 interface HomeViewProps {
@@ -197,21 +198,24 @@ export const HomeView: React.FC<HomeViewProps> = ({
       </section>
 
       {/* ====================================================================
-          2. BENTO ROW: // ABOUT ME (Left 5 Cols) + // SERVICES (Right 7 Cols)
+          2. BENTO ROW: // ABOUT ME (Left 5-6 Cols) + // SERVICES (Right 6-7 Cols)
          ==================================================================== */}
       <section className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
         {/* LEFT CARD: // ABOUT ME */}
         <div
           id="section-about"
-          className="lg:col-span-5 rounded-[var(--radius-lg)] bg-[var(--bg-surface)] border border-[var(--border-subtle)] p-6 sm:p-7 flex flex-col sm:flex-row gap-6 justify-between shadow-[var(--shadow-card)]"
+          className="lg:col-span-12 xl:col-span-5 rounded-[var(--radius-lg)] surface-glass-1 p-6 sm:p-7 flex flex-col sm:flex-row gap-6 justify-between shadow-[var(--shadow-card)] relative overflow-hidden group"
         >
+          {/* Subtle Ambient Studio Glow in Corner */}
+          <div className="absolute -top-24 -left-24 w-60 h-60 bg-[var(--interactive-primary)]/10 rounded-full blur-3xl pointer-events-none" />
+
           {/* Real LinkedIn Portrait Frame with Dramatic Studio Rim Lighting & < /> Badge */}
-          <div className="relative w-full sm:w-48 shrink-0 min-h-[275px] rounded-[var(--radius-md)] bg-[#0c0d12] border border-[var(--interactive-subtle-border)] overflow-hidden flex flex-col justify-between group">
+          <div className="relative w-full sm:w-44 md:w-48 shrink-0 min-h-[290px] rounded-[var(--radius-md)] bg-[#0c0d12] border border-[var(--interactive-subtle-border)] overflow-hidden flex flex-col justify-between shadow-[0_8px_24px_rgba(0,0,0,0.5)] group/frame">
             {/* Real LinkedIn Profile Photo */}
             <img
               src={PERSONAL_INFO.avatarUrl}
               alt={PERSONAL_INFO.name}
-              className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+              className="absolute inset-0 w-full h-full object-cover object-center group-hover/frame:scale-105 transition-transform duration-500"
             />
 
             {/* Studio Copper-Orange Rim Light & Bottom Vignette Overlay matching Reference */}
@@ -223,82 +227,100 @@ export const HomeView: React.FC<HomeViewProps> = ({
               }}
             />
 
-            {/* Top Status Tag */}
+            {/* Top Status Tag with Radar Pulse */}
             <div className="relative z-10 p-3 flex items-center justify-between text-[10px] font-mono text-[var(--text-primary)]">
-              <span className="px-2 py-0.5 rounded bg-[#0c0d12]/80 backdrop-blur-sm border border-[var(--border-subtle)]">
+              <span className="px-2.5 py-0.5 rounded-full bg-[#0c0d12]/85 backdrop-blur-md border border-[var(--border-subtle)] text-zinc-300">
                 in/aliakhmadf
               </span>
-              <span className="w-2 h-2 rounded-full bg-[#22c55e] shadow-[0_0_8px_#22c55e]" />
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#22c55e] opacity-75" />
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#22c55e] shadow-[0_0_8px_#22c55e]" />
+              </span>
             </div>
 
-            {/* Bottom-Left < /> Icon Badge + Verified Tag */}
-            <div className="relative z-10 p-3 flex items-end justify-between">
-              <span className="px-2.5 py-1 rounded-[var(--radius-sm)] bg-[#14161f]/90 backdrop-blur-sm border border-[var(--interactive-subtle-border)] text-[var(--interactive-primary)] font-mono font-bold text-sm shadow-[0_0_12px_rgba(249,115,22,0.35)]">
-                &lt;/&gt;
-              </span>
-              <div className="text-right">
-                <div className="text-[11px] font-bold text-[var(--text-primary)] leading-tight">
-                  Ali Akhmad Fauzie
-                </div>
-                <div className="text-[9px] font-mono text-[var(--text-accent)]">
-                  12× Certified · Solutions Architect
+            {/* Bottom Identity Capsule: < /> Badge + Verified Role */}
+            <div className="relative z-10 p-2.5 m-2 rounded-lg bg-[#0a0b10]/85 backdrop-blur-md border border-white/10 flex items-center justify-between shadow-lg">
+              <div className="flex items-center space-x-2">
+                <span className="px-2 py-0.5 rounded bg-orange-500/20 border border-orange-500/40 text-[var(--text-accent)] font-mono font-bold text-xs">
+                  &lt;/&gt;
+                </span>
+                <div>
+                  <div className="text-[11px] font-bold text-white tracking-tight">
+                    Ali Akhmad Fauzie
+                  </div>
+                  <div className="text-[9px] font-mono text-[var(--text-accent)]">
+                    Solutions Architect
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Right Bio & Checklist Column */}
-          <div className="flex-1 flex flex-col justify-between space-y-4">
+          <div className="flex-1 flex flex-col justify-between space-y-4 relative z-10">
             <div className="space-y-3">
-              <p className="text-xs font-mono text-[var(--text-accent)] font-semibold tracking-wider uppercase">
-                // ABOUT ME
-              </p>
-              <h2 className="text-xl sm:text-2xl font-bold text-[var(--text-primary)] leading-tight">
+              <div className="inline-flex items-center space-x-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-[var(--interactive-primary)] animate-pulse" />
+                <span className="text-xs font-mono text-[var(--text-accent)] font-semibold tracking-wider uppercase">
+                  // ABOUT ME
+                </span>
+              </div>
+              <h2 className="text-xl sm:text-2xl font-bold text-[var(--text-primary)] leading-tight tracking-tight">
                 Crafting solutions that{' '}
-                <span className="text-[var(--text-accent)]">scale.</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#f97316] to-[#fb923c]">scale.</span>
               </h2>
               <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
                 I&apos;m Ali Akhmad Fauzie, an Enterprise Solutions Architect &amp; Pre-Sales Lead and former Operations Team Leader (Concentrix &amp; Accenture) building governed, AI-powered enterprise systems.
               </p>
 
-              {/* 4 Icon Checklist Items */}
-              <ul className="space-y-2 pt-1 text-xs text-[var(--text-primary)]">
-                <li className="flex items-center space-x-2.5">
-                  <Briefcase className="w-3.5 h-3.5 text-[var(--interactive-primary)] shrink-0" />
-                  <span>9+ years experience (Enterprise Architecture, Concentrix, Accenture)</span>
+              {/* 4 Styled Feature Checklist Items */}
+              <ul className="space-y-2.5 pt-1 text-xs">
+                <li className="flex items-center space-x-2.5 text-[var(--text-secondary)]">
+                  <div className="w-6 h-6 rounded bg-orange-500/10 border border-orange-500/20 flex items-center justify-center shrink-0 text-[var(--text-accent)]">
+                    <Briefcase className="w-3.5 h-3.5" />
+                  </div>
+                  <span><strong className="text-[var(--text-primary)] font-semibold">9+ years</strong> experience (Enterprise Architecture, Concentrix, Accenture)</span>
                 </li>
-                <li className="flex items-center space-x-2.5">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[var(--interactive-primary)] shrink-0" />
-                  <span>365+ legacy Domino DBs modernized across 28 BUs</span>
+                <li className="flex items-center space-x-2.5 text-[var(--text-secondary)]">
+                  <div className="w-6 h-6 rounded bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center shrink-0 text-emerald-400">
+                    <CheckCircle2 className="w-3.5 h-3.5" />
+                  </div>
+                  <span><strong className="text-[var(--text-primary)] font-semibold">365+</strong> legacy Domino DBs modernized across 28 BUs</span>
                 </li>
-                <li className="flex items-center space-x-2.5">
-                  <Award className="w-3.5 h-3.5 text-[var(--interactive-primary)] shrink-0" />
-                  <span>12 Microsoft, LinkedIn, Lark &amp; Six Sigma certifications</span>
+                <li className="flex items-center space-x-2.5 text-[var(--text-secondary)]">
+                  <div className="w-6 h-6 rounded bg-amber-500/10 border border-amber-500/20 flex items-center justify-center shrink-0 text-amber-400">
+                    <Award className="w-3.5 h-3.5" />
+                  </div>
+                  <span><strong className="text-[var(--text-primary)] font-semibold">12</strong> Microsoft, LinkedIn, Lark &amp; Six Sigma certs</span>
                 </li>
-                <li className="flex items-center space-x-2.5">
-                  <Zap className="w-3.5 h-3.5 text-[var(--interactive-primary)] shrink-0" />
-                  <span>$960K+/yr licensing saved &amp; 98%+ SLA benchmark</span>
+                <li className="flex items-center space-x-2.5 text-[var(--text-secondary)]">
+                  <div className="w-6 h-6 rounded bg-orange-500/10 border border-orange-500/20 flex items-center justify-center shrink-0 text-[var(--text-accent)]">
+                    <Zap className="w-3.5 h-3.5" />
+                  </div>
+                  <span><strong className="text-[var(--text-primary)] font-semibold">$960K+/yr</strong> licensing saved &amp; 98%+ SLA benchmark</span>
                 </li>
               </ul>
             </div>
 
-            <div className="pt-2 flex flex-wrap items-center gap-2.5">
+            {/* Tactile Action Button Row */}
+            <div className="pt-2 flex flex-wrap items-center gap-3">
               <button
                 type="button"
                 onClick={() => onSelectTab('experience')}
-                className="inline-flex items-center space-x-2 px-4 py-2 rounded-[var(--radius-sm)] bg-[#14161f] hover:bg-[var(--interactive-subtle-bg)] text-xs font-semibold text-[var(--text-primary)] hover:text-[var(--text-accent)] border border-[var(--interactive-subtle-border)] transition-colors cursor-pointer"
+                className="inline-flex items-center space-x-2 px-4 py-2.5 min-h-[44px] rounded-[var(--radius-sm)] bg-gradient-to-r from-[#f97316] to-[#ea580c] hover:from-[#fb923c] hover:to-[#f97316] text-[#090a0d] text-xs font-bold shadow-[0_4px_18px_rgba(249,115,22,0.32)] hover:shadow-[0_6px_24px_rgba(249,115,22,0.45)] transition-all cursor-pointer group"
               >
                 <span>More About Me</span>
-                <ArrowRight className="w-3.5 h-3.5 text-[var(--text-accent)]" />
+                <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
               </button>
               <a
                 href={PERSONAL_INFO.linkedIn}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center space-x-1.5 px-3 py-2 rounded-[var(--radius-sm)] bg-[#0f1117] hover:bg-[var(--bg-surface-elevated)] text-xs font-mono text-[var(--text-secondary)] hover:text-[var(--text-accent)] border border-[var(--border-subtle)] transition-colors"
+                className="inline-flex items-center space-x-2 px-4 py-2.5 min-h-[44px] rounded-[var(--radius-sm)] bg-[#12141d] hover:bg-[var(--bg-surface-elevated)] text-xs font-medium text-[var(--text-primary)] hover:text-[var(--text-accent)] border border-[var(--border-subtle)] hover:border-[var(--interactive-subtle-border)] transition-colors shadow-sm"
               >
-                <span>LinkedIn</span>
-                <ExternalLink className="w-3 h-3" />
+                <Linkedin className="w-3.5 h-3.5 text-[#0077b5]" />
+                <span>LinkedIn Profile</span>
+                <ExternalLink className="w-3 h-3 text-[var(--text-tertiary)]" />
               </a>
             </div>
           </div>
@@ -307,58 +329,88 @@ export const HomeView: React.FC<HomeViewProps> = ({
         {/* RIGHT CARD: // SERVICES (2x3 Grid of 6 Service Cards) */}
         <div
           id="section-services"
-          className="lg:col-span-7 rounded-[var(--radius-lg)] bg-[var(--bg-surface)] border border-[var(--border-subtle)] p-6 sm:p-7 flex flex-col justify-between space-y-4 shadow-[var(--shadow-card)]"
+          className="lg:col-span-12 xl:col-span-7 rounded-[var(--radius-lg)] surface-glass-1 p-6 sm:p-7 flex flex-col justify-between space-y-4 shadow-[var(--shadow-card)] relative overflow-hidden"
         >
-          <p className="text-xs font-mono text-[var(--text-accent)] font-semibold tracking-wider uppercase">
-            // SERVICES
-          </p>
+          {/* Subtle Ambient Glow */}
+          <div className="absolute -top-20 -right-20 w-48 h-48 bg-orange-500/8 rounded-full blur-3xl pointer-events-none" />
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 flex-1">
+          <div className="flex items-center justify-between relative z-10">
+            <div className="inline-flex items-center space-x-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--interactive-primary)] animate-pulse" />
+              <p className="text-xs font-mono text-[var(--text-accent)] font-semibold tracking-wider uppercase">
+                // ARCHITECTURE &amp; DELIVERY SERVICES
+              </p>
+            </div>
+            <span className="text-[11px] font-mono text-[var(--text-tertiary)] hidden sm:inline-block">
+              6 Core Enterprise Capabilities
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3.5 flex-1 relative z-10">
             {[
               {
-                icon: <Database className="w-5 h-5 text-[var(--interactive-primary)]" />,
+                icon: <Database className="w-4 h-4 text-[#fb923c]" />,
+                badge: '365+ DBs',
                 title: 'Legacy Domino Migration',
                 desc: 'Zero-downtime retirement of 365+ Lotus Notes DBs into governed M365 & SharePoint MainDB.'
               },
               {
-                icon: <Layers className="w-5 h-5 text-[var(--interactive-primary)]" />,
+                icon: <Layers className="w-4 h-4 text-[#fb923c]" />,
+                badge: '878+ Screens',
                 title: 'Power Platform Apps',
                 desc: '878+ Canvas YAML screens & Model-Driven apps with custom React PCF extensions.'
               },
               {
-                icon: <Workflow className="w-5 h-5 text-[var(--interactive-primary)]" />,
+                icon: <Workflow className="w-4 h-4 text-[#fb923c]" />,
+                badge: 'Enterprise ERP',
                 title: 'Dataverse & ERP Design',
                 desc: 'Isolated financial approval schemas, statutory rebate engines, and 4-pocket ledgers.'
               },
               {
-                icon: <Sparkles className="w-5 h-5 text-[var(--interactive-primary)]" />,
+                icon: <Sparkles className="w-4 h-4 text-[#fb923c]" />,
+                badge: 'Tri-Engine',
                 title: 'Deterministic AI & NLP',
                 desc: 'Tri-Engine AI routers (Gemini, Groq, AI Builder) with regex SSOT firewalls.'
               },
               {
-                icon: <Terminal className="w-5 h-5 text-[var(--interactive-primary)]" />,
+                icon: <Terminal className="w-4 h-4 text-[#fb923c]" />,
+                badge: 'CI/CD ALM',
                 title: 'ALM & DevOps Pipelines',
                 desc: 'PAC CLI automation, Python AST YAML linters, Docker, and GitHub Actions CI/CD.'
               },
               {
-                icon: <Gauge className="w-5 h-5 text-[var(--interactive-primary)]" />,
+                icon: <Gauge className="w-4 h-4 text-[#fb923c]" />,
+                badge: '$960K Saved',
                 title: 'FinOps & Optimization',
                 desc: 'Standard-connector sharding saving $960K+/yr and cutting 14d cycles to 15 mins.'
               }
             ].map((srv, idx) => (
               <div
                 key={idx}
-                className="rounded-[var(--radius-md)] bg-[#0f1117] hover:bg-[var(--bg-surface-elevated)] border border-[var(--border-subtle)] hover:border-[var(--interactive-subtle-border)] p-4 flex flex-col items-center text-center justify-center space-y-2.5 transition-colors"
+                className="service-card rounded-[var(--radius-md)] p-4 flex flex-col justify-between space-y-3 group cursor-default relative overflow-hidden"
               >
-                <div className="w-10 h-10 rounded-[var(--radius-sm)] bg-[#161822] border border-[var(--border-subtle)] flex items-center justify-center">
-                  {srv.icon}
+                {/* Ambient hover sheen */}
+                <div className="absolute -top-12 -right-12 w-24 h-24 bg-orange-500/10 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+                {/* Top Row: Icon + Badge */}
+                <div className="flex items-center justify-between relative z-10">
+                  <div className="w-8 h-8 rounded-lg bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-[var(--text-accent)] shadow-[0_0_12px_rgba(249,115,22,0.12)] group-hover:scale-105 group-hover:border-orange-500/40 transition-all">
+                    {srv.icon}
+                  </div>
+                  <span className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded-full bg-[#1b1d28]/90 text-[var(--text-accent)] border border-[var(--border-subtle)] group-hover:border-[var(--interactive-subtle-border)] transition-colors">
+                    {srv.badge}
+                  </span>
                 </div>
-                <h3 className="text-xs sm:text-sm font-bold text-[var(--text-primary)]">
-                  {srv.title}
-                </h3>
-                <p className="text-[11px] text-[var(--text-secondary)] leading-relaxed">
-                  {srv.desc}
-                </p>
+
+                {/* Title & Desc */}
+                <div className="space-y-1.5 relative z-10 text-left">
+                  <h3 className="text-xs sm:text-sm font-bold text-[var(--text-primary)] group-hover:text-[var(--text-accent)] transition-colors tracking-tight">
+                    {srv.title}
+                  </h3>
+                  <p className="text-[11px] text-[var(--text-secondary)] leading-relaxed group-hover:text-[var(--text-primary)] transition-colors">
+                    {srv.desc}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
