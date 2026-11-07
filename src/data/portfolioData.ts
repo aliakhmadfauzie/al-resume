@@ -1034,54 +1034,32 @@ export const MIGRATION_SLICES: MigrationSlice[] = [
 
 export const WORK_EXPERIENCE: ExperienceItem[] = [
   {
-    id: "exp-meraki",
-    role: "Power Platform Solution Manager",
-    company: "Meraki Malaysia",
-    location: "Federal Territory of Kuala Lumpur, Malaysia",
-    period: "July 2025 – Present",
-    isCurrent: true,
-    tags: ["Power Platform", "Dataverse", "ALM Pipelines", "Power Apps", "Power BI", "Solution Governance"],
-    bulletPoints: [
-      "Drive organic business growth by identifying cross-selling and up-selling opportunities within existing client accounts, translating technical success into expanded project scopes and new service offerings.",
-      "Partner with executive stakeholders to identify high-impact business challenges, developing proposals and proof-of-concepts (POCs) that convert technical roadmaps into signed statements of work (SOWs).",
-      "Lead the end-to-end delivery of Microsoft Power Platform solutions for clients, aligning business needs with scalable, secure, and well-governed technical architectures.",
-      "Define Power Platform strategy, roadmap, and governance frameworks for client organizations, including best practices, security standards, and adoption guidelines.",
-      "Design and oversee solutions using Power Apps, Power Automate, Power BI, and Dataverse, ensuring enterprise-grade architecture and seamless integrations.",
-      "Establish and enforce Application Lifecycle Management (ALM) and DevOps practices, including environment strategy, solution packaging, source control, and CI/CD pipelines.",
-      "Manage and mentor cross-functional delivery teams (developers and consultants), handling capacity planning, task allocation, project scope, timelines, and budgets."
-    ],
-    iconUrl: "/assets/profile/ali-avatar.jpg"
-  },
-  {
     id: "exp-freelance",
-    role: "Enterprise Power Platform & Dynamics 365 Solution Architect",
-    company: "IOI Group / Independent Consultant",
-    location: "Penang, Johor & Kuala Lumpur, Malaysia",
-    period: "2024 – Present",
+    role: "Enterprise Solutions Architect & Pre-Sales Lead",
+    company: "Self-Employed / Independent Contractor",
+    location: "Remote",
+    period: "Feb 2025 – Present",
     isCurrent: true,
-    tags: ["Process Optimization", "Six Sigma Green Belt", "AI Management", "Dataverse", "ALM Pipelines", "Power Apps"],
+    tags: ["Pre-Sales", "Leadership", "React", "TypeScript", "Dataverse", "SharePoint"],
     bulletPoints: [
-      "Led the enterprise migration of over 365 Lotus Domino and legacy business applications across more than 28 business units to Microsoft 365 and Dataverse, defining the migration strategy, data mapping, and governance for cutover.",
-      "Architected Dual-Track Modernization housing 7,878 Power Apps YAML screens, 16 production .msapp packages, and a 400+ file React 19 + TypeScript code-first mirror backed by Single MainDB_{Dept} SharePoint lists ($960K+/yr premium licensing avoided).",
-      "Strengthened release quality and deployment efficiency through Azure Pipelines, GitHub Actions, and PAC CLI-based ALM practices, facilitating continuous integration and delivery.",
-      "Delivered the Isolated Rebate Approval System (Tasek Cement) with Dataverse database isolation and 5-tier role-based security, cutting turnaround from 3 days to 15 minutes.",
-      "Deployed AI Builder and Gemini/Groq solutions for classification, document search, and 50+ specialized migration pipeline agents, reducing delivery effort by 70%."
+      "Closed RM 70,000+ in signed SOWs by converting discovery sessions into delivery contracts using rapid React/TypeScript prototypes and Dataverse architectures.",
+      "Led a 3-person technical pod; managed sprint milestones, billable capacity, and QA to deliver client solutions on schedule with no scope overruns.",
+      "Scoped and secured executive sign-off for modernization of 365+ legacy applications across 28 business units to Microsoft 365/SharePoint/Dataverse, defining a phased commercial roadmap.",
+      "Expanded account value by 35% through workflow optimization and cross-selling integrations and ongoing automation support while sustaining 30-35% project margins.",
+      "Accelerated sales velocity by delivering working POCs within 72 hours, shortening enterprise sales cycles by ~2 weeks."
     ],
     iconUrl: "/assets/profile/ali-avatar.jpg"
   },
   {
     id: "exp-concentrix",
-    role: "Team Leader, Operations & Certified Lark Developer",
-    company: "Concentrix",
-    location: "Kuala Lumpur, Federal Territory of Kuala Lumpur, Malaysia",
-    period: "May 2023 – April 2025",
-    tags: ["Team Scaling", "SLA Management", "Power Apps", "Power BI", "Lark Developer", "AI Builder"],
+    role: "Operations Team Lead",
+    company: "Concentrix CVG",
+    location: "Kuala Lumpur, Malaysia",
+    period: "May 2023 – Apr 2025",
+    tags: ["BPO Leadership", "SLA Governance", "Six Sigma DMAIC", "Team Scaling", "Process Optimization"],
     bulletPoints: [
-      "Managed Line of Business operations across 7 international markets, ensuring stringent adherence to 98%+ SLA compliance standards and cultivating superior client service delivery.",
-      "Oversaw workforce expansion, scaling the multilingual team by 380% (from 9 to 34 members) while maintaining peak efficiency, low attrition, and a 25% AHT reduction.",
-      "Spearheaded automation initiatives using Power Platform and Lark Open Platform (8 custom tools), reducing manual reporting by 90% and increasing data accuracy to 98%.",
-      "Led the CS Resolver project—an AI-powered classification system using Microsoft AI Builder across 120+ SOP categories—accelerating issue resolution by 30–50%.",
-      "Implemented PulseTrack (agent monitoring dashboard reducing leadership workload by 60–80%) and SmartFlow (automated request intake achieving 90% data accuracy and 80% efficiency gains)."
+      "Led daily floor operations for a BPO team of 9 to 34 associates across rotational shifts, owning rostering, real-time adherence, and shift handovers to sustain 98%+ contractual SLA compliance and keep abandonment below target.",
+      "Reduced Average Handling Time (AHT) by 25% through Six Sigma DMAIC controls and targeted coaching; improved 90-day competency from 78% to 94% via structured 1:1s and performance action plans."
     ],
     iconUrl: "/assets/profile/ali-avatar.jpg"
   },

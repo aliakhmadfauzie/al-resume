@@ -21,14 +21,15 @@ export const ExperienceView: React.FC = () => {
 
   const allTags = [
     'all',
-    'Power Platform',
+    'Pre-Sales',
+    'Leadership',
+    'React',
+    'TypeScript',
     'Dataverse',
-    'Power Apps',
-    'Power BI',
-    'Lark Developer',
-    'Six Sigma Green Belt',
-    'SLA Management',
-    'ALM Pipelines'
+    'SharePoint',
+    'Power Platform',
+    'SLA Governance',
+    'Six Sigma DMAIC'
   ];
 
   const filteredExperience =
@@ -111,7 +112,7 @@ export const ExperienceView: React.FC = () => {
                   : 'bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--border-subtle)]'
               }`}
             >
-              {tag === 'all' ? 'All Roles (7)' : tag}
+              {tag === 'all' ? `All Roles (${WORK_EXPERIENCE.length})` : tag}
             </button>
           ))}
         </div>

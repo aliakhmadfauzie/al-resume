@@ -241,7 +241,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
                   Ali Akhmad Fauzie
                 </div>
                 <div className="text-[9px] font-mono text-[var(--text-accent)]">
-                  12× Certified · Meraki MY
+                  12× Certified · Solutions Architect
                 </div>
               </div>
             </div>
@@ -258,14 +258,14 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 <span className="text-[var(--text-accent)]">scale.</span>
               </h2>
               <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
-                I&apos;m Ali Akhmad Fauzie, a Power Platform Solution Manager &amp; Enterprise Architect (Meraki Malaysia / IOI Group) and former Operations Team Leader (Concentrix &amp; Accenture) building governed, AI-powered enterprise systems.
+                I&apos;m Ali Akhmad Fauzie, an Enterprise Solutions Architect &amp; Pre-Sales Lead and former Operations Team Leader (Concentrix &amp; Accenture) building governed, AI-powered enterprise systems.
               </p>
 
               {/* 4 Icon Checklist Items */}
               <ul className="space-y-2 pt-1 text-xs text-[var(--text-primary)]">
                 <li className="flex items-center space-x-2.5">
                   <Briefcase className="w-3.5 h-3.5 text-[var(--interactive-primary)] shrink-0" />
-                  <span>9+ years experience (Meraki, IOI, Concentrix, Accenture)</span>
+                  <span>9+ years experience (Enterprise Architecture, Concentrix, Accenture)</span>
                 </li>
                 <li className="flex items-center space-x-2.5">
                   <CheckCircle2 className="w-3.5 h-3.5 text-[var(--interactive-primary)] shrink-0" />
