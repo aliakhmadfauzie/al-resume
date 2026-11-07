@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import confetti from 'canvas-confetti';
 import {
   CORE_PROJECTS,
   MIGRATION_SLICES,
@@ -62,12 +61,9 @@ export const HomeView: React.FC<HomeViewProps> = ({
 
   const handleInlineContactSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const body = encodeURIComponent(`Name: ${contactName}\nReply-to: ${contactEmail}\n\n${contactMessage}`);
+    window.location.href = `mailto:${PERSONAL_INFO.email}?subject=${encodeURIComponent(contactSubject)}&body=${body}`;
     setContactSent(true);
-    confetti({
-      particleCount: 65,
-      spread: 60,
-      origin: { y: 0.7 }
-    });
   };
 
   // Top 3 flagship projects matching the 3-card Featured Projects layout in the reference design
@@ -968,10 +964,10 @@ export const HomeView: React.FC<HomeViewProps> = ({
               <div className="p-6 rounded-[var(--radius-md)] bg-[#0f1117] border border-[var(--interactive-subtle-border)] text-center space-y-3">
                 <CheckCircle2 className="w-8 h-8 text-[var(--interactive-primary)] mx-auto" />
                 <h3 className="text-base font-bold text-[var(--text-primary)]">
-                  Message Dispatched
+                  Email Draft Opened
                 </h3>
                 <p className="text-xs text-[var(--text-secondary)]">
-                  Thank you, {contactName || 'partner'}. Ali will respond to your inquiry within 4–12 hours.
+                  Your email app should open with a draft. Please press Send there to deliver your message.
                 </p>
                 <button
                   type="button"
@@ -984,7 +980,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
                   }}
                   className="px-4 py-2 rounded-[var(--radius-sm)] bg-[var(--interactive-subtle-bg)] text-xs font-mono text-[var(--text-accent)] border border-[var(--interactive-subtle-border)]"
                 >
-                  Send Another Message
+                  Compose Another Email
                 </button>
               </div>
             ) : (
@@ -995,6 +991,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
                     required
                     value={contactName}
                     onChange={(e) => setContactName(e.target.value)}
+                    aria-label="Your name"
                     placeholder="Name"
                     className="w-full px-3.5 py-2.5 rounded-[var(--radius-sm)] bg-[#0f1117] border border-[var(--border-subtle)] focus:border-[var(--border-focus)] text-xs text-[var(--text-primary)] placeholder-[var(--text-tertiary)] outline-none"
                   />
@@ -1003,6 +1000,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
                     required
                     value={contactEmail}
                     onChange={(e) => setContactEmail(e.target.value)}
+                    aria-label="Your email address"
                     placeholder="Email"
                     className="w-full px-3.5 py-2.5 rounded-[var(--radius-sm)] bg-[#0f1117] border border-[var(--border-subtle)] focus:border-[var(--border-focus)] text-xs text-[var(--text-primary)] placeholder-[var(--text-tertiary)] outline-none"
                   />
@@ -1012,7 +1010,8 @@ export const HomeView: React.FC<HomeViewProps> = ({
                   required
                   value={contactSubject}
                   onChange={(e) => setContactSubject(e.target.value)}
-                  placeholder="Subject (e.g. Domino Migration, Power Platform Architecture, AI Pipeline)"
+                  aria-label="Email subject"
+                    placeholder="Subject (e.g. Domino Migration, Power Platform Architecture, AI Pipeline)"
                   className="w-full px-3.5 py-2.5 rounded-[var(--radius-sm)] bg-[#0f1117] border border-[var(--border-subtle)] focus:border-[var(--border-focus)] text-xs text-[var(--text-primary)] placeholder-[var(--text-tertiary)] outline-none"
                 />
                 <textarea
@@ -1020,14 +1019,15 @@ export const HomeView: React.FC<HomeViewProps> = ({
                   required
                   value={contactMessage}
                   onChange={(e) => setContactMessage(e.target.value)}
-                  placeholder="Message"
+                  aria-label="Email message"
+                    placeholder="Message"
                   className="w-full px-3.5 py-2.5 rounded-[var(--radius-sm)] bg-[#0f1117] border border-[var(--border-subtle)] focus:border-[var(--border-focus)] text-xs text-[var(--text-primary)] placeholder-[var(--text-tertiary)] outline-none resize-none"
                 />
                 <button
                   type="submit"
                   className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-[var(--radius-sm)] bg-[#1b1613] hover:bg-[var(--interactive-primary)] text-[var(--text-accent)] hover:text-[#090a0d] text-xs font-semibold border border-[var(--interactive-subtle-border)] shadow-[0_0_20px_rgba(249,115,22,0.2)] transition-all cursor-pointer"
                 >
-                  <span>Send Message</span>
+                  <span>Open Email Draft</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </button>
               </form>
