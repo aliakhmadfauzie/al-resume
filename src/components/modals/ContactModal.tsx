@@ -91,11 +91,11 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
           {submitted ? (
             <div className="text-center py-10 space-y-4">
               <div className="w-12 h-12 bg-[var(--bg-primary)] border border-[var(--border-focus)] rounded-full flex items-center justify-center mx-auto text-[var(--text-accent)]">
-                <CheckCircle2 className="w-6 h-6" />
+                <Mail className="w-6 h-6" />
               </div>
-              <h3 className="text-xl font-semibold text-[var(--text-primary)]">Email Draft Opened</h3>
+              <h3 className="text-xl font-semibold text-[var(--text-primary)]">Email Draft Requested</h3>
               <p className="text-sm text-[var(--text-secondary)] max-w-md mx-auto leading-relaxed">
-                Thank you for reaching out, <span className="text-[var(--text-primary)] font-medium">{name || 'there'}</span>. Your email app should open with a draft regarding <span className="text-[var(--text-accent)]">{inquiryType}</span> for sending from <span className="text-[var(--text-primary)]">{email}</span>.
+                Thank you for reaching out, <span className="text-[var(--text-primary)] font-medium">{name || 'there'}</span>. An email draft was requested for <span className="text-[var(--text-accent)]">{inquiryType}</span> with your reply address <span className="text-[var(--text-primary)]">{email}</span>.
               </p>
               <div className="pt-4 flex justify-center">
                 <button
@@ -184,7 +184,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
                     className="w-full px-3.5 py-2.5 rounded-[var(--radius-sm)] bg-[var(--bg-primary)] border border-[var(--border-subtle)] focus:border-[var(--border-focus)] focus:outline-none text-xs text-[var(--text-primary)]"
                   >
                     <option value="Enterprise Migration / Architecture">
-                      Lotus Domino / Legacy System Migration (365+ DB scale)
+                      Lotus Domino / Legacy System Migration
                     </option>
                     <option value="Full-Time / Contract Solution Architect">
                       Full-Time Solution Architect Opportunity
