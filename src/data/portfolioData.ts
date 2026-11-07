@@ -1071,7 +1071,7 @@ export const WORK_EXPERIENCE: ExperienceItem[] = [
     period: "May 2018 – November 2022",
     tags: ["Leadership", "SLA Management", "Power Apps", "Power BI", "Six Sigma Green Belt", "SQL Reporting"],
     bulletPoints: [
-      "Directed a cross-functional service delivery team of 20–34 members across global markets over 5+ years at Accenture, consistently exceeding 90–98% SLA compliance and earning the Accenture Diamond Award.",
+      "Directed a cross-functional service delivery team of 20–34 members across global markets over 5+ years at Accenture, consistently exceeding 90–98% SLA compliance and receiving the Best People Award and Team Leader Choice recognition in 2018.",
       "Pioneered Power Platform adoption on the operations floor in 2021—building SharePoint-backed tracking tools, Power Automate escalation workflows, and Power BI dashboards.",
       "Developed real-time performance monitoring tools and implemented data-driven insights that delivered a 15% increase in operational efficiency and 60% faster incident triage.",
       "Designed training and coaching programs and participated in Weekly Business Reviews (WBRs) to address failing metrics and execute root-cause action plans."
@@ -1876,12 +1876,70 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
 
 export const LINKEDIN_HONORS_AWARDS: HonorAwardItem[] = [
   {
-    id: "award-accenture-diamond",
-    title: "Accenture Diamond Award — Global Operational Impact",
+    id: "award-accenture-best-people-2018",
+    title: "Best People Award — Senior/Junior Team Lead",
+    issuer: "Accenture Operations Malaysia",
+    year: "Q3 2018",
+    description: "Recognized for outstanding performance and contribution to Kuala Lumpur Community Operations during Quarter 3 of 2018.",
+    evidenceImages: [
+      {
+        src: "/assets/awards/best-people-q3-2018-site.webp",
+        alt: "Accenture Best People Award certificate naming Ali Akhmad Fauzie, Quarter 3 of 2018",
+        caption: "Best People Award · Q3 2018"
+      }
+    ]
+  },
+  {
+    id: "award-accenture-team-leader-choice-2018",
+    title: "CO's Team Leader Choice Award",
+    issuer: "Accenture Community Operations Malaysia",
+    year: "29 Aug 2018",
+    description: "Recognized for commitment to high performance and Accenture's core values.",
+    evidenceImages: [
+      {
+        src: "/assets/awards/team-leader-choice-aug-2018-site.webp",
+        alt: "Accenture Community Operations Team Leader Choice Award naming Ali Fauzie, 29 August 2018",
+        caption: "Team Leader Choice · Aug 2018"
+      }
+    ]
+  },
+  {
+    id: "award-accenture-team-performance-2019",
+    title: "Team Performance Recognition — Team Lead",
+    issuer: "Accenture Operations Malaysia",
+    year: "Jan–Mar 2019",
+    description: "Three monthly performance certificates recognizing contributions to Community Operations. January's certificate identifies Team Ali through a handwritten amendment; February and March certificates name Ali Akhmad Fauzie.",
+    evidenceImages: [
+      {
+        src: "/assets/awards/team-performance-jan-2019-site.webp",
+        alt: "Accenture January 2019 Team Performance certificate with handwritten Team Ali recipient amendment",
+        caption: "January 2019 · Team Ali"
+      },
+      {
+        src: "/assets/awards/team-performance-feb-2019-site.webp",
+        alt: "Accenture Team Performance Team Lead certificate naming Ali Akhmad Fauzie, February 2019",
+        caption: "February 2019"
+      },
+      {
+        src: "/assets/awards/team-performance-mar-2019-site.webp",
+        alt: "Accenture Team Performance Team Lead certificate naming Ali Akhmad Fauzie, March 2019",
+        caption: "March 2019"
+      }
+    ]
+  },
+  {
+    id: "award-accenture-honey-badger-2017",
+    title: "Honey Badger Training — Top 1 Performer",
     issuer: "Accenture",
-    year: "2021",
-    description: "Recognized for pioneering low-code operational automation and sustaining >98% SLA compliance across global enterprise service delivery squads.",
-    certificatePdfUrl: "/certificates/ABOUT_ME.pdf"
+    year: "11 Aug 2017",
+    description: "Certificate of Achievement for successful completion of Honey Badger Training as Top 1 Performer.",
+    evidenceImages: [
+      {
+        src: "/assets/awards/honey-badger-top-performer-aug-2017-site.webp",
+        alt: "Accenture Honey Badger Training Top 1 Performer certificate naming Ali Akhmad Fauzie, 11 August 2017",
+        caption: "Top 1 Performer · Aug 2017"
+      }
+    ]
   },
   {
     id: "award-cnx-excellence",
