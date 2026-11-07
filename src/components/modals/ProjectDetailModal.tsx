@@ -157,7 +157,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
           <div className="bg-[var(--bg-primary)] p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-2">
             <div className="flex items-center space-x-2 text-[var(--text-accent)] font-mono text-xs font-medium">
               <TrendingUp className="w-4 h-4" />
-              <span>03 · Verified Business Impact</span>
+              <span>{!isMigrationSlice && hasCaseStudyScreens((project as ProjectItem).id) ? '03 · Documented Findings & Evidence Status' : '03 · Reported Business Impact'}</span>
             </div>
             <p className="text-sm text-[var(--text-primary)] font-medium leading-relaxed">
               {impactText}
