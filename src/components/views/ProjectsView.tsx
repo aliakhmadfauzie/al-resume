@@ -379,7 +379,7 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
                         event.preventDefault();
                         onOpenProjectDetail(proj);
                       }
-                    }
+                    }}
                   >
                     <div className="space-y-3.5">
                       {/* Project Architectural Thumbnail Header */}
