@@ -371,6 +371,15 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
                   <div
                     className="h-full glass-card p-6 space-y-5 flex flex-col justify-between cursor-pointer group"
                     onClick={() => onOpenProjectDetail(proj)}
+                    role="button"
+                    tabIndex={0}
+                    aria-label={`View details for ${proj.title}`}
+                    onKeyDown={(event) => {
+                      if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault();
+                        onOpenProjectDetail(proj);
+                      }
+                    }
                   >
                     <div className="space-y-3.5">
                       {/* Project Architectural Thumbnail Header */}
