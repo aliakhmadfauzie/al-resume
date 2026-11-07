@@ -964,7 +964,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
               <div className="p-6 rounded-[var(--radius-md)] bg-[#0f1117] border border-[var(--interactive-subtle-border)] text-center space-y-3">
                 <CheckCircle2 className="w-8 h-8 text-[var(--interactive-primary)] mx-auto" />
                 <h3 className="text-base font-bold text-[var(--text-primary)]">
-                  Email Draft Opened
+                  Email Draft Requested
                 </h3>
                 <p className="text-xs text-[var(--text-secondary)]">
                   Your email app should open with a draft. Please press Send there to deliver your message.
