@@ -1,0 +1,135 @@
+/* ============================================================
+   Contribution Grid (Skills) Component Styles
+   ============================================================ */
+
+.contributionGrid {
+  display: grid;
+  gap: 4px;
+}
+
+.contributionGridSm {
+  grid-template-columns: repeat(auto-fill, minmax(18px, 1fr));
+}
+
+.contributionGridMd {
+  grid-template-columns: repeat(auto-fill, minmax(24px, 1fr));
+}
+
+.contributionGridLg {
+  grid-template-columns: repeat(auto-fill, minmax(32px, 1fr));
+}
+
+/* ----- Cell ----- */
+.gridCell {
+  aspect-ratio: 1;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  position: relative;
+}
+
+.gridCell:hover {
+  transform: scale(1.2);
+  z-index: 2;
+  box-shadow: var(--shadow-md);
+}
+
+/* ----- Cell Sizes ----- */
+.gridCellSm {
+  min-width: 18px;
+}
+
+.gridCellMd {
+  min-width: 24px;
+}
+
+.gridCellLg {
+  min-width: 32px;
+}
+
+/* ----- Skill Labels (optional) ----- */
+.gridLabels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: var(--space-md);
+}
+
+.gridLabel {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--font-size-xs);
+  color: var(--text-secondary);
+}
+
+.gridLabelDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+/* ----- Tooltip ----- */
+.gridTooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  box-shadow: var(--shadow-lg);
+  min-width: 140px;
+  pointer-events: none;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.gridCell:hover .gridTooltip {
+  opacity: 1;
+}
+
+.gridTooltipName {
+  color: var(--text-primary);
+  display: block;
+  margin-bottom: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.gridTooltipLevel {
+  color: var(--text-secondary);
+  font-size: var(--font-size-xs);
+  margin-bottom: 6px;
+}
+
+.gridTooltipBar {
+  height: 4px;
+  border-radius: 2px;
+  background-color: var(--bg-tertiary);
+  overflow: hidden;
+}
+
+.gridTooltipBarFill {
+  height: 100%;
+  border-radius: 2px;
+  background-color: var(--accent-blue);
+  transition: width var(--transition-base);
+}
+
+/* ----- Category Groups ----- */
+.skillCategory {
+  margin-bottom: var(--space-xl);
+}
+
+.skillCategoryTitle {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--space-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}

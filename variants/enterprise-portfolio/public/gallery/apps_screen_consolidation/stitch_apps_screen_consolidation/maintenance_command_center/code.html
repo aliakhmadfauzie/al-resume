@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Maintenance Command Center - IndustrialOps Suite</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@600;700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary": "#ffffff",
+                        "on-primary-container": "#7c839b",
+                        "surface-container": "#e5eeff",
+                        "outline": "#76777d",
+                        "primary-container": "#131b2e",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed-variant": "#653e00",
+                        "secondary-fixed-dim": "#ffb95f",
+                        "on-tertiary-container": "#3d89c3",
+                        "inverse-primary": "#bec6e0",
+                        "primary-fixed": "#dae2fd",
+                        "on-tertiary-fixed-variant": "#004b74",
+                        "on-background": "#0b1c30",
+                        "surface-variant": "#d3e4fe",
+                        "secondary-fixed": "#ffddb8",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-tertiary-fixed": "#001d32",
+                        "secondary": "#855300",
+                        "error-container": "#ffdad6",
+                        "error": "#ba1a1a",
+                        "on-surface": "#0b1c30",
+                        "tertiary-container": "#001d32",
+                        "on-error": "#ffffff",
+                        "primary-fixed-dim": "#bec6e0",
+                        "tertiary-fixed": "#cde5ff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "secondary-container": "#fea619",
+                        "primary": "#000000",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-tint": "#565e74",
+                        "on-secondary-fixed": "#2a1700",
+                        "tertiary": "#000000",
+                        "inverse-surface": "#213145",
+                        "on-primary-fixed": "#131b2e",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "on-error-container": "#93000a",
+                        "on-surface-variant": "#45464d",
+                        "surface-bright": "#f8f9ff",
+                        "surface": "#f8f9ff",
+                        "background": "#f8f9ff",
+                        "outline-variant": "#c6c6cd",
+                        "tertiary-fixed-dim": "#94ccff",
+                        "surface-container-high": "#dce9ff",
+                        "on-secondary-container": "#684000",
+                        "surface-dim": "#cbdbf5",
+                        "surface-container-low": "#eff4ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "max-width-content": "1440px",
+                        "container-padding": "24px",
+                        "stack-lg": "32px",
+                        "unit": "4px",
+                        "gutter": "16px",
+                        "stack-sm": "8px",
+                        "stack-md": "16px"
+                    },
+                    "fontFamily": {
+                        "label-mono": ["JetBrains Mono"],
+                        "body-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "headline-sm": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "label-mono": ["11px", { "lineHeight": "14px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "body-sm": ["12px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "34px", "fontWeight": "700" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "display-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: theme('colors.background'); color: theme('colors.on-background'); }
+        .material-symbols-outlined { font-family: 'Material Symbols Outlined'; font-weight: normal; font-style: normal; font-size: 20px; display: inline-block; line-height: 1; text-transform: none; letter-spacing: normal; word-wrap: normal; white-space: nowrap; direction: ltr; -webkit-font-smoothing: antialiased; }
+        
+        /* Industrial Focus Ring */
+        *:focus-visible { outline: 2px solid theme('colors.tertiary'); outline-offset: 2px; }
+        
+        /* Density Adjustments */
+        .dense-table th, .dense-table td { padding: 8px 12px; }
+        .border-level-1 { border: 1px solid theme('colors.outline-variant'); }
+    </style>
+</head>
+<body class="flex h-screen overflow-hidden antialiased selection:bg-primary selection:text-on-primary">
+<!-- SideNavBar -->
+<nav class="hidden md:flex flex-col h-full py-4 gap-y-2 overflow-y-auto bg-surface-container-low dark:bg-primary-container border-r border-outline-variant dark:border-outline docked h-screen left-0 w-64 z-40 shrink-0">
+<!-- Header -->
+<div class="px-gutter mb-6 flex flex-col gap-1 border-b border-outline-variant pb-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-primary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary-fixed" data-icon="factory" data-weight="fill" style="font-variation-settings: 'FILL' 1;">factory</span>
+</div>
+<div>
+<h1 class="font-headline-sm text-headline-sm font-black text-primary truncate" title="Maintenance HQ">Maintenance HQ</h1>
+<p class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-wider">Site: Zone-04</p>
+</div>
+</div>
+</div>
+<!-- Main Tabs -->
+<div class="flex-1 px-3 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded font-label-mono text-label-mono font-body-md text-body-md bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary font-bold scale-98 active:opacity-80 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded font-label-mono text-label-mono font-body-md text-body-md text-on-surface-variant dark:text-on-primary-container hover:bg-surface-container-highest dark:hover:bg-primary-fixed-dim/10 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="factory">factory</span>
+                Asset Registry
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded font-label-mono text-label-mono font-body-md text-body-md text-on-surface-variant dark:text-on-primary-container hover:bg-surface-container-highest dark:hover:bg-primary-fixed-dim/10 transition-all flex justify-between" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined" data-icon="assignment">assignment</span>
+                    Work Orders
+                </div>
+<span class="bg-error text-on-error font-label-mono text-[9px] px-1.5 py-0.5 rounded">12</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded font-label-mono text-label-mono font-body-md text-body-md text-on-surface-variant dark:text-on-primary-container hover:bg-surface-container-highest dark:hover:bg-primary-fixed-dim/10 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="event_upcoming">event_upcoming</span>
+                Schedules
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded font-label-mono text-label-mono font-body-md text-body-md text-on-surface-variant dark:text-on-primary-container hover:bg-surface-container-highest dark:hover:bg-primary-fixed-dim/10 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+                Inventory
+            </a>
+</div>
+<!-- Footer Tabs -->
+<div class="px-3 mt-auto flex flex-col gap-1 border-t border-outline-variant pt-4">
+<a class="flex items-center gap-3 px-3 py-2 rounded font-label-mono text-label-mono font-body-md text-body-md text-on-surface-variant dark:text-on-primary-container hover:bg-surface-container-highest dark:hover:bg-primary-fixed-dim/10 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="contact_support">contact_support</span>
+                Support
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded font-label-mono text-label-mono font-body-md text-body-md text-on-surface-variant dark:text-on-primary-container hover:bg-surface-container-highest dark:hover:bg-primary-fixed-dim/10 transition-all" href="#">
+<div class="flex items-center gap-3 flex-1">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+                    System Status
+                </div>
+<div class="w-2 h-2 rounded-full bg-emerald-500"></div>
+</a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col h-full overflow-hidden bg-background">
+<!-- TopNavBar (Mobile Only for Shell Consistency, Desktop uses Top Bar for Context) -->
+<header class="flex md:hidden justify-between items-center w-full px-gutter h-14 z-50 bg-surface dark:bg-primary-container border-b border-outline-variant dark:border-outline shrink-0">
+<div class="flex items-center gap-2">
+<button class="p-2 -ml-2 text-primary">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<span class="font-headline-sm text-headline-sm font-bold text-primary dark:text-primary-fixed">IndustrialOps</span>
+</div>
+<div class="flex items-center gap-4 text-primary">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<img alt="User Profile Avatar" class="w-8 h-8 rounded-full border border-outline-variant object-cover" data-alt="A small circular avatar showing a safety engineer wearing a hard hat in an industrial setting, high quality, professional lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuNwdY6PkoJFc2Kd5EsSiCtv1i5p7t3v66ZjXBGKCascBZe9R9S5Z7UxE2ezOYfPr6QqR0jilrB4tCnjN77lBqGnCWC1uKED9AG0rpoVCMVwqtDSmjlnmq0Riqx-OHwohUuvVKu39AQkCxWrH8Wy94PV3BYRqTsXXbVZaDsHDbPu5hU_hEcbCQWAxJ0FGBxLn7reyr7rxE9_7USWo5-o81Oj0aUaSZepYlQbY90cvY4Ee6FkUfB_LO"/>
+</div>
+</header>
+<!-- Contextual Header (Desktop) -->
+<header class="hidden md:flex justify-between items-center w-full px-gutter h-16 z-40 bg-surface border-b border-outline-variant shrink-0">
+<div class="flex items-center gap-4">
+<h2 class="font-headline-md text-headline-md text-on-background">Maintenance Command Center</h2>
+<div class="h-6 w-px bg-outline-variant"></div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-sm" data-icon="schedule">schedule</span>
+<span class="font-label-mono text-label-mono uppercase">Last Sync: Just Now</span>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<!-- Search -->
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-lg" data-icon="search">search</span>
+<input class="pl-9 pr-4 py-1.5 bg-surface-container-lowest border border-outline-variant rounded font-body-sm text-body-sm text-on-surface w-64 focus:border-primary focus:ring-0 transition-colors placeholder:text-on-surface-variant" placeholder="Search Assets, Work Orders..." type="text"/>
+</div>
+<div class="h-6 w-px bg-outline-variant hidden lg:block mx-1"></div>
+<!-- Actions -->
+<button class="p-2 text-on-surface-variant hover:bg-surface-container rounded transition-colors" title="Notifications">
+<div class="relative">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-error rounded-full border border-surface"></span>
+</div>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container rounded transition-colors" title="Settings">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<div class="ml-2 pl-4 border-l border-outline-variant flex items-center gap-2 cursor-pointer hover:bg-surface-container px-2 py-1 rounded transition-colors">
+<img alt="User Profile Avatar" class="w-8 h-8 rounded-full border border-outline-variant object-cover" data-alt="A small circular avatar showing a professional industrial manager in a high-vis vest, crisp focus, studio lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuBR332sDRBSGzi4emFPrNkWO83AELoBrSlQIIbrmRWWl2NTQJ784l2-2oTCU1LUVVW9Xqvcyut-WI_o7xFrxwiwljxRozyEbZsrmtbvJqcdrvxd8OatH97wPE9omDurB2XRiwgy2WcdVq29DhxqOZftEAGmLA27jclwRc5ZBrxygdHAxg2vjg8FDSAlGNtGr1_SYD4wI1L7k4H6M48HzTljOPpUwtju48iSqP9oNT5Pa8fhb_ReHf"/>
+<div class="hidden xl:block text-left">
+<div class="font-label-mono text-[10px] uppercase font-bold text-primary">J. Carter</div>
+<div class="font-body-sm text-[10px] text-on-surface-variant">Lead Engineer</div>
+</div>
+<span class="material-symbols-outlined text-sm text-on-surface-variant hidden xl:block" data-icon="arrow_drop_down">arrow_drop_down</span>
+</div>
+</div>
+</header>
+<!-- Canvas / Dashboard Content -->
+<main class="flex-1 overflow-y-auto p-4 md:p-6 pb-24 md:pb-6">
+<div class="max-w-content mx-auto flex flex-col gap-6">
+<!-- Action Bar -->
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+<div class="flex gap-2">
+<button class="bg-surface-container-lowest border border-outline-variant px-3 py-1.5 rounded font-label-mono text-label-mono text-on-surface hover:bg-surface-container-low transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="filter_list">filter_list</span>
+                            All Zones
+                        </button>
+<button class="bg-surface-container-lowest border border-outline-variant px-3 py-1.5 rounded font-label-mono text-label-mono text-on-surface hover:bg-surface-container-low transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="calendar_today">calendar_today</span>
+                            Last 30 Days
+                        </button>
+</div>
+<div class="flex gap-3 w-full sm:w-auto">
+<button class="flex-1 sm:flex-none bg-surface-container-lowest border border-primary text-primary px-4 py-2 rounded font-label-mono text-label-mono font-bold hover:bg-primary hover:text-on-primary transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="event_note">event_note</span>
+                            SCHEDULE PM
+                        </button>
+<button class="flex-1 sm:flex-none bg-primary text-on-primary px-4 py-2 rounded font-label-mono text-label-mono font-bold hover:bg-primary/90 transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
+                            NEW WORK ORDER
+                        </button>
+</div>
+</div>
+<!-- KPI Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- OEE -->
+<div class="bg-surface-container-lowest border-level-1 rounded-lg p-4 flex flex-col gap-2 relative overflow-hidden group">
+<div class="absolute right-0 top-0 w-2 h-full bg-secondary-container"></div>
+<div class="flex justify-between items-start">
+<span class="font-label-mono text-label-mono text-on-surface-variant uppercase">Plant OEE</span>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="speed">speed</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-display-lg text-display-lg text-on-background">78.4</span>
+<span class="font-headline-sm text-headline-sm text-on-surface-variant">%</span>
+</div>
+<div class="flex items-center gap-1 text-[11px] font-label-mono">
+<span class="material-symbols-outlined text-[14px] text-error" data-icon="trending_down">trending_down</span>
+<span class="text-error font-bold">-2.1%</span>
+<span class="text-on-surface-variant">vs last month</span>
+</div>
+</div>
+<!-- Open Work Orders -->
+<div class="bg-surface-container-lowest border-level-1 rounded-lg p-4 flex flex-col gap-2 relative overflow-hidden">
+<div class="absolute right-0 top-0 w-2 h-full bg-error"></div>
+<div class="flex justify-between items-start">
+<span class="font-label-mono text-label-mono text-on-surface-variant uppercase">Open Work Orders</span>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="assignment_late">assignment_late</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-display-lg text-display-lg text-on-background">42</span>
+</div>
+<div class="flex items-center gap-2 mt-1">
+<div class="flex-1 h-1.5 bg-surface-container-high rounded-full overflow-hidden flex">
+<div class="bg-error w-[30%]" title="Critical"></div>
+<div class="bg-secondary-container w-[45%]" title="High"></div>
+<div class="bg-primary w-[25%]" title="Normal"></div>
+</div>
+</div>
+<div class="flex justify-between text-[10px] font-label-mono text-on-surface-variant mt-0.5">
+<span>12 Critical</span>
+<span>18 High</span>
+</div>
+</div>
+<!-- Pending PMs -->
+<div class="bg-surface-container-lowest border-level-1 rounded-lg p-4 flex flex-col gap-2 relative overflow-hidden">
+<div class="absolute right-0 top-0 w-2 h-full bg-primary-fixed-dim"></div>
+<div class="flex justify-between items-start">
+<span class="font-label-mono text-label-mono text-on-surface-variant uppercase">Pending PMs (7 Days)</span>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="rule">rule</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-display-lg text-display-lg text-on-background">18</span>
+</div>
+<div class="flex items-center gap-1 text-[11px] font-label-mono">
+<span class="material-symbols-outlined text-[14px] text-emerald-600" data-icon="check_circle">check_circle</span>
+<span class="text-emerald-700 font-bold">94%</span>
+<span class="text-on-surface-variant">Completion Rate YTD</span>
+</div>
+</div>
+<!-- Maintenance Cost -->
+<div class="bg-surface-container-lowest border-level-1 rounded-lg p-4 flex flex-col gap-2 relative overflow-hidden">
+<div class="absolute right-0 top-0 w-2 h-full bg-on-background"></div>
+<div class="flex justify-between items-start">
+<span class="font-label-mono text-label-mono text-on-surface-variant uppercase">Maint Cost YTD</span>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="payments">payments</span>
+</div>
+<div class="flex items-baseline gap-1">
+<span class="font-headline-md text-headline-md text-on-surface-variant">$</span>
+<span class="font-display-lg text-display-lg text-on-background">1.24</span>
+<span class="font-headline-sm text-headline-sm text-on-surface-variant">M</span>
+</div>
+<div class="flex items-center gap-1 text-[11px] font-label-mono">
+<div class="w-full h-1 bg-surface-container-high rounded-full overflow-hidden">
+<div class="bg-on-background h-full w-[82%]"></div>
+</div>
+<span class="text-on-surface-variant shrink-0 ml-2">82% of Budget</span>
+</div>
+</div>
+</div>
+<!-- Main Layout Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Chart Section -->
+<div class="lg:col-span-2 bg-surface-container-lowest border-level-1 rounded-lg p-5 flex flex-col min-h-[360px]">
+<div class="flex justify-between items-center mb-4">
+<h3 class="font-label-mono text-label-mono text-on-surface font-bold uppercase tracking-wider">Maintenance Activity (Last 12 Months)</h3>
+<button class="p-1 text-on-surface-variant hover:bg-surface-container rounded transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+<div class="flex-1 relative w-full h-full min-h-[250px]">
+<!-- Chart Placeholder - In a real app, Chart.js would render here -->
+<canvas class="w-full h-full" id="maintenanceChart"></canvas>
+</div>
+</div>
+<!-- Quick Actions / Alerts Panel -->
+<div class="bg-surface-container-lowest border-level-1 rounded-lg flex flex-col overflow-hidden">
+<div class="p-4 border-b border-outline-variant bg-surface-bright flex justify-between items-center">
+<h3 class="font-label-mono text-label-mono text-on-surface font-bold uppercase tracking-wider">System Alerts</h3>
+<span class="bg-error text-on-error font-label-mono text-[10px] px-2 py-0.5 rounded-full">3 New</span>
+</div>
+<div class="flex-1 overflow-y-auto flex flex-col">
+<!-- Alert Item -->
+<div class="p-4 border-b border-outline-variant hover:bg-surface-container-low transition-colors cursor-pointer group flex gap-3">
+<div class="w-1.5 h-10 bg-error rounded-full shrink-0"></div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<span class="font-label-mono text-label-mono font-bold text-on-surface uppercase">Vibration Anomaly</span>
+<span class="text-[10px] font-label-mono text-on-surface-variant">10m ago</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">Centrifugal Pump P-102 showing high radial vibration in bearing block B.</p>
+<div class="mt-2 flex gap-2">
+<button class="text-[10px] font-label-mono uppercase font-bold text-primary hover:underline">Create WO</button>
+<button class="text-[10px] font-label-mono uppercase font-bold text-on-surface-variant hover:underline">Dismiss</button>
+</div>
+</div>
+</div>
+<!-- Alert Item -->
+<div class="p-4 border-b border-outline-variant hover:bg-surface-container-low transition-colors cursor-pointer group flex gap-3">
+<div class="w-1.5 h-10 bg-secondary-container rounded-full shrink-0"></div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<span class="font-label-mono text-label-mono font-bold text-on-surface uppercase">PM Overdue</span>
+<span class="text-[10px] font-label-mono text-on-surface-variant">2h ago</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">Quarterly inspection for HVAC Unit-4 is past due by 48 hours.</p>
+</div>
+</div>
+<!-- Alert Item -->
+<div class="p-4 hover:bg-surface-container-low transition-colors cursor-pointer group flex gap-3">
+<div class="w-1.5 h-10 bg-primary-fixed-dim rounded-full shrink-0"></div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<span class="font-label-mono text-label-mono font-bold text-on-surface uppercase">Low Inventory</span>
+<span class="text-[10px] font-label-mono text-on-surface-variant">1d ago</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">Hydraulic Fluid (Type H-46) is below minimum safety stock level.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Data Table Section -->
+<div class="bg-surface-container-lowest border-level-1 rounded-lg flex flex-col overflow-hidden">
+<div class="p-4 md:px-5 py-4 border-b border-outline-variant bg-surface-bright flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="memory">memory</span>
+<h3 class="font-label-mono text-label-mono text-on-surface font-bold uppercase tracking-wider">Critical Asset Status</h3>
+</div>
+<div class="flex gap-2 w-full sm:w-auto">
+<div class="relative flex-1 sm:w-48">
+<span class="material-symbols-outlined absolute left-2 top-1/2 -translate-y-1/2 text-on-surface-variant text-[16px]" data-icon="search">search</span>
+<input class="pl-7 pr-2 py-1 bg-surface border border-outline-variant rounded font-label-mono text-[11px] text-on-surface w-full focus:border-primary focus:ring-0" placeholder="Filter ID..." type="text"/>
+</div>
+<button class="bg-surface border border-outline-variant p-1 rounded hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant" data-icon="download">download</span>
+</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left dense-table border-collapse min-w-[800px]">
+<thead class="bg-surface-container font-label-mono text-[10px] text-on-surface uppercase border-b border-outline-variant">
+<tr>
+<th class="w-8"></th>
+<th class="font-semibold tracking-wide">Asset ID</th>
+<th class="font-semibold tracking-wide">Name / Description</th>
+<th class="font-semibold tracking-wide">Zone</th>
+<th class="font-semibold tracking-wide text-center">Status</th>
+<th class="font-semibold tracking-wide text-right">MTBF (Hrs)</th>
+<th class="font-semibold tracking-wide text-center">Health</th>
+<th class="w-12"></th>
+</tr>
+</thead>
+<tbody class="font-body-sm text-body-sm text-on-surface divide-y divide-outline-variant bg-surface-container-lowest">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="text-center">
+<div class="w-1 h-6 bg-error rounded-r-full -ml-3"></div>
+</td>
+<td class="font-label-mono text-primary font-bold">#PMP-102A</td>
+<td>
+<div class="font-medium text-on-background">Centrifugal Feed Pump A</div>
+<div class="text-[11px] text-on-surface-variant truncate w-48">Main line hydraulic transfer</div>
+</td>
+<td class="font-label-mono text-[11px]">Z-04 North</td>
+<td class="text-center">
+<span class="inline-flex items-center gap-1.5 bg-error-container text-on-error-container px-2 py-0.5 rounded font-label-mono text-[10px] font-bold uppercase border border-error/20">
+<span class="w-1.5 h-1.5 rounded-full bg-error animate-pulse"></span>
+                                            DOWN
+                                        </span>
+</td>
+<td class="text-right font-label-mono">1,420</td>
+<td class="text-center">
+<div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden max-w-[60px] mx-auto">
+<div class="bg-error h-full w-[15%]"></div>
+</div>
+</td>
+<td class="text-center">
+<button class="text-on-surface-variant hover:text-primary transition-colors p-1"><span class="material-symbols-outlined text-[18px]" data-icon="chevron_right">chevron_right</span></button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="bg-[#F1F5F9] hover:bg-surface-container-low transition-colors dark:bg-transparent">
+<td class="text-center">
+<div class="w-1 h-6 bg-secondary-container rounded-r-full -ml-3"></div>
+</td>
+<td class="font-label-mono font-bold">#CVD-305</td>
+<td>
+<div class="font-medium text-on-background">Chemical Vapor Deposition Unit</div>
+<div class="text-[11px] text-on-surface-variant truncate w-48">Chamber 3 processing</div>
+</td>
+<td class="font-label-mono text-[11px]">Z-02 Cleanroom</td>
+<td class="text-center">
+<span class="inline-flex items-center gap-1.5 bg-surface-container-high text-secondary px-2 py-0.5 rounded font-label-mono text-[10px] font-bold uppercase border border-secondary-container/30">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-container"></span>
+                                            MAINT
+                                        </span>
+</td>
+<td class="text-right font-label-mono">2,850</td>
+<td class="text-center">
+<div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden max-w-[60px] mx-auto">
+<div class="bg-secondary-container h-full w-[45%]"></div>
+</div>
+</td>
+<td class="text-center">
+<button class="text-on-surface-variant hover:text-primary transition-colors p-1"><span class="material-symbols-outlined text-[18px]" data-icon="chevron_right">chevron_right</span></button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="text-center">
+<div class="w-1 h-6 bg-emerald-500 rounded-r-full -ml-3"></div>
+</td>
+<td class="font-label-mono font-bold">#COMP-88B</td>
+<td>
+<div class="font-medium text-on-background">Rotary Screw Compressor</div>
+<div class="text-[11px] text-on-surface-variant truncate w-48">Plant air supply stage 2</div>
+</td>
+<td class="font-label-mono text-[11px]">Z-01 Utilities</td>
+<td class="text-center">
+<span class="inline-flex items-center gap-1.5 bg-emerald-50 text-emerald-800 px-2 py-0.5 rounded font-label-mono text-[10px] font-bold uppercase border border-emerald-200">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                                            RUNNING
+                                        </span>
+</td>
+<td class="text-right font-label-mono">8,100</td>
+<td class="text-center">
+<div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden max-w-[60px] mx-auto">
+<div class="bg-emerald-500 h-full w-[92%]"></div>
+</div>
+</td>
+<td class="text-center">
+<button class="text-on-surface-variant hover:text-primary transition-colors p-1"><span class="material-symbols-outlined text-[18px]" data-icon="chevron_right">chevron_right</span></button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="bg-[#F1F5F9] hover:bg-surface-container-low transition-colors dark:bg-transparent">
+<td class="text-center">
+<div class="w-1 h-6 bg-emerald-500 rounded-r-full -ml-3"></div>
+</td>
+<td class="font-label-mono font-bold">#HVAC-RTU4</td>
+<td>
+<div class="font-medium text-on-background">Roof Top Unit 4 (Air Handler)</div>
+<div class="text-[11px] text-on-surface-variant truncate w-48">Admin block climate control</div>
+</td>
+<td class="font-label-mono text-[11px]">Roof Sec-B</td>
+<td class="text-center">
+<span class="inline-flex items-center gap-1.5 bg-emerald-50 text-emerald-800 px-2 py-0.5 rounded font-label-mono text-[10px] font-bold uppercase border border-emerald-200">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                                            RUNNING
+                                        </span>
+</td>
+<td class="text-right font-label-mono">12,400</td>
+<td class="text-center">
+<div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden max-w-[60px] mx-auto">
+<div class="bg-emerald-500 h-full w-[78%]"></div>
+</div>
+</td>
+<td class="text-center">
+<button class="text-on-surface-variant hover:text-primary transition-colors p-1"><span class="material-symbols-outlined text-[18px]" data-icon="chevron_right">chevron_right</span></button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Chart Setup Script -->
+<script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const ctx = document.getElementById('maintenanceChart');
+            if (ctx) {
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                        datasets: [
+                            {
+                                label: 'Preventive (PM)',
+                                data: [65, 59, 80, 81, 56, 55, 40, 60, 75, 82, 68, 70],
+                                backgroundColor: '#131b2e', // primary-container
+                                borderRadius: 2,
+                                order: 2
+                            },
+                            {
+                                label: 'Reactive (Corrective)',
+                                data: [28, 48, 40, 19, 86, 27, 90, 45, 30, 20, 35, 15],
+                                backgroundColor: '#ba1a1a', // error
+                                borderRadius: 2,
+                                order: 3
+                            },
+                            {
+                                label: 'Total Cost Trend ($K)',
+                                data: [45, 60, 70, 50, 110, 48, 120, 65, 55, 60, 50, 40],
+                                type: 'line',
+                                borderColor: '#fea619', // secondary-container
+                                borderWidth: 2,
+                                fill: false,
+                                tension: 0.3,
+                                pointBackgroundColor: '#ffffff',
+                                pointBorderColor: '#fea619',
+                                pointRadius: 3,
+                                yAxisID: 'y1',
+                                order: 1
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        interaction: {
+                            mode: 'index',
+                            intersect: false,
+                        },
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                                align: 'end',
+                                labels: {
+                                    usePointStyle: true,
+                                    boxWidth: 8,
+                                    font: { family: 'JetBrains Mono', size: 10 }
+                                }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                stacked: true,
+                                grid: { display: false },
+                                ticks: { font: { family: 'JetBrains Mono', size: 10 } }
+                            },
+                            y: {
+                                stacked: true,
+                                type: 'linear',
+                                display: true,
+                                position: 'left',
+                                grid: { color: '#e2e8f0' }, // faint grid
+                                ticks: { font: { family: 'JetBrains Mono', size: 10 } },
+                                title: { display: true, text: 'Work Orders', font: { family: 'JetBrains Mono', size: 10 } }
+                            },
+                            y1: {
+                                type: 'linear',
+                                display: true,
+                                position: 'right',
+                                grid: { drawOnChartArea: false },
+                                ticks: { font: { family: 'JetBrains Mono', size: 10 } },
+                                title: { display: true, text: 'Cost ($K)', font: { family: 'JetBrains Mono', size: 10 } }
+                            }
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</body></html>

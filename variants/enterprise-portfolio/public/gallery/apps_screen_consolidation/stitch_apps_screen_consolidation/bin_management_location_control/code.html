@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Warehouse Central - Bin Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "outline-variant": "#c6c6cd",
+                      "tertiary-container": "#001d32",
+                      "surface": "#f8f9ff",
+                      "tertiary": "#000000",
+                      "error-container": "#ffdad6",
+                      "surface-variant": "#d3e4fe",
+                      "primary-container": "#131b2e",
+                      "secondary": "#855300",
+                      "surface-container-high": "#dce9ff",
+                      "surface-tint": "#565e74",
+                      "on-tertiary": "#ffffff",
+                      "surface-bright": "#f8f9ff",
+                      "surface-dim": "#cbdbf5",
+                      "surface-container-highest": "#d3e4fe",
+                      "on-error": "#ffffff",
+                      "on-primary-fixed": "#131b2e",
+                      "surface-container-lowest": "#ffffff",
+                      "secondary-fixed-dim": "#ffb95f",
+                      "outline": "#76777d",
+                      "on-surface": "#0b1c30",
+                      "primary-fixed-dim": "#bec6e0",
+                      "on-secondary-container": "#684000",
+                      "on-secondary": "#ffffff",
+                      "on-secondary-fixed-variant": "#653e00",
+                      "inverse-surface": "#213145",
+                      "primary-fixed": "#dae2fd",
+                      "tertiary-fixed-dim": "#94ccff",
+                      "surface-container": "#e5eeff",
+                      "on-tertiary-fixed": "#001d32",
+                      "on-error-container": "#93000a",
+                      "secondary-fixed": "#ffddb8",
+                      "on-tertiary-fixed-variant": "#004b74",
+                      "background": "#f8f9ff",
+                      "inverse-on-surface": "#eaf1ff",
+                      "on-tertiary-container": "#3d89c3",
+                      "inverse-primary": "#bec6e0",
+                      "tertiary-fixed": "#cde5ff",
+                      "error": "#ba1a1a",
+                      "on-primary-container": "#7c839b",
+                      "secondary-container": "#fea619",
+                      "on-surface-variant": "#45464d",
+                      "primary": "#000000",
+                      "on-secondary-fixed": "#2a1700",
+                      "on-primary": "#ffffff",
+                      "on-primary-fixed-variant": "#3f465c",
+                      "on-background": "#0b1c30",
+                      "surface-container-low": "#eff4ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "stack-lg": "32px",
+                      "stack-md": "16px",
+                      "stack-sm": "8px",
+                      "max-width-content": "1440px",
+                      "gutter": "16px",
+                      "unit": "4px",
+                      "container-padding": "24px"
+              },
+              "fontFamily": {
+                      "headline-sm": [
+                              "Hanken Grotesk"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ],
+                      "display-lg": [
+                              "Hanken Grotesk"
+                      ],
+                      "headline-lg-mobile": [
+                              "Hanken Grotesk"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "label-mono": [
+                              "JetBrains Mono"
+                      ],
+                      "headline-md": [
+                              "Hanken Grotesk"
+                      ]
+              },
+              "fontSize": {
+                      "headline-sm": [
+                              "18px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "18px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg": [
+                              "36px",
+                              {
+                                      "lineHeight": "44px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "28px",
+                              {
+                                      "lineHeight": "34px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-mono": [
+                              "11px",
+                              {
+                                      "lineHeight": "14px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+</head>
+<body class="bg-background text-on-background font-body-md h-full flex flex-col md:flex-row antialiased">
+<!-- SideNavBar (Desktop) -->
+<nav class="hidden md:flex bg-surface-container-low flex flex-col py-stack-md fixed left-0 top-14 h-[calc(100vh-3.5rem)] w-64 border-r border-outline-variant z-40">
+<div class="px-gutter mb-stack-lg">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Alpha Warehouse</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Site: WH-092</p>
+</div>
+<div class="px-gutter mb-stack-md">
+<button class="w-full bg-primary text-on-primary py-2 px-4 rounded font-label-mono text-label-mono uppercase hover:bg-primary-container-highest transition-colors active:scale-[0.98] transition-transform">New Entry</button>
+</div>
+<ul class="flex-grow overflow-y-auto space-y-1">
+<li>
+<a class="flex items-center px-gutter py-2 text-on-surface-variant hover:bg-surface-container-highest transition-all group font-label-mono text-label-mono uppercase active:scale-[0.98] transition-transform" href="#">
+<span class="material-symbols-outlined mr-3 text-on-surface-variant group-hover:text-primary">dashboard</span>
+                    Dashboard
+                </a>
+</li>
+<li>
+<a class="flex items-center px-gutter py-2 text-on-surface-variant hover:bg-surface-container-highest transition-all group font-label-mono text-label-mono uppercase active:scale-[0.98] transition-transform" href="#">
+<span class="material-symbols-outlined mr-3 text-on-surface-variant group-hover:text-primary">inventory_2</span>
+                    Stock Ledger
+                </a>
+</li>
+<li>
+<a class="flex items-center px-gutter py-2 bg-secondary-container text-on-secondary-container font-bold border-l-4 border-secondary group font-label-mono text-label-mono uppercase active:scale-[0.98] transition-transform" href="#">
+<span class="material-symbols-outlined mr-3 text-on-secondary-container" style="font-variation-settings: 'FILL' 1;">shelves</span>
+                    Bin Management
+                </a>
+</li>
+<li>
+<a class="flex items-center px-gutter py-2 text-on-surface-variant hover:bg-surface-container-highest transition-all group font-label-mono text-label-mono uppercase active:scale-[0.98] transition-transform" href="#">
+<span class="material-symbols-outlined mr-3 text-on-surface-variant group-hover:text-primary">inventory</span>
+                    Cycle Counting
+                </a>
+</li>
+<li>
+<a class="flex items-center px-gutter py-2 text-on-surface-variant hover:bg-surface-container-highest transition-all group font-label-mono text-label-mono uppercase active:scale-[0.98] transition-transform" href="#">
+<span class="material-symbols-outlined mr-3 text-on-surface-variant group-hover:text-primary">local_shipping</span>
+                    Shipments
+                </a>
+</li>
+</ul>
+<div class="mt-auto px-gutter pt-stack-md border-t border-outline-variant space-y-1">
+<a class="flex items-center py-2 text-on-surface-variant hover:bg-surface-container-highest transition-all group font-label-mono text-label-mono uppercase" href="#">
+<span class="material-symbols-outlined mr-3">support_agent</span>
+                Support
+            </a>
+<a class="flex items-center py-2 text-on-surface-variant hover:bg-surface-container-highest transition-all group font-label-mono text-label-mono uppercase" href="#">
+<span class="material-symbols-outlined mr-3">logout</span>
+                Log Out
+            </a>
+</div>
+</nav>
+<!-- TopNavBar -->
+<header class="bg-surface border-b border-outline-variant fixed top-0 w-full z-50 flex justify-between items-center px-gutter h-14">
+<div class="flex items-center md:hidden">
+<!-- Mobile Menu Icon (Placeholder for interaction) -->
+<button class="mr-4 text-primary active:opacity-80 transition-opacity">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="font-headline-md text-headline-md font-bold text-primary">Warehouse Central</div>
+</div>
+<div class="hidden md:flex items-center">
+<div class="font-headline-md text-headline-md font-bold text-primary mr-8">Warehouse Central</div>
+<div class="relative w-96">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-10 pr-4 py-1.5 bg-surface-container-low border border-outline-variant rounded focus:border-primary focus:ring-1 focus:ring-primary font-body-sm text-body-sm outline-none transition-colors" placeholder="Search Bin Coordinates (e.g. A-01-04-B)" type="text"/>
+</div>
+</div>
+<div class="flex items-center space-x-4">
+<button class="text-on-surface-variant hover:bg-surface-container p-2 rounded-full transition-colors active:opacity-80">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:bg-surface-container p-2 rounded-full transition-colors active:opacity-80 hidden sm:block">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<button class="text-on-surface-variant hover:bg-surface-container p-2 rounded-full transition-colors active:opacity-80 hidden sm:block">
+<span class="material-symbols-outlined">help</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
+<img alt="User avatar" class="w-full h-full object-cover" data-alt="A professional headshot of an industrial warehouse manager, wearing a hard hat, soft bright lighting, modern corporate style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDiZDoLyBkqdjFLN7Js2igYC4tVK0iNKvmdh5iQT2BN4YnlBvCJAB_fpqqfoL09cf006FshLJc6zNduS32xFV-mZgcHDWNpm7vV_3yfbvLBpVHCaf1gjkEg232zNy_7yDN15zU5bUANLqC5jY-yc5wB5F_caAHSfSLRexBcznJFuyvKWlfRq6S3LwN_cDzZrF4FP6Kt8vHAjZMtk3v6hFTda3PCn9aamHNr8IiF0eUHI7kYsZx-adnd"/>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-grow md:ml-64 mt-14 p-container-padding bg-background overflow-y-auto">
+<!-- Page Header & Filters -->
+<div class="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-stack-md gap-stack-md">
+<div>
+<h1 class="font-display-lg text-display-lg text-primary mb-1">Bin Management - Zone A</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Real-time storage allocation and status tracking.</p>
+</div>
+<div class="flex flex-wrap gap-2 w-full lg:w-auto">
+<select class="bg-surface border border-outline-variant rounded px-3 py-1.5 font-body-sm text-body-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none">
+<option>Zone: A</option>
+<option>Zone: B</option>
+<option>Zone: C</option>
+<option>Cold Storage</option>
+</select>
+<select class="bg-surface border border-outline-variant rounded px-3 py-1.5 font-body-sm text-body-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none">
+<option>Type: All</option>
+<option>Pallet Rack</option>
+<option>Small Part Bin</option>
+</select>
+<select class="bg-surface border border-outline-variant rounded px-3 py-1.5 font-body-sm text-body-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none">
+<option>Status: All</option>
+<option>Available</option>
+<option>Reserved</option>
+<option>Locked</option>
+</select>
+<button class="bg-surface border border-outline-variant text-on-surface hover:bg-surface-container px-3 py-1.5 rounded flex items-center transition-colors">
+<span class="material-symbols-outlined text-[18px] mr-1">filter_list</span>
+<span class="font-label-mono text-label-mono uppercase">More Filters</span>
+</button>
+</div>
+</div>
+<!-- Bento Layout: Grid Map & Details -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-gutter">
+<!-- Left/Top Col: Bin Grid Visualization -->
+<div class="xl:col-span-8 flex flex-col gap-gutter">
+<!-- KPI Cards -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-gutter">
+<div class="bg-surface border border-outline-variant p-stack-sm rounded shadow-sm">
+<div class="font-label-mono text-label-mono uppercase text-on-surface-variant mb-1">Total Bins (Zone A)</div>
+<div class="font-headline-md text-headline-md text-primary">1,240</div>
+</div>
+<div class="bg-surface border border-outline-variant p-stack-sm rounded shadow-sm">
+<div class="font-label-mono text-label-mono uppercase text-on-surface-variant mb-1">Utilization</div>
+<div class="font-headline-md text-headline-md text-secondary-container">84%</div>
+</div>
+<div class="bg-surface border border-outline-variant p-stack-sm rounded shadow-sm">
+<div class="font-label-mono text-label-mono uppercase text-on-surface-variant mb-1">Available</div>
+<div class="font-headline-md text-headline-md text-on-tertiary-container">198</div>
+</div>
+<div class="bg-surface border border-outline-variant p-stack-sm rounded shadow-sm border-l-4 border-l-error">
+<div class="font-label-mono text-label-mono uppercase text-error mb-1">Maintenance Locked</div>
+<div class="font-headline-md text-headline-md text-error">12</div>
+</div>
+</div>
+<!-- Rack Visualization -->
+<div class="bg-surface border border-outline-variant rounded p-stack-md flex-grow flex flex-col shadow-sm">
+<div class="flex justify-between items-center mb-stack-sm border-b border-outline-variant pb-2">
+<h3 class="font-headline-sm text-headline-sm text-primary">Aisle 01 - Rack Structure</h3>
+<div class="flex items-center space-x-4 font-body-sm text-body-sm">
+<span class="flex items-center"><span class="w-3 h-3 rounded-sm bg-outline-variant mr-1"></span> Empty</span>
+<span class="flex items-center"><span class="w-3 h-3 rounded-sm bg-primary-fixed mr-1"></span> Occupied</span>
+<span class="flex items-center"><span class="w-3 h-3 rounded-sm bg-secondary-container mr-1"></span> Reserved</span>
+<span class="flex items-center"><span class="w-3 h-3 rounded-sm bg-error mr-1"></span> Locked</span>
+</div>
+</div>
+<!-- Simplified Visual Grid Representation -->
+<div class="flex-grow flex flex-col gap-2 overflow-x-auto pb-2">
+<!-- Level 4 -->
+<div class="flex items-center min-w-max">
+<div class="w-8 font-label-mono text-label-mono text-on-surface-variant">L4</div>
+<div class="flex gap-1">
+<div class="w-16 h-12 bg-outline-variant border border-outline rounded-sm flex items-center justify-center cursor-pointer hover:border-primary transition-colors"><span class="font-label-mono text-[9px]">A-01-04-A</span></div>
+<div class="w-16 h-12 bg-primary-fixed border border-primary-fixed-dim rounded-sm flex items-center justify-center cursor-pointer hover:border-primary focus:border-2 focus:border-primary transition-colors focus:ring-2 focus:ring-tertiary-fixed-dim" tabindex="0"><span class="font-label-mono text-[9px] text-on-primary-container">A-01-04-B</span></div>
+<div class="w-16 h-12 bg-outline-variant border border-outline rounded-sm flex items-center justify-center cursor-pointer hover:border-primary transition-colors"><span class="font-label-mono text-[9px]">A-01-04-C</span></div>
+<div class="w-16 h-12 bg-secondary-container border border-secondary-fixed-dim rounded-sm flex items-center justify-center cursor-pointer hover:border-primary transition-colors"><span class="font-label-mono text-[9px] text-on-secondary-container">A-01-04-D</span></div>
+<div class="w-16 h-12 bg-primary-fixed border border-primary-fixed-dim rounded-sm flex items-center justify-center cursor-pointer hover:border-primary transition-colors"><span class="font-label-mono text-[9px] text-on-primary-container">A-01-04-E</span></div>
+<div class="w-16 h-12 bg-error border border-error-container rounded-sm flex items-center justify-center cursor-pointer hover:border-primary transition-colors"><span class="font-label-mono text-[9px] text-on-error">A-01-04-F</span></div>
+<div class="w-16 h-12 bg-primary-fixed border border-primary-fixed-dim rounded-sm flex items-center justify-center cursor-pointer hover:border-primary transition-colors"><span class="font-label-mono text-[9px] text-on-primary-container">A-01-04-G</span></div>
+<div class="w-16 h-12 bg-primary-fixed border border-primary-fixed-dim rounded-sm flex items-center justify-center cursor-pointer hover:border-primary transition-colors"><span class="font-label-mono text-[9px] text-on-primary-container">A-01-04-H</span></div>
+</div>
+</div>
+<!-- Level 3 -->
+<div class="flex items-center min-w-max">
+<div class="w-8 font-label-mono text-label-mono text-on-surface-variant">L3</div>
+<div class="flex gap-1">
+<div class="w-16 h-12 bg-primary-fixed border border-primary-fixed-dim rounded-sm flex items-center justify-center cursor-pointer hover:border-primary transition-colors"><span class="font-label-mono text-[9px] text-on-primary-container">A-01-03-A</span></div>
+<div class="w-16 h-12 bg-primary-fixed border border-primary-fixed-dim rounded-sm flex items-center justify-center cursor-pointer hover:border-primary transition-colors"><span class="font-label-mono text-[9px] text-on-primary-container">A-01-03-B</span></div>
+<div class="w-16 h-12 bg-primary-fixed border border-primary-fixed-dim rounded-sm flex items-center justify-center cursor-pointer hover:border-primary transition-colors"><span class="font-label-mono text-[9px] text-on-primary-container">A-01-03-C</span></div>
+<div class="w-16 h-12 bg-outline-variant border border-outline rounded-sm flex items-center justify-center cursor-pointer hover:border-primary transition-colors"><span class="font-label-mono text-[9px]">A-01-03-D</span></div>
+<div class="w-16 h-12 bg-outline-variant border border-outline rounded-sm flex items-center justify-center cursor-pointer hover:border-primary transition-colors"><span class="font-label-mono text-[9px]">A-01-03-E</span></div>
+<div class="w-16 h-12 bg-primary-fixed border border-primary-fixed-dim rounded-sm flex items-center justify-center cursor-pointer hover:border-primary transition-colors"><span class="font-label-mono text-[9px] text-on-primary-container">A-01-03-F</span></div>
+<div class="w-16 h-12 bg-secondary-container border border-secondary-fixed-dim rounded-sm flex items-center justify-center cursor-pointer hover:border-primary transition-colors"><span class="font-label-mono text-[9px] text-on-secondary-container">A-01-03-G</span></div>
+<div class="w-16 h-12 bg-primary-fixed border border-primary-fixed-dim rounded-sm flex items-center justify-center cursor-pointer hover:border-primary transition-colors"><span class="font-label-mono text-[9px] text-on-primary-container">A-01-03-H</span></div>
+</div>
+</div>
+<!-- Level 2 -->
+<div class="flex items-center min-w-max">
+<div class="w-8 font-label-mono text-label-mono text-on-surface-variant">L2</div>
+<div class="flex gap-1">
+<div class="w-16 h-12 bg-primary-fixed border border-primary-fixed-dim rounded-sm flex items-center justify-center cursor-pointer hover:border-primary transition-colors"><span class="font-label-mono text-[9px] text-on-primary-container">A-01-02-A</span></div>
+<div class="w-16 h-12 bg-outline-variant border border-outline rounded-sm flex items-center justify-center cursor-pointer hover:border-primary transition-colors"><span class="font-label-mono text-[9px]">A-01-02-B</span></div>
+<div class="w-16 h-12 bg-outline-variant border border-outline rounded-sm flex items-center justify-center cursor-pointer hover:border-primary transition-colors"><span class="font-label-mono text-[9px]">A-01-02-C</span></div>
+<div class="w-16 h-12 bg-primary-fixed border border-primary-fixed-dim rounded-sm flex items-center justify-center cursor-pointer hover:border-primary transition-colors"><span class="font-label-mono text-[9px] text-on-primary-container">A-01-02-D</span></div>
+<div class="w-16 h-12 bg-primary-fixed border border-primary-fixed-dim rounded-sm flex items-center justify-center cursor-pointer hover:border-primary transition-colors"><span class="font-label-mono text-[9px] text-on-primary-container">A-01-02-E</span></div>
+<div class="w-16 h-12 bg-primary-fixed border border-primary-fixed-dim rounded-sm flex items-center justify-center cursor-pointer hover:border-primary transition-colors"><span class="font-label-mono text-[9px] text-on-primary-container">A-01-02-F</span></div>
+<div class="w-16 h-12 bg-outline-variant border border-outline rounded-sm flex items-center justify-center cursor-pointer hover:border-primary transition-colors"><span class="font-label-mono text-[9px]">A-01-02-G</span></div>
+<div class="w-16 h-12 bg-outline-variant border border-outline rounded-sm flex items-center justify-center cursor-pointer hover:border-primary transition-colors"><span class="font-label-mono text-[9px]">A-01-02-H</span></div>
+</div>
+</div>
+<!-- Level 1 -->
+<div class="flex items-center min-w-max">
+<div class="w-8 font-label-mono text-label-mono text-on-surface-variant">L1</div>
+<div class="flex gap-1">
+<div class="w-16 h-12 bg-primary-fixed border border-primary-fixed-dim rounded-sm flex items-center justify-center cursor-pointer hover:border-primary transition-colors"><span class="font-label-mono text-[9px] text-on-primary-container">A-01-01-A</span></div>
+<div class="w-16 h-12 bg-primary-fixed border border-primary-fixed-dim rounded-sm flex items-center justify-center cursor-pointer hover:border-primary transition-colors"><span class="font-label-mono text-[9px] text-on-primary-container">A-01-01-B</span></div>
+<div class="w-16 h-12 bg-secondary-container border border-secondary-fixed-dim rounded-sm flex items-center justify-center cursor-pointer hover:border-primary transition-colors"><span class="font-label-mono text-[9px] text-on-secondary-container">A-01-01-C</span></div>
+<div class="w-16 h-12 bg-primary-fixed border border-primary-fixed-dim rounded-sm flex items-center justify-center cursor-pointer hover:border-primary transition-colors"><span class="font-label-mono text-[9px] text-on-primary-container">A-01-01-D</span></div>
+<div class="w-16 h-12 bg-error border border-error-container rounded-sm flex items-center justify-center cursor-pointer hover:border-primary transition-colors"><span class="font-label-mono text-[9px] text-on-error">A-01-01-E</span></div>
+<div class="w-16 h-12 bg-primary-fixed border border-primary-fixed-dim rounded-sm flex items-center justify-center cursor-pointer hover:border-primary transition-colors"><span class="font-label-mono text-[9px] text-on-primary-container">A-01-01-F</span></div>
+<div class="w-16 h-12 bg-primary-fixed border border-primary-fixed-dim rounded-sm flex items-center justify-center cursor-pointer hover:border-primary transition-colors"><span class="font-label-mono text-[9px] text-on-primary-container">A-01-01-G</span></div>
+<div class="w-16 h-12 bg-outline-variant border border-outline rounded-sm flex items-center justify-center cursor-pointer hover:border-primary transition-colors"><span class="font-label-mono text-[9px]">A-01-01-H</span></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Activity Table List -->
+<div class="bg-surface border border-outline-variant rounded shadow-sm overflow-hidden hidden md:block">
+<div class="px-stack-md py-stack-sm border-b border-outline-variant bg-surface-container-low">
+<h4 class="font-headline-sm text-headline-sm text-primary">Recent Zone Activity</h4>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left font-body-sm text-body-sm">
+<thead class="bg-surface border-b border-outline-variant font-label-mono text-label-mono uppercase text-on-surface-variant">
+<tr>
+<th class="px-4 py-2 font-medium">Time</th>
+<th class="px-4 py-2 font-medium">Bin ID</th>
+<th class="px-4 py-2 font-medium">Action</th>
+<th class="px-4 py-2 font-medium">SKU</th>
+<th class="px-4 py-2 font-medium">Operator</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant bg-surface">
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-4 py-2 whitespace-nowrap">10:42 AM</td>
+<td class="px-4 py-2 font-label-mono text-primary">A-01-04-B</td>
+<td class="px-4 py-2"><span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-medium bg-primary-fixed text-on-primary-container"><span class="w-1.5 h-1.5 rounded-full bg-primary mr-1"></span> Putaway</span></td>
+<td class="px-4 py-2 font-label-mono">SKU-992-XYZ</td>
+<td class="px-4 py-2">M. Chen</td>
+</tr>
+<tr class="bg-[#F1F5F9] hover:bg-surface-container-low transition-colors">
+<td class="px-4 py-2 whitespace-nowrap">10:15 AM</td>
+<td class="px-4 py-2 font-label-mono text-primary">A-01-01-E</td>
+<td class="px-4 py-2"><span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-medium bg-error-container text-on-error-container"><span class="w-1.5 h-1.5 rounded-full bg-error mr-1"></span> Locked (Maint)</span></td>
+<td class="px-4 py-2 font-label-mono text-on-surface-variant">--</td>
+<td class="px-4 py-2">System</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-4 py-2 whitespace-nowrap">09:30 AM</td>
+<td class="px-4 py-2 font-label-mono text-primary">A-01-03-A</td>
+<td class="px-4 py-2"><span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-medium bg-secondary-fixed text-on-secondary-container"><span class="w-1.5 h-1.5 rounded-full bg-secondary mr-1"></span> Picked</span></td>
+<td class="px-4 py-2 font-label-mono">SKU-104-ABC</td>
+<td class="px-4 py-2">J. Smith</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Right Col: Bin Detail View (Focused State) -->
+<div class="xl:col-span-4 flex flex-col h-full">
+<!-- Focus Ring indicated active selection from grid -->
+<div class="bg-surface border border-outline-variant rounded p-stack-md shadow-sm h-full flex flex-col relative overflow-hidden">
+<!-- Status Indicator Bar -->
+<div class="absolute left-0 top-0 bottom-0 w-[6px] bg-primary"></div>
+<div class="pl-2 border-b border-outline-variant pb-stack-sm mb-stack-sm flex justify-between items-start">
+<div>
+<div class="font-label-mono text-label-mono uppercase text-on-surface-variant mb-1">Selected Bin</div>
+<h2 class="font-display-lg text-headline-lg-mobile md:text-display-lg text-primary tracking-tight">A-01-04-B</h2>
+</div>
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-primary-fixed text-on-primary-fixed border border-primary-fixed-dim">
+<span class="w-2 h-2 rounded-full bg-primary mr-1.5"></span>
+                            Active
+                        </span>
+</div>
+<div class="space-y-stack-md flex-grow pl-2">
+<!-- Physical Properties -->
+<div>
+<h4 class="font-label-mono text-label-mono uppercase text-on-surface-variant mb-2 border-b border-outline-variant pb-1">Physical Specs</h4>
+<div class="grid grid-cols-2 gap-2 font-body-sm text-body-sm">
+<div>
+<span class="text-on-surface-variant block">Type:</span>
+<span class="font-medium text-primary">Pallet Rack (Heavy)</span>
+</div>
+<div>
+<span class="text-on-surface-variant block">Zone:</span>
+<span class="font-medium text-primary">A - Ambient</span>
+</div>
+<div>
+<span class="text-on-surface-variant block">Max Weight:</span>
+<span class="font-medium text-primary">1500 kg</span>
+</div>
+<div>
+<span class="text-on-surface-variant block">Max Volume:</span>
+<span class="font-medium text-primary">2.4 m³</span>
+</div>
+</div>
+</div>
+<!-- Current Contents -->
+<div class="bg-surface-container-low p-stack-sm border border-outline-variant rounded">
+<h4 class="font-label-mono text-label-mono uppercase text-on-surface-variant mb-2 border-b border-outline-variant pb-1 flex justify-between items-center">
+                                Current Contents
+                                <span class="font-body-sm font-medium text-primary normal-case">85% Utilized</span>
+</h4>
+<!-- Progress Bar for Capacity -->
+<div class="w-full bg-outline-variant rounded-full h-1.5 mb-3">
+<div class="bg-primary h-1.5 rounded-full" style="width: 85%"></div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-center bg-surface p-2 border border-outline-variant rounded text-sm">
+<div>
+<div class="font-label-mono font-bold text-primary">SKU-992-XYZ</div>
+<div class="text-[11px] text-on-surface-variant">Industrial Lubricant Totes</div>
+</div>
+<div class="text-right">
+<div class="font-medium">Qty: 4 Pallets</div>
+<div class="text-[11px] text-on-surface-variant">Batch: #B-9982</div>
+</div>
+</div>
+<div class="text-[11px] flex justify-between text-on-surface-variant px-1">
+<span>Added: Oct 24, 08:00</span>
+<span>Exp: N/A</span>
+</div>
+</div>
+</div>
+<!-- Audit Timeline (Mini) -->
+<div>
+<h4 class="font-label-mono text-label-mono uppercase text-on-surface-variant mb-2 border-b border-outline-variant pb-1">Recent Logs</h4>
+<div class="relative pl-3 border-l-2 border-outline-variant space-y-3 font-body-sm text-[11px]">
+<div class="relative">
+<span class="absolute -left-[17px] top-1 w-2.5 h-2.5 rounded-full bg-primary border-2 border-surface"></span>
+<p class="text-primary font-medium">Putaway Completed</p>
+<p class="text-on-surface-variant">Oct 24, 10:42 AM by Operator 42</p>
+</div>
+<div class="relative">
+<span class="absolute -left-[17px] top-1 w-2.5 h-2.5 rounded-full bg-outline border-2 border-surface"></span>
+<p class="text-primary font-medium">Cycle Count Verified</p>
+<p class="text-on-surface-variant">Oct 20, 14:15 PM by Auditor J.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Actions -->
+<div class="mt-stack-md pt-stack-sm border-t border-outline-variant flex flex-col gap-2 pl-2">
+<button class="w-full bg-primary text-on-primary py-2 px-4 rounded font-label-mono text-label-mono uppercase hover:bg-primary-container-highest transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px] mr-2">swap_horiz</span>
+                            Transfer Stock
+                        </button>
+<div class="flex gap-2">
+<button class="flex-1 bg-surface border border-outline-variant text-on-surface py-2 px-2 rounded font-label-mono text-[10px] uppercase hover:bg-surface-container transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px] mr-1">add_box</span>
+                                Assign SKU
+                            </button>
+<button class="flex-1 bg-error text-on-error py-2 px-2 rounded font-label-mono text-[10px] uppercase hover:opacity-90 transition-opacity flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px] mr-1">block</span>
+                                Block Bin
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<script>
+        // Simple script to handle interaction state for demo purposes
+        document.addEventListener('DOMContentLoaded', () => {
+            const binCells = document.querySelectorAll('.w-16.h-12');
+            const binTitle = document.querySelector('h2.font-display-lg');
+            
+            binCells.forEach(cell => {
+                cell.addEventListener('click', function() {
+                    const id = this.querySelector('span').innerText;
+                    if(id) {
+                        binTitle.innerText = id;
+                        // Focus visual feedback
+                        binCells.forEach(c => c.classList.remove('ring-2', 'ring-tertiary-fixed-dim', 'border-2', 'border-primary'));
+                        this.classList.add('ring-2', 'ring-tertiary-fixed-dim', 'border-2', 'border-primary');
+                    }
+                });
+            });
+        });
+    </script>
+</body></html>

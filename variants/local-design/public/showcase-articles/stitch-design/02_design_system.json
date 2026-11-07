@@ -1,0 +1,31 @@
+{
+  "id": 3,
+  "jsonrpc": "2.0",
+  "result": {
+    "content": [
+      {
+        "text": "{\"name\":\"assets/13524431471221498148\",\"designSystem\":{\"displayName\":\"ALTech Swiss Editorial & Emerald System\",\"theme\":{\"colorMode\":\"DARK\",\"roundness\":\"ROUND_FOUR\",\"customColor\":\"#10B981\",\"headlineFont\":\"SPACE_GROTESK\",\"bodyFont\":\"PLUS_JAKARTA_SANS\",\"designMd\":\"# Ali Akhmad Fauzie — Principal Solutions Architect Editorial Design System\\n\\n## Aesthetic Philosophy & Anti-Slop Invariants\\n- **High-Craft Swiss Editorial & Industrial Precision**: Inspired by Linear, Vercel Geist, Stripe Press, and Bloomberg Terminal typography.\\n- **Matte Carbon & Emerald Architecture**: Deep matte obsidian-slate canvas (`#0B0D0E`), elevated structural panels (`#121518`), crisp `1px` hairline dividers (`#22272E`), and high-contrast emerald architectural accents (`#10B981` / `#006C4C`).\\n- **Strict 4px Industrial Geometry**: Use tight `4px` (`rounded-sm`) corners on buttons, badges, code blocks, and cards. Never use pill buttons or floating neon gradients.\\n- **Typography Hierarchy**:\\n  - **Headlines**: Space Grotesk — tight tracking (`-0.03em`), authoritative geometric display titles.\\n  - **Body**: Plus Jakarta Sans — high legibility for deep technical case studies (`#F3F4F6` primary text, `#9CA3AF` secondary text).\\n  - **Monospace Telemetry & Code**: JetBrains Mono — tabular numerals (`tabular-nums`) for KPI counters, latency benchmarks, file paths, and code citations.\\n\",\"colorVariant\":\"TONAL_SPOT\",\"overridePrimaryColor\":\"#10B981\",\"overrideSecondaryColor\":\"#006C4C\",\"overrideNeutralColor\":\"#0B0D0E\"}},\"version\":\"1\"}",
+        "type": "text"
+      }
+    ],
+    "structuredContent": {
+      "designSystem": {
+        "displayName": "ALTech Swiss Editorial & Emerald System",
+        "theme": {
+          "bodyFont": "PLUS_JAKARTA_SANS",
+          "colorMode": "DARK",
+          "colorVariant": "TONAL_SPOT",
+          "customColor": "#10B981",
+          "designMd": "# Ali Akhmad Fauzie — Principal Solutions Architect Editorial Design System\n\n## Aesthetic Philosophy & Anti-Slop Invariants\n- **High-Craft Swiss Editorial & Industrial Precision**: Inspired by Linear, Vercel Geist, Stripe Press, and Bloomberg Terminal typography.\n- **Matte Carbon & Emerald Architecture**: Deep matte obsidian-slate canvas (`#0B0D0E`), elevated structural panels (`#121518`), crisp `1px` hairline dividers (`#22272E`), and high-contrast emerald architectural accents (`#10B981` / `#006C4C`).\n- **Strict 4px Industrial Geometry**: Use tight `4px` (`rounded-sm`) corners on buttons, badges, code blocks, and cards. Never use pill buttons or floating neon gradients.\n- **Typography Hierarchy**:\n  - **Headlines**: Space Grotesk — tight tracking (`-0.03em`), authoritative geometric display titles.\n  - **Body**: Plus Jakarta Sans — high legibility for deep technical case studies (`#F3F4F6` primary text, `#9CA3AF` secondary text).\n  - **Monospace Telemetry & Code**: JetBrains Mono — tabular numerals (`tabular-nums`) for KPI counters, latency benchmarks, file paths, and code citations.\n",
+          "headlineFont": "SPACE_GROTESK",
+          "overrideNeutralColor": "#0B0D0E",
+          "overridePrimaryColor": "#10B981",
+          "overrideSecondaryColor": "#006C4C",
+          "roundness": "ROUND_FOUR"
+        }
+      },
+      "name": "assets/13524431471221498148",
+      "version": "1"
+    }
+  }
+}

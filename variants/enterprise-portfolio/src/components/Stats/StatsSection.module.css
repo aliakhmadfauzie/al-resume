@@ -1,0 +1,71 @@
+/* ============================================================
+   Stats Section Component Styles
+   ============================================================ */
+
+.statsSection {
+  margin-top: var(--space-3xl);
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: var(--space-md);
+}
+
+.statsGrid3 {
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+}
+
+.statsGrid2 {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+/* ----- Stat Card ----- */
+.statCard {
+  text-align: center;
+  padding: var(--space-lg) var(--space-md);
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  transition: border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.statCard:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-glow);
+}
+
+.statCardIcon {
+  font-size: 2rem;
+  margin-bottom: var(--space-sm);
+}
+
+.statCardValue {
+  font-size: var(--font-size-3xl);
+  font-weight: 800;
+  color: var(--accent-blue);
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+
+.statCardLabel {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .statsGrid,
+  .statsGrid3,
+  .statsGrid2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .statsGrid,
+  .statsGrid3,
+  .statsGrid2 {
+    grid-template-columns: 1fr;
+  }
+}

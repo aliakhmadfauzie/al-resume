@@ -41,3 +41,8 @@ npm run build
 
 ## 📄 License
 Authored by **Ali Akhmad Fauzie** ([@aliakhmadfauzie](https://github.com/aliakhmadfauzie)). All rights reserved.
+
+
+## Consolidated portfolio projects
+
+This is the primary portfolio. See [CONSOLIDATION.md](CONSOLIDATION.md) for the preserved site variants, their sources, and how to run them.

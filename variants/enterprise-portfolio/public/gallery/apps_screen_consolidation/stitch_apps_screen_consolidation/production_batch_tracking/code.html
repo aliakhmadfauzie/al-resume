@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Production &amp; Batch Tracking Dashboard - Command Center</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Hanken+Grotesk:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed": "#2a1700",
+                        "on-error-container": "#93000a",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface": "#0b1c30",
+                        "on-primary": "#ffffff",
+                        "background": "#f8f9ff",
+                        "surface-dim": "#cbdbf5",
+                        "on-surface-variant": "#45464d",
+                        "on-error": "#ffffff",
+                        "surface": "#f8f9ff",
+                        "primary-fixed": "#dae2fd",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed": "#cde5ff",
+                        "on-secondary-fixed-variant": "#653e00",
+                        "surface-container": "#e5eeff",
+                        "secondary-fixed": "#ffddb8",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "surface-bright": "#f8f9ff",
+                        "error-container": "#ffdad6",
+                        "tertiary-container": "#001d32",
+                        "outline": "#76777d",
+                        "on-primary-container": "#7c839b",
+                        "primary-container": "#131b2e",
+                        "inverse-primary": "#bec6e0",
+                        "on-tertiary-container": "#3d89c3",
+                        "on-tertiary-fixed-variant": "#004b74",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "tertiary": "#000000",
+                        "on-primary-fixed": "#131b2e",
+                        "on-secondary-container": "#684000",
+                        "surface-container-highest": "#d3e4fe",
+                        "outline-variant": "#c6c6cd",
+                        "secondary-container": "#fea619",
+                        "on-background": "#0b1c30",
+                        "surface-container-high": "#dce9ff",
+                        "tertiary-fixed-dim": "#94ccff",
+                        "primary": "#000000",
+                        "primary-fixed-dim": "#bec6e0",
+                        "surface-container-low": "#eff4ff",
+                        "secondary-fixed-dim": "#ffb95f",
+                        "surface-variant": "#d3e4fe",
+                        "inverse-surface": "#213145",
+                        "surface-tint": "#565e74",
+                        "secondary": "#855300",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-tertiary-fixed": "#001d32"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "stack-md": "16px",
+                        "stack-sm": "8px",
+                        "unit": "4px",
+                        "stack-lg": "32px",
+                        "container-padding": "24px",
+                        "max-width-content": "1440px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "label-mono": ["JetBrains Mono"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "body-sm": ["Inter"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "headline-sm": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-mono": ["11px", { "lineHeight": "14px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-sm": ["12px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "34px", "fontWeight": "700" }],
+                        "display-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #f8f9ff; color: #0b1c30; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .filled-icon { font-variation-settings: 'FILL' 1; }
+        
+        /* Custom Scrollbar for dense data views */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #c6c6cd; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #76777d; }
+
+        .timeline-grid {
+            background-image: linear-gradient(to right, #e2e8f0 1px, transparent 1px);
+            background-size: 100px 100%;
+        }
+    </style>
+</head>
+<body class="bg-background flex flex-col md:flex-row min-h-screen overflow-hidden font-body-md text-body-md antialiased">
+<!-- TopNavBar (Mobile Only Context or Top Anchor) -->
+<header class="bg-surface text-primary font-body-md text-body-md fixed top-0 w-full z-50 border-b border-outline-variant flex justify-between items-center px-gutter h-14 w-full md:hidden">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">menu</span>
+<span class="font-headline-sm text-headline-sm font-bold text-primary">Enterprise Core ERP</span>
+</div>
+<div class="flex items-center gap-stack-sm">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer active:opacity-80">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer active:opacity-80">apps</span>
+<img alt="User Profile" class="w-8 h-8 rounded-full border border-outline-variant object-cover ml-2" data-alt="A small, professional corporate headshot of an executive in a modern, well-lit office setting. The lighting is soft and neutral, conveying trust and reliability. High-resolution, sharp focus, professional business attire." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAwpg94Eg1ypLQifum_nuDIttNKDIns_pVlSJ1g0AiJO5m6Ix4zwVh4wqcCS_DvpRJIttHyFlmWFkM1bH8dgBOWTdisdqdwT9QaRa3QSr7OCJ0xGRU-rdipzMJr1uwzcBJ5q1uDP9__RSq7fOCcOUdaR7u6k2MFuYR_sKybVxW-pFe_5_uvOvO0WlDzH0nfKEtfv5Nxf757NlnlQa06lr0-XL46igPlHRnXanm6g4nuPLrEXn3NeUL"/>
+</div>
+</header>
+<!-- SideNavBar (Desktop Shell) -->
+<aside class="hidden md:flex bg-surface-container-low text-primary font-label-mono text-label-mono uppercase border-r border-outline-variant flex-col py-stack-md gap-unit w-64 h-[calc(100vh)] shrink-0 sticky top-0 z-40">
+<!-- Brand Header -->
+<div class="px-container-padding mb-stack-lg flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-primary-container flex items-center justify-center text-on-primary-container shrink-0">
+<span class="material-symbols-outlined filled-icon">settings_suggest</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface tracking-tight leading-none mb-1">Command Center</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant uppercase">Operational Suite</span>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class="flex-1 overflow-y-auto px-unit flex flex-col gap-unit">
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high transition-all active:scale-95 duration-150 rounded" href="#">
+<span class="material-symbols-outlined text-[20px]">payments</span>
+<span>Finance</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high transition-all active:scale-95 duration-150 rounded" href="#">
+<span class="material-symbols-outlined text-[20px]">shopping_cart</span>
+<span>Procurement</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high transition-all active:scale-95 duration-150 rounded" href="#">
+<span class="material-symbols-outlined text-[20px]">groups</span>
+<span>Human Resources</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high transition-all active:scale-95 duration-150 rounded" href="#">
+<span class="material-symbols-outlined text-[20px]">verified</span>
+<span>Quality Control</span>
+</a>
+<!-- Active Tab: Production -->
+<a class="flex items-center gap-3 px-3 py-2 bg-secondary-container text-on-secondary-container font-bold rounded-lg transition-all active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined filled-icon text-[20px]">factory</span>
+<span>Production</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high transition-all active:scale-95 duration-150 rounded" href="#">
+<span class="material-symbols-outlined text-[20px]">precision_manufacturing</span>
+<span>Operations</span>
+</a>
+</nav>
+<!-- CTA & Footer -->
+<div class="px-gutter mt-auto flex flex-col gap-stack-sm pt-stack-md border-t border-outline-variant/30">
+<button class="w-full bg-primary text-on-primary py-2 px-4 rounded font-body-sm text-body-sm flex items-center justify-center gap-2 hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                New Requisition
+            </button>
+<div class="flex flex-col gap-1 mt-2">
+<a class="flex items-center gap-3 px-2 py-1.5 text-on-surface-variant hover:bg-surface-container-high transition-all rounded" href="#">
+<span class="material-symbols-outlined text-[18px]">support_agent</span>
+<span class="font-label-mono text-label-mono uppercase">Support</span>
+</a>
+<a class="flex items-center gap-3 px-2 py-1.5 text-on-surface-variant hover:bg-surface-container-high transition-all rounded" href="#">
+<span class="material-symbols-outlined text-[18px]">inventory_2</span>
+<span class="font-label-mono text-label-mono uppercase">Archive</span>
+</a>
+</div>
+<!-- User Footer Mini Profile (Replacing standalone topbar on desktop) -->
+<div class="flex items-center gap-3 mt-4 pt-4 border-t border-outline-variant/30">
+<img alt="User Profile" class="w-8 h-8 rounded-full border border-outline-variant object-cover" data-alt="A small, professional corporate headshot of an executive in a modern, well-lit office setting. The lighting is soft and neutral, conveying trust and reliability. High-resolution, sharp focus, professional business attire." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAD5U5_OVvNUU6FH-CcWWC3kScQLExd8xenUpRYvJRyIcF0TsHRlSQmd4pVn4xASbyqyAom9ltKn-Gjn3qzzrn5X_5AMe_ArujFeh4rCxq2Hkcm7-W_damddFC9Wv-KoZtucwAgQ3EYFDvB9CY7U_5h9CwuWiFSMKINL1WEVBbj0bJHutyUISOxozwoM65Bbki8NwIY17z5BLBGH7IWxNxzqKQWy0Y8CgDr7-lZ54lan_DaDWhFvJsq"/>
+<div class="flex flex-col overflow-hidden">
+<span class="font-body-sm text-body-sm font-semibold truncate">J. Doe</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant truncate">Plant Mgr</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 flex flex-col h-screen overflow-hidden pt-14 md:pt-0 bg-background">
+<!-- Header Utility Bar -->
+<div class="flex justify-between items-center px-container-padding py-stack-md border-b border-outline-variant bg-surface shrink-0">
+<div>
+<h1 class="font-display-lg text-display-lg text-on-surface m-0 leading-tight">Production Tracking</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Live Overview: Line Status &amp; Batch Genealogy</p>
+</div>
+<div class="flex items-center gap-stack-md">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
+<input class="pl-10 pr-4 py-1.5 border border-outline-variant rounded bg-surface-container-lowest font-body-sm text-body-sm focus:border-primary focus:ring-1 focus:ring-primary w-64 transition-all" placeholder="Search batch ID, line..." type="text"/>
+</div>
+<button class="bg-error text-on-error px-4 py-2 rounded font-body-sm text-body-sm font-semibold flex items-center gap-2 hover:bg-error/90 transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[18px]">warning</span>
+                    Emergency Report
+                </button>
+</div>
+</div>
+<!-- Scrollable Dashboard Content -->
+<div class="flex-1 overflow-y-auto p-container-padding">
+<!-- Key Metrics Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter mb-stack-lg">
+<!-- Metric 1: OEE -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded p-stack-md relative overflow-hidden group">
+<div class="absolute left-0 top-0 bottom-0 w-[6px] bg-secondary-container"></div>
+<div class="pl-2">
+<div class="flex justify-between items-start mb-2">
+<span class="font-label-mono text-label-mono uppercase text-on-surface-variant">Global OEE</span>
+<span class="material-symbols-outlined text-secondary-container">speed</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-display-lg text-display-lg text-on-surface">78.4%</span>
+<span class="font-body-sm text-body-sm text-error flex items-center"><span class="material-symbols-outlined text-[14px]">arrow_downward</span> 1.2%</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Target: 82.0%</p>
+</div>
+</div>
+<!-- Metric 2: Active Batches -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded p-stack-md relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-[6px] bg-primary"></div>
+<div class="pl-2">
+<div class="flex justify-between items-start mb-2">
+<span class="font-label-mono text-label-mono uppercase text-on-surface-variant">Active Batches</span>
+<span class="material-symbols-outlined text-primary">view_in_ar</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-display-lg text-display-lg text-on-surface">14</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">/ 18 Lines</span>
+</div>
+<div class="w-full bg-surface-variant h-1.5 rounded-full mt-3 overflow-hidden">
+<div class="bg-primary h-full rounded-full w-[77%]"></div>
+</div>
+</div>
+</div>
+<!-- Metric 3: Quality Holds -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded p-stack-md relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-[6px] bg-error"></div>
+<div class="pl-2">
+<div class="flex justify-between items-start mb-2">
+<span class="font-label-mono text-label-mono uppercase text-on-surface-variant">Quality Holds</span>
+<span class="material-symbols-outlined text-error">gpp_bad</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-display-lg text-display-lg text-on-surface">3</span>
+<span class="font-body-sm text-body-sm text-error font-semibold flex items-center">Action Req.</span>
+</div>
+<div class="flex gap-1 mt-2">
+<span class="px-2 py-0.5 bg-error-container text-on-error-container font-label-mono text-[9px] uppercase rounded">Line 4</span>
+<span class="px-2 py-0.5 bg-error-container text-on-error-container font-label-mono text-[9px] uppercase rounded">Line 7</span>
+</div>
+</div>
+</div>
+<!-- Metric 4: Material Yield -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded p-stack-md relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-[6px] bg-on-tertiary-container"></div>
+<div class="pl-2">
+<div class="flex justify-between items-start mb-2">
+<span class="font-label-mono text-label-mono uppercase text-on-surface-variant">Material Yield</span>
+<span class="material-symbols-outlined text-on-tertiary-container">recycling</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-display-lg text-display-lg text-on-surface">96.2%</span>
+<span class="font-body-sm text-body-sm text-primary flex items-center"><span class="material-symbols-outlined text-[14px]">arrow_upward</span> 0.5%</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Vs. Last Shift</p>
+</div>
+</div>
+</div>
+<!-- Complex Layout: Left Content (Table/Genealogy) + Right Content (Gantt) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Production Lines Status Table (Spans 7 cols on large) -->
+<div class="lg:col-span-7 bg-surface-container-lowest border border-outline-variant rounded flex flex-col">
+<div class="px-stack-md py-stack-sm border-b border-outline-variant flex justify-between items-center bg-surface-bright">
+<h2 class="font-headline-sm text-headline-sm font-semibold text-on-surface">Line Status &amp; Genealogy</h2>
+<button class="text-primary hover:bg-surface-container p-1 rounded transition-colors">
+<span class="material-symbols-outlined text-[20px]">filter_list</span>
+</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface border-b border-outline-variant font-label-mono text-label-mono uppercase text-on-surface-variant">
+<th class="py-2 px-stack-md font-medium w-1/4">Line / Asset</th>
+<th class="py-2 px-stack-md font-medium w-1/4">Active Batch ID</th>
+<th class="py-2 px-stack-md font-medium w-1/4">Status</th>
+<th class="py-2 px-stack-md font-medium text-right w-1/4">Output Rate</th>
+</tr>
+</thead>
+<tbody class="font-body-sm text-body-sm">
+<!-- Row 1: Running -->
+<tr class="border-b border-outline-variant/50 hover:bg-surface-container-low transition-colors group cursor-pointer">
+<td class="py-3 px-stack-md">
+<div class="flex items-center gap-2">
+<div class="w-[4px] h-6 bg-primary rounded-full"></div>
+<span class="font-semibold text-on-surface">Extrusion L-01</span>
+</div>
+</td>
+<td class="py-3 px-stack-md">
+<div class="flex flex-col">
+<span class="font-label-mono text-primary font-bold">B-2409-A1</span>
+<span class="text-[10px] text-on-surface-variant">Polymer Blend X</span>
+</div>
+</td>
+<td class="py-3 px-stack-md">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed text-[11px] font-medium border border-primary-fixed-dim">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                                            Running
+                                        </span>
+</td>
+<td class="py-3 px-stack-md text-right font-label-mono">145 kg/hr</td>
+</tr>
+<!-- Row 2: Hold -->
+<tr class="border-b border-outline-variant/50 hover:bg-surface-container-low transition-colors bg-error-container/10 cursor-pointer">
+<td class="py-3 px-stack-md">
+<div class="flex items-center gap-2">
+<div class="w-[4px] h-6 bg-error rounded-full"></div>
+<span class="font-semibold text-on-surface">Mixing M-04</span>
+</div>
+</td>
+<td class="py-3 px-stack-md">
+<div class="flex flex-col">
+<span class="font-label-mono text-primary font-bold">B-2409-C3</span>
+<span class="text-[10px] text-on-surface-variant">Solvent Base</span>
+</div>
+</td>
+<td class="py-3 px-stack-md">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-error-container text-on-error-container text-[11px] font-medium border border-error/20">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+                                            Quality Hold
+                                        </span>
+</td>
+<td class="py-3 px-stack-md text-right font-label-mono text-error">0 kg/hr</td>
+</tr>
+<!-- Row 3: Maintenance -->
+<tr class="border-b border-outline-variant/50 hover:bg-surface-container-low transition-colors cursor-pointer">
+<td class="py-3 px-stack-md">
+<div class="flex items-center gap-2">
+<div class="w-[4px] h-6 bg-secondary-container rounded-full"></div>
+<span class="font-semibold text-on-surface">Pkg P-02</span>
+</div>
+</td>
+<td class="py-3 px-stack-md">
+<span class="text-on-surface-variant italic text-[11px]">No active batch</span>
+</td>
+<td class="py-3 px-stack-md">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed text-[11px] font-medium border border-secondary-fixed-dim">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                                            Changeover
+                                        </span>
+</td>
+<td class="py-3 px-stack-md text-right font-label-mono">--</td>
+</tr>
+<!-- Row 4: Running -->
+<tr class="border-b border-outline-variant/50 hover:bg-surface-container-low transition-colors group cursor-pointer">
+<td class="py-3 px-stack-md">
+<div class="flex items-center gap-2">
+<div class="w-[4px] h-6 bg-primary rounded-full"></div>
+<span class="font-semibold text-on-surface">Extrusion L-02</span>
+</div>
+</td>
+<td class="py-3 px-stack-md">
+<div class="flex flex-col">
+<span class="font-label-mono text-primary font-bold">B-2409-A2</span>
+<span class="text-[10px] text-on-surface-variant">Polymer Blend Y</span>
+</div>
+</td>
+<td class="py-3 px-stack-md">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed text-[11px] font-medium border border-primary-fixed-dim">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                                            Running
+                                        </span>
+</td>
+<td class="py-3 px-stack-md text-right font-label-mono">132 kg/hr</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Nested Genealogy View (Mock active selection) -->
+<div class="bg-surface-container border-t border-outline-variant p-stack-md">
+<h3 class="font-label-mono text-label-mono uppercase text-on-surface-variant mb-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">account_tree</span> Batch Genealogy Trace: B-2409-C3
+                        </h3>
+<div class="pl-4 border-l-2 border-outline-variant space-y-4 relative">
+<!-- Node 1 -->
+<div class="relative">
+<div class="absolute -left-[21px] top-1 w-2.5 h-2.5 rounded-full bg-primary ring-2 ring-surface-container"></div>
+<div class="flex flex-col">
+<span class="font-label-mono text-[11px] font-bold text-on-surface">Raw Mat: RM-992 (Resin)</span>
+<span class="text-[10px] text-on-surface-variant">Consumed: 08:30 AM | Qty: 500kg</span>
+</div>
+</div>
+<!-- Node 2 -->
+<div class="relative">
+<div class="absolute -left-[21px] top-1 w-2.5 h-2.5 rounded-full bg-primary ring-2 ring-surface-container"></div>
+<div class="flex flex-col">
+<span class="font-label-mono text-[11px] font-bold text-on-surface">Sub-Assembly: SA-104</span>
+<span class="text-[10px] text-on-surface-variant">Produced on Mix-01 | 09:15 AM</span>
+</div>
+</div>
+<!-- Node 3 (Error State) -->
+<div class="relative">
+<div class="absolute -left-[21px] top-1 w-2.5 h-2.5 rounded-full bg-error ring-2 ring-surface-container"></div>
+<div class="flex flex-col bg-error-container/30 p-2 rounded border border-error/20">
+<span class="font-label-mono text-[11px] font-bold text-error">Current: B-2409-C3</span>
+<span class="text-[10px] text-on-surface-variant">Hold Reason: Viscosity Out of Spec (Fail 09:45 AM)</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Sidebar: Interactive Schedule / Gantt (Spans 5 cols) -->
+<div class="lg:col-span-5 bg-surface-container-lowest border border-outline-variant rounded flex flex-col h-[500px]">
+<div class="px-stack-md py-stack-sm border-b border-outline-variant flex justify-between items-center bg-surface-bright shrink-0">
+<h2 class="font-headline-sm text-headline-sm font-semibold text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">calendar_view_week</span> Schedule
+                        </h2>
+<div class="flex gap-1">
+<button class="px-2 py-1 text-[10px] font-label-mono uppercase bg-surface-variant rounded">Shift</button>
+<button class="px-2 py-1 text-[10px] font-label-mono uppercase hover:bg-surface-variant rounded text-on-surface-variant">Day</button>
+</div>
+</div>
+<!-- Gantt Content Area -->
+<div class="flex-1 overflow-x-auto relative timeline-grid p-2">
+<!-- Time Header -->
+<div class="flex w-[600px] border-b border-outline-variant/50 pb-1 mb-2 sticky top-0 bg-surface-container-lowest/90 backdrop-blur z-10">
+<div class="w-[100px] text-[10px] text-on-surface-variant font-label-mono pl-1">Line</div>
+<div class="w-[100px] text-[10px] text-on-surface-variant font-label-mono">08:00</div>
+<div class="w-[100px] text-[10px] text-on-surface-variant font-label-mono">09:00</div>
+<div class="w-[100px] text-[10px] text-on-surface-variant font-label-mono">10:00</div>
+<div class="w-[100px] text-[10px] text-on-surface-variant font-label-mono">11:00</div>
+<div class="w-[100px] text-[10px] text-on-surface-variant font-label-mono">12:00</div>
+</div>
+<!-- Timeline Rows -->
+<div class="relative w-[600px] space-y-4 pt-2">
+<!-- Current Time Indicator Line -->
+<div class="absolute top-0 bottom-0 left-[250px] w-px bg-error z-0 flex flex-col items-center">
+<div class="w-2 h-2 bg-error rounded-full -mt-1"></div>
+</div>
+<!-- Row 1 -->
+<div class="flex items-center h-8 relative z-10 group">
+<div class="w-[100px] text-[11px] font-semibold truncate pr-2 shrink-0 bg-surface-container-lowest">L-01</div>
+<!-- Job Block -->
+<div class="absolute left-[100px] w-[220px] h-6 bg-primary-container text-on-primary-container rounded flex items-center px-2 text-[10px] font-label-mono border border-primary/20 shadow-sm cursor-pointer hover:ring-2 hover:ring-primary">
+                                    B-2409-A1
+                                </div>
+<!-- Next Job -->
+<div class="absolute left-[330px] w-[150px] h-6 bg-surface-variant text-on-surface-variant rounded flex items-center px-2 text-[10px] font-label-mono border border-outline-variant border-dashed cursor-pointer hover:bg-surface-container-high">
+                                    B-2409-A4 (Wait)
+                                </div>
+</div>
+<!-- Row 2 -->
+<div class="flex items-center h-8 relative z-10">
+<div class="w-[100px] text-[11px] font-semibold truncate pr-2 shrink-0 bg-surface-container-lowest">M-04</div>
+<!-- Job Block - Error -->
+<div class="absolute left-[150px] w-[180px] h-6 bg-error-container text-on-error-container rounded flex items-center justify-between px-2 text-[10px] font-label-mono border border-error/40 shadow-sm">
+<span>B-2409-C3</span>
+<span class="material-symbols-outlined text-[12px]">warning</span>
+</div>
+</div>
+<!-- Row 3 -->
+<div class="flex items-center h-8 relative z-10">
+<div class="w-[100px] text-[11px] font-semibold truncate pr-2 shrink-0 bg-surface-container-lowest">P-02</div>
+<!-- Job Block - Changeover -->
+<div class="absolute left-[100px] w-[120px] h-6 bg-secondary-fixed text-on-secondary-fixed-variant rounded flex items-center px-2 text-[10px] font-label-mono border border-secondary-fixed-dim/50 shadow-sm striped-bg">
+                                    Changeover
+                                </div>
+<!-- Next Job -->
+<div class="absolute left-[230px] w-[200px] h-6 bg-surface-variant text-on-surface-variant rounded flex items-center px-2 text-[10px] font-label-mono border border-outline-variant border-dashed">
+                                    P-2410-X1
+                                </div>
+</div>
+<!-- Row 4 -->
+<div class="flex items-center h-8 relative z-10">
+<div class="w-[100px] text-[11px] font-semibold truncate pr-2 shrink-0 bg-surface-container-lowest">L-02</div>
+<div class="absolute left-[120px] w-[280px] h-6 bg-primary-container text-on-primary-container rounded flex items-center px-2 text-[10px] font-label-mono border border-primary/20 shadow-sm cursor-pointer hover:ring-2 hover:ring-primary">
+                                    B-2409-A2
+                                </div>
+</div>
+</div>
+</div>
+<!-- Gantt Legend -->
+<div class="px-stack-md py-2 border-t border-outline-variant bg-surface-bright flex gap-4 text-[10px] font-label-mono uppercase text-on-surface-variant shrink-0">
+<div class="flex items-center gap-1"><div class="w-2 h-2 rounded bg-primary-container border border-primary/20"></div> Running</div>
+<div class="flex items-center gap-1"><div class="w-2 h-2 rounded bg-secondary-fixed border border-secondary-fixed-dim/50"></div> Setup</div>
+<div class="flex items-center gap-1"><div class="w-2 h-2 rounded bg-error-container border border-error/40"></div> Hold</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<style>
+        /* Minimal striped background for Changeover states in Gantt */
+        .striped-bg {
+            background-image: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 4px,
+                rgba(0,0,0,0.05) 4px,
+                rgba(0,0,0,0.05) 8px
+            );
+        }
+    </style>
+</body></html>

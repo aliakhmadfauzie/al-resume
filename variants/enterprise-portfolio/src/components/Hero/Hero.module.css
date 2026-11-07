@@ -1,0 +1,149 @@
+/* ============================================================
+   Hero Component Styles
+   ============================================================ */
+
+.hero {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  padding-top: var(--space-2xl);
+  padding-bottom: var(--space-2xl);
+}
+
+.heroInner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2xl);
+  flex-wrap: wrap;
+}
+
+/* ----- Avatar ----- */
+.heroAvatar {
+  flex-shrink: 0;
+}
+
+.heroAvatarImg {
+  width: 140px;
+  height: 140px;
+  border-radius: var(--radius-full);
+  border: 3px solid var(--accent-blue);
+  box-shadow: 0 0 30px color-mix(in srgb, var(--accent-blue) 19%, transparent);
+  object-fit: cover;
+}
+
+/* ----- Content ----- */
+.heroContent {
+  flex: 1;
+  min-width: 300px;
+  max-width: 640px;
+}
+
+/* ----- Status Badge ----- */
+.heroStatus {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 6px 14px;
+  background-color: color-mix(in srgb, var(--accent-green) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent-green) 19%, transparent);
+  border-radius: var(--radius-full);
+  margin-bottom: var(--space-lg);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--accent-green);
+}
+
+.heroStatusDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--accent-green);
+  box-shadow: 0 0 8px var(--accent-green);
+}
+
+/* ----- Name ----- */
+.heroName {
+  font-size: var(--font-size-5xl);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  color: var(--text-primary);
+  margin: 0 0 8px 0;
+}
+
+/* ----- Animated Title ----- */
+.heroTitle {
+  font-size: var(--font-size-2xl);
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--accent-blue);
+  margin: 0 0 20px 0;
+  min-height: 2rem;
+}
+
+/* ----- Tagline ----- */
+.heroTagline {
+  font-size: var(--font-size-lg);
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: var(--space-sm);
+  max-width: 640px;
+}
+
+/* ----- Meta Info ----- */
+.heroMeta {
+  color: var(--text-muted);
+  font-size: var(--font-size-sm);
+  margin-bottom: 28px;
+  display: flex;
+  gap: var(--space-lg);
+  flex-wrap: wrap;
+}
+
+/* ----- CTA Buttons ----- */
+.heroActions {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  margin-top: var(--space-lg);
+}
+
+/* ----- Responsive ----- */
+@media (max-width: 768px) {
+  .hero {
+    min-height: 60vh;
+    padding-top: var(--space-xl);
+    padding-bottom: var(--space-xl);
+  }
+
+  .heroInner {
+    gap: var(--space-lg);
+  }
+
+  .heroAvatarImg {
+    width: 100px;
+    height: 100px;
+  }
+
+  .heroName {
+    font-size: var(--font-size-3xl);
+  }
+
+  .heroTitle {
+    font-size: var(--font-size-xl);
+  }
+
+  .heroTagline {
+    font-size: var(--font-size-md);
+  }
+}
+
+@media (max-width: 480px) {
+  .heroName {
+    font-size: var(--font-size-2xl);
+  }
+
+  .heroActions {
+    flex-direction: column;
+  }
+}

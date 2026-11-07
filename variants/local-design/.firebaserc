@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "sites-collection"
+  },
+  "targets": {
+    "sites-collection": {
+      "hosting": {
+        "al-resume": [
+          "aliakhmadfauzie-resume"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

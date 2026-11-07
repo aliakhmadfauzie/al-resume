@@ -1,0 +1,223 @@
+{
+  "platforms": [
+    {
+      "id": "stitch_unified_it_ticketing_system",
+      "name": "Unified IT Ticketing System",
+      "department": "IT",
+      "description": "Enterprise service desk with multi-site approvals, knowledge base, analytics, and Bahasa Malaysia localization.",
+      "color": "#58A6FF",
+      "portfolioAppId": "app-it-001",
+      "screenshots": [
+        { "file": "dashboard_overview.png", "alt": "Dashboard Overview" },
+        { "file": "analytics_dashboard.png", "alt": "Analytics Dashboard" },
+        { "file": "manager_analytics.png", "alt": "Manager Analytics" },
+        { "file": "new_request.png", "alt": "New Service Request" },
+        { "file": "ticket_management.png", "alt": "Ticket Management" },
+        { "file": "ticket_details.png", "alt": "Ticket Details" },
+        { "file": "pending_approvals.png", "alt": "Pending Approvals" },
+        { "file": "knowledge_base_1.png", "alt": "Knowledge Base" },
+        { "file": "knowledge_base_2.png", "alt": "Knowledge Base Articles" },
+        { "file": "profile_settings.png", "alt": "Profile Settings" },
+        { "file": "analitik_pengurus_localized.png", "alt": "Manager Analytics (Bahasa Malaysia)" },
+        { "file": "butiran_tiket_localized.png", "alt": "Ticket Details (Bahasa Malaysia)" },
+        { "file": "kelulusan_menunggu_localized.png", "alt": "Pending Approvals (Bahasa Malaysia)" },
+        { "file": "permohonan_saya_localized.png", "alt": "My Requests (Bahasa Malaysia)" }
+      ]
+    },
+    {
+      "id": "enterprise_she_incident_management",
+      "name": "Enterprise SHE Incident Management",
+      "department": "SHE",
+      "description": "Safety, Health & Environment incident tracking with RCA workspace and regulatory reporting.",
+      "color": "#F85149",
+      "portfolioAppId": "app-she-001",
+      "screenshots": [
+        { "file": "safety_command_center.png", "alt": "Safety Command Center" },
+        { "file": "incident_near_miss_log.png", "alt": "Incident & Near-Miss Log" },
+        { "file": "investigation_rca_workspace.png", "alt": "Investigation & RCA Workspace" },
+        { "file": "regulatory_reporting_hub.png", "alt": "Regulatory Reporting Hub" }
+      ]
+    },
+    {
+      "id": "gxp_quality_management_suite",
+      "name": "GxP Quality Management Suite",
+      "department": "Quality",
+      "description": "CAPA, NCR, document control, and internal audit management for GxP-regulated environments.",
+      "color": "#3FB950",
+      "portfolioAppId": "app-qa-001",
+      "screenshots": [
+        { "file": "executive_quality_dashboard.png", "alt": "Executive Quality Dashboard" },
+        { "file": "capa_ncr_management.png", "alt": "CAPA & NCR Management" },
+        { "file": "document_control_center.png", "alt": "Document Control Center" },
+        { "file": "internal_audit_hub.png", "alt": "Internal Audit Hub" }
+      ]
+    },
+    {
+      "id": "oracle_integrated_p2p_automation",
+      "name": "Oracle Integrated P2P Automation",
+      "department": "Finance",
+      "description": "Oracle ERP-integrated procure-to-pay with CapEx budgeting, approval routing, and supplier portal.",
+      "color": "#FFA657",
+      "portfolioAppId": "app-fin-001",
+      "screenshots": [
+        { "file": "executive_dashboard.png", "alt": "Executive Dashboard" },
+        { "file": "approval_workflow_routing.png", "alt": "Approval Workflow Routing" },
+        { "file": "capex_budget_management.png", "alt": "CapEx Budget Management" },
+        { "file": "supplier_portal.png", "alt": "Supplier Portal" }
+      ]
+    },
+    {
+      "id": "employee_expensses",
+      "name": "Employee Expenses",
+      "department": "Finance",
+      "description": "Expense reporting with personal dashboards, team approval workspace, and full audit trail.",
+      "color": "#BC8CFF",
+      "portfolioAppId": "app-fin-002",
+      "screenshots": [
+        { "file": "submit_expense_report.png", "alt": "Submit Expense Report" },
+        { "file": "personal_expense_dashboard.png", "alt": "Personal Expense Dashboard" },
+        { "file": "team_approval_workspace.png", "alt": "Team Approval Workspace" },
+        { "file": "claim_tracking_audit_trail.png", "alt": "Claim Tracking & Audit Trail" }
+      ]
+    },
+    {
+      "id": "apps_screen_consolidation/stitch_apps_screen_consolidation",
+      "name": "App Screen Consolidations",
+      "department": "Multi-Department",
+      "description": "Consolidated screen designs across IT, HR, Finance, QA, Ops, Engineering, and SHE departments — 22 screens from Stitch.",
+      "color": "#79C0FF",
+      "screenshots": [
+        { "file": "it_service_request_dashboard_itssr/it_service_request_dashboard_itssr.png", "alt": "IT Service Request Dashboard (ITSSR)" },
+        { "file": "access_request_fulfillment_eaf/access_request_fulfillment_eaf.png", "alt": "Access Request Fulfillment (EAF)" },
+        { "file": "it_hardware_asset_inventory_hi/it_hardware_asset_inventory_hi.png", "alt": "IT Hardware Asset Inventory (HI)" },
+        { "file": "sap_change_request_detail_sapcr/sap_change_request_detail_sapcr.png", "alt": "SAP Change Request Detail (SAPCR)" },
+        { "file": "employee_offboarding_tracker/employee_offboarding_tracker.png", "alt": "Employee Offboarding Tracker (EEN)" },
+        { "file": "workforce_roster_scheduling/workforce_roster_scheduling.png", "alt": "Workforce Roster Scheduling (DRD)" },
+        { "file": "expense_reimbursement_portal/expense_reimbursement_portal.png", "alt": "Expense Reimbursement Portal" },
+        { "file": "procurement_command_center/procurement_command_center.png", "alt": "Procurement Command Center" },
+        { "file": "iqms_dashboard/iqms_dashboard.png", "alt": "IQMS Dashboard" },
+        { "file": "production_batch_tracking/production_batch_tracking.png", "alt": "Production Batch Tracking" },
+        { "file": "warehouse_inventory_dashboard/warehouse_inventory_dashboard.png", "alt": "Warehouse Inventory Dashboard" },
+        { "file": "bin_management_location_control/bin_management_location_control.png", "alt": "Bin Management & Location Control" },
+        { "file": "cycle_count_inventory_audit/cycle_count_inventory_audit.png", "alt": "Cycle Count & Inventory Audit" },
+        { "file": "shipment_logistics_hub/shipment_logistics_hub.png", "alt": "Shipment & Logistics Hub" },
+        { "file": "maintenance_command_center/maintenance_command_center.png", "alt": "Maintenance Command Center" },
+        { "file": "preventive_maintenance_scheduler/preventive_maintenance_scheduler.png", "alt": "Preventive Maintenance Scheduler" },
+        { "file": "work_order_management_ledger/work_order_management_ledger.png", "alt": "Work Order Management Ledger" },
+        { "file": "spare_parts_inventory_dashboard/spare_parts_inventory_dashboard.png", "alt": "Spare Parts Inventory Dashboard" },
+        { "file": "spare_parts_ledger/spare_parts_ledger.png", "alt": "Spare Parts Ledger" },
+        { "file": "parts_procurement_tracker/parts_procurement_tracker.png", "alt": "Parts Procurement Tracker" },
+        { "file": "parts_usage_analytics/parts_usage_analytics.png", "alt": "Parts Usage Analytics" },
+        { "file": "asset_registry_spare_parts_linkage/asset_registry_spare_parts_linkage.png", "alt": "Asset Registry & Spare Parts Linkage" }
+      ]
+    }
+  ],
+
+  "legacyDashboards": [
+    { "file": "004_IT_AllForms_full.png", "alt": "IT — All Forms Dashboard", "department": "IT" },
+    { "file": "083_HR_Dashboard.png", "alt": "HR — Dashboard", "department": "HR" },
+    { "file": "094_Finance_Dashboard.png", "alt": "Finance — Dashboard", "department": "Finance" },
+    { "file": "113_Engineering_Dashboard.png", "alt": "Engineering — Dashboard", "department": "Engineering" },
+    { "file": "124_QA_Dashboard.png", "alt": "Quality Assurance — Dashboard", "department": "QA" },
+    { "file": "133_QC_Dashboard.png", "alt": "Quality Control — Dashboard", "department": "QC" },
+    { "file": "142_Maintenance_Dashboard.png", "alt": "Maintenance — Dashboard", "department": "Maintenance" },
+    { "file": "159_SHE_Dashboard.png", "alt": "SHE — Dashboard", "department": "SHE" },
+    { "file": "152_Logistics_Dashboard.png", "alt": "Logistics — Dashboard", "department": "Logistics" },
+    { "file": "154_Production_Dashboard.png", "alt": "Production — Dashboard", "department": "Production" },
+    { "file": "109_Store_Dashboard.png", "alt": "Store Management — Dashboard", "department": "Store" },
+    { "file": "163_Admin_Dashboard.png", "alt": "Administration — Dashboard", "department": "Admin" }
+  ],
+
+  "legacyScreenshots": [],
+
+  "flows": [
+    {
+      "name": "IT Service Request — Auto-Routing",
+      "phase": "5.3",
+      "dept": "IT",
+      "formCodes": ["ITSSR"],
+      "trigger": "When a service request is submitted",
+      "connectors": ["SharePoint", "Microsoft 365", "Outlook"],
+      "stages": 3,
+      "accent": "#3FB950",
+      "desc": "Reads the request category and automatically routes it to the right support team. Eliminated manual ticket assignment — IT support team now gets instant notifications."
+    },
+    {
+      "name": "HR Staff Requisition — Multi-Level Approval",
+      "phase": "5.7",
+      "dept": "HR",
+      "formCodes": ["SR"],
+      "trigger": "When a hiring request is submitted",
+      "connectors": ["SharePoint", "Approvals", "Outlook"],
+      "stages": 5,
+      "accent": "#BC8CFF",
+      "desc": "Routes hiring requests through 5 levels of management approval — department head → division head → HR → COO → Executive Director. Each approver gets an email with one-click Approve/Reject."
+    },
+    {
+      "name": "Purchase Requisition — Buyer Assignment",
+      "phase": "5.5",
+      "dept": "Procurement",
+      "formCodes": ["PRF"],
+      "trigger": "When a purchase request is submitted",
+      "connectors": ["SharePoint", "Outlook"],
+      "stages": 4,
+      "accent": "#FFA657",
+      "desc": "Automatically assigns purchase requests to the correct procurement buyer. Replaced a manual process that took days — now buyers are notified within minutes."
+    },
+    {
+      "name": "Change Request — Full Approval Chain",
+      "phase": "5.6",
+      "dept": "Quality",
+      "formCodes": ["SAPCR"],
+      "trigger": "When a change request is submitted",
+      "connectors": ["SharePoint", "Approvals", "Outlook"],
+      "stages": 7,
+      "accent": "#F85149",
+      "desc": "Most complex workflow — 7-stage approval chain for supplier and workbench change requests. Tracks every stage with deadline alerts so nothing falls through the cracks."
+    },
+    {
+      "name": "VPN & Citrix Access — Approval Workflow",
+      "phase": "5.1",
+      "dept": "IT",
+      "formCodes": ["EAF"],
+      "trigger": "When an access request is submitted",
+      "connectors": ["SharePoint", "Approvals", "Outlook"],
+      "stages": 5,
+      "accent": "#58A6FF",
+      "desc": "5-stage security approval for VPN and remote access requests. Ensures every access grant goes through proper IT security review before provisioning."
+    },
+    {
+      "name": "Hardware Inventory — Monthly Audit Reminder",
+      "phase": "5.4",
+      "dept": "IT",
+      "formCodes": ["HI"],
+      "trigger": "Runs automatically every month",
+      "connectors": ["SharePoint", "Outlook"],
+      "stages": 2,
+      "accent": "#D29922",
+      "desc": "Scheduled monthly reminders for hardware inventory audits. Replaced a manual calendar task — automated emails with escalating urgency if audits aren't completed on time."
+    },
+    {
+      "name": "Auto Ticket Numbering",
+      "phase": "5.2",
+      "dept": "IT",
+      "formCodes": ["*"],
+      "trigger": "When any form is submitted",
+      "connectors": ["SharePoint"],
+      "stages": 1,
+      "accent": "#79C0FF",
+      "desc": "Automatically generates unique tracking numbers for every submitted form across all departments. Ensures nothing gets lost — every request has a traceable ID."
+    },
+    {
+      "name": "HR Universal Form Processor",
+      "phase": "5.8",
+      "dept": "HR",
+      "formCodes": ["SR", "EEN", "AWHR", "PAF", "+38 more"],
+      "trigger": "When any HR form is submitted",
+      "connectors": ["SharePoint", "Outlook"],
+      "stages": 2,
+      "accent": "#DB61A2",
+      "desc": "Single workflow handling ALL 42 HR form types — from leave requests to performance reviews. Sends confirmation emails and routes forms to the right HR team. Replaced 42 separate manual processes."
+    }
+  ]
+}
