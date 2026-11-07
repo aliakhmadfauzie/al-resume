@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
+import { useAccessibleDialog } from '../../hooks/useAccessibleDialog';
 import {
   PERSONAL_INFO,
   WORK_EXPERIENCE,
@@ -27,17 +28,7 @@ interface ResumeModalProps {
 
 export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose, onOpenContact }) => {
   const [copied, setCopied] = useState(false);
-  const modalRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!isOpen) return;
-
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
-    };
-    document.addEventListener('keydown', handleKeyDown);
-    return () => document.removeEventListener('keydown', handleKeyDown);
-  }, [isOpen, onClose]);
+  const modalRef = useAccessibleDialog(isOpen, onClose);
 
   if (!isOpen) return null;
 
@@ -55,6 +46,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose, onOpe
     <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-6 overflow-hidden bg-black/80 backdrop-blur-sm">
       <div
         ref={modalRef}
+        tabIndex={-1}
         id="resume-modal-container"
         role="dialog"
         aria-modal="true"
