@@ -25,6 +25,7 @@ interface MilestoneDetail {
   role: string;
   company: string;
   headline: string;
+  promotionBadge?: string;
   leadershipSalesHighlights?: string[];
   techOrOpsHighlights: string[];
   metrics: { label: string; value: string }[];
@@ -106,11 +107,12 @@ export const DualCareerBranchVisualizer: React.FC = () => {
   const operationsMilestones: Record<string, MilestoneDetail> = {
     'ops-concentrix': {
       period: 'May 2023 – Apr 2025',
-      role: 'Operations Team Lead & Process Automation Lead',
+      role: 'Operations Team Leader',
       company: 'Concentrix CVG',
-      headline: 'Team Scaling (9→34), Shift Rostering & 98%+ Contractual SLA',
+      headline: 'Team Scaling (9→34 Multilingual Agents), Shift Rostering & 98%+ Contractual SLA',
+      promotionBadge: '★ Enterprise Scale Leader',
       leadershipSalesHighlights: [
-        'Owned end-to-end people management, coaching, rotational rostering, and career development for 34 direct reports.',
+        'Owned end-to-end people management, coaching, rotational rostering, and career development for 34 direct reports across 7 international markets.',
         'Scaled operational team headcount by 380% within 18 months while maintaining low attrition and high CSAT.',
         'Presented weekly operational telemetry and SLA performance in Client Business Reviews (QBRs).'
       ],
@@ -127,47 +129,139 @@ export const DualCareerBranchVisualizer: React.FC = () => {
       ],
       tags: ['Operations Lead', '34 Direct Reports', 'Six Sigma DMAIC', 'Team Scaling', 'SLA Governance']
     },
-    'ops-accenture': {
-      period: 'May 2018 – Nov 2022',
-      role: 'Service Delivery Ops Senior Team Lead & Team Lead',
+    'ops-accenture-sr-lead': {
+      period: 'Jan 2021 – Nov 2022',
+      role: 'Senior Team Lead / Service Delivery Lead',
       company: 'Accenture',
-      headline: '5+ Years Global Service Delivery, Crisis Escalations & Diamond Award',
+      headline: 'Promoted to Senior Team Lead: 25–34 Members, Power Platform Adoption & Diamond Award',
+      promotionBadge: '★ Promoted to Senior Team Lead',
       leadershipSalesHighlights: [
-        'Directed cross-functional customer support and trust & safety teams of 20–34 direct reports across 7 international markets.',
-        'Maintained annualized team attrition below 5% through structured 1-on-1 coaching and career progression ladders.',
-        'Received the prestigious Accenture Diamond Award for sustained client delivery excellence.'
+        'Promoted to Senior Team Lead; directed customer support and service delivery operations across 7 global APAC markets.',
+        'Maintained annualized team attrition below 5% through structured 1-on-1 coaching, QA audit loops, and career progression ladders.',
+        'Received the prestigious Accenture Diamond Award for sustained client delivery excellence and operational crisis governance.'
       ],
       techOrOpsHighlights: [
-        'Commanded high-stakes incident management during major outages, standardizing rapid root-cause escalation paths.',
-        'Reduced operational handling costs by 15% via cross-functional workflow restructuring.',
+        'Pioneered Power Platform adoption across the operations floor in 2021 (Power Apps, Power Automate, Power BI), cutting handling costs by 15%.',
+        'Cut critical incident triage time by 60% through standardized escalation protocols and data-driven triage tooling.',
         'Led Weekly Business Reviews (WBRs) with multinational stakeholders to eliminate defect outliers.'
       ],
       metrics: [
+        { label: 'Team Size', value: '25–34 Reports' },
         { label: 'Markets Led', value: '7 APAC/Global' },
         { label: 'Team Retention', value: '<5% Attrition' },
-        { label: 'Award', value: 'Diamond Award' }
+        { label: 'Recognition', value: 'Diamond Award' }
       ],
-      tags: ['Service Delivery', 'Incident Command', 'People Management', 'Attrition <5%', 'Executive Reviews']
+      tags: ['Promoted Senior Lead', 'Power Platform', 'Incident Command', 'Diamond Award', '7 Markets']
+    },
+    'ops-accenture-lead': {
+      period: 'Jun 2019 – Dec 2020',
+      role: 'Operations Team Lead',
+      company: 'Accenture',
+      headline: 'Promoted to Team Lead: High-Stakes Queue Incident Command & SLA Excellence',
+      promotionBadge: '★ Promoted to Team Lead',
+      leadershipSalesHighlights: [
+        'Promoted from Junior Team Lead to full Operations Team Lead, managing 20–25 direct reports handling high-stakes escalations.',
+        'Commanded high-stakes incident management during major queue disruptions, establishing rapid root-cause escalation paths.',
+        'Owned client SLA targets, achieving consistent >90% compliance across international queues.'
+      ],
+      techOrOpsHighlights: [
+        'Reduced queue triage time by 60% through structured escalation playbooks.',
+        'Led root-cause problem solving and quality calibration sessions with frontline associates.',
+        'Managed shift handover governance and rotational capacity planning.'
+      ],
+      metrics: [
+        { label: 'Direct Reports', value: '20–25 Agents' },
+        { label: 'SLA Compliance', value: '>90%' },
+        { label: 'Triage Speed', value: '-60%' }
+      ],
+      tags: ['Promoted Team Lead', 'Incident Command', '20–25 Reports', 'WBR Reviews', 'Crisis Governance']
+    },
+    'ops-accenture-jr-lead': {
+      period: 'May 2018 – May 2019',
+      role: 'Junior Team Lead (Operations)',
+      company: 'Accenture',
+      headline: 'Promoted from Analyst: Frontline Floor Management & Rostering Pod Lead',
+      promotionBadge: '★ Promoted from Data Analyst',
+      leadershipSalesHighlights: [
+        'Earned accelerated merit promotion from Data Analyst to Junior Team Lead within 9 months.',
+        'Managed frontline operations and rotational shift rostering for a pod of 10–15 customer support specialists.',
+        'Supervised real-time schedule adherence and break rotations to prevent queue abandonment during peak volume spikes.'
+      ],
+      techOrOpsHighlights: [
+        'Conducted weekly 1-on-1 coaching sessions and quality audits, improving first-contact resolution (FCR) by 18%.',
+        'Trained newly onboarded support specialists on standard operating procedures (SOPs).',
+        'Tracked daily agent utilization and resolution velocity metrics.'
+      ],
+      metrics: [
+        { label: 'Pod Size', value: '10–15 Agents' },
+        { label: 'FCR Improvement', value: '+18%' },
+        { label: 'Promotion Path', value: '9 Months' }
+      ],
+      tags: ['Promoted Jr Lead', 'Pod Leadership', 'Rostering', 'FCR +18%', 'Floor Coaching']
+    },
+    'ops-accenture-analyst': {
+      period: 'Aug 2017 – May 2018',
+      role: 'Data Analyst — Operations',
+      company: 'Accenture',
+      headline: 'Ground-Level Analytics: KPI Performance Modeling & Operational Bottleneck Triage',
+      promotionBadge: '★ Operations Analytics',
+      leadershipSalesHighlights: [
+        'Collaborated directly with service delivery leads and account directors to translate raw queue data into actionable operational insights.',
+        'Identified critical frontline bottlenecks and presented data-driven recommendations during internal governance meetings.'
+      ],
+      techOrOpsHighlights: [
+        'Constructed daily, weekly, and monthly operational performance models analyzing customer support KPIs with PL/SQL and Excel.',
+        'Modeled resolution velocity, agent utilization, and queue arrival patterns to improve capacity forecasting.',
+        'Demonstrated high-velocity execution and analytical leadership that directly secured promotion to Junior Team Lead.'
+      ],
+      metrics: [
+        { label: 'Data Tooling', value: 'PL/SQL & Excel' },
+        { label: 'Queue Velocity', value: 'Analyzed' },
+        { label: 'Promotion Result', value: 'To Jr Team Lead' }
+      ],
+      tags: ['Data Analyst', 'PL/SQL', 'KPI Modeling', 'Bottleneck Triage', 'Queue Analytics']
+    },
+    'ops-thelorry': {
+      period: 'Feb 2017 – Aug 2017',
+      role: 'Digital Marketing Specialist',
+      company: 'TheLorry',
+      headline: 'E-Logistics Growth Marketing, Campaign Analytics & Acquisition Funnels',
+      promotionBadge: '★ Career Launch (Post-Grad)',
+      leadershipSalesHighlights: [
+        'Spearheaded digital marketing campaigns and cross-functional acquisition strategies for Malaysia’s premier on-demand logistics platform.',
+        'Collaborated with regional operations, product teams, and driver-partner acquisition leads to optimize growth campaigns.'
+      ],
+      techOrOpsHighlights: [
+        'Analyzed customer acquisition funnels, channel conversion rates, and paid ad spend to optimize customer acquisition cost (CAC).',
+        'Tracked driver-partner signups and logistics customer booking retention cohorts using web analytics.',
+        'Applied university background in International Business & Logistics to digital commercialization.'
+      ],
+      metrics: [
+        { label: 'Industry', value: 'On-Demand Logistics' },
+        { label: 'Focus', value: 'Funnel Optimization' },
+        { label: 'Foundation', value: 'UUM Honors' }
+      ],
+      tags: ['Digital Marketing', 'TheLorry', 'Funnel Analytics', 'E-Logistics', 'Growth Strategy']
     }
   };
 
   const sharedRoot = {
     period: '2013 – 2018',
     role: 'Scholastic & Analytical Foundation (The Common Trunk)',
-    institution: 'Universiti Utara Malaysia & Accenture / Deloitte',
-    summary: 'The dual-career trunk combines rigorous scholastic training in International Business & Logistics with ground-level enterprise data analytics.',
+    institution: 'Universiti Utara Malaysia · TheLorry · Accenture Data Analytics',
+    summary: 'The dual-career trunk combines rigorous scholastic training in International Business & Logistics with high-growth startup marketing and enterprise ground-level data analytics.',
     anchors: [
       {
         title: 'B.Sc. International Business Management (Honours)',
-        detail: 'Minor in Logistics & Transportation · UUM Full Scholarship Recipient · 3x Dean\'s Academic Honors Award.'
+        detail: 'Universiti Utara Malaysia (CGPA 3.63, Minor in Logistics) · Full UUM Scholarship Recipient · 3x Dean\'s Academic Honors Award.'
+      },
+      {
+        title: 'TheLorry E-Logistics Growth Marketing (2017)',
+        detail: 'Commercial digital marketing, customer acquisition funnel optimization, and conversion analytics for Southeast Asia\'s leading logistics tech platform.'
       },
       {
         title: 'Enterprise Data Analyst (Accenture & Deloitte)',
-        detail: 'Rigorous KPI analytics, PL/SQL data extraction, and operational bottleneck diagnostics across global accounts.'
-      },
-      {
-        title: 'Six Sigma & Continuous Improvement Roots',
-        detail: 'Lean Six Sigma Green Belt curriculum, statistical process control, and DMAIC problem-solving frameworks.'
+        detail: 'PL/SQL data mining, frontline bottleneck analysis, and KPI modeling that earned rapid promotion into leadership within 9 months.'
       }
     ]
   };
@@ -400,6 +494,11 @@ export const DualCareerBranchVisualizer: React.FC = () => {
                           <span className="text-xs font-semibold text-neutral-300">{item.company}</span>
                         </div>
                         <h4 className="text-sm font-bold text-white mt-1">{item.role}</h4>
+                        {item.promotionBadge && (
+                          <span className="inline-block px-1.5 py-0.5 mt-1 rounded text-[10px] font-mono font-semibold bg-[#22c55e]/15 text-[#22c55e] border border-[#22c55e]/30">
+                            {item.promotionBadge}
+                          </span>
+                        )}
                       </div>
                       <span className="text-xs text-[#00dbe7]">
                         {isSelected ? '● Selected' : '○ View'}
@@ -444,6 +543,11 @@ export const DualCareerBranchVisualizer: React.FC = () => {
                           <span className="text-xs font-semibold text-neutral-300">{item.company}</span>
                         </div>
                         <h4 className="text-sm font-bold text-white mt-1">{item.role}</h4>
+                        {item.promotionBadge && (
+                          <span className="inline-block px-1.5 py-0.5 mt-1 rounded text-[10px] font-mono font-semibold bg-[#22c55e]/15 text-[#22c55e] border border-[#22c55e]/30">
+                            {item.promotionBadge}
+                          </span>
+                        )}
                       </div>
                       <span className="text-xs text-[#f59e0b]">
                         {isSelected ? '● Selected' : '○ View'}
@@ -478,9 +582,16 @@ export const DualCareerBranchVisualizer: React.FC = () => {
                 <h3 className="text-lg sm:text-xl font-bold text-white mt-0.5">
                   {currentDetail.role}
                 </h3>
-                <p className="text-xs text-[#00dbe7] font-mono">
-                  {currentDetail.company} · {currentDetail.period}
-                </p>
+                <div className="flex flex-wrap items-center gap-2 mt-1">
+                  <p className="text-xs text-[#00dbe7] font-mono">
+                    {currentDetail.company} · {currentDetail.period}
+                  </p>
+                  {currentDetail.promotionBadge && (
+                    <span className="px-2 py-0.5 rounded text-[10px] font-mono font-semibold bg-[#22c55e]/15 text-[#22c55e] border border-[#22c55e]/30">
+                      {currentDetail.promotionBadge}
+                    </span>
+                  )}
+                </div>
               </div>
 
               {/* Metric Counters Bento */}

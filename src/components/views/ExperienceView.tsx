@@ -22,7 +22,9 @@ export const ExperienceView: React.FC = () => {
 
   const allTags = [
     'all',
+    'Promotions',
     'Pre-Sales',
+    'Data Analytics',
     'Leadership',
     'React',
     'TypeScript',
@@ -160,6 +162,11 @@ export const ExperienceView: React.FC = () => {
                     {item.isCurrent && (
                       <span className="px-2 py-0.5 rounded bg-[var(--interactive-subtle-bg)] border border-[var(--interactive-subtle-border)] text-[10px] font-mono text-[var(--text-accent)] font-semibold">
                         Active Role
+                      </span>
+                    )}
+                    {item.promotionBadge && (
+                      <span className="px-2 py-0.5 rounded bg-[#22c55e]/15 border border-[#22c55e]/30 text-[10px] font-mono text-[#22c55e] font-semibold">
+                        {item.promotionBadge}
                       </span>
                     )}
                   </div>

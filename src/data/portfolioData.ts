@@ -1052,42 +1052,76 @@ export const WORK_EXPERIENCE: ExperienceItem[] = [
   },
   {
     id: "exp-concentrix",
-    role: "Operations Team Lead",
+    role: "Operations Team Leader",
     company: "Concentrix CVG",
     location: "Kuala Lumpur, Malaysia",
     period: "May 2023 – Apr 2025",
     tags: ["BPO Leadership", "SLA Governance", "Six Sigma DMAIC", "Team Scaling", "Process Optimization"],
     bulletPoints: [
       "Led daily floor operations for a BPO team of 9 to 34 associates across rotational shifts, owning rostering, real-time adherence, and shift handovers to sustain 98%+ contractual SLA compliance and keep abandonment below target.",
-      "Reduced Average Handling Time (AHT) by 25% through Six Sigma DMAIC controls and targeted coaching; improved 90-day competency from 78% to 94% via structured 1:1s and performance action plans."
+      "Scaled operational team capacity and headcount by 380% (from 9 to 34 multilingual agents) across 7 international markets while maintaining strict operational quality and low attrition.",
+      "Reduced Average Handling Time (AHT) by 25% through Six Sigma DMAIC controls and targeted coaching; improved 90-day competency from 78% to 94% via structured 1:1s and performance action plans.",
+      "Built and deployed automated productivity trackers (PulseTrack) and automated ticket intake triage (SmartFlow), slashing manual reporting by 90% and intake triage effort by 80%."
+    ],
+    iconUrl: "/assets/profile/ali-avatar.jpg"
+  },
+  {
+    id: "exp-accenture-sr-lead",
+    role: "Senior Team Lead / Service Delivery Operations Lead",
+    company: "Accenture",
+    location: "Kuala Lumpur, Malaysia",
+    period: "Jan 2021 – Nov 2022",
+    tags: ["Promotions", "Senior Leadership", "SLA Management", "Power Platform", "Attrition <5%", "Diamond Award"],
+    promotionBadge: "★ Promoted to Senior Team Lead",
+    bulletPoints: [
+      "Promoted to Senior Team Lead to direct cross-functional customer support and trust & safety service delivery operations of 25–34 direct reports across 7 international markets, sustaining >90–98% SLA compliance.",
+      "Pioneered Power Platform adoption across the operations floor in 2021—building SharePoint-backed tracking tools, Power Automate escalation flows, and live Power BI executive dashboards.",
+      "Reduced operational handling costs by 15% and cut critical incident triage time by 60% through standardized escalation protocols and data-driven floor tooling.",
+      "Maintained exceptional team retention with annualized attrition under 5% over 4 years through structured 1-on-1 coaching, QA audit loops, and clear career ladders, earning the Accenture Diamond Award."
     ],
     iconUrl: "/assets/profile/ali-avatar.jpg"
   },
   {
     id: "exp-accenture-lead",
-    role: "Service Delivery Ops Sr Team Lead (2019–2022) & Ops Team Lead (2018–2019)",
+    role: "Operations Team Lead",
     company: "Accenture",
-    location: "Kuala Lumpur, Federal Territory of Kuala Lumpur, Malaysia",
-    period: "May 2018 – November 2022",
-    tags: ["Leadership", "SLA Management", "Power Apps", "Power BI", "Six Sigma Green Belt", "SQL Reporting"],
+    location: "Kuala Lumpur, Malaysia",
+    period: "Jun 2019 – Dec 2020",
+    tags: ["Promotions", "Leadership", "Incident Command", "Service Delivery", "SLA Governance"],
+    promotionBadge: "★ Promoted to Team Lead",
     bulletPoints: [
-      "Directed a cross-functional service delivery team of 20–34 members across global markets over 5+ years at Accenture, consistently exceeding 90–98% SLA compliance and earning the Accenture Diamond Award.",
-      "Pioneered Power Platform adoption on the operations floor in 2021—building SharePoint-backed tracking tools, Power Automate escalation workflows, and Power BI dashboards.",
-      "Developed real-time performance monitoring tools and implemented data-driven insights that delivered a 15% increase in operational efficiency and 60% faster incident triage.",
-      "Designed training and coaching programs and participated in Weekly Business Reviews (WBRs) to address failing metrics and execute root-cause action plans."
+      "Promoted from Junior Team Lead to full Operations Team Lead, overseeing 20–25 direct reports handling high-stakes queue surges and critical escalations.",
+      "Commanded real-time incident command during queue disruptions, establishing rapid-response SOPs that stabilized service delivery within contractual response thresholds.",
+      "Led Weekly Business Reviews (WBRs) with international account stakeholders, analyzing KPI variances, defect distributions, and implementing corrective DMAIC action plans."
+    ],
+    iconUrl: "/assets/profile/ali-avatar.jpg"
+  },
+  {
+    id: "exp-accenture-jr-lead",
+    role: "Junior Team Lead (Operations)",
+    company: "Accenture",
+    location: "Kuala Lumpur, Malaysia",
+    period: "May 2018 – May 2019",
+    tags: ["Promotions", "Floor Management", "Rostering", "Coaching", "Queue Adherence"],
+    promotionBadge: "★ Promoted from Data Analyst",
+    bulletPoints: [
+      "Promoted from Data Analyst within 9 months into operational frontline management, leading a dedicated pod of 10–15 customer support specialists.",
+      "Owned daily floor management, shift rostering, break schedules, and real-time queue adherence, preventing SLA degradation during peak volume hours.",
+      "Conducted weekly 1-on-1 coaching, quality audits, and root-cause analysis on escalated tickets, lifting first-contact resolution (FCR) rates by 18%."
     ],
     iconUrl: "/assets/profile/ali-avatar.jpg"
   },
   {
     id: "exp-accenture-analyst",
-    role: "Data Analyst",
+    role: "Data Analyst — Operations",
     company: "Accenture",
-    location: "Federal Territory of Kuala Lumpur, Malaysia",
-    period: "August 2017 – May 2018",
-    tags: ["Data Analysis", "KPI Tracking", "PL/SQL", "Process Bottlenecks"],
+    location: "Kuala Lumpur, Malaysia",
+    period: "Aug 2017 – May 2018",
+    tags: ["Data Analytics", "KPI Modeling", "PL/SQL", "Queue Forecasting", "Bottleneck Triage"],
     bulletPoints: [
-      "Conducted rigorous KPI analysis for enterprise service delivery metrics across multiple global customer accounts, earning two rapid promotions within 5 years.",
-      "Identified critical operational bottlenecks, informing strategic pivot plans and automation opportunities."
+      "Generated daily, weekly, and monthly operational performance reports analyzing customer support KPIs, resolution velocity, and agent utilization metrics using PL/SQL, Excel, and dashboard prototypes.",
+      "Collaborated with operational leadership to diagnose frontline queue bottlenecks, translating raw telemetry into actionable coaching insights and automation initiatives.",
+      "Demonstrated high-velocity execution and analytical leadership that directly secured a merit promotion to Junior Team Lead within 9 months."
     ],
     iconUrl: "/assets/profile/ali-avatar.jpg"
   },
@@ -1096,11 +1130,12 @@ export const WORK_EXPERIENCE: ExperienceItem[] = [
     role: "Digital Marketing Specialist",
     company: "TheLorry",
     location: "Petaling, Selangor, Malaysia",
-    period: "February 2017 – August 2017",
-    tags: ["Digital Strategy", "Campaign Analytics", "Growth Marketing"],
+    period: "Feb 2017 – Aug 2017",
+    tags: ["Growth Marketing", "Campaign Analytics", "Funnel Optimization", "E-Logistics"],
     bulletPoints: [
-      "Conducted data-driven digital marketing campaigns and planned cross-functional marketing strategies for Malaysia's leading logistics platform.",
-      "Established foundational expertise in conversion analytics, funnel optimization, and stakeholder collaboration immediately following university graduation."
+      "Spearheaded data-driven digital marketing campaigns and acquisition funnel experiments for Southeast Asia's leading on-demand logistics tech platform immediately following university graduation.",
+      "Conducted conversion analytics across paid channels, driver-partner onboarding pipelines, and commercial logistics inquiries to optimize acquisition CAC.",
+      "Collaborated cross-functionally with product, operations, and regional sales teams to execute localized growth initiatives across Malaysia."
     ],
     iconUrl: "/assets/profile/ali-avatar.jpg"
   },

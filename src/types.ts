@@ -68,6 +68,7 @@ export interface ExperienceItem {
   location?: string;
   period: string;
   isCurrent?: boolean;
+  promotionBadge?: string;
   tags: string[];
   bulletPoints: string[];
   iconUrl: string;
