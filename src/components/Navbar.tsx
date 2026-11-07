@@ -122,7 +122,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               id="nav-btn-mobile-menu"
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-[var(--radius-sm)] bg-[var(--btn-secondary-bg)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--btn-secondary-border)] transition-colors"
+              className="min-h-[44px] min-w-[44px] flex items-center justify-center p-2.5 rounded-[var(--radius-sm)] bg-[var(--btn-secondary-bg)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--btn-secondary-border)] transition-colors"
               aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={mobileMenuOpen}
             >

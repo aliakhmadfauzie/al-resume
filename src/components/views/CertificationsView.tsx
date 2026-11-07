@@ -418,7 +418,7 @@ export const CertificationsView: React.FC = () => {
                             <button
                               type="button"
                               onClick={(e) => handleCopyCredentialId(e, cert)}
-                              className="inline-flex items-center space-x-1 px-2.5 py-1.5 rounded-[var(--radius-sm)] bg-[#14161f] hover:bg-[var(--interactive-subtle-bg)] text-[11px] font-mono text-[var(--text-secondary)] hover:text-[var(--text-accent)] border border-[var(--border-subtle)] transition-colors cursor-pointer shrink-0"
+                              className="min-h-[36px] sm:min-h-[40px] inline-flex items-center justify-center space-x-1.5 px-3 py-1.5 rounded-[var(--radius-sm)] bg-[#14161f] hover:bg-[var(--interactive-subtle-bg)] text-[11px] font-mono font-medium text-[var(--text-secondary)] hover:text-[var(--text-accent)] border border-[var(--border-subtle)] hover:border-[var(--border-focus)] transition-all cursor-pointer shrink-0 active:scale-95"
                               title="Copy Credential ID"
                             >
                               {copiedId === cert.id ? (

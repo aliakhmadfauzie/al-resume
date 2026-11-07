@@ -570,7 +570,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
                   </span>
                   <span className="text-[var(--text-tertiary)]">{slice.appCount} Apps</span>
                 </div>
-                <div className="text-xs font-semibold text-[var(--text-primary)] group-hover:text-[var(--text-accent)] truncate mt-1">
+                <div className="text-xs font-semibold text-[var(--text-primary)] group-hover:text-[var(--text-accent)] line-clamp-2 leading-snug mt-1">
                   {slice.title}
                 </div>
               </button>

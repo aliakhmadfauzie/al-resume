@@ -277,9 +277,9 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
                       </div>
 
                       <div className="pt-3 border-t border-[var(--border-subtle)] space-y-2">
-                        <div className="flex items-center space-x-1.5 text-xs text-[var(--text-primary)] font-medium">
+                        <div className="flex items-start space-x-2 text-xs text-[var(--text-primary)] font-medium">
                           <TrendingUp className="w-3.5 h-3.5 text-[var(--text-accent)] shrink-0" />
-                          <span className="truncate">{slice.impact}</span>
+                          <span className="line-clamp-2 leading-relaxed">{slice.impact}</span>
                         </div>
 
                         <div className="flex items-center justify-between text-xs font-medium text-[var(--text-accent)]">
