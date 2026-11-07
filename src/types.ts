@@ -186,6 +186,7 @@ export interface CertificationItem {
   verificationMethod?: string;
   hoursOrModules?: string;
   expiryDate?: string;
+  pdfUrl?: string;
 }
 
 export interface HonorAwardItem {
@@ -194,6 +195,7 @@ export interface HonorAwardItem {
   issuer: string;
   year: string;
   description: string;
+  certificatePdfUrl?: string;
 }
 
 export interface LinkedInTestimonial {

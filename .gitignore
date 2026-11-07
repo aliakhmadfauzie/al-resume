@@ -7,3 +7,6 @@ coverage/
 .env*
 !.env.example
 .vercel
+.firebase/
+scripts/
+master_portfolio.md

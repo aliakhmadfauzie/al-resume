@@ -1,12 +1,12 @@
 {
   "projects": {
-    "default": "sites-collection"
+    "default": "resume-al-2026"
   },
   "targets": {
-    "sites-collection": {
+    "resume-al-2026": {
       "hosting": {
-        "al-resume": [
-          "aliakhmadfauzie-resume"
+        "portfolio": [
+          "aliakhmadfauzie"
         ]
       }
     }

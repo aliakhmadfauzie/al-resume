@@ -129,8 +129,8 @@ export const CertificationsView: React.FC = () => {
               <ExternalLink className="w-3.5 h-3.5" />
             </a>
             <a
-              href="/assets/profile/LinkedIn_Profile.pdf"
-              download="Ali_Akhmad_Fauzie_LinkedIn_Profile.pdf"
+              href="/certificates/ABOUT_ME.pdf"
+              download="Ali_Akhmad_Fauzie_Career_Dossier.pdf"
               className="inline-flex items-center space-x-2 px-4 py-2.5 rounded-[var(--radius-sm)] bg-[#0f1117] hover:bg-[var(--bg-surface-elevated)] text-[var(--text-primary)] text-xs font-medium border border-[var(--border-subtle)] hover:border-[var(--border-focus)] transition-colors"
             >
               <Download className="w-3.5 h-3.5 text-[var(--text-accent)]" />
@@ -475,18 +475,33 @@ export const CertificationsView: React.FC = () => {
                             <span className="text-[var(--text-tertiary)] truncate">
                               {cert.verificationMethod || 'LinkedIn Official Transcript'}
                             </span>
-                            {cert.credentialUrl && (
-                              <a
-                                href={cert.credentialUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                onClick={(e) => e.stopPropagation()}
-                                className="inline-flex items-center space-x-1 text-[var(--text-accent)] hover:underline shrink-0"
-                              >
-                                <span>Verify</span>
-                                <ExternalLink className="w-3 h-3" />
-                              </a>
-                            )}
+                            <div className="flex items-center space-x-2 shrink-0">
+                                {cert.pdfUrl && (
+                                  <a
+                                    href={cert.pdfUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    onClick={(e) => e.stopPropagation()}
+                                    className="inline-flex items-center space-x-1 px-2.5 py-1 rounded bg-[var(--interactive-subtle)] hover:bg-[var(--interactive-hover)] text-[var(--text-accent)] border border-[var(--interactive-subtle-border)] transition-colors"
+                                    title="Open verified certificate PDF"
+                                  >
+                                    <FileCheck2 className="w-3.5 h-3.5 text-[var(--interactive-primary)]" />
+                                    <span>Certificate PDF</span>
+                                  </a>
+                                )}
+                                {cert.credentialUrl && (
+                                  <a
+                                    href={cert.credentialUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    onClick={(e) => e.stopPropagation()}
+                                    className="inline-flex items-center space-x-1 text-[var(--text-accent)] hover:underline shrink-0"
+                                  >
+                                    <span>Verify</span>
+                                    <ExternalLink className="w-3 h-3" />
+                                  </a>
+                                )}
+                              </div>
                           </div>
                         </div>
                       </motion.div>
@@ -555,6 +570,19 @@ export const CertificationsView: React.FC = () => {
                 <p className="text-xs text-[var(--text-secondary)] leading-relaxed pt-1">
                   {award.description}
                 </p>
+                {award.certificatePdfUrl && (
+                  <div className="pt-2">
+                    <a
+                      href={award.certificatePdfUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center space-x-1.5 text-xs font-mono text-[var(--text-accent)] hover:underline"
+                    >
+                      <FileCheck2 className="w-3.5 h-3.5 text-[var(--interactive-primary)]" />
+                      <span>View Verification Evidence (PDF) →</span>
+                    </a>
+                  </div>
+                )}
               </div>
             </div>
           ))}

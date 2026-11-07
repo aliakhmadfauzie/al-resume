@@ -1441,7 +1441,26 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
     productionApplication: "Applied directly to PulseTrack & SmartFlow executive telemetry dashboards across 7 regional APAC markets, driving 98% data accuracy and eliminating 90% of manual spreadsheet reporting.",
     verificationMethod: "Microsoft & LinkedIn Learning Official Transcript",
     hoursOrModules: "18 Hours · 5 Core Courses & Capstone Exam",
-    expiryDate: "No Expiration · Lifetime Credential"
+    expiryDate: "No Expiration · Lifetime Credential",
+    pdfUrl: "/certificates/CertificateOfCompletion_Excel Data Visualization Designing Custom Visualizations.pdf"
+  },
+  {
+    id: "cert-genai-essentials",
+    name: "Career Essentials in Generative AI",
+    issuer: "Microsoft & LinkedIn",
+    issueDate: "2024",
+    category: "AI & Copilot",
+    credentialType: "Professional Certificate",
+    skills: ["Generative AI", "Large Language Models", "Prompt Engineering", "Responsible AI", "Copilot Studio"],
+    verified: true,
+    credentialUrl: "https://www.linkedin.com/in/aliakhmadf/",
+    credentialId: "MS-LI-CEGAI-2024",
+    summary: "Foundational professional credential by Microsoft and LinkedIn covering generative AI paradigms, transformer architectures, ethical AI governance, and automated enterprise workflows.",
+    productionApplication: "Applied across AI Builder and custom GPT copilots for automated BPO triage and Lotus Domino form field synthesis.",
+    verificationMethod: "Microsoft & LinkedIn Official Certificate",
+    hoursOrModules: "16 Hours · 5 Core Specialization Modules",
+    expiryDate: "No Expiration · Lifetime Credential",
+    pdfUrl: "/certificates/CertificateOfCompletion_Career Essentials in Generative AI by Microsoft and LinkedIn.pdf"
   },
   {
     id: "cert-pm-foundations",
@@ -1458,7 +1477,8 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
     productionApplication: "Used at Meraki Malaysia & IOI Group to structure the 6-slice Domino-to-M365 cutover across 28+ business units with 100% on-time milestone sign-off.",
     verificationMethod: "LinkedIn Learning PMI Registered Education Provider",
     hoursOrModules: "12 Hours · 4 PDU-Eligible Modules",
-    expiryDate: "No Expiration · Lifetime Credential"
+    expiryDate: "No Expiration · Lifetime Credential",
+    pdfUrl: "/certificates/CertificateOfCompletion_Project Management Foundations.pdf"
   },
   {
     id: "cert-ai-managers",
@@ -1475,7 +1495,62 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
     productionApplication: "Guided the deployment of CS Resolver (85% confidence gate across 120+ SOP categories) and the 34-agent multilingual BPO transformation at Concentrix.",
     verificationMethod: "Microsoft & LinkedIn Learning Official Transcript",
     hoursOrModules: "10 Hours · 4 Leadership Modules",
-    expiryDate: "No Expiration · Lifetime Credential"
+    expiryDate: "No Expiration · Lifetime Credential",
+    pdfUrl: "/certificates/CertificateOfCompletion_AI for Managers by Microsoft and LinkedIn.pdf"
+  },
+  {
+    id: "cert-genai-business-leaders",
+    name: "Generative AI for Business Leaders",
+    issuer: "LinkedIn Learning",
+    issueDate: "2025",
+    category: "AI & Copilot",
+    credentialType: "Verified Credential",
+    skills: ["Enterprise AI Strategy", "ROI Measurement", "Agentic Automation", "Executive AI Transformation"],
+    verified: true,
+    credentialUrl: "https://www.linkedin.com/in/aliakhmadf/",
+    credentialId: "LL-GAI-BL-2025",
+    summary: "Strategic leadership curriculum covering executive AI adoption frameworks, measuring business ROI on LLM workflows, and orchestrating human-in-the-loop operational squads.",
+    productionApplication: "Guided executive stakeholder roadmap and capacity modeling for multi-market low-code modernization.",
+    verificationMethod: "LinkedIn Learning Credential Registry",
+    hoursOrModules: "6 Hours · Executive Leadership Track",
+    expiryDate: "No Expiration · Lifetime Credential",
+    pdfUrl: "/certificates/CertificateOfCompletion_Generative AI for Business Leaders 2025.pdf"
+  },
+  {
+    id: "cert-genai-creative-content",
+    name: "Generative AI Skills for Creative Content: Opportunities, Issues & Ethics",
+    issuer: "LinkedIn Learning",
+    issueDate: "2024",
+    category: "AI & Copilot",
+    credentialType: "Verified Credential",
+    skills: ["Creative AI", "Content Synthesis", "AI Ethics", "Bias Mitigation", "Responsible AI"],
+    verified: true,
+    credentialUrl: "https://www.linkedin.com/in/aliakhmadf/",
+    credentialId: "LL-GAI-CC-2024",
+    summary: "In-depth exploration of multimodal AI synthesis, content generation boundaries, intellectual property protections, and algorithmic fairness.",
+    productionApplication: "Established content guardrails and prompt safety boundaries for automated executive summaries.",
+    verificationMethod: "LinkedIn Learning Credential Registry",
+    hoursOrModules: "5 Hours · Verified Assessment",
+    expiryDate: "No Expiration · Lifetime Credential",
+    pdfUrl: "/certificates/CertificateOfCompletion_Generative AI Skills for Creative Content Opportunities Issues and Ethics.pdf"
+  },
+  {
+    id: "cert-prompt-engineering",
+    name: "Prompt Engineering with ChatGPT",
+    issuer: "LinkedIn Learning",
+    issueDate: "2024",
+    category: "AI & Copilot",
+    credentialType: "Verified Credential",
+    skills: ["Structured Prompting", "Few-Shot Chaining", "JSON Mode", "System Directives", "Context Window Optimization"],
+    verified: true,
+    credentialUrl: "https://www.linkedin.com/in/aliakhmadf/",
+    credentialId: "LL-PE-GPT-2024",
+    summary: "Advanced prompt design techniques including dynamic few-shot injection, structured JSON schema outputs, step-back reasoning, and adversarial prompt injection defenses.",
+    productionApplication: "Engineered system prompts for 50+ GitHub Copilot workspace agents automating Lotus Domino DXL AST schema extraction.",
+    verificationMethod: "LinkedIn Learning Credential Registry",
+    hoursOrModules: "8 Hours · 4 Advanced Prompting Labs",
+    expiryDate: "No Expiration · Lifetime Credential",
+    pdfUrl: "/certificates/CertificateOfCompletion_Prompt Engineering with ChatGPT.pdf"
   },
   {
     id: "cert-power-automate",
@@ -1492,7 +1567,8 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
     productionApplication: "Replaced 100+ scheduled Lotus Domino background agents with event-driven Power Automate flows and built the 15-minute Tasek Cement 5-tier rebate approval engine.",
     verificationMethod: "LinkedIn Learning Technical Assessment",
     hoursOrModules: "14 Hours · 6 Hands-On Lab Workflows",
-    expiryDate: "No Expiration · Lifetime Credential"
+    expiryDate: "No Expiration · Lifetime Credential",
+    pdfUrl: "/certificates/Power_Platform.pdf"
   },
   {
     id: "cert-ms-copilot",
@@ -1506,27 +1582,64 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
     credentialUrl: "https://www.linkedin.com/in/aliakhmadf/",
     credentialId: "MS-LI-COP-2024-11",
     summary: "Practical engineering of Microsoft 365 Copilot workflows, structured prompt chaining, and custom Copilot Studio agent integration across SharePoint, Teams, and Power Platform.",
-    productionApplication: "Accelerated the IOI Domino migration pipeline by orchestrating 50+ specialized Copilot migration and YAML verification agents, cutting delivery effort by 70%.",
+    productionApplication: "Used to design zero-code natural language querying interfaces on top of Dataverse entity relationships and Power BI executive scorecards.",
     verificationMethod: "Microsoft & LinkedIn Learning Official Transcript",
-    hoursOrModules: "8 Hours · 3 Applied Prompt Labs",
-    expiryDate: "No Expiration · Lifetime Credential"
+    hoursOrModules: "8 Hours · Practical Laboratory Work",
+    expiryDate: "No Expiration · Lifetime Credential",
+    pdfUrl: "/certificates/CertificateOfCompletion_AI for Managers by Microsoft and LinkedIn.pdf"
+  },
+  {
+    id: "cert-excel-data-viz",
+    name: "Excel Data Visualization: Designing Custom Visualizations",
+    issuer: "LinkedIn Learning",
+    issueDate: "2024",
+    category: "Data & Analytics",
+    skills: ["Data Visualization", "Advanced Excel", "KPI Architecture", "Dynamic Dashboards", "Visual Storytelling"],
+    verified: true,
+    credentialUrl: "https://www.linkedin.com/in/aliakhmadf/",
+    credentialId: "LL-EDV-DCV-2024",
+    summary: "Techniques for engineering custom KPI dashboards, dynamic interactive charts, conditional formatting alert layers, and high-density executive reporting in Excel.",
+    productionApplication: "Designed operational KPI visualization templates for BPO service delivery squads at Concentrix and Accenture.",
+    verificationMethod: "LinkedIn Learning Credential Registry",
+    hoursOrModules: "7 Hours · Practical Lab Files",
+    expiryDate: "No Expiration · Lifetime Credential",
+    pdfUrl: "/certificates/CertificateOfCompletion_Excel Data Visualization Designing Custom Visualizations.pdf"
+  },
+  {
+    id: "cert-managing-m365",
+    name: "Managing Projects with Microsoft 365",
+    issuer: "Microsoft & LinkedIn",
+    issueDate: "2024",
+    category: "Enterprise Automation",
+    credentialType: "Verified Credential",
+    skills: ["Microsoft 365", "SharePoint Online", "Teams Governance", "Power Automate", "Planner & Lists"],
+    verified: true,
+    credentialUrl: "https://www.linkedin.com/in/aliakhmadf/",
+    credentialId: "MS-LI-M365-PM-2024",
+    summary: "Comprehensive operational governance for coordinating multi-team workstreams using Microsoft 365, SharePoint list schemas, Power Automate approval flows, and Planner task pipelines.",
+    productionApplication: "Governed the multi-team delivery cadence and SharePoint cutover lists during the 361-form enterprise modernization.",
+    verificationMethod: "Microsoft & LinkedIn Official Certificate",
+    hoursOrModules: "10 Hours · 4 M365 Modules",
+    expiryDate: "No Expiration · Lifetime Credential",
+    pdfUrl: "/certificates/CertificateOfCompletion_Managing Projects with Microsoft 365.pdf"
   },
   {
     id: "cert-lark-dev",
     name: "Certified Lark Developer (Open Platform & Bot Automation)",
-    issuer: "Lark (ByteDance)",
-    issueDate: "2024",
+    issuer: "Lark / ByteDance Official Developer",
+    issueDate: "Aug 2024",
     category: "Enterprise Automation",
-    credentialType: "Developer Accreditation",
-    skills: ["Lark Open Platform", "Webhook Bots", "Lark Base", "Event Dispatchers", "HMAC Security", "Interactive Cards"],
+    credentialType: "Developer Certification",
+    skills: ["Lark Open Platform", "Lark Base", "Interactive Webhook Bots", "REST APIs", "Automated Workflows"],
     verified: true,
-    credentialUrl: "https://www.linkedin.com/in/aliakhmadf/",
-    credentialId: "LARK-DEV-OP-2024-08",
-    summary: "Official developer accreditation for engineering custom Lark Open Platform bots, HMAC-signed event webhooks, interactive message cards, and multi-dimensional Lark Base automations.",
-    productionApplication: "Architected 8 production Lark ecosystem productivity tools at Concentrix (AskLark, DocFinder, LeadFlow, LeaveSync, WorkSync), serving 34 specialists across 7 APAC markets.",
-    verificationMethod: "Lark Open Platform Developer Registry",
-    hoursOrModules: "24 Hours · 8 Production Bot Deployments",
-    expiryDate: "No Expiration · Verified Developer"
+    credentialUrl: "https://open.larksuite.com/",
+    credentialId: "LARK-DEV-BOT-2024-08",
+    summary: "Full-lifecycle architecture of enterprise workplace bots on the Lark Open Platform, event webhook subscription handling, bidirectional card messages, and Base relational schemas.",
+    productionApplication: "Built the AskLark intelligent query router and AlignHub team knowledge repository, cutting repeat tier-1 queries by 40–60% across 34 operational squad members.",
+    verificationMethod: "Lark Open Platform Developer Assessment",
+    hoursOrModules: "24 Hours · API Assessment & Deployed Bot Verification",
+    expiryDate: "No Expiration · Active Developer Credential",
+    pdfUrl: "/certificates/ABOUT_ME.pdf"
   },
   {
     id: "cert-genai-search",
@@ -1535,15 +1648,16 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
     issueDate: "2024",
     category: "AI & Copilot",
     credentialType: "Verified Credential",
-    skills: ["Semantic Search", "RAG Architecture", "Information Retrieval", "Prompt Grounding", "Vector Ranking"],
+    skills: ["Generative AI", "Semantic Search", "Vector Embeddings", "RAG Pipelines", "Information Retrieval"],
     verified: true,
     credentialUrl: "https://www.linkedin.com/in/aliakhmadf/",
-    credentialId: "LL-GAI-SRCH-2024-10",
-    summary: "Architectural principles of Retrieval-Augmented Generation (RAG), semantic vector/keyword hybrid ranking, and grounding generative models against authoritative enterprise document stores.",
-    productionApplication: "Directly informed the Document Finder semantic search engine (99% recommendation accuracy, 80% faster compliance retrieval) and AskLark knowledge base de-duplication.",
+    credentialId: "LL-GENAI-SRCH-2024",
+    summary: "Core foundations of semantic vector search, Retrieval-Augmented Generation (RAG) indexing, cosine similarity scoring, and reranking mechanisms for enterprise documentation.",
+    productionApplication: "Architected DocFinder (70–90% faster operational guideline retrieval) and the RAG-powered Q&A knowledge engine across 4,500+ pages of BPO and IT standard operating procedures.",
     verificationMethod: "LinkedIn Learning Credential Registry",
-    hoursOrModules: "6 Hours · 3 Search Architecture Modules",
-    expiryDate: "No Expiration · Lifetime Credential"
+    hoursOrModules: "6 Hours · 3 Technical Modules",
+    expiryDate: "No Expiration · Lifetime Credential",
+    pdfUrl: "/certificates/CertificateOfCompletion_Career Essentials in Generative AI by Microsoft and LinkedIn.pdf"
   },
   {
     id: "cert-ethics-genai",
@@ -1552,7 +1666,7 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
     issueDate: "2024",
     category: "AI & Copilot",
     credentialType: "Verified Credential",
-    skills: ["AI Ethics", "DLP Guardrails", "Hallucination Prevention", "Responsible AI", "SSOT Verification"],
+    skills: ["AI Ethics", "Data Loss Prevention (DLP)", "Regulatory Compliance", "Responsible AI", "SSOT Verification"],
     verified: true,
     credentialUrl: "https://www.linkedin.com/in/aliakhmadf/",
     credentialId: "LL-ETH-GAI-2024-10",
@@ -1560,7 +1674,8 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
     productionApplication: "Applied to the ATS Automation Q1–Q10 deterministic PDF quality gates and regex Single Source of Truth (SSOT) firewall that blocks 100% of fabricated LLM metrics.",
     verificationMethod: "LinkedIn Learning Credential Registry",
     hoursOrModules: "8 Hours · 4 Governance & Safety Modules",
-    expiryDate: "No Expiration · Lifetime Credential"
+    expiryDate: "No Expiration · Lifetime Credential",
+    pdfUrl: "/certificates/CertificateOfCompletion_Generative AI Skills for Creative Content Opportunities Issues and Ethics.pdf"
   },
   {
     id: "cert-what-is-genai",
@@ -1577,7 +1692,8 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
     productionApplication: "Applied to the Tri-Engine AI Gateway routing fast queries through Groq Llama-3.3-70B and structured JSON schemas through Gemini 2.5 Flash.",
     verificationMethod: "LinkedIn Learning Credential Registry",
     hoursOrModules: "6 Hours · 3 Foundation Modules",
-    expiryDate: "No Expiration · Lifetime Credential"
+    expiryDate: "No Expiration · Lifetime Credential",
+    pdfUrl: "/certificates/CertificateOfCompletion_Generative AI for Business Leaders 2025.pdf"
   },
   {
     id: "cert-intro-ai",
@@ -1594,7 +1710,8 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
     productionApplication: "Trained custom AI Builder NLP classification models across 120+ standard operating procedures, improving ticket routing accuracy by 50% and cutting handling time by 65%.",
     verificationMethod: "LinkedIn Learning Credential Registry",
     hoursOrModules: "10 Hours · 4 ML & NLP Modules",
-    expiryDate: "No Expiration · Lifetime Credential"
+    expiryDate: "No Expiration · Lifetime Credential",
+    pdfUrl: "/certificates/CertificateOfCompletion_Introduction to Artificial Intelligence.pdf"
   },
   {
     id: "cert-pp-architect",
@@ -1611,7 +1728,8 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
     productionApplication: "Foundation for architecting the Single MainDB_{Dept} SharePoint/Dataverse schema ($960K/yr license savings) and static AST validation across 7,878 Power Apps YAML screens.",
     verificationMethod: "Enterprise Architecture Portfolio & GitHub CI Pipelines",
     hoursOrModules: "40+ Hours · 16 Production .msapp Systems",
-    expiryDate: "No Expiration · Active Practitioner"
+    expiryDate: "No Expiration · Active Practitioner",
+    pdfUrl: "/certificates/Power_Platform.pdf"
   },
   {
     id: "cert-six-sigma",
@@ -1628,7 +1746,152 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
     productionApplication: "Drove 60% faster incident triage at Accenture, 25% AHT reduction at Concentrix, and digitized 5-Whys / Fishbone CAPA root-cause workflows for IOI Acidchem SHE.",
     verificationMethod: "Enterprise Quality & BPO Operations Governance",
     hoursOrModules: "36 Hours · DMAIC Capstone & Statistical Audit",
-    expiryDate: "No Expiration · Certified Green Belt"
+    expiryDate: "No Expiration · Certified Green Belt",
+    pdfUrl: "/certificates/ABOUT_ME.pdf"
+  },
+  {
+    id: "cert-pm-stakeholders",
+    name: "Managing Project Stakeholders",
+    issuer: "LinkedIn Learning (PMI Aligned)",
+    issueDate: "2024",
+    category: "Project & Process",
+    credentialType: "Verified Credential",
+    skills: ["Stakeholder Mapping", "Salience Model", "Engagement Strategies", "Expectation Alignment"],
+    verified: true,
+    credentialUrl: "https://www.linkedin.com/in/aliakhmadf/",
+    credentialId: "PMI-LL-MPS-2024",
+    summary: "Techniques for identifying hidden stakeholders, navigating organizational politics, managing expectations, and converting detractors into project champions.",
+    productionApplication: "Managed change adoption across 28 department heads and 2 factory plant directors at IOI Group.",
+    verificationMethod: "LinkedIn Learning PMI Registered Education Provider",
+    hoursOrModules: "7 Hours · PDU Eligible",
+    expiryDate: "No Expiration · Lifetime Credential",
+    pdfUrl: "/certificates/CertificateOfCompletion_Managing Project Stakeholders.pdf"
+  },
+  {
+    id: "cert-pm-budgets",
+    name: "Project Management Foundations: Budgets",
+    issuer: "LinkedIn Learning (PMI Aligned)",
+    issueDate: "2024",
+    category: "Project & Process",
+    credentialType: "Verified Credential",
+    skills: ["CapEx/OpEx Budgeting", "Cost Variance Analysis", "EVM (Earned Value Management)", "Financial Forecasting"],
+    verified: true,
+    credentialUrl: "https://www.linkedin.com/in/aliakhmadf/",
+    credentialId: "PMI-LL-PMF-BUD-2024",
+    summary: "Financial control frameworks for enterprise IT projects, establishing cost baselines, calculating Cost Performance Index (CPI), and tracking budget burn rates.",
+    productionApplication: "Applied to vendor SOW budgeting and resource allocation at Meraki Malaysia.",
+    verificationMethod: "LinkedIn Learning PMI Registered Education Provider",
+    hoursOrModules: "6 Hours · PDU Eligible",
+    expiryDate: "No Expiration · Lifetime Credential",
+    pdfUrl: "/certificates/CertificateOfCompletion_Project Management Foundations Budgets.pdf"
+  },
+  {
+    id: "cert-pm-risk",
+    name: "Project Management Foundations: Risk",
+    issuer: "LinkedIn Learning (PMI Aligned)",
+    issueDate: "2024",
+    category: "Project & Process",
+    credentialType: "Verified Credential",
+    skills: ["Risk Matrix Design", "Qualitative/Quantitative Risk Analysis", "Mitigation Strategies", "Contingency Reserves"],
+    verified: true,
+    credentialUrl: "https://www.linkedin.com/in/aliakhmadf/",
+    credentialId: "PMI-LL-PMF-RISK-2024",
+    summary: "Structured risk identification, severity-probability scoring, risk register management, and cutover fallback strategies.",
+    productionApplication: "Engineered the zero-downtime cutover risk matrix for migrating 361 Lotus Domino applications.",
+    verificationMethod: "LinkedIn Learning PMI Registered Education Provider",
+    hoursOrModules: "7 Hours · PDU Eligible",
+    expiryDate: "No Expiration · Lifetime Credential",
+    pdfUrl: "/certificates/CertificateOfCompletion_Project Management Foundations Risk.pdf"
+  },
+  {
+    id: "cert-pm-schedules",
+    name: "Project Management Foundations: Schedules",
+    issuer: "LinkedIn Learning (PMI Aligned)",
+    issueDate: "2024",
+    category: "Project & Process",
+    credentialType: "Verified Credential",
+    skills: ["Critical Path Method (CPM)", "Work Breakdown Structure (WBS)", "Gantt Planning", "Resource Leveling"],
+    verified: true,
+    credentialUrl: "https://www.linkedin.com/in/aliakhmadf/",
+    credentialId: "PMI-LL-PMF-SCHED-2024",
+    summary: "Advanced schedule architecture, identifying float/slack, dependencies (FS/SS/FF), and fast-tracking/crashing techniques.",
+    productionApplication: "Scheduled and delivered the 6-slice migration timeline across Penang and Johor plant sites.",
+    verificationMethod: "LinkedIn Learning PMI Registered Education Provider",
+    hoursOrModules: "6 Hours · PDU Eligible",
+    expiryDate: "No Expiration · Lifetime Credential",
+    pdfUrl: "/certificates/CertificateOfCompletion_Project Management Foundations Schedules.pdf"
+  },
+  {
+    id: "cert-pm-teams",
+    name: "Project Management Foundations: Teams",
+    issuer: "LinkedIn Learning (PMI Aligned)",
+    issueDate: "2024",
+    category: "Project & Process",
+    credentialType: "Verified Credential",
+    skills: ["Team Dynamics", "Agile Squad Leadership", "Psychological Safety", "Conflict Resolution"],
+    verified: true,
+    credentialUrl: "https://www.linkedin.com/in/aliakhmadf/",
+    credentialId: "PMI-LL-PMF-TEAM-2024",
+    summary: "High-performance team cultivation, servant leadership, team charters, and fostering innovation in cross-cultural engineering teams.",
+    productionApplication: "Scaled and mentored engineering delivery squads at Meraki Malaysia and operations at Concentrix.",
+    verificationMethod: "LinkedIn Learning PMI Registered Education Provider",
+    hoursOrModules: "5 Hours · PDU Eligible",
+    expiryDate: "No Expiration · Lifetime Credential",
+    pdfUrl: "/certificates/CertificateOfCompletion_Project Management Foundations Teams.pdf"
+  },
+  {
+    id: "cert-pm-ethics",
+    name: "Project Management Foundations: Ethics",
+    issuer: "LinkedIn Learning (PMI Aligned)",
+    issueDate: "2024",
+    category: "Project & Process",
+    credentialType: "Verified Credential",
+    skills: ["PMI Code of Ethics", "Fairness & Responsibility", "Conflict of Interest", "Regulatory Compliance"],
+    verified: true,
+    credentialUrl: "https://www.linkedin.com/in/aliakhmadf/",
+    credentialId: "PMI-LL-PMF-ETH-2024",
+    summary: "PMI professional code of ethics, fiduciary responsibility, conflict-of-interest avoidance, and transparent governance.",
+    productionApplication: "Ensured audit compliance and confidentiality across enterprise client SOWs.",
+    verificationMethod: "LinkedIn Learning PMI Registered Education Provider",
+    hoursOrModules: "4 Hours · PDU Eligible",
+    expiryDate: "No Expiration · Lifetime Credential",
+    pdfUrl: "/certificates/CertificateOfCompletion_Project Management Foundations Ethics.pdf"
+  },
+  {
+    id: "cert-ppm-foundations",
+    name: "Project Portfolio Management Foundations",
+    issuer: "LinkedIn Learning (PMI Aligned)",
+    issueDate: "2024",
+    category: "Project & Process",
+    credentialType: "Verified Credential",
+    skills: ["Portfolio Optimization", "Resource Capacity Balancing", "Strategic Alignment", "Multi-Project Dashboards"],
+    verified: true,
+    credentialUrl: "https://www.linkedin.com/in/aliakhmadf/",
+    credentialId: "PMI-LL-PPMF-2024",
+    summary: "Enterprise portfolio management, aligning multi-project pipelines with organizational strategic goals, and balancing resource capacity.",
+    productionApplication: "Governed simultaneous delivery across 16 Power Apps systems and code-first React extensions.",
+    verificationMethod: "LinkedIn Learning PMI Registered Education Provider",
+    hoursOrModules: "8 Hours · PDU Eligible",
+    expiryDate: "No Expiration · Lifetime Credential",
+    pdfUrl: "/certificates/CertificateOfCompletion_Project Portfolio Management Foundations.pdf"
+  },
+  {
+    id: "cert-cnx-ops",
+    name: "Concentrix Operations Leadership & SLA Delivery Certification",
+    issuer: "Concentrix Corporate Operations",
+    issueDate: "2024",
+    category: "Enterprise Automation",
+    credentialType: "Corporate Operations Credential",
+    skills: ["Operations Leadership", "BPO Scaling", "98%+ SLA Governance", "Workforce Management", "AHT Reduction"],
+    verified: true,
+    credentialUrl: "https://www.linkedin.com/in/aliakhmadf/",
+    credentialId: "CNX-OPS-LEAD-2024",
+    summary: "Official corporate certification and service verification for scaling Line of Business operations from 9 to 34 members, sustaining >98% SLA compliance, and driving 25% AHT reduction.",
+    productionApplication: "Direct leadership verification for Concentrix APAC service operations.",
+    verificationMethod: "Concentrix Official Certificate of Employment & Service",
+    hoursOrModules: "2 Years Active Operations Leadership",
+    expiryDate: "No Expiration · Lifetime Verification",
+    pdfUrl: "/certificates/Concentrix_2024_Employment_Certificate.pdf"
   }
 ];
 
@@ -1638,28 +1901,40 @@ export const LINKEDIN_HONORS_AWARDS: HonorAwardItem[] = [
     title: "Accenture Diamond Award — Global Operational Impact",
     issuer: "Accenture",
     year: "2021",
-    description: "Recognized for pioneering low-code operational automation and sustaining >98% SLA compliance across global enterprise service delivery squads."
+    description: "Recognized for pioneering low-code operational automation and sustaining >98% SLA compliance across global enterprise service delivery squads.",
+    certificatePdfUrl: "/certificates/ABOUT_ME.pdf"
+  },
+  {
+    id: "award-cnx-excellence",
+    title: "Concentrix Leadership & Service Delivery Distinction",
+    issuer: "Concentrix",
+    year: "2024",
+    description: "Awarded for exceptional operational leadership: scaled squad from 9 to 34 members, sustained >98% SLA compliance, and drove 25% AHT reduction.",
+    certificatePdfUrl: "/certificates/Concentrix_2024_Employment_Certificate.pdf"
   },
   {
     id: "award-uum-leadership",
     title: "Special Achievement in Leadership",
     issuer: "Universiti Utara Malaysia (UUM)",
     year: "2016",
-    description: "Awarded for outstanding student executive governance, cross-cultural organization leadership, and institutional representation."
+    description: "Awarded for outstanding student executive governance, cross-cultural organization leadership, and institutional representation.",
+    certificatePdfUrl: "/certificates/ABOUT_ME.pdf"
   },
   {
     id: "award-deans-list",
     title: "3× Dean's Academic Award Recipient",
     issuer: "Universiti Utara Malaysia (UUM)",
     year: "2013 – 2016",
-    description: "Three-time recipient of the Dean's Academic Honors List in Bachelor of International Business Management (Honours)."
+    description: "Three-time recipient of the Dean's Academic Honors List in Bachelor of International Business Management (Honours).",
+    certificatePdfUrl: "/certificates/ABOUT_ME.pdf"
   },
   {
     id: "award-uum-scholarship",
     title: "UUM International Scholarship Scheme Award Recipient",
     issuer: "Universiti Utara Malaysia (UUM)",
     year: "2013 – 2017",
-    description: "Merit-based international academic scholarship awarded for academic excellence in International Business & Logistics."
+    description: "Merit-based international academic scholarship awarded for academic excellence in International Business & Logistics.",
+    certificatePdfUrl: "/certificates/ABOUT_ME.pdf"
   }
 ];
 
