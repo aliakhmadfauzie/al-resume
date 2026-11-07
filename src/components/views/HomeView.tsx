@@ -10,6 +10,7 @@ import {
 } from '../../data/portfolioData';
 import { NavTab, ProjectItem, MigrationSlice } from '../../types';
 import { ProjectCardGalleryPreview } from '../ProjectGallery';
+import { AwardEvidenceGallery } from '../AwardEvidenceGallery';
 import { ArchitectureMotionHero } from '../ArchitectureMotionHero';
 import {
   ArrowRight,
@@ -797,7 +798,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
         <div className="pt-4 border-t border-[var(--border-subtle)] space-y-3">
           <div className="flex items-center justify-between">
             <span className="text-xs font-mono text-[var(--text-secondary)] uppercase">
-              // HONORS &amp; ACADEMIC AWARDS (LINKEDIN VERIFIED)
+              // DOCUMENTED HONORS &amp; ACADEMIC AWARDS
             </span>
             <span className="text-xs font-mono text-[var(--text-accent)]">
               Accenture &amp; Universiti Utara Malaysia (UUM)
@@ -805,7 +806,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
-            {LINKEDIN_HONORS_AWARDS.map((award) => (
+            {LINKEDIN_HONORS_AWARDS.slice(0, 4).map((award) => (
               <div
                 key={award.id}
                 className="rounded-[var(--radius-sm)] bg-[#0f1117] border border-[var(--border-subtle)] p-3.5 space-y-1.5"
@@ -823,6 +824,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 <p className="text-[11px] text-[var(--text-secondary)] leading-relaxed">
                   {award.description}
                 </p>
+                <AwardEvidenceGallery images={award.evidenceImages} compact />
               </div>
             ))}
           </div>
