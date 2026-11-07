@@ -32,9 +32,9 @@ export const PERSONAL_INFO = {
 };
 
 export const KEY_METRICS = [
-  { label: "DATABASES MIGRATED", value: "365+", subtext: "Across 28+ Business Units" },
-  { label: "BUS TRANSFORMED", value: "28+", subtext: "Quality, Supply Chain, IT, HR" },
-  { label: "APPS DELIVERED", value: "16+", subtext: "Production Power Apps (Slice) & 23 Enterprise" },
+  { label: "LEGACY MIGRATION SCOPE", value: "365+", subtext: "Applications in modernization scope" },
+  { label: "BUSINESS UNITS IN SCOPE", value: "28+", subtext: "Quality, Supply Chain, IT, HR" },
+  { label: "POWER APPS PORTFOLIO", value: "16+", subtext: "Representative enterprise applications" },
   { label: "AUTOMATION IMPACT", value: "90%", subtext: "Manual Reporting Reduction" }
 ];
 
