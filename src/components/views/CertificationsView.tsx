@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { AwardEvidenceGallery } from '../AwardEvidenceGallery';
 import { motion, AnimatePresence } from 'motion/react';
 import {
   LINKEDIN_CERTIFICATIONS,
@@ -570,6 +571,7 @@ export const CertificationsView: React.FC = () => {
                 <p className="text-xs text-[var(--text-secondary)] leading-relaxed pt-1">
                   {award.description}
                 </p>
+                <AwardEvidenceGallery images={award.evidenceImages} />
                 {award.certificatePdfUrl && (
                   <div className="pt-2">
                     <a
