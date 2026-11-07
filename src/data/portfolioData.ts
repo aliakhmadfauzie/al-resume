@@ -773,11 +773,11 @@ const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8' });`
     tools: ["Power Apps", "Power Automate", "Power BI", "SharePoint", "Teams", "Outlook"],
     problem: "Requests and approvals were routed via email and spreadsheets, resulting in delayed visibility and poor tracking.",
     solution: "Developed an integrated request + approval flow with a Power BI dashboard for live tracking, centralizing all requests.",
-    impact: "90% data accuracy; 80% less manual work; 100% real-time tracking.",
+    impact: "Earlier portfolio materials report improvements in tracking accuracy and manual effort; source documents show differing impact estimates, so these figures require baseline and measurement verification.",
     impactMetrics: [
-      { label: "Data Accuracy", value: "90%" },
-      { label: "Manual Work", value: "-80%" },
-      { label: "Real-Time Tracking", value: "100%" }
+      { label: "Reported accuracy", value: "90%" },
+      { label: "Reported manual work", value: "-80%" },
+      { label: "Measurement status", value: "Self-reported" }
     ],
     technicalDetails: [
       "Responsive Power Apps Canvas front-end with dynamic form validations",
