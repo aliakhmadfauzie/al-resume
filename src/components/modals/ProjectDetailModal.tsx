@@ -158,7 +158,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
           <div className="bg-[var(--bg-primary)] p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-2">
             <div className="flex items-center space-x-2 text-[var(--text-accent)] font-mono text-xs font-medium">
               <TrendingUp className="w-4 h-4" />
-              <span>03 · Verified Business Impact</span>
+              <span>03 · Reported Business Impact</span>
             </div>
             <p className="text-sm text-[var(--text-primary)] font-medium leading-relaxed">
               {impactText}
@@ -222,7 +222,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
           {'codeSnippet' in project && project.codeSnippet && (
             <div className="space-y-2">
               <h4 className="text-xs font-mono text-[var(--text-accent)] font-medium">
-                Verified Implementation Excerpt
+                Implementation Excerpt
               </h4>
               <pre className="p-4 rounded-[var(--radius-md)] bg-[var(--bg-primary)] border border-[var(--border-subtle)] text-[11px] font-mono text-[var(--text-primary)] overflow-x-auto leading-relaxed">
                 <code>{project.codeSnippet}</code>
