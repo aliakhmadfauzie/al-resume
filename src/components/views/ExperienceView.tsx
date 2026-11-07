@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { AwardEvidenceGallery } from '../AwardEvidenceGallery';
 import {
   WORK_EXPERIENCE,
   PERSONAL_INFO,
@@ -260,6 +261,7 @@ export const ExperienceView: React.FC = () => {
                 <p className="text-xs text-[var(--text-secondary)] leading-relaxed pt-1">
                   {award.description}
                 </p>
+                <AwardEvidenceGallery images={award.evidenceImages} compact />
               </div>
             </div>
           ))}
