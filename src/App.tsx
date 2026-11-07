@@ -4,6 +4,7 @@ import { ArrowUp } from 'lucide-react';
 import { NavTab, ProjectItem, MigrationSlice } from './types';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
+import { WebGLBackground } from './components/WebGLBackground';
 import { HomeView } from './components/views/HomeView';
 import { ProjectsView } from './components/views/ProjectsView';
 import { SkillsView } from './components/views/SkillsView';
@@ -23,6 +24,7 @@ export default function App() {
   const [isContactOpen, setIsContactOpen] = useState<boolean>(false);
   const [activeDemoId, setActiveDemoId] = useState<string>('finops');
   const [showScrollTop, setShowScrollTop] = useState<boolean>(false);
+  const [isWebGLActive, setIsWebGLActive] = useState<boolean>(true);
 
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
@@ -68,6 +70,9 @@ export default function App() {
         style={{ scaleX }}
         className="fixed top-0 left-0 right-0 h-[2px] bg-[var(--border-focus)] origin-left z-[60] pointer-events-none"
       />
+
+      {/* 3D WebGL Enterprise Constellation Layer */}
+      {isWebGLActive && <WebGLBackground intensity={0.85} />}
 
       {/* Ambient Background Motion Layer */}
       <div className="pointer-events-none fixed inset-0 overflow-hidden z-0">
@@ -148,6 +153,26 @@ export default function App() {
           </motion.div>
         </AnimatePresence>
       </main>
+
+            {/* 3D WebGL Motion Status Indicator & Toggle */}
+      <div className="fixed bottom-6 left-6 z-40 hidden sm:flex items-center space-x-2">
+        <button
+          type="button"
+          onClick={() => setIsWebGLActive(!isWebGLActive)}
+          className="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-[#0c0d12]/85 backdrop-blur-md border border-[var(--border-subtle)] hover:border-[var(--interactive-subtle-border)] text-[10px] font-mono text-[var(--text-secondary)] hover:text-[var(--text-accent)] shadow-lg transition-all cursor-pointer group"
+          title="Toggle Three.js WebGL Enterprise Constellation"
+        >
+          <span className={`relative flex h-2 w-2`}>
+            {isWebGLActive && (
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#22c55e] opacity-75" />
+            )}
+            <span className={`relative inline-flex rounded-full h-2 w-2 ${isWebGLActive ? 'bg-[#22c55e] shadow-[0_0_8px_#22c55e]' : 'bg-zinc-600'}`} />
+          </span>
+          <span className="group-hover:text-white transition-colors">
+            WebGL 3D: {isWebGLActive ? 'Active (60 FPS)' : 'Paused'}
+          </span>
+        </button>
+      </div>
 
       {/* Scroll-to-Top Floating Action Button */}
       <AnimatePresence>

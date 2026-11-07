@@ -147,7 +147,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
 
             {/* Primary & Secondary Action Buttons */}
             <div className="flex flex-wrap items-center gap-3 pt-1">
-              <button
+              <motion.button
                 id="hero-btn-view-work"
                 type="button"
                 onClick={() => onSelectTab('projects')}
@@ -155,9 +155,9 @@ export const HomeView: React.FC<HomeViewProps> = ({
               >
                 <span>View My Work</span>
                 <ArrowRight className="w-4 h-4" />
-              </button>
+              </motion.button>
 
-              <button
+              <motion.button
                 id="hero-btn-download-cv"
                 type="button"
                 onClick={onOpenResume}
@@ -165,7 +165,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
               >
                 <span>Download CV</span>
                 <Download className="w-4 h-4 text-[var(--text-accent)]" />
-              </button>
+              </motion.button>
             </div>
 
             {/* Green Availability Status Line + LinkedIn Handle */}
