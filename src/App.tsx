@@ -4,7 +4,7 @@ import { ArrowUp } from 'lucide-react';
 import { NavTab, ProjectItem, MigrationSlice } from './types';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
-import { WebGLBackground } from './components/WebGLBackground';
+import { VibrantAmbientBackground } from './components/canvas/VibrantAmbientBackground';
 import { HomeView } from './components/views/HomeView';
 import { ProjectsView } from './components/views/ProjectsView';
 import { SkillsView } from './components/views/SkillsView';
@@ -71,8 +71,8 @@ export default function App() {
         className="fixed top-0 left-0 right-0 h-[2px] bg-[var(--border-focus)] origin-left z-[60] pointer-events-none"
       />
 
-      {/* 3D WebGL Enterprise Constellation Layer */}
-      {isWebGLActive && <WebGLBackground intensity={0.85} />}
+      {/* ── Vibrant Ambient Aurora & Interactive 3D WebGL Constellation (from aliakhmadfauzie.web.app) ── */}
+      {isWebGLActive && <VibrantAmbientBackground />}
 
       {/* Ambient Background Motion Layer */}
       <div className="pointer-events-none fixed inset-0 overflow-hidden z-0">
@@ -160,7 +160,7 @@ export default function App() {
           type="button"
           onClick={() => setIsWebGLActive(!isWebGLActive)}
           className="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-[#0c0d12]/85 backdrop-blur-md border border-[var(--border-subtle)] hover:border-[var(--interactive-subtle-border)] text-[10px] font-mono text-[var(--text-secondary)] hover:text-[var(--text-accent)] shadow-lg transition-all cursor-pointer group"
-          title="Toggle Three.js WebGL Enterprise Constellation"
+          title="Toggle Interactive 3D WebGL Aurora & Constellation"
         >
           <span className={`relative flex h-2 w-2`}>
             {isWebGLActive && (
@@ -169,7 +169,7 @@ export default function App() {
             <span className={`relative inline-flex rounded-full h-2 w-2 ${isWebGLActive ? 'bg-[#22c55e] shadow-[0_0_8px_#22c55e]' : 'bg-zinc-600'}`} />
           </span>
           <span className="group-hover:text-white transition-colors">
-            WebGL 3D: {isWebGLActive ? 'Active (60 FPS)' : 'Paused'}
+            3D Ambient: {isWebGLActive ? 'Active' : 'Paused'}
           </span>
         </button>
       </div>

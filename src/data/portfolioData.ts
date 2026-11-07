@@ -1572,6 +1572,7 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
     issuer: "LinkedIn Learning",
     issueDate: "2024",
     category: "Data & Analytics",
+    credentialType: "Course Certificate",
     skills: ["Data Visualization", "Advanced Excel", "KPI Architecture", "Dynamic Dashboards", "Visual Storytelling"],
     verified: true,
     credentialUrl: "https://www.linkedin.com/in/aliakhmadf/",

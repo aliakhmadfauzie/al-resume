@@ -176,7 +176,7 @@ export interface CertificationItem {
   issuer: string;
   issueDate: string;
   category: 'Power Platform' | 'AI & Copilot' | 'Data & Analytics' | 'Project & Process' | 'Enterprise Automation';
-  credentialType: string;
+  credentialType?: string;
   skills: string[];
   verified: boolean;
   credentialUrl?: string;

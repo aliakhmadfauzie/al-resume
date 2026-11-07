@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ali Akhmad Fauzie — Principal Solutions Architect // ALTech Solution</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;family=Public+Sans:wght@400;500;600&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "secondary": "#81d7b0",
+            "surface-container-highest": "#222628",
+            "primary": "#4edea3",
+            "surface-container-lowest": "#000000",
+            "surface-bright": "#292d2f",
+            "on-tertiary": "#276268",
+            "tertiary-container": "#b2edf3",
+            "on-background": "#e3e6e8",
+            "error-dim": "#c54d4a",
+            "on-surface-variant": "#a8abae",
+            "inverse-surface": "#f9f9fa",
+            "surface-container": "#171a1c",
+            "on-tertiary-fixed": "#00474c",
+            "surface-dim": "#0c0e0f",
+            "outline-variant": "#44484b",
+            "on-primary-fixed": "#00452d",
+            "secondary-dim": "#74c9a3",
+            "surface-container-high": "#1d2022",
+            "on-primary-container": "#002919",
+            "on-tertiary-container": "#1c5a5f",
+            "background": "#0c0e0f",
+            "tertiary-fixed-dim": "#a5dee4",
+            "on-secondary-container": "#7ad0a9",
+            "secondary-fixed-dim": "#8fe6be",
+            "primary-fixed-dim": "#58e7ab",
+            "primary-container": "#06b77f",
+            "error-container": "#871f21",
+            "tertiary": "#c7faff",
+            "inverse-on-surface": "#545556",
+            "on-surface": "#e3e6e8",
+            "surface-container-low": "#111415",
+            "surface-tint": "#4edea3",
+            "outline": "#727678",
+            "on-tertiary-fixed-variant": "#296469",
+            "on-secondary-fixed": "#004932",
+            "error": "#fa746f",
+            "secondary-fixed": "#9df4cb",
+            "surface-variant": "#222628",
+            "on-primary-fixed-variant": "#006544",
+            "on-secondary": "#004a33",
+            "tertiary-fixed": "#b2edf3",
+            "on-primary": "#004a31",
+            "on-error": "#490006",
+            "surface": "#0c0e0f",
+            "on-error-container": "#ff9993",
+            "on-secondary-fixed-variant": "#00694a",
+            "primary-dim": "#3cd096",
+            "primary-fixed": "#69f6b8",
+            "tertiary-dim": "#a5dee4",
+            "secondary-container": "#00452f",
+            "inverse-primary": "#006d4a"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "fontFamily": {
+            "headline": ["Space Grotesk", "sans-serif"],
+            "display": ["Space Grotesk", "sans-serif"],
+            "body": ["Plus Jakarta Sans", "sans-serif"],
+            "label": ["Public Sans", "sans-serif"],
+            "mono": ["JetBrains Mono", "monospace"]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    /* Subtle dot grid pattern */
+    .bg-dot-matrix {
+      background-image: radial-gradient(rgba(68, 72, 75, 0.4) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+    /* Industrial hairline rules */
+    .border-hairline {
+      border-color: #222628;
+    }
+    ::selection {
+      background-color: #06b77f;
+      color: #002919;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen flex flex-col relative overflow-x-hidden">
+<!-- Architectural Background Dot Layer -->
+<div class="fixed inset-0 bg-dot-matrix opacity-40 pointer-events-none z-0"></div>
+<!-- Shared Component: TopNavBar -->
+<header class="bg-surface dark:bg-surface border-b border-outline-variant dark:border-outline-variant docked full-width top-0 sticky z-50 flat no shadows backdrop-blur-md bg-opacity-90">
+<div class="w-full px-6 md:px-12 max-w-7xl mx-auto flex items-center justify-between h-16">
+<!-- Brand & Version Anchor -->
+<div class="flex items-center gap-3">
+<a class="font-headline text-sm uppercase tracking-wider font-bold text-on-surface dark:text-on-surface flex items-center gap-2 group" href="#top">
+<span class="inline-block w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span>ALTECH // ARCHITECTURE</span>
+</a>
+<span class="hidden sm:inline-block px-1.5 py-0.5 text-[10px] font-mono tracking-tight text-on-surface-variant bg-surface-container-high border border-outline-variant rounded-sm">
+          v4.8.2 [PROD]
+        </span>
+</div>
+<!-- Center Navigation Links (Shared Component Specs) -->
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-on-surface-variant dark:text-on-surface-variant font-mono text-xs uppercase tracking-widest hover:text-on-surface dark:hover:text-on-surface transition-colors duration-150" href="#telemetry">
+          Telemetry
+        </a>
+<a class="text-primary dark:text-primary border-b-2 border-primary dark:border-primary font-mono text-xs uppercase tracking-widest pb-1 transition-colors duration-150" href="#case-studies">
+          Case Studies
+        </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-mono text-xs uppercase tracking-widest hover:text-on-surface dark:hover:text-on-surface transition-colors duration-150" href="#standards">
+          System Standards
+        </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-mono text-xs uppercase tracking-widest hover:text-on-surface dark:hover:text-on-surface transition-colors duration-150" href="#architecture">
+          Architecture
+        </a>
+</nav>
+<!-- Trailing Action Cluster -->
+<div class="flex items-center gap-3">
+<!-- Status Indicator Pill -->
+<div class="hidden xl:flex items-center gap-2 px-2.5 py-1 rounded-sm bg-surface-container border border-outline-variant text-[11px] font-mono text-on-surface-variant">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-ping"></span>
+<span>Available for Advisory</span>
+<span class="text-outline">|</span>
+<span class="text-secondary">KL &amp; MEDAN</span>
+</div>
+<!-- Primary Action Download Button -->
+<a class="flex items-center gap-2 px-3 py-1.5 rounded-sm bg-primary text-on-primary font-mono text-xs font-semibold uppercase tracking-wider hover:bg-primary-fixed duration-150 transition-all shadow-sm" href="#dossier">
+<span class="material-symbols-outlined text-sm" data-icon="download">download</span>
+<span>Dossier.pdf</span>
+</a>
+</div>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="relative z-10 flex-1 w-full max-w-7xl mx-auto px-6 md:px-12 py-12 md:py-20 flex flex-col gap-24">
+<!-- Section 1: Asymmetric Hero & Impact Telemetry Ledger -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start border-b border-outline-variant pb-16" id="telemetry">
+<!-- Left Column: Editorial Pitch -->
+<div class="lg:col-span-7 flex flex-col items-start gap-6">
+<!-- Eyebrow Monospace Badge -->
+<div class="inline-flex items-center gap-2 px-3 py-1 bg-surface-container-high border border-outline-variant rounded-sm text-xs font-mono text-primary tracking-wide">
+<span class="material-symbols-outlined text-xs text-primary" data-icon="terminal">terminal</span>
+<span>PRINCIPAL SOLUTIONS ARCHITECT • MICROSOFT 365 • REACT 19 • CLOUD &amp; AI</span>
+</div>
+<!-- Massive Space Grotesk Display Title -->
+<h1 class="font-headline text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-on-surface leading-[1.08]">
+          Architecting <span class="text-primary underline decoration-outline-variant decoration-1 underline-offset-8">Zero-Downtime</span> Enterprise Migrations &amp; High-Velocity Cloud Products.
+        </h1>
+<!-- Executive Summary -->
+<p class="font-body text-base sm:text-lg text-on-surface-variant font-normal leading-relaxed max-w-2xl">
+          9+ years leading mission-critical Lotus Domino to M365 Power Platform transformations, cloud enterprise architecture, and production full-stack TypeScript/Python/AI engineering. Specializing in high-concurrency systems, offline-first PWAs, and zero-defect data governance.
+        </p>
+<!-- Command CTA Row -->
+<div class="flex flex-wrap items-center gap-4 pt-2">
+<a class="inline-flex items-center gap-2 px-5 py-2.5 rounded-sm bg-surface-container-highest border border-outline text-on-surface font-mono text-xs uppercase tracking-wider hover:border-primary hover:text-primary transition-all duration-150" href="#case-studies">
+<span>Explore 15 Verified Case Studies</span>
+<span class="material-symbols-outlined text-sm" data-icon="south">south</span>
+</a>
+<a class="inline-flex items-center gap-2 px-4 py-2.5 text-on-surface-variant font-mono text-xs uppercase tracking-wider hover:text-on-surface transition-colors duration-150" href="#standards">
+<span>Audit System Standards</span>
+<span class="material-symbols-outlined text-sm" data-icon="east">east</span>
+</a>
+</div>
+</div>
+<!-- Right Column: Dense 2x2 Hairline Telemetry Matrix -->
+<div class="lg:col-span-5 flex flex-col gap-0 border border-outline-variant bg-surface-container-low rounded-sm overflow-hidden shadow-2xl">
+<!-- Matrix Top Bar -->
+<div class="px-4 py-2.5 bg-surface-container border-b border-outline-variant flex items-center justify-between font-mono text-[11px] text-on-surface-variant">
+<span class="flex items-center gap-1.5 text-primary">
+<span class="w-2 h-2 rounded-full bg-primary inline-block"></span>
+            SYS_TELEMETRY // AUDITED_PRODUCTION
+          </span>
+<span class="tabular-nums text-outline">LOC: SGP / MYS / IDN</span>
+</div>
+<!-- 2x2 Telemetry Grid -->
+<div class="grid grid-cols-2 divide-x divide-y divide-outline-variant border-b border-outline-variant">
+<!-- Metric 1 -->
+<div class="p-5 flex flex-col justify-between bg-surface-container-low hover:bg-surface-container transition-colors duration-150">
+<div>
+<span class="font-mono text-[11px] text-on-surface-variant uppercase tracking-wider block mb-1">MIGRATION SCALE</span>
+<div class="font-headline text-3xl font-bold tracking-tight text-on-surface tabular-nums">365+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-surface-container-highest">
+<div class="text-xs font-medium text-on-surface">Lotus Domino DBs &amp; Forms</div>
+<div class="font-mono text-[10px] text-primary mt-1 tabular-nums">28+ Business Units • 99.4% Fidelity</div>
+</div>
+</div>
+<!-- Metric 2 -->
+<div class="p-5 flex flex-col justify-between bg-surface-container-low hover:bg-surface-container transition-colors duration-150">
+<div>
+<span class="font-mono text-[11px] text-on-surface-variant uppercase tracking-wider block mb-1">COST RECOVERY</span>
+<div class="font-headline text-3xl font-bold tracking-tight text-primary tabular-nums">RM 4.2M/yr</div>
+</div>
+<div class="mt-4 pt-3 border-t border-surface-container-highest">
+<div class="text-xs font-medium text-on-surface">Enterprise Licensing Avoided</div>
+<div class="font-mono text-[10px] text-secondary mt-1">Dataverse-First &amp; Hybrid Topology</div>
+</div>
+</div>
+<!-- Metric 3 -->
+<div class="p-5 flex flex-col justify-between bg-surface-container-low hover:bg-surface-container transition-colors duration-150">
+<div>
+<span class="font-mono text-[11px] text-on-surface-variant uppercase tracking-wider block mb-1">PRODUCTION APPS</span>
+<div class="font-headline text-3xl font-bold tracking-tight text-on-surface tabular-nums">15</div>
+</div>
+<div class="mt-4 pt-3 border-t border-surface-container-highest">
+<div class="text-xs font-medium text-on-surface">Enterprise Systems Shipped</div>
+<div class="font-mono text-[10px] text-on-surface-variant mt-1">Verified UI Audits &amp; Zero CVEs</div>
+</div>
+</div>
+<!-- Metric 4 -->
+<div class="p-5 flex flex-col justify-between bg-surface-container-low hover:bg-surface-container transition-colors duration-150">
+<div>
+<span class="font-mono text-[11px] text-on-surface-variant uppercase tracking-wider block mb-1">UI &amp; AUTOMATION</span>
+<div class="font-headline text-3xl font-bold tracking-tight text-on-surface tabular-nums">878</div>
+</div>
+<div class="mt-4 pt-3 border-t border-surface-container-highest">
+<div class="text-xs font-medium text-on-surface">Power Apps Screens &amp; Bots</div>
+<div class="font-mono text-[10px] text-primary mt-1">DOSH Safety, ERP, PWA &amp; Copilots</div>
+</div>
+</div>
+</div>
+<!-- Ledger Ticker Bar -->
+<div class="px-4 py-2.5 bg-surface-container-highest flex items-center justify-between font-mono text-[11px] text-on-surface-variant">
+<div class="flex items-center gap-2 overflow-hidden text-ellipsis whitespace-nowrap">
+<span class="text-primary font-bold">LIVE TELEMETRY:</span>
+<span>ALL SYSTEMS NOMINAL • P99 LATENCY &lt; 180MS • ZERO ACTIVE CVEs</span>
+</div>
+<span class="material-symbols-outlined text-sm text-primary flex-shrink-0" data-icon="check_circle">check_circle</span>
+</div>
+</div>
+</section>
+<!-- Section 2: Interactive Case Studies Showcase -->
+<section class="flex flex-col gap-8" id="case-studies">
+<!-- Section Header & Filter Tabs -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-outline-variant pb-6">
+<div>
+<div class="flex items-center gap-2 font-mono text-xs text-primary uppercase tracking-widest mb-1">
+<span>INDEX // 01</span>
+<span>•</span>
+<span>PORTFOLIO REGISTRY</span>
+</div>
+<h2 class="font-headline text-2xl sm:text-3xl font-bold tracking-tight text-on-surface">
+            Architectural Case Studies &amp; Production Systems
+          </h2>
+</div>
+<!-- Filter Tabs -->
+<div class="flex items-center gap-1.5 overflow-x-auto pb-2 md:pb-0 scrollbar-none font-mono text-xs">
+<button class="px-3 py-1.5 rounded-sm bg-surface-container-high border border-primary text-primary font-medium tracking-wide whitespace-nowrap">
+            All Systems (15)
+          </button>
+<button class="px-3 py-1.5 rounded-sm bg-surface-container-low border border-outline-variant text-on-surface-variant hover:text-on-surface hover:border-outline tracking-wide whitespace-nowrap transition-colors">
+            Enterprise M365 &amp; Power Platform (3)
+          </button>
+<button class="px-3 py-1.5 rounded-sm bg-surface-container-low border border-outline-variant text-on-surface-variant hover:text-on-surface hover:border-outline tracking-wide whitespace-nowrap transition-colors">
+            Headless E-Commerce &amp; PWAs (3)
+          </button>
+<button class="px-3 py-1.5 rounded-sm bg-surface-container-low border border-outline-variant text-on-surface-variant hover:text-on-surface hover:border-outline tracking-wide whitespace-nowrap transition-colors">
+            B2B ERP &amp; FinTech Logistics (4)
+          </button>
+<button class="px-3 py-1.5 rounded-sm bg-surface-container-low border border-outline-variant text-on-surface-variant hover:text-on-surface hover:border-outline tracking-wide whitespace-nowrap transition-colors">
+            AI &amp; Automation Engines (5)
+          </button>
+</div>
+</div>
+<!-- 6 Featured Case Studies: 3-Column Hairline Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Case 1: IOI Enterprise Domino-to-M365 -->
+<div class="flex flex-col bg-surface-container-low border border-outline-variant rounded-sm overflow-hidden hover:border-primary transition-all duration-200 group">
+<!-- Browser Address Header -->
+<div class="px-3 py-2 bg-surface-container border-b border-outline-variant flex items-center gap-2 font-mono text-[10px] text-on-surface-variant">
+<span class="flex gap-1">
+<span class="w-2 h-2 rounded-full bg-outline-variant"></span>
+<span class="w-2 h-2 rounded-full bg-outline-variant"></span>
+<span class="w-2 h-2 rounded-full bg-outline-variant"></span>
+</span>
+<span class="text-outline">|</span>
+<span class="truncate text-on-surface-variant group-hover:text-primary transition-colors">ioi.enterprise.internal/she-risk-matrix</span>
+</div>
+<!-- Body Content -->
+<div class="p-6 flex-1 flex flex-col justify-between gap-6">
+<div class="flex flex-col gap-3">
+<!-- Tech Pills -->
+<div class="flex flex-wrap gap-1.5 font-mono text-[10px]">
+<span class="px-2 py-0.5 rounded-sm bg-surface-container-high border border-outline-variant text-secondary">React 19</span>
+<span class="px-2 py-0.5 rounded-sm bg-surface-container-high border border-outline-variant text-on-surface-variant">Power Apps</span>
+<span class="px-2 py-0.5 rounded-sm bg-surface-container-high border border-outline-variant text-on-surface-variant">Dataverse</span>
+<span class="px-2 py-0.5 rounded-sm bg-secondary-container text-on-secondary-container">DOSH 5x5</span>
+</div>
+<!-- Title -->
+<h3 class="font-headline text-lg font-bold text-on-surface tracking-tight group-hover:text-primary transition-colors">
+                IOI Enterprise Domino-to-M365 &amp; SHE Platform
+              </h3>
+<!-- Summary -->
+<p class="text-xs text-on-surface-variant leading-relaxed">
+                Engineered complete legacy Domino migration covering 365+ complex safety forms and dynamic DOSH 5x5 hazard matrices with automated audit trails and Dataverse row-level security.
+              </p>
+</div>
+<!-- Footer / Metric Badge -->
+<div class="pt-4 border-t border-outline-variant flex flex-col gap-3">
+<div class="flex items-center justify-between font-mono text-[11px]">
+<span class="text-primary font-semibold">365+ Forms Migrated</span>
+<span class="text-on-surface-variant">99.4% Fidelity</span>
+</div>
+<a class="inline-flex items-center gap-1 font-mono text-xs text-on-surface group-hover:text-primary font-medium tracking-wide transition-colors" href="#case-detail-ioi">
+<span>Read 4-Part Case Study &amp; Code Audit</span>
+<span class="material-symbols-outlined text-xs" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Case 2: Putri GarmentHub ERP -->
+<div class="flex flex-col bg-surface-container-low border border-outline-variant rounded-sm overflow-hidden hover:border-primary transition-all duration-200 group">
+<!-- Browser Address Header -->
+<div class="px-3 py-2 bg-surface-container border-b border-outline-variant flex items-center gap-2 font-mono text-[10px] text-on-surface-variant">
+<span class="flex gap-1">
+<span class="w-2 h-2 rounded-full bg-outline-variant"></span>
+<span class="w-2 h-2 rounded-full bg-outline-variant"></span>
+<span class="w-2 h-2 rounded-full bg-outline-variant"></span>
+</span>
+<span class="text-outline">|</span>
+<span class="truncate text-on-surface-variant group-hover:text-primary transition-colors">garmenthub.internal/cash-flow-ledger</span>
+</div>
+<!-- Body Content -->
+<div class="p-6 flex-1 flex flex-col justify-between gap-6">
+<div class="flex flex-col gap-3">
+<!-- Tech Pills -->
+<div class="flex flex-wrap gap-1.5 font-mono text-[10px]">
+<span class="px-2 py-0.5 rounded-sm bg-surface-container-high border border-outline-variant text-secondary">React 19</span>
+<span class="px-2 py-0.5 rounded-sm bg-surface-container-high border border-outline-variant text-on-surface-variant">Firebase Firestore</span>
+<span class="px-2 py-0.5 rounded-sm bg-surface-container-high border border-outline-variant text-on-surface-variant">Workbox PWA</span>
+</div>
+<!-- Title -->
+<h3 class="font-headline text-lg font-bold text-on-surface tracking-tight group-hover:text-primary transition-colors">
+                Putri GarmentHub ERP &amp; 4-Pocket Cash Flow
+              </h3>
+<!-- Summary -->
+<p class="text-xs text-on-surface-variant leading-relaxed">
+                Mission-critical manufacturing ERP featuring real-time 4-pocket financial ledger, multi-drop QC checkpoints, and zero-latency offline synchronization for cut-to-pack workflows.
+              </p>
+</div>
+<!-- Footer / Metric Badge -->
+<div class="pt-4 border-t border-outline-variant flex flex-col gap-3">
+<div class="flex items-center justify-between font-mono text-[11px]">
+<span class="text-primary font-semibold">0ms Optimistic Sync</span>
+<span class="text-on-surface-variant">3-Tier RBAC</span>
+</div>
+<a class="inline-flex items-center gap-1 font-mono text-xs text-on-surface group-hover:text-primary font-medium tracking-wide transition-colors" href="#case-detail-garment">
+<span>Read Case Study &amp; Code Audit</span>
+<span class="material-symbols-outlined text-xs" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Case 3: DLAB Night Match Haute Parfumerie -->
+<div class="flex flex-col bg-surface-container-low border border-outline-variant rounded-sm overflow-hidden hover:border-primary transition-all duration-200 group">
+<!-- Browser Address Header -->
+<div class="px-3 py-2 bg-surface-container border-b border-outline-variant flex items-center gap-2 font-mono text-[10px] text-on-surface-variant">
+<span class="flex gap-1">
+<span class="w-2 h-2 rounded-full bg-outline-variant"></span>
+<span class="w-2 h-2 rounded-full bg-outline-variant"></span>
+<span class="w-2 h-2 rounded-full bg-outline-variant"></span>
+</span>
+<span class="text-outline">|</span>
+<span class="truncate text-on-surface-variant group-hover:text-primary transition-colors">dlabparfum.store/scent-diagnostic</span>
+</div>
+<!-- Body Content -->
+<div class="p-6 flex-1 flex flex-col justify-between gap-6">
+<div class="flex flex-col gap-3">
+<!-- Tech Pills -->
+<div class="flex flex-wrap gap-1.5 font-mono text-[10px]">
+<span class="px-2 py-0.5 rounded-sm bg-surface-container-high border border-outline-variant text-secondary">React 19</span>
+<span class="px-2 py-0.5 rounded-sm bg-surface-container-high border border-outline-variant text-on-surface-variant">TypeScript 7</span>
+<span class="px-2 py-0.5 rounded-sm bg-surface-container-high border border-outline-variant text-on-surface-variant">Vite 8</span>
+<span class="px-2 py-0.5 rounded-sm bg-surface-container-high border border-outline-variant text-on-surface-variant">Firestore</span>
+</div>
+<!-- Title -->
+<h3 class="font-headline text-lg font-bold text-on-surface tracking-tight group-hover:text-primary transition-colors">
+                DLAB Night Match Haute Parfumerie PWA
+              </h3>
+<!-- Summary -->
+<p class="text-xs text-on-surface-variant leading-relaxed">
+                Algorithmic 10-second fragrance diagnostic engine with millisecond NUL-indexed olfactory search, offline basket caching, and headless cart architecture.
+              </p>
+</div>
+<!-- Footer / Metric Badge -->
+<div class="pt-4 border-t border-outline-variant flex flex-col gap-3">
+<div class="flex items-center justify-between font-mono text-[11px]">
+<span class="text-primary font-semibold">93 Active SKUs</span>
+<span class="text-on-surface-variant">10s Funnel</span>
+</div>
+<a class="inline-flex items-center gap-1 font-mono text-xs text-on-surface group-hover:text-primary font-medium tracking-wide transition-colors" href="#case-detail-dlab">
+<span>Read Case Study &amp; Code Audit</span>
+<span class="material-symbols-outlined text-xs" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Case 4: Jastip Cross-Border SaaS Manager -->
+<div class="flex flex-col bg-surface-container-low border border-outline-variant rounded-sm overflow-hidden hover:border-primary transition-all duration-200 group">
+<!-- Browser Address Header -->
+<div class="px-3 py-2 bg-surface-container border-b border-outline-variant flex items-center gap-2 font-mono text-[10px] text-on-surface-variant">
+<span class="flex gap-1">
+<span class="w-2 h-2 rounded-full bg-outline-variant"></span>
+<span class="w-2 h-2 rounded-full bg-outline-variant"></span>
+<span class="w-2 h-2 rounded-full bg-outline-variant"></span>
+</span>
+<span class="text-outline">|</span>
+<span class="truncate text-on-surface-variant group-hover:text-primary transition-colors">jastip.saas/arbitrage-triage</span>
+</div>
+<!-- Body Content -->
+<div class="p-6 flex-1 flex flex-col justify-between gap-6">
+<div class="flex flex-col gap-3">
+<!-- Tech Pills -->
+<div class="flex flex-wrap gap-1.5 font-mono text-[10px]">
+<span class="px-2 py-0.5 rounded-sm bg-surface-container-high border border-outline-variant text-secondary">React 19</span>
+<span class="px-2 py-0.5 rounded-sm bg-surface-container-high border border-outline-variant text-on-surface-variant">Zustand 5</span>
+<span class="px-2 py-0.5 rounded-sm bg-secondary-container text-on-secondary-container">Gemini 2.5 Flash</span>
+<span class="px-2 py-0.5 rounded-sm bg-surface-container-high border border-outline-variant text-on-surface-variant">Firebase v12</span>
+</div>
+<!-- Title -->
+<h3 class="font-headline text-lg font-bold text-on-surface tracking-tight group-hover:text-primary transition-colors">
+                Jastip Cross-Border SaaS Manager
+              </h3>
+<!-- Summary -->
+<p class="text-xs text-on-surface-variant leading-relaxed">
+                Cross-border commerce orchestrator with automated multi-currency FX arbitrage, real-time mall receipt OCR triage, and batch PDF customs declarations.
+              </p>
+</div>
+<!-- Footer / Metric Badge -->
+<div class="pt-4 border-t border-outline-variant flex flex-col gap-3">
+<div class="flex items-center justify-between font-mono text-[11px]">
+<span class="text-primary font-semibold">Gemini OCR Triage</span>
+<span class="text-on-surface-variant">Multi-Currency FX</span>
+</div>
+<a class="inline-flex items-center gap-1 font-mono text-xs text-on-surface group-hover:text-primary font-medium tracking-wide transition-colors" href="#case-detail-jastip">
+<span>Read Case Study &amp; Code Audit</span>
+<span class="material-symbols-outlined text-xs" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Case 5: Warung Dewasa Headless Storefront -->
+<div class="flex flex-col bg-surface-container-low border border-outline-variant rounded-sm overflow-hidden hover:border-primary transition-all duration-200 group">
+<!-- Browser Address Header -->
+<div class="px-3 py-2 bg-surface-container border-b border-outline-variant flex items-center gap-2 font-mono text-[10px] text-on-surface-variant">
+<span class="flex gap-1">
+<span class="w-2 h-2 rounded-full bg-outline-variant"></span>
+<span class="w-2 h-2 rounded-full bg-outline-variant"></span>
+<span class="w-2 h-2 rounded-full bg-outline-variant"></span>
+</span>
+<span class="text-outline">|</span>
+<span class="truncate text-on-surface-variant group-hover:text-primary transition-colors">warungdewasa.id/checkout</span>
+</div>
+<!-- Body Content -->
+<div class="p-6 flex-1 flex flex-col justify-between gap-6">
+<div class="flex flex-col gap-3">
+<!-- Tech Pills -->
+<div class="flex flex-wrap gap-1.5 font-mono text-[10px]">
+<span class="px-2 py-0.5 rounded-sm bg-surface-container-high border border-outline-variant text-secondary">React 18</span>
+<span class="px-2 py-0.5 rounded-sm bg-surface-container-high border border-outline-variant text-on-surface-variant">Three.js WebGL</span>
+<span class="px-2 py-0.5 rounded-sm bg-surface-container-high border border-outline-variant text-on-surface-variant">OSM Nominatim</span>
+<span class="px-2 py-0.5 rounded-sm bg-surface-container-high border border-outline-variant text-on-surface-variant">Supabase</span>
+</div>
+<!-- Title -->
+<h3 class="font-headline text-lg font-bold text-on-surface tracking-tight group-hover:text-primary transition-colors">
+                Warung Dewasa Headless E-Commerce &amp; COD Engine
+              </h3>
+<!-- Summary -->
+<p class="text-xs text-on-surface-variant leading-relaxed">
+                High-conversion headless lifestyle storefront with custom WebGL packaging renders, sub-second reverse geocoding, and fraud-resistant Cash-on-Delivery verification.
+              </p>
+</div>
+<!-- Footer / Metric Badge -->
+<div class="pt-4 border-t border-outline-variant flex flex-col gap-3">
+<div class="flex items-center justify-between font-mono text-[11px]">
+<span class="text-primary font-semibold">167 SKUs</span>
+<span class="text-on-surface-variant">800ms Geo-Resolver</span>
+</div>
+<a class="inline-flex items-center gap-1 font-mono text-xs text-on-surface group-hover:text-primary font-medium tracking-wide transition-colors" href="#case-detail-warung">
+<span>Read Case Study &amp; Code Audit</span>
+<span class="material-symbols-outlined text-xs" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Case 6: SaltDistribute B2B Wholesale Monorepo -->
+<div class="flex flex-col bg-surface-container-low border border-outline-variant rounded-sm overflow-hidden hover:border-primary transition-all duration-200 group">
+<!-- Browser Address Header -->
+<div class="px-3 py-2 bg-surface-container border-b border-outline-variant flex items-center gap-2 font-mono text-[10px] text-on-surface-variant">
+<span class="flex gap-1">
+<span class="w-2 h-2 rounded-full bg-outline-variant"></span>
+<span class="w-2 h-2 rounded-full bg-outline-variant"></span>
+<span class="w-2 h-2 rounded-full bg-outline-variant"></span>
+</span>
+<span class="text-outline">|</span>
+<span class="truncate text-on-surface-variant group-hover:text-primary transition-colors">saltdistribute.com/b2b-portal</span>
+</div>
+<!-- Body Content -->
+<div class="p-6 flex-1 flex flex-col justify-between gap-6">
+<div class="flex flex-col gap-3">
+<!-- Tech Pills -->
+<div class="flex flex-wrap gap-1.5 font-mono text-[10px]">
+<span class="px-2 py-0.5 rounded-sm bg-surface-container-high border border-outline-variant text-secondary">React Native Expo 54</span>
+<span class="px-2 py-0.5 rounded-sm bg-surface-container-high border border-outline-variant text-on-surface-variant">React 19 PWA</span>
+<span class="px-2 py-0.5 rounded-sm bg-surface-container-high border border-outline-variant text-on-surface-variant">Firestore</span>
+</div>
+<!-- Title -->
+<h3 class="font-headline text-lg font-bold text-on-surface tracking-tight group-hover:text-primary transition-colors">
+                SaltDistribute B2B Wholesale Logistics Monorepo
+              </h3>
+<!-- Summary -->
+<p class="text-xs text-on-surface-variant leading-relaxed">
+                Unified cross-platform logistics monorepo powering fleet delivery dispatches, digital consignment signatures, and bulk wholesale inventory reconciliations.
+              </p>
+</div>
+<!-- Footer / Metric Badge -->
+<div class="pt-4 border-t border-outline-variant flex flex-col gap-3">
+<div class="flex items-center justify-between font-mono text-[11px]">
+<span class="text-primary font-semibold">Dual Mobile/Web</span>
+<span class="text-on-surface-variant">Realtime Tracking</span>
+</div>
+<a class="inline-flex items-center gap-1 font-mono text-xs text-on-surface group-hover:text-primary font-medium tracking-wide transition-colors" href="#case-detail-saltdistribute">
+<span>Read Case Study &amp; Code Audit</span>
+<span class="material-symbols-outlined text-xs" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: System Architecture & Engineering Standards Strip -->
+<section class="flex flex-col gap-8 border-t border-outline-variant pt-16" id="standards">
+<div>
+<div class="flex items-center gap-2 font-mono text-xs text-primary uppercase tracking-widest mb-1">
+<span>INDEX // 02</span>
+<span>•</span>
+<span>ENGINEERING SPECIFICATIONS</span>
+</div>
+<h2 class="font-headline text-2xl sm:text-3xl font-bold tracking-tight text-on-surface">
+          Strict Architectural Pillars &amp; Invariants
+        </h2>
+</div>
+<!-- 3-Column Architectural Pillar Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Pillar A: Enterprise Governance & Security Rules -->
+<div class="p-6 bg-surface-container-low border border-outline-variant rounded-sm flex flex-col justify-between gap-6 hover:border-outline transition-colors">
+<div class="flex flex-col gap-3">
+<div class="w-10 h-10 rounded-sm bg-surface-container-high border border-outline-variant flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="shield">shield</span>
+</div>
+<h3 class="font-headline text-base font-bold text-on-surface">
+              Enterprise Governance &amp; Security Rules
+            </h3>
+<p class="text-xs text-on-surface-variant leading-relaxed">
+              Zero-trust identity topologies, Role-Based Access Control (RBAC), Dataverse row-level security, and audit-compliant data lineage. Fully aligned with corporate compliance standards and strict data residency mandates.
+            </p>
+</div>
+<div class="font-mono text-[10px] text-secondary flex items-center gap-1.5 pt-4 border-t border-outline-variant">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span>STANDARD: ZERO ACTIVE CVEs</span>
+</div>
+</div>
+<!-- Pillar B: Sub-Second Web Performance -->
+<div class="p-6 bg-surface-container-low border border-outline-variant rounded-sm flex flex-col justify-between gap-6 hover:border-outline transition-colors">
+<div class="flex flex-col gap-3">
+<div class="w-10 h-10 rounded-sm bg-surface-container-high border border-outline-variant flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="bolt">bolt</span>
+</div>
+<h3 class="font-headline text-base font-bold text-on-surface">
+              Sub-Second Web Performance
+            </h3>
+<p class="text-xs text-on-surface-variant leading-relaxed">
+              Zero-jank WebGL rendering pipelines, Idle-until-urgent scheduler, concurrent React 19 server components, and aggressive edge asset caching. Enforcing P99 render latency under 180ms across desktop and low-end tablets.
+            </p>
+</div>
+<div class="font-mono text-[10px] text-primary flex items-center gap-1.5 pt-4 border-t border-outline-variant">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span>BENCHMARK: P99 &lt; 180MS</span>
+</div>
+</div>
+<!-- Pillar C: Multi-Provider LLM & Agentic Orchestration -->
+<div class="p-6 bg-surface-container-low border border-outline-variant rounded-sm flex flex-col justify-between gap-6 hover:border-outline transition-colors">
+<div class="flex flex-col gap-3">
+<div class="w-10 h-10 rounded-sm bg-surface-container-high border border-outline-variant flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="neurology">neurology</span>
+</div>
+<h3 class="font-headline text-base font-bold text-on-surface">
+              Multi-Provider LLM Orchestration
+            </h3>
+<p class="text-xs text-on-surface-variant leading-relaxed">
+              Deterministic schema validation via Instructor, resilient fallback chains across Gemini 2.5 and OpenAI, and headless Playwright scraping bots designed for high-concurrency automated invoice and receipt extraction.
+            </p>
+</div>
+<div class="font-mono text-[10px] text-secondary flex items-center gap-1.5 pt-4 border-t border-outline-variant">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span>MODEL: GEMINI 2.5 &amp; INSTRUCTOR</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 4: Live Simulators & Architecture Sandbox Callout -->
+<section class="p-8 bg-surface-container border border-outline-variant rounded-sm flex flex-col md:flex-row items-center justify-between gap-8" id="architecture">
+<div class="flex flex-col gap-2 max-w-2xl">
+<div class="font-mono text-xs text-primary uppercase tracking-widest">
+          INTERACTIVE ARCHITECTURE SANDBOX
+        </div>
+<h3 class="font-headline text-2xl font-bold text-on-surface">
+          Explore Production Schema Simulators &amp; Zero-Trust Playgrounds
+        </h3>
+<p class="text-xs text-on-surface-variant leading-relaxed">
+          Test interactive DOSH 5x5 hazard calculation models, simulate multi-currency FX arbitrage routing, and inspect real-time offline PWA synchronization state machines directly in the browser.
+        </p>
+</div>
+<div class="flex items-center gap-4 flex-shrink-0">
+<a class="px-5 py-2.5 rounded-sm bg-primary text-on-primary font-mono text-xs font-semibold uppercase tracking-wider hover:bg-primary-fixed transition-all flex items-center gap-2 shadow-sm" href="#sandbox">
+<span class="material-symbols-outlined text-sm" data-icon="play_arrow">play_arrow</span>
+<span>Launch Simulator</span>
+</a>
+</div>
+</section>
+</main>
+<!-- Shared Component: Footer -->
+<footer class="bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-outline-variant dark:border-outline-variant docked full-width bottom w-full flat no shadows mt-16">
+<div class="w-full px-6 md:px-12 py-10 max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+<!-- Identity & Copyright -->
+<div class="flex flex-col items-center md:items-start gap-1">
+<span class="font-headline text-xs uppercase tracking-widest font-semibold text-on-surface-variant dark:text-on-surface-variant">
+          ALTECH // ARCHITECTURE
+        </span>
+<p class="font-mono tabular-nums text-xs text-on-surface-variant text-center md:text-left">
+          © 2025 Ali Akhmad Fauzie — Principal Solutions Architect. ALTech Solution. All rights reserved. Strict Swiss industrial telemetry.
+        </p>
+</div>
+<!-- Footer Navigation Registry Links -->
+<div class="flex flex-wrap items-center justify-center gap-6">
+<a class="text-primary dark:text-primary font-mono text-xs tracking-wider hover:text-primary transition-colors duration-150" href="#registry">
+          Architecture Registry
+        </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-mono text-xs tracking-wider hover:text-on-surface dark:hover:text-on-surface transition-colors duration-150" href="#dossier">
+          Security Dossier
+        </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-mono text-xs tracking-wider hover:text-on-surface dark:hover:text-on-surface transition-colors duration-150" href="#pgp">
+          PGP Fingerprint
+        </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-mono text-xs tracking-wider hover:text-on-surface dark:hover:text-on-surface transition-colors duration-150 flex items-center gap-1.5" href="#status">
+<span class="w-1.5 h-1.5 rounded-full bg-primary inline-block"></span>
+<span>System Status</span>
+</a>
+</div>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,209 @@
+{
+  "id": 5,
+  "jsonrpc": "2.0",
+  "result": {
+    "content": [
+      {
+        "text": "{\"projectId\":\"13318149189564507528\",\"sessionId\":\"8364141017520316711\",\"outputComponents\":[{\"design\":{\"screens\":[{\"screenshot\":{\"name\":\"projects/13318149189564507528/files/684a13508b2b4270a9e283d349ca897f\",\"downloadUrl\":\"https://stitch.googleapis.com/v1/projects/13318149189564507528/files/684a13508b2b4270a9e283d349ca897f:download\"},\"htmlCode\":{\"name\":\"projects/13318149189564507528/files/4968da77138c46c7bc7d343344a08977\",\"downloadUrl\":\"https://stitch.googleapis.com/v1/projects/13318149189564507528/files/4968da77138c46c7bc7d343344a08977:download\",\"mimeType\":\"text/html\"},\"id\":\"2269eb2b465843c9a6d8c1e532a4bd76\",\"generatedBy\":\"figaro_agent\",\"width\":\"2560\",\"height\":\"5756\",\"title\":\"Ali Akhmad Fauzie — Principal Solutions Architect Portfolio\",\"prompt\":\"A world-class, high-craft Swiss-editorial dark-mode desktop portfolio website for Ali Akhmad Fauzie — Principal Enterprise Solutions Architect & Full-Stack AI Engineer (ALTech Solution).\\n\\nFollow strict anti-slop studio web design principles:\\n- Background: Matte Obsidian (#0B0D0E) with subtle dot grid or crisp 1px hairline borders (#22272E) and elevated slate surfaces (#121518).\\n- Typography: Space Grotesk for bold architectural headlines, Plus Jakarta Sans for refined body copy, JetBrains Mono for telemetry badges and metadata.\\n- Accents: Emerald (#10B981) highlights, glowing status badges, and 4px sharp industrial corner radii.\\n\\nLayout & Sections:\\n1. Architectural Top Command Bar:\\n   - Left: Brand mark 'AAF // ALTECH.ARCHITECT' with small emerald pulse dot and version indicator 'v4.8.2 [PROD]'.\\n   - Center Navigation: '01. Case Studies [15]', '02. System Architecture', '03. Live Simulators', '04. Executive Resume'.\\n   - Right: Status pill 'AVAILABLE FOR PRINCIPAL ARCHITECT & FULL-STACK ROLES • KUALA LUMPUR / MEDAN' with glowing emerald indicator, and prominent CTA button 'Download ATS Dossier (PDF)' with terminal download icon.\\n\\n2. Asymmetric Editorial Hero & Impact Telemetry Ledger:\\n   - Left Column (Editorial Pitch):\\n     - Monospace eyebrow badge: 'PRINCIPAL SOLUTIONS ARCHITECT • MICROSOFT 365 • REACT 19 • CLOUD & AI'\\n     - Massive Space Grotesk display headline: 'Architecting Zero-Downtime Enterprise Migrations & High-Velocity Cloud Products.'\\n     - Executive summary: '9+ years leading mission-critical Lotus Domino to M365 Power Platform transformations, cloud enterprise architecture, and production full-stack TypeScript/Python/AI engineering. Specializing in high-concurrency systems, offline-first PWAs, and zero-defect data governance.'\\n     - Secondary actions: 'Explore 15 Verified Case Studies ↓' and 'Audit System Standards →'.\\n   - Right Column (Dense 2x2 Hairline Telemetry Matrix):\\n     - Metric 1: '365+' | 'Lotus Domino DBs & Forms Migrated' | Monospace subtext: '28+ Business Units • 99.4% Data Fidelity'\\n     - Metric 2: 'RM 4.2M/yr' | 'Enterprise Licensing Avoided' | Monospace subtext: 'Dataverse-First & Hybrid Hybrid Topology'\\n     - Metric 3: '15' | 'Production Systems Engineered' | Monospace subtext: 'Verified UI Audits & Production Deployments'\\n     - Metric 4: '878' | 'Power Apps Screens & 50+ AI Bots' | Monospace subtext: 'DOSH Safety, ERP, PWA & Copilot Automation'\\n     - Bottom ledger ticker: 'TELEMETRY STATUS: ALL SYSTEMS NOMINAL • P99 LATENCY \\u003c 180MS • ZERO ACTIVE CVEs'\\n\\n3. Interactive Case Study Filter Bar & 15-Project Showcase Grid:\\n   - Filter Tabs:\\n     - 'All Systems (15)' [Active, emerald pill border]\\n     - 'Enterprise M365 & Power Platform (3)'\\n     - 'Headless E-Commerce & PWAs (3)'\\n     - 'B2B ERP & FinTech Logistics (4)'\\n     - 'AI & Resume Automation Engines (5)'\\n   - 6 Featured In-Depth Case Study Cards in a crisp 3-column hairline grid:\\n     1. 'IOI Enterprise Domino-to-M365 & SHE Platform'\\n        - Browser frame UI mockup header with address bar 'ioi.enterprise.internal/she-risk-matrix'\\n        - Monospace tech pills: 'React 19', 'Power Apps', 'Dataverse', 'DOSH 5x5'\\n        - Summary: 'Engineered complete legacy Domino migration covering 365+ complex safety forms and dynamic DOSH 5x5 hazard matrices with automated audit trails.'\\n        - Metric badge: '365+ Forms Migrated • 99.4% Fidelity'\\n        - Action link: 'Read 4-Part Case Study & Code Audit →'\\n     2. 'Putri GarmentHub ERP & 4-Pocket Cash Flow'\\n        - Browser frame UI mockup header with address bar 'garmenthub.internal/cash-flow-ledger'\\n        - Monospace tech pills: 'React 19', 'Firebase Firestore', 'Workbox PWA'\\n        - Summary: 'Mission-critical manufacturing ERP featuring real-time 4-pocket financial ledger, multi-drop QC checkpoints, and zero-latency offline synchronization.'\\n        - Metric badge: '0ms Optimistic Sync • 3-Tier RBAC'\\n        - Action link: 'Read Case Study & Code Audit →'\\n     3. 'DLAB Night Match Haute Parfumerie PWA'\\n        - Browser frame UI mockup header with address bar 'dlabparfum.store/scent-diagnostic'\\n        - Monospace tech pills: 'React 19', 'TypeScript 7', 'Vite 8', 'Firestore'\\n        - Summary: 'Algorithmic 10-second fragrance diagnostic engine with millisecond NUL-indexed olfactory search and headless cart architecture.'\\n        - Metric badge: '93 SKUs • 10s Diagnostic Funnel'\\n        - Action link: 'Read Case Study & Code Audit →'\\n     4. 'Jastip Cross-Border SaaS Manager'\\n        - Browser frame UI mockup header with address bar 'jastip.saas/arbitrage-triage'\\n        - Monospace tech pills: 'React 19', 'Zustand 5', 'Gemini 2.5 Flash', 'Firebase v12'\\n        - Summary: 'Cross-border commerce orchestrator with automated multi-currency FX arbitrage, real-time mall receipt OCR triage, and batch invoice generation.'\\n        - Metric badge: 'Gemini OCR Triage • Multi-Currency FX'\\n        - Action link: 'Read Case Study & Code Audit →'\\n     5. 'Warung Dewasa Headless E-Commerce & COD Engine'\\n        - Browser frame UI mockup header with address bar 'warungdewasa.id/checkout'\\n        - Monospace tech pills: 'React 18', 'Three.js WebGL', 'OSM Nominatim', 'Supabase'\\n        - Summary: 'High-conversion headless lifestyle storefront with custom WebGL packaging renders, sub-second reverse geocoding, and fraud-resistant COD validation.'\\n        - Metric badge: '167 SKUs • 800ms Geo-Resolver'\\n        - Action link: 'Read Case Study & Code Audit →'\\n     6. 'SaltDistribute B2B Wholesale Logistics Monorepo'\\n        - Browser frame UI mockup header with address bar 'saltdistribute.com/b2b-portal'\\n        - Monospace tech pills: 'React Native Expo 54', 'React 19 PWA', 'Firestore'\\n        - Summary: 'Unified mobile and desktop logistics monorepo powering fleet delivery dispatches, digital consignment signatures, and bulk wholesale inventory reconciliations.'\\n        - Metric badge: 'Dual Mobile/Web • Realtime Fleet Tracking'\\n        - Action link: 'Read Case Study & Code Audit →'\\n\\n4. System Architecture & Engineering Standards Strip:\\n   - 3-column architectural pillar cards:\\n     - Column A: 'Enterprise Governance & Security Rules' — Zero-trust identity topologies, Role-Based Access Control (RBAC), Dataverse row-level security, and audit-compliant data lineage.\\n     - Column B: 'Sub-Second Web Performance' — Zero-jank WebGL rendering pipelines, Idle-until-urgent scheduler, concurrent React 19 server components, and aggressive edge asset caching.\\n     - Column C: 'Multi-Provider LLM & Agentic Orchestration' — Deterministic schema validation via Instructor, resilient fallback chains across Gemini 2.5 and OpenAI, and headless Playwright scraping bots.\\n\\n5. Minimalist Industrial Footer:\\n   - System metadata, architectural copyright, social links (GitHub @aliakhmadfauzie, LinkedIn, Email, PGP Fingerprint), and live green latency indicator.\",\"name\":\"projects/13318149189564507528/screens/2269eb2b465843c9a6d8c1e532a4bd76\",\"theme\":{\"colorMode\":\"DARK\",\"font\":\"SPACE_GROTESK\",\"roundness\":\"ROUND_FOUR\",\"customColor\":\"#10B981\",\"headlineFont\":\"SPACE_GROTESK\",\"bodyFont\":\"PLUS_JAKARTA_SANS\",\"labelFont\":\"PUBLIC_SANS\",\"namedColors\":{\"secondary_fixed_dim\":\"#8fe6be\",\"outline\":\"#727678\",\"on_surface_variant\":\"#a8abae\",\"primary_container\":\"#06b77f\",\"on_secondary_container\":\"#7ad0a9\",\"error_container\":\"#871f21\",\"on_tertiary_fixed\":\"#00474c\",\"tertiary\":\"#c7faff\",\"surface_container_high\":\"#1d2022\",\"surface_container_highest\":\"#222628\",\"primary\":\"#4edea3\",\"on_secondary_fixed_variant\":\"#00694a\",\"surface_container_low\":\"#111415\",\"on_tertiary_fixed_variant\":\"#296469\",\"error_dim\":\"#c54d4a\",\"primary_dim\":\"#3cd096\",\"secondary_fixed\":\"#9df4cb\",\"inverse_surface\":\"#f9f9fa\",\"secondary\":\"#81d7b0\",\"on_tertiary\":\"#276268\",\"on_secondary_fixed\":\"#004932\",\"tertiary_fixed\":\"#b2edf3\",\"primary_fixed_dim\":\"#58e7ab\",\"background\":\"#0c0e0f\",\"on_background\":\"#e3e6e8\",\"outline_variant\":\"#44484b\",\"on_primary_fixed\":\"#00452d\",\"surface_container\":\"#171a1c\",\"on_tertiary_container\":\"#1c5a5f\",\"on_primary_container\":\"#002919\",\"surface_container_lowest\":\"#000000\",\"on_secondary\":\"#004a33\",\"surface_tint\":\"#4edea3\",\"error\":\"#fa746f\",\"surface_dim\":\"#0c0e0f\",\"tertiary_container\":\"#b2edf3\",\"tertiary_fixed_dim\":\"#a5dee4\",\"tertiary_dim\":\"#a5dee4\",\"surface_variant\":\"#222628\",\"on_primary\":\"#004a31\",\"secondary_container\":\"#00452f\",\"surface\":\"#0c0e0f\",\"surface_bright\":\"#292d2f\",\"secondary_dim\":\"#74c9a3\",\"on_error_container\":\"#ff9993\",\"on_primary_fixed_variant\":\"#006544\",\"on_surface\":\"#e3e6e8\",\"primary_fixed\":\"#69f6b8\",\"on_error\":\"#490006\",\"inverse_on_surface\":\"#545556\",\"inverse_primary\":\"#006d4a\"},\"colorVariant\":\"TONAL_SPOT\",\"overridePrimaryColor\":\"#10B981\",\"overrideSecondaryColor\":\"#006C4C\",\"overrideNeutralColor\":\"#0B0D0E\",\"spacingScale\":2,\"headlineFontFamily\":\"Space Grotesk\",\"bodyFontFamily\":\"Plus Jakarta Sans\",\"labelFontFamily\":\"Public Sans\"},\"deviceType\":\"DESKTOP\",\"screenType\":\"DESIGN\",\"screenMetadata\":{\"agentType\":\"PRO_AGENT\",\"status\":\"COMPLETE\"},\"designSystem\":{\"name\":\"assets/13524431471221498148\",\"designSystem\":{\"displayName\":\"ALTech Swiss Editorial & Emerald System\",\"theme\":{\"colorMode\":\"DARK\",\"font\":\"SPACE_GROTESK\",\"roundness\":\"ROUND_FOUR\",\"customColor\":\"#10B981\",\"headlineFont\":\"SPACE_GROTESK\",\"bodyFont\":\"PLUS_JAKARTA_SANS\",\"labelFont\":\"PUBLIC_SANS\",\"namedColors\":{\"on_primary_container\":\"#002919\",\"primary_fixed\":\"#69f6b8\",\"on_primary\":\"#004a31\",\"error_container\":\"#871f21\",\"secondary_container\":\"#00452f\",\"secondary_dim\":\"#74c9a3\",\"primary\":\"#4edea3\",\"on_tertiary_fixed\":\"#00474c\",\"tertiary_dim\":\"#a5dee4\",\"outline\":\"#727678\",\"on_tertiary_container\":\"#1c5a5f\",\"primary_container\":\"#06b77f\",\"error_dim\":\"#c54d4a\",\"secondary\":\"#81d7b0\",\"on_surface\":\"#e3e6e8\",\"on_secondary_fixed\":\"#004932\",\"error\":\"#fa746f\",\"tertiary\":\"#c7faff\",\"surface_tint\":\"#4edea3\",\"inverse_surface\":\"#f9f9fa\",\"on_tertiary\":\"#276268\",\"on_secondary_container\":\"#7ad0a9\",\"primary_fixed_dim\":\"#58e7ab\",\"primary_dim\":\"#3cd096\",\"secondary_fixed\":\"#9df4cb\",\"on_surface_variant\":\"#a8abae\",\"surface_container_high\":\"#1d2022\",\"surface_container_highest\":\"#222628\",\"tertiary_fixed\":\"#b2edf3\",\"on_tertiary_fixed_variant\":\"#296469\",\"on_secondary\":\"#004a33\",\"surface_container_low\":\"#111415\",\"on_primary_fixed_variant\":\"#006544\",\"on_error_container\":\"#ff9993\",\"inverse_on_surface\":\"#545556\",\"outline_variant\":\"#44484b\",\"on_background\":\"#e3e6e8\",\"background\":\"#0c0e0f\",\"surface_container\":\"#171a1c\",\"surface_dim\":\"#0c0e0f\",\"tertiary_container\":\"#b2edf3\",\"secondary_fixed_dim\":\"#8fe6be\",\"surface_bright\":\"#292d2f\",\"tertiary_fixed_dim\":\"#a5dee4\",\"surface_variant\":\"#222628\",\"on_error\":\"#490006\",\"on_secondary_fixed_variant\":\"#00694a\",\"inverse_primary\":\"#006d4a\",\"surface_container_lowest\":\"#000000\",\"surface\":\"#0c0e0f\",\"on_primary_fixed\":\"#00452d\"},\"designMd\":\"# Ali Akhmad Fauzie — Principal Solutions Architect Editorial Design System\\n\\n## Aesthetic Philosophy & Anti-Slop Invariants\\n- **High-Craft Swiss Editorial & Industrial Precision**: Inspired by Linear, Vercel Geist, Stripe Press, and Bloomberg Terminal typography.\\n- **Matte Carbon & Emerald Architecture**: Deep matte obsidian-slate canvas (`#0B0D0E`), elevated structural panels (`#121518`), crisp `1px` hairline dividers (`#22272E`), and high-contrast emerald architectural accents (`#10B981` / `#006C4C`).\\n- **Strict 4px Industrial Geometry**: Use tight `4px` (`rounded-sm`) corners on buttons, badges, code blocks, and cards. Never use pill buttons or floating neon gradients.\\n- **Typography Hierarchy**:\\n  - **Headlines**: Space Grotesk — tight tracking (`-0.03em`), authoritative geometric display titles.\\n  - **Body**: Plus Jakarta Sans — high legibility for deep technical case studies (`#F3F4F6` primary text, `#9CA3AF` secondary text).\\n  - **Monospace Telemetry & Code**: JetBrains Mono — tabular numerals (`tabular-nums`) for KPI counters, latency benchmarks, file paths, and code citations.\\n\",\"colorVariant\":\"TONAL_SPOT\",\"overridePrimaryColor\":\"#10B981\",\"overrideSecondaryColor\":\"#006C4C\",\"overrideNeutralColor\":\"#0B0D0E\",\"spacingScale\":2,\"headlineFontFamily\":\"Space Grotesk\",\"bodyFontFamily\":\"Plus Jakarta Sans\",\"labelFontFamily\":\"Public Sans\"}},\"version\":\"2\"}}],\"theme\":{}}},{\"text\":\"I have designed the world-class, high-craft Swiss-editorial dark-mode desktop portfolio website for **Ali Akhmad Fauzie — Principal Enterprise Solutions Architect & Full-Stack AI Engineer** (`Ali Akhmad Fauzie — Principal Solutions Architect Portfolio`).\\n\\n### Key Design & Architectural Highlights:\\n1. **Top Architectural Command Bar**:\\n   - Monospace telemetry mark `ALTECH // ARCHITECTURE` with build badge `v4.8.2 [PROD]`.\\n   - Structural navigation (`Telemetry`, `Case Studies`, `System Standards`, `Architecture`).\\n   - Live availability badge: `Available for Advisory • KL & Medan` with emerald status beacon.\\n   - Primary action: `Download ATS Dossier (PDF)` styled as an industrial terminal download trigger.\\n\\n2. **Asymmetric Editorial Hero & Impact Telemetry Ledger**:\\n   - **Left Column**: Prominent Space Grotesk headline highlighting zero-downtime enterprise migrations and cloud engineering, accompanied by an executive summary and quick-jump navigation triggers.\\n   - **Right Column (2x2 Dense Hairline Matrix)**: Tabular monospace telemetry highlighting:\\n     - **365+** Lotus Domino databases and complex forms migrated across 28+ business units.\\n     - **RM 4.2M/yr** recurring licensing avoidance achieved via Dataverse-first architecture.\\n     - **15** production case studies with verified code audits.\\n     - **878** Power Apps screens and automated AI copilot workflows deployed.\\n     - Live status ticker with sub-180ms P99 latency and audited production telemetry.\\n\\n3. **Interactive Case Study Filter Bar & 6-Project Grid**:\\n   - Category filtering pills covering Enterprise M365, Headless PWAs, B2B ERP, and AI Automation.\\n   - 6 case study cards with browser-frame URL bars (`ioi.enterprise.internal`, `garmenthub.internal`, `dlabparfum.store`, etc.), tech stack badges (React 19, Power Apps, Zustand, Firestore, Gemini), problem/solution briefs, verified engineering metrics, and direct audit links.\\n\\n4. **Engineering Standards & Architectural Pillars Strip**:\\n   - 3-column breakdown detailing Enterprise Governance & Security Rules, Sub-Second Web Performance (React 19, zero-jank WebGL), and Multi-Provider LLM Orchestration (Gemini 2.5, Instructor, Playwright).\\n\\n5. **Industrial Precision Footer & Interactive Sandbox Trigger**:\\n   - Interactive Architecture Sandbox callout and industrial footer with system status indicators.\"},{\"suggestion\":\"Add an interactive modal for the 4-part IOI Domino-to-M365 Case Study\"},{\"suggestion\":\"Add a live schema visualizer for the DOSH 5x5 Risk Matrix\"},{\"suggestion\":\"Create the mobile responsive version of this portfolio\"}]}",
+        "type": "text"
+      }
+    ],
+    "structuredContent": {
+      "outputComponents": [
+        {
+          "design": {
+            "screens": [
+              {
+                "designSystem": {
+                  "designSystem": {
+                    "displayName": "ALTech Swiss Editorial & Emerald System",
+                    "theme": {
+                      "bodyFont": "PLUS_JAKARTA_SANS",
+                      "bodyFontFamily": "Plus Jakarta Sans",
+                      "colorMode": "DARK",
+                      "colorVariant": "TONAL_SPOT",
+                      "customColor": "#10B981",
+                      "designMd": "# Ali Akhmad Fauzie — Principal Solutions Architect Editorial Design System\n\n## Aesthetic Philosophy & Anti-Slop Invariants\n- **High-Craft Swiss Editorial & Industrial Precision**: Inspired by Linear, Vercel Geist, Stripe Press, and Bloomberg Terminal typography.\n- **Matte Carbon & Emerald Architecture**: Deep matte obsidian-slate canvas (`#0B0D0E`), elevated structural panels (`#121518`), crisp `1px` hairline dividers (`#22272E`), and high-contrast emerald architectural accents (`#10B981` / `#006C4C`).\n- **Strict 4px Industrial Geometry**: Use tight `4px` (`rounded-sm`) corners on buttons, badges, code blocks, and cards. Never use pill buttons or floating neon gradients.\n- **Typography Hierarchy**:\n  - **Headlines**: Space Grotesk — tight tracking (`-0.03em`), authoritative geometric display titles.\n  - **Body**: Plus Jakarta Sans — high legibility for deep technical case studies (`#F3F4F6` primary text, `#9CA3AF` secondary text).\n  - **Monospace Telemetry & Code**: JetBrains Mono — tabular numerals (`tabular-nums`) for KPI counters, latency benchmarks, file paths, and code citations.\n",
+                      "font": "SPACE_GROTESK",
+                      "headlineFont": "SPACE_GROTESK",
+                      "headlineFontFamily": "Space Grotesk",
+                      "labelFont": "PUBLIC_SANS",
+                      "labelFontFamily": "Public Sans",
+                      "namedColors": {
+                        "background": "#0c0e0f",
+                        "error": "#fa746f",
+                        "error_container": "#871f21",
+                        "error_dim": "#c54d4a",
+                        "inverse_on_surface": "#545556",
+                        "inverse_primary": "#006d4a",
+                        "inverse_surface": "#f9f9fa",
+                        "on_background": "#e3e6e8",
+                        "on_error": "#490006",
+                        "on_error_container": "#ff9993",
+                        "on_primary": "#004a31",
+                        "on_primary_container": "#002919",
+                        "on_primary_fixed": "#00452d",
+                        "on_primary_fixed_variant": "#006544",
+                        "on_secondary": "#004a33",
+                        "on_secondary_container": "#7ad0a9",
+                        "on_secondary_fixed": "#004932",
+                        "on_secondary_fixed_variant": "#00694a",
+                        "on_surface": "#e3e6e8",
+                        "on_surface_variant": "#a8abae",
+                        "on_tertiary": "#276268",
+                        "on_tertiary_container": "#1c5a5f",
+                        "on_tertiary_fixed": "#00474c",
+                        "on_tertiary_fixed_variant": "#296469",
+                        "outline": "#727678",
+                        "outline_variant": "#44484b",
+                        "primary": "#4edea3",
+                        "primary_container": "#06b77f",
+                        "primary_dim": "#3cd096",
+                        "primary_fixed": "#69f6b8",
+                        "primary_fixed_dim": "#58e7ab",
+                        "secondary": "#81d7b0",
+                        "secondary_container": "#00452f",
+                        "secondary_dim": "#74c9a3",
+                        "secondary_fixed": "#9df4cb",
+                        "secondary_fixed_dim": "#8fe6be",
+                        "surface": "#0c0e0f",
+                        "surface_bright": "#292d2f",
+                        "surface_container": "#171a1c",
+                        "surface_container_high": "#1d2022",
+                        "surface_container_highest": "#222628",
+                        "surface_container_low": "#111415",
+                        "surface_container_lowest": "#000000",
+                        "surface_dim": "#0c0e0f",
+                        "surface_tint": "#4edea3",
+                        "surface_variant": "#222628",
+                        "tertiary": "#c7faff",
+                        "tertiary_container": "#b2edf3",
+                        "tertiary_dim": "#a5dee4",
+                        "tertiary_fixed": "#b2edf3",
+                        "tertiary_fixed_dim": "#a5dee4"
+                      },
+                      "overrideNeutralColor": "#0B0D0E",
+                      "overridePrimaryColor": "#10B981",
+                      "overrideSecondaryColor": "#006C4C",
+                      "roundness": "ROUND_FOUR",
+                      "spacingScale": 2
+                    }
+                  },
+                  "name": "assets/13524431471221498148",
+                  "version": "2"
+                },
+                "deviceType": "DESKTOP",
+                "generatedBy": "figaro_agent",
+                "height": "5756",
+                "htmlCode": {
+                  "downloadUrl": "https://stitch.googleapis.com/v1/projects/13318149189564507528/files/4968da77138c46c7bc7d343344a08977:download",
+                  "mimeType": "text/html",
+                  "name": "projects/13318149189564507528/files/4968da77138c46c7bc7d343344a08977"
+                },
+                "id": "2269eb2b465843c9a6d8c1e532a4bd76",
+                "name": "projects/13318149189564507528/screens/2269eb2b465843c9a6d8c1e532a4bd76",
+                "prompt": "A world-class, high-craft Swiss-editorial dark-mode desktop portfolio website for Ali Akhmad Fauzie — Principal Enterprise Solutions Architect & Full-Stack AI Engineer (ALTech Solution).\n\nFollow strict anti-slop studio web design principles:\n- Background: Matte Obsidian (#0B0D0E) with subtle dot grid or crisp 1px hairline borders (#22272E) and elevated slate surfaces (#121518).\n- Typography: Space Grotesk for bold architectural headlines, Plus Jakarta Sans for refined body copy, JetBrains Mono for telemetry badges and metadata.\n- Accents: Emerald (#10B981) highlights, glowing status badges, and 4px sharp industrial corner radii.\n\nLayout & Sections:\n1. Architectural Top Command Bar:\n   - Left: Brand mark 'AAF // ALTECH.ARCHITECT' with small emerald pulse dot and version indicator 'v4.8.2 [PROD]'.\n   - Center Navigation: '01. Case Studies [15]', '02. System Architecture', '03. Live Simulators', '04. Executive Resume'.\n   - Right: Status pill 'AVAILABLE FOR PRINCIPAL ARCHITECT & FULL-STACK ROLES • KUALA LUMPUR / MEDAN' with glowing emerald indicator, and prominent CTA button 'Download ATS Dossier (PDF)' with terminal download icon.\n\n2. Asymmetric Editorial Hero & Impact Telemetry Ledger:\n   - Left Column (Editorial Pitch):\n     - Monospace eyebrow badge: 'PRINCIPAL SOLUTIONS ARCHITECT • MICROSOFT 365 • REACT 19 • CLOUD & AI'\n     - Massive Space Grotesk display headline: 'Architecting Zero-Downtime Enterprise Migrations & High-Velocity Cloud Products.'\n     - Executive summary: '9+ years leading mission-critical Lotus Domino to M365 Power Platform transformations, cloud enterprise architecture, and production full-stack TypeScript/Python/AI engineering. Specializing in high-concurrency systems, offline-first PWAs, and zero-defect data governance.'\n     - Secondary actions: 'Explore 15 Verified Case Studies ↓' and 'Audit System Standards →'.\n   - Right Column (Dense 2x2 Hairline Telemetry Matrix):\n     - Metric 1: '365+' | 'Lotus Domino DBs & Forms Migrated' | Monospace subtext: '28+ Business Units • 99.4% Data Fidelity'\n     - Metric 2: 'RM 4.2M/yr' | 'Enterprise Licensing Avoided' | Monospace subtext: 'Dataverse-First & Hybrid Hybrid Topology'\n     - Metric 3: '15' | 'Production Systems Engineered' | Monospace subtext: 'Verified UI Audits & Production Deployments'\n     - Metric 4: '878' | 'Power Apps Screens & 50+ AI Bots' | Monospace subtext: 'DOSH Safety, ERP, PWA & Copilot Automation'\n     - Bottom ledger ticker: 'TELEMETRY STATUS: ALL SYSTEMS NOMINAL • P99 LATENCY < 180MS • ZERO ACTIVE CVEs'\n\n3. Interactive Case Study Filter Bar & 15-Project Showcase Grid:\n   - Filter Tabs:\n     - 'All Systems (15)' [Active, emerald pill border]\n     - 'Enterprise M365 & Power Platform (3)'\n     - 'Headless E-Commerce & PWAs (3)'\n     - 'B2B ERP & FinTech Logistics (4)'\n     - 'AI & Resume Automation Engines (5)'\n   - 6 Featured In-Depth Case Study Cards in a crisp 3-column hairline grid:\n     1. 'IOI Enterprise Domino-to-M365 & SHE Platform'\n        - Browser frame UI mockup header with address bar 'ioi.enterprise.internal/she-risk-matrix'\n        - Monospace tech pills: 'React 19', 'Power Apps', 'Dataverse', 'DOSH 5x5'\n        - Summary: 'Engineered complete legacy Domino migration covering 365+ complex safety forms and dynamic DOSH 5x5 hazard matrices with automated audit trails.'\n        - Metric badge: '365+ Forms Migrated • 99.4% Fidelity'\n        - Action link: 'Read 4-Part Case Study & Code Audit →'\n     2. 'Putri GarmentHub ERP & 4-Pocket Cash Flow'\n        - Browser frame UI mockup header with address bar 'garmenthub.internal/cash-flow-ledger'\n        - Monospace tech pills: 'React 19', 'Firebase Firestore', 'Workbox PWA'\n        - Summary: 'Mission-critical manufacturing ERP featuring real-time 4-pocket financial ledger, multi-drop QC checkpoints, and zero-latency offline synchronization.'\n        - Metric badge: '0ms Optimistic Sync • 3-Tier RBAC'\n        - Action link: 'Read Case Study & Code Audit →'\n     3. 'DLAB Night Match Haute Parfumerie PWA'\n        - Browser frame UI mockup header with address bar 'dlabparfum.store/scent-diagnostic'\n        - Monospace tech pills: 'React 19', 'TypeScript 7', 'Vite 8', 'Firestore'\n        - Summary: 'Algorithmic 10-second fragrance diagnostic engine with millisecond NUL-indexed olfactory search and headless cart architecture.'\n        - Metric badge: '93 SKUs • 10s Diagnostic Funnel'\n        - Action link: 'Read Case Study & Code Audit →'\n     4. 'Jastip Cross-Border SaaS Manager'\n        - Browser frame UI mockup header with address bar 'jastip.saas/arbitrage-triage'\n        - Monospace tech pills: 'React 19', 'Zustand 5', 'Gemini 2.5 Flash', 'Firebase v12'\n        - Summary: 'Cross-border commerce orchestrator with automated multi-currency FX arbitrage, real-time mall receipt OCR triage, and batch invoice generation.'\n        - Metric badge: 'Gemini OCR Triage • Multi-Currency FX'\n        - Action link: 'Read Case Study & Code Audit →'\n     5. 'Warung Dewasa Headless E-Commerce & COD Engine'\n        - Browser frame UI mockup header with address bar 'warungdewasa.id/checkout'\n        - Monospace tech pills: 'React 18', 'Three.js WebGL', 'OSM Nominatim', 'Supabase'\n        - Summary: 'High-conversion headless lifestyle storefront with custom WebGL packaging renders, sub-second reverse geocoding, and fraud-resistant COD validation.'\n        - Metric badge: '167 SKUs • 800ms Geo-Resolver'\n        - Action link: 'Read Case Study & Code Audit →'\n     6. 'SaltDistribute B2B Wholesale Logistics Monorepo'\n        - Browser frame UI mockup header with address bar 'saltdistribute.com/b2b-portal'\n        - Monospace tech pills: 'React Native Expo 54', 'React 19 PWA', 'Firestore'\n        - Summary: 'Unified mobile and desktop logistics monorepo powering fleet delivery dispatches, digital consignment signatures, and bulk wholesale inventory reconciliations.'\n        - Metric badge: 'Dual Mobile/Web • Realtime Fleet Tracking'\n        - Action link: 'Read Case Study & Code Audit →'\n\n4. System Architecture & Engineering Standards Strip:\n   - 3-column architectural pillar cards:\n     - Column A: 'Enterprise Governance & Security Rules' — Zero-trust identity topologies, Role-Based Access Control (RBAC), Dataverse row-level security, and audit-compliant data lineage.\n     - Column B: 'Sub-Second Web Performance' — Zero-jank WebGL rendering pipelines, Idle-until-urgent scheduler, concurrent React 19 server components, and aggressive edge asset caching.\n     - Column C: 'Multi-Provider LLM & Agentic Orchestration' — Deterministic schema validation via Instructor, resilient fallback chains across Gemini 2.5 and OpenAI, and headless Playwright scraping bots.\n\n5. Minimalist Industrial Footer:\n   - System metadata, architectural copyright, social links (GitHub @aliakhmadfauzie, LinkedIn, Email, PGP Fingerprint), and live green latency indicator.",
+                "screenMetadata": {
+                  "agentType": "PRO_AGENT",
+                  "status": "COMPLETE"
+                },
+                "screenType": "DESIGN",
+                "screenshot": {
+                  "downloadUrl": "https://stitch.googleapis.com/v1/projects/13318149189564507528/files/684a13508b2b4270a9e283d349ca897f:download",
+                  "name": "projects/13318149189564507528/files/684a13508b2b4270a9e283d349ca897f"
+                },
+                "theme": {
+                  "bodyFont": "PLUS_JAKARTA_SANS",
+                  "bodyFontFamily": "Plus Jakarta Sans",
+                  "colorMode": "DARK",
+                  "colorVariant": "TONAL_SPOT",
+                  "customColor": "#10B981",
+                  "font": "SPACE_GROTESK",
+                  "headlineFont": "SPACE_GROTESK",
+                  "headlineFontFamily": "Space Grotesk",
+                  "labelFont": "PUBLIC_SANS",
+                  "labelFontFamily": "Public Sans",
+                  "namedColors": {
+                    "background": "#0c0e0f",
+                    "error": "#fa746f",
+                    "error_container": "#871f21",
+                    "error_dim": "#c54d4a",
+                    "inverse_on_surface": "#545556",
+                    "inverse_primary": "#006d4a",
+                    "inverse_surface": "#f9f9fa",
+                    "on_background": "#e3e6e8",
+                    "on_error": "#490006",
+                    "on_error_container": "#ff9993",
+                    "on_primary": "#004a31",
+                    "on_primary_container": "#002919",
+                    "on_primary_fixed": "#00452d",
+                    "on_primary_fixed_variant": "#006544",
+                    "on_secondary": "#004a33",
+                    "on_secondary_container": "#7ad0a9",
+                    "on_secondary_fixed": "#004932",
+                    "on_secondary_fixed_variant": "#00694a",
+                    "on_surface": "#e3e6e8",
+                    "on_surface_variant": "#a8abae",
+                    "on_tertiary": "#276268",
+                    "on_tertiary_container": "#1c5a5f",
+                    "on_tertiary_fixed": "#00474c",
+                    "on_tertiary_fixed_variant": "#296469",
+                    "outline": "#727678",
+                    "outline_variant": "#44484b",
+                    "primary": "#4edea3",
+                    "primary_container": "#06b77f",
+                    "primary_dim": "#3cd096",
+                    "primary_fixed": "#69f6b8",
+                    "primary_fixed_dim": "#58e7ab",
+                    "secondary": "#81d7b0",
+                    "secondary_container": "#00452f",
+                    "secondary_dim": "#74c9a3",
+                    "secondary_fixed": "#9df4cb",
+                    "secondary_fixed_dim": "#8fe6be",
+                    "surface": "#0c0e0f",
+                    "surface_bright": "#292d2f",
+                    "surface_container": "#171a1c",
+                    "surface_container_high": "#1d2022",
+                    "surface_container_highest": "#222628",
+                    "surface_container_low": "#111415",
+                    "surface_container_lowest": "#000000",
+                    "surface_dim": "#0c0e0f",
+                    "surface_tint": "#4edea3",
+                    "surface_variant": "#222628",
+                    "tertiary": "#c7faff",
+                    "tertiary_container": "#b2edf3",
+                    "tertiary_dim": "#a5dee4",
+                    "tertiary_fixed": "#b2edf3",
+                    "tertiary_fixed_dim": "#a5dee4"
+                  },
+                  "overrideNeutralColor": "#0B0D0E",
+                  "overridePrimaryColor": "#10B981",
+                  "overrideSecondaryColor": "#006C4C",
+                  "roundness": "ROUND_FOUR",
+                  "spacingScale": 2
+                },
+                "title": "Ali Akhmad Fauzie — Principal Solutions Architect Portfolio",
+                "width": "2560"
+              }
+            ],
+            "theme": {}
+          }
+        },
+        {
+          "text": "I have designed the world-class, high-craft Swiss-editorial dark-mode desktop portfolio website for **Ali Akhmad Fauzie — Principal Enterprise Solutions Architect & Full-Stack AI Engineer** (`Ali Akhmad Fauzie — Principal Solutions Architect Portfolio`).\n\n### Key Design & Architectural Highlights:\n1. **Top Architectural Command Bar**:\n   - Monospace telemetry mark `ALTECH // ARCHITECTURE` with build badge `v4.8.2 [PROD]`.\n   - Structural navigation (`Telemetry`, `Case Studies`, `System Standards`, `Architecture`).\n   - Live availability badge: `Available for Advisory • KL & Medan` with emerald status beacon.\n   - Primary action: `Download ATS Dossier (PDF)` styled as an industrial terminal download trigger.\n\n2. **Asymmetric Editorial Hero & Impact Telemetry Ledger**:\n   - **Left Column**: Prominent Space Grotesk headline highlighting zero-downtime enterprise migrations and cloud engineering, accompanied by an executive summary and quick-jump navigation triggers.\n   - **Right Column (2x2 Dense Hairline Matrix)**: Tabular monospace telemetry highlighting:\n     - **365+** Lotus Domino databases and complex forms migrated across 28+ business units.\n     - **RM 4.2M/yr** recurring licensing avoidance achieved via Dataverse-first architecture.\n     - **15** production case studies with verified code audits.\n     - **878** Power Apps screens and automated AI copilot workflows deployed.\n     - Live status ticker with sub-180ms P99 latency and audited production telemetry.\n\n3. **Interactive Case Study Filter Bar & 6-Project Grid**:\n   - Category filtering pills covering Enterprise M365, Headless PWAs, B2B ERP, and AI Automation.\n   - 6 case study cards with browser-frame URL bars (`ioi.enterprise.internal`, `garmenthub.internal`, `dlabparfum.store`, etc.), tech stack badges (React 19, Power Apps, Zustand, Firestore, Gemini), problem/solution briefs, verified engineering metrics, and direct audit links.\n\n4. **Engineering Standards & Architectural Pillars Strip**:\n   - 3-column breakdown detailing Enterprise Governance & Security Rules, Sub-Second Web Performance (React 19, zero-jank WebGL), and Multi-Provider LLM Orchestration (Gemini 2.5, Instructor, Playwright).\n\n5. **Industrial Precision Footer & Interactive Sandbox Trigger**:\n   - Interactive Architecture Sandbox callout and industrial footer with system status indicators."
+        },
+        {
+          "suggestion": "Add an interactive modal for the 4-part IOI Domino-to-M365 Case Study"
+        },
+        {
+          "suggestion": "Add a live schema visualizer for the DOSH 5x5 Risk Matrix"
+        },
+        {
+          "suggestion": "Create the mobile responsive version of this portfolio"
+        }
+      ],
+      "projectId": "13318149189564507528",
+      "sessionId": "8364141017520316711"
+    }
+  }
+}

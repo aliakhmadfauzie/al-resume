@@ -15,6 +15,7 @@ import {
   Download,
   Award
 } from 'lucide-react';
+import { DualCareerBranchVisualizer } from '../career/DualCareerBranchVisualizer';
 
 export const ExperienceView: React.FC = () => {
   const [selectedTag, setSelectedTag] = useState<string>('all');
@@ -95,7 +96,26 @@ export const ExperienceView: React.FC = () => {
         </div>
       </div>
 
-      {/* Tag Filters */}
+      {/* Interactive Dual-Track Root-and-Branch Career Map */}
+      <DualCareerBranchVisualizer />
+
+      {/* Chronological Employment Records */}
+      <div className="space-y-6 pt-4 border-t border-[var(--border-subtle)]">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+          <div>
+            <p className="text-xs font-mono text-[var(--text-accent)] font-semibold uppercase">
+              01 · Chronological Employment History
+            </p>
+            <h2 className="text-xl sm:text-2xl font-bold text-[var(--text-primary)] mt-1">
+              Employment Records &amp; Role Milestones
+            </h2>
+          </div>
+          <span className="text-xs font-mono text-[var(--text-tertiary)]">
+            Total {WORK_EXPERIENCE.length} Key Tenures
+          </span>
+        </div>
+
+        {/* Tag Filters */}
       <div className="flex items-center space-x-2 overflow-x-auto pb-2">
         <span className="text-xs font-mono text-[var(--text-tertiary)] shrink-0 flex items-center space-x-1.5">
           <Filter className="w-3.5 h-3.5" />
@@ -174,6 +194,8 @@ export const ExperienceView: React.FC = () => {
             </div>
           </div>
         ))}
+      </div>
+
       </div>
 
       {/* LinkedIn Licenses & Certifications Section */}
