@@ -15,17 +15,23 @@ export const Navbar: React.FC<NavbarProps> = ({
   onOpenContact
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeAnchor, setActiveAnchor] = useState<string | null>(null);
 
   const handleNavClick = (tab: NavTab, anchorId?: string) => {
     onSelectTab(tab);
     setMobileMenuOpen(false);
+    setActiveAnchor(anchorId ?? null);
     if (anchorId) {
-      setTimeout(() => {
+      let attempts = 0;
+      const scrollWhenReady = () => {
         const el = document.getElementById(anchorId);
-        if (el) {
-          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (el && el.getClientRects().length) {
+          el.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+        } else if (++attempts < 90) {
+          requestAnimationFrame(scrollWhenReady);
         }
-      }, 80);
+      };
+      requestAnimationFrame(scrollWhenReady);
     }
   };
 
@@ -71,9 +77,8 @@ export const Navbar: React.FC<NavbarProps> = ({
             aria-label="Primary"
           >
             {navItems.map((item) => {
-              const isActive =
-                currentTab === item.tab &&
-                (!item.anchor || item.id === 'home');
+              const isActive = currentTab === item.tab &&
+                (item.anchor ? activeAnchor === item.anchor : item.tab !== 'home' || !activeAnchor);
               return (
                 <button
                   key={item.id}
@@ -137,7 +142,8 @@ export const Navbar: React.FC<NavbarProps> = ({
         <div className="lg:hidden border-t border-[var(--nav-border)] bg-[var(--bg-default)] px-4 py-4 space-y-2">
           <div className="grid grid-cols-2 gap-1.5">
             {navItems.map((item) => {
-              const isActive = currentTab === item.tab && !item.anchor;
+              const isActive = currentTab === item.tab &&
+                (item.anchor ? activeAnchor === item.anchor : item.tab !== 'home' || !activeAnchor);
               return (
                 <button
                   key={item.id}

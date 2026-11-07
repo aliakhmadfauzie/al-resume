@@ -1,4 +1,5 @@
 import React from 'react';
+import { useAccessibleDialog } from '../../hooks/useAccessibleDialog';
 import { ProjectItem, MigrationSlice } from '../../types';
 import { ProjectGallery } from '../ProjectGallery';
 import { getGalleryForItem } from '../../data/projectGalleries';
@@ -25,6 +26,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
   onClose,
   onLaunchDemo
 }) => {
+  const dialogRef = useAccessibleDialog(isOpen && !!project, onClose);
   if (!isOpen || !project) return null;
 
   const isMigrationSlice = 'letter' in project;
@@ -38,6 +40,11 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
   return (
     <div className="fixed inset-0 z-50 overflow-hidden flex justify-end bg-black/70 backdrop-blur-sm animate-in fade-in duration-200">
       <div
+        ref={dialogRef}
+        tabIndex={-1}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="project-detail-title"
         id="project-detail-drawer-container"
         className="relative w-full max-w-2xl h-full bg-[var(--bg-surface)] border-l border-[var(--border-subtle)] shadow-2xl overflow-hidden flex flex-col animate-in slide-in-from-right duration-200"
       >
@@ -57,7 +64,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
                   ? `IOI Domino Migration · Slice ${(project as MigrationSlice).letter}`
                   : 'Enterprise Architecture Case Study'}
               </span>
-              <h2 className="text-lg font-semibold text-[var(--text-primary)] tracking-tight leading-tight mt-0.5">
+              <h2 id="project-detail-title" className="text-lg font-semibold text-[var(--text-primary)] tracking-tight leading-tight mt-0.5">
                 {itemTitle}
               </h2>
             </div>
