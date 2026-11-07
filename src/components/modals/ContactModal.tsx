@@ -9,7 +9,8 @@ import {
   Copy,
   Check
 } from 'lucide-react';
-import confetti from 'canvas-confetti';
+import { useAccessibleDialog } from '../../hooks/useAccessibleDialog';
+import { openContactDraft } from '../../utils/contactDraft';
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -25,16 +26,14 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [copiedPhone, setCopiedPhone] = useState(false);
 
+  const dialogRef = useAccessibleDialog(isOpen, onClose);
+
   if (!isOpen) return null;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    openContactDraft(PERSONAL_INFO.email, inquiryType, [`From: ${name}`, `Reply to: ${email}`, '', message].join('\n'));
     setSubmitted(true);
-    confetti({
-      particleCount: 70,
-      spread: 65,
-      origin: { y: 0.6 }
-    });
   };
 
   const copyToClipboard = (text: string, type: 'email' | 'phone') => {
@@ -59,13 +58,18 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto bg-black/80 backdrop-blur-sm">
       <div
+        ref={dialogRef}
+        tabIndex={-1}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="contact-modal-title"
         id="contact-modal-container"
         className="relative w-full max-w-2xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-[var(--radius-lg)] shadow-2xl overflow-hidden my-8"
       >
         {/* Top Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-[var(--border-subtle)] bg-[var(--bg-primary)]">
           <div>
-            <h2 className="text-sm font-semibold text-[var(--text-primary)] tracking-tight">
+            <h2 id="contact-modal-title" className="text-sm font-semibold text-[var(--text-primary)] tracking-tight">
               Connect with Ali Akhmad Fauzie (AL)
             </h2>
             <p className="text-xs text-[var(--text-tertiary)] font-mono">
@@ -89,9 +93,9 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
               <div className="w-12 h-12 bg-[var(--bg-primary)] border border-[var(--border-focus)] rounded-full flex items-center justify-center mx-auto text-[var(--text-accent)]">
                 <CheckCircle2 className="w-6 h-6" />
               </div>
-              <h3 className="text-xl font-semibold text-[var(--text-primary)]">Message Dispatched</h3>
+              <h3 className="text-xl font-semibold text-[var(--text-primary)]">Email Draft Prepared</h3>
               <p className="text-sm text-[var(--text-secondary)] max-w-md mx-auto leading-relaxed">
-                Thank you for reaching out, <span className="text-[var(--text-primary)] font-medium">{name || 'there'}</span>. Ali will review your inquiry regarding <span className="text-[var(--text-accent)]">{inquiryType}</span> and respond promptly at <span className="text-[var(--text-primary)]">{email}</span>.
+                Thank you for reaching out, <span className="text-[var(--text-primary)] font-medium">{name || 'there'}</span>. Your email app should open with a draft regarding <span className="text-[var(--text-accent)]">{inquiryType}</span> and the reply address <span className="text-[var(--text-primary)]">{email}</span>. Please press Send in your email app. This site has not delivered your message.
               </p>
               <div className="pt-4 flex justify-center">
                 <button
@@ -145,8 +149,9 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
               <form onSubmit={handleSubmit} className="space-y-4 pt-2">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-1.5">
-                    <label className="text-xs font-medium text-[var(--text-secondary)]">Your Full Name</label>
+                    <label htmlFor="contact-full-name" className="text-xs font-medium text-[var(--text-secondary)]">Your Full Name</label>
                     <input
+                      id="contact-full-name"
                       type="text"
                       required
                       value={name}
@@ -157,8 +162,9 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
                   </div>
 
                   <div className="space-y-1.5">
-                    <label className="text-xs font-medium text-[var(--text-secondary)]">Work / Contact Email</label>
+                    <label htmlFor="contact-email" className="text-xs font-medium text-[var(--text-secondary)]">Work / Contact Email</label>
                     <input
+                      id="contact-email"
                       type="email"
                       required
                       value={email}
@@ -170,8 +176,9 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-xs font-medium text-[var(--text-secondary)]">Subject / Inquiry Scope</label>
+                  <label htmlFor="contact-inquiry-type" className="text-xs font-medium text-[var(--text-secondary)]">Subject / Inquiry Scope</label>
                   <select
+                    id="contact-inquiry-type"
                     value={inquiryType}
                     onChange={(e) => setInquiryType(e.target.value)}
                     className="w-full px-3.5 py-2.5 rounded-[var(--radius-sm)] bg-[var(--bg-primary)] border border-[var(--border-subtle)] focus:border-[var(--border-focus)] focus:outline-none text-xs text-[var(--text-primary)]"
@@ -195,10 +202,11 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-xs font-medium text-[var(--text-secondary)]">
+                  <label htmlFor="contact-message" className="text-xs font-medium text-[var(--text-secondary)]">
                     Project Details or Questions
                   </label>
                   <textarea
+                    id="contact-message"
                     rows={4}
                     required
                     value={message}
@@ -210,14 +218,14 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
 
                 <div className="pt-2 flex items-center justify-between">
                   <p className="text-xs text-[var(--text-tertiary)] font-mono">
-                    Response SLA: 4–12 hours
+                    Opens your email app; press Send there
                   </p>
                   <button
                     type="submit"
                     className="flex items-center space-x-2 px-5 py-2.5 rounded-[var(--radius-sm)] bg-[var(--accent-blue)] hover:bg-[var(--accent-blue-hover)] text-white text-xs font-medium transition-colors"
                   >
                     <Send className="w-3.5 h-3.5" />
-                    <span>Send Inquiry</span>
+                    <span>Prepare Email</span>
                   </button>
                 </div>
               </form>
