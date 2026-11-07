@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
+import { useDialogFocus } from '../../hooks/useDialogFocus';
 import {
   PERSONAL_INFO,
   WORK_EXPERIENCE,
@@ -27,17 +28,7 @@ interface ResumeModalProps {
 
 export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose, onOpenContact }) => {
   const [copied, setCopied] = useState(false);
-  const modalRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!isOpen) return;
-
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
-    };
-    document.addEventListener('keydown', handleKeyDown);
-    return () => document.removeEventListener('keydown', handleKeyDown);
-  }, [isOpen, onClose]);
+  const modalRef = useDialogFocus(isOpen, onClose);
 
   if (!isOpen) return null;
 
@@ -59,6 +50,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose, onOpe
         role="dialog"
         aria-modal="true"
         aria-labelledby="resume-modal-title"
+        tabIndex={-1}
         className="relative w-full max-w-4xl bg-[var(--bg-surface)] border-t sm:border border-[var(--border-subtle)] rounded-t-[var(--radius-lg)] sm:rounded-[var(--radius-lg)] shadow-2xl flex flex-col h-[90vh] max-h-[90vh]"
       >
         {/* Top Header Bar */}
