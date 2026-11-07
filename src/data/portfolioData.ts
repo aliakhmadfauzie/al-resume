@@ -680,6 +680,65 @@ const vCardData = \`BEGIN:VCARD\\nVERSION:3.0\\nFN:Ali Akhmad Fauzie\\nTITLE:\${
 const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8' });`
   },
   {
+    id: "e-procurement-uat",
+    title: "E-Procurement Workflow & UAT Improvements",
+    subtitle: "Power Apps Purchase Requests, Vendor Selection & Issue Resolution",
+    category: "standalone",
+    date: "Documented project work",
+    role: "Power Apps development and UAT remediation",
+    tools: ["Power Apps", "Canvas Apps", "Procurement Workflows", "UAT", "Business Rules"],
+    problem: "Purchase-request and vendor-selection workflows required clearer form behavior, reliable field mapping and validation, and structured issue follow-up.",
+    solution: "Worked on purchase-request detail and vendor-selection interactions, including correcting description mappings, handling changed supplier pricing, and strengthening supplier award checks. The supporting UAT records also identify functionality that remained in progress.",
+    impact: "Documented Power Apps implementation and UAT issue-resolution activity; production deployment and cycle-time improvements are not independently verified.",
+    technicalDetails: [
+      "Purchase-request listing and detail behavior documented in UAT feedback and remediation notes",
+      "Supplier-selection validation, revised description mapping and stale price-clearing behavior",
+      "Additional vendor interactions and application source artifacts retained in a private project archive",
+      "Price-comparison functionality remained under development in the reviewed UAT notes"
+    ]
+  },
+  {
+    id: "lark-document-integration",
+    title: "Lark Document Integration & Export Toolkit",
+    subtitle: "Python API Integration, Document Comments & Export Workflows",
+    category: "standalone",
+    date: "Documented project work",
+    role: "API integration and document automation development",
+    tools: ["Python", "Lark API", "REST API", "React", "Docker", "Markdown"],
+    problem: "Document comments, reply threads and supporting context were difficult to extract into portable, searchable outputs.",
+    solution: "Developed a documented integration workflow for retrieving Lark document comments and context, generating Markdown or Word outputs, and exposing related information through a web interface.",
+    impact: "Implementation artifacts and project documentation identified; production usage and quantified time savings are not independently verified.",
+    technicalDetails: [
+      "Python integration and structured comment/reply extraction workflow",
+      "Export design covering Markdown and Word-compatible documents",
+      "React-based dashboard and container deployment assets described in the project materials",
+      "Source code and README retained in the private development archive"
+    ]
+  },
+  {
+    id: "ioi-migration-governance",
+    title: "Enterprise Migration Tracking & Data Qualification",
+    subtitle: "Lotus Domino-to-M365 Discovery, Inventory and Delivery Governance",
+    category: "migration",
+    date: "2026",
+    role: "Migration analysis, specification tracking and delivery governance",
+    tools: ["Power Apps", "SharePoint", "Excel", "Data Qualification", "Migration Planning"],
+    problem: "Legacy form inventories and site-specific workflows required consistent mapping, review ownership, milestone visibility and qualification gates.",
+    solution: "Maintained migration discovery inventories, structured form specifications, action and milestone tracking, and DQ status registers to support controlled handoff into solution design and build.",
+    impact: "An April 2026 tracker summary records 116 documented form specifications and 3,155 mapped columns at that milestone; these are planning figures, not production release totals.",
+    impactMetrics: [
+      { label: "Documented forms", value: "116" },
+      { label: "Mapped columns", value: "3,155" },
+      { label: "Evidence date", value: "Apr 2026" }
+    ],
+    technicalDetails: [
+      "Form-level inventory, field mapping and department coverage recorded in the April 2026 tracker summary",
+      "Action-item, milestone and document-sync workflow recorded by the Domino Tracker project",
+      "DQ checklist includes blueprint coverage, approval status, mandatory columns and workflow/role mapping",
+      "Records describe stage-specific progress and outstanding gates; they do not establish completion of deployment or go-live"
+    ]
+  },
+  {
     id: "pulsetrack",
     title: "PulseTrack",
     subtitle: "Real-time Operations & Agent Status Automation",
@@ -689,11 +748,11 @@ const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8' });`
     tools: ["Power Apps", "Power Automate", "SharePoint", "Microsoft Forms"],
     problem: "Agent status was captured via WhatsApp, requiring heavy manual roll-up for team leads, leading to delays and inaccuracies.",
     solution: "Implemented a structured status capture system on SharePoint with an automated reporting workflow, providing real-time visibility.",
-    impact: "90% less manual reporting; 98% status accuracy; 60–80% reduction in team-lead workload.",
+    impact: "Portfolio records report 90% less manual reporting, 98% status accuracy and 60–80% lower team-lead workload; original measurement exports have not been independently verified.",
     impactMetrics: [
       { label: "Manual Reporting", value: "-90%" },
       { label: "Status Accuracy", value: "98%" },
-      { label: "Team Lead Workload", value: "-70%" }
+      { label: "Reported workload reduction", value: "60–80%" }
     ],
     technicalDetails: [
       "SharePoint Online schema optimized for concurrent agent logging",
@@ -781,24 +840,24 @@ const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8' });`
   {
     id: "tasek-cement-rebate",
     title: "Tasek Cement Rebate Approval System",
-    subtitle: "Formula-Driven High-Volume Financial Approval Engine",
+    subtitle: "Power Apps Rebate Modeling & Approval Workflow Design",
     category: "standalone",
-    date: "Nov–Dec 2023",
+    date: "Technical specification: Mar 2026",
     role: "Rebate calculation + multi-level approval workflow",
-    tools: ["Power Apps", "Power Automate", "Powerbiz", "Dataverse"],
-    problem: "Rebate approvals took 2–3 days via email and manual checks, creating cashflow friction and human error.",
-    solution: "Reduced to a ~15-minute workflow with a multi-level Sales → Group COO approval path. Implemented a seven-component rebate formula with a cap of 0.20 RM/metric tonne. Synchronized with purchase orders without creating POs inside the app.",
-    impact: "Major cycle-time reduction from 3 days to 15 minutes (99% faster); zero audit non-compliances.",
+    tools: ["Power Apps", "Power Automate", "Dataverse", "Approval Workflows"],
+    problem: "Excel-based rebate handling required a governed workflow, consistent calculations, controlled approvals and clearer record history.",
+    solution: "Designed and documented a role-based Canvas application with six rebate components, rate comparisons, PO-level request handling, Dataverse data modeling and multi-level approval paths. Development reports record component progress, with remaining technical and UAT issues.",
+    impact: "Technical specification v4.1 and a Dataverse design of 11 tables / 145 fields are documented; production deployment, zero audit findings and cycle-time savings remain unverified.",
     impactMetrics: [
-      { label: "Cycle Time", value: "15 min" },
-      { label: "Speed Gain", value: "99% Faster" },
-      { label: "Formula Cap", value: "0.20 RM/t" }
+      { label: "Designed tables", value: "11" },
+      { label: "Mapped fields", value: "145" },
+      { label: "Rebate components", value: "6" }
     ],
     technicalDetails: [
-      "7-component dynamic calculation engine: Base Rate + Volume Tier + Distance + Special Terms + Seasonal Adj + Tax - Credit Deductions",
-      "Hard validation enforcing statutory RM 0.20/metric tonne ceiling",
-      "Integration with ERP purchase order ledgers for balance validation",
-      "Delegated signature authorization matrix matching corporate governance"
+      "Six configured rebate components: Market, EPI, PPI, VI, Additional and Special",
+      "Role-based PO and rebate approval paths with Dataverse tracking and history",
+      "Technical documentation covers Oracle synchronization architecture and reporting",
+      "Some UAT and approval-cap calculations need independent review before release claims"
     ],
     liveDemoId: "rebate",
     featured: true
