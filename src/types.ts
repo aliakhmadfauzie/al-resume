@@ -196,6 +196,7 @@ export interface HonorAwardItem {
   year: string;
   description: string;
   certificatePdfUrl?: string;
+  evidenceImages?: Array<{ src: string; alt: string; caption: string }>;
 }
 
 export interface LinkedInTestimonial {

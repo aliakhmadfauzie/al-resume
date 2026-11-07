@@ -1,4 +1,5 @@
 import React from 'react';
+import { useDialogFocus } from '../../hooks/useDialogFocus';
 import { ProjectItem, MigrationSlice } from '../../types';
 import { ProjectGallery } from '../ProjectGallery';
 import { getGalleryForItem } from '../../data/projectGalleries';
@@ -25,6 +26,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
   onClose,
   onLaunchDemo
 }) => {
+  const dialogRef = useDialogFocus(isOpen && !!project, onClose);
   if (!isOpen || !project) return null;
 
   const isMigrationSlice = 'letter' in project;
@@ -38,6 +40,11 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
   return (
     <div className="fixed inset-0 z-50 overflow-hidden flex justify-end bg-black/70 backdrop-blur-sm animate-in fade-in duration-200">
       <div
+        ref={dialogRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="project-detail-title"
+        tabIndex={-1}
         id="project-detail-drawer-container"
         className="relative w-full max-w-2xl h-full bg-[var(--bg-surface)] border-l border-[var(--border-subtle)] shadow-2xl overflow-hidden flex flex-col animate-in slide-in-from-right duration-200"
       >
@@ -57,7 +64,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
                   ? `IOI Domino Migration · Slice ${(project as MigrationSlice).letter}`
                   : 'Enterprise Architecture Case Study'}
               </span>
-              <h2 className="text-lg font-semibold text-[var(--text-primary)] tracking-tight leading-tight mt-0.5">
+              <h2 id="project-detail-title" className="text-lg font-semibold text-[var(--text-primary)] tracking-tight leading-tight mt-0.5">
                 {itemTitle}
               </h2>
             </div>
@@ -151,7 +158,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
           <div className="bg-[var(--bg-primary)] p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-2">
             <div className="flex items-center space-x-2 text-[var(--text-accent)] font-mono text-xs font-medium">
               <TrendingUp className="w-4 h-4" />
-              <span>03 · Verified Business Impact</span>
+              <span>03 · Reported Business Impact</span>
             </div>
             <p className="text-sm text-[var(--text-primary)] font-medium leading-relaxed">
               {impactText}
@@ -215,7 +222,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
           {'codeSnippet' in project && project.codeSnippet && (
             <div className="space-y-2">
               <h4 className="text-xs font-mono text-[var(--text-accent)] font-medium">
-                Verified Implementation Excerpt
+                Implementation Excerpt
               </h4>
               <pre className="p-4 rounded-[var(--radius-md)] bg-[var(--bg-primary)] border border-[var(--border-subtle)] text-[11px] font-mono text-[var(--text-primary)] overflow-x-auto leading-relaxed">
                 <code>{project.codeSnippet}</code>

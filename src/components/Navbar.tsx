@@ -32,13 +32,12 @@ export const Navbar: React.FC<NavbarProps> = ({
   const navItems: { id: string; label: string; tab: NavTab; anchor?: string }[] = [
     { id: 'home', label: 'Home', tab: 'home' },
     { id: 'about', label: 'About', tab: 'home', anchor: 'section-about' },
-    { id: 'services', label: 'Services', tab: 'home', anchor: 'section-services' },
     { id: 'certs', label: 'Certifications', tab: 'certifications' },
-    { id: 'stack', label: 'Stack', tab: 'skills' },
+    { id: 'stack', label: 'Skills', tab: 'skills' },
     { id: 'projects', label: 'Projects', tab: 'projects' },
-    { id: 'demos', label: 'Simulators', tab: 'demos' },
+    { id: 'demos', label: 'Demos', tab: 'demos' },
     { id: 'experience', label: 'Experience', tab: 'experience' },
-    { id: 'interview', label: 'Architecture Q&A', tab: 'interview' }
+    { id: 'interview', label: 'Q&A', tab: 'interview' }
   ];
 
   return (
