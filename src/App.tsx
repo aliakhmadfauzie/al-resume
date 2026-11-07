@@ -105,6 +105,10 @@ export default function App() {
         />
       </div>
 
+      <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:px-4 focus:py-2 focus:rounded-md focus:bg-[var(--bg-surface)] focus:text-[var(--text-primary)] focus:border focus:border-[var(--border-focus)]">
+        Skip to main content
+      </a>
+
       {/* Top Navigation */}
       <Navbar
         currentTab={currentTab}
@@ -114,7 +118,7 @@ export default function App() {
       />
 
       {/* Main Page View Container */}
-      <main className="relative z-10 flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-28 sm:pb-32 overflow-x-hidden">
+      <main id="main-content" tabIndex={-1} className="relative z-10 flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-28 sm:pb-32 overflow-x-hidden">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentTab}
