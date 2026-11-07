@@ -255,6 +255,15 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
                   <ImpactTooltip impact={slice.impact} className="h-full">
                     <div
                       onClick={() => onOpenProjectDetail(slice)}
+                      role="button"
+                      tabIndex={0}
+                      aria-label={`View details for ${slice.title}`}
+                      onKeyDown={(event) => {
+                        if (event.key === 'Enter' || event.key === ' ') {
+                          event.preventDefault();
+                          onOpenProjectDetail(slice);
+                        }
+                      }}
                       className="h-full bg-[var(--bg-primary)] hover:bg-[var(--bg-surface-elevated)] p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] hover:border-[var(--border-focus)] space-y-3 cursor-pointer group flex flex-col justify-between transition-colors"
                     >
                       <div className="space-y-2.5">
