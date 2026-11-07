@@ -198,220 +198,246 @@ export const HomeView: React.FC<HomeViewProps> = ({
       </section>
 
       {/* ====================================================================
-          2. BENTO ROW: // ABOUT ME (Left 5-6 Cols) + // SERVICES (Right 6-7 Cols)
+          2. BENTO ROW: // ABOUT ME (Symmetrical Executive Layout) + // SERVICES
          ==================================================================== */}
       <section className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
         {/* LEFT CARD: // ABOUT ME */}
         <div
           id="section-about"
-          className="lg:col-span-12 xl:col-span-5 rounded-[var(--radius-lg)] surface-glass-1 p-6 sm:p-7 flex flex-col sm:flex-row gap-6 justify-between shadow-[var(--shadow-card)] relative overflow-hidden group"
+          className="lg:col-span-12 xl:col-span-6 rounded-2xl surface-glass-1 border border-white/10 p-6 sm:p-7 flex flex-col justify-between space-y-5 shadow-2xl relative overflow-hidden group"
         >
           {/* Subtle Ambient Studio Glow in Corner */}
-          <div className="absolute -top-24 -left-24 w-60 h-60 bg-[var(--interactive-primary)]/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -top-24 -left-24 w-64 h-64 bg-orange-500/10 rounded-full blur-3xl pointer-events-none" />
 
-          {/* Real LinkedIn Portrait Frame with Dramatic Studio Rim Lighting & < /> Badge */}
-          <div className="relative w-full sm:w-44 md:w-48 shrink-0 min-h-[290px] rounded-[var(--radius-md)] bg-[#0c0d12] border border-[var(--interactive-subtle-border)] overflow-hidden flex flex-col justify-between shadow-[0_8px_24px_rgba(0,0,0,0.5)] group/frame">
-            {/* Real LinkedIn Profile Photo */}
-            <img
-              src={PERSONAL_INFO.avatarUrl}
-              alt={PERSONAL_INFO.name}
-              className="absolute inset-0 w-full h-full object-cover object-center group-hover/frame:scale-105 transition-transform duration-500"
-            />
-
-            {/* Studio Copper-Orange Rim Light & Bottom Vignette Overlay matching Reference */}
-            <div
-              className="absolute inset-0 pointer-events-none"
-              style={{
-                background:
-                  'linear-gradient(180deg, rgba(12,13,18,0.25) 0%, rgba(12,13,18,0.15) 45%, rgba(12,13,18,0.88) 100%), radial-gradient(circle at 80% 20%, rgba(249, 115, 22, 0.32) 0%, transparent 55%)'
-              }}
-            />
-
-            {/* Top Status Tag with Radar Pulse */}
-            <div className="relative z-10 p-3 flex items-center justify-between text-[10px] font-mono text-[var(--text-primary)]">
-              <span className="px-2.5 py-0.5 rounded-full bg-[#0c0d12]/85 backdrop-blur-md border border-[var(--border-subtle)] text-zinc-300">
-                in/aliakhmadf
-              </span>
+          {/* Top Header Bar */}
+          <div className="flex items-center justify-between relative z-10 border-b border-white/[0.06] pb-3.5">
+            <div className="flex items-center space-x-2.5">
               <span className="relative flex h-2.5 w-2.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#22c55e] opacity-75" />
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#22c55e] shadow-[0_0_8px_#22c55e]" />
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-orange-500 shadow-[0_0_8px_#f97316]" />
+              </span>
+              <span className="text-xs font-mono font-bold tracking-widest uppercase text-orange-400">
+                // ABOUT ME
               </span>
             </div>
+            <span className="px-2.5 py-0.5 rounded-full bg-orange-500/10 border border-orange-500/25 text-[10px] font-mono font-semibold text-orange-400">
+              Enterprise Solutions Architect
+            </span>
+          </div>
 
-            {/* Bottom Identity Capsule: < /> Badge + Verified Role */}
-            <div className="relative z-10 p-2.5 m-2 rounded-lg bg-[#0a0b10]/85 backdrop-blur-md border border-white/10 flex items-center justify-between shadow-lg">
-              <div className="flex items-center space-x-2">
-                <span className="px-2 py-0.5 rounded bg-orange-500/20 border border-orange-500/40 text-[var(--text-accent)] font-mono font-bold text-xs">
-                  &lt;/&gt;
+          {/* Main Content Area: Studio Portrait + Bio */}
+          <div className="flex flex-col sm:flex-row gap-5 items-start sm:items-center relative z-10">
+            {/* Studio Portrait Frame */}
+            <div className="relative w-28 h-36 sm:w-36 sm:h-44 shrink-0 rounded-xl bg-[#0c0d12] border border-orange-500/30 overflow-hidden shadow-xl group/frame">
+              <img
+                src={PERSONAL_INFO.avatarUrl}
+                alt={PERSONAL_INFO.name}
+                className="w-full h-full object-cover object-center group-hover/frame:scale-105 transition-transform duration-500"
+              />
+              {/* Studio Copper-Orange Rim Light & Bottom Vignette Overlay */}
+              <div
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  background:
+                    'linear-gradient(180deg, rgba(12,13,18,0.2) 0%, rgba(12,13,18,0.1) 45%, rgba(12,13,18,0.85) 100%), radial-gradient(circle at 80% 20%, rgba(249, 115, 22, 0.28) 0%, transparent 60%)'
+                }}
+              />
+              {/* Top Status Tag with Radar Pulse */}
+              <div className="absolute top-2 left-2 right-2 flex items-center justify-between text-[9px] font-mono text-white z-10">
+                <span className="px-1.5 py-0.5 rounded bg-black/70 backdrop-blur-md border border-white/10 text-zinc-300">
+                  in/aliakhmadf
                 </span>
-                <div>
-                  <div className="text-[11px] font-bold text-white tracking-tight">
-                    Ali Akhmad Fauzie
-                  </div>
-                  <div className="text-[9px] font-mono text-[var(--text-accent)]">
-                    Solutions Architect
-                  </div>
-                </div>
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#22c55e] opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#22c55e]" />
+                </span>
+              </div>
+              {/* Bottom Label */}
+              <div className="absolute bottom-2 left-2 right-2 p-1 rounded bg-black/70 backdrop-blur-md border border-white/10 text-center z-10">
+                <div className="text-[10px] font-bold text-white leading-tight">Ali Akhmad Fauzie</div>
+                <div className="text-[8px] font-mono text-orange-400">Pre-Sales &amp; Architect</div>
+              </div>
+            </div>
+
+            {/* Headline & Bio */}
+            <div className="space-y-2 flex-1">
+              <h2 className="text-lg sm:text-xl font-extrabold text-white tracking-tight leading-snug">
+                Architecting Enterprise Systems That{' '}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-amber-400 to-orange-500">
+                  Scale.
+                </span>
+              </h2>
+              <p className="text-xs text-zinc-300 leading-relaxed font-normal">
+                I&apos;m Ali Akhmad Fauzie, an Enterprise Solutions Architect &amp; Pre-Sales Lead and former Operations Team Leader (Concentrix &amp; Accenture). I specialize in zero-downtime legacy Lotus Domino migrations to Microsoft 365, Dataverse enterprise architectures, and deterministic AI automation.
+              </p>
+            </div>
+          </div>
+
+          {/* 4 Strategic Capability Chips (2x2 Grid) */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 relative z-10">
+            <div className="p-2.5 rounded-lg bg-[#11131c]/80 border border-white/[0.07] hover:border-orange-500/30 transition-colors flex items-center space-x-3">
+              <div className="w-8 h-8 rounded-lg bg-orange-500/10 border border-orange-500/20 flex items-center justify-center shrink-0 text-orange-400 shadow-[0_0_10px_rgba(249,115,22,0.12)]">
+                <Briefcase className="w-4 h-4" />
+              </div>
+              <div>
+                <div className="text-xs font-bold text-white leading-tight">9+ Years Leadership</div>
+                <div className="text-[10px] text-zinc-400 font-mono">Enterprise &amp; BPO Operations</div>
+              </div>
+            </div>
+
+            <div className="p-2.5 rounded-lg bg-[#11131c]/80 border border-white/[0.07] hover:border-emerald-500/30 transition-colors flex items-center space-x-3">
+              <div className="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center shrink-0 text-emerald-400 shadow-[0_0_10px_rgba(34,197,94,0.12)]">
+                <CheckCircle2 className="w-4 h-4" />
+              </div>
+              <div>
+                <div className="text-xs font-bold text-white leading-tight">365+ DBs Modernized</div>
+                <div className="text-[10px] text-zinc-400 font-mono">Lotus Domino to M365</div>
+              </div>
+            </div>
+
+            <div className="p-2.5 rounded-lg bg-[#11131c]/80 border border-white/[0.07] hover:border-amber-500/30 transition-colors flex items-center space-x-3">
+              <div className="w-8 h-8 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center shrink-0 text-amber-400 shadow-[0_0_10px_rgba(245,158,11,0.12)]">
+                <Award className="w-4 h-4" />
+              </div>
+              <div>
+                <div className="text-xs font-bold text-white leading-tight">12 Verified Credentials</div>
+                <div className="text-[10px] text-zinc-400 font-mono">Microsoft, Lark &amp; Six Sigma</div>
+              </div>
+            </div>
+
+            <div className="p-2.5 rounded-lg bg-[#11131c]/80 border border-white/[0.07] hover:border-orange-500/30 transition-colors flex items-center space-x-3">
+              <div className="w-8 h-8 rounded-lg bg-orange-500/10 border border-orange-500/20 flex items-center justify-center shrink-0 text-orange-400 shadow-[0_0_10px_rgba(249,115,22,0.12)]">
+                <Zap className="w-4 h-4" />
+              </div>
+              <div>
+                <div className="text-xs font-bold text-white leading-tight">$960K+/yr Saved</div>
+                <div className="text-[10px] text-zinc-400 font-mono">Standard M365 Sharding</div>
               </div>
             </div>
           </div>
 
-          {/* Right Bio & Checklist Column */}
-          <div className="flex-1 flex flex-col justify-between space-y-4 relative z-10">
-            <div className="space-y-3">
-              <div className="inline-flex items-center space-x-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[var(--interactive-primary)] animate-pulse" />
-                <span className="text-xs font-mono text-[var(--text-accent)] font-semibold tracking-wider uppercase">
-                  // ABOUT ME
-                </span>
-              </div>
-              <h2 className="text-xl sm:text-2xl font-bold text-[var(--text-primary)] leading-tight tracking-tight">
-                Crafting solutions that{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#f97316] to-[#fb923c]">scale.</span>
-              </h2>
-              <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
-                I&apos;m Ali Akhmad Fauzie, an Enterprise Solutions Architect &amp; Pre-Sales Lead and former Operations Team Leader (Concentrix &amp; Accenture) building governed, AI-powered enterprise systems.
-              </p>
-
-              {/* 4 Styled Feature Checklist Items */}
-              <ul className="space-y-2.5 pt-1 text-xs">
-                <li className="flex items-center space-x-2.5 text-[var(--text-secondary)]">
-                  <div className="w-6 h-6 rounded bg-orange-500/10 border border-orange-500/20 flex items-center justify-center shrink-0 text-[var(--text-accent)]">
-                    <Briefcase className="w-3.5 h-3.5" />
-                  </div>
-                  <span><strong className="text-[var(--text-primary)] font-semibold">9+ years</strong> experience (Enterprise Architecture, Concentrix, Accenture)</span>
-                </li>
-                <li className="flex items-center space-x-2.5 text-[var(--text-secondary)]">
-                  <div className="w-6 h-6 rounded bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center shrink-0 text-emerald-400">
-                    <CheckCircle2 className="w-3.5 h-3.5" />
-                  </div>
-                  <span><strong className="text-[var(--text-primary)] font-semibold">365+</strong> legacy Domino DBs modernized across 28 BUs</span>
-                </li>
-                <li className="flex items-center space-x-2.5 text-[var(--text-secondary)]">
-                  <div className="w-6 h-6 rounded bg-amber-500/10 border border-amber-500/20 flex items-center justify-center shrink-0 text-amber-400">
-                    <Award className="w-3.5 h-3.5" />
-                  </div>
-                  <span><strong className="text-[var(--text-primary)] font-semibold">12</strong> Microsoft, LinkedIn, Lark &amp; Six Sigma certs</span>
-                </li>
-                <li className="flex items-center space-x-2.5 text-[var(--text-secondary)]">
-                  <div className="w-6 h-6 rounded bg-orange-500/10 border border-orange-500/20 flex items-center justify-center shrink-0 text-[var(--text-accent)]">
-                    <Zap className="w-3.5 h-3.5" />
-                  </div>
-                  <span><strong className="text-[var(--text-primary)] font-semibold">$960K+/yr</strong> licensing saved &amp; 98%+ SLA benchmark</span>
-                </li>
-              </ul>
-            </div>
-
-            {/* Tactile Action Button Row */}
-            <div className="pt-2 flex flex-wrap items-center gap-3">
-              <button
-                type="button"
-                onClick={() => onSelectTab('experience')}
-                className="inline-flex items-center space-x-2 px-4 py-2.5 min-h-[44px] rounded-[var(--radius-sm)] bg-gradient-to-r from-[#f97316] to-[#ea580c] hover:from-[#fb923c] hover:to-[#f97316] text-[#090a0d] text-xs font-bold shadow-[0_4px_18px_rgba(249,115,22,0.32)] hover:shadow-[0_6px_24px_rgba(249,115,22,0.45)] transition-all cursor-pointer group"
-              >
-                <span>More About Me</span>
-                <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
-              </button>
-              <a
-                href={PERSONAL_INFO.linkedIn}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center space-x-2 px-4 py-2.5 min-h-[44px] rounded-[var(--radius-sm)] bg-[#12141d] hover:bg-[var(--bg-surface-elevated)] text-xs font-medium text-[var(--text-primary)] hover:text-[var(--text-accent)] border border-[var(--border-subtle)] hover:border-[var(--interactive-subtle-border)] transition-colors shadow-sm"
-              >
-                <Linkedin className="w-3.5 h-3.5 text-[#0077b5]" />
-                <span>LinkedIn Profile</span>
-                <ExternalLink className="w-3 h-3 text-[var(--text-tertiary)]" />
-              </a>
-            </div>
+          {/* Action Button Row */}
+          <div className="pt-2 flex flex-wrap items-center gap-3 relative z-10 border-t border-white/[0.06]">
+            <motion.button
+              type="button"
+              whileHover={{ scale: 1.02, y: -1 }}
+              whileTap={{ scale: 0.98 }}
+              onClick={() => onSelectTab('experience')}
+              className="inline-flex items-center space-x-2 px-5 py-2.5 min-h-[42px] rounded-lg bg-gradient-to-r from-[#f97316] to-[#ea580c] hover:from-[#fb923c] hover:to-[#f97316] text-[#090a0d] text-xs font-bold shadow-[0_4px_18px_rgba(249,115,22,0.32)] transition-all cursor-pointer group"
+            >
+              <span>Explore Career Track</span>
+              <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+            </motion.button>
+            <motion.a
+              href={PERSONAL_INFO.linkedIn}
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.02, y: -1 }}
+              whileTap={{ scale: 0.98 }}
+              className="inline-flex items-center space-x-2 px-4 py-2.5 min-h-[42px] rounded-lg bg-[#12141d]/90 hover:bg-[#1a1d2b] text-xs font-medium text-zinc-200 hover:text-orange-400 border border-white/10 hover:border-orange-500/30 transition-colors shadow-sm"
+            >
+              <Linkedin className="w-3.5 h-3.5 text-[#0077b5]" />
+              <span>LinkedIn Profile</span>
+              <ExternalLink className="w-3 h-3 text-zinc-400" />
+            </motion.a>
           </div>
         </div>
 
-        {/* RIGHT CARD: // SERVICES (2x3 Grid of 6 Service Cards) */}
+        {/* RIGHT CARD: // SERVICES (Balanced 6-Card Grid) */}
         <div
           id="section-services"
-          className="lg:col-span-12 xl:col-span-7 rounded-[var(--radius-lg)] surface-glass-1 p-6 sm:p-7 flex flex-col justify-between space-y-4 shadow-[var(--shadow-card)] relative overflow-hidden"
+          className="lg:col-span-12 xl:col-span-6 rounded-2xl surface-glass-1 border border-white/10 p-6 sm:p-7 flex flex-col justify-between space-y-4 shadow-2xl relative overflow-hidden"
         >
           {/* Subtle Ambient Glow */}
           <div className="absolute -top-20 -right-20 w-48 h-48 bg-orange-500/8 rounded-full blur-3xl pointer-events-none" />
 
-          <div className="flex items-center justify-between relative z-10">
-            <div className="inline-flex items-center space-x-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-[var(--interactive-primary)] animate-pulse" />
-              <p className="text-xs font-mono text-[var(--text-accent)] font-semibold tracking-wider uppercase">
+          {/* Top Header Bar */}
+          <div className="flex items-center justify-between relative z-10 border-b border-white/[0.06] pb-3.5">
+            <div className="flex items-center space-x-2.5">
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-orange-500 shadow-[0_0_8px_#f97316]" />
+              </span>
+              <p className="text-xs font-mono font-bold tracking-widest uppercase text-orange-400">
                 // ARCHITECTURE &amp; DELIVERY SERVICES
               </p>
             </div>
-            <span className="text-[11px] font-mono text-[var(--text-tertiary)] hidden sm:inline-block">
-              6 Core Enterprise Capabilities
+            <span className="text-[11px] font-mono text-zinc-400">
+              6 Core Disciplines
             </span>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3.5 flex-1 relative z-10">
+          {/* 6 Services Grid: 2 rows of 3 on desktop */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 flex-1 relative z-10">
             {[
               {
-                icon: <Database className="w-4 h-4 text-[#fb923c]" />,
+                icon: <Database className="w-4 h-4 text-orange-400" />,
                 badge: '365+ DBs',
                 title: 'Legacy Domino Migration',
                 desc: 'Zero-downtime retirement of 365+ Lotus Notes DBs into governed M365 & SharePoint MainDB.'
               },
               {
-                icon: <Layers className="w-4 h-4 text-[#fb923c]" />,
+                icon: <Layers className="w-4 h-4 text-orange-400" />,
                 badge: '878+ Screens',
                 title: 'Power Platform Apps',
                 desc: '878+ Canvas YAML screens & Model-Driven apps with custom React PCF extensions.'
               },
               {
-                icon: <Workflow className="w-4 h-4 text-[#fb923c]" />,
+                icon: <Workflow className="w-4 h-4 text-orange-400" />,
                 badge: 'Enterprise ERP',
                 title: 'Dataverse & ERP Design',
                 desc: 'Isolated financial approval schemas, statutory rebate engines, and 4-pocket ledgers.'
               },
               {
-                icon: <Sparkles className="w-4 h-4 text-[#fb923c]" />,
+                icon: <Sparkles className="w-4 h-4 text-orange-400" />,
                 badge: 'Tri-Engine',
                 title: 'Deterministic AI & NLP',
                 desc: 'Tri-Engine AI routers (Gemini, Groq, AI Builder) with regex SSOT firewalls.'
               },
               {
-                icon: <Terminal className="w-4 h-4 text-[#fb923c]" />,
+                icon: <Terminal className="w-4 h-4 text-orange-400" />,
                 badge: 'CI/CD ALM',
                 title: 'ALM & DevOps Pipelines',
                 desc: 'PAC CLI automation, Python AST YAML linters, Docker, and GitHub Actions CI/CD.'
               },
               {
-                icon: <Gauge className="w-4 h-4 text-[#fb923c]" />,
+                icon: <Gauge className="w-4 h-4 text-orange-400" />,
                 badge: '$960K Saved',
                 title: 'FinOps & Optimization',
                 desc: 'Standard-connector sharding saving $960K+/yr and cutting 14d cycles to 15 mins.'
               }
             ].map((srv, idx) => (
-              <div
+              <motion.div
                 key={idx}
-                className="service-card rounded-[var(--radius-md)] p-4 flex flex-col justify-between space-y-3 group cursor-default relative overflow-hidden"
+                whileHover={{ y: -3, scale: 1.01 }}
+                transition={{ duration: 0.2 }}
+                className="service-card rounded-xl p-3.5 flex flex-col justify-between group cursor-default relative overflow-hidden bg-[#10121a]/90 border border-white/[0.07] hover:border-orange-500/40 hover:bg-[#161824] transition-all shadow-sm"
               >
                 {/* Ambient hover sheen */}
-                <div className="absolute -top-12 -right-12 w-24 h-24 bg-orange-500/10 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                <div className="absolute -top-12 -right-12 w-20 h-20 bg-orange-500/10 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-                {/* Top Row: Icon + Badge */}
-                <div className="flex items-center justify-between relative z-10">
-                  <div className="w-8 h-8 rounded-lg bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-[var(--text-accent)] shadow-[0_0_12px_rgba(249,115,22,0.12)] group-hover:scale-105 group-hover:border-orange-500/40 transition-all">
-                    {srv.icon}
+                <div>
+                  {/* Top Row: Icon + Badge */}
+                  <div className="flex items-center justify-between mb-2 relative z-10">
+                    <div className="w-7 h-7 rounded-lg bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-orange-400 shadow-[0_0_10px_rgba(249,115,22,0.12)] group-hover:scale-105 group-hover:border-orange-500/40 transition-all">
+                      {srv.icon}
+                    </div>
+                    <span className="text-[9px] font-mono font-semibold px-2 py-0.5 rounded-full bg-[#1b1d28]/90 text-orange-400 border border-white/10 group-hover:border-orange-500/30 transition-colors">
+                      {srv.badge}
+                    </span>
                   </div>
-                  <span className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded-full bg-[#1b1d28]/90 text-[var(--text-accent)] border border-[var(--border-subtle)] group-hover:border-[var(--interactive-subtle-border)] transition-colors">
-                    {srv.badge}
-                  </span>
-                </div>
 
-                {/* Title & Desc */}
-                <div className="space-y-1.5 relative z-10 text-left">
-                  <h3 className="text-xs sm:text-sm font-bold text-[var(--text-primary)] group-hover:text-[var(--text-accent)] transition-colors tracking-tight">
+                  {/* Title */}
+                  <h3 className="text-xs sm:text-sm font-bold text-white group-hover:text-orange-400 transition-colors tracking-tight leading-snug mb-1">
                     {srv.title}
                   </h3>
-                  <p className="text-[11px] text-[var(--text-secondary)] leading-relaxed group-hover:text-[var(--text-primary)] transition-colors">
-                    {srv.desc}
-                  </p>
                 </div>
-              </div>
+
+                {/* Description */}
+                <p className="text-[11px] text-zinc-400 leading-relaxed group-hover:text-zinc-200 transition-colors line-clamp-3 mt-1">
+                  {srv.desc}
+                </p>
+              </motion.div>
             ))}
           </div>
         </div>
