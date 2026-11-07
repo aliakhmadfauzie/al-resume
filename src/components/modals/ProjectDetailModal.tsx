@@ -1,6 +1,7 @@
 import React from 'react';
 import { ProjectItem, MigrationSlice } from '../../types';
 import { ProjectGallery } from '../ProjectGallery';
+import { CaseStudyScreens, hasCaseStudyScreens } from '../views/CaseStudyScreens';
 import { getGalleryForItem } from '../../data/projectGalleries';
 import {
   X,
@@ -119,6 +120,11 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
             images={galleryPlaceholders}
             projectTitle={itemTitle}
           />
+
+          {/* Guided, non-confidential screen walkthrough reconstructed from the project evidence. */}
+          {!isMigrationSlice && hasCaseStudyScreens((project as ProjectItem).id) && (
+            <CaseStudyScreens project={project as ProjectItem} />
+          )}
 
           {/* Unboxed Technology Stack */}
           <div className="space-y-1.5">
