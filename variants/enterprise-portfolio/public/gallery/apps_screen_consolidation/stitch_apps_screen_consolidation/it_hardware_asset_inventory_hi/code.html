@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>IT Asset Inventory Management (HI)</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container-highest": "#e0e3e5",
+                        "surface": "#f7f9fb",
+                        "primary-fixed-dim": "#bcc7de",
+                        "primary": "#091426",
+                        "outline-variant": "#c5c6cd",
+                        "on-surface-variant": "#45474c",
+                        "on-secondary-container": "#5c647a",
+                        "secondary-container": "#dae2fd",
+                        "on-surface": "#191c1e",
+                        "background": "#f7f9fb",
+                        "on-tertiary-fixed-variant": "#38485d",
+                        "tertiary": "#041528",
+                        "surface-bright": "#f7f9fb",
+                        "on-tertiary-fixed": "#0b1c30",
+                        "on-primary-container": "#8590a6",
+                        "surface-variant": "#e0e3e5",
+                        "on-primary-fixed-variant": "#3c475a",
+                        "tertiary-container": "#1a2a3e",
+                        "surface-tint": "#545f73",
+                        "surface-container": "#eceef0",
+                        "on-error-container": "#93000a",
+                        "error": "#ba1a1a",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed": "#d8e3fb",
+                        "on-primary-fixed": "#111c2d",
+                        "secondary-fixed": "#dae2fd",
+                        "surface-dim": "#d8dadc",
+                        "on-secondary-fixed": "#131b2e",
+                        "on-background": "#191c1e",
+                        "surface-container-low": "#f2f4f6",
+                        "secondary-fixed-dim": "#bec6e0",
+                        "outline": "#75777d",
+                        "inverse-on-surface": "#eff1f3",
+                        "secondary": "#565e74",
+                        "on-secondary-fixed-variant": "#3f465c",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-container": "#8191a9",
+                        "on-error": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "inverse-surface": "#2d3133",
+                        "error-container": "#ffdad6",
+                        "surface-container-high": "#e6e8ea",
+                        "primary-container": "#1e293b",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed": "#d3e4fe",
+                        "inverse-primary": "#bcc7de",
+                        "tertiary-fixed-dim": "#b7c8e1"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    spacing: {
+                        "gutter-standard": "16px",
+                        "input-height-sm": "28px",
+                        "input-height-md": "36px",
+                        "gutter-dense": "8px",
+                        "margin-container": "24px",
+                        "unit": "4px"
+                    },
+                    fontFamily: {
+                        "body-data": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "display-executive": ["Hanken Grotesk"],
+                        "body-data-bold": ["Hanken Grotesk"],
+                        "label-mono-style": ["Hanken Grotesk"],
+                        "headline-technical": ["Hanken Grotesk"]
+                    },
+                    fontSize: {
+                        "body-data": ["13px", { lineHeight: "18px", fontWeight: "400" }],
+                        "headline-lg-mobile": ["24px", { lineHeight: "32px", fontWeight: "700" }],
+                        "display-executive": ["36px", { lineHeight: "44px", letterSpacing: "-0.02em", fontWeight: "700" }],
+                        "body-data-bold": ["13px", { lineHeight: "18px", fontWeight: "600" }],
+                        "label-mono-style": ["11px", { lineHeight: "16px", letterSpacing: "0.05em", fontWeight: "700" }],
+                        "headline-technical": ["20px", { lineHeight: "28px", letterSpacing: "0.01em", fontWeight: "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: theme('colors.surface'); color: theme('colors.on-surface'); }
+        /* Tonal Layering Shadows */
+        .layer-1 { background-color: theme('colors.surface-container-lowest'); border: 1px solid theme('colors.surface-variant'); }
+        .layer-2 { background-color: theme('colors.surface-container-lowest'); box-shadow: 2px 2px 0px 0px theme('colors.surface-dim'); }
+        
+        /* High-Density Data Tables */
+        .zebra-table tbody tr:nth-child(even) { background-color: theme('colors.surface-container-lowest'); }
+        .zebra-table tbody tr:nth-child(odd) { background-color: theme('colors.surface-container-low'); }
+        .zebra-table tr { height: 32px; }
+        .zebra-table td, .zebra-table th { padding: 0 8px; vertical-align: middle; }
+        .action-group { opacity: 0; transition: opacity 0.2s; }
+        .zebra-table tr:hover .action-group { opacity: 1; }
+
+        /* Status Badges */
+        .status-badge { border-radius: 2px; padding: 2px 6px; }
+        .status-deployment { background-color: theme('colors.primary-container'); color: theme('colors.on-primary'); }
+        .status-maintenance { background-color: theme('colors.surface-tint'); color: theme('colors.surface-container-lowest'); }
+        .status-retired { background-color: theme('colors.outline'); color: theme('colors.surface-container-lowest'); }
+    </style>
+</head>
+<body class="font-body-data antialiased h-screen overflow-hidden flex flex-col">
+<!-- Department Hero Header -->
+<div class="h-1 w-full bg-tertiary z-[60]"></div>
+<!-- TopNavBar -->
+<header class="bg-surface-container-low dark:bg-surface-container-low text-primary dark:text-primary-fixed-dim font-headline-technical text-headline-technical docked full-width top-0 border-b border-outline-variant dark:border-outline-variant flat no shadows fixed top-[4px] left-0 w-full z-50 flex justify-between items-center h-[48px] px-gutter-standard">
+<div class="flex items-center gap-4">
+<span class="font-headline-technical text-headline-technical font-bold text-primary dark:text-primary-fixed-dim">Industrial Nexus</span>
+</div>
+<!-- Search optimized for barcode -->
+<div class="hidden md:flex items-center flex-1 max-w-md mx-8 relative">
+<span class="material-symbols-outlined absolute left-3 text-on-surface-variant text-[18px]">barcode_scanner</span>
+<input autofocus="" class="w-full h-input-height-md pl-10 pr-4 bg-surface-container-lowest border border-outline-variant rounded-DEFAULT focus:border-primary focus:ring-1 focus:ring-primary text-body-data font-body-data placeholder:text-on-surface-variant outline-none" placeholder="Scan or search asset tag..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-highest dark:hover:bg-surface-container-highest transition-colors duration-200 rounded-DEFAULT flex items-center justify-center">
+<span class="material-symbols-outlined">apps</span>
+</button>
+<button class="p-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-highest dark:hover:bg-surface-container-highest transition-colors duration-200 rounded-DEFAULT flex items-center justify-center relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="p-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-highest dark:hover:bg-surface-container-highest transition-colors duration-200 rounded-DEFAULT flex items-center justify-center">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant ml-2">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="Close up professional headshot of an IT manager in an industrial control room setting, wearing a dark grey polo shirt, sharp focus, modern office lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJyYVsCbWogMS6u8uukeQoHXABj9rztVPGegTcVhQSjQGDbYk1G_hEMEazrhFOUEwxQ-hIb3_cWuRsFYbUXixKaLU-gvjcYJx2pvTM5nX85fL2QjVCJ9BLY2MFdoINegfWgULzH2DE1iQrpH6EL7qc_PkqizmewY9Cq7I0RS5Vd6TlDORpZlFEWUoTgTN2Z9tsdvYpmcVnZ0_1OjXC587xH50epDS8sRngOaEliRhwZlntlBB5dBGT"/>
+</div>
+</div>
+</header>
+<div class="flex flex-1 pt-[52px] h-full overflow-hidden">
+<!-- SideNavBar -->
+<nav class="bg-surface dark:bg-surface text-primary dark:text-primary-fixed-dim font-body-data text-body-data hidden md:flex border-r border-outline-variant dark:border-outline-variant flat no shadows fixed left-0 top-[52px] h-[calc(100vh-52px)] w-[240px] flex-col justify-between py-4 z-40">
+<div>
+<div class="px-6 mb-8 flex items-center gap-3">
+<div class="w-10 h-10 rounded-DEFAULT bg-surface-container-highest flex items-center justify-center border border-outline-variant">
+<span class="material-symbols-outlined text-primary text-[24px]">dns</span>
+</div>
+<div>
+<h2 class="font-headline-technical text-headline-technical font-semibold leading-tight text-primary">Operations</h2>
+<p class="font-label-mono-style text-label-mono-style text-on-surface-variant uppercase">Active Session</p>
+</div>
+</div>
+<ul class="flex flex-col gap-1 px-3">
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-DEFAULT text-on-surface-variant dark:text-on-surface-variant font-body-data hover:bg-surface-container-high dark:hover:bg-surface-container-high transition-all duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                            Dashboard
+                        </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-DEFAULT text-on-surface-variant dark:text-on-surface-variant font-body-data hover:bg-surface-container-high dark:hover:bg-surface-container-high transition-all duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined">assignment_turned_in</span>
+                            My Tasks
+                        </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-DEFAULT text-on-surface-variant dark:text-on-surface-variant font-body-data hover:bg-surface-container-high dark:hover:bg-surface-container-high transition-all duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined">analytics</span>
+                            Reports
+                        </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-DEFAULT bg-secondary-container dark:bg-secondary-container text-primary font-body-data-bold border-l-4 border-primary transition-all duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">terminal</span>
+                            IT Operations
+                        </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-DEFAULT text-on-surface-variant dark:text-on-surface-variant font-body-data hover:bg-surface-container-high dark:hover:bg-surface-container-high transition-all duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined">groups</span>
+                            HR Portal
+                        </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-DEFAULT text-on-surface-variant dark:text-on-surface-variant font-body-data hover:bg-surface-container-high dark:hover:bg-surface-container-high transition-all duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined">account_balance</span>
+                            Finance Hub
+                        </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-DEFAULT text-on-surface-variant dark:text-on-surface-variant font-body-data hover:bg-surface-container-high dark:hover:bg-surface-container-high transition-all duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined">verified_user</span>
+                            Quality Control
+                        </a>
+</li>
+</ul>
+</div>
+<ul class="flex flex-col gap-1 px-3 mt-auto">
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-DEFAULT text-on-surface-variant dark:text-on-surface-variant font-body-data hover:bg-surface-container-high dark:hover:bg-surface-container-high transition-all duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined">help</span>
+                        Help Center
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-DEFAULT text-on-surface-variant dark:text-on-surface-variant font-body-data hover:bg-surface-container-high dark:hover:bg-surface-container-high transition-all duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined">logout</span>
+                        Sign Out
+                    </a>
+</li>
+</ul>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-[240px] p-margin-container overflow-y-auto bg-surface relative z-10 flex flex-col gap-gutter-standard">
+<!-- Page Header & Metrics -->
+<div class="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-4 mb-2">
+<div>
+<h1 class="font-display-executive text-display-executive text-primary">Asset Inventory</h1>
+<p class="font-body-data text-body-data text-on-surface-variant mt-1">Global Hardware Tracking &amp; Lifecycle Management</p>
+</div>
+<!-- Quick Metrics Grid -->
+<div class="grid grid-cols-2 gap-4">
+<div class="layer-1 p-3 flex flex-col gap-1 min-w-[160px]">
+<span class="font-label-mono-style text-label-mono-style text-on-surface-variant uppercase flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-error">warning</span>
+                            Warranty Exp (&lt;30d)
+                        </span>
+<div class="flex items-baseline gap-2">
+<span class="font-headline-technical text-headline-technical text-primary">142</span>
+<span class="text-error font-body-data text-[11px]">+12%</span>
+</div>
+</div>
+<div class="layer-1 p-3 flex flex-col gap-1 min-w-[160px]">
+<span class="font-label-mono-style text-label-mono-style text-on-surface-variant uppercase flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">trending_down</span>
+                            Depreciation (YTD)
+                        </span>
+<div class="flex items-baseline gap-2">
+<span class="font-headline-technical text-headline-technical text-primary">$4.2M</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Work Area (Bento Layout) -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-gutter-standard flex-1 min-h-0">
+<!-- Filters & Controls (Left Col) -->
+<div class="xl:col-span-3 flex flex-col gap-gutter-standard h-full overflow-y-auto pr-2">
+<div class="layer-2 p-4 flex flex-col gap-4">
+<div class="flex justify-between items-center border-b border-surface-variant pb-2">
+<h3 class="font-body-data-bold text-body-data-bold text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">filter_list</span>
+                                Refine View
+                            </h3>
+<button class="font-label-mono-style text-label-mono-style text-secondary uppercase hover:text-primary transition-colors">Reset</button>
+</div>
+<!-- Location Filter -->
+<div class="flex flex-col gap-2">
+<label class="font-label-mono-style text-label-mono-style text-on-surface-variant uppercase">Site Location</label>
+<select class="w-full h-input-height-sm bg-surface-container-lowest border border-outline-variant rounded-DEFAULT focus:border-primary focus:ring-1 focus:ring-primary text-body-data font-body-data">
+<option>All Sites (Global)</option>
+<option>Site A (North America)</option>
+<option>Site B (EMEA)</option>
+<option>Site C (APAC)</option>
+</select>
+</div>
+<!-- Asset Type Filter -->
+<div class="flex flex-col gap-2">
+<label class="font-label-mono-style text-label-mono-style text-on-surface-variant uppercase">Asset Classification</label>
+<div class="flex flex-col gap-1">
+<label class="flex items-center gap-2 cursor-pointer group">
+<input checked="" class="rounded-[2px] border-outline-variant text-primary focus:ring-primary w-3.5 h-3.5" type="checkbox"/>
+<span class="font-body-data text-body-data text-on-surface group-hover:text-primary">Laptops &amp; Desktops</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer group">
+<input checked="" class="rounded-[2px] border-outline-variant text-primary focus:ring-primary w-3.5 h-3.5" type="checkbox"/>
+<span class="font-body-data text-body-data text-on-surface group-hover:text-primary">Servers &amp; Storage</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer group">
+<input checked="" class="rounded-[2px] border-outline-variant text-primary focus:ring-primary w-3.5 h-3.5" type="checkbox"/>
+<span class="font-body-data text-body-data text-on-surface group-hover:text-primary">Mobile Devices</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer group">
+<input class="rounded-[2px] border-outline-variant text-primary focus:ring-primary w-3.5 h-3.5" type="checkbox"/>
+<span class="font-body-data text-body-data text-on-surface group-hover:text-primary">Networking Gear</span>
+</label>
+</div>
+</div>
+<!-- Lifecycle Filter -->
+<div class="flex flex-col gap-2">
+<label class="font-label-mono-style text-label-mono-style text-on-surface-variant uppercase">Lifecycle Stage</label>
+<div class="flex flex-wrap gap-2">
+<button class="px-2 py-1 rounded-[2px] bg-primary-container text-on-primary border border-primary-container font-label-mono-style text-label-mono-style uppercase transition-colors">Deployment</button>
+<button class="px-2 py-1 rounded-[2px] bg-surface-container-lowest text-on-surface-variant border border-outline-variant hover:border-primary-fixed-dim font-label-mono-style text-label-mono-style uppercase transition-colors">Maintenance</button>
+<button class="px-2 py-1 rounded-[2px] bg-surface-container-lowest text-on-surface-variant border border-outline-variant hover:border-primary-fixed-dim font-label-mono-style text-label-mono-style uppercase transition-colors">Retired</button>
+</div>
+</div>
+<button class="mt-4 w-full h-input-height-md bg-primary text-on-primary font-body-data-bold text-body-data-bold rounded-DEFAULT hover:bg-tertiary transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">sync</span>
+                            Apply Filters
+                        </button>
+</div>
+</div>
+<!-- Asset Data Table (Right Col) -->
+<div class="xl:col-span-9 layer-1 flex flex-col h-full overflow-hidden relative">
+<!-- Action Bar Overlay for selected items -->
+<div class="absolute top-0 left-0 w-full bg-secondary-container text-on-secondary-container h-[40px] flex items-center justify-between px-4 z-20 transform -translate-y-full transition-transform duration-200" id="selection-action-bar">
+<span class="font-body-data-bold text-body-data-bold">3 Assets Selected</span>
+<div class="flex gap-2">
+<button class="h-input-height-sm px-3 bg-surface-container-lowest border border-outline-variant rounded-DEFAULT font-label-mono-style text-label-mono-style uppercase hover:bg-surface-container-low transition-colors">Export CSV</button>
+<button class="h-input-height-sm px-3 bg-primary text-on-primary rounded-DEFAULT font-label-mono-style text-label-mono-style uppercase hover:bg-tertiary transition-colors">Bulk Update Status</button>
+</div>
+</div>
+<!-- Table Header -->
+<div class="flex-none bg-surface-container-low border-b border-surface-variant">
+<table class="w-full text-left table-fixed">
+<thead>
+<tr class="font-label-mono-style text-label-mono-style text-on-surface-variant uppercase tracking-wider h-[32px]">
+<th class="w-[40px] pl-4"><input class="rounded-[2px] border-outline-variant text-primary focus:ring-primary w-3.5 h-3.5" onclick="document.getElementById('selection-action-bar').classList.toggle('-translate-y-full')" type="checkbox"/></th>
+<th class="w-[120px]">Asset Tag</th>
+<th class="w-[240px]">Hardware Spec</th>
+<th class="w-[120px]">Site Location</th>
+<th class="w-[100px]">Status</th>
+<th class="w-[120px]">Warranty Exp</th>
+<th class="w-[80px]">Actions</th>
+</tr>
+</thead>
+</table>
+</div>
+<!-- Table Body (Scrollable) -->
+<div class="flex-1 overflow-y-auto">
+<table class="w-full text-left zebra-table table-fixed font-body-data text-body-data text-on-surface">
+<tbody>
+<!-- Row 1 -->
+<tr class="group relative">
+<td class="w-[40px] pl-4"><input class="rounded-[2px] border-outline-variant text-primary focus:ring-primary w-3.5 h-3.5" type="checkbox"/></td>
+<td class="w-[120px] font-label-mono-style text-primary">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 bg-surface-container-highest flex items-center justify-center border border-outline-variant overflow-hidden cursor-help relative group/tooltip">
+<img alt="QR Code Thumbnail" class="w-full h-full object-cover" data-alt="A clean, highly detailed macro shot of a scannable QR code label on a metallic industrial surface, sharp focus, stark black and white contrast." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZMU54O2kd5feAX7FgwGzcOwpO2P2aEqqYSvJiMDJnXSNYJ1oH6Om1CCYXUOM91bMJwzMbRIKsOKBLE-Z9xk9sRjVOvwaVTUz2QDpHCBzx-X5hnhF6SimfLNEN660Rag-a2iZcUyctND1HsS9cY81ekjJkiEu2kmQj1X8dX549YXvAzPdnQIS9am2RnZo8HZpn0-nJUwH6vAGTIW0bz90q9RtxVE25u8aZ--k0Ba538RxIVdycS6h0"/>
+</div>
+                                            TAG-772A-89
+                                        </div>
+</td>
+<td class="w-[240px]">ThinkPad T14 Gen 3 / 32GB RAM</td>
+<td class="w-[120px]">Site A - Floor 2</td>
+<td class="w-[100px]"><span class="status-badge status-deployment font-label-mono-style uppercase text-[10px]">Deployment</span></td>
+<td class="w-[120px] text-on-surface-variant">2025-10-14</td>
+<td class="w-[80px]">
+<div class="action-group flex gap-1 justify-end pr-4">
+<button class="p-1 text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-[16px]">edit</span></button>
+<button class="p-1 text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-[16px]">qr_code_2</span></button>
+</div>
+</td>
+<td class="absolute left-0 border-l-[3px] border-primary h-full top-0 hidden group-hover:block"></td>
+</tr>
+<!-- Row 2 -->
+<tr class="group relative">
+<td class="w-[40px] pl-4"><input class="rounded-[2px] border-outline-variant text-primary focus:ring-primary w-3.5 h-3.5" type="checkbox"/></td>
+<td class="w-[120px] font-label-mono-style text-primary">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 bg-surface-container-highest flex items-center justify-center border border-outline-variant overflow-hidden">
+<img alt="Barcode Thumbnail" class="w-full h-full object-cover" data-alt="A clean, highly detailed macro shot of a scannable barcode label printed on white adhesive paper attached to dark grey plastic, sharp focus." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLZ2MYp08nTtCt42F0HaXTHs3_wQ1BH-X_zNGRTiW7Zlc5DG5PK7WAkokkX7Kd0eKWPT3FGWjJDwbjapNtO-w1xk7r1eUthb1W3EH_CSR3a8FsF-GazQnaBSa4B8XmHRqj0EuSholFWOUZM3GKjP6Sn2pCTGBkX3cLsEUA-x7_YgnEnVo1TldDdhFKrhCfsKRR1nAI1oUmNIKf1OxbGRfHICoaPXxrJQI59-uMslJNaMxz2ro8C8xh"/>
+</div>
+                                            SRV-RACK-09
+                                        </div>
+</td>
+<td class="w-[240px]">Dell PowerEdge R750 / 1TB RAM</td>
+<td class="w-[120px]">Site B - DC1</td>
+<td class="w-[100px]"><span class="status-badge status-maintenance font-label-mono-style uppercase text-[10px]">Maintenance</span></td>
+<td class="w-[120px] text-error font-body-data-bold">2023-11-02</td>
+<td class="w-[80px]">
+<div class="action-group flex gap-1 justify-end pr-4">
+<button class="p-1 text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-[16px]">edit</span></button>
+<button class="p-1 text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-[16px]">qr_code_2</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="group relative opacity-70">
+<td class="w-[40px] pl-4"><input class="rounded-[2px] border-outline-variant text-primary focus:ring-primary w-3.5 h-3.5" type="checkbox"/></td>
+<td class="w-[120px] font-label-mono-style text-primary">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 bg-surface-container-highest flex items-center justify-center border border-outline-variant overflow-hidden">
+<span class="material-symbols-outlined text-[16px] text-outline">broken_image</span>
+</div>
+                                            MOB-IP12-44
+                                        </div>
+</td>
+<td class="w-[240px] line-through decoration-outline">iPhone 12 / 128GB (Damaged)</td>
+<td class="w-[120px]">Site A - HQ</td>
+<td class="w-[100px]"><span class="status-badge status-retired font-label-mono-style uppercase text-[10px]">Retired</span></td>
+<td class="w-[120px] text-on-surface-variant">N/A</td>
+<td class="w-[80px]">
+<div class="action-group flex gap-1 justify-end pr-4">
+<button class="p-1 text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-[16px]">edit</span></button>
+<button class="p-1 text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-[16px]">qr_code_2</span></button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination Footer -->
+<div class="flex-none h-[40px] border-t border-surface-variant flex items-center justify-between px-4 bg-surface-container-lowest">
+<span class="font-body-data text-[12px] text-on-surface-variant">Showing 1-3 of 1,204 Assets</span>
+<div class="flex items-center gap-1">
+<button class="w-6 h-6 flex items-center justify-center text-on-surface-variant hover:bg-surface-container-low rounded-[2px] transition-colors disabled:opacity-50" disabled=""><span class="material-symbols-outlined text-[16px]">chevron_left</span></button>
+<span class="font-label-mono-style text-[11px] text-primary px-2">Page 1 of 402</span>
+<button class="w-6 h-6 flex items-center justify-center text-on-surface-variant hover:bg-surface-container-low rounded-[2px] transition-colors"><span class="material-symbols-outlined text-[16px]">chevron_right</span></button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

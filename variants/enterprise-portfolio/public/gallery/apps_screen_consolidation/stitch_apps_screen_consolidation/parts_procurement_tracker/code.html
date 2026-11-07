@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Parts Procurement &amp; Order Tracker</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline": "#76777d",
+                    "background": "#f8f9ff",
+                    "on-surface": "#0b1c30",
+                    "secondary-fixed": "#ffddb8",
+                    "on-tertiary": "#ffffff",
+                    "surface": "#f8f9ff",
+                    "inverse-surface": "#213145",
+                    "on-tertiary-container": "#3d89c3",
+                    "primary-fixed": "#dae2fd",
+                    "error": "#ba1a1a",
+                    "on-error-container": "#93000a",
+                    "inverse-primary": "#bec6e0",
+                    "secondary-container": "#fea619",
+                    "secondary": "#855300",
+                    "surface-tint": "#565e74",
+                    "on-surface-variant": "#45464d",
+                    "surface-bright": "#f8f9ff",
+                    "surface-container-highest": "#d3e4fe",
+                    "on-error": "#ffffff",
+                    "surface-variant": "#d3e4fe",
+                    "tertiary-container": "#001d32",
+                    "on-secondary-fixed-variant": "#653e00",
+                    "surface-dim": "#cbdbf5",
+                    "tertiary": "#000000",
+                    "surface-container": "#e5eeff",
+                    "primary-container": "#131b2e",
+                    "on-secondary-fixed": "#2a1700",
+                    "surface-container-low": "#eff4ff",
+                    "on-secondary": "#ffffff",
+                    "primary": "#000000",
+                    "on-tertiary-fixed-variant": "#004b74",
+                    "on-tertiary-fixed": "#001d32",
+                    "outline-variant": "#c6c6cd",
+                    "secondary-fixed-dim": "#ffb95f",
+                    "inverse-on-surface": "#eaf1ff",
+                    "on-background": "#0b1c30",
+                    "on-secondary-container": "#684000",
+                    "on-primary-fixed": "#131b2e",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "surface-container-high": "#dce9ff",
+                    "primary-fixed-dim": "#bec6e0",
+                    "surface-container-lowest": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "tertiary-fixed-dim": "#94ccff",
+                    "on-primary": "#ffffff",
+                    "tertiary-fixed": "#cde5ff",
+                    "on-primary-container": "#7c839b"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "container-padding": "24px",
+                    "gutter": "16px",
+                    "unit": "4px",
+                    "stack-md": "16px",
+                    "max-width-content": "1440px",
+                    "stack-lg": "32px",
+                    "stack-sm": "8px"
+            },
+            "fontFamily": {
+                    "headline-sm": [
+                            "Hanken Grotesk"
+                    ],
+                    "label-mono": [
+                            "JetBrains Mono"
+                    ],
+                    "body-md": [
+                            "Inter"
+                    ],
+                    "headline-lg-mobile": [
+                            "Hanken Grotesk"
+                    ],
+                    "headline-md": [
+                            "Hanken Grotesk"
+                    ],
+                    "display-lg": [
+                            "Hanken Grotesk"
+                    ],
+                    "body-sm": [
+                            "Inter"
+                    ],
+                    "body-lg": [
+                            "Inter"
+                    ]
+            },
+            "fontSize": {
+                    "headline-sm": [
+                            "18px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "label-mono": [
+                            "11px",
+                            {
+                                    "lineHeight": "14px",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "body-md": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-lg-mobile": [
+                            "28px",
+                            {
+                                    "lineHeight": "34px",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "headline-md": [
+                            "24px",
+                            {
+                                    "lineHeight": "32px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "display-lg": [
+                            "36px",
+                            {
+                                    "lineHeight": "44px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "body-sm": [
+                            "12px",
+                            {
+                                    "lineHeight": "18px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "body-lg": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "400"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md h-screen flex overflow-hidden selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- SideNavBar (Shared Component) -->
+<nav class="hidden md:flex flex-col h-screen py-stack-md px-unit bg-surface-container dark:bg-primary-container text-primary dark:text-primary-fixed font-label-mono text-label-mono docked left-0 w-64 border-r border-outline-variant dark:border-outline flat no shadows z-20 shrink-0">
+<div class="px-3 mb-stack-lg flex items-center gap-3">
+<img class="w-10 h-10 rounded-full object-cover border border-outline-variant" data-alt="A small, professional corporate headshot of a system operator. The lighting is bright and even, typical of a modern office environment. The style is clean and industrial, matching a high-stakes enterprise UI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKIHUiinq_VN0pKMb9O74DLRG6iJyY5vyVaREGBnU3j-DlzRo5ytQZS7zsCIyBZ_b1zAY5wUD8bO7yy50qntnV-IWs1cRH4xUwhPEgk_hVEKbgZtTecsXVf-dccE5lvZVUGrL7QIDZZf1XNPMDy9qFaRpzRrdH2-jNEGkMSDnb-8RGKHD52OYt9AypsM_igkbmHfQONbZyCMn0_sWvR9_xkv_dxgL4DlpvRjjOleJza7bugAWoysey"/>
+<div>
+<div class="font-headline-sm text-headline-sm font-black text-on-surface">Maintenance Suite</div>
+<div class="text-on-surface-variant mt-1">Spare Parts Module</div>
+</div>
+</div>
+<div class="px-3 mb-stack-md">
+<button class="w-full bg-primary text-on-primary font-body-md py-2 px-4 rounded hover:bg-surface-tint transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                New Purchase Order
+            </button>
+</div>
+<ul class="flex-1 flex flex-col gap-1 px-2">
+<li>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-variant dark:hover:bg-surface-container-high rounded-lg transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                    Parts Dashboard
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-variant dark:hover:bg-surface-container-high rounded-lg transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+                    Inventory Ledger
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 bg-secondary-container text-on-secondary-container font-bold rounded-lg transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">shopping_cart</span>
+                    Procurement
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-variant dark:hover:bg-surface-container-high rounded-lg transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">analytics</span>
+                    Usage Reports
+                </a>
+</li>
+</ul>
+<ul class="flex flex-col gap-1 px-2 mt-auto">
+<li>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-variant dark:hover:bg-surface-container-high rounded-lg transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">settings</span>
+                    Settings
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-variant dark:hover:bg-surface-container-high rounded-lg transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">contact_support</span>
+                    Support
+                </a>
+</li>
+</ul>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col h-screen overflow-hidden">
+<!-- TopNavBar (Shared Component) -->
+<header class="flex justify-between items-center w-full px-container-padding h-16 bg-surface-container-highest dark:bg-surface-container-highest text-primary dark:text-on-primary-fixed font-headline-sm text-headline-sm docked full-width top-0 border-b border-outline-variant dark:border-outline flat no shadows z-10 shrink-0">
+<div class="flex items-center gap-4">
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-on-primary-fixed hidden md:block">Inventory Management</span>
+<span class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary md:hidden">Inventory</span>
+</div>
+<div class="flex-1 max-w-md mx-8 hidden md:block">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface text-on-surface border border-outline-variant rounded pl-10 pr-4 py-2 text-body-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" placeholder="Search orders, vendors, or parts..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 text-on-surface-variant hover:bg-surface-variant dark:hover:bg-primary-container transition-colors cursor-pointer active:opacity-80 rounded-full">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-variant dark:hover:bg-primary-container transition-colors cursor-pointer active:opacity-80 rounded-full">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-variant dark:hover:bg-primary-container transition-colors cursor-pointer active:opacity-80 rounded-full">
+<span class="material-symbols-outlined">help</span>
+</button>
+<div class="md:hidden">
+<img class="w-8 h-8 rounded-full object-cover ml-2" data-alt="A small, professional corporate headshot of a system operator. The lighting is bright and even, typical of a modern office environment. The style is clean and industrial, matching a high-stakes enterprise UI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDURD_xRETkrNNYG7-xyJZ_gM6ItH9yEAXFUA0fYYIZJ5GzmYI-2cbHpvLfgT0uazSoRqjlKHpqom_rYPB1U6V345hAGtjrSq5taIdjpXwUGbhU2z9iN91z47w6XvuO5mB2Q1iYvn_gw6eMH6ucrl3toB7vMQ3YUaUDzKFssKf6JsjcWkgaEzqdqxkDdjY8jhhk3Sj0JXIfjSsE7IKISGoofxfYtkGTIn-Wp32-FQM4rmYGZBMQ_aU5"/>
+</div>
+</div>
+</header>
+<!-- Main Scrollable Canvas -->
+<main class="flex-1 overflow-y-auto p-container-padding bg-background">
+<div class="max-w-max-width-content mx-auto">
+<!-- Page Header -->
+<div class="mb-stack-lg flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h1 class="font-display-lg text-display-lg text-on-surface mb-1">Procurement Tracker</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Active purchase orders and critical delivery status.</p>
+</div>
+<div class="flex gap-2">
+<button class="px-4 py-2 bg-surface text-on-surface border border-outline-variant rounded font-label-mono text-label-mono uppercase hover:bg-surface-container transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">filter_list</span>
+                            Filter
+                        </button>
+<button class="px-4 py-2 bg-surface text-on-surface border border-outline-variant rounded font-label-mono text-label-mono uppercase hover:bg-surface-container transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">download</span>
+                            Export
+                        </button>
+</div>
+</div>
+<!-- Dashboard Grid -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-gutter">
+<!-- Main Order List (Spans 8 cols on XL) -->
+<div class="xl:col-span-8 bg-surface border border-outline-variant rounded-lg flex flex-col">
+<div class="p-4 border-b border-outline-variant flex justify-between items-center bg-surface-container-lowest rounded-t-lg">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Active Purchase Orders</h2>
+<span class="font-label-mono text-label-mono text-on-surface-variant bg-surface-variant px-2 py-1 rounded">24 ACTIVE</span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant font-label-mono text-label-mono text-on-surface-variant uppercase">
+<th class="p-3 font-medium">PO Number</th>
+<th class="p-3 font-medium">Vendor</th>
+<th class="p-3 font-medium">Status</th>
+<th class="p-3 font-medium">Expected</th>
+<th class="p-3 font-medium text-right">Value</th>
+<th class="p-3 font-medium"></th>
+</tr>
+</thead>
+<tbody class="font-body-sm text-on-surface">
+<!-- Row 1 -->
+<tr class="border-b border-outline-variant hover:bg-surface-container-lowest transition-colors group">
+<td class="p-3 font-label-mono text-primary font-bold">PO-9921</td>
+<td class="p-3">Global Industrial Tech</td>
+<td class="p-3">
+<div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed font-label-mono text-[10px] uppercase">
+<div class="w-1.5 h-1.5 rounded-full bg-secondary"></div>
+                                                Ordered
+                                            </div>
+</td>
+<td class="p-3 text-on-surface-variant">Oct 24, 2023</td>
+<td class="p-3 text-right font-label-mono">$12,450.00</td>
+<td class="p-3 text-right">
+<button class="text-on-surface-variant hover:text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="border-b border-outline-variant hover:bg-surface-container-lowest transition-colors bg-surface-container-low group">
+<td class="p-3 font-label-mono text-primary font-bold">PO-9918</td>
+<td class="p-3">Apex Bearings Ltd.</td>
+<td class="p-3">
+<div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-error-container text-on-error-container font-label-mono text-[10px] uppercase">
+<div class="w-1.5 h-1.5 rounded-full bg-error"></div>
+                                                Delayed
+                                            </div>
+</td>
+<td class="p-3 text-error font-medium">Oct 20, 2023</td>
+<td class="p-3 text-right font-label-mono">$3,200.00</td>
+<td class="p-3 text-right">
+<button class="text-on-surface-variant hover:text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-3 border-t border-outline-variant text-center bg-surface-container-lowest rounded-b-lg">
+<button class="font-label-mono text-label-mono text-primary uppercase hover:underline">View All Orders</button>
+</div>
+</div>
+<!-- Sidebar: Urgent Deliveries (Spans 4 cols on XL) -->
+<div class="xl:col-span-4 flex flex-col gap-gutter">
+<div class="bg-surface border border-outline-variant rounded-lg flex flex-col h-full shadow-[0_4px_6px_-1px_rgba(0,0,0,0.05)]">
+<div class="p-4 border-b border-outline-variant flex justify-between items-center bg-error-container/20 rounded-t-lg">
+<h2 class="font-headline-sm text-headline-sm text-error flex items-center gap-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">warning</span>
+                                    Urgent Deliveries
+                                </h2>
+</div>
+<div class="p-4 flex-1 overflow-y-auto flex flex-col gap-3">
+<!-- Urgent Item 1 -->
+<div class="border border-error/30 bg-surface-container-lowest rounded p-3 relative pl-4">
+<div class="absolute left-0 top-0 bottom-0 w-[4px] bg-error rounded-l"></div>
+<div class="flex justify-between items-start mb-1">
+<div class="font-label-mono text-label-mono font-bold text-on-surface">PRT-HYD-044</div>
+<span class="font-label-mono text-[10px] text-error font-bold">OVERDUE</span>
+</div>
+<div class="font-body-sm text-on-surface mb-2">High-Pressure Hydraulic Valve</div>
+<div class="flex items-center gap-2 text-on-surface-variant font-body-sm text-[11px]">
+<span class="material-symbols-outlined text-[14px]">engineering</span>
+<span>Blocks WO-2045 (Main Turbine)</span>
+</div>
+<button class="mt-2 text-label-mono font-label-mono text-primary uppercase flex items-center gap-1 hover:underline">
+                                        Expedite <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

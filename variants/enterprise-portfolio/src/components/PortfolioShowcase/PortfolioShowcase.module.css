@@ -1,0 +1,126 @@
+/* ============================================================
+   PortfolioShowcase Responsive Styles
+   ============================================================ */
+
+/* Stats Grid */
+.statsGrid {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.statsCard {
+  padding: 12px 20px;
+  text-align: center;
+  min-width: 130px;
+}
+
+.statsValue {
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+.statsLabel {
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 4px;
+}
+
+/* Department Tabs */
+.deptTabs {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+  padding: 4px;
+}
+
+/* Expanded Card Thumbnail */
+.projectThumbnail {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-top: 16px;
+  border: 1px solid var(--border-default, rgba(255, 255, 255, 0.1));
+}
+
+.projectThumbnails {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.projectThumbnails img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid var(--border-default, rgba(255, 255, 255, 0.1));
+  transition: transform 0.2s ease;
+}
+
+.projectThumbnails img:hover {
+  transform: scale(1.02);
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+  .statsGrid {
+    gap: 8px;
+  }
+
+  .statsCard {
+    min-width: calc(50% - 12px);
+    padding: 10px 14px;
+  }
+
+  .statsValue {
+    font-size: 1.25rem;
+  }
+
+  .deptTabs {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .deptTabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .projectThumbnails {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .projectThumbnails img {
+    height: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .statsCard {
+    min-width: calc(50% - 8px);
+    padding: 8px 10px;
+  }
+
+  .statsValue {
+    font-size: 1.125rem;
+  }
+
+  .statsLabel {
+    font-size: 0.625rem;
+  }
+
+  .projectThumbnails {
+    grid-template-columns: 1fr;
+  }
+
+  .projectThumbnails img {
+    height: 120px;
+  }
+}

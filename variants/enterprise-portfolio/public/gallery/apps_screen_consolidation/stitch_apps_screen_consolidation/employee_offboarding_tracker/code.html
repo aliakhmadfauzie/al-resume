@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Enterprise Core ERP - Command Center | Offboarding</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&amp;family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-fixed": "#2a1700",
+                      "on-error-container": "#93000a",
+                      "surface-container-lowest": "#ffffff",
+                      "on-surface": "#0b1c30",
+                      "on-primary": "#ffffff",
+                      "background": "#f8f9ff",
+                      "surface-dim": "#cbdbf5",
+                      "on-surface-variant": "#45464d",
+                      "on-error": "#ffffff",
+                      "surface": "#f8f9ff",
+                      "primary-fixed": "#dae2fd",
+                      "error": "#ba1a1a",
+                      "tertiary-fixed": "#cde5ff",
+                      "on-secondary-fixed-variant": "#653e00",
+                      "surface-container": "#e5eeff",
+                      "secondary-fixed": "#ffddb8",
+                      "on-tertiary": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "surface-bright": "#f8f9ff",
+                      "error-container": "#ffdad6",
+                      "tertiary-container": "#001d32",
+                      "outline": "#76777d",
+                      "on-primary-container": "#7c839b",
+                      "primary-container": "#131b2e",
+                      "inverse-primary": "#bec6e0",
+                      "on-tertiary-container": "#3d89c3",
+                      "on-tertiary-fixed-variant": "#004b74",
+                      "on-primary-fixed-variant": "#3f465c",
+                      "tertiary": "#000000",
+                      "on-primary-fixed": "#131b2e",
+                      "on-secondary-container": "#684000",
+                      "surface-container-highest": "#d3e4fe",
+                      "outline-variant": "#c6c6cd",
+                      "secondary-container": "#fea619",
+                      "on-background": "#0b1c30",
+                      "surface-container-high": "#dce9ff",
+                      "tertiary-fixed-dim": "#94ccff",
+                      "primary": "#000000",
+                      "primary-fixed-dim": "#bec6e0",
+                      "surface-container-low": "#eff4ff",
+                      "secondary-fixed-dim": "#ffb95f",
+                      "surface-variant": "#d3e4fe",
+                      "inverse-surface": "#213145",
+                      "surface-tint": "#565e74",
+                      "secondary": "#855300",
+                      "inverse-on-surface": "#eaf1ff",
+                      "on-tertiary-fixed": "#001d32"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "gutter": "16px",
+                      "stack-md": "16px",
+                      "stack-sm": "8px",
+                      "unit": "4px",
+                      "stack-lg": "32px",
+                      "container-padding": "24px",
+                      "max-width-content": "1440px"
+              },
+              "fontFamily": {
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "label-mono": [
+                              "JetBrains Mono"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Hanken Grotesk"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ],
+                      "headline-lg-mobile": [
+                              "Hanken Grotesk"
+                      ],
+                      "display-lg": [
+                              "Hanken Grotesk"
+                      ],
+                      "headline-sm": [
+                              "Hanken Grotesk"
+                      ]
+              },
+              "fontSize": {
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-mono": [
+                              "11px",
+                              {
+                                      "lineHeight": "14px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "18px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "28px",
+                              {
+                                      "lineHeight": "34px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "display-lg": [
+                              "36px",
+                              {
+                                      "lineHeight": "44px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-sm": [
+                              "18px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Status Indicatiors */
+        .status-chip {
+            display: inline-flex;
+            align-items: center;
+            padding: 2px 8px;
+            border-radius: 999px;
+            font-family: theme('fontFamily.label-mono');
+            font-size: 11px;
+            line-height: 14px;
+            letter-spacing: 0.05em;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+        
+        .status-chip::before {
+            content: '';
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            margin-right: 6px;
+        }
+
+        .status-completed {
+            background-color: rgba(0, 75, 116, 0.1); /* on-tertiary-fixed-variant tint */
+            color: theme('colors.on-tertiary-fixed-variant');
+        }
+        .status-completed::before { background-color: theme('colors.on-tertiary-fixed-variant'); }
+
+        .status-pending {
+            background-color: rgba(254, 166, 25, 0.1); /* secondary-container tint */
+            color: theme('colors.secondary-container');
+        }
+        .status-pending::before { background-color: theme('colors.secondary-container'); }
+
+        .status-critical {
+            background-color: rgba(186, 26, 26, 0.1); /* error tint */
+            color: theme('colors.error');
+        }
+        .status-critical::before { background-color: theme('colors.error'); }
+
+        /* Incident Indicator Bar */
+        .incident-bar {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 6px;
+            border-top-left-radius: theme('borderRadius.DEFAULT');
+            border-bottom-left-radius: theme('borderRadius.DEFAULT');
+        }
+        .incident-low { background-color: theme('colors.surface-variant'); }
+        .incident-med { background-color: theme('colors.secondary-container'); }
+        .incident-high { background-color: theme('colors.error'); }
+
+        /* Custom Scrollbar for dense lists */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: theme('colors.outline-variant');
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: theme('colors.outline');
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md m-0 p-0 overflow-x-hidden min-h-screen">
+<!-- TopNavBar -->
+<nav class="bg-surface dark:bg-surface fixed top-0 w-full z-50 border-b border-outline-variant dark:border-outline flat no shadows flex justify-between items-center px-gutter h-14 w-full">
+<!-- Brand & Search (Left side) -->
+<div class="flex items-center gap-6 flex-1">
+<span class="font-headline-sm text-headline-sm font-bold text-primary dark:text-inverse-primary tracking-tight">Enterprise Core ERP</span>
+<div class="relative w-full max-w-md hidden md:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span>
+<input class="w-full pl-10 pr-4 py-1.5 bg-surface-container-low border border-outline-variant rounded focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none font-body-sm text-body-sm transition-colors text-on-surface" placeholder="Search employees, IDs, departments..." type="text"/>
+</div>
+</div>
+<!-- Navigation Links (Center-ish, hidden on small screens) -->
+<div class="hidden lg:flex items-center gap-6 justify-center flex-1">
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors active:opacity-80 px-2 py-1 rounded" href="#">Dashboard</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors active:opacity-80 px-2 py-1 rounded" href="#">Analytics</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors active:opacity-80 px-2 py-1 rounded" href="#">Reports</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors active:opacity-80 px-2 py-1 rounded" href="#">Settings</a>
+</div>
+<!-- Trailing Actions (Right side) -->
+<div class="flex items-center gap-4 flex-1 justify-end">
+<button class="hidden sm:flex items-center gap-2 bg-error text-on-error px-3 py-1.5 rounded font-label-mono text-label-mono uppercase hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-[16px]">warning</span>
+                Emergency Report
+            </button>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<button class="p-1.5 rounded-full hover:bg-surface-container-low transition-colors"><span class="material-symbols-outlined">notifications</span></button>
+<button class="p-1.5 rounded-full hover:bg-surface-container-low transition-colors"><span class="material-symbols-outlined">help</span></button>
+<button class="p-1.5 rounded-full hover:bg-surface-container-low transition-colors"><span class="material-symbols-outlined">apps</span></button>
+</div>
+<div class="w-8 h-8 rounded-full bg-primary-fixed border border-outline-variant overflow-hidden cursor-pointer shrink-0 ml-2">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="Professional corporate headshot of a female executive in a well-lit modern office environment. Neutral background, wearing business professional attire, confident slight smile. Light mode aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuApjn_JuS8FJUunwV0x1g8TvK5gLl1pkXmLV7sh9pmX6jl7DS43pC7sFS3Ku5ANK6YcEJuu5BhQCM5PtZy5G0Tzud5CiTW5eHoDySqXcgTGX8d7DlNn9hElccpJSR3U4fXDnfJGsEQ57hHpSZj1tKhohu4sSCG0aMR1TMwy-tA4dNpiQIxhRMGPRn6b3xP494rW3Z9I1DyydEIeszrv4X61ty5yzurPtl_eZyDXo3tTyQGtrw2bw4LQ"/>
+</div>
+</div>
+</nav>
+<!-- SideNavBar & Main Content Wrapper -->
+<div class="flex pt-14 h-screen overflow-hidden">
+<!-- SideNavBar -->
+<aside class="bg-surface-container-low dark:bg-surface-container-lowest hidden md:flex flex flex-col py-stack-md gap-unit w-64 h-[calc(100vh-56px)] border-r border-outline-variant dark:border-outline flat no shadows z-40 shrink-0">
+<!-- Header -->
+<div class="px-gutter mb-6 flex flex-col gap-1">
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">Command Center</h2>
+<span class="font-label-mono text-label-mono uppercase text-on-surface-variant">Operational Suite</span>
+</div>
+<!-- CTA -->
+<div class="px-gutter mb-6">
+<button class="w-full flex items-center justify-center gap-2 bg-primary text-on-primary py-2 rounded font-label-mono text-label-mono uppercase hover:opacity-90 active:scale-95 duration-150 transition-all">
+<span class="material-symbols-outlined text-[16px]">add</span>
+                    New Requisition
+                </button>
+</div>
+<!-- Navigation Tabs -->
+<nav class="flex-1 overflow-y-auto px-unit flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high hover:bg-surface-container-high dark:hover:bg-surface-container transition-all active:scale-95 duration-150 rounded" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-label-mono text-label-mono uppercase">Finance</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high hover:bg-surface-container-high dark:hover:bg-surface-container transition-all active:scale-95 duration-150 rounded" href="#">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="font-label-mono text-label-mono uppercase">Procurement</span>
+</a>
+<!-- ACTIVE STATE: HR fits Offboarding context best -->
+<a class="flex items-center gap-3 px-3 py-2 bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary font-bold rounded-lg hover:bg-surface-container-high dark:hover:bg-surface-container transition-all active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">groups</span>
+<span class="font-label-mono text-label-mono uppercase">Human Resources</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high hover:bg-surface-container-high dark:hover:bg-surface-container transition-all active:scale-95 duration-150 rounded" href="#">
+<span class="material-symbols-outlined">verified</span>
+<span class="font-label-mono text-label-mono uppercase">Quality Control</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high hover:bg-surface-container-high dark:hover:bg-surface-container transition-all active:scale-95 duration-150 rounded" href="#">
+<span class="material-symbols-outlined">factory</span>
+<span class="font-label-mono text-label-mono uppercase">Production</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high hover:bg-surface-container-high dark:hover:bg-surface-container transition-all active:scale-95 duration-150 rounded" href="#">
+<span class="material-symbols-outlined">precision_manufacturing</span>
+<span class="font-label-mono text-label-mono uppercase">Operations</span>
+</a>
+</nav>
+<!-- Footer Tabs -->
+<div class="mt-auto border-t border-outline-variant pt-2 px-unit pb-unit flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high hover:bg-surface-container-high dark:hover:bg-surface-container transition-all active:scale-95 duration-150 rounded" href="#">
+<span class="material-symbols-outlined">support_agent</span>
+<span class="font-label-mono text-label-mono uppercase">Support</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high hover:bg-surface-container-high dark:hover:bg-surface-container transition-all active:scale-95 duration-150 rounded" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-label-mono text-label-mono uppercase">Archive</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 overflow-y-auto bg-background p-4 md:p-container-padding">
+<div class="max-w-max-width-content mx-auto">
+<!-- Page Header -->
+<header class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-stack-lg border-b border-outline-variant pb-4">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="font-label-mono text-label-mono uppercase text-on-surface-variant">HR Ops / Offboarding</span>
+<span class="material-symbols-outlined text-[14px] text-outline">chevron_right</span>
+<span class="font-label-mono text-label-mono uppercase text-on-surface-variant">REQ-8942</span>
+</div>
+<h1 class="font-display-lg text-display-lg text-on-surface m-0">Employee Offboarding Tracker</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2 max-w-2xl">Manage inter-departmental clearance protocols, asset recovery workflows, and final settlement documentation for exiting personnel.</p>
+</div>
+<div class="flex items-center gap-3 shrink-0">
+<button class="px-4 py-2 bg-surface text-on-surface border border-outline-variant rounded font-label-mono text-label-mono uppercase hover:bg-surface-container-low transition-colors">Export Log</button>
+<button class="px-4 py-2 bg-primary text-on-primary rounded font-label-mono text-label-mono uppercase hover:opacity-90 transition-opacity">Finalize Separation</button>
+</div>
+</header>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Subject Profile Card (Spans 4 columns on large screens) -->
+<div class="lg:col-span-4 bg-surface rounded-lg border border-outline-variant overflow-hidden flex flex-col">
+<div class="p-4 border-b border-outline-variant bg-surface-container-lowest flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm text-on-surface m-0">Personnel File</h3>
+<span class="status-chip status-pending">In Progress</span>
+</div>
+<div class="p-6 flex flex-col items-center border-b border-outline-variant">
+<div class="w-24 h-24 rounded-full border-4 border-surface-container-low overflow-hidden mb-4 relative">
+<img alt="Employee Photo" class="w-full h-full object-cover" data-alt="Professional corporate headshot of a male software engineer in his 30s. Neutral background, wearing a smart casual button-down shirt. Clean, sharp lighting indicating a modern corporate environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuT-Ia7L7WcAnHId_IDDdHYKYkX4XvFD-zHVoo7QET1_K352qoxM6lnuaSFmJi7_zGhlomfXj6cs8RMoIKAu2W3LJ28XyqKbW1g2bwaLKC8f33yMjPl-pdPmDeN6SxEh3EEQaB7-lsZqs9POwl47v1QNmRozNrtEQuyr8aujL8gaSNyI2cc_cs0Qhkaum8-5GUvWEG4QiIsfpZDYGyT99TdKfF8uAEp1GBkJDNzdNpKL52_LPUB0gi"/>
+<div class="absolute bottom-0 right-0 w-6 h-6 bg-error rounded-full border-2 border-surface flex items-center justify-center" title="Termination">
+<span class="material-symbols-outlined text-[14px] text-on-error">close</span>
+</div>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface m-0">Marcus Chen</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Senior DevOps Engineer • IT Dept</p>
+<p class="font-label-mono text-label-mono text-outline mt-1">ID: EMP-9421A</p>
+</div>
+<div class="p-4 flex-1 bg-surface-container-lowest">
+<dl class="grid grid-cols-2 gap-y-4 gap-x-2 text-sm">
+<div>
+<dt class="font-label-mono text-label-mono uppercase text-on-surface-variant mb-1">Last Day</dt>
+<dd class="font-body-md text-on-surface">Oct 24, 2023</dd>
+</div>
+<div>
+<dt class="font-label-mono text-label-mono uppercase text-on-surface-variant mb-1">Manager</dt>
+<dd class="font-body-md text-on-surface">Sarah Jenkins</dd>
+</div>
+<div class="col-span-2">
+<dt class="font-label-mono text-label-mono uppercase text-on-surface-variant mb-1">Separation Type</dt>
+<dd class="font-body-md text-on-surface flex items-center gap-2">
+                                        Voluntary - Resignation
+                                    </dd>
+</div>
+</dl>
+</div>
+</div>
+<!-- Main Tracking Area (Spans 8 columns) -->
+<div class="lg:col-span-8 flex flex-col gap-gutter">
+<!-- Overall Progress -->
+<div class="bg-surface rounded-lg border border-outline-variant p-6">
+<div class="flex justify-between items-end mb-4">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface m-0">Clearance Progress</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">7 of 12 tasks completed</p>
+</div>
+<span class="font-display-lg text-display-lg text-on-surface">58%</span>
+</div>
+<div class="w-full h-2 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary-fixed-dim w-[58%] transition-all duration-500 rounded-full"></div>
+</div>
+</div>
+<!-- Department Clearance Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter flex-1">
+<!-- IT Department -->
+<div class="bg-surface rounded-lg border border-outline-variant relative overflow-hidden flex flex-col">
+<div class="incident-bar incident-med"></div>
+<div class="pl-4 p-4 border-b border-outline-variant flex justify-between items-center bg-surface-container-lowest">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline">devices</span>
+<h4 class="font-body-lg text-body-lg font-semibold text-on-surface m-0">Information Technology</h4>
+</div>
+<span class="status-chip status-pending">Pending</span>
+</div>
+<div class="p-0 flex-1 overflow-y-auto max-h-64">
+<table class="w-full text-left border-collapse">
+<tbody>
+<tr class="border-b border-outline-variant/50 hover:bg-surface-container-low transition-colors">
+<td class="p-3 w-10 text-center">
+<input checked="" class="rounded border-outline-variant text-primary focus:ring-primary h-4 w-4" disabled="" type="checkbox"/>
+</td>
+<td class="p-3 font-body-sm text-on-surface">Revoke Systems Access (Okta, VPN)</td>
+</tr>
+<tr class="border-b border-outline-variant/50 hover:bg-surface-container-low transition-colors">
+<td class="p-3 w-10 text-center">
+<input checked="" class="rounded border-outline-variant text-primary focus:ring-primary h-4 w-4" disabled="" type="checkbox"/>
+</td>
+<td class="p-3 font-body-sm text-on-surface line-through text-outline">Disable Email Account</td>
+</tr>
+<tr class="border-b border-outline-variant/50 hover:bg-surface-container-low transition-colors bg-error-container/10">
+<td class="p-3 w-10 text-center">
+<input class="rounded border-outline-variant text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
+</td>
+<td class="p-3 font-body-sm text-on-surface font-medium">Recover Hardware: MacBook Pro M2 (SN: X892J)</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="p-3 w-10 text-center">
+<input class="rounded border-outline-variant text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
+</td>
+<td class="p-3 font-body-sm text-on-surface">Recover Hardware: YubiKey</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Facilities Department -->
+<div class="bg-surface rounded-lg border border-outline-variant relative overflow-hidden flex flex-col">
+<div class="incident-bar incident-low"></div>
+<div class="pl-4 p-4 border-b border-outline-variant flex justify-between items-center bg-surface-container-lowest">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline">domain</span>
+<h4 class="font-body-lg text-body-lg font-semibold text-on-surface m-0">Facilities</h4>
+</div>
+<span class="status-chip status-completed">Cleared</span>
+</div>
+<div class="p-0 flex-1 overflow-y-auto max-h-64 opacity-75">
+<table class="w-full text-left border-collapse">
+<tbody>
+<tr class="border-b border-outline-variant/50">
+<td class="p-3 w-10 text-center">
+<input checked="" class="rounded border-outline-variant text-primary h-4 w-4" disabled="" type="checkbox"/>
+</td>
+<td class="p-3 font-body-sm text-outline line-through">Return Building ID Badge</td>
+</tr>
+<tr class="border-b border-outline-variant/50">
+<td class="p-3 w-10 text-center">
+<input checked="" class="rounded border-outline-variant text-primary h-4 w-4" disabled="" type="checkbox"/>
+</td>
+<td class="p-3 font-body-sm text-outline line-through">Return Parking Pass (Tag: #492)</td>
+</tr>
+<tr>
+<td class="p-3 w-10 text-center">
+<input checked="" class="rounded border-outline-variant text-primary h-4 w-4" disabled="" type="checkbox"/>
+</td>
+<td class="p-3 font-body-sm text-outline line-through">Clear Desk Workspace (Floor 4, Pod B)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

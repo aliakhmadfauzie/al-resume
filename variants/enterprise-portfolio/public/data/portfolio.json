@@ -1,0 +1,813 @@
+{
+  "developer": {
+    "name": "Ali Akhmad Fauzie",
+    "title": "Enterprise Power Platform & Dynamics 365 Solution Architect | Dataverse Data Architect | ALM & AI Engineering Lead",
+    "email": "aliakhmadfauzie@gmail.com",
+    "phone": "+60 13-295 7406",
+    "location": "Indonesia",
+    "github": "altechsolution123",
+    "linkedin": "aliakhmadf",
+    "twitter": "altechsolution123",
+    "status": "Open to senior architecture & AI leadership roles",
+    "bio": "Enterprise Power Platform & Dynamics 365 Solution Architect with 7+ years of service delivery, operations leadership, and dual-track transformation experience.\n\nProven track record leading large-scale digital modernization programs — architecting a transformation that catalogued 361 legacy Lotus Domino forms and deployed 16 production Power Apps across 28+ departments. The architecture follows a Dataverse-first strategy with SharePoint Online serving strictly as an interim staging layer during Phase 1 to eliminate $960K/yr in premium licensing costs.\n\nExpertise spans Dataverse data architecture with Business Units, Security Roles, Field Security Profiles, and polymorphic lookups; enterprise ALM with GitHub Actions / Azure DevOps CI/CD pipelines using Power Platform Build Tools; C# Dataverse Plugins on Pre/Post-Operation pipeline stages; PCF Controls (TypeScript/React); and AI-assisted development with domain-specific Copilot assistants governed by DLP policies and content filtering. Power Platform governance aligned to WCAG 2.2 AA, OWASP Top 10, and GxP compliance standards, with 98%+ SLA compliance.",
+    "avatar": "https://github.com/altechsolution123.png"
+  },
+  "metrics": [
+    {
+      "label": "Production Apps",
+      "value": 16,
+      "icon": "rocket",
+      "suffix": ""
+    },
+    {
+      "label": "Forms Catalogued",
+      "value": 361,
+      "icon": "database",
+      "suffix": ""
+    },
+    {
+      "label": "Departments",
+      "value": 28,
+      "icon": "layout",
+      "suffix": "+"
+    },
+    {
+      "label": "Years Experience",
+      "value": 9,
+      "icon": "code",
+      "suffix": "+"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Power Apps",
+      "level": 5,
+      "category": "platform"
+    },
+    {
+      "name": "Power Automate",
+      "level": 5,
+      "category": "platform"
+    },
+    {
+      "name": "Dataverse",
+      "level": 4,
+      "category": "platform"
+    },
+    {
+      "name": "Power Pages",
+      "level": 4,
+      "category": "platform"
+    },
+    {
+      "name": "Power Fx",
+      "level": 5,
+      "category": "language"
+    },
+    {
+      "name": "TypeScript",
+      "level": 5,
+      "category": "language"
+    },
+    {
+      "name": "JavaScript",
+      "level": 4,
+      "category": "language"
+    },
+    {
+      "name": "HTML/CSS",
+      "level": 4,
+      "category": "language"
+    },
+    {
+      "name": "C#",
+      "level": 3,
+      "category": "language"
+    },
+    {
+      "name": "SQL",
+      "level": 3,
+      "category": "language"
+    },
+    {
+      "name": "Python",
+      "level": 3,
+      "category": "language"
+    },
+    {
+      "name": "React",
+      "level": 4,
+      "category": "framework"
+    },
+    {
+      "name": "Vite",
+      "level": 4,
+      "category": "tool"
+    },
+    {
+      "name": "shadcn/ui",
+      "level": 4,
+      "category": "framework"
+    },
+    {
+      "name": "Jotai",
+      "level": 3,
+      "category": "framework"
+    },
+    {
+      "name": "TanStack Query",
+      "level": 3,
+      "category": "framework"
+    },
+    {
+      "name": "Git",
+      "level": 4,
+      "category": "tool"
+    },
+    {
+      "name": "GitHub Actions",
+      "level": 4,
+      "category": "tool"
+    },
+    {
+      "name": "Azure Pipelines",
+      "level": 3,
+      "category": "tool"
+    },
+    {
+      "name": "PAC CLI",
+      "level": 4,
+      "category": "tool"
+    },
+    {
+      "name": "PnP PowerShell",
+      "level": 4,
+      "category": "tool"
+    },
+    {
+      "name": "Azure",
+      "level": 3,
+      "category": "cloud"
+    },
+    {
+      "name": "M365",
+      "level": 5,
+      "category": "cloud"
+    },
+    {
+      "name": "SharePoint Online",
+      "level": 5,
+      "category": "cloud"
+    },
+    {
+      "name": "Microsoft Entra ID",
+      "level": 4,
+      "category": "cloud"
+    },
+    {
+      "name": "Dynamics 365",
+      "level": 3,
+      "category": "cloud"
+    },
+    {
+      "name": "Enterprise Solution Architecture",
+      "level": 4,
+      "category": "leadership"
+    },
+    {
+      "name": "Power Platform Governance",
+      "level": 4,
+      "category": "leadership"
+    },
+    {
+      "name": "AI-Enabled Delivery & Automation",
+      "level": 4,
+      "category": "leadership"
+    },
+    {
+      "name": "SLA & Operations Management (98%+)",
+      "level": 4,
+      "category": "leadership"
+    },
+    {
+      "name": "Team Scaling (9→34+)",
+      "level": 4,
+      "category": "leadership"
+    },
+    {
+      "name": "Stakeholder & Client Engagement",
+      "level": 4,
+      "category": "leadership"
+    },
+    {
+      "name": "SOW & Budget Oversight",
+      "level": 4,
+      "category": "leadership"
+    }
+  ],
+  "projects": [
+    {
+      "title": "IOI Domino → Dataverse Enterprise Architecture",
+      "metrics": [
+        {
+          "value": "361",
+          "label": "Forms Catalogued"
+        },
+        {
+          "value": "28+",
+          "label": "Dataverse Tables"
+        },
+        {
+          "value": "16",
+          "label": "Production Apps"
+        },
+        {
+          "value": "12+",
+          "label": "C# Plugins"
+        }
+      ],
+      "mergedDate": "2026-06-15",
+      "commits": 1200,
+      "statusColor": "green",
+      "description": "Led enterprise-wide modernization of 361 Lotus Domino applications across 28+ departments. Designed Dataverse-first architecture with MainDB parent tables, polymorphic child lookups, Business Unit hierarchy, Security Role inheritance, and Field Security Profiles. SharePoint Online deployed as interim staging layer to avoid $960K/yr premium licensing — with documented migration path to Dataverse as production target.",
+      "tech": [
+        "Dataverse",
+        "Power Apps",
+        "C# Plugins",
+        "React 19",
+        "TypeScript",
+        "Power Automate",
+        "GitHub Actions"
+      ],
+      "id": 1,
+      "links": {
+        "github": "https://github.com/altechsolution123",
+        "caseStudy": "#case-study"
+      },
+      "filesChanged": 3400,
+      "impact": "70% faster delivery with AI-assisted development",
+      "status": "merged",
+      "section": "Power Platform"
+    },
+    {
+      "title": "AI-Enabled Development Pipeline",
+      "metrics": [
+        {
+          "value": "50+",
+          "label": "AI Agents"
+        },
+        {
+          "value": "12",
+          "label": "Pipelines"
+        },
+        {
+          "value": "70%",
+          "label": "Effort Reduction"
+        }
+      ],
+      "mergedDate": "2026-04-20",
+      "commits": 450,
+      "statusColor": "purple",
+      "description": "Built 50+ specialized AI agents organized into 12 automated workflow pipelines — form migration, TSX development, Canvas screen generation, QA testing, and governance auditing. Each agent uses Azure OpenAI (GPT-4o) with RAG architecture grounded in Dataverse schema docs and PA YAML v3.0 reference. DLP policies enforce data classification and prevent PII leakage.",
+      "tech": [
+        "Azure OpenAI",
+        "GitHub Copilot",
+        "Python",
+        "TypeScript",
+        "Copilot Studio",
+        "DLP Guardrails"
+      ],
+      "id": 2,
+      "filesChanged": 1200,
+      "impact": "70% reduction in form migration effort",
+      "status": "merged",
+      "section": "Power Platform"
+    },
+    {
+      "title": "E-Procurement & Oracle ERP Integration (Dataverse)",
+      "metrics": [
+        {
+          "value": "5",
+          "label": "Procurement Modules"
+        },
+        {
+          "value": "100%",
+          "label": "ERP Sync Rate"
+        },
+        {
+          "value": "200+",
+          "label": "Vendor Portal Users"
+        }
+      ],
+      "mergedDate": "2025-11-20",
+      "commits": 620,
+      "statusColor": "purple",
+      "description": "End-to-end procurement suite on Dataverse — Purchase Requisition with LOA routing, Purchase Orders with multi-vendor splits, CIP Capex Budget Control, and SPQQ Supplier Portal. Bidirectional Oracle PowerBiz ERP sync via Custom Connectors with C# Dataverse Plugins enforcing business rules at the data layer. Field Security Profiles on PO amounts and vendor financial data.",
+      "tech": [
+        "Dataverse",
+        "C# Plugins",
+        "Power Apps Canvas",
+        "Custom Connectors",
+        "Oracle ERP",
+        "Power Automate"
+      ],
+      "id": 3,
+      "filesChanged": 1800,
+      "impact": "Real-time bidirectional ERP sync replacing manual data entry",
+      "status": "merged",
+      "section": "Power Platform"
+    },
+    {
+      "title": "SmartFlow — Business Request Automation",
+      "metrics": [
+        {
+          "value": "80%",
+          "label": "Manual Task Reduction"
+        },
+        {
+          "value": "90%",
+          "label": "Data Accuracy"
+        },
+        {
+          "value": "100%",
+          "label": "Real-Time Tracking"
+        }
+      ],
+      "mergedDate": "2025-08-15",
+      "commits": 340,
+      "statusColor": "green",
+      "description": "Automated business request processing with intelligent routing — replaced manual triage with Power Automate approval flows, real-time Power BI dashboards, and Teams notifications. 80% manual task reduction, 90% data accuracy through typed Dataverse columns replacing legacy free-text fields.",
+      "tech": [
+        "Dataverse",
+        "Power Apps",
+        "Power Automate",
+        "Power BI",
+        "Teams"
+      ],
+      "id": 4,
+      "filesChanged": 950,
+      "impact": "80% reduction in manual processing, 90% data accuracy",
+      "status": "merged",
+      "section": "Power Platform"
+    },
+    {
+      "title": "PulseTrack — Workforce Management",
+      "metrics": [
+        {
+          "value": "90%",
+          "label": "Manual Reporting Cut"
+        },
+        {
+          "value": "98%",
+          "label": "Status Accuracy"
+        },
+        {
+          "value": "70%",
+          "label": "Manager Workload Saved"
+        }
+      ],
+      "mergedDate": "2025-05-10",
+      "commits": 290,
+      "statusColor": "purple",
+      "description": "Real-time agent status tracking dashboard eliminating manual reporting by 90%, increasing accuracy to 98%, and reducing team leader workload by 60–80% through automated aggregation and Power BI dashboards.",
+      "tech": [
+        "Power Apps",
+        "Power Automate",
+        "SharePoint",
+        "Power BI",
+        "Teams"
+      ],
+      "id": 5,
+      "filesChanged": 720,
+      "impact": "90% reduction in manual reporting, 98% tracking accuracy",
+      "status": "merged",
+      "section": "Power Platform"
+    },
+    {
+      "title": "CS Resolver — AI-Powered Customer Service",
+      "metrics": [
+        {
+          "value": "50%",
+          "label": "Classification Boost"
+        },
+        {
+          "value": "65%",
+          "label": "Handling Time Cut"
+        },
+        {
+          "value": "120+",
+          "label": "SOP Categories"
+        }
+      ],
+      "mergedDate": "2025-03-01",
+      "commits": 210,
+      "statusColor": "orange",
+      "description": "AI-powered case classification on Dataverse using AI Builder for automated SOP categorization. Typed Choice columns replace free-text categorization — 50% classification accuracy boost, 65% faster handling time, 120+ SOP categories automated with consistent data quality.",
+      "tech": [
+        "Dataverse",
+        "AI Builder",
+        "Power Apps Canvas",
+        "Power Automate"
+      ],
+      "id": 6,
+      "filesChanged": 540,
+      "impact": "50% classification accuracy boost, 65% faster case resolution",
+      "status": "merged",
+      "section": "Power Platform"
+    },
+    {
+      "title": "Rebate Approval — Dataverse Isolated Compliance",
+      "metrics": [
+        {
+          "value": "5",
+          "label": "Approval Tiers"
+        },
+        {
+          "value": "100%",
+          "label": "Audit Compliance"
+        },
+        {
+          "value": "Complete",
+          "label": "Data Isolation"
+        }
+      ],
+      "mergedDate": "2025-01-20",
+      "commits": 180,
+      "statusColor": "purple",
+      "description": "Standalone corporate approval workflow on Dataverse with complete Business Unit isolation for security and audit compliance. Multi-tier approval matrix with Field Security Profiles on financial data, immutable audit trails via Dataverse Auditing, and C# Plugins enforcing segregation of duties at the data layer.",
+      "tech": [
+        "Dataverse",
+        "C# Plugins",
+        "Power Apps",
+        "Field Security",
+        "Power Automate"
+      ],
+      "id": 8,
+      "filesChanged": 460,
+      "impact": "Fully isolated approval engine for sensitive financial rebates",
+      "status": "merged",
+      "section": "Power Platform"
+    },
+    {
+      "title": "DocFinder — AI Document Search",
+      "metrics": [
+        {
+          "value": "80%",
+          "label": "Search Speed Boost"
+        },
+        {
+          "value": "99%",
+          "label": "Recommendation Accuracy"
+        },
+        {
+          "value": "5000+",
+          "label": "Documents Indexed"
+        }
+      ],
+      "mergedDate": "2024-05-10",
+      "commits": 140,
+      "statusColor": "orange",
+      "description": "AI-powered operational guidelines search engine. Uses AI Builder for intelligent document classification — achieving 80% faster document search times and 99% accuracy in guideline recommendations.",
+      "tech": [
+        "AI Builder",
+        "Lark Chat",
+        "Lark Base"
+      ],
+      "id": 9,
+      "filesChanged": 340,
+      "impact": "80% faster document search, 99% recommendation accuracy",
+      "status": "merged",
+      "section": "Lark Ecosystem"
+    },
+    {
+      "title": "LeadFlow — Task & Progress Management",
+      "metrics": [
+        {
+          "value": "40%",
+          "label": "Task Completion Boost"
+        },
+        {
+          "value": "100%",
+          "label": "Real-Time Tracking"
+        },
+        {
+          "value": "95%",
+          "label": "Team Adoption"
+        }
+      ],
+      "mergedDate": "2024-11-01",
+      "commits": 160,
+      "statusColor": "green",
+      "description": "Task tracking and progress management system built on Lark ecosystem. Increased task completion rates by 40% with 100% real-time visibility into team progress across all active workflows.",
+      "tech": [
+        "Lark Task",
+        "Lark Automation",
+        "Lark Base",
+        "Power BI"
+      ],
+      "id": 10,
+      "filesChanged": 380,
+      "impact": "40% increase in task completion, 100% real-time visibility",
+      "status": "merged",
+      "section": "Lark Ecosystem"
+    },
+    {
+      "title": "LeaveSync — Smart Leave Management",
+      "metrics": [
+        {
+          "value": "60%",
+          "label": "Processing Speed"
+        },
+        {
+          "value": "60%",
+          "label": "Approval Speed"
+        },
+        {
+          "value": "90%",
+          "label": "Tracking Accuracy"
+        }
+      ],
+      "mergedDate": "2024-09-15",
+      "commits": 130,
+      "statusColor": "purple",
+      "description": "Automated leave management system with intelligent routing and approval workflows. Cut leave processing time by 60%, accelerated approvals by 60%, and improved tracking accuracy to 90%.",
+      "tech": [
+        "Lark Base",
+        "Lark Automation",
+        "Lark Chat"
+      ],
+      "id": 11,
+      "filesChanged": 310,
+      "impact": "60% faster leave processing and approvals",
+      "status": "merged",
+      "section": "Lark Ecosystem"
+    },
+    {
+      "title": "AskLark — Intelligent Query Management",
+      "metrics": [
+        {
+          "value": "60%",
+          "label": "Response Speed"
+        },
+        {
+          "value": "50%",
+          "label": "Repeat Queries Cut"
+        },
+        {
+          "value": "92%",
+          "label": "Agent Satisfaction"
+        }
+      ],
+      "mergedDate": "2024-07-20",
+      "commits": 110,
+      "statusColor": "green",
+      "description": "Smart query management system that categorizes, routes, and resolves agent questions automatically. Achieved 60% faster response times and 50% reduction in repeated queries.",
+      "tech": [
+        "Lark Base",
+        "Lark Automation"
+      ],
+      "id": 12,
+      "filesChanged": 260,
+      "impact": "60% faster responses, 50% fewer repeated queries",
+      "status": "merged",
+      "section": "Lark Ecosystem"
+    },
+    {
+      "title": "MarketPoint — GIP POC Monitoring",
+      "metrics": [
+        {
+          "value": "40%",
+          "label": "Monitoring Efficiency"
+        },
+        {
+          "value": "50%",
+          "label": "Issue Resolution Speed"
+        },
+        {
+          "value": "12",
+          "label": "Markets Covered"
+        }
+      ],
+      "mergedDate": "2024-03-01",
+      "commits": 120,
+      "statusColor": "orange",
+      "description": "Dedicated point-of-contact monitoring system for GIP operations. Improved monitoring efficiency by 40% and accelerated resolution of market-specific issues by 50%.",
+      "tech": [
+        "Lark Base",
+        "Lark Automation",
+        "Power BI"
+      ],
+      "id": 13,
+      "filesChanged": 290,
+      "impact": "40% monitoring efficiency gain, 50% faster issue resolution",
+      "status": "merged",
+      "section": "Lark Ecosystem"
+    },
+    {
+      "title": "GameIntel — Real-Time Event Alerts",
+      "metrics": [
+        {
+          "value": "80%",
+          "label": "External Search Cut"
+        },
+        {
+          "value": "40%",
+          "label": "Labeling Accuracy"
+        },
+        {
+          "value": "<1s",
+          "label": "Alert Latency"
+        }
+      ],
+      "mergedDate": "2024-01-15",
+      "commits": 90,
+      "statusColor": "green",
+      "description": "Instant event alert system for game moderators using REST API integration. Reduced external searches by 80% and increased labeling accuracy by 40%.",
+      "tech": [
+        "Game Data REST APIs",
+        "Lark Automation",
+        "Lark Chat"
+      ],
+      "id": 14,
+      "filesChanged": 220,
+      "impact": "80% reduction in external searches, sub-second alerts",
+      "status": "merged",
+      "section": "Lark Ecosystem"
+    },
+    {
+      "title": "WorkSync — Productivity & Attendance Tracker",
+      "metrics": [
+        {
+          "value": "30%",
+          "label": "Productivity Increase"
+        },
+        {
+          "value": "100%",
+          "label": "Attendance Accuracy"
+        },
+        {
+          "value": "98%",
+          "label": "Team Adoption"
+        }
+      ],
+      "mergedDate": "2023-11-01",
+      "commits": 150,
+      "statusColor": "purple",
+      "description": "Smart productivity and attendance tracking platform. Delivered 30% productivity increase with 100% real-time attendance insights through automated time tracking and Power BI dashboards.",
+      "tech": [
+        "Lark Automation",
+        "Lark Base",
+        "Power BI"
+      ],
+      "id": 15,
+      "filesChanged": 360,
+      "impact": "30% productivity lift, 100% real-time attendance visibility",
+      "status": "merged",
+      "section": "Lark Ecosystem"
+    },
+    {
+      "title": "AHT Optimization Initiative",
+      "metrics": [
+        {
+          "value": "15%",
+          "label": "AHT Reduction"
+        },
+        {
+          "value": "24",
+          "label": "Processes Optimized"
+        },
+        {
+          "value": "8",
+          "label": "Teams Impacted"
+        }
+      ],
+      "mergedDate": "2023-09-01",
+      "commits": 80,
+      "statusColor": "green",
+      "description": "Data-driven initiative to reduce Average Handling Time across customer service operations. Achieved 15% AHT reduction through automated workflow optimization, Power BI analytics, and process streamlining.",
+      "tech": [
+        "Power Automate",
+        "Power BI"
+      ],
+      "id": 16,
+      "filesChanged": 190,
+      "impact": "15% reduction in average handling time across 8 teams",
+      "status": "merged",
+      "section": "Lark Ecosystem"
+    }
+  ],
+  "timeline": [
+    {
+      "date": "2026-06-15",
+      "emoji": "🚀",
+      "title": "IOI Domino → M365 Migration Complete",
+      "description": "Successfully migrated 361 Lotus Domino business forms to Microsoft Power Platform.",
+      "highlights": [
+        "16 production Power Apps deployed",
+        "7,878 Canvas screen definitions in PA YAML v3.0",
+        "400+ TypeScript components delivered"
+      ]
+    },
+    {
+      "date": "2026-04-20",
+      "emoji": "🤖",
+      "title": "50+ AI Agent Ecosystem Launched",
+      "description": "Completed the AI-enabled development pipeline with specialized agents for every migration phase.",
+      "highlights": [
+        "12 automated workflow pipelines",
+        "70% migration effort reduction"
+      ]
+    },
+    {
+      "date": "2026-03-10",
+      "emoji": "📐",
+      "title": "Enterprise Governance Standards Published",
+      "description": "Established comprehensive enterprise standards for accessibility, security, and performance.",
+      "highlights": [
+        "WCAG 2.2 AA",
+        "OWASP Top 10",
+        "Core Web Vitals"
+      ]
+    },
+    {
+      "date": "2025-11-20",
+      "emoji": "💰",
+      "title": "E-Procurement & ERP Integration Delivered",
+      "description": "End-to-end procurement suite with real-time bidirectional ERP synchronization via Custom Connectors and REST APIs.",
+      "highlights": [
+        "5 procurement modules deployed",
+        "100% ERP sync rate achieved",
+        "200+ vendor portal users"
+      ]
+    },
+    {
+      "date": "2025-08-15",
+      "emoji": "⚡",
+      "title": "SmartFlow Business Automation Launched",
+      "description": "Automated business request processing across Microsoft Forms, Power Automate, SharePoint, Power BI, and Teams.",
+      "highlights": [
+        "80% manual task reduction",
+        "90% data accuracy"
+      ]
+    },
+    {
+      "date": "2025-05-10",
+      "emoji": "📊",
+      "title": "PulseTrack Workforce Management Deployed",
+      "description": "Real-time agent status tracking eliminating manual reporting by 90% and increasing accuracy to 98%.",
+      "highlights": [
+        "90% reporting reduction",
+        "60-80% team leader workload saved"
+      ]
+    },
+    {
+      "date": "2024-06-01",
+      "emoji": "🏗️",
+      "title": "Solution Architecture Design Completed",
+      "description": "Designed dual-track architecture combining React code-first apps with Canvas Apps."
+    },
+    {
+      "date": "2023-01-15",
+      "emoji": "💼",
+      "title": "Enterprise Power Platform Architect",
+      "description": "Leading enterprise digital transformation and M365 migrations at scale."
+    }
+  ],
+  "social": {
+    "github": "https://github.com/altechsolution123",
+    "linkedin": "https://linkedin.com/in/aliakhmadf",
+    "twitter": "https://twitter.com/altechsolution123"
+  },
+  "methodology": {
+    "title": "Enterprise Governance & Methodology",
+    "description": "Enterprise-grade quality and compliance standards applied across all projects.",
+    "standards": [
+      {
+        "name": "WCAG 2.2 AA",
+        "icon": "♿"
+      },
+      {
+        "name": "OWASP Top 10",
+        "icon": "🔒"
+      },
+      {
+        "name": "Core Web Vitals",
+        "icon": "⚡"
+      },
+      {
+        "name": "PA YAML v3.0",
+        "icon": "📋"
+      }
+    ],
+    "artifacts": [
+      {
+        "label": "Docs",
+        "value": "200+"
+      },
+      {
+        "label": "CI Gates",
+        "value": "12"
+      }
+    ]
+  }
+}

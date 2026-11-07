@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Integrated Quality Management System (IQMS) Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&amp;family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-fixed": "#2a1700",
+                      "on-error-container": "#93000a",
+                      "surface-container-lowest": "#ffffff",
+                      "on-surface": "#0b1c30",
+                      "on-primary": "#ffffff",
+                      "background": "#f8f9ff",
+                      "surface-dim": "#cbdbf5",
+                      "on-surface-variant": "#45464d",
+                      "on-error": "#ffffff",
+                      "surface": "#f8f9ff",
+                      "primary-fixed": "#dae2fd",
+                      "error": "#ba1a1a",
+                      "tertiary-fixed": "#cde5ff",
+                      "on-secondary-fixed-variant": "#653e00",
+                      "surface-container": "#e5eeff",
+                      "secondary-fixed": "#ffddb8",
+                      "on-tertiary": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "surface-bright": "#f8f9ff",
+                      "error-container": "#ffdad6",
+                      "tertiary-container": "#001d32",
+                      "outline": "#76777d",
+                      "on-primary-container": "#7c839b",
+                      "primary-container": "#131b2e",
+                      "inverse-primary": "#bec6e0",
+                      "on-tertiary-container": "#3d89c3",
+                      "on-tertiary-fixed-variant": "#004b74",
+                      "on-primary-fixed-variant": "#3f465c",
+                      "tertiary": "#000000",
+                      "on-primary-fixed": "#131b2e",
+                      "on-secondary-container": "#684000",
+                      "surface-container-highest": "#d3e4fe",
+                      "outline-variant": "#c6c6cd",
+                      "secondary-container": "#fea619",
+                      "on-background": "#0b1c30",
+                      "surface-container-high": "#dce9ff",
+                      "tertiary-fixed-dim": "#94ccff",
+                      "primary": "#000000",
+                      "primary-fixed-dim": "#bec6e0",
+                      "surface-container-low": "#eff4ff",
+                      "secondary-fixed-dim": "#ffb95f",
+                      "surface-variant": "#d3e4fe",
+                      "inverse-surface": "#213145",
+                      "surface-tint": "#565e74",
+                      "secondary": "#855300",
+                      "inverse-on-surface": "#eaf1ff",
+                      "on-tertiary-fixed": "#001d32"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "gutter": "16px",
+                      "stack-md": "16px",
+                      "stack-sm": "8px",
+                      "unit": "4px",
+                      "stack-lg": "32px",
+                      "container-padding": "24px",
+                      "max-width-content": "1440px"
+              },
+              "fontFamily": {
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "label-mono": [
+                              "JetBrains Mono"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Hanken Grotesk"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ],
+                      "headline-lg-mobile": [
+                              "Hanken Grotesk"
+                      ],
+                      "display-lg": [
+                              "Hanken Grotesk"
+                      ],
+                      "headline-sm": [
+                              "Hanken Grotesk"
+                      ]
+              },
+              "fontSize": {
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-mono": [
+                              "11px",
+                              {
+                                      "lineHeight": "14px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "18px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "28px",
+                              {
+                                      "lineHeight": "34px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "display-lg": [
+                              "36px",
+                              {
+                                      "lineHeight": "44px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-sm": [
+                              "18px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+          .material-symbols-outlined {
+              font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+          }
+          .material-symbols-outlined.fill {
+              font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+          }
+          
+          /* Utility classes for data tables based on Brand Anchors */
+          .data-table-row {
+              height: 40px;
+          }
+          .data-table-row:nth-child(even) {
+              background-color: #F1F5F9; /* From guidance: alternate row striping */
+          }
+          
+          /* Custom scrollbar for data density */
+          ::-webkit-scrollbar {
+              width: 8px;
+              height: 8px;
+          }
+          ::-webkit-scrollbar-track {
+              background: #f1f1f1; 
+          }
+          ::-webkit-scrollbar-thumb {
+              background: #c6c6cd; 
+              border-radius: 4px;
+          }
+          ::-webkit-scrollbar-thumb:hover {
+              background: #76777d; 
+          }
+      </style>
+</head>
+<body class="bg-background text-on-surface font-body-md h-screen overflow-hidden flex flex-col">
+<!-- TopNavBar -->
+<nav class="bg-surface text-primary font-body-md text-body-md fixed top-0 w-full z-50 border-b border-outline-variant flat no shadows flex justify-between items-center px-gutter h-14 w-full">
+<div class="flex items-center gap-stack-md h-full">
+<span class="font-headline-sm text-headline-sm font-bold text-primary">Enterprise Core ERP</span>
+<!-- search_bar: on_left -->
+<div class="hidden md:flex items-center ml-stack-lg relative">
+<span class="material-symbols-outlined absolute left-2 text-on-surface-variant text-[18px]">search</span>
+<input class="pl-8 pr-3 py-1 bg-surface-container-low border border-outline-variant rounded focus:border-primary focus:ring-0 focus:outline-none text-body-sm font-body-sm w-64 transition-colors" placeholder="Search..." type="text"/>
+</div>
+<!-- Navigation Links Web -->
+<div class="hidden md:flex items-center h-full ml-stack-lg gap-stack-md">
+<a class="h-full flex items-center text-primary border-b-2 border-primary pb-1 active:opacity-80" href="#">Dashboard</a>
+<a class="h-full flex items-center text-on-surface-variant hover:bg-surface-container-low transition-colors active:opacity-80 px-2" href="#">Analytics</a>
+<a class="h-full flex items-center text-on-surface-variant hover:bg-surface-container-low transition-colors active:opacity-80 px-2" href="#">Reports</a>
+<a class="h-full flex items-center text-on-surface-variant hover:bg-surface-container-low transition-colors active:opacity-80 px-2" href="#">Settings</a>
+</div>
+</div>
+<div class="flex items-center gap-stack-sm">
+<button class="bg-error text-on-error px-3 py-1 rounded text-label-mono font-label-mono uppercase hover:opacity-90 transition-opacity flex items-center gap-1 active:opacity-80">
+<span class="material-symbols-outlined text-[16px]">warning</span>
+                Emergency Report
+            </button>
+<div class="flex items-center gap-1 ml-stack-sm">
+<button class="p-1.5 text-on-surface-variant hover:bg-surface-container-low transition-colors rounded active:opacity-80 flex items-center justify-center">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-1.5 text-on-surface-variant hover:bg-surface-container-low transition-colors rounded active:opacity-80 flex items-center justify-center">
+<span class="material-symbols-outlined">help</span>
+</button>
+<button class="p-1.5 text-on-surface-variant hover:bg-surface-container-low transition-colors rounded active:opacity-80 flex items-center justify-center">
+<span class="material-symbols-outlined">apps</span>
+</button>
+</div>
+<img alt="User Profile" class="w-8 h-8 rounded-full border border-outline-variant object-cover ml-stack-sm" data-alt="A professional headshot of a corporate quality assurance manager in a well-lit, modern industrial office setting. The individual is wearing a crisp white collared shirt and a dark blazer. The lighting is soft and neutral, reflecting a serious, reliable, and competent mood suitable for an enterprise software interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0eG3CQEBoJR-2v9K3rgPUsEi6MzjNtiaD9oTLOmje-842yzfhTSLUGh2HsOu3VYAWSx8_wPNpfeYFNlZDRhv8J-_TeuYhXzno4rz2U-ZUcO46uGxH8XUiunfxySgt_hUHxKLz_fCnvXxkAb5PPnGhyblRDnu1K69OW3zMqRMqUTkJw2Yfg7b-5JCMn1SyWUXBahUiX1LhnhuApB_vEWTYXFyyNhjJH_urjs3VpKZ02G79XpytTNrE"/>
+</div>
+</nav>
+<!-- Main Layout Shell -->
+<div class="flex flex-1 pt-14 h-full">
+<!-- SideNavBar -->
+<aside class="bg-surface-container-low text-primary font-label-mono text-label-mono uppercase fixed left-0 top-14 h-full w-64 border-r border-outline-variant flat no shadows flex flex-col py-stack-md gap-unit w-64 h-[calc(100vh-56px)] hidden md:flex z-40">
+<div class="px-gutter pb-stack-md border-b border-outline-variant mb-stack-sm">
+<div class="flex items-center gap-stack-sm mb-stack-sm">
+<div class="w-10 h-10 bg-primary-container text-on-primary-container rounded flex items-center justify-center font-bold text-headline-sm">
+                        C
+                    </div>
+<div>
+<div class="font-headline-sm text-headline-sm font-bold text-on-surface normal-case tracking-normal">Command Center</div>
+<div class="text-on-surface-variant normal-case">Operational Suite</div>
+</div>
+</div>
+<button class="w-full bg-primary text-on-primary py-2 rounded flex items-center justify-center gap-2 hover:opacity-90 transition-opacity active:scale-95 duration-150">
+<span class="material-symbols-outlined text-[16px]">add</span>
+                    New Requisition
+                </button>
+</div>
+<nav class="flex-1 overflow-y-auto px-unit flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high hover:bg-surface-container-high transition-all active:scale-95 duration-150 rounded" href="#">
+<span class="material-symbols-outlined text-[18px]">payments</span>
+<span>Finance</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high hover:bg-surface-container-high transition-all active:scale-95 duration-150 rounded" href="#">
+<span class="material-symbols-outlined text-[18px]">shopping_cart</span>
+<span>Procurement</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high hover:bg-surface-container-high transition-all active:scale-95 duration-150 rounded" href="#">
+<span class="material-symbols-outlined text-[18px]">groups</span>
+<span>Human Resources</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 bg-secondary-container text-on-secondary-container font-bold rounded-lg hover:bg-surface-container-high transition-all active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined text-[18px] fill">verified</span>
+<span>Quality Control</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high hover:bg-surface-container-high transition-all active:scale-95 duration-150 rounded" href="#">
+<span class="material-symbols-outlined text-[18px]">factory</span>
+<span>Production</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high hover:bg-surface-container-high transition-all active:scale-95 duration-150 rounded" href="#">
+<span class="material-symbols-outlined text-[18px]">precision_manufacturing</span>
+<span>Operations</span>
+</a>
+</nav>
+<div class="mt-auto border-t border-outline-variant pt-stack-sm px-unit flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high transition-all active:scale-95 duration-150 rounded" href="#">
+<span class="material-symbols-outlined text-[18px]">support_agent</span>
+<span>Support</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high transition-all active:scale-95 duration-150 rounded" href="#">
+<span class="material-symbols-outlined text-[18px]">inventory_2</span>
+<span>Archive</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 md:ml-64 bg-background overflow-y-auto p-container-padding max-w-[max-width-content] mx-auto w-full">
+<!-- Header -->
+<header class="flex justify-between items-end mb-stack-lg border-b border-outline-variant pb-stack-sm">
+<div>
+<h1 class="font-display-lg text-display-lg text-on-surface m-0">IQMS Dashboard</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-1">Real-time overview of quality metrics, compliance status, and open items.</p>
+</div>
+<div class="flex gap-stack-sm">
+<div class="text-right">
+<div class="font-label-mono text-label-mono text-on-surface-variant uppercase">System Status</div>
+<div class="flex items-center gap-2 justify-end">
+<span class="w-2 h-2 rounded-full bg-secondary-container"></span>
+<span class="font-body-md text-body-md font-bold">Nominal</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-4 md:grid-cols-12 gap-gutter mb-stack-lg">
+<!-- KPI Card 1: SOP Compliance -->
+<div class="col-span-4 md:col-span-3 bg-surface border border-outline-variant p-stack-md flex flex-col justify-between">
+<div class="flex justify-between items-start mb-stack-lg">
+<div class="font-label-mono text-label-mono text-on-surface-variant uppercase">SOP Compliance Rate</div>
+<span class="material-symbols-outlined text-outline">assignment_turned_in</span>
+</div>
+<div>
+<div class="font-display-lg text-display-lg text-on-surface">94.2%</div>
+<div class="flex items-center gap-1 text-secondary-container mt-1 font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[16px]">arrow_downward</span>
+<span>-1.2% vs last month</span>
+</div>
+</div>
+</div>
+<!-- KPI Card 2: Open NCRs -->
+<div class="col-span-4 md:col-span-3 bg-surface border border-outline-variant p-stack-md flex flex-col justify-between relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1.5 h-full bg-error"></div>
+<div class="flex justify-between items-start mb-stack-lg pl-2">
+<div class="font-label-mono text-label-mono text-on-surface-variant uppercase">Open NCRs</div>
+<span class="material-symbols-outlined text-error">warning</span>
+</div>
+<div class="pl-2">
+<div class="font-display-lg text-display-lg text-on-surface">17</div>
+<div class="flex items-center gap-1 text-error mt-1 font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[16px]">arrow_upward</span>
+<span>+4 critical pending</span>
+</div>
+</div>
+</div>
+<!-- KPI Card 3: CAPA Completion -->
+<div class="col-span-4 md:col-span-3 bg-surface border border-outline-variant p-stack-md flex flex-col justify-between">
+<div class="flex justify-between items-start mb-stack-lg">
+<div class="font-label-mono text-label-mono text-on-surface-variant uppercase">CAPA Completion</div>
+<span class="material-symbols-outlined text-outline">fact_check</span>
+</div>
+<div>
+<div class="font-display-lg text-display-lg text-on-surface">88%</div>
+<div class="w-full bg-surface-container-high h-2 rounded mt-2 overflow-hidden">
+<div class="bg-primary h-full w-[88%]"></div>
+</div>
+<div class="text-on-surface-variant mt-1 font-body-sm text-body-sm text-right">Target: 95%</div>
+</div>
+</div>
+<!-- KPI Card 4: Audit Score -->
+<div class="col-span-4 md:col-span-3 bg-surface border border-outline-variant p-stack-md flex flex-col justify-between">
+<div class="flex justify-between items-start mb-stack-lg">
+<div class="font-label-mono text-label-mono text-on-surface-variant uppercase">Last Audit Score</div>
+<span class="material-symbols-outlined text-outline">star_rate</span>
+</div>
+<div>
+<div class="font-display-lg text-display-lg text-on-surface">A-</div>
+<div class="text-on-surface-variant mt-1 font-body-sm text-body-sm">
+                            ISO 9001:2015 Internal
+                        </div>
+</div>
+</div>
+</div>
+<!-- Complex Data Section -->
+<div class="grid grid-cols-4 md:grid-cols-12 gap-gutter">
+<!-- Priority Action List (NCRs/CAPAs) -->
+<div class="col-span-4 md:col-span-8 bg-surface border border-outline-variant flex flex-col">
+<div class="p-stack-md border-b border-outline-variant flex justify-between items-center bg-surface-bright">
+<h2 class="font-headline-sm text-headline-sm text-on-surface m-0">Priority Action Queue</h2>
+<button class="text-body-sm font-body-sm text-primary hover:underline">View All Register</button>
+</div>
+<div class="overflow-x-auto flex-1">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-outline-variant bg-surface-container-lowest font-label-mono text-label-mono text-on-surface-variant uppercase">
+<th class="p-2 pl-4 w-24">ID</th>
+<th class="p-2 w-28">Type</th>
+<th class="p-2">Description</th>
+<th class="p-2 w-32">Status</th>
+<th class="p-2 w-32">Due Date</th>
+</tr>
+</thead>
+<tbody class="font-body-sm text-body-sm text-on-surface">
+<tr class="data-table-row border-b border-outline-variant hover:bg-surface-container-low transition-colors group relative cursor-pointer">
+<td class="p-2 pl-4 font-label-mono">NCR-2023-041</td>
+<td class="p-2">
+<div class="flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+                                            Material Defect
+                                        </div>
+</td>
+<td class="p-2 truncate max-w-[200px]" title="Tolerance variance in alloy batch A-491">Tolerance variance in alloy batch A-491</td>
+<td class="p-2">
+<div class="inline-flex items-center gap-1 px-2 py-0.5 rounded-sm bg-error/10 text-error border border-error/20 font-label-mono">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+                                            CRITICAL
+                                        </div>
+</td>
+<td class="p-2 text-error font-bold">Today</td>
+</tr>
+<tr class="data-table-row border-b border-outline-variant hover:bg-surface-container-low transition-colors group relative cursor-pointer">
+<td class="p-2 pl-4 font-label-mono">CAPA-2023-112</td>
+<td class="p-2">
+<div class="flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-container"></span>
+                                            Process Rev.
+                                        </div>
+</td>
+<td class="p-2 truncate max-w-[200px]" title="Update calibration schedule for CNC Line 3">Update calibration schedule for CNC Line 3</td>
+<td class="p-2">
+<div class="inline-flex items-center gap-1 px-2 py-0.5 rounded-sm bg-secondary-container/10 text-secondary border border-secondary-container/20 font-label-mono">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-container"></span>
+                                            PENDING
+                                        </div>
+</td>
+<td class="p-2 text-on-surface-variant">Oct 12, 2023</td>
+</tr>
+<tr class="data-table-row border-b border-outline-variant hover:bg-surface-container-low transition-colors group relative cursor-pointer">
+<td class="p-2 pl-4 font-label-mono">NCR-2023-040</td>
+<td class="p-2">
+<div class="flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary-container"></span>
+                                            Doc Error
+                                        </div>
+</td>
+<td class="p-2 truncate max-w-[200px]" title="Missing signature on final QA release form">Missing signature on final QA release form</td>
+<td class="p-2">
+<div class="inline-flex items-center gap-1 px-2 py-0.5 rounded-sm bg-surface-container-high text-on-surface-variant border border-outline-variant font-label-mono">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+                                            REVIEW
+                                        </div>
+</td>
+<td class="p-2 text-on-surface-variant">Oct 14, 2023</td>
+</tr>
+<tr class="data-table-row border-b border-outline-variant hover:bg-surface-container-low transition-colors group relative cursor-pointer">
+<td class="p-2 pl-4 font-label-mono">CAPA-2023-111</td>
+<td class="p-2">
+<div class="flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-container"></span>
+                                            Training
+                                        </div>
+</td>
+<td class="p-2 truncate max-w-[200px]" title="Retrain assembly team on torque specs">Retrain assembly team on torque specs</td>
+<td class="p-2">
+<div class="inline-flex items-center gap-1 px-2 py-0.5 rounded-sm bg-secondary-container/10 text-secondary border border-secondary-container/20 font-label-mono">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-container"></span>
+                                            PENDING
+                                        </div>
+</td>
+<td class="p-2 text-on-surface-variant">Oct 18, 2023</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Investigation Timeline / Status Widget -->
+<div class="col-span-4 md:col-span-4 bg-surface border border-outline-variant flex flex-col">
+<div class="p-stack-md border-b border-outline-variant bg-surface-bright">
+<h2 class="font-headline-sm text-headline-sm text-on-surface m-0">Recent Audit Trail</h2>
+</div>
+<div class="p-stack-md flex-1 overflow-y-auto">
+<!-- Timeline Component -->
+<div class="relative pl-6 space-y-6 before:absolute before:inset-0 before:ml-2.5 before:w-px before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:bg-outline-variant">
+<!-- Timeline Item Completed -->
+<div class="relative">
+<div class="absolute left-[-24px] mt-1 w-3 h-3 bg-primary rounded-full border-2 border-surface z-10"></div>
+<div class="font-label-mono text-label-mono text-on-surface-variant mb-1">10:45 AM, Today</div>
+<div class="font-body-md text-body-md text-on-surface font-bold">CAPA-2023-110 Closed</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-1">Verified effectiveness of corrective action by J. Smith.</div>
+</div>
+<!-- Timeline Item Pending/Warning -->
+<div class="relative">
+<div class="absolute left-[-24px] mt-1 w-3 h-3 bg-secondary-container rounded-full border-2 border-surface z-10"></div>
+<div class="font-label-mono text-label-mono text-on-surface-variant mb-1">08:30 AM, Today</div>
+<div class="font-body-md text-body-md text-on-surface font-bold">SOP Revision Required</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-1">Audit flagged outdated procedure in Section 4.2.</div>
+</div>
+<!-- Timeline Item Default -->
+<div class="relative">
+<div class="absolute left-[-24px] mt-1 w-3 h-3 bg-outline rounded-full border-2 border-surface z-10"></div>
+<div class="font-label-mono text-label-mono text-on-surface-variant mb-1">Yesterday</div>
+<div class="font-body-md text-body-md text-on-surface font-bold">Monthly Report Generated</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-1">System automated quality metrics compilation.</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

@@ -1,0 +1,65 @@
+[
+  {
+    "actions": "5",
+    "file": "itssr-category-routing-flow-definition.json",
+    "trigger": "When an item is created or modified in MainDB_IT",
+    "label": "ITSSR Category Routing Flow",
+    "desc": "Routes IT service requests to the correct department based on category selection"
+  },
+  {
+    "actions": "12",
+    "file": "sr-staff-requisition-approval-flow-definition.json",
+    "trigger": "When an item is created in MainDB_HR",
+    "label": "SR Staff Requisition Approval Flow",
+    "desc": "Multi-stage approval chain for staff requisitions across HR, department heads, and management"
+  },
+  {
+    "actions": "6",
+    "file": "qa-johr-ncr-audit-workflow-flow-definition.json",
+    "trigger": "When an item is modified in MainDB_QA",
+    "label": "QA NCR Audit Workflow",
+    "desc": "Non-conformance report audit workflow for Quality Assurance — corrective action tracking"
+  },
+  {
+    "actions": "8",
+    "file": "hr-universal-form-submission-flow-definition.json",
+    "trigger": "When an item is created in MainDB_HR",
+    "label": "HR Universal Form Submission Flow",
+    "desc": "Universal form submission flow for HR department — document generation and notification"
+  },
+  {
+    "actions": "10",
+    "file": "eaf-approval-flow-definition.json",
+    "trigger": "When an item is created or modified in MainDB_Engineering",
+    "label": "EAF Approval Flow (Engineering)",
+    "desc": "Engineering Authorization Form multi-level approval with conditional escalation"
+  },
+  {
+    "actions": "4",
+    "file": "hardware-inventory-audit-reminder-flow-definition.json",
+    "trigger": "Recurrence (daily)",
+    "label": "Hardware Inventory Audit Reminder Flow",
+    "desc": "Scheduled reminder flow for hardware inventory audits — sends email notifications at intervals"
+  },
+  {
+    "actions": "3",
+    "file": "pbi-sop-wi-workflow-flow-definition.json",
+    "trigger": "When an item is created in MainDB_PBI",
+    "label": "PBI SOP/WI Workflow Flow",
+    "desc": "Plant Business Intelligence Standard Operating Procedure workflow routing"
+  },
+  {
+    "actions": "9",
+    "file": "prf-isg-assignment-flow-definition.json",
+    "trigger": "When an item is created in MainDB_Procurement",
+    "label": "PRF ISG Assignment Flow",
+    "desc": "Purchase Requisition Form assignment to Internal Service Group — requester to buyer handoff"
+  },
+  {
+    "actions": "11",
+    "file": "sapcr-approval-chain-flow-definition.json",
+    "trigger": "When an item is created in MainDB_QC",
+    "label": "SAPCR Approval Chain Flow",
+    "desc": "Supplier Corrective Action Request approval chain — supplier → QA → procurement"
+  }
+]

@@ -1,0 +1,176 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg: #fdfdfc;
+    --ink: #121212;
+    --ink-muted: #6b6b63;
+    --line: #e0e0d8;
+    --surface-warm: #f7f7f0;
+    --accent-exec: #1d4ed8;
+    --accent-teal: #0f766e;
+    --accent-rain: #0f766e;
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--bg);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+    color: var(--ink);
+    font-weight: 300;
+  }
+
+  .font-serif-display {
+    font-family: var(--font-serif);
+  }
+
+  .font-mono-code {
+    font-family: var(--font-mono);
+  }
+
+  .font-sans-body {
+    font-family: var(--font-sans);
+  }
+
+  .label-mono {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--ink-muted);
+  }
+}
+
+::selection {
+  background: #dcdccb;
+  color: #121212;
+}
+
+/* Editorial Dot Grid Texture */
+.dot-grid-pattern {
+  background-image: radial-gradient(var(--line) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #fdfdfc;
+}
+::-webkit-scrollbar-thumb {
+  background: #d4d4cc;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a89f;
+}
+
+/* Glassmorphism & Modern Elevation Utilities */
+.glass-card {
+  background: rgba(253, 253, 252, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(224, 224, 216, 0.8);
+  box-shadow: 0 4px 20px -2px rgba(18, 18, 18, 0.03);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+  background: rgba(253, 253, 252, 0.92);
+  border-color: rgba(18, 18, 18, 0.3);
+  box-shadow: 0 12px 32px -4px rgba(18, 18, 18, 0.07);
+}
+
+.glass-panel {
+  background: rgba(247, 247, 240, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid #e0e0d8;
+}
+
+.glass-modal {
+  background: rgba(253, 253, 252, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(224, 224, 216, 0.9);
+}
+
+.glow-exec {
+  box-shadow: 0 0 24px -4px rgba(29, 78, 216, 0.15);
+}
+
+.glow-teal {
+  box-shadow: 0 0 24px -4px rgba(15, 118, 110, 0.15);
+}
+
+.glow-subtle {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+}
+
+/* Genially-Inspired Interactive Badges & Popovers */
+.genially-badge {
+  background: linear-gradient(135deg, rgba(29, 78, 216, 0.08) 0%, rgba(15, 118, 110, 0.08) 100%);
+  border: 1px solid rgba(18, 18, 18, 0.15);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.genially-badge:hover {
+  background: linear-gradient(135deg, rgba(29, 78, 216, 0.18) 0%, rgba(15, 118, 110, 0.18) 100%);
+  border-color: rgba(18, 18, 18, 0.4);
+  transform: translateY(-1px);
+}
+
+.genially-pill {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  padding: 0.25rem 0.65rem;
+  border-radius: 9999px;
+  background: #f7f7f0;
+  border: 1px solid #e0e0d8;
+  color: #121212;
+}
+
+/* Print styling for clean physical / PDF resume export (ATS Compliant) */
+@media print {
+  @page {
+    margin: 12mm 15mm;
+    size: A4 portrait;
+  }
+  body {
+    background: #ffffff !important;
+    color: #111827 !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+  .print-page {
+    background: white !important;
+    color: #111827 !important;
+    box-shadow: none !important;
+    border: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+  }
+}
+
+

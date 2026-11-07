@@ -1,0 +1,8 @@
+{
+  "name": "Remix Ali Akhmad Fauzie - Power Platform Portfolio",
+  "description": "Interactive executive portfolio, live enterprise migration showcase, competency matrix, and Power Platform application demos for Ali Akhmad Fauzie.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

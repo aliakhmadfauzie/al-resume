@@ -1,0 +1,513 @@
+# ============================================================
+# OpenAPI 3.0 — Oracle PowerBiz ERP Custom Connector
+# Power Platform Custom Connector for bidirectional ERP sync:
+#   Purchase Requisition (PR), Purchase Order (PO),
+#   Goods Receipt Note (GRN), Invoice, CIP Budget Control
+# ============================================================
+# Authentication: OAuth 2.0 (client_credentials grant)
+# Base URL:     https://erp.iocorp.my/api/v1
+# Scopes:       powerbiz.read powerbiz.write powerbiz.budget.read
+# ============================================================
+
+openapi: "3.0.3"
+info:
+  title: "Oracle PowerBiz ERP — Procurement & Budget API"
+  description: |
+    Custom connector enabling real-time bidirectional synchronization
+    between Dataverse (Power Platform) and Oracle PowerBiz ERP for:
+      - Purchase Requisition (PR) — Create, Approve, Sync Status
+      - Purchase Order (PO) — Multi-vendor splits, CIP budget validation
+      - Goods Receipt Note (GRN) — 3-way match (PO-GRN-Invoice)
+      - Invoice — Posting, approval workflow callback
+      - CIP Capex Budget — Real-time budget check, commitment, actuals
+    All endpoints use OAuth 2.0 client_credentials with mTLS transport.
+    Request/response schema aligned with IOI group chart of accounts.
+  version: "2.4.1"
+  contact:
+    name: "IOI Digital — ERP Integration Team"
+    email: "erp-integration@ioigroup.com"
+
+servers:
+  - url: "https://erp.iocorp.my/api/v1"
+    description: "Oracle PowerBiz ERP — Production"
+
+security:
+  - OAuth2:
+      - powerbiz.read
+      - powerbiz.write
+      - powerbiz.budget.read
+
+# ── Paths ──────────────────────────────────────────────────
+paths:
+
+  # ─────────────────────────────────────────────────────────
+  # Purchase Requisition (PR)
+  # ─────────────────────────────────────────────────────────
+  /procurement/purchase-requisitions:
+    post:
+      summary: "Create Purchase Requisition"
+      description: |
+        Creates a new PR in Oracle ERP.
+        POSTed from Power Automate when a Canvas App submits a requisition.
+        Returns the ERP-generated PR number for Dataverse sync back.
+      operationId: createPurchaseRequisition
+      tags: [ "Purchase Requisition" ]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PurchaseRequisitionRequest"
+      responses:
+        "201":
+          description: "PR created successfully"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PurchaseRequisitionResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "409":
+          description: "Duplicate PR — PR number already exists in ERP"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /procurement/purchase-requisitions/{prNumber}:
+    get:
+      summary: "Get PR Status & Details"
+      description: |
+        Polled by Power Automate scheduled flow to sync PR approval status
+        from ERP back to Dataverse. Uses alternate key `ioi_prnumber`.
+      operationId: getPurchaseRequisitionStatus
+      tags: [ "Purchase Requisition" ]
+      parameters:
+        - name: prNumber
+          in: path
+          required: true
+          schema:
+            type: string
+            pattern: "^PR-\\d{4}-\\d{6}$"
+            example: "PR-2026-000142"
+      responses:
+        "200":
+          description: "PR found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PurchaseRequisitionStatus"
+
+  # ─────────────────────────────────────────────────────────
+  # Purchase Order (PO)
+  # ─────────────────────────────────────────────────────────
+  /procurement/purchase-orders:
+    post:
+      summary: "Create Purchase Order (with Multi-Vendor Split)"
+      description: |
+        Creates a PO with optional multi-vendor line splits.
+        CIP budget is validated BEFORE commit — returns 422 if budget
+        exceeded. C# Dataverse Plugin calls this endpoint on Pre-Operation
+        Create of ioi_purchaseorder.
+      operationId: createPurchaseOrder
+      tags: [ "Purchase Order" ]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PurchaseOrderRequest"
+      responses:
+        "201":
+          description: "PO created — budget committed"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PurchaseOrderResponse"
+        "422":
+          description: "CIP budget exceeded — PO rejected"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BudgetExceededError"
+
+  /procurement/purchase-orders/{poNumber}:
+    get:
+      summary: "Get PO Details"
+      operationId: getPurchaseOrder
+      tags: [ "Purchase Order" ]
+      parameters:
+        - $ref: "#/components/parameters/poNumber"
+      responses:
+        "200":
+          description: "PO found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PurchaseOrderStatus"
+
+  # ─────────────────────────────────────────────────────────
+  # Goods Receipt Note (GRN)
+  # ─────────────────────────────────────────────────────────
+  /procurement/goods-receipts:
+    post:
+      summary: "Create Goods Receipt Note (3-Way Match)"
+      description: |
+        Creates GRN. ERP performs 3-way match: PO quantity vs
+        GRN quantity vs Invoice quantity. Returns match status.
+      operationId: createGoodsReceipt
+      tags: [ "Goods Receipt" ]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GoodsReceiptRequest"
+      responses:
+        "201":
+          description: "GRN created — match status returned"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GoodsReceiptResponse"
+
+  # ─────────────────────────────────────────────────────────
+  # CIP Budget Control
+  # ─────────────────────────────────────────────────────────
+  /finance/cip-budget/{cipBudgetCode}:
+    get:
+      summary: "Check CIP Budget Availability"
+      description: |
+        Real-time budget check called by C# Plugin Pre-Operation.
+        Returns: total budget, committed, available balance.
+        Used to enforce budget approval thresholds in Power Automate.
+      operationId: checkCIPBudget
+      tags: [ "CIP Budget" ]
+      parameters:
+        - name: cipBudgetCode
+          in: path
+          required: true
+          schema:
+            type: string
+            pattern: "^CIP-\\d{2}-\\d{4,6}$"
+            example: "CIP-12-0472"
+      responses:
+        "200":
+          description: "Budget details"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CIPBudgetResponse"
+
+# ── Components: Schemas ────────────────────────────────────
+components:
+
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      description: "Oracle ERP OAuth 2.0 — client_credentials (mTLS)"
+      flows:
+        clientCredentials:
+          tokenUrl: "https://erp.iocorp.my/oauth2/token"
+          scopes:
+            powerbiz.read: "Read ERP data"
+            powerbiz.write: "Create/update ERP transactions"
+            powerbiz.budget.read: "Read CIP budget data"
+
+  parameters:
+    poNumber:
+      name: poNumber
+      in: path
+      required: true
+      schema:
+        type: string
+        pattern: "^PO-\\d{4}-\\d{6}$"
+        example: "PO-2026-000317"
+
+  responses:
+    BadRequest:
+      description: "Validation error"
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
+
+  schemas:
+
+    # ── Purchase Requisition ──────────────────────────────
+    PurchaseRequisitionRequest:
+      type: object
+      required: [ departmentCode, requestorId, items ]
+      properties:
+        departmentCode:
+          type: string
+          example: "PROC"
+          description: "3-4 char department code (matches Business Unit)"
+        requestorId:
+          type: string
+          format: uuid
+          description: "Dataverse systemuserid of requestor"
+        cipBudgetCode:
+          type: string
+          nullable: true
+          pattern: "^CIP-\\d{2}-\\d{4,6}$"
+          example: "CIP-12-0472"
+        items:
+          type: array
+          minItems: 1
+          maxItems: 50
+          items:
+            $ref: "#/components/schemas/PRLineItem"
+        justification:
+          type: string
+          maxLength: 2000
+        requiredByDate:
+          type: string
+          format: date
+
+    PRLineItem:
+      type: object
+      required: [ description, quantity, unitPrice, glAccount ]
+      properties:
+        description:
+          type: string
+          maxLength: 500
+        quantity:
+          type: number
+          minimum: 1
+        unitOfMeasure:
+          type: string
+          default: "EA"
+        unitPrice:
+          type: number
+          minimum: 0
+        currency:
+          type: string
+          default: "MYR"
+        glAccount:
+          type: string
+          pattern: "^\\d{4}-\\d{4}-\\d{4}$"
+          example: "5100-2001-0010"
+
+    PurchaseRequisitionResponse:
+      type: object
+      properties:
+        prNumber:
+          type: string
+          example: "PR-2026-000142"
+        status:
+          type: string
+          enum: [ Submitted, Under Review, Approved, Rejected ]
+        erpReferenceId:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+
+    PurchaseRequisitionStatus:
+      allOf:
+        - $ref: "#/components/schemas/PurchaseRequisitionResponse"
+        - type: object
+          properties:
+            approvalHistory:
+              type: array
+              items:
+                $ref: "#/components/schemas/ApprovalStep"
+
+    # ── Purchase Order ────────────────────────────────────
+    PurchaseOrderRequest:
+      type: object
+      required: [ prNumber, vendorSplits, cipBudgetCode ]
+      properties:
+        prNumber:
+          type: string
+        cipBudgetCode:
+          type: string
+        vendorSplits:
+          type: array
+          minItems: 1
+          items:
+            $ref: "#/components/schemas/VendorSplit"
+        paymentTerms:
+          type: string
+          default: "NET30"
+        deliveryLocation:
+          type: string
+          maxLength: 200
+
+    VendorSplit:
+      type: object
+      required: [ vendorCode, amount ]
+      properties:
+        vendorCode:
+          type: string
+          example: "V00472"
+        vendorName:
+          type: string
+        amount:
+          type: number
+          minimum: 0.01
+        description:
+          type: string
+
+    PurchaseOrderResponse:
+      type: object
+      properties:
+        poNumber:
+          type: string
+          example: "PO-2026-000317"
+        status:
+          type: string
+          enum: [ Pending, Approved, Issued, Partially Received, Completed ]
+        budgetCommitted:
+          type: number
+        vendorSplits:
+          type: array
+          items:
+            $ref: "#/components/schemas/VendorSplit"
+
+    PurchaseOrderStatus:
+      allOf:
+        - $ref: "#/components/schemas/PurchaseOrderResponse"
+        - type: object
+          properties:
+            goodsReceipts:
+              type: array
+              items:
+                $ref: "#/components/schemas/GoodsReceiptSummary"
+
+    # ── Goods Receipt ─────────────────────────────────────
+    GoodsReceiptRequest:
+      type: object
+      required: [ poNumber, receivedItems ]
+      properties:
+        poNumber:
+          type: string
+        receivedItems:
+          type: array
+          items:
+            type: object
+            required: [ lineNumber, quantityReceived ]
+            properties:
+              lineNumber:
+                type: integer
+              quantityReceived:
+                type: number
+              lotNumber:
+                type: string
+                nullable: true
+              expiryDate:
+                type: string
+                format: date
+                nullable: true
+        receivedBy:
+          type: string
+          format: uuid
+
+    GoodsReceiptResponse:
+      type: object
+      properties:
+        grnNumber:
+          type: string
+          example: "GRN-2026-001892"
+        matchStatus:
+          type: string
+          enum: [ Matched, Partial, Mismatch ]
+        discrepancies:
+          type: array
+          nullable: true
+          items:
+            type: object
+            properties:
+              lineNumber:
+                type: integer
+              expectedQuantity:
+                type: number
+              receivedQuantity:
+                type: number
+              variance:
+                type: number
+
+    GoodsReceiptSummary:
+      type: object
+      properties:
+        grnNumber:
+          type: string
+        receivedDate:
+          type: string
+          format: date
+        matchStatus:
+          type: string
+
+    # ── CIP Budget ────────────────────────────────────────
+    CIPBudgetResponse:
+      type: object
+      properties:
+        cipBudgetCode:
+          type: string
+        budgetName:
+          type: string
+        totalBudget:
+          type: number
+        committed:
+          type: number
+        actuals:
+          type: number
+        available:
+          type: number
+          description: "totalBudget - committed"
+        fiscalYear:
+          type: integer
+        costCenter:
+          type: string
+
+    BudgetExceededError:
+      type: object
+      properties:
+        code:
+          type: string
+          example: "BUDGET_EXCEEDED"
+        message:
+          type: string
+          example: "CIP-12-0472 available balance MYR 48,200 is insufficient for PO amount MYR 152,000"
+        cipBudgetCode:
+          type: string
+        available:
+          type: number
+        requested:
+          type: number
+
+    # ── Shared ────────────────────────────────────────────
+    ApprovalStep:
+      type: object
+      properties:
+        tier:
+          type: integer
+          minimum: 1
+          maximum: 5
+        approverName:
+          type: string
+        decision:
+          type: string
+          enum: [ Approved, Rejected, Escalated ]
+        decidedOn:
+          type: string
+          format: date-time
+        comments:
+          type: string
+          nullable: true
+
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        correlationId:
+          type: string
+          format: uuid
+        details:
+          type: array
+          items:
+            type: object

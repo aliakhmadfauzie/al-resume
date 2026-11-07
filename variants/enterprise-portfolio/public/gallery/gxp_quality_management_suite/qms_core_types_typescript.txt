@@ -1,0 +1,136 @@
+/**
+ * Quality Management System (QMS) - Core Data Models
+ * Version: 1.0.0
+ * Compliance: GxP, ISO 9001:2015, 21 CFR Part 11
+ */
+
+/**
+ * Common status types for quality workflows
+ */
+export type WorkflowStatus = 'Draft' | 'Under Review' | 'Approved' | 'Obsolete' | 'In Progress' | 'Pending' | 'Closed';
+
+/**
+ * Risk levels for NCR and CAPA
+ */
+export type RiskLevel = 'Low' | 'Medium' | 'High' | 'Critical';
+
+/**
+ * Site locations for multi-site management
+ */
+export type ManufacturingSite = 'Site-A-Assembly' | 'Site-B-Storage' | 'Site-C-Packaging' | 'NA-East' | 'EU-West' | 'APAC-01';
+
+/**
+ * E-Signature Metadata for GxP Compliance
+ */
+export interface ESignature {
+  signerId: string;
+  signerName: string;
+  timestamp: string; // ISO 8601
+  reason: 'Approval' | 'Review' | 'Author' | 'Validation';
+  hash: string; // Cryptographic integrity check
+}
+
+/**
+ * 1. Document Control Center (SOPs & Work Instructions)
+ */
+export interface QMSDocument {
+  docId: string; // e.g., SOP-PROD-014
+  title: string;
+  version: string;
+  type: 'SOP' | 'Work Instruction' | 'Form' | 'Policy';
+  department: 'Production' | 'QA' | 'Maintenance' | 'Logistics';
+  status: 'Draft' | 'Under Review' | 'Approved' | 'Obsolete';
+  effectiveDate: string | null;
+  owner: string;
+  contentUrl: string;
+  signatures: ESignature[];
+  auditTrail: AuditTrailEntry[];
+}
+
+/**
+ * 2. CAPA & NCR Management
+ */
+export interface NonConformanceReport {
+  ncrId: string; // e.g., NCR-2023-099
+  title: string;
+  description: string;
+  site: ManufacturingSite;
+  risk: RiskLevel;
+  status: 'Open' | 'Investigation' | 'Verification' | 'Closed';
+  identifiedDate: string;
+  owner: string;
+  linkedCAPA?: string; // Reference to CAPA ID
+}
+
+export interface CAPA {
+  capaId: string; // e.g., CAPA-2023-041
+  title: string;
+  source: 'NCR' | 'Audit' | 'Customer Complaint' | 'Management Review';
+  stage: 'Identification' | 'Investigation' | 'Root Cause' | 'Action Plan' | 'Verification' | 'Closure';
+  status: 'Active' | 'Overdue' | 'On Track' | 'Completed';
+  rootCauseAnalysis?: {
+    method: '5 Whys' | 'Ishikawa' | 'FMEA';
+    findings: string;
+    owner: string;
+  };
+  actionItems: ActionItem[];
+  targetCompletionDate: string;
+}
+
+export interface ActionItem {
+  id: string;
+  description: string;
+  owner: string;
+  dueDate: string;
+  isCompleted: boolean;
+  completionDate?: string;
+}
+
+/**
+ * 3. Internal Audit Hub
+ */
+export interface InternalAudit {
+  auditId: string; // e.g., AUD-2023-089
+  title: string;
+  type: 'ISO 9001' | 'ISO 14001' | 'EHS' | 'Supplier';
+  site: ManufacturingSite;
+  scheduledDate: string;
+  status: 'Scheduled' | 'In Progress' | 'Ready for Report' | 'Completed';
+  leadAuditor: string;
+  checklistProgress: number; // 0-100
+  findingsCount: {
+    major: number;
+    minor: number;
+    obs: number; // Observations
+  };
+}
+
+/**
+ * 4. GxP Compliance Audit Trail
+ */
+export interface AuditTrailEntry {
+  id: string;
+  timestamp: string;
+  userId: string;
+  action: 'Created' | 'Modified' | 'Viewed' | 'Signed' | 'Status Change';
+  entityType: 'Document' | 'CAPA' | 'NCR' | 'Audit';
+  entityId: string;
+  previousValue?: string;
+  newValue?: string;
+  ipAddress?: string;
+}
+
+/**
+ * 5. Executive Quality Metrics
+ */
+export interface QualityMetrics {
+  totalNCRs: number;
+  pendingCAPAs: number;
+  auditPassRate: number; // percentage
+  activeSOPs: number;
+  ncrTrend: {
+    month: string;
+    count: number;
+    percentageChange: number;
+  }[];
+}

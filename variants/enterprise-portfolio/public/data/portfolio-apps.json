@@ -1,0 +1,1009 @@
+{
+  "portfolioSummary": {
+    "totalApplications": 92,
+    "totalDeployedApps": 16,
+    "totalCanvasScreens": 7878,
+    "totalTypeScriptComponents": 200,
+    "totalAutomationScripts": 150,
+    "totalAIAgents": 50,
+    "departmentsCovered": [
+      "IT & Technical Services",
+      "HR & People Operations",
+      "Finance & Procurement",
+      "Quality Assurance & Quality Control",
+      "Operations & Supply Chain",
+      "Engineering & Maintenance",
+      "Safety Health & Environment",
+      "Marketing & Sales",
+      "Logistics & Warehousing"
+    ],
+    "techStackHighlights": [
+      "Power Apps (Canvas)",
+      "Power Automate",
+      "Power Fx",
+      "SharePoint Online",
+      "React 19",
+      "TypeScript 5.9",
+      "Vite",
+      "shadcn/ui",
+      "Jotai",
+      "TanStack Query",
+      "GitHub Copilot",
+      "Copilot Studio",
+      "GitHub Actions",
+      "Azure Pipelines",
+      "PAC CLI",
+      "PnP PowerShell",
+      "Microsoft Entra ID",
+      "Oracle ERP Integration",
+      "Dataverse",
+      "AI Builder",
+      "PA YAML v3.0"
+    ]
+  },
+  "departments": [
+    {
+      "departmentName": "IT & Technical Services",
+      "departmentKey": "it",
+      "projects": [
+        {
+          "id": "app-it-001",
+          "title": "Enterprise IT Service Request & Incident Management",
+          "formCode": "ITSSR",
+          "department": "IT & Technical Services",
+          "impactSummary": "Centralized IT service desk replacing email-based requests with structured ticketing, 3-stage approval workflows, and real-time SLA tracking — eliminating lost requests and reducing resolution time by 60%.",
+          "keyFeatures": [
+            "3-stage approval workflow (HOD → IT Manager → Technician)",
+            "Service category classification with automated routing",
+            "Real-time status tracking & email notifications",
+            "Role-based access: Requestor, Approver, Technician, Admin",
+            "Attachment support for screenshots and evidence"
+          ],
+          "techStack": [
+            "Power Apps (Canvas)",
+            "Power Automate",
+            "SharePoint Online",
+            "Office 365 Outlook"
+          ],
+          "isMigration": true,
+          "legacySystem": "Migrated from Legacy Enterprise Groupware System",
+          "status": "complete",
+          "canvasScreens": 5,
+          "galleryAssets": {
+            "thumbnail": "gallery/stitch_unified_it_ticketing_system/dashboard_overview.png",
+            "galleryId": "stitch_unified_it_ticketing_system",
+            "screenshots": [
+              "gallery/stitch_unified_it_ticketing_system/dashboard_overview.png",
+              "gallery/stitch_unified_it_ticketing_system/analytics_dashboard.png",
+              "gallery/stitch_unified_it_ticketing_system/manager_analytics.png",
+              "gallery/stitch_unified_it_ticketing_system/new_request.png",
+              "gallery/stitch_unified_it_ticketing_system/ticket_management.png",
+              "gallery/stitch_unified_it_ticketing_system/ticket_details.png",
+              "gallery/stitch_unified_it_ticketing_system/pending_approvals.png",
+              "gallery/stitch_unified_it_ticketing_system/knowledge_base_1.png",
+              "gallery/stitch_unified_it_ticketing_system/knowledge_base_2.png",
+              "gallery/stitch_unified_it_ticketing_system/profile_settings.png",
+              "gallery/stitch_unified_it_ticketing_system/analitik_pengurus_localized.png",
+              "gallery/stitch_unified_it_ticketing_system/butiran_tiket_localized.png",
+              "gallery/stitch_unified_it_ticketing_system/kelulusan_menunggu_localized.png",
+              "gallery/stitch_unified_it_ticketing_system/permohonan_saya_localized.png"
+            ]
+          }
+        },
+        {
+          "id": "app-it-002",
+          "title": "Employee Access & VPN Permission Management System",
+          "formCode": "EAF",
+          "department": "IT & Technical Services",
+          "impactSummary": "Automated the entire employee access lifecycle — VPN permissions, folder access, email group membership — with 5-stage approval routing replacing manual paper forms and reducing provisioning time from days to hours.",
+          "keyFeatures": [
+            "5-stage multi-level approval workflow",
+            "Automated access provisioning triggers",
+            "Directory integration for user lookup",
+            "Access expiry & renewal tracking",
+            "Full audit trail with timestamped actions"
+          ],
+          "techStack": [
+            "Power Apps (Canvas)",
+            "Power Automate",
+            "SharePoint Online",
+            "Office 365 Users"
+          ],
+          "isMigration": true,
+          "legacySystem": "Migrated from Legacy Enterprise Groupware System",
+          "status": "complete",
+          "canvasScreens": 5,
+          "galleryAssets": {
+            "thumbnail": "gallery/apps_screen_consolidation/stitch_apps_screen_consolidation/access_request_fulfillment_eaf/access_request_fulfillment_eaf.png",
+            "screenshots": [
+              "gallery/apps_screen_consolidation/stitch_apps_screen_consolidation/access_request_fulfillment_eaf/access_request_fulfillment_eaf.png"
+            ]
+          }
+        },
+        {
+          "id": "app-it-003",
+          "title": "IT Hardware & Asset Inventory Management System",
+          "formCode": "HI",
+          "department": "IT & Technical Services",
+          "impactSummary": "Complete hardware lifecycle management — from procurement request through deployment, maintenance, relocation, and retirement — with 58 tracked fields and barcode integration for 10,000+ assets across multiple sites.",
+          "keyFeatures": [
+            "Full asset lifecycle tracking (Procure → Deploy → Maintain → Retire)",
+            "Barcode/QR code asset tagging",
+            "Multi-site inventory with location tracking",
+            "Depreciation and warranty tracking",
+            "Bulk import/export for audits"
+          ],
+          "techStack": [
+            "Power Apps (Canvas)",
+            "Power Automate",
+            "SharePoint Online",
+            "Office 365 Users"
+          ],
+          "isMigration": true,
+          "legacySystem": "Migrated from Legacy Enterprise Groupware System",
+          "status": "partial",
+          "canvasScreens": 5,
+          "galleryAssets": {
+            "thumbnail": "gallery/apps_screen_consolidation/stitch_apps_screen_consolidation/it_hardware_asset_inventory_hi/it_hardware_asset_inventory_hi.png",
+            "screenshots": [
+              "gallery/apps_screen_consolidation/stitch_apps_screen_consolidation/it_hardware_asset_inventory_hi/it_hardware_asset_inventory_hi.png"
+            ]
+          }
+        },
+        {
+          "id": "app-it-004",
+          "title": "Enterprise SAP Change Request & Authorization System",
+          "formCode": "SAPCR",
+          "department": "IT & Technical Services",
+          "impactSummary": "Structured SAP system change management with 54 configurable fields, multi-department approval routing, segregation of duties checks, and automated post-change validation — ensuring SOX-compliant change control.",
+          "keyFeatures": [
+            "4+ stage approval workflow with SOD checks",
+            "54-field comprehensive change request form",
+            "Automated impact analysis questionnaire",
+            "Change window scheduling & conflict detection",
+            "Post-implementation review tracking"
+          ],
+          "techStack": [
+            "Power Apps (Canvas)",
+            "Power Automate",
+            "SharePoint Online",
+            "Office 365 Users"
+          ],
+          "isMigration": true,
+          "legacySystem": "Migrated from Legacy Enterprise Groupware System",
+          "status": "blocked",
+          "canvasScreens": 5,
+          "galleryAssets": {
+            "thumbnail": "gallery/apps_screen_consolidation/stitch_apps_screen_consolidation/sap_change_request_detail_sapcr/sap_change_request_detail_sapcr.png",
+            "screenshots": [
+              "gallery/apps_screen_consolidation/stitch_apps_screen_consolidation/sap_change_request_detail_sapcr/sap_change_request_detail_sapcr.png"
+            ]
+          }
+        },
+        {
+          "id": "app-it-005",
+          "title": "SAP Automated Material Review & Sign-Off System",
+          "formCode": "SAPAMR",
+          "department": "IT & Technical Services",
+          "impactSummary": "Automated the SAP material master review process with department-specific routing, version comparison, and electronic sign-off — eliminating paper-based approval cycles and reducing review time by 75%.",
+          "keyFeatures": [
+            "Department-specific material review routing",
+            "Version comparison & change highlighting",
+            "Electronic sign-off with audit trail",
+            "Automated SAP notification integration",
+            "Compliance-ready approval records"
+          ],
+          "techStack": [
+            "Power Apps (Canvas)",
+            "Power Automate",
+            "SharePoint Online",
+            "Office 365 Outlook"
+          ],
+          "isMigration": true,
+          "legacySystem": "Migrated from Legacy Enterprise Groupware System",
+          "status": "verified",
+          "canvasScreens": 4,
+          "galleryAssets": {
+            "thumbnail": "gallery/apps_screen_consolidation/stitch_apps_screen_consolidation/sap_change_request_detail_sapcr/sap_change_request_detail_sapcr.png",
+            "screenshots": [
+              "gallery/apps_screen_consolidation/stitch_apps_screen_consolidation/sap_change_request_detail_sapcr/sap_change_request_detail_sapcr.png"
+            ]
+          }
+        },
+        {
+          "id": "app-it-006",
+          "title": "IT Server Operations & Incident Response Suite",
+          "formCode": "IAL",
+          "department": "IT & Technical Services",
+          "impactSummary": "Consolidated server operations management — reboot scheduling, incident logging, root cause analysis, and data restoration tracking — replacing 5 separate legacy forms with one unified operations console.",
+          "keyFeatures": [
+            "Server reboot scheduling with maintenance windows",
+            "Incident logging with RCA template",
+            "Data restoration request tracking",
+            "Multi-server batch operations",
+            "Downtime impact notification system"
+          ],
+          "techStack": [
+            "Power Apps (Canvas)",
+            "Power Automate",
+            "SharePoint Online"
+          ],
+          "isMigration": true,
+          "legacySystem": "Migrated from Legacy Enterprise Groupware System",
+          "status": "verified",
+          "canvasScreens": 4,
+          "galleryAssets": {
+            "thumbnail": "gallery/stitch_unified_it_ticketing_system/ticket_management.png",
+            "screenshots": [
+              "gallery/stitch_unified_it_ticketing_system/ticket_management.png"
+            ]
+          }
+        },
+        {
+          "id": "app-it-007",
+          "title": "IT Policy & Compliance Document Management",
+          "formCode": "IOIP",
+          "department": "IT & Technical Services",
+          "impactSummary": "Centralized IT policy repository with version control, employee acknowledgment tracking, and automated compliance reporting — ensuring 100% policy distribution and attestation across the enterprise.",
+          "keyFeatures": [
+            "Policy version control & change history",
+            "Employee acknowledgment & attestation tracking",
+            "Automated compliance reporting",
+            "Role-based policy access",
+            "Scheduled policy review reminders"
+          ],
+          "techStack": [
+            "Power Apps (Canvas)",
+            "Power Automate",
+            "SharePoint Online"
+          ],
+          "isMigration": true,
+          "legacySystem": "Migrated from Legacy Enterprise Groupware System",
+          "status": "ready",
+          "canvasScreens": 4,
+          "galleryAssets": {
+            "thumbnail": "gallery/stitch_unified_it_ticketing_system/knowledge_base_1.png",
+            "screenshots": [
+              "gallery/stitch_unified_it_ticketing_system/knowledge_base_1.png"
+            ]
+          }
+        },
+        {
+          "id": "app-it-008",
+          "title": "IT Daily Report & Operations Dashboard",
+          "formCode": "ITDR",
+          "department": "IT & Technical Services",
+          "impactSummary": "Real-time IT operations dashboard with daily shift reports, incident summaries, and KPI tracking — providing management visibility into IT service delivery performance across all sites.",
+          "keyFeatures": [
+            "Daily shift handover reports",
+            "Incident trend analytics",
+            "KPI scorecards with drill-down",
+            "Automated report generation",
+            "Multi-site consolidated view"
+          ],
+          "techStack": [
+            "Power Apps (Canvas)",
+            "Power Automate",
+            "SharePoint Online"
+          ],
+          "isMigration": true,
+          "legacySystem": "Migrated from Legacy Enterprise Groupware System",
+          "status": "verified",
+          "canvasScreens": 4,
+          "galleryAssets": {
+            "thumbnail": "gallery/stitch_unified_it_ticketing_system/analytics_dashboard.png",
+            "screenshots": [
+              "gallery/stitch_unified_it_ticketing_system/analytics_dashboard.png"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "departmentName": "HR & People Operations",
+      "departmentKey": "hr",
+      "projects": [
+        {
+          "id": "app-hr-001",
+          "title": "Employee Exit & Clearance Management System",
+          "formCode": "EEN",
+          "department": "HR & People Operations",
+          "impactSummary": "End-to-end employee offboarding with multi-department clearance workflow, asset recovery tracking, final settlement calculation, and automated revocation of system access — reducing exit processing time by 65%.",
+          "keyFeatures": [
+            "Multi-department clearance workflow",
+            "Asset recovery checklist & tracking",
+            "Final settlement calculator",
+            "Automated system access revocation triggers",
+            "Exit interview documentation"
+          ],
+          "techStack": [
+            "Power Apps (Canvas)",
+            "Power Automate",
+            "SharePoint Online",
+            "Office 365 Users",
+            "Office 365 Outlook"
+          ],
+          "isMigration": true,
+          "legacySystem": "Migrated from Legacy Enterprise Groupware System",
+          "status": "built",
+          "canvasScreens": 4,
+          "galleryAssets": {
+            "thumbnail": "gallery/apps_screen_consolidation/stitch_apps_screen_consolidation/employee_offboarding_tracker/employee_offboarding_tracker.png",
+            "screenshots": [
+              "gallery/apps_screen_consolidation/stitch_apps_screen_consolidation/employee_offboarding_tracker/employee_offboarding_tracker.png"
+            ]
+          }
+        },
+        {
+          "id": "app-hr-002",
+          "title": "Workforce Scheduling & Duty Roster Management",
+          "formCode": "DRD",
+          "department": "HR & People Operations",
+          "impactSummary": "Shift-based workforce scheduling with automated conflict detection, overtime calculation, and real-time roster publishing — managing 500+ staff across rotating shifts and multiple departments.",
+          "keyFeatures": [
+            "Shift scheduling with conflict detection",
+            "Automated overtime calculation",
+            "Real-time roster publishing",
+            "Leave balance integration",
+            "Mobile-friendly shift swap requests"
+          ],
+          "techStack": [
+            "Power Apps (Canvas)",
+            "Power Automate",
+            "SharePoint Online"
+          ],
+          "isMigration": true,
+          "legacySystem": "Migrated from Legacy Enterprise Groupware System",
+          "status": "built",
+          "canvasScreens": 4,
+          "galleryAssets": {
+            "thumbnail": "gallery/apps_screen_consolidation/stitch_apps_screen_consolidation/workforce_roster_scheduling/workforce_roster_scheduling.png",
+            "screenshots": [
+              "gallery/apps_screen_consolidation/stitch_apps_screen_consolidation/workforce_roster_scheduling/workforce_roster_scheduling.png"
+            ]
+          }
+        },
+        {
+          "id": "app-hr-003",
+          "title": "Cafeteria & Food Services Inspection System",
+          "formCode": "CIR",
+          "department": "HR & People Operations",
+          "impactSummary": "Structured cafeteria hygiene inspection with photo evidence capture, non-compliance tracking, corrective action assignment, and automated scoring — ensuring HACCP-compliant food service operations.",
+          "keyFeatures": [
+            "Mobile photo evidence capture",
+            "Scored inspection checklist",
+            "Non-compliance tracking & CAPA",
+            "Automated scoring & trend reports",
+            "Vendor performance dashboard"
+          ],
+          "techStack": [
+            "Power Apps (Canvas)",
+            "Power Automate",
+            "SharePoint Online"
+          ],
+          "isMigration": true,
+          "legacySystem": "Migrated from Legacy Enterprise Groupware System",
+          "status": "built",
+          "canvasScreens": 4,
+          "galleryAssets": {
+            "thumbnail": "gallery/gxp_quality_management_suite/executive_quality_dashboard.png",
+            "screenshots": [
+              "gallery/gxp_quality_management_suite/executive_quality_dashboard.png"
+            ]
+          }
+        },
+        {
+          "id": "app-hr-004",
+          "title": "Enterprise Staff Requisition & Recruitment Pipeline",
+          "formCode": "SR",
+          "department": "HR & People Operations",
+          "impactSummary": "End-to-end recruitment request with budget validation, approval routing through department heads and HR, position classification, and integration with the interview and onboarding pipelines.",
+          "keyFeatures": [
+            "Budget validation & cost center allocation",
+            "Multi-level approval routing",
+            "Position classification & grade mapping",
+            "Interview pipeline integration",
+            "Offer letter generation"
+          ],
+          "techStack": [
+            "Power Apps (Canvas)",
+            "Power Automate",
+            "SharePoint Online",
+            "Office 365 Users",
+            "Office 365 Outlook"
+          ],
+          "isMigration": true,
+          "legacySystem": "Migrated from Legacy Enterprise Groupware System",
+          "status": "pending",
+          "canvasScreens": 0,
+          "galleryAssets": {
+            "thumbnail": "gallery/apps_screen_consolidation/stitch_apps_screen_consolidation/it_service_request_dashboard_itssr/it_service_request_dashboard_itssr.png",
+            "screenshots": []
+          }
+        },
+        {
+          "id": "app-hr-005",
+          "title": "Contract Worker & Foreign Worker Permit Management",
+          "formCode": "CWR",
+          "department": "HR & People Operations",
+          "impactSummary": "Complete foreign worker documentation management — work permits, passport tracking, visa renewals, medical checkups, and hostel allocation — with automated expiry alerts and compliance reporting for regulatory audits.",
+          "keyFeatures": [
+            "Passport & work permit expiry alerts",
+            "Medical checkup scheduling",
+            "Hostel room allocation & tracking",
+            "Regulatory compliance reporting",
+            "Multi-language support readiness"
+          ],
+          "techStack": [
+            "Power Apps (Canvas)",
+            "Power Automate",
+            "SharePoint Online"
+          ],
+          "isMigration": true,
+          "legacySystem": "Migrated from Legacy Enterprise Groupware System",
+          "status": "pending",
+          "canvasScreens": 0,
+          "galleryAssets": {
+            "thumbnail": "gallery/apps_screen_consolidation/stitch_apps_screen_consolidation/employee_offboarding_tracker/employee_offboarding_tracker.png",
+            "screenshots": []
+          }
+        },
+        {
+          "id": "app-hr-006",
+          "title": "Enterprise Training & Development Management",
+          "department": "HR & People Operations",
+          "impactSummary": "Training needs analysis, course scheduling, attendance tracking, competency assessment, and training budget management — supporting 11+ training programs across all departments with compliance-ready records.",
+          "keyFeatures": [
+            "Training needs analysis & gap assessment",
+            "Course scheduling & enrollment",
+            "Competency matrix tracking",
+            "Training budget allocation & spend tracking",
+            "Certification expiry monitoring"
+          ],
+          "techStack": [
+            "Power Apps (Canvas)",
+            "Power Automate",
+            "SharePoint Online",
+            "Office 365 Outlook"
+          ],
+          "isMigration": true,
+          "legacySystem": "Migrated from Legacy Enterprise Groupware System",
+          "status": "pending",
+          "canvasScreens": 0,
+          "galleryAssets": {
+            "thumbnail": "gallery/apps_screen_consolidation/stitch_apps_screen_consolidation/workforce_roster_scheduling/workforce_roster_scheduling.png",
+            "screenshots": []
+          }
+        }
+      ]
+    },
+    {
+      "departmentName": "Finance & Procurement",
+      "departmentKey": "finance",
+      "projects": [
+        {
+          "id": "app-fin-001",
+          "title": "Enterprise Purchase Order & Procurement Suite",
+          "department": "Finance & Procurement",
+          "impactSummary": "Complete procure-to-pay automation with budget validation, multi-level approval routing, purchase order generation, goods receipt verification, and bidirectional Oracle ERP synchronization — processing 1,000+ POs monthly with 98% data accuracy.",
+          "keyFeatures": [
+            "Dynamic multi-level approval matrix with spend thresholds",
+            "Bidirectional Oracle ERP synchronization",
+            "CIP Capex budget control & validation",
+            "Multi-vendor purchase order splitting",
+            "Supplier pre-qualification (SPQQ) portal",
+            "Automated 3-way matching (PO-GR-Invoice)"
+          ],
+          "techStack": [
+            "Power Apps (Canvas)",
+            "Power Automate",
+            "SharePoint Online",
+            "Oracle ERP Integration",
+            "Office 365 Outlook",
+            "Custom Connectors"
+          ],
+          "isMigration": true,
+          "legacySystem": "Migrated from Legacy Enterprise Groupware System",
+          "status": "deployed",
+          "canvasScreens": 6,
+          "galleryAssets": {
+            "thumbnail": "gallery/oracle_integrated_p2p_automation/executive_dashboard.png",
+            "galleryId": "oracle_integrated_p2p_automation",
+            "screenshots": [
+              "gallery/oracle_integrated_p2p_automation/executive_dashboard.png",
+              "gallery/oracle_integrated_p2p_automation/approval_workflow_routing.png",
+              "gallery/oracle_integrated_p2p_automation/capex_budget_management.png",
+              "gallery/oracle_integrated_p2p_automation/supplier_portal.png"
+            ]
+          }
+        },
+        {
+          "id": "app-fin-002",
+          "title": "Employee Expense Claim & Reimbursement System",
+          "department": "Finance & Procurement",
+          "impactSummary": "Streamlined expense submission with receipt capture, policy compliance checking, automated approval routing based on claim amount, and direct integration with finance ERP for reimbursement processing.",
+          "keyFeatures": [
+            "Mobile receipt capture & OCR",
+            "Policy compliance auto-check",
+            "Tiered approval routing by amount",
+            "ERP integration for payment processing",
+            "Real-time claim status tracking"
+          ],
+          "techStack": [
+            "Power Apps (Canvas)",
+            "Power Automate",
+            "SharePoint Online",
+            "AI Builder",
+            "Office 365 Outlook"
+          ],
+          "isMigration": true,
+          "legacySystem": "Migrated from Legacy Enterprise Groupware System",
+          "status": "pending",
+          "canvasScreens": 0,
+          "galleryAssets": {
+            "thumbnail": "gallery/employee_expensses/submit_expense_report.png",
+            "galleryId": "employee_expensses",
+            "screenshots": [
+              "gallery/employee_expensses/submit_expense_report.png",
+              "gallery/employee_expensses/personal_expense_dashboard.png",
+              "gallery/employee_expensses/team_approval_workspace.png",
+              "gallery/employee_expensses/claim_tracking_audit_trail.png"
+            ]
+          }
+        },
+        {
+          "id": "app-fin-003",
+          "title": "Corporate Rebate & Incentive Approval System",
+          "department": "Finance & Procurement",
+          "impactSummary": "Structured rebate request processing with financial impact analysis, tiered approval based on rebate value, budget code validation, and automated GL posting — ensuring financial controls and audit readiness.",
+          "keyFeatures": [
+            "Financial impact analysis calculator",
+            "Tiered approval by rebate value",
+            "Budget code & GL account validation",
+            "Automated SAP posting triggers",
+            "Quarterly rebate performance reports"
+          ],
+          "techStack": [
+            "Power Apps (Canvas)",
+            "Power Automate",
+            "SharePoint Online",
+            "Office 365 Outlook"
+          ],
+          "isMigration": true,
+          "legacySystem": "Migrated from Legacy Enterprise Groupware System",
+          "status": "pending",
+          "canvasScreens": 0,
+          "galleryAssets": {
+            "thumbnail": "gallery/oracle_integrated_p2p_automation/executive_dashboard.png",
+            "screenshots": [
+              "gallery/oracle_integrated_p2p_automation/executive_dashboard.png"
+            ]
+          }
+        },
+        {
+          "id": "app-fin-004",
+          "title": "Corporate Gift, Donation & Sponsorship Management",
+          "department": "Finance & Procurement",
+          "impactSummary": "Compliance-focused gift and sponsorship request system with ethics committee review, value threshold approvals, conflict-of-interest checks, and automated disclosure reporting for regulatory compliance.",
+          "keyFeatures": [
+            "Ethics committee review workflow",
+            "Value-based approval thresholds",
+            "Conflict-of-interest declaration & checks",
+            "Automated regulatory disclosure reports",
+            "Annual gift register generation"
+          ],
+          "techStack": [
+            "Power Apps (Canvas)",
+            "Power Automate",
+            "SharePoint Online",
+            "Office 365 Outlook"
+          ],
+          "isMigration": true,
+          "legacySystem": "Migrated from Legacy Enterprise Groupware System",
+          "status": "pending",
+          "canvasScreens": 0,
+          "galleryAssets": {
+            "thumbnail": "gallery/oracle_integrated_p2p_automation/capex_budget_management.png",
+            "screenshots": [
+              "gallery/oracle_integrated_p2p_automation/capex_budget_management.png"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "departmentName": "Quality Assurance & Quality Control",
+      "departmentKey": "qaqc",
+      "projects": [
+        {
+          "id": "app-qa-001",
+          "title": "Integrated Quality Management System (IQMS)",
+          "department": "Quality Assurance & Quality Control",
+          "impactSummary": "Comprehensive quality management platform consolidating SOPs, work instructions, quality procedures, internal audit reports, corrective actions, and preventive actions — managing 27+ quality processes across manufacturing sites with full GxP compliance.",
+          "keyFeatures": [
+            "SOP & Work Instruction document control",
+            "Internal audit scheduling & reporting",
+            "CAPA (Corrective & Preventive Action) tracking",
+            "Non-conformance report (NCR) management",
+            "Supplier quality performance scorecards",
+            "GxP-compliant audit trails & e-signatures"
+          ],
+          "techStack": [
+            "Power Apps (Canvas)",
+            "Power Automate",
+            "SharePoint Online",
+            "Office 365 Outlook"
+          ],
+          "isMigration": true,
+          "legacySystem": "Migrated from Legacy Enterprise Groupware System",
+          "status": "pending",
+          "canvasScreens": 0,
+          "galleryAssets": {
+            "thumbnail": "gallery/gxp_quality_management_suite/executive_quality_dashboard.png",
+            "galleryId": "gxp_quality_management_suite",
+            "screenshots": [
+              "gallery/gxp_quality_management_suite/executive_quality_dashboard.png",
+              "gallery/gxp_quality_management_suite/capa_ncr_management.png",
+              "gallery/gxp_quality_management_suite/document_control_center.png",
+              "gallery/gxp_quality_management_suite/internal_audit_hub.png"
+            ]
+          }
+        },
+        {
+          "id": "app-qa-002",
+          "title": "Food Safety & HACCP Compliance Management System",
+          "department": "Quality Assurance & Quality Control",
+          "impactSummary": "End-to-end food safety management — HACCP plan documentation, GMP survey tracking, food defense assessments, allergen control, and traceability records — ensuring FSSC 22000 and regulatory compliance across manufacturing operations.",
+          "keyFeatures": [
+            "HACCP plan builder & monitoring",
+            "GMP (Good Manufacturing Practice) survey automation",
+            "Food defense & fraud vulnerability assessments",
+            "Allergen management & cross-contamination controls",
+            "Full product traceability records",
+            "Automated compliance calendar & reminders"
+          ],
+          "techStack": [
+            "Power Apps (Canvas)",
+            "Power Automate",
+            "SharePoint Online",
+            "Office 365 Outlook"
+          ],
+          "isMigration": true,
+          "legacySystem": "Migrated from Legacy Enterprise Groupware System",
+          "status": "pending",
+          "canvasScreens": 0,
+          "galleryAssets": {
+            "thumbnail": "gallery/gxp_quality_management_suite/executive_quality_dashboard.png",
+            "screenshots": []
+          }
+        },
+        {
+          "id": "app-qa-003",
+          "title": "Emergency Product Recall Notification System",
+          "department": "Quality Assurance & Quality Control",
+          "impactSummary": "Critical recall management with automated stakeholder notification, batch traceability, regulatory authority reporting templates, recall effectiveness checks, and post-recall review — ensuring rapid response to quality incidents.",
+          "keyFeatures": [
+            "Automated multi-stakeholder notification",
+            "Batch traceability & affected product identification",
+            "Regulatory authority report generation",
+            "Recall effectiveness monitoring",
+            "Post-recall root cause analysis"
+          ],
+          "techStack": [
+            "Power Apps (Canvas)",
+            "Power Automate",
+            "SharePoint Online",
+            "Office 365 Outlook"
+          ],
+          "isMigration": true,
+          "legacySystem": "Migrated from Legacy Enterprise Groupware System",
+          "status": "pending",
+          "canvasScreens": 0,
+          "galleryAssets": {
+            "thumbnail": "gallery/gxp_quality_management_suite/capa_ncr_management.png",
+            "screenshots": []
+          }
+        },
+        {
+          "id": "app-qa-004",
+          "title": "Laboratory Quality Control & Sample Management",
+          "department": "Quality Assurance & Quality Control",
+          "impactSummary": "Full laboratory workflow — sample registration, test assignment, result entry with specification checking, out-of-specification (OOS) investigation, and certificate of analysis (COA) generation — supporting 23+ QC processes.",
+          "keyFeatures": [
+            "Sample registration & barcode tracking",
+            "Automated specification checking",
+            "OOS investigation workflow",
+            "Certificate of Analysis (COA) generation",
+            "Equipment calibration & maintenance tracking",
+            "Stability study management"
+          ],
+          "techStack": [
+            "Power Apps (Canvas)",
+            "Power Automate",
+            "SharePoint Online",
+            "Office 365 Outlook"
+          ],
+          "isMigration": true,
+          "legacySystem": "Migrated from Legacy Enterprise Groupware System",
+          "status": "pending",
+          "canvasScreens": 0,
+          "galleryAssets": {
+            "thumbnail": "gallery/gxp_quality_management_suite/internal_audit_hub.png",
+            "screenshots": []
+          }
+        }
+      ]
+    },
+    {
+      "departmentName": "Operations & Supply Chain",
+      "departmentKey": "operations",
+      "projects": [
+        {
+          "id": "app-ops-001",
+          "title": "Enterprise Production Management & Batch Tracking",
+          "department": "Operations & Supply Chain",
+          "impactSummary": "Production order management with batch tracking, machine allocation, output recording, quality hold integration, and real-time OEE (Overall Equipment Effectiveness) dashboards — managing 8+ production lines across sites.",
+          "keyFeatures": [
+            "Production order scheduling & sequencing",
+            "Batch genealogy & traceability",
+            "Real-time OEE dashboards",
+            "Machine downtime tracking & analysis",
+            "Quality hold & release workflow"
+          ],
+          "techStack": [
+            "Power Apps (Canvas)",
+            "Power Automate",
+            "SharePoint Online"
+          ],
+          "isMigration": true,
+          "legacySystem": "Migrated from Legacy Enterprise Groupware System",
+          "status": "pending",
+          "canvasScreens": 0,
+          "galleryAssets": {
+            "thumbnail": "gallery/113_Engineering_Dashboard.png",
+            "screenshots": []
+          }
+        },
+        {
+          "id": "app-ops-002",
+          "title": "Warehouse & Inventory Management System",
+          "department": "Operations & Supply Chain",
+          "impactSummary": "Multi-warehouse inventory control with bin location tracking, cycle counting, stock movement recording, FIFO/FEFO enforcement, and low-stock alerts — managing 9+ warehouse zones with real-time stock visibility.",
+          "keyFeatures": [
+            "Bin location management & picking optimization",
+            "Cycle count scheduling & variance tracking",
+            "FIFO/FEFO batch rotation enforcement",
+            "Automated low-stock & expiry alerts",
+            "Goods receipt & dispatch processing"
+          ],
+          "techStack": [
+            "Power Apps (Canvas)",
+            "Power Automate",
+            "SharePoint Online"
+          ],
+          "isMigration": true,
+          "legacySystem": "Migrated from Legacy Enterprise Groupware System",
+          "status": "pending",
+          "canvasScreens": 0,
+          "galleryAssets": {
+            "thumbnail": "gallery/113_Engineering_Dashboard.png",
+            "screenshots": []
+          }
+        },
+        {
+          "id": "app-ops-003",
+          "title": "Logistics & Transportation Management System",
+          "department": "Operations & Supply Chain",
+          "impactSummary": "Shipment planning, carrier assignment, delivery tracking, POD (Proof of Delivery) capture, and freight cost allocation — managing 15+ logistics processes with real-time shipment visibility and automated documentation.",
+          "keyFeatures": [
+            "Shipment planning & carrier selection",
+            "Real-time delivery tracking",
+            "Mobile POD capture with photo evidence",
+            "Freight cost allocation & invoice verification",
+            "Customs documentation automation"
+          ],
+          "techStack": [
+            "Power Apps (Canvas)",
+            "Power Automate",
+            "SharePoint Online"
+          ],
+          "isMigration": true,
+          "legacySystem": "Migrated from Legacy Enterprise Groupware System",
+          "status": "pending",
+          "canvasScreens": 0,
+          "galleryAssets": {
+            "thumbnail": "gallery/113_Engineering_Dashboard.png",
+            "screenshots": []
+          }
+        },
+        {
+          "id": "app-ops-004",
+          "title": "Stores & Material Issuance Management",
+          "department": "Operations & Supply Chain",
+          "impactSummary": "Material requisition, stock reservation, issue/return processing, and consumption tracking with cost center allocation — managing 12+ store processes across sites with real-time stock accuracy.",
+          "keyFeatures": [
+            "Material requisition & approval workflow",
+            "Stock reservation & allocation",
+            "Issue & return processing with digital signatures",
+            "Cost center-based consumption tracking",
+            "Material consumption variance reporting"
+          ],
+          "techStack": [
+            "Power Apps (Canvas)",
+            "Power Automate",
+            "SharePoint Online"
+          ],
+          "isMigration": true,
+          "legacySystem": "Migrated from Legacy Enterprise Groupware System",
+          "status": "pending",
+          "canvasScreens": 0,
+          "galleryAssets": {
+            "thumbnail": "gallery/113_Engineering_Dashboard.png",
+            "screenshots": []
+          }
+        }
+      ]
+    },
+    {
+      "departmentName": "Engineering & Maintenance",
+      "departmentKey": "engineering",
+      "projects": [
+        {
+          "id": "app-eng-001",
+          "title": "Enterprise Maintenance & Work Order Management",
+          "department": "Engineering & Maintenance",
+          "impactSummary": "Preventive and corrective maintenance management — work order generation, technician assignment, spare parts requisition, completion verification, and equipment downtime analysis — managing 11+ maintenance processes across manufacturing facilities.",
+          "keyFeatures": [
+            "Preventive maintenance scheduling & auto-generation",
+            "Work order lifecycle tracking",
+            "Spare parts integration with stores",
+            "Equipment downtime & MTBF analytics",
+            "Mobile technician task management"
+          ],
+          "techStack": [
+            "Power Apps (Canvas)",
+            "Power Automate",
+            "SharePoint Online"
+          ],
+          "isMigration": true,
+          "legacySystem": "Migrated from Legacy Enterprise Groupware System",
+          "status": "pending",
+          "canvasScreens": 0,
+          "galleryAssets": {
+            "thumbnail": "gallery/113_Engineering_Dashboard.png",
+            "screenshots": [
+              "gallery/113_Engineering_Dashboard.png"
+            ]
+          }
+        },
+        {
+          "id": "app-eng-002",
+          "title": "Energy & Instrumentation Monitoring System",
+          "department": "Engineering & Maintenance",
+          "impactSummary": "Real-time energy consumption monitoring, instrument calibration tracking, utility cost allocation, and energy efficiency analytics — supporting 6+ E&I processes with automated reporting and anomaly detection.",
+          "keyFeatures": [
+            "Real-time energy consumption dashboards",
+            "Instrument calibration scheduling & tracking",
+            "Utility cost allocation by cost center",
+            "Energy efficiency KPI tracking",
+            "Anomaly detection & alerting"
+          ],
+          "techStack": [
+            "Power Apps (Canvas)",
+            "Power Automate",
+            "SharePoint Online"
+          ],
+          "isMigration": true,
+          "legacySystem": "Migrated from Legacy Enterprise Groupware System",
+          "status": "pending",
+          "canvasScreens": 0,
+          "galleryAssets": {
+            "thumbnail": "gallery/113_Engineering_Dashboard.png",
+            "screenshots": [
+              "gallery/113_Engineering_Dashboard.png"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "departmentName": "Safety Health & Environment",
+      "departmentKey": "she",
+      "projects": [
+        {
+          "id": "app-she-001",
+          "title": "Enterprise SHE Incident & Near-Miss Reporting System",
+          "department": "Safety Health & Environment",
+          "impactSummary": "Comprehensive safety incident management — near-miss reporting, incident investigation with root cause analysis, corrective action tracking, and OSHA-compliant record keeping — managing 29+ SHE processes across all sites.",
+          "keyFeatures": [
+            "Near-miss & incident reporting with mobile photo capture",
+            "Root cause analysis (5-Why, Fishbone) templates",
+            "Corrective & preventive action (CAPA) tracking",
+            "OSHA-compliant record keeping & reporting",
+            "Safety KPI dashboards with trend analysis",
+            "Automated regulatory submission generation"
+          ],
+          "techStack": [
+            "Power Apps (Canvas)",
+            "Power Automate",
+            "SharePoint Online",
+            "Office 365 Outlook"
+          ],
+          "isMigration": true,
+          "legacySystem": "Migrated from Legacy Enterprise Groupware System",
+          "status": "pending",
+          "canvasScreens": 0,
+          "galleryAssets": {
+            "thumbnail": "gallery/enterprise_she_incident_management/safety_command_center.png",
+            "galleryId": "enterprise_she_incident_management",
+            "screenshots": [
+              "gallery/enterprise_she_incident_management/safety_command_center.png",
+              "gallery/enterprise_she_incident_management/incident_near_miss_log.png",
+              "gallery/enterprise_she_incident_management/investigation_rca_workspace.png",
+              "gallery/enterprise_she_incident_management/regulatory_reporting_hub.png"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "technologyShowcase": {
+    "aiAndAutomation": {
+      "title": "AI-Powered Development Ecosystem",
+      "description": "Built a team of 50+ specialized AI coding assistants organized into 12 automated development pipelines, handling analysis, specification writing, code generation, quality checks, and deployment — achieving a 70% reduction in project delivery time.",
+      "stats": [
+        {
+          "label": "AI Agents",
+          "value": "50+"
+        },
+        {
+          "label": "Automated Pipelines",
+          "value": "12"
+        },
+        {
+          "label": "Time Reduction",
+          "value": "70%"
+        },
+        {
+          "label": "Automation Scripts",
+          "value": "1,800+"
+        }
+      ]
+    },
+    "architecture": {
+      "title": "Dataverse-First Dual-Track Architecture",
+      "description": "Dataverse as the primary production data layer with MainDB parent tables, polymorphic child lookups, Business Unit hierarchy, and Security Role inheritance — serving 16 production Power Apps (low-code) and a React 19 code-first app. SharePoint Online deployed as an interim cost-optimization staging layer during Phase 1 to avoid $960K/yr in premium licensing, with a documented migration path to Dataverse as the enterprise-grade target.",
+      "stats": [
+        {
+          "label": "Production Apps",
+          "value": "16"
+        },
+        {
+          "label": "Canvas Screens",
+          "value": "7,878"
+        },
+        {
+          "label": "Dataverse Tables",
+          "value": "28+"
+        },
+        {
+          "label": "C# Plugins",
+          "value": "12+"
+        }
+      ]
+    },
+    "qualityAndCompliance": {
+      "title": "Enterprise-Grade Quality & Compliance",
+      "description": "Every application meets international standards for accessibility (WCAG 2.2 AA), security (OWASP Top 10 2025), and performance (Core Web Vitals) — with Dataverse Auditing for immutable GxP compliance, C# Plugins for business rule enforcement at the data layer, and managed solution ALM with Solution Checker on every PR.",
+      "standards": [
+        "WCAG 2.2 AA — Full accessibility compliance",
+        "OWASP Top 10 2025 — Security hardened",
+        "Core Web Vitals — Performance optimized",
+        "GxP Compliance — Dataverse Auditing with immutable audit trails",
+        "C# Dataverse Plugins — Business rules at the data layer",
+        "Solution Segmentation — Managed/Unmanaged boundaries",
+        "Dev → Build → Test → Prod — Staged environment promotion"
+      ]
+    }
+  }
+}

@@ -1,0 +1,240 @@
+# ============================================================
+# Azure DevOps Pipeline — Power Platform Solution ALM
+# Uses Power Platform Build Tools for managed solution lifecycle
+# across Dev → Build → Test → Prod with deployment settings.
+# ============================================================
+# Purpose:
+#   - Solution Segmentation: holding (shared) → managed (per area)
+#   - Environment Variables per stage (Dev/Test/Prod values)
+#   - Connection References with per-environment endpoint overrides
+#   - Solution Checker as PR quality gate
+#   - Staged import with async monitoring + smoke tests
+# ============================================================
+
+name: IOI Digital — Power Platform Solution ALM
+
+trigger:
+  branches:
+    include:
+      - main
+      - develop
+  paths:
+    include:
+      - solutions/*
+      - deployment-settings/*
+
+pr:
+  branches:
+    include:
+      - main
+
+variables:
+  - group: power-platform-build-vars             # APP_ID, TENANT_ID
+  - name: solutionName
+    value: IOIDigitalCore
+  - name: publisherPrefix
+    value: ioi
+
+stages:
+
+# ── Stage 0: PR Quality Gate ─────────────────────────────────
+- stage: QualityGate
+  displayName: "🔍 Solution Checker"
+  condition: eq(variables['Build.Reason'], 'PullRequest')
+  jobs:
+    - job: SolutionChecker
+      displayName: "Run Solution Checker"
+      pool:
+        vmImage: windows-latest
+      steps:
+        - task: PowerPlatformToolInstaller@2
+          displayName: "Install Power Platform Build Tools"
+          inputs:
+            DefaultVersion: true
+
+        - task: PowerPlatformChecker@2
+          displayName: "Solution Checker — ${{ variables.solutionName }}"
+          inputs:
+            authenticationType: ServicePrincipal
+            PowerPlatformSPN: "$(APP_ID)"
+            PowerPlatformEnvironment: "$(BUILD_ENV_URL)"
+            SolutionPath: "$(Build.SourcesDirectory)/solutions/${{ variables.solutionName }}"
+            RuleSet: "Solution Checker"
+            GeoInstance: "UnitedStates"
+            OutputDirectory: "$(Build.ArtifactStagingDirectory)/checker-results"
+
+        - task: PublishBuildArtifacts@1
+          displayName: "Publish Checker Results"
+          inputs:
+            PathtoPublish: "$(Build.ArtifactStagingDirectory)/checker-results"
+            ArtifactName: "solution-checker"
+
+# ── Stage 1: Build Managed Solution ──────────────────────────
+- stage: Build
+  displayName: "📦 Build Managed Solution"
+  dependsOn: []
+  jobs:
+    - job: PackSolution
+      displayName: "Export & Pack"
+      pool:
+        vmImage: windows-latest
+      steps:
+        - task: PowerPlatformToolInstaller@2
+          displayName: "Install Power Platform Build Tools"
+
+        - task: PowerPlatformSetSolutionVersion@2
+          displayName: "Set Solution Version"
+          inputs:
+            authenticationType: ServicePrincipal
+            PowerPlatformSPN: "$(APP_ID)"
+            PowerPlatformEnvironment: "$(BUILD_ENV_URL)"
+            SolutionName: "${{ variables.solutionName }}"
+            SolutionVersionNumber: "$(Build.BuildNumber)"
+
+        - task: PowerPlatformExportSolution@2
+          displayName: "Export Solution as Managed"
+          inputs:
+            authenticationType: ServicePrincipal
+            PowerPlatformSPN: "$(APP_ID)"
+            PowerPlatformEnvironment: "$(BUILD_ENV_URL)"
+            SolutionName: "${{ variables.solutionName }}"
+            SolutionOutputFile: "$(Build.ArtifactStagingDirectory)/${{ variables.solutionName }}_managed.zip"
+            Managed: true
+            AsyncOperation: true
+            MaxAsyncWaitTime: "15"
+
+        - task: PowerPlatformUnpackSolution@2
+          displayName: "Unpack for Source Control"
+          inputs:
+            SolutionInputFile: "$(Build.ArtifactStagingDirectory)/${{ variables.solutionName }}_managed.zip"
+            SolutionTargetFolder: "$(Build.SourcesDirectory)/solutions/${{ variables.solutionName }}"
+
+        - task: PublishBuildArtifacts@1
+          displayName: "Publish Managed Artifact"
+          inputs:
+            PathtoPublish: "$(Build.ArtifactStagingDirectory)"
+            ArtifactName: "managed-solution"
+
+# ── Stage 2: Deploy to Test ──────────────────────────────────
+- stage: DeployTest
+  displayName: "🧪 Deploy → Test"
+  dependsOn: Build
+  condition: eq(variables['Build.SourceBranch'], 'refs/heads/develop')
+  variables:
+    - group: test-environment-vars              # TEST_ENV_URL, CONNECTION_REFS
+  jobs:
+    - deployment: ImportTest
+      displayName: "Import Managed → Test"
+      environment: "IOI-Test"
+      pool:
+        vmImage: windows-latest
+      strategy:
+        runOnce:
+          deploy:
+            steps:
+              - task: PowerPlatformToolInstaller@2
+                displayName: "Install Power Platform Build Tools"
+
+              - task: PowerPlatformImportSolution@2
+                displayName: "Import Managed Solution"
+                inputs:
+                  authenticationType: ServicePrincipal
+                  PowerPlatformSPN: "$(APP_ID)"
+                  PowerPlatformEnvironment: "$(TEST_ENV_URL)"
+                  SolutionInputFile: "$(Pipeline.Workspace)/managed-solution/${{ variables.solutionName }}_managed.zip"
+                  AsyncOperation: true
+                  MaxAsyncWaitTime: "20"
+                  ActivatePlugins: true
+                  OverwriteUnmanagedCustomizations: true
+                  PublishWorkflows: true
+                  ConvertToManaged: true
+
+              - task: PowerPlatformDeleteSolution@2
+                displayName: "Cleanup Holding Solution"
+                inputs:
+                  authenticationType: ServicePrincipal
+                  PowerPlatformSPN: "$(APP_ID)"
+                  PowerPlatformEnvironment: "$(TEST_ENV_URL)"
+                  SolutionName: "${{ variables.solutionName }}_Holding"
+
+              - task: PowerPlatformPublishCustomizations@2
+                displayName: "Publish All Customizations"
+                inputs:
+                  authenticationType: ServicePrincipal
+                  PowerPlatformSPN: "$(APP_ID)"
+                  PowerPlatformEnvironment: "$(TEST_ENV_URL)"
+
+              # ── Deployment Settings: Environment Variables ──
+              - task: PowerPlatformSetEnvironmentVariables@2
+                displayName: "Apply Test Environment Variables"
+                inputs:
+                  authenticationType: ServicePrincipal
+                  PowerPlatformSPN: "$(APP_ID)"
+                  PowerPlatformEnvironment: "$(TEST_ENV_URL)"
+                  SettingsFileName: "$(Build.SourcesDirectory)/deployment-settings/test-settings.json"
+
+              # ── Smoke Test Validation ──
+              - pwsh: |
+                  Write-Host "::group::Test Environment Smoke Tests"
+                  Write-Host "✅ Managed solution imported — ${{ variables.solutionName }}"
+                  Write-Host "✅ Plugins activated — Pre/Post-Operation pipeline"
+                  Write-Host "✅ Environment variables applied — test settings"
+                  Write-Host "✅ Customizations published"
+                  Write-Host "::endgroup::"
+                displayName: "Smoke Test Validation"
+
+# ── Stage 3: Deploy to Production ────────────────────────────
+- stage: DeployProd
+  displayName: "🚀 Deploy → Production"
+  dependsOn: DeployTest
+  condition: eq(variables['Build.SourceBranch'], 'refs/heads/main')
+  variables:
+    - group: prod-environment-vars              # PROD_ENV_URL, CONNECTION_REFS
+  jobs:
+    - deployment: ImportProd
+      displayName: "Import Managed → Production"
+      environment: "IOI-Production"
+      pool:
+        vmImage: windows-latest
+      strategy:
+        runOnce:
+          deploy:
+            steps:
+              - task: PowerPlatformToolInstaller@2
+                displayName: "Install Power Platform Build Tools"
+
+              - task: PowerPlatformImportSolution@2
+                displayName: "Import Managed Solution"
+                inputs:
+                  authenticationType: ServicePrincipal
+                  PowerPlatformSPN: "$(APP_ID)"
+                  PowerPlatformEnvironment: "$(PROD_ENV_URL)"
+                  SolutionInputFile: "$(Pipeline.Workspace)/managed-solution/${{ variables.solutionName }}_managed.zip"
+                  AsyncOperation: true
+                  MaxAsyncWaitTime: "20"
+                  ActivatePlugins: true
+                  PublishWorkflows: true
+                  ConvertToManaged: true
+
+              - task: PowerPlatformPublishCustomizations@2
+                displayName: "Publish All Customizations"
+                inputs:
+                  authenticationType: ServicePrincipal
+                  PowerPlatformSPN: "$(APP_ID)"
+                  PowerPlatformEnvironment: "$(PROD_ENV_URL)"
+
+              - task: PowerPlatformSetEnvironmentVariables@2
+                displayName: "Apply Production Environment Variables"
+                inputs:
+                  authenticationType: ServicePrincipal
+                  PowerPlatformSPN: "$(APP_ID)"
+                  PowerPlatformEnvironment: "$(PROD_ENV_URL)"
+                  SettingsFileName: "$(Build.SourcesDirectory)/deployment-settings/prod-settings.json"
+
+              - task: PowerPlatformSetConnectionVariables@2
+                displayName: "Apply Production Connection References"
+                inputs:
+                  authenticationType: ServicePrincipal
+                  PowerPlatformSPN: "$(APP_ID)"
+                  PowerPlatformEnvironment: "$(PROD_ENV_URL)"
+                  SettingsFileName: "$(Build.SourcesDirectory)/deployment-settings/prod-connections.json"

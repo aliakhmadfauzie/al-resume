@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SAP Change Request (SAPCR) Management - Industrial Nexus</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-highest": "#e0e3e5",
+                    "surface": "#f7f9fb",
+                    "primary-fixed-dim": "#bcc7de",
+                    "primary": "#091426",
+                    "outline-variant": "#c5c6cd",
+                    "on-surface-variant": "#45474c",
+                    "on-secondary-container": "#5c647a",
+                    "secondary-container": "#dae2fd",
+                    "on-surface": "#191c1e",
+                    "background": "#f7f9fb",
+                    "on-tertiary-fixed-variant": "#38485d",
+                    "tertiary": "#041528",
+                    "surface-bright": "#f7f9fb",
+                    "on-tertiary-fixed": "#0b1c30",
+                    "on-primary-container": "#8590a6",
+                    "surface-variant": "#e0e3e5",
+                    "on-primary-fixed-variant": "#3c475a",
+                    "tertiary-container": "#1a2a3e",
+                    "surface-tint": "#545f73",
+                    "surface-container": "#eceef0",
+                    "on-error-container": "#93000a",
+                    "error": "#ba1a1a",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed": "#d8e3fb",
+                    "on-primary-fixed": "#111c2d",
+                    "secondary-fixed": "#dae2fd",
+                    "surface-dim": "#d8dadc",
+                    "on-secondary-fixed": "#131b2e",
+                    "on-background": "#191c1e",
+                    "surface-container-low": "#f2f4f6",
+                    "secondary-fixed-dim": "#bec6e0",
+                    "outline": "#75777d",
+                    "inverse-on-surface": "#eff1f3",
+                    "secondary": "#565e74",
+                    "on-secondary-fixed-variant": "#3f465c",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-container": "#8191a9",
+                    "on-error": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "inverse-surface": "#2d3133",
+                    "error-container": "#ffdad6",
+                    "surface-container-high": "#e6e8ea",
+                    "primary-container": "#1e293b",
+                    "on-primary": "#ffffff",
+                    "tertiary-fixed": "#d3e4fe",
+                    "inverse-primary": "#bcc7de",
+                    "tertiary-fixed-dim": "#b7c8e1"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "gutter-standard": "16px",
+                    "input-height-sm": "28px",
+                    "input-height-md": "36px",
+                    "gutter-dense": "8px",
+                    "margin-container": "24px",
+                    "unit": "4px"
+            },
+            "fontFamily": {
+                    "body-data": [
+                            "Hanken Grotesk"
+                    ],
+                    "headline-lg-mobile": [
+                            "Hanken Grotesk"
+                    ],
+                    "display-executive": [
+                            "Hanken Grotesk"
+                    ],
+                    "body-data-bold": [
+                            "Hanken Grotesk"
+                    ],
+                    "label-mono-style": [
+                            "Hanken Grotesk"
+                    ],
+                    "headline-technical": [
+                            "Hanken Grotesk"
+                    ]
+            },
+            "fontSize": {
+                    "body-data": [
+                            "13px",
+                            {
+                                    "lineHeight": "18px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-lg-mobile": [
+                            "24px",
+                            {
+                                    "lineHeight": "32px",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "display-executive": [
+                            "36px",
+                            {
+                                    "lineHeight": "44px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "body-data-bold": [
+                            "13px",
+                            {
+                                    "lineHeight": "18px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "label-mono-style": [
+                            "11px",
+                            {
+                                    "lineHeight": "16px",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "headline-technical": [
+                            "20px",
+                            {
+                                    "lineHeight": "28px",
+                                    "letterSpacing": "0.01em",
+                                    "fontWeight": "600"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+<style>
+        /* Form Density Styles */
+        .dense-input {
+            height: 28px;
+            padding: 0 8px;
+            font-size: 13px;
+            border: 1px solid theme('colors.outline-variant');
+            background-color: theme('colors.surface-container-lowest');
+            color: theme('colors.on-surface');
+            width: 100%;
+        }
+        .dense-input:focus {
+            outline: none;
+            border: 2px solid theme('colors.primary');
+            padding: 0 7px; /* adjust for border width */
+        }
+        .required-field-marker {
+            border-left: 2px solid theme('colors.primary') !important;
+        }
+        .dense-select {
+            height: 28px;
+            padding: 0 24px 0 8px;
+            font-size: 13px;
+            border: 1px solid theme('colors.outline-variant');
+            background-color: theme('colors.surface-container-lowest');
+            color: theme('colors.on-surface');
+            width: 100%;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+            background-position: right 4px center;
+            background-repeat: no-repeat;
+            background-size: 1.5em 1.5em;
+        }
+        .dense-select:focus {
+            outline: none;
+            border: 2px solid theme('colors.primary');
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-data min-h-screen">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center h-[48px] px-gutter-standard bg-surface-container-low border-b border-outline-variant">
+<div class="flex items-center gap-gutter-standard">
+<span class="font-headline-technical text-headline-technical font-bold text-primary">Industrial Nexus</span>
+<div class="hidden md:flex gap-gutter-standard h-full ml-8">
+<!-- Tabs omitted for focused transactional view as per guidelines, but showing one active if needed -->
+</div>
+</div>
+<div class="flex-1 max-w-md mx-gutter-standard relative">
+<span class="material-symbols-outlined absolute left-2 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span>
+<input class="w-full h-8 pl-8 pr-3 text-body-data bg-surface-container-lowest border border-outline-variant rounded text-on-surface focus:outline-none focus:border-primary" placeholder="Search resources..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:bg-surface-container-highest transition-colors duration-200 p-1 rounded"><span class="material-symbols-outlined">apps</span></button>
+<button class="text-on-surface-variant hover:bg-surface-container-highest transition-colors duration-200 p-1 rounded relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="text-on-surface-variant hover:bg-surface-container-highest transition-colors duration-200 p-1 rounded"><span class="material-symbols-outlined">settings</span></button>
+<img alt="User profile" class="w-7 h-7 rounded-full object-cover border border-outline-variant" data-alt="A small, professional headshot of an industrial systems engineer. Clean background, high quality, well-lit, corporate ID photo style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcLEt12V_phAISHtGxzmWJQVzHlAW3qebmIWuztcXLypz1-CEqvzZFWtqNSjgGJEMkwKaiangvQax5kng1I8pqu2Ft1oQHMdZIcxt_bzxHJ4WWYViePG6d5Tfy_9S0oY5Lzy0UUthCjQ0xKIHRdGRK779AZ9QkiarKtsF-MA_E35ysqLcjbZ6EHbXnVnxNxh7Tcel4FYgQpTZirJS2zEpQ5dO-bPwPLOSfPrpOoDf2VelKAPJe-xQa"/>
+</div>
+</header>
+<!-- SideNavBar & Main Content Wrapper -->
+<div class="flex pt-[48px] min-h-screen">
+<!-- SideNavBar -->
+<nav class="hidden md:flex flex-col justify-between py-4 fixed left-0 top-[48px] h-[calc(100vh-48px)] w-[240px] bg-surface border-r border-outline-variant z-40">
+<div>
+<div class="px-gutter-standard mb-6 flex items-center gap-3">
+<img alt="Departmental Logo" class="w-10 h-10 rounded border border-outline-variant object-cover" data-alt="A bold, modern geometric logo for a technical operations department. Dark blue and silver color scheme, sharp edges, industrial aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDk8tDja3kPjuqAiU73-0MtfoIvJ3VPUejebCtlzI-GwjYCkqzKbnEOLFqLNJIwHQGU6ifK-tWwxj-9ZCPyuNIvXp-Vurh_26X8-IwNyvB2sLhiKhxMgY6RCahhmPXcaLdawtTySYKho0vWeDou8BMIkQWZ4W4eL_r3ElMguSmVhasNiPKOiHuDHcw1QfpGmoog3i9d6Yaqnueabyx1cLK4zs-Sg74JZQ7Timk5u8oWCN6aVns4kima"/>
+<div>
+<h2 class="font-headline-technical text-[16px] font-semibold text-primary leading-tight">IT Operations</h2>
+<span class="font-body-data text-[11px] text-on-surface-variant">Active Session</span>
+</div>
+</div>
+<ul class="flex flex-col gap-1 px-2">
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant font-body-data hover:bg-surface-container-high transition-all duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[18px]">dashboard</span>
+                            Dashboard
+                        </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded bg-secondary-container text-primary font-body-data-bold border-l-4 border-primary transition-all duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">assignment_turned_in</span>
+                            My Tasks
+                        </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant font-body-data hover:bg-surface-container-high transition-all duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[18px]">analytics</span>
+                            Reports
+                        </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant font-body-data hover:bg-surface-container-high transition-all duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+                            IT Operations
+                        </a>
+</li>
+</ul>
+</div>
+<ul class="flex flex-col gap-1 px-2">
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant font-body-data hover:bg-surface-container-high transition-all duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[18px]">help</span>
+                        Help Center
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant font-body-data hover:bg-surface-container-high transition-all duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[18px]">logout</span>
+                        Sign Out
+                    </a>
+</li>
+</ul>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-[240px] bg-background">
+<!-- Departmental Hero-Header -->
+<div class="h-1 w-full bg-tertiary"></div>
+<div class="p-margin-container max-w-[1400px] mx-auto pb-24">
+<!-- Page Header -->
+<div class="flex justify-between items-start mb-6">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="px-2 py-0.5 bg-primary text-on-primary font-label-mono-style text-label-mono-style rounded-sm">SAPCR-8924</span>
+<span class="px-2 py-0.5 border border-outline-variant text-on-surface-variant font-label-mono-style text-label-mono-style rounded-sm">CRITICAL</span>
+</div>
+<h1 class="font-headline-technical text-headline-technical text-primary">Migrate Core ERP Database to High-Availability Cluster</h1>
+</div>
+<div class="flex items-center gap-3">
+<button class="px-4 py-1.5 border border-outline-variant bg-surface-container-lowest text-primary font-body-data-bold rounded shadow-sm hover:bg-surface-container-highest transition-colors">
+                            Save Draft
+                        </button>
+</div>
+</div>
+<!-- Process Stepper -->
+<div class="mb-8 p-4 bg-surface-container-lowest border border-outline-variant rounded-sm flex items-center justify-between">
+<div class="flex items-center gap-3 flex-1">
+<div class="w-8 h-8 rounded-sm bg-primary text-on-primary flex items-center justify-center font-body-data-bold">1</div>
+<div class="font-body-data-bold text-primary text-[12px] uppercase tracking-wider">Draft &amp; Assess</div>
+</div>
+<div class="h-px bg-primary flex-1 mx-4"></div>
+<div class="flex items-center gap-3 flex-1">
+<div class="w-8 h-8 rounded-sm border-2 border-primary text-primary flex items-center justify-center font-body-data-bold bg-secondary-container">2</div>
+<div class="font-body-data-bold text-primary text-[12px] uppercase tracking-wider">Technical Review</div>
+</div>
+<div class="h-px border-t border-dashed border-outline-variant flex-1 mx-4"></div>
+<div class="flex items-center gap-3 flex-1">
+<div class="w-8 h-8 rounded-sm border border-outline-variant text-outline-variant flex items-center justify-center font-body-data-bold bg-surface-container-lowest">3</div>
+<div class="font-body-data text-outline-variant text-[12px] uppercase tracking-wider">CAB Approval</div>
+</div>
+<div class="h-px border-t border-dashed border-outline-variant flex-1 mx-4"></div>
+<div class="flex items-center gap-3 flex-1">
+<div class="w-8 h-8 rounded-sm border border-outline-variant text-outline-variant flex items-center justify-center font-body-data-bold bg-surface-container-lowest">4</div>
+<div class="font-body-data text-outline-variant text-[12px] uppercase tracking-wider">Execution</div>
+</div>
+</div>
+<!-- Content Grid -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-gutter-standard">
+<!-- Left Column: Form Canvas (8 cols) -->
+<div class="xl:col-span-8 space-y-gutter-standard">
+<!-- Tabs -->
+<div class="flex border-b border-outline-variant bg-surface-container-lowest pt-2 px-2">
+<button class="px-4 py-2 border-b-2 border-primary text-primary font-body-data-bold -mb-[1px]">General Info</button>
+<button class="px-4 py-2 border-b-2 border-transparent text-on-surface-variant font-body-data hover:bg-surface-container-low transition-colors -mb-[1px]">Impact Analysis</button>
+<button class="px-4 py-2 border-b-2 border-transparent text-on-surface-variant font-body-data hover:bg-surface-container-low transition-colors -mb-[1px]">Risk Assessment</button>
+<button class="px-4 py-2 border-b-2 border-transparent text-on-surface-variant font-body-data hover:bg-surface-container-low transition-colors -mb-[1px]">Scheduling</button>
+</div>
+<!-- Dense Form Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-sm p-4">
+<h3 class="font-headline-technical text-[14px] font-semibold text-primary mb-4 pb-2 border-b border-outline-variant">Change Specification</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-gutter-standard gap-y-gutter-dense mb-4">
+<div class="space-y-1">
+<label class="font-label-mono-style text-label-mono-style text-on-surface-variant uppercase">Change Owner</label>
+<input class="dense-input required-field-marker" readonly="" type="text" value="J. Kowalski (IT-INF-04)"/>
+</div>
+<div class="space-y-1">
+<label class="font-label-mono-style text-label-mono-style text-on-surface-variant uppercase">Target System</label>
+<select class="dense-select required-field-marker">
+<option>PRD-SAP-DB-01 (Primary)</option>
+<option>QAS-SAP-DB-01 (Quality)</option>
+</select>
+</div>
+<div class="space-y-1">
+<label class="font-label-mono-style text-label-mono-style text-on-surface-variant uppercase">Change Type</label>
+<select class="dense-select required-field-marker">
+<option>Infrastructure Upgrade</option>
+<option>Application Patch</option>
+</select>
+</div>
+<div class="space-y-1">
+<label class="font-label-mono-style text-label-mono-style text-on-surface-variant uppercase">Downtime Required</label>
+<select class="dense-select">
+<option>Yes (&gt; 2 Hours)</option>
+<option>No</option>
+</select>
+</div>
+</div>
+<div class="space-y-1 mb-4">
+<label class="font-label-mono-style text-label-mono-style text-on-surface-variant uppercase">Technical Description</label>
+<textarea class="w-full p-2 text-body-data border border-outline-variant bg-surface-container-lowest required-field-marker focus:border-primary focus:outline-none" rows="3">Migrating core ERP HANA database from standalone physical servers to virtualized HA cluster across Availability Zone 1 and 2 to improve RPO/RTO metrics.</textarea>
+</div>
+</div>
+<!-- SoD Violation Alert -->
+<div class="bg-error-container border border-error rounded-sm p-4 relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-error"></div>
+<div class="flex gap-3">
+<span class="material-symbols-outlined text-error mt-0.5">warning</span>
+<div>
+<h4 class="font-headline-technical text-[14px] font-bold text-on-error-container">Segregation of Duties (SoD) Violation Detected</h4>
+<p class="font-body-data text-[12px] text-on-error-container mt-1">
+                                        User <span class="font-mono">J. Kowalski</span> is requesting the change and is also listed in the approval workflow for <span class="font-mono">Technical Review</span> stage. Corporate policy requires separate identities for request and review.
+                                    </p>
+<button class="mt-2 px-3 py-1 bg-error text-on-error font-label-mono-style text-label-mono-style rounded-sm hover:bg-on-error-container transition-colors">
+                                        REASSIGN REVIEWER
+                                    </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Utility Panels (4 cols) -->
+<div class="xl:col-span-4 space-y-gutter-standard">
+<!-- Change Window Calendar Widget -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-sm p-4">
+<h3 class="font-headline-technical text-[14px] font-semibold text-primary mb-3 pb-2 border-b border-outline-variant flex justify-between items-center">
+                                Proposed Window
+                                <span class="material-symbols-outlined text-[18px] text-on-surface-variant">calendar_month</span>
+</h3>
+<div class="bg-surface p-3 border border-outline-variant rounded-sm mb-3">
+<div class="flex justify-between items-center mb-2">
+<span class="font-label-mono-style text-label-mono-style text-on-surface-variant uppercase">Start</span>
+<span class="font-body-data-bold text-primary">2023-11-18 02:00 Z</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-label-mono-style text-label-mono-style text-on-surface-variant uppercase">End</span>
+<span class="font-body-data-bold text-primary">2023-11-18 06:00 Z</span>
+</div>
+</div>
+<div class="h-24 bg-surface-container-high rounded-sm relative border border-outline-variant overflow-hidden">
+<!-- Minimal calendar block representation -->
+<div class="absolute left-0 top-0 bottom-0 w-1/4 bg-surface border-r border-outline-variant text-[9px] text-center pt-1 text-on-surface-variant font-mono">Fri</div>
+<div class="absolute left-1/4 top-0 bottom-0 w-1/4 bg-surface border-r border-outline-variant text-[9px] text-center pt-1 text-on-surface-variant font-mono bg-secondary-container">Sat</div>
+<div class="absolute left-2/4 top-0 bottom-0 w-1/4 bg-surface border-r border-outline-variant text-[9px] text-center pt-1 text-on-surface-variant font-mono">Sun</div>
+<div class="absolute left-3/4 top-0 bottom-0 w-1/4 bg-surface text-[9px] text-center pt-1 text-on-surface-variant font-mono">Mon</div>
+<div class="absolute left-[28%] top-1/2 w-[18%] h-4 bg-tertiary rounded-sm border border-tertiary-container shadow-sm transform -translate-y-1/2 flex items-center justify-center">
+<span class="text-[8px] text-on-tertiary font-mono">4h M.W.</span>
+</div>
+</div>
+</div>
+<!-- PIR Checklist -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-sm p-4">
+<h3 class="font-headline-technical text-[14px] font-semibold text-primary mb-3 pb-2 border-b border-outline-variant flex justify-between items-center">
+                                Post-Implementation (PIR)
+                                <span class="px-1.5 py-0.5 bg-surface-container-highest text-[10px] font-mono rounded">PENDING</span>
+</h3>
+<ul class="space-y-2">
+<li class="flex gap-2 items-start opacity-60">
+<input class="mt-0.5 border-outline-variant text-primary rounded-sm h-3 w-3" disabled="" type="checkbox"/>
+<span class="font-body-data text-[12px] leading-tight text-on-surface">Database failover test successful</span>
+</li>
+<li class="flex gap-2 items-start opacity-60">
+<input class="mt-0.5 border-outline-variant text-primary rounded-sm h-3 w-3" disabled="" type="checkbox"/>
+<span class="font-body-data text-[12px] leading-tight text-on-surface">Application servers reconnected successfully</span>
+</li>
+<li class="flex gap-2 items-start opacity-60">
+<input class="mt-0.5 border-outline-variant text-primary rounded-sm h-3 w-3" disabled="" type="checkbox"/>
+<span class="font-body-data text-[12px] leading-tight text-on-surface">Backup job verified on new cluster</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<!-- Sticky Action Bar -->
+<div class="fixed bottom-0 left-0 md:left-[240px] right-0 h-16 bg-surface-container-lowest border-t border-outline-variant shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] px-gutter-standard flex justify-between items-center z-40">
+<button class="px-4 py-2 text-error font-body-data-bold hover:bg-error-container rounded transition-colors">
+                    Cancel Request
+                </button>
+<button class="px-6 py-2 bg-primary text-on-primary font-body-data-bold rounded shadow-sm hover:bg-tertiary transition-colors flex items-center gap-2 disabled:opacity-50" disabled="">
+                    Submit for Review
+                    <span class="material-symbols-outlined text-[18px]">send</span>
+</button>
+</div>
+</main>
+</div>
+</body></html>

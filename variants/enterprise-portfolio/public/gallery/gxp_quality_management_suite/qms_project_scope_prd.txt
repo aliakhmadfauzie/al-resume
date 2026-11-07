@@ -1,0 +1,17 @@
+# Quality Management Platform (QMS) - PRD & Project Scope
+
+## Overview
+A GxP-compliant platform consolidating quality processes across manufacturing sites.
+
+## Core Screens to Generate
+1. **Executive Quality Dashboard**: High-level overview of 27+ processes, NCR trends, audit status, and site performance.
+2. **Document Control Center (SOPs & Work Instructions)**: Lifecycle management for SOPs, versioning, and e-signature status.
+3. **CAPA & NCR Management**: Tracking corrective/preventive actions and non-conformance reports with workflow stages.
+4. **Internal Audit Hub**: Scheduling, checklists, and real-time reporting for manufacturing site audits.
+5. **Supplier Quality Scorecards**: Performance tracking and quality metrics for external vendors.
+
+## Key Constraints
+- GxP compliance requirements (Audit trails visible)
+- E-signature integration points
+- Multi-site navigation
+- High data density requirements for industrial use cases

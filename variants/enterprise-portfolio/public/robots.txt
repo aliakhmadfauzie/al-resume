@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://altechsolution123.github.io/altechsolution/sitemap.xml
