@@ -1,54 +1,185 @@
 @import "tailwindcss";
 
-:root {
-  /* Surface & Border Palette */
-  --bg-primary: #0a0b0d;           /* Deep terminal dark canvas */
-  --bg-surface: #121418;           /* Elevated container & card layer */
-  --bg-surface-elevated: #1a1d24;  /* Hover states & dropdown surfaces */
-  --border-subtle: #262930;        /* 1px structural dividing lines */
-  --border-focus: #3b82f6;         /* Interactive state accent */
-  
-  /* Typography & High-Contrast Accents (WCAG AA >= 4.5:1 Verified) */
-  --text-primary: #f8fafc;         /* Headings & primary labels (17.4:1) */
-  --text-secondary: #cbd5e1;       /* Subheadlines, meta info & subtitles (11.3:1) */
-  --text-tertiary: #94a3b8;        /* Footers, badges & timestamps (6.6:1) */
+/* ==========================================================================
+   THREE-LAYER COLOR TOKEN ARCHITECTURE — OBSIDIAN & COPPER-ORANGE EDITION
+   Standard: WCAG 2.2 AA / APCA + High-Definition Dark Mode Physics
+   ========================================================================== */
 
-  --accent-blue: #2563eb;          /* Primary brand/download action */
-  --accent-blue-hover: #1d4ed8;    
-  --accent-glow: rgba(37, 99, 235, 0.15); /* Radial background gradient */
+:root {
+  /* ------------------------------------------------------------------------
+     LAYER 1: PRIMITIVES (50–950 Perceptually Uniform OKLCH / HSB Scales)
+     ------------------------------------------------------------------------ */
+
+  /* Primary Brand Scale — Warm Copper / Amber-Orange (Hue ~45°–55° OKLCH) */
+  --color-brand-50:  #fff7ed; /* oklch(0.98 0.016 73.7) */
+  --color-brand-100: #ffedd5; /* oklch(0.95 0.038 75.1) */
+  --color-brand-200: #fed7aa; /* oklch(0.90 0.076 70.7) */
+  --color-brand-300: #fdba74; /* oklch(0.84 0.128 66.3) */
+  --color-brand-400: #fb923c; /* oklch(0.75 0.168 55.9) - High-Contrast Dark Mode Text Accent (8.4:1) */
+  --color-brand-500: #f97316; /* oklch(0.70 0.198 47.6) - Primary Brand Orange (7.1:1 vs #0d0e12) */
+  --color-brand-600: #ea580c; /* oklch(0.64 0.206 41.1) - Deep Copper Gradient Stop */
+  --color-brand-700: #c2410c; /* oklch(0.55 0.181 38.4) - HSB Active/Pressed Shift */
+  --color-brand-800: #9a3412; /* oklch(0.47 0.146 37.3) */
+  --color-brand-900: #7c2d12; /* oklch(0.41 0.116 38.1) */
+  --color-brand-950: #431407; /* oklch(0.27 0.079 36.3) */
+
+  /* Neutral Scale — Obsidian & Warm Carbon Slate
+     Anchored at #0d0e12 / #121318 to eliminate OLED smearing and match reference UI */
+  --color-neutral-50:  #f8fafc;
+  --color-neutral-100: #f1f5f9;
+  --color-neutral-200: #e2e8f0;
+  --color-neutral-300: #cbd5e1;
+  --color-neutral-400: #94a3b8;
+  --color-neutral-500: #64748b;
+  --color-neutral-600: #475569;
+  --color-neutral-700: #272934; /* Tone Elevation 3 (Subtle Hairline Border) */
+  --color-neutral-800: #1b1d26; /* Tone Elevation 2 (Elevated Card / Hover Surface) */
+  --color-neutral-850: #13151c; /* Tone Elevation 1 (Matte Card Surface) */
+  --color-neutral-900: #0d0e12; /* Base Canvas */
+  --color-neutral-950: #08090c; /* Recessed Code / Terminal Well */
+
+  /* Functional Family: Success (Emerald — Live Indicators & Terminal Checks) */
+  --color-emerald-400: #4ade80; /* 10.4:1 vs #0d0e12 */
+  --color-emerald-500: #22c55e;
+  --color-emerald-700: #15803d;
+
+  /* Functional Family: Warning (Amber) */
+  --color-amber-400: #fbbf24;   /* 11.8:1 vs #0d0e12 */
+  --color-amber-500: #f59e0b;
+  --color-amber-700: #b45309;
+
+  /* Functional Family: Danger (Crimson) */
+  --color-crimson-400: #f87171; /* 7.2:1 vs #0d0e12 */
+  --color-crimson-500: #ef4444;
+  --color-crimson-700: #b91c1c;
+
+  /* Functional Family: Info (Warm Amber / Gold Highlight) */
+  --color-teal-400: #fbbf24;
+  --color-teal-500: #f59e0b;
+  --color-teal-700: #b45309;
+
+  /* ------------------------------------------------------------------------
+     LAYER 2: SEMANTIC ROLE TOKENS
+     ------------------------------------------------------------------------ */
+
+  /* 60% Foundation & Tone-Based Surface Illumination */
+  --bg-default:          var(--color-neutral-900); /* #0d0e12 */
+  --bg-recessed:         var(--color-neutral-950); /* #08090c */
+  --bg-surface:          var(--color-neutral-850); /* #13151c */
+  --bg-surface-elevated: var(--color-neutral-800); /* #1b1d26 */
+  --bg-surface-overlay:  var(--color-neutral-700); /* #272934 */
+
+  /* 30% Structural Borders & Dividers */
+  --border-subtle:       var(--color-neutral-700); /* #272934 */
+  --border-default:      #383b4a;
+  --border-focus:        var(--color-brand-500);   /* #f97316 */
+
+  /* Typography Hierarchy (WCAG 2.2 AA Verified) */
+  --text-primary:        var(--color-neutral-50);  /* #f8fafc (17.5:1) */
+  --text-secondary:      var(--color-neutral-300); /* #cbd5e1 (12.2:1) */
+  --text-tertiary:       var(--color-neutral-400); /* #94a3b8 (6.9:1)  */
+  --text-accent:         var(--color-brand-400);   /* #fb923c (8.4:1)  */
+  --text-on-interactive: #090a0d;                  /* Deep obsidian on bright orange CTA */
+
+  /* 10% Intentional Interactive & HSB State Variations */
+  --interactive-primary:        var(--color-brand-500); /* #f97316 */
+  --interactive-primary-hover:  var(--color-brand-400); /* #fb923c */
+  --interactive-primary-active: var(--color-brand-600); /* #ea580c */
+  --interactive-subtle-bg:      rgba(249, 115, 22, 0.12);
+  --interactive-subtle-hover:   rgba(249, 115, 22, 0.22);
+  --interactive-subtle-border:  rgba(249, 115, 22, 0.42);
+
+  /* Functional Status Roles */
+  --status-success-fg:     var(--color-emerald-400);
+  --status-success-bg:     rgba(34, 197, 94, 0.14);
+  --status-success-border: rgba(74, 222, 128, 0.40);
+
+  --status-warning-fg:     var(--color-amber-400);
+  --status-warning-bg:     rgba(245, 158, 11, 0.14);
+  --status-warning-border: rgba(251, 191, 36, 0.40);
+
+  --status-danger-fg:      var(--color-crimson-400);
+  --status-danger-bg:      rgba(239, 68, 68, 0.14);
+  --status-danger-border:  rgba(248, 113, 113, 0.40);
+
+  --status-info-fg:        var(--color-brand-400);
+  --status-info-bg:        rgba(249, 115, 22, 0.14);
+  --status-info-border:    rgba(251, 146, 60, 0.40);
+
+  /* Ambient Illumination & Circuit Grid Tokens */
+  --ambient-glow-primary:   rgba(249, 115, 22, 0.14);
+  --ambient-glow-secondary: rgba(245, 158, 11, 0.09);
+  --grid-line-subtle:       rgba(249, 115, 22, 0.14);
+
+  /* ------------------------------------------------------------------------
+     LAYER 3: COMPONENT MAPPING TOKENS
+     ------------------------------------------------------------------------ */
+  --btn-primary-bg:          var(--interactive-primary);
+  --btn-primary-bg-hover:    var(--interactive-primary-hover);
+  --btn-primary-bg-active:   var(--interactive-primary-active);
+  --btn-primary-fg:          #ffffff;
+
+  --btn-secondary-bg:        var(--bg-surface);
+  --btn-secondary-bg-hover:  var(--bg-surface-elevated);
+  --btn-secondary-fg:        var(--text-primary);
+  --btn-secondary-border:    var(--border-subtle);
+
+  --card-surface:            var(--bg-surface);
+  --card-surface-hover:      var(--bg-surface-elevated);
+  --card-border:             var(--border-subtle);
+  --card-border-hover:       var(--border-focus);
+
+  --nav-surface:             rgba(13, 14, 18, 0.92);
+  --nav-border:              var(--border-subtle);
+  --nav-indicator:           var(--border-focus);
+
+  --tooltip-surface:         var(--bg-surface-elevated);
+  --tooltip-border:          var(--border-focus);
+
+  --fab-bg:                  var(--btn-primary-bg);
+  --fab-bg-hover:            var(--btn-primary-bg-hover);
+  --fab-fg:                  #ffffff;
+  --fab-border:              var(--interactive-subtle-border);
+  --fab-shadow:              0 8px 24px rgba(249, 115, 22, 0.42);
+
+  /* Backward-Compatible Legacy Aliases */
+  --bg-primary:        var(--bg-default);
+  --accent-blue:       var(--interactive-primary);
+  --accent-blue-hover: var(--interactive-primary-hover);
+  --accent-glow:       var(--ambient-glow-primary);
 
   /* Typography Scale */
-  --font-sans: 'Google Sans', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-mono: 'Google Sans Mono', 'Fira Code', 'Courier New', monospace;
+  --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'Fira Code', 'JetBrains Mono', 'Google Sans Mono', monospace;
 
-  --text-hero: clamp(2.5rem, 5vw, 4rem); /* 60px / Line height: 1.1 / Weight: 600 */
-  --text-h1: 2.5rem;                     /* 40px / Line height: 1.2 / Weight: 600 */
-  --text-h2: 1.875rem;                   /* 30px / Line height: 1.25 / Weight: 500 */
-  --text-body: 1rem;                     /* 16px / Line height: 1.5 / Weight: 400 */
-  --text-sm: 0.875rem;                   /* 14px / Line height: 1.4 / Weight: 400 */
-  --text-micro: 0.75rem;                 /* 12px / Line height: 1.3 / Weight: 500 */
+  --text-hero: clamp(2.75rem, 5.5vw, 4.5rem);
+  --text-h1: 2.5rem;
+  --text-h2: 1.875rem;
+  --text-body: 1rem;
+  --text-sm: 0.875rem;
+  --text-micro: 0.75rem;
 
   /* Spacing Scale (8pt grid logic) */
-  --space-xs: 0.25rem;  /* 4px */
-  --space-sm: 0.5rem;   /* 8px */
-  --space-md: 1rem;     /* 16px */
-  --space-lg: 1.5rem;   /* 24px */
-  --space-xl: 2.5rem;   /* 40px */
-  --space-2xl: 5rem;    /* 80px */
-  --space-3xl: 8rem;    /* 128px */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2.5rem;
+  --space-2xl: 5rem;
+  --space-3xl: 8rem;
 
   /* Elevation & Geometry */
   --radius-sm: 6px;
-  --radius-md: 12px;
-  --radius-lg: 20px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
   --radius-full: 9999px;
-  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.4);
+  --shadow-card: 0 8px 30px rgba(0, 0, 0, 0.55);
 }
 
 @layer base {
   body {
     font-family: var(--font-sans);
-    background-color: var(--bg-primary);
+    background-color: var(--bg-default);
     color: var(--text-primary);
     overflow-x: hidden;
     font-size: var(--text-body);
@@ -61,21 +192,30 @@
   }
 }
 
-/* Antigravity Radial Glow & Surface Utilities */
+/* Radial Glow & Circuit Surface Utilities */
 .antigravity-hero-glow {
-  background: radial-gradient(circle at 50% 0%, var(--accent-glow) 0%, transparent 70%);
+  background:
+    radial-gradient(circle at 65% 22%, rgba(249, 115, 22, 0.14) 0%, transparent 55%),
+    radial-gradient(circle at 20% 15%, rgba(245, 158, 11, 0.08) 0%, transparent 45%);
+}
+
+.circuit-grid-bg {
+  background-image:
+    linear-gradient(to right, rgba(249, 115, 22, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(249, 115, 22, 0.05) 1px, transparent 1px);
+  background-size: 36px 36px;
 }
 
 .glass-panel {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
+  background: var(--card-surface);
+  border: 1px solid var(--card-border);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-card);
 }
 
 .glass-card {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
+  background: var(--card-surface);
+  border: 1px solid var(--card-border);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-card);
   position: relative;
@@ -83,13 +223,13 @@
 }
 
 .glass-card:hover {
-  background: var(--bg-surface-elevated);
-  border-color: var(--border-focus);
+  background: var(--card-surface-elevated);
+  border-color: var(--card-border-hover);
 }
 
 .executive-card {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
+  background: var(--card-surface);
+  border: 1px solid var(--card-border);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-card);
   position: relative;
@@ -97,19 +237,10 @@
 }
 
 .executive-card:hover {
-  border-color: var(--border-focus);
+  border-color: var(--card-border-hover);
 }
 
-/* Atmospheric Glows */
-.glow-circle {
-  position: absolute;
-  border-radius: 50%;
-  background: var(--accent-glow);
-  filter: blur(90px);
-  pointer-events: none;
-  z-index: 0;
-}
-
+/* Timeline Track */
 .timeline-track {
   position: absolute;
   left: 24px;
@@ -125,10 +256,12 @@
   }
 }
 
-/* Header focus states — WCAG AA */
+/* Header & Interactive Focus States — WCAG 2.2 AA */
 header a:focus-visible,
-header button:focus-visible {
-  outline: 2px solid #22d3ee;
+header button:focus-visible,
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--border-focus);
   outline-offset: 3px;
 }
 
@@ -139,7 +272,7 @@ header button:focus-visible {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bg-primary);
+  background: var(--bg-default);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -148,7 +281,7 @@ header button:focus-visible {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-blue);
+  background: var(--interactive-primary);
 }
 
 /* Skill Progress Bars */
@@ -162,6 +295,6 @@ header button:focus-visible {
 .skill-progress {
   height: 100%;
   border-radius: 2px;
-  background-color: var(--accent-blue);
+  background: linear-gradient(90deg, var(--color-brand-600), var(--color-brand-400));
   transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }

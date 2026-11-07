@@ -1,5 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { PERSONAL_INFO, WORK_EXPERIENCE, ADDITIONAL_COMPETENCIES } from '../../data/portfolioData';
+import {
+  PERSONAL_INFO,
+  WORK_EXPERIENCE,
+  ADDITIONAL_COMPETENCIES,
+  LINKEDIN_CERTIFICATIONS,
+  LINKEDIN_HONORS_AWARDS
+} from '../../data/portfolioData';
 import {
   X,
   Download,
@@ -7,7 +13,10 @@ import {
   Check,
   Mail,
   Phone,
-  MapPin
+  MapPin,
+  ExternalLink,
+  ShieldCheck,
+  Award
 } from 'lucide-react';
 
 interface ResumeModalProps {
@@ -56,10 +65,10 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose, onOpe
         <div className="flex items-center justify-between px-6 py-4 border-b border-[var(--border-subtle)] bg-[var(--bg-primary)] shrink-0">
           <div>
             <h2 id="resume-modal-title" className="text-sm font-semibold text-[var(--text-primary)] tracking-tight">
-              Executive Resume &amp; Credentials
+              Executive Resume &amp; LinkedIn Credentials
             </h2>
             <p className="text-xs text-[var(--text-tertiary)] font-mono">
-              Curriculum Vitae · Ali Akhmad Fauzie (AL)
+              Curriculum Vitae · Ali Akhmad Fauzie (in/aliakhmadf)
             </p>
           </div>
 
@@ -71,16 +80,25 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose, onOpe
               className="p-2 rounded-[var(--radius-sm)] bg-[var(--bg-surface)] hover:bg-[var(--bg-surface-elevated)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--border-subtle)] transition-colors"
               title="Copy link to resume"
             >
-              {copied ? <Check className="w-4 h-4 text-[#3b82f6]" /> : <Copy className="w-4 h-4" />}
+              {copied ? <Check className="w-4 h-4 text-[var(--text-accent)]" /> : <Copy className="w-4 h-4" />}
             </button>
+
+            <a
+              href="/assets/profile/Resume.pdf"
+              download="Ali_Akhmad_Fauzie_Resume.pdf"
+              className="hidden sm:flex items-center space-x-1.5 px-3.5 py-2 rounded-[var(--radius-sm)] bg-[#14161f] hover:bg-[var(--interactive-subtle-bg)] text-[var(--text-accent)] border border-[var(--interactive-subtle-border)] text-xs font-medium transition-colors"
+            >
+              <Download className="w-3.5 h-3.5" />
+              <span>Resume PDF</span>
+            </a>
 
             <button
               id="resume-btn-print"
               onClick={handlePrint}
-              className="hidden sm:flex items-center space-x-1.5 px-4 py-2 rounded-[var(--radius-sm)] bg-[var(--accent-blue)] hover:bg-[var(--accent-blue-hover)] text-white text-xs font-medium transition-colors"
+              className="hidden sm:flex items-center space-x-1.5 px-4 py-2 rounded-[var(--radius-sm)] bg-[var(--interactive-primary)] hover:bg-[var(--interactive-primary-hover)] text-[#090a0d] text-xs font-bold transition-colors"
             >
               <Download className="w-3.5 h-3.5" />
-              <span>Download PDF</span>
+              <span>Print / Save PDF</span>
             </button>
 
             <button
@@ -96,30 +114,50 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose, onOpe
 
         {/* Scrollable Content Body */}
         <div className="flex-1 overflow-y-auto p-6 sm:p-8 space-y-8 bg-[var(--bg-surface)] print:bg-white print:text-black">
-          {/* Header Identity Block */}
-          <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 pb-6 border-b border-[var(--border-subtle)]">
-            <div className="space-y-1.5">
-              <h1 className="text-2xl sm:text-3xl font-semibold text-[var(--text-primary)] tracking-tight">
-                {PERSONAL_INFO.name} (AL)
-              </h1>
-              <p className="text-sm font-medium text-[#3b82f6] font-mono">{PERSONAL_INFO.title}</p>
-              <p className="text-sm text-[var(--text-secondary)] max-w-xl leading-relaxed pt-1">
-                {PERSONAL_INFO.summary}
-              </p>
+          {/* Header Identity Block with Real LinkedIn Photo */}
+          <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-6 pb-6 border-b border-[var(--border-subtle)]">
+            <div className="flex flex-col sm:flex-row items-start gap-4">
+              <img
+                src={PERSONAL_INFO.avatarUrl}
+                alt={PERSONAL_INFO.name}
+                className="w-20 h-20 rounded-full object-cover border-2 border-[var(--interactive-primary)] shrink-0"
+              />
+              <div className="space-y-1.5">
+                <h1 className="text-2xl sm:text-3xl font-semibold text-[var(--text-primary)] tracking-tight">
+                  {PERSONAL_INFO.name} (AL)
+                </h1>
+                <p className="text-xs sm:text-sm font-medium text-[var(--text-accent)] font-mono">
+                  {PERSONAL_INFO.linkedInHeadline}
+                </p>
+                <p className="text-sm text-[var(--text-secondary)] max-w-xl leading-relaxed pt-1">
+                  {PERSONAL_INFO.summary}
+                </p>
+              </div>
             </div>
 
             <div className="space-y-2 text-xs text-[var(--text-secondary)] shrink-0 font-mono bg-[var(--bg-primary)] p-4 rounded-[var(--radius-md)] border border-[var(--border-subtle)]">
               <div className="flex items-center space-x-2">
-                <MapPin className="w-3.5 h-3.5 text-[#3b82f6]" />
-                <span>{PERSONAL_INFO.location}</span>
+                <MapPin className="w-3.5 h-3.5 text-[var(--text-accent)] shrink-0" />
+                <span>Kuala Lumpur, MY / Bandung, ID</span>
               </div>
               <div className="flex items-center space-x-2">
-                <Mail className="w-3.5 h-3.5 text-[#3b82f6]" />
+                <Mail className="w-3.5 h-3.5 text-[var(--text-accent)] shrink-0" />
                 <span>{PERSONAL_INFO.email}</span>
               </div>
               <div className="flex items-center space-x-2">
-                <Phone className="w-3.5 h-3.5 text-[#3b82f6]" />
+                <Phone className="w-3.5 h-3.5 text-[var(--text-accent)] shrink-0" />
                 <span>{PERSONAL_INFO.phone}</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <ExternalLink className="w-3.5 h-3.5 text-[var(--text-accent)] shrink-0" />
+                <a
+                  href={PERSONAL_INFO.linkedIn}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[var(--text-accent)] hover:underline"
+                >
+                  {PERSONAL_INFO.linkedInHandle}
+                </a>
               </div>
               <div className="pt-2">
                 <button
@@ -127,7 +165,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose, onOpe
                     onClose();
                     onOpenContact();
                   }}
-                  className="w-full py-1.5 px-3 rounded-[var(--radius-sm)] bg-[var(--accent-blue)] hover:bg-[var(--accent-blue-hover)] text-white text-center font-sans font-medium transition-colors"
+                  className="w-full py-1.5 px-3 rounded-[var(--radius-sm)] bg-[var(--interactive-primary)] hover:bg-[var(--interactive-primary-hover)] text-[#090a0d] text-center font-sans font-bold transition-colors"
                 >
                   Contact Candidate
                 </button>
@@ -135,9 +173,9 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose, onOpe
             </div>
           </div>
 
-          {/* Technical Skills & Core Competencies */}
+          {/* 01 · Technical Skills & Core Competencies */}
           <div className="space-y-3">
-            <h3 className="text-xs font-mono text-[#3b82f6] font-medium">
+            <h3 className="text-xs font-mono text-[var(--text-accent)] font-medium">
               01 · Technical Skills &amp; Core Competencies
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -155,21 +193,21 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose, onOpe
             </div>
           </div>
 
-          {/* Experience Section */}
+          {/* 02 · Professional Experience */}
           <div className="space-y-5">
-            <h3 className="text-xs font-mono text-[#3b82f6] font-medium">
+            <h3 className="text-xs font-mono text-[var(--text-accent)] font-medium">
               02 · Professional Experience
             </h3>
 
             <div className="space-y-6">
               {WORK_EXPERIENCE.map((exp) => (
                 <div key={exp.id} className="relative pl-6 border-l border-[var(--border-subtle)] space-y-2">
-                  <div className="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-[#2563eb]" />
+                  <div className="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-[var(--interactive-primary)]" />
 
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
                     <div>
                       <h4 className="text-sm font-semibold text-[var(--text-primary)]">{exp.role}</h4>
-                      <p className="text-xs text-[#3b82f6] font-medium">
+                      <p className="text-xs text-[var(--text-accent)] font-medium">
                         {exp.company} · {exp.location}
                       </p>
                     </div>
@@ -181,11 +219,66 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose, onOpe
                   <ul className="space-y-1.5 text-xs text-[var(--text-secondary)] pt-1">
                     {exp.bulletPoints.map((bp, idx) => (
                       <li key={idx} className="flex items-start space-x-2 leading-relaxed">
-                        <span className="text-[#3b82f6] mt-0.5 shrink-0 font-mono">·</span>
+                        <span className="text-[var(--text-accent)] mt-0.5 shrink-0 font-mono">·</span>
                         <span>{bp}</span>
                       </li>
                     ))}
                   </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* 03 · LinkedIn Licenses & Certifications */}
+          <div className="space-y-3">
+            <h3 className="text-xs font-mono text-[var(--text-accent)] font-medium">
+              03 · Licenses &amp; Certifications (LinkedIn Verified)
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {LINKEDIN_CERTIFICATIONS.map((cert) => (
+                <div
+                  key={cert.id}
+                  className="bg-[var(--bg-primary)] p-3.5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] flex items-start justify-between gap-3"
+                >
+                  <div className="space-y-1">
+                    <div className="flex items-center gap-1.5">
+                      <ShieldCheck className="w-3.5 h-3.5 text-[var(--interactive-primary)] shrink-0" />
+                      <p className="text-xs font-semibold text-[var(--text-primary)]">{cert.name}</p>
+                    </div>
+                    <p className="text-[11px] font-mono text-[var(--text-secondary)]">
+                      {cert.issuer}
+                    </p>
+                  </div>
+                  <span className="text-[11px] font-mono text-[var(--text-accent)] shrink-0">
+                    {cert.issueDate}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* 04 · Honors & Academic Awards */}
+          <div className="space-y-3">
+            <h3 className="text-xs font-mono text-[var(--text-accent)] font-medium">
+              04 · Honors &amp; Academic Awards
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {LINKEDIN_HONORS_AWARDS.map((award) => (
+                <div
+                  key={award.id}
+                  className="bg-[var(--bg-primary)] p-3.5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-1"
+                >
+                  <div className="flex items-center justify-between gap-2">
+                    <div className="flex items-center gap-1.5">
+                      <Award className="w-3.5 h-3.5 text-[var(--interactive-primary)] shrink-0" />
+                      <p className="text-xs font-semibold text-[var(--text-primary)]">{award.title}</p>
+                    </div>
+                    <span className="text-[11px] font-mono text-[var(--text-accent)] shrink-0">
+                      {award.year}
+                    </span>
+                  </div>
+                  <p className="text-[11px] font-mono text-[var(--text-tertiary)]">{award.issuer}</p>
+                  <p className="text-xs text-[var(--text-secondary)] leading-relaxed">{award.description}</p>
                 </div>
               ))}
             </div>
@@ -195,7 +288,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose, onOpe
         {/* Footer Actions */}
         <div className="px-6 py-4 border-t border-[var(--border-subtle)] bg-[var(--bg-primary)] flex items-center justify-between">
           <span className="text-xs text-[var(--text-tertiary)] font-mono">
-            Ali Akhmad Fauzie (AL) · Solution Architect Dossier
+            Ali Akhmad Fauzie (AL) · linkedin.com/in/aliakhmadf
           </span>
           <div className="flex items-center gap-3">
             <button
@@ -204,9 +297,16 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose, onOpe
             >
               Close
             </button>
+            <a
+              href="/assets/profile/LinkedIn_Profile.pdf"
+              download="Ali_Akhmad_Fauzie_LinkedIn_Profile.pdf"
+              className="px-4 py-2 rounded-[var(--radius-sm)] text-xs font-mono text-[var(--text-accent)] bg-[#14161f] border border-[var(--interactive-subtle-border)] hover:bg-[var(--interactive-subtle-bg)]"
+            >
+              LinkedIn PDF
+            </a>
             <button
               onClick={handlePrint}
-              className="flex items-center space-x-2 px-5 py-2 rounded-[var(--radius-sm)] text-xs font-medium bg-[var(--accent-blue)] text-white hover:bg-[var(--accent-blue-hover)] transition-colors"
+              className="flex items-center space-x-2 px-5 py-2 rounded-[var(--radius-sm)] text-xs font-bold bg-[var(--interactive-primary)] text-[#090a0d] hover:bg-[var(--interactive-primary-hover)] transition-colors"
             >
               <Download className="w-3.5 h-3.5" />
               <span>Download PDF</span>
@@ -217,3 +317,4 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose, onOpe
     </div>
   );
 };
+

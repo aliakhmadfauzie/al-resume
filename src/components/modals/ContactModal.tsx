@@ -86,12 +86,12 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
         <div className="p-6 sm:p-8 space-y-6">
           {submitted ? (
             <div className="text-center py-10 space-y-4">
-              <div className="w-12 h-12 bg-[var(--bg-primary)] border border-[var(--border-focus)] rounded-full flex items-center justify-center mx-auto text-[#3b82f6]">
+              <div className="w-12 h-12 bg-[var(--bg-primary)] border border-[var(--border-focus)] rounded-full flex items-center justify-center mx-auto text-[var(--text-accent)]">
                 <CheckCircle2 className="w-6 h-6" />
               </div>
               <h3 className="text-xl font-semibold text-[var(--text-primary)]">Message Dispatched</h3>
               <p className="text-sm text-[var(--text-secondary)] max-w-md mx-auto leading-relaxed">
-                Thank you for reaching out, <span className="text-[var(--text-primary)] font-medium">{name || 'there'}</span>. Ali will review your inquiry regarding <span className="text-[#3b82f6]">{inquiryType}</span> and respond promptly at <span className="text-[var(--text-primary)]">{email}</span>.
+                Thank you for reaching out, <span className="text-[var(--text-primary)] font-medium">{name || 'there'}</span>. Ali will review your inquiry regarding <span className="text-[var(--text-accent)]">{inquiryType}</span> and respond promptly at <span className="text-[var(--text-primary)]">{email}</span>.
               </p>
               <div className="pt-4 flex justify-center">
                 <button
@@ -112,14 +112,14 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
                   className="p-3.5 rounded-[var(--radius-md)] bg-[var(--bg-primary)] hover:bg-[var(--bg-surface-elevated)] border border-[var(--border-subtle)] hover:border-[var(--border-focus)] transition-colors flex items-center justify-between text-left"
                 >
                   <div className="flex items-center space-x-3">
-                    <Mail className="w-4 h-4 text-[#3b82f6] shrink-0" />
+                    <Mail className="w-4 h-4 text-[var(--text-accent)] shrink-0" />
                     <div>
                       <p className="text-[11px] text-[var(--text-tertiary)] font-mono">Direct Email</p>
                       <p className="text-xs font-medium text-[var(--text-primary)]">{PERSONAL_INFO.email}</p>
                     </div>
                   </div>
                   <span className="text-xs text-[var(--text-secondary)]">
-                    {copiedEmail ? <Check className="w-4 h-4 text-[#3b82f6]" /> : <Copy className="w-3.5 h-3.5" />}
+                    {copiedEmail ? <Check className="w-4 h-4 text-[var(--text-accent)]" /> : <Copy className="w-3.5 h-3.5" />}
                   </span>
                 </button>
 
@@ -129,14 +129,14 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
                   className="p-3.5 rounded-[var(--radius-md)] bg-[var(--bg-primary)] hover:bg-[var(--bg-surface-elevated)] border border-[var(--border-subtle)] hover:border-[var(--border-focus)] transition-colors flex items-center justify-between text-left"
                 >
                   <div className="flex items-center space-x-3">
-                    <Phone className="w-4 h-4 text-[#3b82f6] shrink-0" />
+                    <Phone className="w-4 h-4 text-[var(--text-accent)] shrink-0" />
                     <div>
                       <p className="text-[11px] text-[var(--text-tertiary)] font-mono">Direct Phone / WhatsApp</p>
                       <p className="text-xs font-medium text-[var(--text-primary)]">{PERSONAL_INFO.phone}</p>
                     </div>
                   </div>
                   <span className="text-xs text-[var(--text-secondary)]">
-                    {copiedPhone ? <Check className="w-4 h-4 text-[#3b82f6]" /> : <Copy className="w-3.5 h-3.5" />}
+                    {copiedPhone ? <Check className="w-4 h-4 text-[var(--text-accent)]" /> : <Copy className="w-3.5 h-3.5" />}
                   </span>
                 </button>
               </div>

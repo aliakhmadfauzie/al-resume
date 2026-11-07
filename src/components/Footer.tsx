@@ -1,18 +1,7 @@
 import React from 'react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 import { NavTab } from '../types';
-import { 
-  Linkedin, 
-  Github, 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Sparkles, 
-  ArrowUpRight, 
-  ShieldCheck,
-  Cpu,
-  Layers
-} from 'lucide-react';
+import { Linkedin, Github, Mail, FileText } from 'lucide-react';
 
 interface FooterProps {
   onSelectTab: (tab: NavTab) => void;
@@ -20,176 +9,188 @@ interface FooterProps {
   onOpenContact: () => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ onSelectTab, onOpenResume, onOpenContact }) => {
+export const Footer: React.FC<FooterProps> = ({
+  onSelectTab,
+  onOpenResume,
+  onOpenContact
+}) => {
+  const scrollToHomeAnchor = (anchorId: string) => {
+    onSelectTab('home');
+    setTimeout(() => {
+      const el = document.getElementById(anchorId);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 80);
+  };
+
   return (
-    <footer className="w-full bg-[#0c0e12] border-t border-[#282a2e] text-[#c0c7d4] pt-14 pb-12 mt-20 relative overflow-hidden">
-      <div className="glow-circle w-96 h-96 bg-[#0078d4]/10 top-0 left-1/4 -translate-y-1/2"></div>
-      <div className="glow-circle w-96 h-96 bg-[#5c2d91]/10 bottom-0 right-1/4"></div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-10 pb-12 border-b border-[#282a2e]">
-          
-          {/* Col 1 & 2: Bio & Profile */}
-          <div className="lg:col-span-2 space-y-4">
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#0078d4] to-[#00dbe7] p-[1.5px]">
-                <div className="w-full h-full bg-[#111318] rounded-[10px] flex items-center justify-center font-mono font-bold text-[#a3c9ff]">
-                  AF
-                </div>
-              </div>
-              <div>
-                <h3 className="text-white font-bold text-base tracking-tight">{PERSONAL_INFO.name}</h3>
-                <p className="text-xs text-[#00dbe7] font-mono">Enterprise Modernization Architect</p>
-              </div>
+    <footer className="w-full bg-[#0a0b0e] border-t border-[var(--border-subtle)] text-[var(--text-secondary)] pt-10 pb-8 mt-14">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 pb-8 border-b border-[var(--border-subtle)] items-start">
+          {/* Left: < /> Identity Lockup */}
+          <div className="md:col-span-4 flex items-center gap-3">
+            <span className="text-[var(--interactive-primary)] font-mono font-bold text-2xl tracking-tighter">
+              &lt;/&gt;
+            </span>
+            <div>
+              <h3 className="text-base font-bold tracking-wider text-[var(--text-primary)] uppercase">
+                {PERSONAL_INFO.name}
+              </h3>
+              <p className="text-[10px] font-mono tracking-widest text-[var(--text-tertiary)] uppercase mt-0.5">
+                ENTERPRISE SOLUTION ARCHITECT
+              </p>
             </div>
+          </div>
 
-            <p className="text-xs leading-relaxed text-[#c0c7d4] max-w-md">
-              Helping enterprises retire legacy platforms, modernize business processes, and deploy AI-powered operating models using Microsoft 365, Power Platform, and Azure.
-            </p>
+          {/* Center: Quick Links (3 Sub-Columns Matching Reference) */}
+          <div className="md:col-span-5 space-y-2.5">
+            <h4 className="text-xs font-semibold text-[var(--text-primary)]">
+              Quick Links
+            </h4>
+            <div className="grid grid-cols-3 gap-4 text-xs text-[var(--text-tertiary)]">
+              <ul className="space-y-1.5">
+                <li>
+                  <button
+                    type="button"
+                    onClick={() => scrollToHomeAnchor('section-about')}
+                    className="hover:text-[var(--text-accent)] transition-colors cursor-pointer"
+                  >
+                    About
+                  </button>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    onClick={() => scrollToHomeAnchor('section-services')}
+                    className="hover:text-[var(--text-accent)] transition-colors cursor-pointer"
+                  >
+                    Services
+                  </button>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    onClick={() => onSelectTab('projects')}
+                    className="hover:text-[var(--text-accent)] transition-colors cursor-pointer"
+                  >
+                    Projects
+                  </button>
+                </li>
+              </ul>
 
-            <div className="flex items-center space-x-3 pt-2">
-              <a
-                id="footer-link-linkedin"
-                href={PERSONAL_INFO.linkedIn}
-                target="_blank"
-                rel="noreferrer"
-                className="w-8 h-8 rounded-lg bg-[#1e2024] hover:bg-[#0078d4] text-white flex items-center justify-center transition-all border border-[#282a2e]"
-                title="LinkedIn Profile"
-              >
-                <Linkedin className="w-4 h-4" />
-              </a>
+              <ul className="space-y-1.5">
+                <li>
+                  <button
+                    type="button"
+                    onClick={() => onSelectTab('skills')}
+                    className="hover:text-[var(--text-accent)] transition-colors cursor-pointer"
+                  >
+                    Tech Stack
+                  </button>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    onClick={() => onSelectTab('demos')}
+                    className="hover:text-[var(--text-accent)] transition-colors cursor-pointer"
+                  >
+                    Simulators
+                  </button>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    onClick={() => onSelectTab('experience')}
+                    className="hover:text-[var(--text-accent)] transition-colors cursor-pointer"
+                  >
+                    Experience
+                  </button>
+                </li>
+              </ul>
+
+              <ul className="space-y-1.5">
+                <li>
+                  <button
+                    type="button"
+                    onClick={() => onSelectTab('interview')}
+                    className="hover:text-[var(--text-accent)] transition-colors cursor-pointer"
+                  >
+                    Architecture Q&amp;A
+                  </button>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    onClick={onOpenContact}
+                    className="hover:text-[var(--text-accent)] transition-colors cursor-pointer"
+                  >
+                    Contact
+                  </button>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    onClick={onOpenResume}
+                    className="hover:text-[var(--text-accent)] transition-colors cursor-pointer"
+                  >
+                    Executive CV
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Right: Let's Connect Social Icons */}
+          <div className="md:col-span-3 space-y-2.5">
+            <h4 className="text-xs font-semibold text-[var(--text-primary)]">
+              Let&apos;s Connect
+            </h4>
+            <div className="flex items-center space-x-2.5">
               <a
                 id="footer-link-github"
                 href={PERSONAL_INFO.github}
                 target="_blank"
                 rel="noreferrer"
-                className="w-8 h-8 rounded-lg bg-[#1e2024] hover:bg-[#282a2e] text-white flex items-center justify-center transition-all border border-[#282a2e]"
+                className="w-8 h-8 rounded-[var(--radius-sm)] bg-[#13151c] hover:bg-[var(--interactive-subtle-bg)] text-[var(--text-secondary)] hover:text-[var(--text-accent)] flex items-center justify-center transition-colors border border-[var(--border-subtle)] hover:border-[var(--interactive-subtle-border)]"
                 title="GitHub Profile"
               >
                 <Github className="w-4 h-4" />
               </a>
+              <a
+                id="footer-link-linkedin"
+                href={PERSONAL_INFO.linkedIn}
+                target="_blank"
+                rel="noreferrer"
+                className="w-8 h-8 rounded-[var(--radius-sm)] bg-[#13151c] hover:bg-[var(--interactive-subtle-bg)] text-[var(--text-secondary)] hover:text-[var(--text-accent)] flex items-center justify-center transition-colors border border-[var(--border-subtle)] hover:border-[var(--interactive-subtle-border)]"
+                title="LinkedIn Profile"
+              >
+                <Linkedin className="w-4 h-4" />
+              </a>
+              <button
+                id="footer-btn-resume"
+                type="button"
+                onClick={onOpenResume}
+                className="w-8 h-8 rounded-[var(--radius-sm)] bg-[#13151c] hover:bg-[var(--interactive-subtle-bg)] text-[var(--text-secondary)] hover:text-[var(--text-accent)] flex items-center justify-center transition-colors border border-[var(--border-subtle)] hover:border-[var(--interactive-subtle-border)] cursor-pointer"
+                title="Executive Resume"
+              >
+                <FileText className="w-4 h-4" />
+              </button>
               <button
                 id="footer-btn-email"
+                type="button"
                 onClick={onOpenContact}
-                className="w-8 h-8 rounded-lg bg-[#1e2024] hover:bg-[#5c2d91] text-white flex items-center justify-center transition-all border border-[#282a2e]"
+                className="w-8 h-8 rounded-[var(--radius-sm)] bg-[#13151c] hover:bg-[var(--interactive-subtle-bg)] text-[var(--text-secondary)] hover:text-[var(--text-accent)] flex items-center justify-center transition-colors border border-[var(--border-subtle)] hover:border-[var(--interactive-subtle-border)] cursor-pointer"
                 title="Send Message"
               >
                 <Mail className="w-4 h-4" />
               </button>
             </div>
           </div>
-
-          {/* Col 3: Architecture & Projects */}
-          <div className="space-y-3">
-            <h4 className="text-xs font-mono uppercase tracking-widest text-[#a3c9ff] font-semibold">Case Studies</h4>
-            <ul className="space-y-2 text-xs">
-              <li>
-                <button onClick={() => onSelectTab('projects')} className="hover:text-white transition-colors flex items-center space-x-1.5">
-                  <span>Enterprise Modernization Program</span>
-                </button>
-              </li>
-              <li>
-                <button onClick={() => onSelectTab('projects')} className="hover:text-white transition-colors">
-                  Financial Process Transformation
-                </button>
-              </li>
-              <li>
-                <button onClick={() => onSelectTab('projects')} className="hover:text-white transition-colors">
-                  Business Request Automation
-                </button>
-              </li>
-              <li>
-                <button onClick={() => onSelectTab('projects')} className="hover:text-white transition-colors">
-                  AI-Enabled Knowledge Systems
-                </button>
-              </li>
-              <li>
-                <button onClick={() => onSelectTab('projects')} className="hover:text-white transition-colors">
-                  Governance & Compliance Platforms
-                </button>
-              </li>
-            </ul>
-          </div>
-
-          {/* Col 4: Interactive Demos */}
-          <div className="space-y-3">
-            <h4 className="text-xs font-mono uppercase tracking-widest text-[#00dbe7] font-semibold">Interactive Demos</h4>
-            <ul className="space-y-2 text-xs">
-              <li>
-                <button onClick={() => onSelectTab('demos')} className="hover:text-white transition-colors flex items-center space-x-1">
-                  <span>FinOps Spend Portal</span>
-                  <ArrowUpRight className="w-3 h-3 text-[#00dbe7]" />
-                </button>
-              </li>
-              <li>
-                <button onClick={() => onSelectTab('demos')} className="hover:text-white transition-colors flex items-center space-x-1">
-                  <span>Industrial Nexus (ITSM)</span>
-                  <ArrowUpRight className="w-3 h-3 text-[#00dbe7]" />
-                </button>
-              </li>
-              <li>
-                <button onClick={() => onSelectTab('demos')} className="hover:text-white transition-colors flex items-center space-x-1">
-                  <span>Warehouse Central Hub</span>
-                  <ArrowUpRight className="w-3 h-3 text-[#00dbe7]" />
-                </button>
-              </li>
-              <li>
-                <button onClick={() => onSelectTab('demos')} className="hover:text-white transition-colors flex items-center space-x-1">
-                  <span>Rebate Formula Simulator</span>
-                  <ArrowUpRight className="w-3 h-3 text-[#00dbe7]" />
-                </button>
-              </li>
-              <li>
-                <button onClick={() => onSelectTab('demos')} className="hover:text-white transition-colors flex items-center space-x-1">
-                  <span>AI SOP Classification</span>
-                  <ArrowUpRight className="w-3 h-3 text-[#00dbe7]" />
-                </button>
-              </li>
-            </ul>
-          </div>
-
-          {/* Col 5: Direct Contact */}
-          <div className="space-y-3">
-            <h4 className="text-xs font-mono uppercase tracking-widest text-[#dab9ff] font-semibold">Contact & Location</h4>
-            <div className="space-y-2 text-xs">
-              <div className="flex items-start space-x-2 text-[#c0c7d4]">
-                <MapPin className="w-3.5 h-3.5 text-[#a3c9ff] shrink-0 mt-0.5" />
-                <span>Kuala Lumpur, MY / Bandung, ID</span>
-              </div>
-              <div className="flex items-center space-x-2 text-[#c0c7d4]">
-                <Mail className="w-3.5 h-3.5 text-[#00dbe7] shrink-0" />
-                <a href="mailto:aliakhmadfauzie@gmail.com" className="hover:text-white truncate">aliakhmadfauzie@gmail.com</a>
-              </div>
-              <div className="flex items-center space-x-2 text-[#c0c7d4]">
-                <Phone className="w-3.5 h-3.5 text-[#dab9ff] shrink-0" />
-                <span className="font-mono text-[11px]">+62 851-1055-2118</span>
-              </div>
-            </div>
-
-            <div className="pt-2">
-              <button
-                id="footer-btn-schedule"
-                onClick={onOpenContact}
-                className="w-full py-2 px-3 rounded-lg text-xs font-semibold bg-[#1e2024] hover:bg-[#0078d4] text-white border border-[#282a2e] transition-all flex items-center justify-center space-x-1.5"
-              >
-                <Sparkles className="w-3.5 h-3.5 text-[#00dbe7]" />
-                <span>Discuss a Transformation Initiative</span>
-              </button>
-            </div>
-          </div>
-
         </div>
 
-        {/* Bottom copyright */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-[#c0c7d4]">
-          <p>© {new Date().getFullYear()} Ali Akhmad Fauzie. All Rights Reserved. Built with React & TypeScript.</p>
-          <div className="flex items-center space-x-4 mt-4 sm:mt-0">
-            <button onClick={onOpenResume} className="hover:text-white transition-colors">Resume</button>
-            <span>•</span>
-            <button onClick={() => onSelectTab('interview')} className="hover:text-white transition-colors">Architect Interview Q&A</button>
-            <span>•</span>
-            <button onClick={onOpenContact} className="hover:text-white transition-colors">Contact</button>
-          </div>
+        {/* Bottom Copyright Bar */}
+        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between text-[11px] text-[var(--text-tertiary)] gap-2">
+          <p>© {new Date().getFullYear()} Ali Akhmad Fauzie. All rights reserved.</p>
+          <p className="font-mono">Built with passion. Deployed with precision.</p>
         </div>
       </div>
     </footer>

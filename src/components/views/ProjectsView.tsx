@@ -73,7 +73,7 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
     <div className="space-y-12 py-6">
       {/* Page Header */}
       <div className="space-y-3 border-b border-[var(--border-subtle)] pb-8">
-        <p className="text-xs font-mono text-[#60a5fa] font-medium">
+        <p className="text-xs font-mono text-[var(--text-accent)] font-medium">
           01 · Enterprise Case Studies &amp; Cutover Architecture
         </p>
         <h1
@@ -82,7 +82,7 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
         >
           Enterprise Projects &amp; Migration Architecture
         </h1>
-        <p className="text-base text-[#cbd5e1] max-w-3xl leading-relaxed">
+        <p className="text-base text-[var(--text-secondary)] max-w-3xl leading-relaxed">
           Standardized architectural documentation covering end-to-end Power Platform systems, legacy Lotus Domino modernizations, financial approval engines, and AI workflow integrations.
         </p>
       </div>
@@ -91,14 +91,14 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
       <section className="bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-[var(--radius-lg)] p-6 sm:p-8 space-y-6 shadow-[var(--shadow-card)]">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-[var(--border-subtle)] pb-6">
           <div className="space-y-1.5">
-            <div className="flex items-center space-x-2 text-xs font-mono text-[#60a5fa] font-medium">
+            <div className="flex items-center space-x-2 text-xs font-mono text-[var(--text-accent)] font-medium">
               <Database className="w-3.5 h-3.5" />
               <span>Flagship Enterprise Migration · 365+ Applications</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-semibold text-[var(--text-primary)] tracking-tight">
               {MIGRATION_OVERVIEW.title}
             </h2>
-            <p className="text-xs text-[#cbd5e1] font-mono">
+            <p className="text-xs text-[var(--text-secondary)] font-mono">
               {MIGRATION_OVERVIEW.period} · {MIGRATION_OVERVIEW.role}
             </p>
           </div>
@@ -109,7 +109,7 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
               <p className="text-[11px] text-[var(--text-tertiary)] mt-0.5">High Complexity</p>
             </div>
             <div className="bg-[var(--bg-primary)] p-3.5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] text-center">
-              <span className="text-xl font-semibold text-[#3b82f6]">28</span>
+              <span className="text-xl font-semibold text-[var(--text-accent)]">28</span>
               <p className="text-[11px] text-[var(--text-tertiary)] mt-0.5">Medium Complexity</p>
             </div>
             <div className="bg-[var(--bg-primary)] p-3.5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] text-center">
@@ -127,7 +127,7 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
         {MIGRATION_OVERVIEW.consolidationStats && (
           <div className="pt-2 space-y-4">
             <h3 className="text-xs font-mono text-[var(--text-primary)] font-medium flex items-center space-x-2">
-              <FolderGit2 className="w-4 h-4 text-[#3b82f6]" />
+              <FolderGit2 className="w-4 h-4 text-[var(--text-accent)]" />
               <span>Consolidation &amp; Schema Modernization Telemetry</span>
             </h3>
 
@@ -141,7 +141,7 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
                 </p>
               </div>
               <div className="bg-[var(--bg-primary)] p-4 rounded-[var(--radius-md)] border border-[var(--border-subtle)]">
-                <span className="text-2xl font-semibold text-[#3b82f6]">
+                <span className="text-2xl font-semibold text-[var(--text-accent)]">
                   {MIGRATION_OVERVIEW.consolidationStats.sharedCrossDepartment}
                 </span>
                 <p className="text-xs text-[var(--text-secondary)] mt-1 font-sans">
@@ -157,7 +157,7 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
                 </p>
               </div>
               <div className="bg-[var(--bg-primary)] p-4 rounded-[var(--radius-md)] border border-[var(--border-subtle)]">
-                <span className="text-2xl font-semibold text-[#3b82f6]">
+                <span className="text-2xl font-semibold text-[var(--text-accent)]">
                   {MIGRATION_OVERVIEW.consolidationStats.routingDifferencesResolved}
                 </span>
                 <p className="text-xs text-[var(--text-secondary)] mt-1 font-sans">
@@ -259,7 +259,7 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
                     >
                       <div className="space-y-2.5">
                         <div className="flex items-center justify-between">
-                          <span className="w-8 h-8 rounded-[var(--radius-sm)] bg-[var(--bg-surface)] border border-[var(--border-subtle)] text-[#3b82f6] font-mono font-semibold text-sm flex items-center justify-center">
+                          <span className="w-8 h-8 rounded-[var(--radius-sm)] bg-[var(--bg-surface)] border border-[var(--border-subtle)] text-[var(--text-accent)] font-mono font-semibold text-sm flex items-center justify-center">
                             {slice.letter}
                           </span>
                           <span className="text-xs font-mono text-[var(--text-secondary)] tabular-nums">
@@ -267,7 +267,7 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
                           </span>
                         </div>
 
-                        <h4 className="text-base font-semibold text-[var(--text-primary)] group-hover:text-[#3b82f6] transition-colors">
+                        <h4 className="text-base font-semibold text-[var(--text-primary)] group-hover:text-[var(--text-accent)] transition-colors">
                           {slice.title}
                         </h4>
 
@@ -278,11 +278,11 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
 
                       <div className="pt-3 border-t border-[var(--border-subtle)] space-y-2">
                         <div className="flex items-center space-x-1.5 text-xs text-[var(--text-primary)] font-medium">
-                          <TrendingUp className="w-3.5 h-3.5 text-[#3b82f6] shrink-0" />
+                          <TrendingUp className="w-3.5 h-3.5 text-[var(--text-accent)] shrink-0" />
                           <span className="truncate">{slice.impact}</span>
                         </div>
 
-                        <div className="flex items-center justify-between text-xs font-medium text-[#3b82f6]">
+                        <div className="flex items-center justify-between text-xs font-medium text-[var(--text-accent)]">
                           <span>Inspect Slice Architecture</span>
                           <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                         </div>
@@ -341,8 +341,12 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
           </div>
         </div>
 
-        {/* Project Cards Grid */}
-        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Project Cards Grid with 3D Perspective Motion */}
+        <motion.div
+          layout
+          style={{ perspective: '1200px' }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((proj) => (
               <motion.div
@@ -350,7 +354,8 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -8 }}
-                transition={{ duration: 0.16 }}
+                whileHover={{ y: -4, rotateX: 1.5, rotateY: -1.5 }}
+                transition={{ duration: 0.16, ease: [0.16, 1, 0.3, 1] }}
                 key={proj.id}
               >
                 <ImpactTooltip impact={proj.impact} className="h-full">
@@ -362,32 +367,32 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
                       {/* Project Architectural Thumbnail Header */}
                       <div className="p-3.5 rounded-[var(--radius-md)] bg-[var(--bg-primary)] border border-[var(--border-subtle)] group-hover:border-[var(--border-focus)] transition-colors flex items-center justify-between">
                         <div className="flex items-center gap-2.5">
-                          <div className="w-8 h-8 rounded-[var(--radius-sm)] bg-[var(--bg-surface)] border border-[var(--border-subtle)] flex items-center justify-center text-[#3b82f6]">
+                          <div className="w-8 h-8 rounded-[var(--radius-sm)] bg-[var(--bg-surface)] border border-[var(--border-subtle)] flex items-center justify-center text-[var(--text-accent)]">
                             <Layers className="w-4 h-4" />
                           </div>
                           <div>
                             <div className="text-[11px] font-mono text-[var(--text-tertiary)] uppercase">
                               {proj.category} · {proj.date}
                             </div>
-                            <div className="text-xs font-mono text-[#3b82f6] font-medium">
+                            <div className="text-xs font-mono text-[var(--text-accent)] font-medium">
                               {proj.impactMetrics?.[0]
                                 ? `${proj.impactMetrics[0].value} ${proj.impactMetrics[0].label}`
                                 : 'Hover for Impact Statement'}
                             </div>
                           </div>
                         </div>
-                        <TrendingUp className="w-4 h-4 text-[var(--text-tertiary)] group-hover:text-[#3b82f6] transition-colors" />
+                        <TrendingUp className="w-4 h-4 text-[var(--text-tertiary)] group-hover:text-[var(--text-accent)] transition-colors" />
                       </div>
 
                       {/* Project Gallery Preview Strip */}
                       <ProjectCardGalleryPreview item={proj} />
 
                       <div>
-                        <h3 className="text-lg font-semibold text-[var(--text-primary)] leading-snug group-hover:text-[#60a5fa] transition-colors">
+                        <h3 className="text-lg font-semibold text-[var(--text-primary)] leading-snug group-hover:text-[var(--text-accent)] transition-colors">
                           {proj.title}
                         </h3>
                         {proj.subtitle && (
-                          <p className="text-xs text-[#60a5fa] font-medium mt-0.5">{proj.subtitle}</p>
+                          <p className="text-xs text-[var(--text-accent)] font-medium mt-0.5">{proj.subtitle}</p>
                         )}
                       </div>
 
@@ -424,7 +429,7 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
                           }}
                           className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-[var(--radius-sm)] bg-[var(--bg-surface-elevated)] hover:border-[var(--border-focus)] text-[var(--text-primary)] text-xs font-medium border border-[var(--border-subtle)] transition-colors whitespace-nowrap"
                         >
-                          <MonitorPlay className="w-3.5 h-3.5 text-[#3b82f6]" />
+                          <MonitorPlay className="w-3.5 h-3.5 text-[var(--text-accent)]" />
                           <span>Run Simulation</span>
                         </button>
                       )}
@@ -438,7 +443,7 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
 
         {filteredProjects.length === 0 && (
           <div className="text-center py-12 bg-[var(--bg-surface)] rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-3">
-            <AlertTriangle className="w-7 h-7 text-[#3b82f6] mx-auto" />
+            <AlertTriangle className="w-7 h-7 text-[var(--text-accent)] mx-auto" />
             <p className="text-sm font-medium text-[var(--text-primary)]">
               No projects found matching filter criteria
             </p>
@@ -448,7 +453,7 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
                 setProjectTechFilter('all');
                 setSearchQuery('');
               }}
-              className="text-xs text-[#3b82f6] underline"
+              className="text-xs text-[var(--text-accent)] underline"
             >
               Reset all filters
             </button>

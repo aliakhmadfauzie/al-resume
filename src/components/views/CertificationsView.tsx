@@ -1,0 +1,565 @@
+import React, { useState, useMemo } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
+import {
+  LINKEDIN_CERTIFICATIONS,
+  LINKEDIN_HONORS_AWARDS,
+  PERSONAL_INFO
+} from '../../data/portfolioData';
+import { CertificationItem } from '../../types';
+import {
+  ShieldCheck,
+  Award,
+  Search,
+  ExternalLink,
+  Copy,
+  Check,
+  Sparkles,
+  Layers,
+  BarChart3,
+  Briefcase,
+  Cpu,
+  Clock,
+  FileCheck2,
+  Eye,
+  LayoutGrid,
+  Columns3,
+  Download
+} from 'lucide-react';
+
+export const CertificationsView: React.FC = () => {
+  const [selectedCategory, setSelectedCategory] = useState<string>('All');
+  const [searchQuery, setSearchQuery] = useState<string>('');
+  const [hoveredCertId, setHoveredCertId] = useState<string | null>(null);
+  const [pinnedCertId, setPinnedCertId] = useState<string | null>(null);
+  const [expandAllMetadata, setExpandAllMetadata] = useState<boolean>(false);
+  const [layoutMode, setLayoutMode] = useState<'masonry' | 'grid'>('masonry');
+  const [copiedId, setCopiedId] = useState<string | null>(null);
+
+  const categories = useMemo(
+    () => [
+      'All',
+      'Power Platform',
+      'AI & Copilot',
+      'Data & Analytics',
+      'Project & Process',
+      'Enterprise Automation'
+    ],
+    []
+  );
+
+  const filteredCertifications = useMemo(() => {
+    return LINKEDIN_CERTIFICATIONS.filter((cert) => {
+      const matchesCategory =
+        selectedCategory === 'All' || cert.category === selectedCategory;
+
+      if (!matchesCategory) return false;
+
+      if (!searchQuery.trim()) return true;
+      const q = searchQuery.toLowerCase();
+      return (
+        cert.name.toLowerCase().includes(q) ||
+        cert.issuer.toLowerCase().includes(q) ||
+        cert.category.toLowerCase().includes(q) ||
+        (cert.credentialId && cert.credentialId.toLowerCase().includes(q)) ||
+        (cert.summary && cert.summary.toLowerCase().includes(q)) ||
+        (cert.productionApplication &&
+          cert.productionApplication.toLowerCase().includes(q)) ||
+        cert.skills.some((s) => s.toLowerCase().includes(q))
+      );
+    });
+  }, [selectedCategory, searchQuery]);
+
+  const getCategoryIcon = (category: CertificationItem['category']) => {
+    switch (category) {
+      case 'Power Platform':
+        return <Layers className="w-4 h-4 text-[var(--interactive-primary)]" />;
+      case 'AI & Copilot':
+        return <Sparkles className="w-4 h-4 text-[var(--interactive-primary)]" />;
+      case 'Data & Analytics':
+        return <BarChart3 className="w-4 h-4 text-[var(--interactive-primary)]" />;
+      case 'Project & Process':
+        return <Briefcase className="w-4 h-4 text-[var(--interactive-primary)]" />;
+      case 'Enterprise Automation':
+        return <Cpu className="w-4 h-4 text-[var(--interactive-primary)]" />;
+    }
+  };
+
+  const handleCopyCredentialId = (e: React.MouseEvent, cert: CertificationItem) => {
+    e.stopPropagation();
+    const idToCopy = cert.credentialId || cert.id;
+    navigator.clipboard.writeText(idToCopy);
+    setCopiedId(cert.id);
+    setTimeout(() => setCopiedId(null), 2000);
+  };
+
+  const isDetailActive = (certId: string) =>
+    expandAllMetadata || hoveredCertId === certId || pinnedCertId === certId;
+
+  return (
+    <div className="space-y-12 py-6">
+      {/* ====================================================================
+          01. HEADER & CREDENTIAL SUMMARY BAR
+         ==================================================================== */}
+      <header className="rounded-[var(--radius-lg)] bg-[var(--bg-surface)] border border-[var(--border-subtle)] p-6 sm:p-8 space-y-6 shadow-[var(--shadow-card)]">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+          <div className="space-y-2.5 max-w-3xl">
+            <p className="text-xs font-mono text-[var(--text-accent)] font-semibold tracking-wider uppercase">
+              01. Verified Credential Vault &amp; Accreditations
+            </p>
+            <h1
+              className="font-bold text-[var(--text-primary)] tracking-tight"
+              style={{ fontSize: 'var(--text-h1)', lineHeight: 1.15 }}
+            >
+              Professional Certifications &amp; Honors
+            </h1>
+            <p className="text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed">
+              Hover or focus on any masonry card to inspect full credential metadata, verification registry IDs, curriculum hours, and how each certification was applied in production across IOI Group, Meraki Malaysia, Concentrix, and Accenture.
+            </p>
+          </div>
+
+          {/* Direct Verification & Transcript Actions */}
+          <div className="flex flex-wrap items-center gap-3 shrink-0">
+            <a
+              href={PERSONAL_INFO.linkedIn}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center space-x-2 px-4 py-2.5 rounded-[var(--radius-sm)] bg-gradient-to-r from-[#f97316] to-[#fb923c] text-[#090a0d] text-xs font-bold shadow-[0_4px_18px_rgba(249,115,22,0.3)] transition-all"
+            >
+              <span>Verify on LinkedIn</span>
+              <ExternalLink className="w-3.5 h-3.5" />
+            </a>
+            <a
+              href="/assets/profile/LinkedIn_Profile.pdf"
+              download="Ali_Akhmad_Fauzie_LinkedIn_Profile.pdf"
+              className="inline-flex items-center space-x-2 px-4 py-2.5 rounded-[var(--radius-sm)] bg-[#0f1117] hover:bg-[var(--bg-surface-elevated)] text-[var(--text-primary)] text-xs font-medium border border-[var(--border-subtle)] hover:border-[var(--border-focus)] transition-colors"
+            >
+              <Download className="w-3.5 h-3.5 text-[var(--text-accent)]" />
+              <span>Transcript PDF</span>
+            </a>
+          </div>
+        </div>
+
+        {/* Summary Telemetry Strip (Unboxed Typography Separators) */}
+        <div className="pt-5 border-t border-[var(--border-subtle)] grid grid-cols-2 sm:grid-cols-4 gap-4">
+          <div className="space-y-1">
+            <div className="text-2xl font-extrabold font-mono text-[var(--text-accent)] tabular-nums">
+              {LINKEDIN_CERTIFICATIONS.length}
+            </div>
+            <div className="text-xs text-[var(--text-secondary)]">
+              Verified Certifications · 100% Active
+            </div>
+          </div>
+          <div className="space-y-1">
+            <div className="text-2xl font-extrabold font-mono text-[var(--text-primary)] tabular-nums">
+              4
+            </div>
+            <div className="text-xs text-[var(--text-secondary)]">
+              Issuing Authorities · MS / LinkedIn / Lark / EQM
+            </div>
+          </div>
+          <div className="space-y-1">
+            <div className="text-2xl font-extrabold font-mono text-[var(--text-primary)] tabular-nums">
+              190+ Hrs
+            </div>
+            <div className="text-xs text-[var(--text-secondary)]">
+              Assessed Lab &amp; Capstone Curriculum
+            </div>
+          </div>
+          <div className="space-y-1">
+            <div className="text-2xl font-extrabold font-mono text-[var(--text-accent)] tabular-nums">
+              {LINKEDIN_HONORS_AWARDS.length}
+            </div>
+            <div className="text-xs text-[var(--text-secondary)]">
+              Corporate &amp; Academic Honors
+            </div>
+          </div>
+        </div>
+      </header>
+
+      {/* ====================================================================
+          02. INTERACTIVE FILTER, SEARCH & MASONRY CONTROLS
+         ==================================================================== */}
+      <section className="space-y-6">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 bg-[var(--bg-surface)] p-4 rounded-[var(--radius-md)] border border-[var(--border-subtle)]">
+          {/* Segmented Category Filter Controls */}
+          <div
+            className="flex flex-wrap items-center gap-1.5"
+            role="tablist"
+            aria-label="Filter certifications by domain"
+          >
+            {categories.map((cat) => {
+              const count =
+                cat === 'All'
+                  ? LINKEDIN_CERTIFICATIONS.length
+                  : LINKEDIN_CERTIFICATIONS.filter((c) => c.category === cat).length;
+              const isSelected = selectedCategory === cat;
+              return (
+                <button
+                  key={cat}
+                  type="button"
+                  role="tab"
+                  aria-selected={isSelected}
+                  onClick={() => setSelectedCategory(cat)}
+                  className={`px-3 py-2 rounded-[var(--radius-sm)] text-xs font-medium transition-colors cursor-pointer whitespace-nowrap ${
+                    isSelected
+                      ? 'bg-[var(--interactive-primary)] text-[#090a0d] font-bold'
+                      : 'bg-[#0f1117] text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--border-subtle)]'
+                  }`}
+                >
+                  <span>{cat}</span>
+                  <span
+                    className={`ml-1.5 font-mono text-[11px] ${
+                      isSelected ? 'text-[#090a0d]/80' : 'text-[var(--text-tertiary)]'
+                    }`}
+                  >
+                    ({count})
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Search Input + Expand Metadata Toggle + Masonry/Grid Switch */}
+          <div className="flex flex-wrap items-center gap-2.5">
+            <div className="relative flex-1 sm:w-64">
+              <Search className="w-3.5 h-3.5 text-[var(--text-tertiary)] absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+              <input
+                id="cert-search-input"
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search credential, skill, or ID..."
+                aria-label="Search certifications"
+                className="w-full pl-8 pr-3 py-2 rounded-[var(--radius-sm)] bg-[#0f1117] border border-[var(--border-subtle)] focus:border-[var(--border-focus)] text-xs text-[var(--text-primary)] placeholder-[var(--text-tertiary)] outline-none"
+              />
+            </div>
+
+            <button
+              id="cert-toggle-expand-all"
+              type="button"
+              onClick={() => setExpandAllMetadata((prev) => !prev)}
+              className={`inline-flex items-center space-x-1.5 px-3 py-2 rounded-[var(--radius-sm)] text-xs font-mono border transition-colors cursor-pointer whitespace-nowrap ${
+                expandAllMetadata
+                  ? 'bg-[var(--interactive-subtle-bg)] text-[var(--text-accent)] border-[var(--interactive-subtle-border)]'
+                  : 'bg-[#0f1117] text-[var(--text-secondary)] hover:text-[var(--text-primary)] border-[var(--border-subtle)]'
+              }`}
+              title="Toggle all credential metadata panels"
+            >
+              <Eye className="w-3.5 h-3.5 text-[var(--text-accent)]" />
+              <span>{expandAllMetadata ? 'Collapse Metadata' : 'Inspect All Metadata'}</span>
+            </button>
+
+            <div className="hidden sm:flex items-center p-0.5 rounded-[var(--radius-sm)] bg-[#0f1117] border border-[var(--border-subtle)]">
+              <button
+                type="button"
+                onClick={() => setLayoutMode('masonry')}
+                aria-label="Masonry layout"
+                title="Masonry layout"
+                className={`p-1.5 rounded-[4px] transition-colors cursor-pointer ${
+                  layoutMode === 'masonry'
+                    ? 'bg-[var(--bg-surface-elevated)] text-[var(--text-accent)]'
+                    : 'text-[var(--text-tertiary)] hover:text-[var(--text-primary)]'
+                }`}
+              >
+                <Columns3 className="w-3.5 h-3.5" />
+              </button>
+              <button
+                type="button"
+                onClick={() => setLayoutMode('grid')}
+                aria-label="Standard grid layout"
+                title="Standard grid layout"
+                className={`p-1.5 rounded-[4px] transition-colors cursor-pointer ${
+                  layoutMode === 'grid'
+                    ? 'bg-[var(--bg-surface-elevated)] text-[var(--text-accent)]'
+                    : 'text-[var(--text-tertiary)] hover:text-[var(--text-primary)]'
+                }`}
+              >
+                <LayoutGrid className="w-3.5 h-3.5" />
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Empty State */}
+        {filteredCertifications.length === 0 ? (
+          <div className="rounded-[var(--radius-lg)] bg-[var(--bg-surface)] border border-[var(--border-subtle)] p-12 text-center space-y-3">
+            <ShieldCheck className="w-8 h-8 text-[var(--text-accent)] mx-auto" />
+            <h3 className="text-base font-semibold text-[var(--text-primary)]">
+              No matching credentials found
+            </h3>
+            <p className="text-xs text-[var(--text-secondary)] max-w-md mx-auto">
+              No certifications matched &ldquo;{searchQuery}&rdquo; in {selectedCategory}. Reset filters to view all 12 verified credentials.
+            </p>
+            <button
+              type="button"
+              onClick={() => {
+                setSelectedCategory('All');
+                setSearchQuery('');
+              }}
+              className="px-4 py-2 rounded-[var(--radius-sm)] bg-[var(--interactive-primary)] text-[#090a0d] text-xs font-bold cursor-pointer"
+            >
+              Reset Filters
+            </button>
+          </div>
+        ) : (
+          /* ==================================================================
+             DYNAMIC MASONRY LAYOUT WITH HOVER-ENABLED CREDENTIAL METADATA CARDS
+             ================================================================== */
+          <div
+            className={
+              layoutMode === 'masonry'
+                ? 'columns-1 md:columns-2 xl:columns-3 gap-5 space-y-5'
+                : 'grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 items-start'
+            }
+          >
+            {filteredCertifications.map((cert, index) => {
+              const showDetail = isDetailActive(cert.id);
+              const isPinned = pinnedCertId === cert.id;
+
+              return (
+                <motion.article
+                  key={cert.id}
+                  layout
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.2, delay: index * 0.03 }}
+                  onMouseEnter={() => setHoveredCertId(cert.id)}
+                  onMouseLeave={() => setHoveredCertId(null)}
+                  onFocus={() => setHoveredCertId(cert.id)}
+                  onBlur={() => setHoveredCertId(null)}
+                  onClick={() =>
+                    setPinnedCertId((prev) => (prev === cert.id ? null : cert.id))
+                  }
+                  tabIndex={0}
+                  role="button"
+                  aria-expanded={showDetail}
+                  className={`break-inside-avoid rounded-[var(--radius-lg)] bg-[var(--bg-surface)] border transition-all duration-200 p-6 flex flex-col justify-between cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-[var(--border-focus)] ${
+                    showDetail
+                      ? 'border-[var(--border-focus)] shadow-[0_12px_34px_rgba(249,115,22,0.16)] bg-[var(--bg-surface-elevated)]'
+                      : 'border-[var(--border-subtle)] shadow-[var(--shadow-card)] hover:border-[var(--interactive-subtle-border)]'
+                  }`}
+                >
+                  {/* Top Header: Icon + Unboxed Domain Kicker + Issue Date */}
+                  <div className="space-y-3.5">
+                    <div className="flex items-center justify-between gap-3">
+                      <div className="flex items-center space-x-2.5 min-w-0">
+                        <div className="w-9 h-9 rounded-[var(--radius-sm)] bg-[#0f1117] border border-[var(--border-subtle)] flex items-center justify-center shrink-0">
+                          {getCategoryIcon(cert.category)}
+                        </div>
+                        <div className="text-xs font-mono text-[var(--text-secondary)] truncate">
+                          <span className="text-[var(--text-accent)] font-semibold">
+                            {cert.category}
+                          </span>
+                          <span aria-hidden="true" className="mx-1.5 text-[var(--text-tertiary)]">
+                            ·
+                          </span>
+                          <span>{cert.issueDate}</span>
+                        </div>
+                      </div>
+
+                      <span className="text-[11px] font-mono text-[#22c55e] shrink-0 flex items-center gap-1">
+                        <ShieldCheck className="w-3.5 h-3.5" />
+                        <span>Verified</span>
+                      </span>
+                    </div>
+
+                    {/* Primary Credential Title & Issuer */}
+                    <div className="space-y-1">
+                      <h2 className="text-base sm:text-lg font-bold text-[var(--text-primary)] leading-snug">
+                        {cert.name}
+                      </h2>
+                      <p className="text-xs font-mono text-[var(--text-secondary)]">
+                        {cert.issuer}
+                        <span aria-hidden="true" className="mx-1.5 text-[var(--text-tertiary)]">
+                          ·
+                        </span>
+                        <span className="text-[var(--text-tertiary)]">{cert.credentialType}</span>
+                      </p>
+                    </div>
+
+                    {/* Executive Summary (Always Visible, Variable Length for Masonry) */}
+                    {cert.summary && (
+                      <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+                        {cert.summary}
+                      </p>
+                    )}
+
+                    {/* Unboxed Competency Metadata List */}
+                    <div className="pt-2 border-t border-[var(--border-subtle)]">
+                      <div className="text-[11px] font-mono text-[var(--text-tertiary)] leading-relaxed">
+                        {cert.skills.join(' · ')}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* HOVER-ENABLED CREDENTIAL METADATA DRAWER */}
+                  <AnimatePresence initial={false}>
+                    {showDetail && (
+                      <motion.div
+                        key="metadata-drawer"
+                        initial={{ opacity: 0, height: 0, marginTop: 0 }}
+                        animate={{ opacity: 1, height: 'auto', marginTop: 16 }}
+                        exit={{ opacity: 0, height: 0, marginTop: 0 }}
+                        transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                        className="overflow-hidden"
+                      >
+                        <div className="rounded-[var(--radius-md)] bg-[#0c0d12] border border-[var(--interactive-subtle-border)] p-4 space-y-3.5">
+                          {/* Credential ID + Copy Button */}
+                          <div className="flex items-center justify-between gap-2 pb-2.5 border-b border-[var(--border-subtle)]">
+                            <div className="space-y-0.5 min-w-0">
+                              <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--text-tertiary)] block">
+                                Credential Registry ID
+                              </span>
+                              <span className="text-xs font-mono font-bold text-[var(--text-accent)] truncate block">
+                                {cert.credentialId || cert.id.toUpperCase()}
+                              </span>
+                            </div>
+
+                            <button
+                              type="button"
+                              onClick={(e) => handleCopyCredentialId(e, cert)}
+                              className="inline-flex items-center space-x-1 px-2.5 py-1.5 rounded-[var(--radius-sm)] bg-[#14161f] hover:bg-[var(--interactive-subtle-bg)] text-[11px] font-mono text-[var(--text-secondary)] hover:text-[var(--text-accent)] border border-[var(--border-subtle)] transition-colors cursor-pointer shrink-0"
+                              title="Copy Credential ID"
+                            >
+                              {copiedId === cert.id ? (
+                                <>
+                                  <Check className="w-3 h-3 text-[#22c55e]" />
+                                  <span className="text-[#22c55e]">Copied</span>
+                                </>
+                              ) : (
+                                <>
+                                  <Copy className="w-3 h-3" />
+                                  <span>Copy ID</span>
+                                </>
+                              )}
+                            </button>
+                          </div>
+
+                          {/* Curriculum Scope & Verification Method */}
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs">
+                            <div className="space-y-0.5">
+                              <span className="text-[10px] font-mono text-[var(--text-tertiary)] flex items-center gap-1">
+                                <Clock className="w-3 h-3 text-[var(--interactive-primary)]" />
+                                <span>Curriculum Scope</span>
+                              </span>
+                              <p className="text-[11px] text-[var(--text-primary)] font-medium">
+                                {cert.hoursOrModules || 'Verified Assessment'}
+                              </p>
+                            </div>
+
+                            <div className="space-y-0.5">
+                              <span className="text-[10px] font-mono text-[var(--text-tertiary)] flex items-center gap-1">
+                                <FileCheck2 className="w-3 h-3 text-[var(--interactive-primary)]" />
+                                <span>Validity Status</span>
+                              </span>
+                              <p className="text-[11px] text-[var(--text-primary)] font-medium">
+                                {cert.expiryDate || 'No Expiration · Active'}
+                              </p>
+                            </div>
+                          </div>
+
+                          {/* Production Architecture Application */}
+                          {cert.productionApplication && (
+                            <div className="pt-2.5 border-t border-[var(--border-subtle)] space-y-1">
+                              <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--text-accent)] block">
+                                Production Impact &amp; Enterprise Application
+                              </span>
+                              <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+                                {cert.productionApplication}
+                              </p>
+                            </div>
+                          )}
+
+                          {/* Verification Authority Footer + Direct Link */}
+                          <div className="pt-2.5 border-t border-[var(--border-subtle)] flex items-center justify-between gap-2 text-[11px] font-mono">
+                            <span className="text-[var(--text-tertiary)] truncate">
+                              {cert.verificationMethod || 'LinkedIn Official Transcript'}
+                            </span>
+                            {cert.credentialUrl && (
+                              <a
+                                href={cert.credentialUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                onClick={(e) => e.stopPropagation()}
+                                className="inline-flex items-center space-x-1 text-[var(--text-accent)] hover:underline shrink-0"
+                              >
+                                <span>Verify</span>
+                                <ExternalLink className="w-3 h-3" />
+                              </a>
+                            )}
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+
+                  {/* Card Footer Hint */}
+                  <div className="pt-3 mt-3 border-t border-[var(--border-subtle)] flex items-center justify-between text-[11px] font-mono text-[var(--text-tertiary)]">
+                    <span>
+                      ID: <strong className="text-[var(--text-secondary)]">{cert.credentialId}</strong>
+                    </span>
+                    <span className="text-[var(--text-accent)]">
+                      {isPinned
+                        ? 'Pinned · Click to unpin'
+                        : showDetail
+                        ? 'Click to pin metadata'
+                        : 'Hover for credential metadata →'}
+                    </span>
+                  </div>
+                </motion.article>
+              );
+            })}
+          </div>
+        )}
+      </section>
+
+      {/* ====================================================================
+          03. CORPORATE HONORS & ACADEMIC DISTINCTIONS
+         ==================================================================== */}
+      <section className="space-y-5 pt-4 border-t border-[var(--border-subtle)]">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+          <div>
+            <p className="text-xs font-mono text-[var(--text-accent)] font-semibold uppercase">
+              02. Corporate Honors &amp; Academic Distinctions
+            </p>
+            <h2 className="text-xl sm:text-2xl font-bold text-[var(--text-primary)] mt-1">
+              Global Delivery &amp; University Leadership Recognition
+            </h2>
+          </div>
+          <span className="text-xs font-mono text-[var(--text-secondary)]">
+            Accenture · Universiti Utara Malaysia (UUM)
+          </span>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {LINKEDIN_HONORS_AWARDS.map((award) => (
+            <div
+              key={award.id}
+              className="rounded-[var(--radius-lg)] bg-[var(--bg-surface)] border border-[var(--border-subtle)] hover:border-[var(--border-focus)] p-6 flex items-start space-x-4 transition-colors shadow-[var(--shadow-card)]"
+            >
+              <div className="w-11 h-11 rounded-[var(--radius-md)] bg-[#1b1613] border border-[var(--interactive-subtle-border)] flex items-center justify-center shrink-0">
+                <Award className="w-5 h-5 text-[var(--interactive-primary)]" />
+              </div>
+              <div className="space-y-1.5 flex-1">
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <h3 className="text-sm sm:text-base font-bold text-[var(--text-primary)]">
+                    {award.title}
+                  </h3>
+                  <span className="text-xs font-mono text-[var(--text-accent)]">
+                    {award.year}
+                  </span>
+                </div>
+                <p className="text-xs font-mono text-[var(--text-secondary)]">
+                  {award.issuer} · Official Honor
+                </p>
+                <p className="text-xs text-[var(--text-secondary)] leading-relaxed pt-1">
+                  {award.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    </div>
+  );
+};

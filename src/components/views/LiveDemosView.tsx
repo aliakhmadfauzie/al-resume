@@ -198,7 +198,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
     <div className="space-y-8 py-6">
       {/* Page Header */}
       <div className="space-y-3 border-b border-[var(--border-subtle)] pb-8">
-        <p className="text-xs font-mono text-[#60a5fa] font-medium">
+        <p className="text-xs font-mono text-[var(--text-accent)] font-medium">
           01 · Interactive Enterprise Application Sandbox
         </p>
         <h1
@@ -207,7 +207,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
         >
           Live Operational Prototypes &amp; Simulations
         </h1>
-        <p className="text-base text-[#cbd5e1] max-w-3xl leading-relaxed">
+        <p className="text-base text-[var(--text-secondary)] max-w-3xl leading-relaxed">
           Interactive simulations of Ali's production Power Platform applications, including the FinOps spend matrix, ITSM lifecycle, warehouse photo inspections, server audit checkers, and the formula-capped rebate engine.
         </p>
       </div>
@@ -238,7 +238,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
         <div className="space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[var(--bg-surface)] p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)]">
             <div>
-              <span className="text-xs font-mono text-[#60a5fa] font-medium">
+              <span className="text-xs font-mono text-[var(--text-accent)] font-medium">
                 Executive FinOps Dashboard
               </span>
               <h2 className="text-xl font-semibold text-[var(--text-primary)]">
@@ -248,7 +248,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
             <div className="flex items-center space-x-3 text-xs font-mono text-[var(--text-secondary)]">
               <span>Reporting Period: FY2025-Q1</span>
               <span aria-hidden="true">·</span>
-              <span className="text-[#60a5fa] font-medium">Dataverse Live Sync</span>
+              <span className="text-[var(--text-accent)] font-medium">Dataverse Live Sync</span>
             </div>
           </div>
 
@@ -256,7 +256,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
             <div className="bg-[var(--bg-surface)] p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-1">
               <p className="text-xs font-sans text-[var(--text-secondary)]">Total Allocated Budget</p>
               <p className="text-2xl font-semibold text-[var(--text-primary)]">$3,200,000</p>
-              <p className="text-xs font-sans text-[#3b82f6]">+4.5% vs Prior Quarter</p>
+              <p className="text-xs font-sans text-[var(--text-accent)]">+4.5% vs Prior Quarter</p>
             </div>
             <div className="bg-[var(--bg-surface)] p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-1">
               <p className="text-xs font-sans text-[var(--text-secondary)]">Actual MTD Spend</p>
@@ -266,11 +266,11 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
             <div className="bg-[var(--bg-surface)] p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-1">
               <p className="text-xs font-sans text-[var(--text-secondary)]">SaaS &amp; M365 Licenses</p>
               <p className="text-2xl font-semibold text-[var(--text-primary)]">$642,100</p>
-              <p className="text-xs font-sans text-[#3b82f6]">Optimized via CoE Starter Kit</p>
+              <p className="text-xs font-sans text-[var(--text-accent)]">Optimized via CoE Starter Kit</p>
             </div>
             <div className="bg-[var(--bg-surface)] p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-1">
               <p className="text-xs font-sans text-[var(--text-secondary)]">Actionable Requisitions</p>
-              <p className="text-2xl font-semibold text-[#3b82f6]">
+              <p className="text-2xl font-semibold text-[var(--text-accent)]">
                 {Object.values(approvals).filter((v) => !v).length} Pending
               </p>
               <p className="text-xs font-sans text-[var(--text-secondary)]">Requires Executive Sign-Off</p>
@@ -314,7 +314,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
                 >
                   <div className="space-y-1">
                     <div className="flex items-center space-x-2">
-                      <span className="font-mono text-xs font-semibold text-[#3b82f6]">{req.id}</span>
+                      <span className="font-mono text-xs font-semibold text-[var(--text-accent)]">{req.id}</span>
                       <span className="text-sm font-medium text-[var(--text-primary)]">{req.name}</span>
                     </div>
                     <p className="text-xs text-[var(--text-secondary)]">
@@ -329,7 +329,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
                       onClick={() => setApprovals({ ...approvals, [req.id]: !approvals[req.id] })}
                       className={`px-3.5 py-1.5 rounded-[var(--radius-sm)] text-xs font-medium transition-colors whitespace-nowrap ${
                         approvals[req.id]
-                          ? 'bg-[var(--bg-primary)] text-[#3b82f6] border border-[var(--border-focus)]'
+                          ? 'bg-[var(--bg-primary)] text-[var(--text-accent)] border border-[var(--border-focus)]'
                           : 'bg-[var(--accent-blue)] text-white hover:bg-[var(--accent-blue-hover)]'
                       }`}
                     >
@@ -348,7 +348,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
         <div className="space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[var(--bg-surface)] p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)]">
             <div>
-              <span className="text-xs font-mono text-[#3b82f6] font-medium">
+              <span className="text-xs font-mono text-[var(--text-accent)] font-medium">
                 ITSM Operations · 56 Mapped Columns
               </span>
               <h2 className="text-xl font-semibold text-[var(--text-primary)]">
@@ -358,7 +358,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
             <div className="flex items-center space-x-3 text-xs font-mono text-[var(--text-secondary)]">
               <span>0% SLA Breaches</span>
               <span aria-hidden="true">·</span>
-              <span className="text-[#3b82f6]">72h Accept Window</span>
+              <span className="text-[var(--text-accent)]">72h Accept Window</span>
             </div>
           </div>
 
@@ -409,7 +409,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
                 >
                   <div className="space-y-1">
                     <div className="flex items-center space-x-2">
-                      <span className="font-mono text-xs font-semibold text-[#3b82f6]">{t.id}</span>
+                      <span className="font-mono text-xs font-semibold text-[var(--text-accent)]">{t.id}</span>
                       <span className="text-sm font-medium text-[var(--text-primary)]">{t.title}</span>
                       <span className="text-xs font-mono text-[var(--text-tertiary)]">
                         · {t.priority} Priority
@@ -434,7 +434,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
         <div className="space-y-6">
           <div className="bg-[var(--bg-surface)] p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
-              <span className="text-xs font-mono text-[#3b82f6] font-medium">
+              <span className="text-xs font-mono text-[var(--text-accent)] font-medium">
                 Enterprise Core ERP · Purchase Orders &amp; Staff Requisitions
               </span>
               <h2 className="text-xl font-semibold text-[var(--text-primary)]">
@@ -448,7 +448,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="bg-[var(--bg-surface)] p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-2">
-              <span className="text-xs font-mono text-[#3b82f6]">PO-2025-9941</span>
+              <span className="text-xs font-mono text-[var(--text-accent)]">PO-2025-9941</span>
               <h4 className="text-sm font-semibold text-[var(--text-primary)]">
                 Refined Bleached Palm Oil Processing Unit
               </h4>
@@ -457,12 +457,12 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
               </p>
               <div className="pt-2 border-t border-[var(--border-subtle)] flex items-center justify-between text-xs">
                 <span className="font-mono font-semibold text-[var(--text-primary)]">RM 340,000</span>
-                <span className="text-[#3b82f6] font-medium">✓ CFO Approved</span>
+                <span className="text-[var(--text-accent)] font-medium">✓ CFO Approved</span>
               </div>
             </div>
 
             <div className="bg-[var(--bg-surface)] p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-2">
-              <span className="text-xs font-mono text-[#3b82f6]">REQ-STAFF-014</span>
+              <span className="text-xs font-mono text-[var(--text-accent)]">REQ-STAFF-014</span>
               <h4 className="text-sm font-semibold text-[var(--text-primary)]">
                 Senior Process Control Engineer (QA Lab)
               </h4>
@@ -476,7 +476,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
             </div>
 
             <div className="bg-[var(--bg-surface)] p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-2">
-              <span className="text-xs font-mono text-[#3b82f6]">PO-2025-9948</span>
+              <span className="text-xs font-mono text-[var(--text-accent)]">PO-2025-9948</span>
               <h4 className="text-sm font-semibold text-[var(--text-primary)]">
                 GHS Safety Labeling &amp; Calibration Tooling
               </h4>
@@ -485,7 +485,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
               </p>
               <div className="pt-2 border-t border-[var(--border-subtle)] flex items-center justify-between text-xs">
                 <span className="font-mono font-semibold text-[var(--text-primary)]">RM 24,500</span>
-                <span className="text-[#3b82f6] font-medium">✓ Validated</span>
+                <span className="text-[var(--text-accent)] font-medium">✓ Validated</span>
               </div>
             </div>
           </div>
@@ -497,21 +497,21 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
         <div className="space-y-6">
           <div className="bg-[var(--bg-surface)] p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
-              <span className="text-xs font-mono text-[#3b82f6] font-medium">
+              <span className="text-xs font-mono text-[var(--text-accent)] font-medium">
                 Slice D Logistics Operations
               </span>
               <h2 className="text-xl font-semibold text-[var(--text-primary)]">
                 Warehouse Central &amp; Pre-Loading Inspection Hub
               </h2>
             </div>
-            <span className="text-xs font-mono text-[#3b82f6]">Zero Demurrage Delay</span>
+            <span className="text-xs font-mono text-[var(--text-accent)]">Zero Demurrage Delay</span>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="glass-card p-6 space-y-4">
               <div className="flex items-center justify-between">
                 <h3 className="text-sm font-semibold text-[var(--text-primary)] flex items-center space-x-2">
-                  <Truck className="w-4 h-4 text-[#3b82f6]" />
+                  <Truck className="w-4 h-4 text-[var(--text-accent)]" />
                   <span>Container Pre-Loading Inspection</span>
                 </h3>
                 <span className="text-xs font-mono text-[var(--text-secondary)]">CNTR-MY-88421</span>
@@ -521,7 +521,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
                 <div className="p-4 rounded-[var(--radius-sm)] bg-[var(--bg-primary)] border border-[var(--border-subtle)] space-y-2">
                   <p className="font-medium text-[var(--text-primary)]">Digital Photo Seal Verification</p>
                   <div className="h-28 rounded-[var(--radius-sm)] bg-[var(--bg-surface)] border border-dashed border-[var(--border-subtle)] flex flex-col items-center justify-center text-[var(--text-secondary)] space-y-1">
-                    <CheckCircle2 className="w-6 h-6 text-[#3b82f6]" />
+                    <CheckCircle2 className="w-6 h-6 text-[var(--text-accent)]" />
                     <span className="text-xs">Seal #ML-99042 captured via Power Apps Mobile</span>
                     <span className="text-[11px] text-[var(--text-tertiary)] font-mono">
                       Geo-tagged &amp; Timestamped
@@ -536,7 +536,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
                   </div>
                   <div className="p-3 rounded-[var(--radius-sm)] bg-[var(--bg-primary)] border border-[var(--border-subtle)]">
                     <span className="text-[var(--text-secondary)]">Gate Pass</span>
-                    <p className="font-semibold text-[#3b82f6] font-mono mt-0.5">AUTO-ISSUED</p>
+                    <p className="font-semibold text-[var(--text-accent)] font-mono mt-0.5">AUTO-ISSUED</p>
                   </div>
                 </div>
               </div>
@@ -545,7 +545,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
             <div className="glass-card p-6 space-y-4">
               <div className="flex items-center justify-between">
                 <h3 className="text-sm font-semibold text-[var(--text-primary)] flex items-center space-x-2">
-                  <Box className="w-4 h-4 text-[#3b82f6]" />
+                  <Box className="w-4 h-4 text-[var(--text-accent)]" />
                   <span>Live Stock &amp; Batch Movement Log</span>
                 </h3>
                 <span className="text-xs font-mono text-[var(--text-secondary)]">SAP Synchronized</span>
@@ -585,7 +585,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
                         {item.batch} · {item.bay} · {item.qty}
                       </p>
                     </div>
-                    <span className="text-xs font-mono text-[#3b82f6]">{item.status}</span>
+                    <span className="text-xs font-mono text-[var(--text-accent)]">{item.status}</span>
                   </div>
                 ))}
               </div>
@@ -599,7 +599,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
         <div className="space-y-6">
           <div className="bg-[var(--bg-surface)] p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
-              <span className="text-xs font-mono text-[#3b82f6] font-medium">
+              <span className="text-xs font-mono text-[var(--text-accent)] font-medium">
                 IT Security &amp; Plant Reliability
               </span>
               <h2 className="text-xl font-semibold text-[var(--text-primary)]">
@@ -609,13 +609,13 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
             <div className="flex items-center space-x-3 text-xs font-mono text-[var(--text-secondary)]">
               <span>OEE Overall: 78.4%</span>
               <span aria-hidden="true">·</span>
-              <span className="text-[#3b82f6]">100% Audit Adherence</span>
+              <span className="text-[var(--text-accent)]">100% Audit Adherence</span>
             </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="bg-[var(--bg-surface)] p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-3">
-              <span className="text-xs font-mono text-[#3b82f6] font-medium">
+              <span className="text-xs font-mono text-[var(--text-accent)] font-medium">
                 Server Checklist Numbering
               </span>
               <p className="font-mono text-xs font-semibold text-[var(--text-primary)] bg-[var(--bg-primary)] p-2.5 rounded-[var(--radius-sm)] border border-[var(--border-subtle)]">
@@ -626,13 +626,13 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
                 <li>· RAM Allocation: 48.4 GB / 64 GB (75%)</li>
                 <li>· C:\ Drive Free Space: 142 GB (Healthy)</li>
               </ul>
-              <span className="inline-block text-xs text-[#3b82f6] font-mono">
+              <span className="inline-block text-xs text-[var(--text-accent)] font-mono">
                 ✓ Systems Manager Signed Off
               </span>
             </div>
 
             <div className="bg-[var(--bg-surface)] p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-3">
-              <span className="text-xs font-mono text-[#3b82f6] font-medium">
+              <span className="text-xs font-mono text-[var(--text-accent)] font-medium">
                 Fractionation Chiller Unit 3
               </span>
               <p className="font-mono text-xs font-semibold text-[var(--text-primary)] bg-[var(--bg-primary)] p-2.5 rounded-[var(--radius-sm)] border border-[var(--border-subtle)]">
@@ -643,13 +643,13 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
                 <li>· Coolant Pressure: 4.8 bar</li>
                 <li>· Next Preventative PM: in 14 Days</li>
               </ul>
-              <span className="inline-block text-xs text-[#3b82f6] font-mono">
+              <span className="inline-block text-xs text-[var(--text-accent)] font-mono">
                 ✓ Online &amp; Operational
               </span>
             </div>
 
             <div className="bg-[var(--bg-surface)] p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-3">
-              <span className="text-xs font-mono text-[#3b82f6] font-medium">
+              <span className="text-xs font-mono text-[var(--text-accent)] font-medium">
                 Dataverse Backup &amp; Disaster Recovery
               </span>
               <p className="font-mono text-xs font-semibold text-[var(--text-primary)] bg-[var(--bg-primary)] p-2.5 rounded-[var(--radius-sm)] border border-[var(--border-subtle)]">
@@ -660,7 +660,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
                 <li>· RPO: &lt; 15 minutes</li>
                 <li>· RTO: &lt; 1 hour verified</li>
               </ul>
-              <span className="inline-block text-xs text-[#3b82f6] font-mono">
+              <span className="inline-block text-xs text-[var(--text-accent)] font-mono">
                 ✓ ISO 27001 Certified Audit
               </span>
             </div>
@@ -673,7 +673,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
         <div className="space-y-6">
           <div className="bg-[var(--bg-surface)] p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
-              <span className="text-xs font-mono text-[#3b82f6] font-medium">
+              <span className="text-xs font-mono text-[var(--text-accent)] font-medium">
                 Tasek Cement Commercial Approval Engine
               </span>
               <h2 className="text-xl font-semibold text-[var(--text-primary)]">
@@ -683,7 +683,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
             <div className="flex items-center space-x-3 text-xs font-mono text-[var(--text-secondary)]">
               <span>Statutory Ceiling: RM 0.20 / Tonne</span>
               <span aria-hidden="true">·</span>
-              <span className="text-[#3b82f6]">Cycle Time: ~15 Min</span>
+              <span className="text-[var(--text-accent)]">Cycle Time: ~15 Min</span>
             </div>
           </div>
 
@@ -708,7 +708,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
                     step="0.01"
                     value={rebateBaseRate}
                     onChange={(e) => setRebateBaseRate(parseFloat(e.target.value))}
-                    className="w-full accent-[#2563eb]"
+                    className="w-full accent-[var(--interactive-primary)]"
                   />
                 </div>
 
@@ -726,7 +726,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
                     step="100"
                     value={rebateVolume}
                     onChange={(e) => setRebateVolume(parseInt(e.target.value))}
-                    className="w-full accent-[#2563eb]"
+                    className="w-full accent-[var(--interactive-primary)]"
                   />
                 </div>
 
@@ -744,7 +744,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
                     step="0.01"
                     value={rebateDistance}
                     onChange={(e) => setRebateDistance(parseFloat(e.target.value))}
-                    className="w-full accent-[#2563eb]"
+                    className="w-full accent-[var(--interactive-primary)]"
                   />
                 </div>
 
@@ -762,7 +762,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
                     step="0.01"
                     value={rebateSpecialTerm}
                     onChange={(e) => setRebateSpecialTerm(parseFloat(e.target.value))}
-                    className="w-full accent-[#2563eb]"
+                    className="w-full accent-[var(--interactive-primary)]"
                   />
                 </div>
 
@@ -780,7 +780,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
                     step="0.01"
                     value={rebateSeasonal}
                     onChange={(e) => setRebateSeasonal(parseFloat(e.target.value))}
-                    className="w-full accent-[#2563eb]"
+                    className="w-full accent-[var(--interactive-primary)]"
                   />
                 </div>
 
@@ -798,7 +798,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
                     step="0.01"
                     value={rebateCreditDeduction}
                     onChange={(e) => setRebateCreditDeduction(parseFloat(e.target.value))}
-                    className="w-full accent-[#2563eb]"
+                    className="w-full accent-[var(--interactive-primary)]"
                   />
                 </div>
               </div>
@@ -806,7 +806,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
 
             <div className="lg:col-span-5 glass-card p-6 space-y-5 flex flex-col justify-between">
               <div className="space-y-3">
-                <span className="text-xs font-mono text-[#3b82f6] font-medium">
+                <span className="text-xs font-mono text-[var(--text-accent)] font-medium">
                   Real-Time Governance Evaluation
                 </span>
 
@@ -819,13 +819,13 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
                   </div>
                   <div className="flex justify-between text-xs text-[var(--text-secondary)]">
                     <span>Statutory Capped Rate:</span>
-                    <span className="font-mono font-semibold text-[#3b82f6] tabular-nums">
+                    <span className="font-mono font-semibold text-[var(--text-accent)] tabular-nums">
                       RM {cappedRebatePerTonne.toFixed(2)} / t
                     </span>
                   </div>
                   {isCapped && (
                     <div className="text-xs text-[var(--text-primary)] bg-[var(--bg-surface-elevated)] p-2.5 rounded-[var(--radius-sm)] border border-[var(--border-focus)] flex items-center space-x-2">
-                      <AlertCircle className="w-4 h-4 text-[#3b82f6] shrink-0" />
+                      <AlertCircle className="w-4 h-4 text-[var(--text-accent)] shrink-0" />
                       <span>Governance ceiling enforced: Capped at RM 0.20/tonne</span>
                     </div>
                   )}
@@ -846,7 +846,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
                 onClick={triggerApproveRebate}
                 className={`w-full py-3 rounded-[var(--radius-sm)] text-xs font-medium transition-colors flex items-center justify-center space-x-2 ${
                   rebateApproved
-                    ? 'bg-[var(--bg-primary)] text-[#3b82f6] border border-[var(--border-focus)]'
+                    ? 'bg-[var(--bg-primary)] text-[var(--text-accent)] border border-[var(--border-focus)]'
                     : 'bg-[var(--accent-blue)] hover:bg-[var(--accent-blue-hover)] text-white'
                 }`}
               >
@@ -872,14 +872,14 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
         <div className="space-y-6">
           <div className="bg-[var(--bg-surface)] p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
-              <span className="text-xs font-mono text-[#3b82f6] font-medium">
+              <span className="text-xs font-mono text-[var(--text-accent)] font-medium">
                 AI Builder NLP Model · 120+ SOP Categories
               </span>
               <h2 className="text-xl font-semibold text-[var(--text-primary)]">
                 Customer Service Resolver &amp; SOP Recommendation Engine
               </h2>
             </div>
-            <span className="text-xs font-mono text-[#3b82f6]">
+            <span className="text-xs font-mono text-[var(--text-accent)]">
               50–80% Handling Time Reduction
             </span>
           </div>
@@ -970,7 +970,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
             </div>
 
             <div className="lg:col-span-6 glass-card p-6 space-y-4">
-              <span className="text-xs font-mono text-[#3b82f6] font-medium">
+              <span className="text-xs font-mono text-[var(--text-accent)] font-medium">
                 AI Builder Model Inference Output
               </span>
 
@@ -984,7 +984,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-xs text-[var(--text-secondary)]">Confidence Score:</span>
-                    <span className="text-xs font-mono font-semibold text-[#3b82f6] tabular-nums">
+                    <span className="text-xs font-mono font-semibold text-[var(--text-accent)] tabular-nums">
                       {confidenceScore}%
                     </span>
                   </div>
@@ -995,12 +995,12 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
 
                 <div className="p-4 rounded-[var(--radius-sm)] bg-[var(--bg-primary)] border border-[var(--border-subtle)] space-y-2">
                   <p className="text-xs font-semibold text-[var(--text-primary)] flex items-center space-x-1.5">
-                    <FileText className="w-4 h-4 text-[#3b82f6]" />
+                    <FileText className="w-4 h-4 text-[var(--text-accent)]" />
                     <span>Recommended Standard Operating Procedure</span>
                   </p>
-                  <p className="text-xs font-mono text-[#3b82f6] font-medium">{recommendedSOP}</p>
+                  <p className="text-xs font-mono text-[var(--text-accent)] font-medium">{recommendedSOP}</p>
                   <div className="pt-1 flex items-center space-x-2 text-xs text-[var(--text-secondary)]">
-                    <ArrowRight className="w-3.5 h-3.5 text-[#3b82f6]" />
+                    <ArrowRight className="w-3.5 h-3.5 text-[var(--text-accent)]" />
                     <span>Direct deep-link routed to agent workspace in Microsoft Teams</span>
                   </div>
                 </div>
@@ -1015,7 +1015,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
         <div className="space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[var(--bg-surface)] p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)]">
             <div>
-              <span className="text-xs font-mono text-[#3b82f6] font-medium">
+              <span className="text-xs font-mono text-[var(--text-accent)] font-medium">
                 ai_gateway.py · tailor_to_jd.py · verify_pdfs.py · app_bot_v6.py
               </span>
               <h2 className="text-xl font-semibold text-[var(--text-primary)]">
@@ -1025,7 +1025,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
             <div className="flex items-center space-x-3 text-xs font-mono text-[var(--text-secondary)]">
               <span>Lock: fcntl.flock(.usage_stats.lock)</span>
               <span aria-hidden="true">·</span>
-              <span className="text-[#3b82f6] font-medium">Workday v6.0 Ready</span>
+              <span className="text-[var(--text-accent)] font-medium">Workday v6.0 Ready</span>
             </div>
           </div>
 
@@ -1035,7 +1035,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
               {/* Tri-Engine Router Control */}
               <div className="bg-[var(--bg-surface)] p-6 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-mono text-[#3b82f6] font-medium">
+                  <span className="text-xs font-mono text-[var(--text-accent)] font-medium">
                     01 · Tri-Engine AI Gateway &amp; Rate-Limit Failover
                   </span>
                   <span className="text-[11px] font-mono text-[var(--text-tertiary)]">
@@ -1090,7 +1090,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
                 <div className="p-4 rounded-[var(--radius-sm)] bg-[var(--bg-primary)] border border-[var(--border-subtle)] space-y-3 font-mono text-xs">
                   <div className="flex items-center justify-between">
                     <span className="text-[var(--text-secondary)]">Resolved Active Provider:</span>
-                    <span className="text-[#3b82f6] font-semibold">{activeAiEngine}</span>
+                    <span className="text-[var(--text-accent)] font-semibold">{activeAiEngine}</span>
                   </div>
                   <div className="grid grid-cols-3 gap-2 pt-1 text-[11px]">
                     <div className="p-2.5 rounded-[var(--radius-sm)] bg-[var(--bg-surface)] border border-[var(--border-subtle)]">
@@ -1128,7 +1128,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
               {/* Zero-Hallucination SSOT Metric Firewall */}
               <div className="bg-[var(--bg-surface)] p-6 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-mono text-[#3b82f6] font-medium">
+                  <span className="text-xs font-mono text-[var(--text-accent)] font-medium">
                     02 · Zero-Hallucination SSOT Metric Firewall (tailor_to_jd.py)
                   </span>
                   <span className="text-xs font-mono text-[var(--text-tertiary)]">
@@ -1139,8 +1139,8 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
                 <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
                   Edit the tailored resume bullet below. Any numerical claim not anchored in{' '}
                   <code className="font-mono text-[var(--text-primary)]">Master_Profile_SSOT.md</code>{' '}
-                  (e.g., try typing <code className="font-mono text-[#3b82f6]">450%</code> or{' '}
-                  <code className="font-mono text-[#3b82f6]">999</code>) is automatically flagged and rejected before PDF compilation.
+                  (e.g., try typing <code className="font-mono text-[var(--text-accent)]">450%</code> or{' '}
+                  <code className="font-mono text-[var(--text-accent)]">999</code>) is automatically flagged and rejected before PDF compilation.
                 </p>
 
                 <textarea
@@ -1153,9 +1153,9 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
                 <div className="flex flex-wrap items-center justify-between gap-2 p-3.5 rounded-[var(--radius-sm)] bg-[var(--bg-primary)] border border-[var(--border-subtle)] font-mono text-xs">
                   <div className="flex items-center space-x-2">
                     {isSsotValid ? (
-                      <CheckCircle2 className="w-4 h-4 text-[#3b82f6]" />
+                      <CheckCircle2 className="w-4 h-4 text-[var(--text-accent)]" />
                     ) : (
-                      <AlertCircle className="w-4 h-4 text-amber-400" />
+                      <AlertCircle className="w-4 h-4 text-[var(--status-warning-fg)]" />
                     )}
                     <span className="text-[var(--text-primary)]">
                       {isSsotValid
@@ -1174,8 +1174,8 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
             <div className="lg:col-span-5 bg-[var(--bg-surface)] p-6 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-4">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-2">
-                  <ShieldCheck className="w-4 h-4 text-[#3b82f6]" />
-                  <span className="text-xs font-mono text-[#3b82f6] font-medium">
+                  <ShieldCheck className="w-4 h-4 text-[var(--text-accent)]" />
+                  <span className="text-xs font-mono text-[var(--text-accent)] font-medium">
                     03 · 10-Gate PDF Governance (verify_pdfs.py)
                   </span>
                 </div>
@@ -1202,7 +1202,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
                     className="flex items-center justify-between p-2.5 rounded-[var(--radius-sm)] bg-[var(--bg-primary)] border border-[var(--border-subtle)]"
                   >
                     <div className="flex items-center space-x-2.5">
-                      <span className="text-[#3b82f6] font-semibold">{item.gate}</span>
+                      <span className="text-[var(--text-accent)] font-semibold">{item.gate}</span>
                       <div>
                         <div className="text-[var(--text-primary)] font-sans text-xs font-medium">
                           {item.name}
@@ -1210,7 +1210,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
                         <div className="text-[10px] text-[var(--text-tertiary)]">{item.spec}</div>
                       </div>
                     </div>
-                    <span className="px-2 py-0.5 rounded-[var(--radius-sm)] bg-[var(--bg-surface)] text-[#3b82f6] border border-[var(--border-subtle)] text-[10px]">
+                    <span className="px-2 py-0.5 rounded-[var(--radius-sm)] bg-[var(--bg-surface)] text-[var(--text-accent)] border border-[var(--border-subtle)] text-[10px]">
                       PASS
                     </span>
                   </div>
@@ -1226,7 +1226,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
         <div className="space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[var(--bg-surface)] p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)]">
             <div>
-              <span className="text-xs font-mono text-[#3b82f6] font-medium">
+              <span className="text-xs font-mono text-[var(--text-accent)] font-medium">
                 Putri GarmentHub v2.12.11 · calculations.ts · CashFlowContext.tsx
               </span>
               <h2 className="text-xl font-semibold text-[var(--text-primary)]">
@@ -1254,7 +1254,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
             {/* SPK Partial Drop & QC Defect Wage Calculator */}
             <div className="lg:col-span-6 bg-[var(--bg-surface)] p-6 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-4">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-mono text-[#3b82f6] font-medium">
+                <span className="text-xs font-mono text-[var(--text-accent)] font-medium">
                   01 · Partial Drop QC Defect &amp; Pro-Rata Catalog Sync
                 </span>
                 <span className="text-xs font-mono text-[var(--text-tertiary)]">
@@ -1274,7 +1274,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
                     max={100}
                     value={spkReceivedLusin}
                     onChange={(e) => setSpkReceivedLusin(Number(e.target.value))}
-                    className="w-full accent-[#2563eb]"
+                    className="w-full accent-[var(--interactive-primary)]"
                   />
                 </div>
 
@@ -1282,7 +1282,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
                   <div>
                     <div className="flex justify-between font-mono mb-1">
                       <span className="text-[var(--text-secondary)]">BS Fatal (Kain Rusak):</span>
-                      <span className="text-amber-400 font-semibold">{spkBsFatal} Lusin</span>
+                      <span className="text-[var(--status-warning-fg)] font-semibold">{spkBsFatal} Lusin</span>
                     </div>
                     <input
                       type="range"
@@ -1290,13 +1290,13 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
                       max={10}
                       value={spkBsFatal}
                       onChange={(e) => setSpkBsFatal(Number(e.target.value))}
-                      className="w-full accent-[#2563eb]"
+                      className="w-full accent-[var(--interactive-primary)]"
                     />
                   </div>
                   <div>
                     <div className="flex justify-between font-mono mb-1">
                       <span className="text-[var(--text-secondary)]">BS Repair (Re-work):</span>
-                      <span className="text-[#3b82f6] font-semibold">{spkBsRepair} Lusin</span>
+                      <span className="text-[var(--text-accent)] font-semibold">{spkBsRepair} Lusin</span>
                     </div>
                     <input
                       type="range"
@@ -1304,7 +1304,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
                       max={10}
                       value={spkBsRepair}
                       onChange={(e) => setSpkBsRepair(Number(e.target.value))}
-                      className="w-full accent-[#2563eb]"
+                      className="w-full accent-[var(--interactive-primary)]"
                     />
                   </div>
                 </div>
@@ -1321,7 +1321,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
                     step={10000}
                     value={spkRatePerLusin}
                     onChange={(e) => setSpkRatePerLusin(Number(e.target.value))}
-                    className="w-full accent-[#2563eb]"
+                    className="w-full accent-[var(--interactive-primary)]"
                   />
                 </div>
               </div>
@@ -1329,7 +1329,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
               <div className="p-4 rounded-[var(--radius-sm)] bg-[var(--bg-primary)] border border-[var(--border-subtle)] space-y-2 font-mono text-xs">
                 <div className="flex justify-between">
                   <span className="text-[var(--text-secondary)]">Passed QC (Restocked to Catalog):</span>
-                  <span className="text-[#3b82f6] font-semibold">{spkPassedQC} Lusin ({spkCatalogRestockRatio}% pass ratio)</span>
+                  <span className="text-[var(--text-accent)] font-semibold">{spkPassedQC} Lusin ({spkCatalogRestockRatio}% pass ratio)</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-[var(--text-secondary)]">Gross Sewing Wage:</span>
@@ -1337,11 +1337,11 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
                 </div>
                 <div className="flex justify-between">
                   <span className="text-[var(--text-secondary)]">BS Fatal Penalty (Rp 50k/Lusin):</span>
-                  <span className="text-amber-400">- Rp {spkDefectPenalty.toLocaleString()}</span>
+                  <span className="text-[var(--status-warning-fg)]">- Rp {spkDefectPenalty.toLocaleString()}</span>
                 </div>
                 <div className="pt-2 border-t border-[var(--border-subtle)] flex justify-between text-sm font-semibold">
                   <span className="text-[var(--text-primary)]">Net Tailor Payout (Slip WA):</span>
-                  <span className="text-[#3b82f6]">Rp {spkNetWage.toLocaleString()}</span>
+                  <span className="text-[var(--text-accent)]">Rp {spkNetWage.toLocaleString()}</span>
                 </div>
               </div>
             </div>
@@ -1349,7 +1349,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
             {/* 4-Pocket Cash Sharding & Role-Gated Profit Isolation */}
             <div className="lg:col-span-6 bg-[var(--bg-surface)] p-6 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-4">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-mono text-[#3b82f6] font-medium">
+                <span className="text-xs font-mono text-[var(--text-accent)] font-medium">
                   02 · Arus Kas 4 Kantong &amp; RBAC Profit Isolation
                 </span>
                 <span className="text-xs font-mono text-[var(--text-tertiary)]">
@@ -1369,13 +1369,13 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
                   step={1000000}
                   value={garmentInvoiceIDR}
                   onChange={(e) => setGarmentInvoiceIDR(Number(e.target.value))}
-                  className="w-full accent-[#2563eb]"
+                  className="w-full accent-[var(--interactive-primary)]"
                 />
               </div>
 
               {garmentActiveRole === 'produksi' ? (
                 <div className="p-6 rounded-[var(--radius-sm)] bg-[var(--bg-primary)] border border-[var(--border-subtle)] text-center space-y-2">
-                  <AlertCircle className="w-6 h-6 text-amber-400 mx-auto" />
+                  <AlertCircle className="w-6 h-6 text-[var(--status-warning-fg)] mx-auto" />
                   <p className="text-sm font-semibold text-[var(--text-primary)]">
                     RoleGateCard: Module Locked for Role &apos;produksi&apos;
                   </p>
@@ -1408,8 +1408,8 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
                   </div>
                   {garmentActiveRole === 'owner' ? (
                     <div className="p-3.5 rounded-[var(--radius-sm)] bg-[var(--bg-primary)] border border-[var(--border-focus)]">
-                      <div className="text-[#3b82f6]">4. Kas Profit (20% · Owner Only)</div>
-                      <div className="text-base font-semibold text-[#3b82f6] mt-1">
+                      <div className="text-[var(--text-accent)]">4. Kas Profit (20% · Owner Only)</div>
+                      <div className="text-base font-semibold text-[var(--text-accent)] mt-1">
                         Rp {Math.round(garmentInvoiceIDR * 0.2).toLocaleString()}
                       </div>
                       <div className="text-[10px] text-[var(--text-tertiary)] mt-0.5">50/50 Putri &amp; Rival Split: Rp {Math.round(garmentInvoiceIDR * 0.1).toLocaleString()} ea</div>
@@ -1434,7 +1434,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
         <div className="space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[var(--bg-surface)] p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)]">
             <div>
-              <span className="text-xs font-mono text-[#3b82f6] font-medium">
+              <span className="text-xs font-mono text-[var(--text-accent)] font-medium">
                 ioi-she-platform · MainDB_SHE · DEC-2026-001 ($960K/yr License Saved)
               </span>
               <h2 className="text-xl font-semibold text-[var(--text-primary)]">
@@ -1460,7 +1460,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
             <div className="lg:col-span-6 bg-[var(--bg-surface)] p-6 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-4">
-              <span className="text-xs font-mono text-[#3b82f6] font-medium">
+              <span className="text-xs font-mono text-[var(--text-accent)] font-medium">
                 01 · L × S Chemical Process Risk Parameters ({hiradcPlant === 'PENANG_PLANT' ? 'HIRADC-PEN-PRD-2026-001' : 'HIRADC-JOH-LOG-2026-004'})
               </span>
 
@@ -1476,7 +1476,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
                     max={5}
                     value={hiradcLikelihood}
                     onChange={(e) => setHiradcLikelihood(Number(e.target.value))}
-                    className="w-full accent-[#2563eb]"
+                    className="w-full accent-[var(--interactive-primary)]"
                   />
                 </div>
 
@@ -1491,7 +1491,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
                     max={5}
                     value={hiradcSeverity}
                     onChange={(e) => setHiradcSeverity(Number(e.target.value))}
-                    className="w-full accent-[#2563eb]"
+                    className="w-full accent-[var(--interactive-primary)]"
                   />
                 </div>
               </div>
@@ -1499,11 +1499,11 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
               <div className="p-4 rounded-[var(--radius-sm)] bg-[var(--bg-primary)] border border-[var(--border-subtle)] space-y-2 font-mono text-xs">
                 <div className="flex justify-between">
                   <span className="text-[var(--text-secondary)]">Computed Risk Score (L × S):</span>
-                  <span className="text-lg font-semibold text-[#3b82f6]">{hiradcScore} / 25</span>
+                  <span className="text-lg font-semibold text-[var(--text-accent)]">{hiradcScore} / 25</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-[var(--text-secondary)]">DOSH Classification:</span>
-                  <span className={`font-semibold ${hiradcScore >= 15 ? 'text-amber-400' : 'text-[#3b82f6]'}`}>
+                  <span className={`font-semibold ${hiradcScore >= 15 ? 'text-[var(--status-warning-fg)]' : 'text-[var(--text-accent)]'}`}>
                     {hiradcLevel}
                   </span>
                 </div>
@@ -1516,7 +1516,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
             </div>
 
             <div className="lg:col-span-6 bg-[var(--bg-surface)] p-6 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-4">
-              <span className="text-xs font-mono text-[#3b82f6] font-medium">
+              <span className="text-xs font-mono text-[var(--text-accent)] font-medium">
                 02 · Interactive 5×5 DOSH/SIRIM Heatmap (Click Any Cell)
               </span>
               <div className="grid grid-cols-5 gap-2 font-mono text-xs">
@@ -1535,9 +1535,9 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
                           isSelected
                             ? 'bg-[var(--accent-blue)] text-white border-white scale-105 font-bold'
                             : cellScore >= 15
-                            ? 'bg-[var(--bg-primary)] text-amber-400 border-amber-500/40 hover:border-amber-400'
+                            ? 'bg-[var(--bg-default)] text-[var(--status-warning-fg)] border-[var(--status-warning-border)] hover:border-[var(--status-warning-fg)]'
                             : cellScore >= 5
-                            ? 'bg-[var(--bg-primary)] text-[#3b82f6] border-[var(--border-subtle)] hover:border-[var(--border-focus)]'
+                            ? 'bg-[var(--bg-primary)] text-[var(--text-accent)] border-[var(--border-subtle)] hover:border-[var(--border-focus)]'
                             : 'bg-[var(--bg-primary)] text-[var(--text-secondary)] border-[var(--border-subtle)]'
                         }`}
                       >

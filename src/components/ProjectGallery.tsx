@@ -88,49 +88,49 @@ const ArchitecturalPlaceholderPreview: React.FC<{
 
   if (compact) {
     return (
-      <div className="w-full h-full bg-[#0a0b0d] relative flex flex-col justify-between p-1.5 overflow-hidden select-none">
+      <div className="w-full h-full bg-[var(--bg-recessed)] relative flex flex-col justify-between p-1.5 overflow-hidden select-none">
         <div
           className="absolute inset-0 opacity-20"
           style={{
             backgroundImage:
-              'linear-gradient(to right, #262930 1px, transparent 1px), linear-gradient(to bottom, #262930 1px, transparent 1px)',
+              'linear-gradient(to right, var(--border-subtle) 1px, transparent 1px), linear-gradient(to bottom, var(--border-subtle) 1px, transparent 1px)',
             backgroundSize: '8px 8px'
           }}
         />
         <div className="relative z-10 flex items-center justify-between">
-          <span className="text-[8px] font-mono font-bold text-[#3b82f6]">0{index + 1}</span>
-          <span className="w-1.5 h-1.5 rounded-full bg-[#00dbe7]" />
+          <span className="text-[8px] font-mono font-bold text-[var(--text-accent)]">0{index + 1}</span>
+          <span className="w-1.5 h-1.5 rounded-full bg-[var(--status-info-fg)]" />
         </div>
         <div className="relative z-10 flex items-center justify-center gap-1 my-auto">
           {variant === 0 && (
             <>
-              <div className="w-3 h-2.5 rounded-[2px] border border-[#3b82f6]/60 bg-[#3b82f6]/15" />
-              <div className="w-2 h-[1px] bg-[#3b82f6]" />
-              <div className="w-3.5 h-3 rounded-[2px] border border-[#00dbe7]/60 bg-[#00dbe7]/15" />
-              <div className="w-2 h-[1px] bg-[#00dbe7]" />
-              <div className="w-3 h-2.5 rounded-[2px] border border-[#a855f7]/60 bg-[#a855f7]/15" />
+              <div className="w-3 h-2.5 rounded-[2px] border border-[var(--interactive-subtle-border)] bg-[var(--interactive-subtle-bg)]" />
+              <div className="w-2 h-[1px] bg-[var(--border-focus)]" />
+              <div className="w-3.5 h-3 rounded-[2px] border border-[var(--status-info-border)] bg-[var(--status-info-bg)]" />
+              <div className="w-2 h-[1px] bg-[var(--status-info-fg)]" />
+              <div className="w-3 h-2.5 rounded-[2px] border border-[var(--status-success-border)] bg-[var(--status-success-bg)]" />
             </>
           )}
           {variant === 1 && (
             <div className="w-full px-1 space-y-1">
-              <div className="h-1.5 w-3/4 rounded-[1px] bg-[#3b82f6]/40" />
+              <div className="h-1.5 w-3/4 rounded-[1px] bg-[var(--interactive-subtle-border)]" />
               <div className="grid grid-cols-3 gap-0.5">
-                <div className="h-2 rounded-[1px] bg-[#1e2330] border border-[#3b82f6]/30" />
-                <div className="h-2 rounded-[1px] bg-[#1e2330] border border-[#00dbe7]/30" />
-                <div className="h-2 rounded-[1px] bg-[#1e2330] border border-[#3b82f6]/30" />
+                <div className="h-2 rounded-[1px] bg-[var(--bg-surface)] border border-[var(--interactive-subtle-border)]" />
+                <div className="h-2 rounded-[1px] bg-[var(--bg-surface)] border border-[var(--status-info-border)]" />
+                <div className="h-2 rounded-[1px] bg-[var(--bg-surface)] border border-[var(--interactive-subtle-border)]" />
               </div>
             </div>
           )}
           {variant === 2 && (
             <div className="flex items-end space-x-1 h-4">
-              <div className="w-1.5 h-2 bg-[#3b82f6]/50 rounded-t-[1px]" />
-              <div className="w-1.5 h-3 bg-[#3b82f6]/80 rounded-t-[1px]" />
-              <div className="w-1.5 h-2.5 bg-[#00dbe7]/60 rounded-t-[1px]" />
-              <div className="w-1.5 h-4 bg-[#00dbe7] rounded-t-[1px]" />
+              <div className="w-1.5 h-2 bg-[var(--border-focus)]/50 rounded-t-[1px]" />
+              <div className="w-1.5 h-3 bg-[var(--border-focus)]/80 rounded-t-[1px]" />
+              <div className="w-1.5 h-2.5 bg-[var(--status-info-fg)]/60 rounded-t-[1px]" />
+              <div className="w-1.5 h-4 bg-[var(--status-info-fg)] rounded-t-[1px]" />
             </div>
           )}
         </div>
-        <div className="relative z-10 text-[7px] font-mono text-[#94a3b8] truncate">
+        <div className="relative z-10 text-[7px] font-mono text-[var(--text-tertiary)] truncate">
           {slot.title}
         </div>
       </div>
@@ -138,94 +138,130 @@ const ArchitecturalPlaceholderPreview: React.FC<{
   }
 
   return (
-    <div className="w-full h-full bg-[#0a0b0d] relative flex flex-col justify-between p-5 sm:p-6 overflow-hidden select-none">
+    <div className="w-full h-full bg-[var(--bg-recessed)] relative flex flex-col justify-between p-5 sm:p-6 overflow-hidden select-none">
       {/* Subtle Blueprint Grid */}
       <div
         className="absolute inset-0 opacity-20 pointer-events-none"
         style={{
           backgroundImage:
-            'linear-gradient(to right, #262930 1px, transparent 1px), linear-gradient(to bottom, #262930 1px, transparent 1px)',
+            'linear-gradient(to right, var(--border-subtle) 1px, transparent 1px), linear-gradient(to bottom, var(--border-subtle) 1px, transparent 1px)',
           backgroundSize: '24px 24px'
         }}
       />
-      <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-[#2563eb]/10 blur-3xl pointer-events-none" />
+      <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-[var(--ambient-glow-primary)] blur-3xl pointer-events-none" />
 
       {/* Top Schematic Header */}
-      <div className="relative z-10 flex items-center justify-between gap-2 border-b border-[#262930]/80 pb-2.5">
+      <div className="relative z-10 flex items-center justify-between gap-2 border-b border-[var(--border-subtle)] pb-2.5">
         <div className="flex items-center space-x-2">
-          <span className="px-2 py-0.5 rounded bg-[#2563eb]/20 border border-[#3b82f6]/40 text-[10px] font-mono font-semibold text-[#60a5fa]">
+          <span className="px-2 py-0.5 rounded bg-[var(--interactive-subtle-bg)] border border-[var(--interactive-subtle-border)] text-[10px] font-mono font-semibold text-[var(--text-accent)]">
             PLACEHOLDER 0{index + 1}
           </span>
-          <span className="text-[11px] font-mono text-[#94a3b8] truncate max-w-[240px] sm:max-w-xs">
+          <span className="text-[11px] font-mono text-[var(--text-tertiary)] truncate max-w-[240px] sm:max-w-xs">
             {projectTitle}
           </span>
         </div>
-        <span className="text-[10px] font-mono text-[#64748b]">1920×1080 · 16:9</span>
+        <span className="text-[10px] font-mono text-[var(--text-tertiary)]">1920×1080 · 16:9</span>
       </div>
 
-      {/* Center Visual Wireframe Illustration */}
-      <div className="relative z-10 my-auto py-3 flex flex-col items-center justify-center">
+      {/* Center Visual Wireframe Illustration (Matching Reference Featured Project Previews) */}
+      <div className="relative z-10 my-auto py-2 flex flex-col items-center justify-center w-full">
         {variant === 0 && (
-          <div className="w-full max-w-md space-y-3">
-            <div className="grid grid-cols-3 gap-2.5 items-center">
-              <div className="p-2.5 rounded-lg bg-[#121418] border border-[#3b82f6]/40 text-center space-y-1">
-                <Layers className="w-4 h-4 text-[#3b82f6] mx-auto" />
-                <div className="text-[10px] font-mono text-white font-semibold">INGESTION</div>
-                <div className="text-[9px] font-mono text-[#64748b]">Schema Gate</div>
+          <div className="w-full rounded-lg bg-[#11131a] border border-[var(--border-subtle)] p-3 space-y-2.5">
+            <div className="grid grid-cols-4 gap-1.5 text-[9px] font-mono">
+              <div className="p-1.5 rounded bg-[#0b0c10] border border-[var(--border-subtle)]">
+                <div className="text-[var(--text-tertiary)]">RECORDS</div>
+                <div className="text-[var(--text-primary)] font-bold">365+ DBs</div>
               </div>
-              <div className="p-2.5 rounded-lg bg-[#121418] border border-[#00dbe7]/40 text-center space-y-1 shadow-[0_0_15px_rgba(0,219,231,0.08)]">
-                <Activity className="w-4 h-4 text-[#00dbe7] mx-auto" />
-                <div className="text-[10px] font-mono text-white font-semibold">CORE ENGINE</div>
-                <div className="text-[9px] font-mono text-[#00dbe7]">Deterministic</div>
+              <div className="p-1.5 rounded bg-[#0b0c10] border border-[var(--border-subtle)]">
+                <div className="text-[var(--text-tertiary)]">SAVINGS</div>
+                <div className="text-[var(--text-accent)] font-bold">$960K/yr</div>
               </div>
-              <div className="p-2.5 rounded-lg bg-[#121418] border border-[#a855f7]/40 text-center space-y-1">
-                <ShieldCheck className="w-4 h-4 text-[#c084fc] mx-auto" />
-                <div className="text-[10px] font-mono text-white font-semibold">AUDIT &amp; DB</div>
-                <div className="text-[9px] font-mono text-[#64748b]">Immutable Log</div>
+              <div className="p-1.5 rounded bg-[#0b0c10] border border-[var(--border-subtle)]">
+                <div className="text-[var(--text-tertiary)]">UPTIME</div>
+                <div className="text-[#4ade80] font-bold">99.98%</div>
+              </div>
+              <div className="p-1.5 rounded bg-[#0b0c10] border border-[var(--border-subtle)]">
+                <div className="text-[var(--text-tertiary)]">LATENCY</div>
+                <div className="text-[var(--text-primary)] font-bold">15ms</div>
+              </div>
+            </div>
+            <div className="grid grid-cols-12 gap-2 items-center pt-1">
+              <div className="col-span-8 h-12">
+                <svg className="w-full h-full overflow-visible" viewBox="0 0 160 44">
+                  <defs>
+                    <linearGradient id="projAreaGrad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stopColor="#f97316" stopOpacity="0.45" />
+                      <stop offset="100%" stopColor="#f97316" stopOpacity="0.0" />
+                    </linearGradient>
+                  </defs>
+                  <path
+                    d="M0 36 L25 30 L50 33 L78 20 L105 24 L132 10 L160 4 L160 44 L0 44 Z"
+                    fill="url(#projAreaGrad)"
+                  />
+                  <path
+                    d="M0 36 L25 30 L50 33 L78 20 L105 24 L132 10 L160 4"
+                    fill="none"
+                    stroke="#f97316"
+                    strokeWidth="2"
+                  />
+                </svg>
+              </div>
+              <div className="col-span-4 flex justify-center">
+                <svg className="w-11 h-11 -rotate-90" viewBox="0 0 44 44">
+                  <circle cx="22" cy="22" r="16" stroke="#232632" strokeWidth="5" fill="none" />
+                  <circle
+                    cx="22"
+                    cy="22"
+                    r="16"
+                    stroke="#f97316"
+                    strokeWidth="5"
+                    strokeDasharray="100.5"
+                    strokeDashoffset="22"
+                    strokeLinecap="round"
+                    fill="none"
+                  />
+                </svg>
               </div>
             </div>
           </div>
         )}
 
         {variant === 1 && (
-          <div className="w-full max-w-md rounded-lg bg-[#121418] border border-[#262930] p-3 space-y-2.5">
-            <div className="flex items-center justify-between border-b border-[#262930] pb-1.5">
-              <div className="flex items-center space-x-1.5">
-                <span className="w-2 h-2 rounded-full bg-[#3b82f6]" />
-                <span className="text-[10px] font-mono text-[#f8fafc] font-medium">
-                  OPERATOR WORKBENCH VIEW
-                </span>
-              </div>
-              <span className="text-[9px] font-mono text-[#00dbe7]">LIVE STATE</span>
+          <div className="w-full rounded-lg bg-[#11131a] border border-[var(--border-subtle)] p-3 space-y-2">
+            <div className="flex items-center justify-between border-b border-[var(--border-subtle)] pb-1.5">
+              <span className="text-[10px] font-mono text-[var(--text-primary)] font-semibold">
+                API &amp; WORKFLOW ENDPOINTS
+              </span>
+              <span className="text-[9px] font-mono text-[#4ade80]">● ACTIVE</span>
             </div>
-            <div className="grid grid-cols-3 gap-2">
-              <div className="p-2 rounded bg-[#0a0b0d] border border-[#262930]">
-                <div className="text-[9px] font-mono text-[#64748b]">THROUGHPUT</div>
-                <div className="text-xs font-mono font-bold text-white mt-0.5">99.4%</div>
+            <div className="space-y-1.5 text-[9px] font-mono">
+              <div className="flex items-center justify-between px-2 py-1 rounded bg-[#0b0c10] border border-[var(--border-subtle)]">
+                <span className="text-[var(--text-secondary)]">/api/v1/maindb/sync</span>
+                <span className="px-1.5 py-0.5 rounded bg-[var(--interactive-subtle-bg)] text-[var(--text-accent)]">POST</span>
               </div>
-              <div className="p-2 rounded bg-[#0a0b0d] border border-[#262930]">
-                <div className="text-[9px] font-mono text-[#64748b]">LATENCY</div>
-                <div className="text-xs font-mono font-bold text-[#00dbe7] mt-0.5">&lt; 15ms</div>
+              <div className="flex items-center justify-between px-2 py-1 rounded bg-[#0b0c10] border border-[var(--border-subtle)]">
+                <span className="text-[var(--text-secondary)]">/api/v1/ssot/verify-gates</span>
+                <span className="px-1.5 py-0.5 rounded bg-[var(--interactive-subtle-bg)] text-[var(--text-accent)]">GET</span>
               </div>
-              <div className="p-2 rounded bg-[#0a0b0d] border border-[#262930]">
-                <div className="text-[9px] font-mono text-[#64748b]">STATUS</div>
-                <div className="text-xs font-mono font-bold text-emerald-400 mt-0.5">VERIFIED</div>
+              <div className="flex items-center justify-between px-2 py-1 rounded bg-[#0b0c10] border border-[var(--border-subtle)]">
+                <span className="text-[var(--text-secondary)]">/api/v1/rebate/ceiling</span>
+                <span className="px-1.5 py-0.5 rounded bg-[var(--interactive-subtle-bg)] text-[var(--text-accent)]">PUT</span>
               </div>
             </div>
           </div>
         )}
 
         {variant === 2 && (
-          <div className="w-full max-w-md rounded-lg bg-[#121418] border border-[#262930] p-3 space-y-2">
+          <div className="w-full rounded-lg bg-[#11131a] border border-[var(--border-subtle)] p-3 space-y-2">
             <div className="flex items-center justify-between text-[10px] font-mono">
-              <span className="text-[#f8fafc]">COMPLIANCE &amp; TELEMETRY MATRIX</span>
-              <span className="text-[#60a5fa]">100% AUDIT READY</span>
+              <span className="text-[var(--text-primary)]">COMPLIANCE &amp; TELEMETRY MATRIX</span>
+              <span className="text-[var(--text-accent)]">100% AUDIT READY</span>
             </div>
             <div className="flex items-end space-x-2 h-12 pt-2 px-2">
               {[45, 65, 55, 80, 72, 92, 100].map((val, i) => (
                 <div key={i} className="flex-1 flex flex-col items-center">
                   <div
-                    className="w-full rounded-t bg-gradient-to-t from-[#2563eb] to-[#00dbe7]"
+                    className="w-full rounded-t bg-gradient-to-t from-[var(--interactive-primary)] to-[var(--status-info-fg)]"
                     style={{ height: `${Math.round((val / 100) * 40)}px` }}
                   />
                 </div>
@@ -234,16 +270,16 @@ const ArchitecturalPlaceholderPreview: React.FC<{
           </div>
         )}
 
-        <div className="text-center mt-3 space-y-1 max-w-lg px-2">
-          <h5 className="text-sm font-semibold text-[#f8fafc] line-clamp-1">{slot.title}</h5>
-          <p className="text-xs text-[#94a3b8] line-clamp-2 leading-relaxed">{slot.caption}</p>
+        <div className="text-center mt-2.5 space-y-0.5 max-w-lg px-2">
+          <h5 className="text-xs font-semibold text-[var(--text-primary)] line-clamp-1">{slot.title}</h5>
+          <p className="text-[11px] text-[var(--text-tertiary)] line-clamp-1">{slot.caption}</p>
         </div>
       </div>
 
       {/* Bottom Expected Path Footer */}
-      <div className="relative z-10 flex items-center justify-between border-t border-[#262930]/80 pt-2.5 text-[10px] font-mono text-[#64748b]">
+      <div className="relative z-10 flex items-center justify-between border-t border-[var(--border-subtle)] pt-2.5 text-[10px] font-mono text-[var(--text-tertiary)]">
         <span className="truncate max-w-[65%]">Slot: public{slot.expectedPath}</span>
-        <span className="text-[#60a5fa] font-medium">Click to open Lightbox →</span>
+        <span className="text-[var(--text-accent)] font-medium">Click to open Lightbox →</span>
       </div>
     </div>
   );
@@ -421,7 +457,7 @@ export const ProjectGallery: React.FC<ProjectGalleryProps> = ({
       {/* Gallery Header & Controls */}
       <div className="flex flex-wrap items-center justify-between gap-2">
         <div className="flex items-center space-x-2 text-xs font-mono text-[var(--text-secondary)]">
-          <ImageIcon className="w-4 h-4 text-[#3b82f6]" />
+          <ImageIcon className="w-4 h-4 text-[var(--text-accent)]" />
           <span>Project Gallery · {slots.length} Deliverable Placeholders</span>
         </div>
 
@@ -429,7 +465,7 @@ export const ProjectGallery: React.FC<ProjectGalleryProps> = ({
           <button
             type="button"
             onClick={() => setLightboxOpen(true)}
-            className="inline-flex items-center space-x-1.5 px-2.5 py-1 rounded-[var(--radius-sm)] bg-[#3b82f6]/15 hover:bg-[#3b82f6]/25 text-[#60a5fa] border border-[#3b82f6]/40 text-xs font-mono font-medium transition-colors"
+            className="inline-flex items-center space-x-1.5 px-2.5 py-1 rounded-[var(--radius-sm)] bg-[var(--interactive-subtle-bg)] hover:bg-[var(--interactive-subtle-hover)] text-[var(--text-accent)] border border-[var(--interactive-subtle-border)] text-xs font-mono font-medium transition-colors"
           >
             <Maximize2 className="w-3.5 h-3.5" />
             <span>Lightbox View</span>
@@ -437,7 +473,7 @@ export const ProjectGallery: React.FC<ProjectGalleryProps> = ({
           <button
             type="button"
             onClick={() => fileInputRef.current?.click()}
-            className="inline-flex items-center space-x-1.5 px-2.5 py-1 rounded-[var(--radius-sm)] bg-[var(--bg-primary)] hover:bg-[var(--bg-surface-elevated)] text-[#3b82f6] border border-[var(--border-subtle)] text-xs font-mono transition-colors"
+            className="inline-flex items-center space-x-1.5 px-2.5 py-1 rounded-[var(--radius-sm)] bg-[var(--bg-default)] hover:bg-[var(--bg-surface-elevated)] text-[var(--text-accent)] border border-[var(--border-subtle)] text-xs font-mono transition-colors"
           >
             <Upload className="w-3.5 h-3.5" />
             <span>Upload</span>
@@ -495,9 +531,9 @@ export const ProjectGallery: React.FC<ProjectGalleryProps> = ({
         {/* Browser Frame Bar */}
         <div className="px-4 py-2.5 border-b border-[var(--border-subtle)] bg-[var(--bg-surface)] flex items-center justify-between gap-2">
           <div className="flex items-center space-x-2 min-w-0">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#262930]" />
-            <span className="w-2.5 h-2.5 rounded-full bg-[#262930]" />
-            <span className="w-2.5 h-2.5 rounded-full bg-[#3b82f6]" />
+            <span className="w-2.5 h-2.5 rounded-full bg-[var(--border-subtle)]" />
+            <span className="w-2.5 h-2.5 rounded-full bg-[var(--border-subtle)]" />
+            <span className="w-2.5 h-2.5 rounded-full bg-[var(--border-focus)]" />
             <span className="text-xs font-mono text-[var(--text-secondary)] truncate ml-2">
               {currentSlot.title}
             </span>
@@ -508,7 +544,7 @@ export const ProjectGallery: React.FC<ProjectGalleryProps> = ({
               <button
                 type="button"
                 onClick={handleClearSlotImage}
-                className="p-1 rounded-[4px] bg-[var(--bg-primary)] text-[var(--text-tertiary)] hover:text-amber-400 border border-[var(--border-subtle)]"
+                className="p-1 rounded-[4px] bg-[var(--bg-default)] text-[var(--text-tertiary)] hover:text-[var(--status-warning-fg)] border border-[var(--border-subtle)]"
                 title="Reset to placeholder"
               >
                 <Trash2 className="w-3.5 h-3.5" />
@@ -517,7 +553,7 @@ export const ProjectGallery: React.FC<ProjectGalleryProps> = ({
             <button
               type="button"
               onClick={prevSlide}
-              className="p-1 rounded-[4px] bg-[var(--bg-primary)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--border-subtle)]"
+              className="p-1 rounded-[4px] bg-[var(--bg-default)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--border-subtle)]"
               aria-label="Previous slide"
             >
               <ChevronLeft className="w-3.5 h-3.5" />
@@ -528,7 +564,7 @@ export const ProjectGallery: React.FC<ProjectGalleryProps> = ({
             <button
               type="button"
               onClick={nextSlide}
-              className="p-1 rounded-[4px] bg-[var(--bg-primary)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--border-subtle)]"
+              className="p-1 rounded-[4px] bg-[var(--bg-default)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--border-subtle)]"
               aria-label="Next slide"
             >
               <ChevronRight className="w-3.5 h-3.5" />
@@ -536,7 +572,7 @@ export const ProjectGallery: React.FC<ProjectGalleryProps> = ({
             <button
               type="button"
               onClick={() => setLightboxOpen(true)}
-              className="p-1 rounded-[4px] bg-[var(--bg-primary)] text-[#3b82f6] hover:bg-[var(--bg-surface-elevated)] border border-[var(--border-subtle)]"
+              className="p-1 rounded-[4px] bg-[var(--bg-default)] text-[var(--text-accent)] hover:bg-[var(--bg-surface-elevated)] border border-[var(--border-subtle)]"
               title="Open Lightbox Modal"
             >
               <Maximize2 className="w-3.5 h-3.5" />
@@ -596,11 +632,11 @@ export const ProjectGallery: React.FC<ProjectGalleryProps> = ({
               onClick={() => setActiveIndex(idx)}
               className={`p-2 rounded-[var(--radius-sm)] border text-left transition-all flex items-center space-x-2.5 ${
                 isSelected
-                  ? 'bg-[var(--bg-surface-elevated)] border-[var(--border-focus)] ring-1 ring-[#3b82f6]/40'
-                  : 'bg-[var(--bg-primary)] border-[var(--border-subtle)] hover:border-[var(--text-tertiary)]'
+                  ? 'bg-[var(--bg-surface-elevated)] border-[var(--border-focus)] ring-1 ring-[var(--interactive-subtle-border)]'
+                  : 'bg-[var(--bg-default)] border-[var(--border-subtle)] hover:border-[var(--border-default)]'
               }`}
             >
-              <div className="w-14 h-9 rounded-[4px] bg-[#0a0b0d] border border-[var(--border-subtle)] overflow-hidden shrink-0">
+              <div className="w-14 h-9 rounded-[4px] bg-[var(--bg-recessed)] border border-[var(--border-subtle)] overflow-hidden shrink-0">
                 {isImageLoaded ? (
                   <img src={thumbSrc} alt={slot.title} className="w-full h-full object-cover" />
                 ) : (
@@ -613,7 +649,7 @@ export const ProjectGallery: React.FC<ProjectGalleryProps> = ({
                 )}
               </div>
               <div className="min-w-0 flex-1">
-                <div className="text-[10px] font-mono text-[#3b82f6] font-semibold">
+                <div className="text-[10px] font-mono text-[var(--text-accent)] font-semibold">
                   0{idx + 1} · View
                 </div>
                 <div className="text-xs font-medium text-[var(--text-primary)] truncate">
@@ -645,11 +681,11 @@ export const ProjectGallery: React.FC<ProjectGalleryProps> = ({
               onClick={(e) => e.stopPropagation()}
             >
               <div className="flex items-center space-x-3">
-                <div className="w-9 h-9 rounded-[var(--radius-sm)] bg-[var(--bg-surface)] border border-[var(--border-subtle)] flex items-center justify-center text-[#3b82f6] font-mono text-xs font-semibold">
+                <div className="w-9 h-9 rounded-[var(--radius-sm)] bg-[var(--bg-surface)] border border-[var(--border-subtle)] flex items-center justify-center text-[var(--text-accent)] font-mono text-xs font-semibold">
                   0{activeIndex + 1}
                 </div>
                 <div>
-                  <div className="flex items-center space-x-2 text-xs font-mono text-[#3b82f6]">
+                  <div className="flex items-center space-x-2 text-xs font-mono text-[var(--text-accent)]">
                     <Grid className="w-3.5 h-3.5" />
                     <span>
                       {displayTitle} · Deliverable {activeIndex + 1} of {slots.length}
@@ -665,7 +701,7 @@ export const ProjectGallery: React.FC<ProjectGalleryProps> = ({
                 <button
                   type="button"
                   onClick={() => fileInputRef.current?.click()}
-                  className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-[var(--radius-sm)] bg-[var(--bg-surface)] hover:bg-[var(--bg-surface-elevated)] text-[#3b82f6] border border-[var(--border-subtle)] text-xs font-mono transition-colors"
+                  className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-[var(--radius-sm)] bg-[var(--bg-surface)] hover:bg-[var(--bg-surface-elevated)] text-[var(--text-accent)] border border-[var(--border-subtle)] text-xs font-mono transition-colors"
                 >
                   <Upload className="w-3.5 h-3.5" />
                   <span>Upload Image</span>
@@ -751,7 +787,7 @@ export const ProjectGallery: React.FC<ProjectGalleryProps> = ({
             >
               <div className="flex flex-wrap items-center justify-between gap-2 text-[11px] font-mono text-[var(--text-tertiary)]">
                 <span className="flex items-center space-x-1.5">
-                  <Sparkles className="w-3.5 h-3.5 text-[#3b82f6]" />
+                  <Sparkles className="w-3.5 h-3.5 text-[var(--text-accent)]" />
                   <span>THUMBNAIL NAVIGATION · CLICK ANY THUMBNAIL OR USE ← / → KEYS</span>
                 </span>
                 <span>{currentSlot.expectedPath}</span>
@@ -770,12 +806,12 @@ export const ProjectGallery: React.FC<ProjectGalleryProps> = ({
                       onClick={() => setActiveIndex(idx)}
                       className={`group relative flex items-center space-x-3 p-2 rounded-[var(--radius-sm)] border transition-all shrink-0 min-w-[220px] max-w-[260px] text-left ${
                         isSelected
-                          ? 'bg-[var(--bg-surface-elevated)] border-[#3b82f6] ring-1 ring-[#3b82f6]/50'
-                          : 'bg-[var(--bg-surface)] border-[var(--border-subtle)] opacity-75 hover:opacity-100 hover:border-[var(--text-tertiary)]'
+                          ? 'bg-[var(--bg-surface-elevated)] border-[var(--border-focus)] ring-1 ring-[var(--interactive-subtle-border)]'
+                          : 'bg-[var(--bg-surface)] border-[var(--border-subtle)] opacity-75 hover:opacity-100 hover:border-[var(--border-default)]'
                       }`}
                     >
                       {/* Miniature 16:9 Thumbnail Preview Box */}
-                      <div className="w-16 h-10 rounded-[4px] bg-[var(--bg-primary)] border border-[var(--border-subtle)] overflow-hidden shrink-0">
+                      <div className="w-16 h-10 rounded-[4px] bg-[var(--bg-recessed)] border border-[var(--border-subtle)] overflow-hidden shrink-0">
                         {hasImg ? (
                           <img
                             src={thumbSrc}
@@ -794,7 +830,7 @@ export const ProjectGallery: React.FC<ProjectGalleryProps> = ({
 
                       <div className="min-w-0 flex-1">
                         <div className="flex items-center justify-between text-[10px] font-mono">
-                          <span className={isSelected ? 'text-[#60a5fa] font-semibold' : 'text-[var(--text-tertiary)]'}>
+                          <span className={isSelected ? 'text-[var(--text-accent)] font-semibold' : 'text-[var(--text-tertiary)]'}>
                             Slide 0{idx + 1}
                           </span>
                           <span className="text-[9px] text-[var(--text-tertiary)]">
@@ -853,13 +889,13 @@ export const ProjectCardGalleryPreview: React.FC<ProjectCardGalleryPreviewProps>
 
   return (
     <>
-      <div className="rounded-[var(--radius-md)] bg-[var(--bg-primary)] border border-[var(--border-subtle)] group-hover:border-[var(--border-focus)] overflow-hidden transition-colors">
+      <div className="rounded-[var(--radius-md)] bg-[var(--bg-recessed)] border border-[var(--border-subtle)] group-hover:border-[var(--border-focus)] overflow-hidden transition-colors">
         {/* Browser Window Top Bar */}
         <div className="px-3 py-2 border-b border-[var(--border-subtle)] bg-[var(--bg-surface)] flex items-center justify-between gap-2">
           <div className="flex items-center space-x-1.5 min-w-0">
-            <span className="w-2 h-2 rounded-full bg-[#262930]" />
-            <span className="w-2 h-2 rounded-full bg-[#262930]" />
-            <span className="w-2 h-2 rounded-full bg-[#3b82f6]" />
+            <span className="w-2 h-2 rounded-full bg-[var(--border-subtle)]" />
+            <span className="w-2 h-2 rounded-full bg-[var(--border-subtle)]" />
+            <span className="w-2 h-2 rounded-full bg-[var(--border-focus)]" />
             <span className="text-[10px] font-mono text-[var(--text-tertiary)] truncate ml-1.5">
               {currentSlot.title}
             </span>
@@ -873,8 +909,8 @@ export const ProjectCardGalleryPreview: React.FC<ProjectCardGalleryPreviewProps>
                 onClick={() => setActiveIndex(idx)}
                 className={`w-4 h-4 rounded-[3px] font-mono text-[9px] flex items-center justify-center transition-colors ${
                   idx === activeIndex
-                    ? 'bg-[var(--accent-blue)] text-white font-semibold'
-                    : 'bg-[var(--bg-primary)] text-[var(--text-tertiary)] hover:text-[var(--text-primary)] border border-[var(--border-subtle)]'
+                    ? 'bg-[var(--btn-primary-bg)] text-[var(--btn-primary-fg)] font-semibold'
+                    : 'bg-[var(--bg-default)] text-[var(--text-tertiary)] hover:text-[var(--text-primary)] border border-[var(--border-subtle)]'
                 }`}
                 title={s.title}
               >
@@ -884,7 +920,7 @@ export const ProjectCardGalleryPreview: React.FC<ProjectCardGalleryPreviewProps>
             <button
               type="button"
               onClick={() => setIsLightboxOpen(true)}
-              className="w-5 h-4 rounded-[3px] bg-[var(--bg-primary)] text-[#3b82f6] hover:bg-[var(--bg-surface-elevated)] border border-[var(--border-subtle)] flex items-center justify-center transition-colors ml-0.5"
+              className="w-5 h-4 rounded-[3px] bg-[var(--bg-default)] text-[var(--text-accent)] hover:bg-[var(--bg-surface-elevated)] border border-[var(--border-subtle)] flex items-center justify-center transition-colors ml-0.5"
               title="Open Lightbox Modal"
             >
               <Maximize2 className="w-2.5 h-2.5" />

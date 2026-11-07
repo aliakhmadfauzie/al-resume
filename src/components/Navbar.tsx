@@ -1,18 +1,6 @@
 import React, { useState } from 'react';
 import { NavTab } from '../types';
-import { PERSONAL_INFO } from '../data/portfolioData';
-import { 
-  Layers, 
-  Terminal, 
-  Briefcase, 
-  FileText, 
-  Mail, 
-  Menu, 
-  X, 
-  MonitorPlay,
-  MessageSquareQuote,
-  ShieldCheck
-} from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 interface NavbarProps {
   currentTab: NavTab;
@@ -24,101 +12,117 @@ interface NavbarProps {
 export const Navbar: React.FC<NavbarProps> = ({
   currentTab,
   onSelectTab,
-  onOpenResume,
   onOpenContact
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const navItems: { id: NavTab; label: string; icon: React.ReactNode }[] = [
-    { id: 'home', label: 'Overview', icon: <Layers className="w-4 h-4" /> },
-    { id: 'projects', label: 'Projects', icon: <Briefcase className="w-4 h-4" /> },
-    { id: 'skills', label: 'Skills', icon: <Terminal className="w-4 h-4" /> },
-    { id: 'experience', label: 'Experience', icon: <ShieldCheck className="w-4 h-4" /> },
-    { id: 'demos', label: 'Demos', icon: <MonitorPlay className="w-4 h-4" /> },
-    { id: 'interview', label: 'Interview', icon: <MessageSquareQuote className="w-4 h-4" /> }
+  const handleNavClick = (tab: NavTab, anchorId?: string) => {
+    onSelectTab(tab);
+    setMobileMenuOpen(false);
+    if (anchorId) {
+      setTimeout(() => {
+        const el = document.getElementById(anchorId);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 80);
+    }
+  };
+
+  const navItems: { id: string; label: string; tab: NavTab; anchor?: string }[] = [
+    { id: 'home', label: 'Home', tab: 'home' },
+    { id: 'about', label: 'About', tab: 'home', anchor: 'section-about' },
+    { id: 'services', label: 'Services', tab: 'home', anchor: 'section-services' },
+    { id: 'certs', label: 'Certifications', tab: 'certifications' },
+    { id: 'stack', label: 'Stack', tab: 'skills' },
+    { id: 'projects', label: 'Projects', tab: 'projects' },
+    { id: 'demos', label: 'Simulators', tab: 'demos' },
+    { id: 'experience', label: 'Experience', tab: 'experience' },
+    { id: 'interview', label: 'Architecture Q&A', tab: 'interview' }
   ];
 
   return (
-    <header className="w-full border-b border-white/[0.06] bg-[#0b0f16]/95 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 w-full border-b border-[var(--nav-border)] bg-[var(--nav-surface)] backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between gap-4 h-16 lg:h-[88px]">
-
-          {/* Zone 1 — Left: logo + name + one-line role */}
-          <div
+        <div className="flex items-center justify-between gap-6 h-16">
+          {/* Zone 1: < /> Code Icon + Two-Line Developer Identity */}
+          <button
             id="nav-brand-logo"
-            onClick={() => onSelectTab('home')}
-            className="flex items-center gap-3 cursor-pointer group shrink-0 min-w-0"
+            type="button"
+            onClick={() => handleNavClick('home')}
+            className="flex items-center gap-3 text-left group cursor-pointer shrink-0"
           >
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#00dbe7] via-[#0078d4] to-[#0078d4] p-[2px] shrink-0">
-              <div className="w-full h-full bg-[#0b0f16] rounded-[10px] flex items-center justify-center p-1.5">
-                <div className="w-full h-full bg-gradient-to-br from-[#00dbe7] to-[#0078d4] rounded-[4px]"></div>
+            <span className="text-[var(--interactive-primary)] font-mono font-bold text-xl tracking-tighter group-hover:scale-105 transition-transform">
+              &lt;/&gt;
+            </span>
+            <div className="leading-none">
+              <div className="text-sm sm:text-base font-bold tracking-wider text-[var(--text-primary)] uppercase">
+                ALI AKHMAD FAUZIE
+              </div>
+              <div className="text-[10px] font-mono tracking-widest text-[var(--text-tertiary)] uppercase mt-1">
+                SOLUTION ARCHITECT
               </div>
             </div>
-            <div className="min-w-0">
-              <div className="font-bold text-[15px] lg:text-base tracking-tight text-white group-hover:text-[#a3c9ff] transition-colors whitespace-nowrap truncate">
-                {PERSONAL_INFO.name}
-              </div>
-              <p className="hidden xl:block text-xs text-[#aab4c3] font-medium whitespace-nowrap truncate">
-                Microsoft 365 Transformation Architect
-              </p>
-            </div>
-          </div>
+          </button>
 
-          {/* Zone 2 — Center: primary navigation */}
-          <nav className="hidden lg:flex flex-1 min-w-0 items-center justify-center gap-1" aria-label="Primary">
+          {/* Zone 2: Horizontal Navigation Links with Active Orange Underline */}
+          <nav
+            className="hidden lg:flex items-center gap-6 text-xs font-medium"
+            aria-label="Primary"
+          >
             {navItems.map((item) => {
-              const isActive = currentTab === item.id;
+              const isActive =
+                currentTab === item.tab &&
+                (!item.anchor || item.id === 'home');
               return (
                 <button
                   key={item.id}
                   id={`nav-link-${item.id}`}
-                  onClick={() => onSelectTab(item.id)}
+                  type="button"
+                  onClick={() => handleNavClick(item.tab, item.anchor)}
                   aria-current={isActive ? 'page' : undefined}
-                  className={`px-2.5 xl:px-4 py-2.5 rounded-xl text-sm font-semibold whitespace-nowrap transition-colors ${
+                  className={`relative py-2 transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
                     isActive
-                      ? 'text-[#a3c9ff] bg-[#0078d4]/25 border border-[#0078d4]/50'
-                      : 'text-[#cbd5e1] border border-transparent hover:text-white hover:bg-white/[0.06]'
+                      ? 'text-[var(--text-primary)] font-semibold'
+                      : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
                   }`}
                 >
-                  {item.label}
+                  <span>{item.label}</span>
+                  {isActive && (
+                    <span className="absolute inset-x-0 -bottom-[1px] h-[2px] bg-[var(--interactive-primary)] shadow-[0_0_8px_rgba(249,115,22,0.8)]" />
+                  )}
                 </button>
               );
             })}
           </nav>
 
-          {/* Zone 3 — Right: secondary + primary CTA */}
-          <div className="hidden lg:flex items-center gap-3 shrink-0">
-            <button
-              id="nav-btn-resume"
-              onClick={onOpenResume}
-              className="flex items-center gap-2 px-3.5 py-2.5 rounded-xl text-sm font-semibold text-[#e2e8f0] border border-white/[0.14] bg-transparent hover:bg-white/[0.06] hover:border-white/[0.25] transition-colors"
-            >
-              <FileText className="w-4 h-4 text-[#aab4c3]" aria-hidden="true" />
-              <span>View Resume</span>
-            </button>
+          {/* Zone 3: Outlined Copper-Orange "Let's Build" Action Button */}
+          <div className="hidden lg:flex items-center shrink-0">
             <button
               id="nav-btn-contact"
+              type="button"
               onClick={onOpenContact}
-              className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold text-[#001013] bg-[#00dbe7] hover:bg-[#00c3d0] transition-colors shadow-[0_8px_24px_rgba(0,219,231,0.18)]"
+              className="px-4 py-2 rounded-[var(--radius-sm)] text-xs font-semibold text-[var(--text-accent)] bg-[var(--interactive-subtle-bg)] hover:bg-[var(--interactive-primary)] hover:text-white border border-[var(--interactive-subtle-border)] shadow-[0_0_16px_rgba(249,115,22,0.15)] transition-all whitespace-nowrap shrink-0 cursor-pointer"
             >
-              <Mail className="w-4 h-4" aria-hidden="true" />
-              <span>Discuss Transformation</span>
+              Let&apos;s Build
             </button>
           </div>
 
-          {/* Mobile: persistent primary CTA + menu */}
-          <div className="flex lg:hidden items-center gap-2 shrink-0">
+          {/* Mobile Controls */}
+          <div className="flex lg:hidden items-center gap-2.5 shrink-0">
             <button
               id="nav-btn-mobile-contact"
+              type="button"
               onClick={onOpenContact}
-              className="px-3.5 py-2 rounded-lg text-sm font-bold text-[#001013] bg-[#00dbe7] hover:bg-[#00c3d0] transition-colors"
+              className="px-3.5 py-1.5 rounded-[var(--radius-sm)] text-xs font-semibold text-[var(--text-accent)] bg-[var(--interactive-subtle-bg)] border border-[var(--interactive-subtle-border)] whitespace-nowrap shrink-0"
             >
-              Discuss
+              Let&apos;s Build
             </button>
             <button
               id="nav-btn-mobile-menu"
+              type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2.5 rounded-lg bg-white/[0.06] text-[#cbd5e1] hover:text-white border border-white/[0.1] transition-colors"
+              className="p-2 rounded-[var(--radius-sm)] bg-[var(--btn-secondary-bg)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--btn-secondary-border)] transition-colors"
               aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={mobileMenuOpen}
             >
@@ -128,68 +132,29 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
       </div>
 
-      {/* Mobile Menu Drawer — grouped sections */}
+      {/* Mobile Navigation Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden border-t border-white/[0.06] bg-[#0b0f16] px-4 pt-3 pb-6 space-y-5">
-          {[
-            { label: 'Strategy', items: navItems.slice(0, 2) },
-            { label: 'Capability', items: navItems.slice(2, 4) },
-            { label: 'Proof', items: navItems.slice(4, 6) }
-          ].map((group) => (
-            <div key={group.label}>
-              <p className="text-[10px] font-mono font-semibold uppercase tracking-widest text-[#8b93a3] px-1 pb-1.5">
-                {group.label}
-              </p>
-              <div className="grid grid-cols-1 gap-1">
-                {group.items.map((item) => {
-                  const isActive = currentTab === item.id;
-                  return (
-                    <button
-                      key={item.id}
-                      id={`mobile-nav-${item.id}`}
-                      onClick={() => {
-                        onSelectTab(item.id);
-                        setMobileMenuOpen(false);
-                      }}
-                      aria-current={isActive ? 'page' : undefined}
-                      className={`flex items-center gap-3 px-3 py-3 rounded-xl text-sm font-semibold transition-colors ${
-                        isActive
-                          ? 'text-[#a3c9ff] bg-[#0078d4]/20 border border-[#0078d4]/40'
-                          : 'text-[#cbd5e1] border border-transparent hover:bg-white/[0.06]'
-                      }`}
-                    >
-                      <span className={isActive ? 'text-[#a3c9ff]' : 'text-[#8b93a3]'}>{item.icon}</span>
-                      <span>{item.label}</span>
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-          ))}
-
-          <div className="grid grid-cols-2 gap-2 border-t border-white/[0.06] pt-4">
-            <button
-              id="mobile-nav-resume"
-              onClick={() => {
-                onOpenResume();
-                setMobileMenuOpen(false);
-              }}
-              className="flex items-center justify-center gap-2 px-3 py-3 rounded-xl text-sm font-semibold text-[#e2e8f0] border border-white/[0.14] hover:bg-white/[0.06] transition-colors"
-            >
-              <FileText className="w-4 h-4 text-[#aab4c3]" />
-              <span>View Resume</span>
-            </button>
-            <button
-              id="mobile-nav-contact"
-              onClick={() => {
-                onOpenContact();
-                setMobileMenuOpen(false);
-              }}
-              className="flex items-center justify-center gap-2 px-3 py-3 rounded-xl text-sm font-bold text-[#001013] bg-[#00dbe7] hover:bg-[#00c3d0] transition-colors"
-            >
-              <Mail className="w-4 h-4" />
-              <span>Discuss</span>
-            </button>
+        <div className="lg:hidden border-t border-[var(--nav-border)] bg-[var(--bg-default)] px-4 py-4 space-y-2">
+          <div className="grid grid-cols-2 gap-1.5">
+            {navItems.map((item) => {
+              const isActive = currentTab === item.tab && !item.anchor;
+              return (
+                <button
+                  key={item.id}
+                  id={`mobile-nav-${item.id}`}
+                  type="button"
+                  onClick={() => handleNavClick(item.tab, item.anchor)}
+                  aria-current={isActive ? 'page' : undefined}
+                  className={`text-left px-3 py-2.5 rounded-[var(--radius-sm)] text-xs font-medium transition-colors whitespace-nowrap ${
+                    isActive
+                      ? 'text-[var(--text-primary)] bg-[var(--bg-surface-elevated)] border border-[var(--border-focus)]'
+                      : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-surface)]'
+                  }`}
+                >
+                  {item.label}
+                </button>
+              );
+            })}
           </div>
         </div>
       )}

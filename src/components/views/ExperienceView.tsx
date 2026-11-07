@@ -1,16 +1,32 @@
 import React, { useState } from 'react';
-import { WORK_EXPERIENCE } from '../../data/portfolioData';
-import { Briefcase, MapPin, Filter } from 'lucide-react';
+import {
+  WORK_EXPERIENCE,
+  PERSONAL_INFO,
+  LINKEDIN_CERTIFICATIONS,
+  LINKEDIN_HONORS_AWARDS
+} from '../../data/portfolioData';
+import {
+  Briefcase,
+  MapPin,
+  Filter,
+  ShieldCheck,
+  Trophy,
+  ExternalLink,
+  Download,
+  Award
+} from 'lucide-react';
 
 export const ExperienceView: React.FC = () => {
   const [selectedTag, setSelectedTag] = useState<string>('all');
 
   const allTags = [
     'all',
-    'Six Sigma Green Belt',
+    'Power Platform',
     'Dataverse',
     'Power Apps',
     'Power BI',
+    'Lark Developer',
+    'Six Sigma Green Belt',
     'SLA Management',
     'ALM Pipelines'
   ];
@@ -24,20 +40,58 @@ export const ExperienceView: React.FC = () => {
 
   return (
     <div className="space-y-12 py-6">
-      {/* Header */}
-      <div className="space-y-3 border-b border-[var(--border-subtle)] pb-8">
-        <p className="text-xs font-mono text-[#60a5fa] font-medium">
-          01 · Track Record &amp; Operations Leadership
-        </p>
-        <h1
-          className="font-semibold text-[var(--text-primary)] tracking-tight"
-          style={{ fontSize: 'var(--text-h1)', lineHeight: 1.2 }}
-        >
-          Professional Experience &amp; Leadership History
-        </h1>
-        <p className="text-base text-[#cbd5e1] max-w-3xl leading-relaxed">
-          Over 9 years driving enterprise modernizations, managing international cross-functional squads across 7 global markets, and architecting mission-critical digital workflows.
-        </p>
+      {/* LinkedIn Profile Identity Header */}
+      <div className="rounded-[var(--radius-lg)] bg-[var(--bg-surface)] border border-[var(--border-subtle)] p-6 sm:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-[var(--shadow-card)]">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5">
+          <div className="relative w-24 h-24 rounded-full overflow-hidden border-2 border-[var(--interactive-primary)] shadow-[0_0_24px_rgba(249,115,22,0.28)] shrink-0">
+            <img
+              src={PERSONAL_INFO.avatarUrl}
+              alt={PERSONAL_INFO.name}
+              className="w-full h-full object-cover object-center"
+            />
+          </div>
+
+          <div className="space-y-1.5">
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="text-xs font-mono text-[var(--text-accent)] font-semibold uppercase tracking-wider">
+                // LINKEDIN VERIFIED DOSSIER
+              </span>
+              <span className="px-2 py-0.5 rounded bg-[var(--interactive-subtle-bg)] border border-[var(--interactive-subtle-border)] text-[10px] font-mono text-[var(--text-accent)]">
+                in/aliakhmadf
+              </span>
+            </div>
+            <h1 className="text-2xl sm:text-3xl font-bold text-[var(--text-primary)] tracking-tight">
+              {PERSONAL_INFO.name}
+            </h1>
+            <p className="text-xs sm:text-sm font-mono text-[var(--text-accent)]">
+              {PERSONAL_INFO.linkedInHeadline}
+            </p>
+            <p className="text-xs text-[var(--text-secondary)] flex items-center gap-1.5">
+              <MapPin className="w-3.5 h-3.5 text-[var(--interactive-primary)] shrink-0" />
+              <span>{PERSONAL_INFO.location}</span>
+            </p>
+          </div>
+        </div>
+
+        <div className="flex flex-wrap items-center gap-3 shrink-0">
+          <a
+            href={PERSONAL_INFO.linkedIn}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center space-x-2 px-4 py-2.5 rounded-[var(--radius-sm)] bg-gradient-to-r from-[#f97316] to-[#fb923c] text-[#090a0d] text-xs font-bold shadow-[0_4px_18px_rgba(249,115,22,0.3)] transition-all"
+          >
+            <span>Open LinkedIn Profile</span>
+            <ExternalLink className="w-3.5 h-3.5" />
+          </a>
+          <a
+            href="/assets/profile/LinkedIn_Profile.pdf"
+            download="Ali_Akhmad_Fauzie_LinkedIn_Profile.pdf"
+            className="inline-flex items-center space-x-2 px-4 py-2.5 rounded-[var(--radius-sm)] bg-[#0f1117] hover:bg-[var(--bg-surface-elevated)] text-[var(--text-primary)] text-xs font-medium border border-[var(--border-subtle)] hover:border-[var(--border-focus)] transition-colors"
+          >
+            <Download className="w-3.5 h-3.5 text-[var(--text-accent)]" />
+            <span>LinkedIn PDF</span>
+          </a>
+        </div>
       </div>
 
       {/* Tag Filters */}
@@ -51,13 +105,13 @@ export const ExperienceView: React.FC = () => {
             <button
               key={tag}
               onClick={() => setSelectedTag(tag)}
-              className={`px-3 py-1.5 rounded-[var(--radius-sm)] text-xs font-medium whitespace-nowrap transition-colors ${
+              className={`px-3 py-1.5 rounded-[var(--radius-sm)] text-xs font-medium whitespace-nowrap transition-colors cursor-pointer ${
                 selectedTag === tag
-                  ? 'bg-[var(--accent-blue)] text-white'
+                  ? 'bg-[var(--interactive-primary)] text-[#090a0d] font-bold'
                   : 'bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--border-subtle)]'
               }`}
             >
-              {tag === 'all' ? 'All Roles' : tag}
+              {tag === 'all' ? 'All Roles (7)' : tag}
             </button>
           ))}
         </div>
@@ -71,7 +125,7 @@ export const ExperienceView: React.FC = () => {
           <div key={item.id} className="relative group">
             {/* Timeline Node Icon */}
             <div className="absolute -left-[30px] md:-left-[54px] top-1.5 w-10 h-10 rounded-[var(--radius-sm)] bg-[var(--bg-surface)] border border-[var(--border-focus)] p-1.5 flex items-center justify-center">
-              <Briefcase className="w-4 h-4 text-[#3b82f6]" />
+              <Briefcase className="w-4 h-4 text-[var(--text-accent)]" />
             </div>
 
             {/* Experience Card */}
@@ -83,12 +137,12 @@ export const ExperienceView: React.FC = () => {
                       {item.role}
                     </h3>
                     {item.isCurrent && (
-                      <span className="text-xs font-mono text-[#60a5fa] font-medium">
-                        · Active Role
+                      <span className="px-2 py-0.5 rounded bg-[var(--interactive-subtle-bg)] border border-[var(--interactive-subtle-border)] text-[10px] font-mono text-[var(--text-accent)] font-semibold">
+                        Active Role
                       </span>
                     )}
                   </div>
-                  <p className="text-sm font-medium text-[#60a5fa]">{item.company}</p>
+                  <p className="text-sm font-medium text-[var(--text-accent)]">{item.company}</p>
                 </div>
 
                 <div className="flex flex-col sm:items-end space-y-1 font-mono text-xs text-[var(--text-secondary)]">
@@ -106,13 +160,13 @@ export const ExperienceView: React.FC = () => {
               <ul className="space-y-2.5 text-sm text-[var(--text-secondary)] leading-relaxed">
                 {item.bulletPoints.map((bullet, bIdx) => (
                   <li key={bIdx} className="flex items-start space-x-2.5">
-                    <span className="text-[#3b82f6] mt-1 shrink-0 font-mono">·</span>
+                    <span className="text-[var(--text-accent)] mt-1 shrink-0 font-mono">·</span>
                     <span>{bullet}</span>
                   </li>
                 ))}
               </ul>
 
-              {/* Unboxed Metadata Tags */}
+              {/* Metadata Tags */}
               <div className="pt-3 border-t border-[var(--border-subtle)] text-xs font-mono text-[var(--text-tertiary)]">
                 {item.tags.join(' · ')}
               </div>
@@ -120,6 +174,97 @@ export const ExperienceView: React.FC = () => {
           </div>
         ))}
       </div>
+
+      {/* LinkedIn Licenses & Certifications Section */}
+      <div className="space-y-5 pt-4 border-t border-[var(--border-subtle)]">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+          <div>
+            <p className="text-xs font-mono text-[var(--text-accent)] font-semibold uppercase">
+              02 · Licenses &amp; Certifications (LinkedIn Verified)
+            </p>
+            <h2 className="text-xl sm:text-2xl font-bold text-[var(--text-primary)] mt-1">
+              12 Professional Credentials &amp; Accreditations
+            </h2>
+          </div>
+          <span className="text-xs font-mono text-[var(--text-tertiary)]">
+            Microsoft · LinkedIn Learning · Lark · Six Sigma
+          </span>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {LINKEDIN_CERTIFICATIONS.map((cert) => (
+            <div
+              key={cert.id}
+              className="rounded-[var(--radius-md)] bg-[var(--bg-surface)] border border-[var(--border-subtle)] hover:border-[var(--border-focus)] p-5 flex flex-col justify-between space-y-3 transition-colors"
+            >
+              <div className="space-y-2">
+                <div className="flex items-center justify-between">
+                  <span className="inline-flex items-center gap-1.5 text-[11px] font-mono text-[var(--text-accent)]">
+                    <ShieldCheck className="w-4 h-4 text-[var(--interactive-primary)]" />
+                    <span>{cert.category}</span>
+                  </span>
+                  <span className="text-xs font-mono text-[var(--text-tertiary)]">
+                    {cert.issueDate}
+                  </span>
+                </div>
+                <h3 className="text-sm font-bold text-[var(--text-primary)] leading-snug">
+                  {cert.name}
+                </h3>
+                <p className="text-xs text-[var(--text-secondary)] font-mono">
+                  {cert.issuer}
+                </p>
+              </div>
+
+              <div className="pt-3 border-t border-[var(--border-subtle)] flex items-center justify-between text-[11px] font-mono">
+                <span className="text-[var(--text-tertiary)] truncate pr-2">
+                  {cert.skills.join(' · ')}
+                </span>
+                <span className="text-[#22c55e] shrink-0">✓ Verified</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* LinkedIn Honors & Awards Section */}
+      <div className="space-y-5 pt-4 border-t border-[var(--border-subtle)]">
+        <div>
+          <p className="text-xs font-mono text-[var(--text-accent)] font-semibold uppercase">
+            03 · Honors &amp; Academic Awards
+          </p>
+          <h2 className="text-xl sm:text-2xl font-bold text-[var(--text-primary)] mt-1">
+            Corporate &amp; Institutional Recognition
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {LINKEDIN_HONORS_AWARDS.map((award) => (
+            <div
+              key={award.id}
+              className="rounded-[var(--radius-md)] bg-[var(--bg-surface)] border border-[var(--border-subtle)] p-5 flex items-start space-x-4"
+            >
+              <div className="w-10 h-10 rounded-[var(--radius-sm)] bg-[#1b1613] border border-[var(--interactive-subtle-border)] flex items-center justify-center shrink-0">
+                <Award className="w-5 h-5 text-[var(--interactive-primary)]" />
+              </div>
+              <div className="space-y-1">
+                <div className="flex items-center justify-between gap-2">
+                  <h3 className="text-sm font-bold text-[var(--text-primary)]">
+                    {award.title}
+                  </h3>
+                  <span className="text-xs font-mono text-[var(--text-accent)] shrink-0">
+                    {award.year}
+                  </span>
+                </div>
+                <p className="text-xs font-mono text-[var(--text-tertiary)]">{award.issuer}</p>
+                <p className="text-xs text-[var(--text-secondary)] leading-relaxed pt-1">
+                  {award.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };
+

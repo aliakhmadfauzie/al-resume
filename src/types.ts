@@ -1,4 +1,11 @@
-export type NavTab = 'home' | 'projects' | 'skills' | 'experience' | 'demos' | 'interview';
+export type NavTab =
+  | 'home'
+  | 'projects'
+  | 'skills'
+  | 'experience'
+  | 'certifications'
+  | 'demos'
+  | 'interview';
 
 export interface ProjectGalleryItem {
   id: string;
@@ -162,3 +169,42 @@ export interface ThoughtLeadershipItem {
   summary: string;
   points: string[];
 }
+
+export interface CertificationItem {
+  id: string;
+  name: string;
+  issuer: string;
+  issueDate: string;
+  category: 'Power Platform' | 'AI & Copilot' | 'Data & Analytics' | 'Project & Process' | 'Enterprise Automation';
+  credentialType: string;
+  skills: string[];
+  verified: boolean;
+  credentialUrl?: string;
+  credentialId?: string;
+  summary?: string;
+  productionApplication?: string;
+  verificationMethod?: string;
+  hoursOrModules?: string;
+  expiryDate?: string;
+}
+
+export interface HonorAwardItem {
+  id: string;
+  title: string;
+  issuer: string;
+  year: string;
+  description: string;
+}
+
+export interface LinkedInTestimonial {
+  id: string;
+  name: string;
+  role: string;
+  company: string;
+  avatar: string;
+  quote: string;
+  scope: string;
+  date: string;
+  badge: string;
+}
+

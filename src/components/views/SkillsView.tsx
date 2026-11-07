@@ -64,55 +64,55 @@ export const SkillsView: React.FC = () => {
     // Support Tools & Platforms
     if (lc.includes('salesforce')) {
       return {
-        icon: <Database className="w-3.5 h-3.5 text-[#3b82f6] shrink-0" />,
+        icon: <Database className="w-3.5 h-3.5 text-[var(--text-accent)] shrink-0" />,
         tag: 'CRM'
       };
     }
     if (lc.includes('jira')) {
       return {
-        icon: <Layers className="w-3.5 h-3.5 text-[#3b82f6] shrink-0" />,
+        icon: <Layers className="w-3.5 h-3.5 text-[var(--text-accent)] shrink-0" />,
         tag: 'Agile / Issue'
       };
     }
     if (lc.includes('zendesk')) {
       return {
-        icon: <MessageSquare className="w-3.5 h-3.5 text-[#3b82f6] shrink-0" />,
+        icon: <MessageSquare className="w-3.5 h-3.5 text-[var(--text-accent)] shrink-0" />,
         tag: 'Ticketing'
       };
     }
     if (lc.includes('tableau')) {
       return {
-        icon: <PieChart className="w-3.5 h-3.5 text-[#3b82f6] shrink-0" />,
+        icon: <PieChart className="w-3.5 h-3.5 text-[var(--text-accent)] shrink-0" />,
         tag: 'Visual BI'
       };
     }
     if (lc.includes('power bi')) {
       return {
-        icon: <BarChart className="w-3.5 h-3.5 text-[#3b82f6] shrink-0" />,
+        icon: <BarChart className="w-3.5 h-3.5 text-[var(--text-accent)] shrink-0" />,
         tag: 'Analytics'
       };
     }
     if (lc.includes('excel')) {
       return {
-        icon: <FileText className="w-3.5 h-3.5 text-[#3b82f6] shrink-0" />,
+        icon: <FileText className="w-3.5 h-3.5 text-[var(--text-accent)] shrink-0" />,
         tag: 'Data Modeling'
       };
     }
     if (lc.includes('teams')) {
       return {
-        icon: <MonitorPlay className="w-3.5 h-3.5 text-[#3b82f6] shrink-0" />,
+        icon: <MonitorPlay className="w-3.5 h-3.5 text-[var(--text-accent)] shrink-0" />,
         tag: 'M365 Collab'
       };
     }
     if (lc.includes('slack')) {
       return {
-        icon: <Terminal className="w-3.5 h-3.5 text-[#3b82f6] shrink-0" />,
+        icon: <Terminal className="w-3.5 h-3.5 text-[var(--text-accent)] shrink-0" />,
         tag: 'Ops Comms'
       };
     }
     if (lc.includes('zoom')) {
       return {
-        icon: <Video className="w-3.5 h-3.5 text-[#3b82f6] shrink-0" />,
+        icon: <Video className="w-3.5 h-3.5 text-[var(--text-accent)] shrink-0" />,
         tag: 'Conferencing'
       };
     }
@@ -120,19 +120,19 @@ export const SkillsView: React.FC = () => {
     // Customer Service Management
     if (lc.includes('sla') || lc.includes('kpi')) {
       return {
-        icon: <Gauge className="w-3.5 h-3.5 text-[#3b82f6] shrink-0" />,
+        icon: <Gauge className="w-3.5 h-3.5 text-[var(--text-accent)] shrink-0" />,
         tag: '>98% Target'
       };
     }
     if (lc.includes('escalation')) {
       return {
-        icon: <AlertTriangle className="w-3.5 h-3.5 text-[#3b82f6] shrink-0" />,
+        icon: <AlertTriangle className="w-3.5 h-3.5 text-[var(--text-accent)] shrink-0" />,
         tag: 'Triage'
       };
     }
     if (lc.includes('quality assurance')) {
       return {
-        icon: <ShieldCheck className="w-3.5 h-3.5 text-[#3b82f6] shrink-0" />,
+        icon: <ShieldCheck className="w-3.5 h-3.5 text-[var(--text-accent)] shrink-0" />,
         tag: 'ISO / QA'
       };
     }
@@ -141,12 +141,12 @@ export const SkillsView: React.FC = () => {
     if (category === 'Team Leadership & Development') {
       if (lc.includes('hiring') || lc.includes('attrition')) {
         return {
-          icon: <UserCheck className="w-3.5 h-3.5 text-[#3b82f6] shrink-0" />,
+          icon: <UserCheck className="w-3.5 h-3.5 text-[var(--text-accent)] shrink-0" />,
           tag: 'Retention'
         };
       }
       return {
-        icon: <Users className="w-3.5 h-3.5 text-[#3b82f6] shrink-0" />,
+        icon: <Users className="w-3.5 h-3.5 text-[var(--text-accent)] shrink-0" />,
         tag: 'Leadership'
       };
     }
@@ -155,12 +155,12 @@ export const SkillsView: React.FC = () => {
     if (category === 'Process Automation & Analytics') {
       if (lc.includes('dashboard')) {
         return {
-          icon: <Activity className="w-3.5 h-3.5 text-[#3b82f6] shrink-0" />,
+          icon: <Activity className="w-3.5 h-3.5 text-[var(--text-accent)] shrink-0" />,
           tag: 'Live Telemetry'
         };
       }
       return {
-        icon: <Sliders className="w-3.5 h-3.5 text-[#3b82f6] shrink-0" />,
+        icon: <Sliders className="w-3.5 h-3.5 text-[var(--text-accent)] shrink-0" />,
         tag: 'Automation'
       };
     }
@@ -168,13 +168,13 @@ export const SkillsView: React.FC = () => {
     // Languages
     if (category === 'Languages') {
       return {
-        icon: <Globe className="w-3.5 h-3.5 text-[#3b82f6] shrink-0" />,
+        icon: <Globe className="w-3.5 h-3.5 text-[var(--text-accent)] shrink-0" />,
         tag: lc.includes('native') ? 'Native' : 'Fluent'
       };
     }
 
     return {
-      icon: <CheckCircle2 className="w-3.5 h-3.5 text-[#3b82f6] shrink-0" />,
+      icon: <CheckCircle2 className="w-3.5 h-3.5 text-[var(--text-accent)] shrink-0" />,
       tag: 'Core'
     };
   };
@@ -182,17 +182,17 @@ export const SkillsView: React.FC = () => {
   const getCategoryIcon = (category: string) => {
     switch (category) {
       case 'Customer Service Management':
-        return <ShieldCheck className="w-4 h-4 text-[#3b82f6]" />;
+        return <ShieldCheck className="w-4 h-4 text-[var(--text-accent)]" />;
       case 'Team Leadership & Development':
-        return <Users className="w-4 h-4 text-[#3b82f6]" />;
+        return <Users className="w-4 h-4 text-[var(--text-accent)]" />;
       case 'Support Tools & Platforms':
-        return <Terminal className="w-4 h-4 text-[#3b82f6]" />;
+        return <Terminal className="w-4 h-4 text-[var(--text-accent)]" />;
       case 'Process Automation & Analytics':
-        return <Workflow className="w-4 h-4 text-[#3b82f6]" />;
+        return <Workflow className="w-4 h-4 text-[var(--text-accent)]" />;
       case 'Languages':
-        return <Globe className="w-4 h-4 text-[#3b82f6]" />;
+        return <Globe className="w-4 h-4 text-[var(--text-accent)]" />;
       default:
-        return <Briefcase className="w-4 h-4 text-[#3b82f6]" />;
+        return <Briefcase className="w-4 h-4 text-[var(--text-accent)]" />;
     }
   };
 
@@ -238,7 +238,7 @@ export const SkillsView: React.FC = () => {
     <div className="space-y-12 py-6">
       {/* Page Header */}
       <div className="space-y-3 border-b border-[var(--border-subtle)] pb-8">
-        <p className="text-xs font-mono text-[#60a5fa] font-medium">
+        <p className="text-xs font-mono text-[var(--text-accent)] font-medium">
           01 · Technical Architecture &amp; Operational Competencies
         </p>
         <h1
@@ -247,7 +247,7 @@ export const SkillsView: React.FC = () => {
         >
           Technical Mastery &amp; Core Competencies
         </h1>
-        <p className="text-base text-[#cbd5e1] max-w-3xl leading-relaxed">
+        <p className="text-base text-[var(--text-secondary)] max-w-3xl leading-relaxed">
           Structured F-pattern competency matrix organized by Core Competencies, Platform Tools, and Methodologies for rapid recruiter evaluation.
         </p>
       </div>
@@ -262,7 +262,7 @@ export const SkillsView: React.FC = () => {
             >
               Competency &amp; Tooling Architecture
             </h2>
-            <p className="text-sm text-[#cbd5e1]">
+            <p className="text-sm text-[var(--text-secondary)]">
               Segmented into clear domain groups on an 8-pixel (`0.5rem`) grid layout with tactile icon-led badges.
             </p>
           </div>
@@ -298,7 +298,7 @@ export const SkillsView: React.FC = () => {
               <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-[var(--border-subtle)] pb-3">
                 <div className="space-y-1">
                   <div className="flex items-center gap-2">
-                    <span className="text-xs font-mono text-[#60a5fa] font-semibold">
+                    <span className="text-xs font-mono text-[var(--text-accent)] font-semibold">
                       {group.index}
                     </span>
                     <span className="text-xs font-mono text-[var(--text-tertiary)]">·</span>
@@ -306,7 +306,7 @@ export const SkillsView: React.FC = () => {
                       {group.label}
                     </h3>
                   </div>
-                  <p className="text-xs text-[#cbd5e1]">{group.subtitle}</p>
+                  <p className="text-xs text-[var(--text-secondary)]">{group.subtitle}</p>
                 </div>
                 <span className="text-xs font-mono text-[var(--text-secondary)] tabular-nums shrink-0">
                   {group.categories.reduce((acc, c) => acc + c.skills.length, 0)} Verified Items
@@ -383,7 +383,7 @@ export const SkillsView: React.FC = () => {
       {/* SECTION 2: Power Platform Architecture Suite */}
       <section className="space-y-4">
         <div className="border-b border-[var(--border-subtle)] pb-3">
-          <p className="text-xs font-mono text-[#60a5fa] font-medium">02 · Core Platform Stack</p>
+          <p className="text-xs font-mono text-[var(--text-accent)] font-medium">02 · Core Platform Stack</p>
           <h2
             className="font-medium text-[var(--text-primary)] tracking-tight mt-1"
             style={{ fontSize: 'var(--text-h2)', lineHeight: 1.25 }}
@@ -395,7 +395,7 @@ export const SkillsView: React.FC = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           <div className="glass-card p-6 space-y-4 flex flex-col justify-between">
             <div className="space-y-3">
-              <div className="w-9 h-9 rounded-[var(--radius-sm)] bg-[var(--bg-surface-elevated)] border border-[var(--border-subtle)] flex items-center justify-center text-[#3b82f6]">
+              <div className="w-9 h-9 rounded-[var(--radius-sm)] bg-[var(--bg-surface-elevated)] border border-[var(--border-subtle)] flex items-center justify-center text-[var(--text-accent)]">
                 <Layers className="w-4 h-4" />
               </div>
               <div>
@@ -413,7 +413,7 @@ export const SkillsView: React.FC = () => {
 
           <div className="glass-card p-6 space-y-4 flex flex-col justify-between">
             <div className="space-y-3">
-              <div className="w-9 h-9 rounded-[var(--radius-sm)] bg-[var(--bg-surface-elevated)] border border-[var(--border-subtle)] flex items-center justify-center text-[#3b82f6]">
+              <div className="w-9 h-9 rounded-[var(--radius-sm)] bg-[var(--bg-surface-elevated)] border border-[var(--border-subtle)] flex items-center justify-center text-[var(--text-accent)]">
                 <Workflow className="w-4 h-4" />
               </div>
               <div>
@@ -431,7 +431,7 @@ export const SkillsView: React.FC = () => {
 
           <div className="glass-card p-6 space-y-4 flex flex-col justify-between">
             <div className="space-y-3">
-              <div className="w-9 h-9 rounded-[var(--radius-sm)] bg-[var(--bg-surface-elevated)] border border-[var(--border-subtle)] flex items-center justify-center text-[#3b82f6]">
+              <div className="w-9 h-9 rounded-[var(--radius-sm)] bg-[var(--bg-surface-elevated)] border border-[var(--border-subtle)] flex items-center justify-center text-[var(--text-accent)]">
                 <Database className="w-4 h-4" />
               </div>
               <div>
@@ -449,7 +449,7 @@ export const SkillsView: React.FC = () => {
 
           <div className="glass-card p-6 space-y-4 flex flex-col justify-between">
             <div className="space-y-3">
-              <div className="w-9 h-9 rounded-[var(--radius-sm)] bg-[var(--bg-surface-elevated)] border border-[var(--border-subtle)] flex items-center justify-center text-[#3b82f6]">
+              <div className="w-9 h-9 rounded-[var(--radius-sm)] bg-[var(--bg-surface-elevated)] border border-[var(--border-subtle)] flex items-center justify-center text-[var(--text-accent)]">
                 <Sparkles className="w-4 h-4" />
               </div>
               <div>
@@ -470,7 +470,7 @@ export const SkillsView: React.FC = () => {
       {/* SECTION 3: Pro-Code Extensions & Development Stack */}
       <section className="space-y-4">
         <div className="border-b border-[var(--border-subtle)] pb-3">
-          <p className="text-xs font-mono text-[#60a5fa] font-medium">03 · Pro-Code Engineering</p>
+          <p className="text-xs font-mono text-[var(--text-accent)] font-medium">03 · Pro-Code Engineering</p>
           <h2
             className="font-medium text-[var(--text-primary)] tracking-tight mt-1"
             style={{ fontSize: 'var(--text-h2)', lineHeight: 1.25 }}
@@ -487,7 +487,7 @@ export const SkillsView: React.FC = () => {
             >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2.5">
-                  <span className="w-8 h-8 rounded-[var(--radius-sm)] bg-[var(--bg-surface-elevated)] text-xs font-mono font-semibold flex items-center justify-center border border-[var(--border-subtle)] text-[#3b82f6]">
+                  <span className="w-8 h-8 rounded-[var(--radius-sm)] bg-[var(--bg-surface-elevated)] text-xs font-mono font-semibold flex items-center justify-center border border-[var(--border-subtle)] text-[var(--text-accent)]">
                     {item.code}
                   </span>
                   <span className="text-sm font-medium text-[var(--text-primary)]">{item.name}</span>
@@ -511,7 +511,7 @@ export const SkillsView: React.FC = () => {
         <div className="bg-[var(--bg-surface)] p-6 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-4">
           <div className="flex items-center justify-between border-b border-[var(--border-subtle)] pb-3">
             <div className="flex items-center gap-2">
-              <GitBranch className="w-4 h-4 text-[#3b82f6]" />
+              <GitBranch className="w-4 h-4 text-[var(--text-accent)]" />
               <h3 className="text-sm font-semibold text-[var(--text-primary)]">
                 ALM &amp; Enterprise Governance
               </h3>
@@ -526,7 +526,7 @@ export const SkillsView: React.FC = () => {
                 className="p-3.5 rounded-[var(--radius-sm)] bg-[var(--bg-primary)] border border-[var(--border-subtle)] space-y-1.5"
               >
                 <div className="flex items-center gap-2">
-                  <Code2 className="w-3.5 h-3.5 text-[#3b82f6] shrink-0" />
+                  <Code2 className="w-3.5 h-3.5 text-[var(--text-accent)] shrink-0" />
                   <h4 className="text-xs font-semibold text-[var(--text-primary)]">{gov.name}</h4>
                 </div>
                 <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
@@ -541,7 +541,7 @@ export const SkillsView: React.FC = () => {
         <div className="bg-[var(--bg-surface)] p-6 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-4">
           <div className="flex items-center justify-between border-b border-[var(--border-subtle)] pb-3">
             <div className="flex items-center gap-2">
-              <Award className="w-4 h-4 text-[#3b82f6]" />
+              <Award className="w-4 h-4 text-[var(--text-accent)]" />
               <h3 className="text-sm font-semibold text-[var(--text-primary)]">
                 Executive Service Delivery Pillars
               </h3>
@@ -556,7 +556,7 @@ export const SkillsView: React.FC = () => {
                 className="p-3.5 rounded-[var(--radius-sm)] bg-[var(--bg-primary)] border border-[var(--border-subtle)] space-y-1.5"
               >
                 <div className="flex items-center gap-2">
-                  <TrendingUp className="w-3.5 h-3.5 text-[#3b82f6] shrink-0" />
+                  <TrendingUp className="w-3.5 h-3.5 text-[var(--text-accent)] shrink-0" />
                   <h4 className="text-xs font-semibold text-[var(--text-primary)]">
                     {comp.title}
                   </h4>
@@ -573,7 +573,7 @@ export const SkillsView: React.FC = () => {
       {/* SECTION 5: Technology Utilization Telemetry across Production Apps */}
       <section className="bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-[var(--radius-lg)] p-6 sm:p-8 space-y-6 shadow-[var(--shadow-card)]">
         <div className="space-y-1">
-          <p className="text-xs font-mono text-[#60a5fa] font-medium">04 · Production Footprint</p>
+          <p className="text-xs font-mono text-[var(--text-accent)] font-medium">04 · Production Footprint</p>
           <h2 className="text-lg sm:text-xl font-medium text-[var(--text-primary)] tracking-tight">
             Technology Utilization Matrix Across 16+ Rebuilt Systems
           </h2>
@@ -618,7 +618,7 @@ export const SkillsView: React.FC = () => {
                   <span className="text-xs font-medium text-[var(--text-primary)] truncate pr-2">
                     {tech}
                   </span>
-                  <span className="text-xs font-mono text-[#3b82f6] tabular-nums shrink-0">
+                  <span className="text-xs font-mono text-[var(--text-accent)] tabular-nums shrink-0">
                     {count} {count === 1 ? 'App' : 'Apps'}
                   </span>
                 </div>
@@ -641,7 +641,7 @@ export const SkillsView: React.FC = () => {
                     <span className="text-2xl font-semibold text-[var(--text-primary)] font-mono tabular-nums">
                       {metric.value}
                     </span>
-                    <Target className="w-4 h-4 text-[#3b82f6] shrink-0" />
+                    <Target className="w-4 h-4 text-[var(--text-accent)] shrink-0" />
                   </div>
                   <div>
                     <div className="text-xs font-medium text-[var(--text-primary)]">

@@ -2,16 +2,11 @@ import React from 'react';
 import { ProjectItem, MigrationSlice } from '../../types';
 import { ProjectGallery } from '../ProjectGallery';
 import { getGalleryForItem } from '../../data/projectGalleries';
-import { 
-  X, 
-  ExternalLink, 
-  Layers, 
-  CheckCircle2, 
-  TrendingUp, 
-  Cpu, 
-  ShieldCheck, 
-  Sparkles,
-  ArrowRight,
+import {
+  X,
+  ExternalLink,
+  CheckCircle2,
+  TrendingUp,
   Code2,
   Workflow,
   MonitorPlay
@@ -41,65 +36,79 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
   const galleryPlaceholders = getGalleryForItem(project);
 
   return (
-    <div className="fixed inset-0 z-50 overflow-hidden flex justify-end bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
-      <div 
+    <div className="fixed inset-0 z-50 overflow-hidden flex justify-end bg-black/70 backdrop-blur-sm animate-in fade-in duration-200">
+      <div
         id="project-detail-drawer-container"
-        className="relative w-full max-w-2xl h-full bg-[#161b22] border-l border-[#282a2e] shadow-2xl overflow-hidden flex flex-col animate-in slide-in-from-right duration-300"
+        className="relative w-full max-w-2xl h-full bg-[var(--bg-surface)] border-l border-[var(--border-subtle)] shadow-2xl overflow-hidden flex flex-col animate-in slide-in-from-right duration-200"
       >
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-5 border-b border-[#282a2e] bg-[#111318]">
+        <div className="flex items-center justify-between px-6 py-5 border-b border-[var(--border-subtle)] bg-[var(--bg-primary)]">
           <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 rounded-xl bg-[#0078d4]/20 border border-[#0078d4]/40 flex items-center justify-center text-[#a3c9ff] font-mono font-bold shadow-[0_0_15px_rgba(0,120,212,0.2)]">
-              {isMigrationSlice ? (project as MigrationSlice).letter : <Workflow className="w-5 h-5" />}
+            <div className="w-10 h-10 rounded-[var(--radius-sm)] bg-[var(--bg-surface)] border border-[var(--border-subtle)] flex items-center justify-center text-[var(--text-accent)] font-mono font-semibold">
+              {isMigrationSlice ? (
+                (project as MigrationSlice).letter
+              ) : (
+                <Workflow className="w-5 h-5" />
+              )}
             </div>
             <div>
-              <span className="text-[10px] uppercase font-mono tracking-wider text-[#00dbe7] font-semibold">
-                {isMigrationSlice ? `IOI Domino Migration • Slice ${(project as MigrationSlice).letter}` : 'Enterprise Automation Solution'}
+              <span className="text-xs font-mono text-[var(--text-accent)] font-medium">
+                {isMigrationSlice
+                  ? `IOI Domino Migration · Slice ${(project as MigrationSlice).letter}`
+                  : 'Enterprise Architecture Case Study'}
               </span>
-              <h2 className="text-lg font-bold text-white tracking-tight leading-tight mt-0.5">{itemTitle}</h2>
+              <h2 className="text-lg font-semibold text-[var(--text-primary)] tracking-tight leading-tight mt-0.5">
+                {itemTitle}
+              </h2>
             </div>
           </div>
 
           <button
+            type="button"
             onClick={onClose}
-            className="p-2 rounded-lg bg-[#1e2024] hover:bg-[#282a2e] text-[#c0c7d4] hover:text-white border border-[#282a2e] transition-all"
+            className="p-2 rounded-[var(--radius-sm)] bg-[var(--bg-surface)] hover:bg-[var(--bg-surface-elevated)] text-[var(--text-secondary)] hover:text-white border border-[var(--border-subtle)] transition-colors"
+            aria-label="Close drawer"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Scrollable Content */}
-        <div className="flex-1 overflow-y-auto p-6 sm:p-8 space-y-8 bg-[#111318]/50">
-          
-          {/* Subtitle / Role */}
-          <div className="space-y-2">
+        <div className="flex-1 overflow-y-auto p-6 sm:p-8 space-y-8 bg-[var(--bg-surface)]">
+          {/* Subtitle & Unboxed Metadata Line (Zero-Pill Discipline) */}
+          <div className="space-y-2 border-b border-[var(--border-subtle)] pb-4">
             {'subtitle' in project && project.subtitle && (
-              <p className="text-base font-semibold text-[#a3c9ff]">{project.subtitle}</p>
+              <p className="text-base font-medium text-[var(--text-accent)]">{project.subtitle}</p>
             )}
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="text-xs text-[#c0c7d4] font-medium bg-[#1e2024] px-3 py-1 rounded-lg border border-[#282a2e]">
-                <strong className="text-white">Role:</strong> {project.role}
-              </span>
+            <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-xs font-mono text-[var(--text-secondary)]">
+              <span>Role: {project.role}</span>
               {'date' in project && (
-                <span className="text-xs font-mono text-[#c0c7d4] bg-[#1e2024] px-3 py-1 rounded-lg border border-[#282a2e]">
-                  {project.date}
-                </span>
+                <>
+                  <span aria-hidden="true">·</span>
+                  <span className="tabular-nums">{project.date}</span>
+                </>
               )}
               {isMigrationSlice && (
-                <span className="text-xs font-mono text-[#00dbe7] bg-[#0078d4]/20 px-3 py-1 rounded-lg border border-[#0078d4]/40 font-bold">
-                  {(project as MigrationSlice).appCount} Applications Rebuilt
-                </span>
+                <>
+                  <span aria-hidden="true">·</span>
+                  <span className="text-[var(--text-accent)] font-semibold tabular-nums">
+                    {(project as MigrationSlice).appCount} Applications Rebuilt
+                  </span>
+                </>
               )}
               {'repoUrl' in project && project.repoUrl && (
-                <a
-                  href={project.repoUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center space-x-1.5 text-xs font-mono text-[#a3c9ff] hover:text-white bg-[#0078d4]/15 hover:bg-[#0078d4]/30 px-3 py-1 rounded-lg border border-[#0078d4]/40 transition-colors"
-                >
-                  <ExternalLink className="w-3.5 h-3.5" />
-                  <span>Repository</span>
-                </a>
+                <>
+                  <span aria-hidden="true">·</span>
+                  <a
+                    href={project.repoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center space-x-1 text-[var(--text-accent)] hover:underline"
+                  >
+                    <ExternalLink className="w-3.5 h-3.5" />
+                    <span>Source Repository</span>
+                  </a>
+                </>
               )}
             </div>
           </div>
@@ -111,83 +120,89 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
             projectTitle={itemTitle}
           />
 
-          {/* Tools Grid */}
-          <div className="space-y-2">
-            <h4 className="text-[11px] font-mono uppercase tracking-widest text-[#c0c7d4] font-semibold">Technology Stack</h4>
-            <div className="flex flex-wrap gap-1.5">
-              {tools.map((t, idx) => (
-                <span key={idx} className="text-xs font-medium px-2.5 py-1 rounded-md bg-[#1e2024] text-white border border-[#282a2e]">
-                  {t}
-                </span>
-              ))}
+          {/* Unboxed Technology Stack */}
+          <div className="space-y-1.5">
+            <h4 className="text-xs font-mono text-[var(--text-tertiary)] font-medium">
+              Technology Stack
+            </h4>
+            <p className="text-xs font-mono text-[var(--text-primary)] leading-relaxed">
+              {tools.join(' · ')}
+            </p>
+          </div>
+
+          {/* Challenge & Strategy Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="bg-[var(--bg-primary)] p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-2.5">
+              <h4 className="text-xs font-mono text-[var(--text-tertiary)] font-medium">
+                01 · Operational Challenge
+              </h4>
+              <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{problemText}</p>
+            </div>
+
+            <div className="bg-[var(--bg-primary)] p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-2.5">
+              <h4 className="text-xs font-mono text-[var(--text-accent)] font-medium">
+                02 · Architected Solution
+              </h4>
+              <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{solutionText}</p>
             </div>
           </div>
 
-          {/* Challenge - Strategy - Result Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
-            
-            {/* Before / Challenge */}
-            <div className="bg-[#1a1c20] p-6 rounded-2xl border border-red-500/20 space-y-4">
-              <div className="flex items-center space-x-2 text-red-400 font-bold text-sm uppercase tracking-wide">
-                <span className="w-2.5 h-2.5 rounded-full bg-red-400"></span>
-                <span>The Challenge</span>
-              </div>
-              <p className="text-sm text-[#e2e2e8] leading-relaxed">{problemText}</p>
+          {/* Verified Business Results */}
+          <div className="bg-[var(--bg-primary)] p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-2">
+            <div className="flex items-center space-x-2 text-[var(--text-accent)] font-mono text-xs font-medium">
+              <TrendingUp className="w-4 h-4" />
+              <span>03 · Verified Business Impact</span>
             </div>
-
-            {/* Strategy / Solution */}
-            <div className="bg-[#1a1c20] p-6 rounded-2xl border border-[#0078d4]/30 space-y-4 shadow-[0_0_15px_rgba(0,120,212,0.1)]">
-              <div className="flex items-center space-x-2 text-[#a3c9ff] font-bold text-sm uppercase tracking-wide">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#0078d4]"></span>
-                <span>The Strategy</span>
-              </div>
-              <p className="text-sm text-[#e2e2e8] leading-relaxed">{solutionText}</p>
-            </div>
+            <p className="text-sm text-[var(--text-primary)] font-medium leading-relaxed">
+              {impactText}
+            </p>
           </div>
 
-          <div className="bg-[#1a1c20] p-5 rounded-2xl border border-[#00dbe7]/30 space-y-3 flex flex-col md:flex-row md:items-center md:justify-between gap-4 shadow-[0_0_15px_rgba(0,219,231,0.1)]">
-            <div className="flex items-center space-x-2 text-[#00dbe7] font-bold text-sm uppercase tracking-wide shrink-0">
-              <TrendingUp className="w-5 h-5" />
-              <span>Business Results</span>
-            </div>
-            <p className="text-sm text-white font-bold leading-relaxed">{impactText}</p>
-          </div>
-
-          {/* Metrics if available */}
+          {/* Quantified Outcomes */}
           {'impactMetrics' in project && project.impactMetrics && (
-            <div className="space-y-3 pt-2">
-              <h4 className="text-[11px] font-mono uppercase tracking-widest text-[#00dbe7] font-semibold">Key Quantified Outcomes</h4>
-              <div className="grid grid-cols-3 gap-3">
+            <div className="space-y-3">
+              <h4 className="text-xs font-mono text-[var(--text-accent)] font-medium">
+                Quantified Telemetry
+              </h4>
+              <div className="grid grid-cols-3 gap-3 font-mono tabular-nums">
                 {project.impactMetrics.map((m, idx) => (
-                  <div key={idx} className="bg-[#1e2024] p-3 rounded-xl border border-[#282a2e] text-center">
-                    <div className="text-lg font-black text-transparent bg-clip-text bg-gradient-to-r from-[#a3c9ff] to-[#00dbe7] font-mono">
+                  <div
+                    key={idx}
+                    className="bg-[var(--bg-primary)] p-3.5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] text-center"
+                  >
+                    <div className="text-lg font-semibold text-[var(--text-primary)]">
                       {m.value}
                     </div>
-                    <div className="text-[10px] text-[#c0c7d4] mt-0.5">{m.label}</div>
+                    <div className="text-[11px] font-sans text-[var(--text-secondary)] mt-0.5">{m.label}</div>
                   </div>
                 ))}
               </div>
             </div>
           )}
 
-          {/* Technical Details or Examples */}
+          {/* Deep Technical Specifications */}
           {'technicalDetails' in project && project.technicalDetails && (
-            <div className="pt-2">
-              <details className="group bg-[#1a1c20]/50 rounded-xl border border-[#282a2e] overflow-hidden transition-all hover:bg-[#1a1c20]">
+            <div>
+              <details
+                open
+                className="group bg-[var(--bg-primary)] rounded-[var(--radius-md)] border border-[var(--border-subtle)] overflow-hidden"
+              >
                 <summary className="flex items-center justify-between p-4 cursor-pointer list-none outline-none">
                   <div className="flex items-center space-x-2">
-                    <Code2 className="w-4 h-4 text-[#dab9ff]" />
-                    <span className="text-[11px] font-mono uppercase tracking-widest text-[#dab9ff] font-semibold">Deep Technical Specifications</span>
-                  </div>
-                  <div className="text-[#c0c7d4] group-open:rotate-180 transition-transform">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    <Code2 className="w-4 h-4 text-[var(--text-accent)]" />
+                    <span className="text-xs font-mono text-[var(--text-primary)] font-medium">
+                      Technical Implementation Specifications
+                    </span>
                   </div>
                 </summary>
-                <div className="p-4 pt-0 border-t border-[#282a2e]/50">
+                <div className="p-4 pt-0 border-t border-[var(--border-subtle)]">
                   <ul className="space-y-2 mt-3">
                     {project.technicalDetails.map((td, idx) => (
-                      <li key={idx} className="flex items-start space-x-2.5 text-xs text-[#e2e2e8] bg-[#1e2024] p-3 rounded-lg border border-[#282a2e]">
-                        <CheckCircle2 className="w-4 h-4 text-[#0078d4] shrink-0 mt-0.5" />
+                      <li
+                        key={idx}
+                        className="flex items-start space-x-2.5 text-xs text-[var(--text-secondary)] bg-[var(--bg-surface)] p-3 rounded-[var(--radius-sm)] border border-[var(--border-subtle)]"
+                      >
+                        <CheckCircle2 className="w-4 h-4 text-[var(--text-accent)] shrink-0 mt-0.5" />
                         <span className="leading-relaxed">{td}</span>
                       </li>
                     ))}
@@ -198,24 +213,28 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
           )}
 
           {'codeSnippet' in project && project.codeSnippet && (
-            <div className="space-y-2 pt-2">
-              <h4 className="text-[11px] font-mono uppercase tracking-widest text-[#a3c9ff] font-semibold">
+            <div className="space-y-2">
+              <h4 className="text-xs font-mono text-[var(--text-accent)] font-medium">
                 Verified Implementation Excerpt
               </h4>
-              <pre className="p-4 rounded-xl bg-[#0a0b0d] border border-[#282a2e] text-[11px] font-mono text-[#e2e2e8] overflow-x-auto leading-relaxed">
+              <pre className="p-4 rounded-[var(--radius-md)] bg-[var(--bg-primary)] border border-[var(--border-subtle)] text-[11px] font-mono text-[var(--text-primary)] overflow-x-auto leading-relaxed">
                 <code>{project.codeSnippet}</code>
               </pre>
             </div>
           )}
 
           {isMigrationSlice && (project as MigrationSlice).examples && (
-            <div className="space-y-3 pt-2">
-              <h4 className="text-[11px] font-mono uppercase tracking-widest text-[#a3c9ff] font-semibold">Representative Applications in Slice</h4>
+            <div className="space-y-3">
+              <h4 className="text-xs font-mono text-[var(--text-accent)] font-medium">
+                Representative Applications in Slice
+              </h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 {(project as MigrationSlice).examples.map((ex, idx) => (
-                  <div key={idx} className="flex items-center space-x-2 text-xs text-white bg-[#1a1c20] p-2.5 rounded-lg border border-[#282a2e]">
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#00dbe7]"></div>
-                    <span>{ex}</span>
+                  <div
+                    key={idx}
+                    className="text-xs text-[var(--text-primary)] bg-[var(--bg-primary)] p-3 rounded-[var(--radius-sm)] border border-[var(--border-subtle)]"
+                  >
+                    {ex}
                   </div>
                 ))}
               </div>
@@ -223,36 +242,35 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
           )}
 
           {isMigrationSlice && (project as MigrationSlice).keyHighlights && (
-            <div className="space-y-2 pt-2">
-              <h4 className="text-[11px] font-mono uppercase tracking-widest text-[#dab9ff] font-semibold">Key Architectural Highlights</h4>
-              <div className="flex flex-wrap gap-2">
-                {(project as MigrationSlice).keyHighlights.map((kh, idx) => (
-                  <span key={idx} className="text-xs px-3 py-1 rounded-lg bg-[#5c2d91]/20 text-[#dab9ff] border border-[#5c2d91]/40 font-medium">
-                    ✓ {kh}
-                  </span>
-                ))}
-              </div>
+            <div className="space-y-2">
+              <h4 className="text-xs font-mono text-[var(--text-accent)] font-medium">
+                Key Architectural Highlights
+              </h4>
+              <p className="text-xs font-mono text-[var(--text-secondary)] leading-relaxed">
+                {(project as MigrationSlice).keyHighlights.join(' · ')}
+              </p>
             </div>
           )}
-
         </div>
 
         {/* Footer with Demo Trigger */}
-        <div className="px-6 py-4 border-t border-[#282a2e] bg-[#111318] flex items-center justify-between">
+        <div className="px-6 py-4 border-t border-[var(--border-subtle)] bg-[var(--bg-primary)] flex items-center justify-between">
           <button
+            type="button"
             onClick={onClose}
-            className="px-4 py-2 rounded-lg text-xs font-medium text-[#c0c7d4] hover:text-white bg-[#1a1c20] border border-[#282a2e]"
+            className="px-4 py-2 rounded-[var(--radius-sm)] text-xs font-medium text-[var(--text-secondary)] hover:text-white bg-[var(--bg-surface)] border border-[var(--border-subtle)]"
           >
-            Back
+            Close
           </button>
 
           {'liveDemoId' in project && project.liveDemoId && onLaunchDemo && (
             <button
+              type="button"
               onClick={() => {
                 onClose();
                 onLaunchDemo(project.liveDemoId!);
               }}
-              className="flex items-center space-x-2 px-5 py-2 rounded-lg text-xs font-semibold bg-[#0078d4] text-white hover:bg-[#0086ea] shadow-md shadow-[#0078d4]/30"
+              className="flex items-center space-x-2 px-5 py-2 rounded-[var(--radius-sm)] text-xs font-semibold bg-[var(--accent-blue)] text-white hover:bg-[var(--accent-blue-hover)] transition-colors"
             >
               <MonitorPlay className="w-4 h-4" />
               <span>Launch Live Simulation</span>

@@ -1,16 +1,34 @@
-import { ProjectItem, MigrationSlice, ExperienceItem, DevStackItem, GovernanceItem, BusinessCompetency, InterviewTopic, TransformationMetric, TrustSignal, ThoughtLeadershipItem } from '../types';
+import {
+  ProjectItem,
+  MigrationSlice,
+  ExperienceItem,
+  DevStackItem,
+  GovernanceItem,
+  BusinessCompetency,
+  InterviewTopic,
+  TransformationMetric,
+  TrustSignal,
+  ThoughtLeadershipItem,
+  CertificationItem,
+  HonorAwardItem,
+  LinkedInTestimonial
+} from '../types';
 
 export const PERSONAL_INFO = {
   name: "Ali Akhmad Fauzie",
   title: "Power Platform Solution Architect & Enterprise Modernization Specialist",
+  linkedInHeadline: "Power Platform Solution Manager | Operation Lead | Process Improvement | Project Management",
   tagline: "Power Platform Developer | Solution Architect | Driving digital transformation through scalable, intelligent automation.",
-  location: "West Java 40111, Indonesia / Kuala Lumpur, Malaysia",
+  location: "Federal Territory of Kuala Lumpur, Malaysia / Bandung, West Java 40111, Indonesia",
   email: "aliakhmadfauzie@gmail.com",
-  phone: "+62 851-1055-2118 / +60 13-295 7406",
-  linkedIn: "https://linkedin.com/in/aliakhmadfauzie",
+  secondaryEmail: "aliakhmadfauzie@hotmail.com",
+  phone: "+60 13-295 7406 / +60 11-1214 7406 / +62 851-1055-2118",
+  linkedIn: "https://www.linkedin.com/in/aliakhmadf/",
+  linkedInHandle: "linkedin.com/in/aliakhmadf",
   github: "https://github.com/aliakhmadfauzie",
+  avatarUrl: "/assets/profile/ali-avatar.jpg",
   yearsExperience: "9+ Years",
-  summary: "A results-driven Power Platform solution architect specializing in migrating legacy systems (Lotus Notes) to modern Microsoft 365 ecosystems. Proven track record in designing end-to-end automation workflows, AI-enhanced processes, and robust governance frameworks that deliver significant reductions in manual workload and operational cycle times. Expert in bridging functional silos across Quality, Warehouse, HR, and IT."
+  summary: "A results-driven Power Platform solution architect and operations leader specializing in migrating legacy systems (Lotus Notes) to modern Microsoft 365 ecosystems. Proven track record in designing end-to-end automation workflows, AI-enhanced processes, and robust governance frameworks that deliver 80–90% reductions in manual workload, >98% SLA compliance, and 90%+ data accuracy across Quality, Warehouse, HR, and IT."
 };
 
 export const KEY_METRICS = [
@@ -1016,81 +1034,111 @@ export const MIGRATION_SLICES: MigrationSlice[] = [
 
 export const WORK_EXPERIENCE: ExperienceItem[] = [
   {
-    id: "exp-freelance",
-    role: "Enterprise Power Platform Solution Architect / Freelance",
-    company: "Independent Consultant",
-    location: "Kuala Lumpur, Malaysia / West Java, Indonesia",
-    period: "May 2025 – Present",
+    id: "exp-meraki",
+    role: "Power Platform Solution Manager",
+    company: "Meraki Malaysia",
+    location: "Federal Territory of Kuala Lumpur, Malaysia",
+    period: "July 2025 – Present",
     isCurrent: true,
-    tags: ["Process Optimization", "Six Sigma Green Belt", "AI Management", "Dataverse", "ALM Pipelines"],
+    tags: ["Power Platform", "Dataverse", "ALM Pipelines", "Power Apps", "Power BI", "Solution Governance"],
+    bulletPoints: [
+      "Drive organic business growth by identifying cross-selling and up-selling opportunities within existing client accounts, translating technical success into expanded project scopes and new service offerings.",
+      "Partner with executive stakeholders to identify high-impact business challenges, developing proposals and proof-of-concepts (POCs) that convert technical roadmaps into signed statements of work (SOWs).",
+      "Lead the end-to-end delivery of Microsoft Power Platform solutions for clients, aligning business needs with scalable, secure, and well-governed technical architectures.",
+      "Define Power Platform strategy, roadmap, and governance frameworks for client organizations, including best practices, security standards, and adoption guidelines.",
+      "Design and oversee solutions using Power Apps, Power Automate, Power BI, and Dataverse, ensuring enterprise-grade architecture and seamless integrations.",
+      "Establish and enforce Application Lifecycle Management (ALM) and DevOps practices, including environment strategy, solution packaging, source control, and CI/CD pipelines.",
+      "Manage and mentor cross-functional delivery teams (developers and consultants), handling capacity planning, task allocation, project scope, timelines, and budgets."
+    ],
+    iconUrl: "/assets/profile/ali-avatar.jpg"
+  },
+  {
+    id: "exp-freelance",
+    role: "Enterprise Power Platform & Dynamics 365 Solution Architect",
+    company: "IOI Group / Independent Consultant",
+    location: "Penang, Johor & Kuala Lumpur, Malaysia",
+    period: "2024 – Present",
+    isCurrent: true,
+    tags: ["Process Optimization", "Six Sigma Green Belt", "AI Management", "Dataverse", "ALM Pipelines", "Power Apps"],
     bulletPoints: [
       "Led the enterprise migration of over 365 Lotus Domino and legacy business applications across more than 28 business units to Microsoft 365 and Dataverse, defining the migration strategy, data mapping, and governance for cutover.",
-      "Translated executive requirements into scalable Power Platform roadmaps, establishing governance standards and security controls while supporting POCs, proposals, and signed SOWs.",
-      "Architected hybrid applications utilizing React 19, TypeScript, Canvas Apps, and Dataverse, ensuring seamless integrations and modernized enterprise solutions.",
+      "Architected Dual-Track Modernization housing 7,878 Power Apps YAML screens, 16 production .msapp packages, and a 400+ file React 19 + TypeScript code-first mirror backed by Single MainDB_{Dept} SharePoint lists ($960K+/yr premium licensing avoided).",
       "Strengthened release quality and deployment efficiency through Azure Pipelines, GitHub Actions, and PAC CLI-based ALM practices, facilitating continuous integration and delivery.",
-      "Delivered the Isolated Rebate Approval System with Dataverse database isolation and multi-tier role-based security, ensuring compliance with strict financial audit requirements.",
-      "Deployed AI Builder solutions for classification and search, improving ticket resolution times by 30-50%."
+      "Delivered the Isolated Rebate Approval System (Tasek Cement) with Dataverse database isolation and 5-tier role-based security, cutting turnaround from 3 days to 15 minutes.",
+      "Deployed AI Builder and Gemini/Groq solutions for classification, document search, and 50+ specialized migration pipeline agents, reducing delivery effort by 70%."
     ],
-    iconUrl: "https://lh3.googleusercontent.com/aida/AP1WRLvU986Laj-OuiWRRfw79rRmQ1Af2VbPFVtrPSB72Wo9V88kaO90hM2vSiIyegL0KpNPVaIs5k8pb8GidYMH6PXhA7U04s5hKIZ4-scgVIPhgbAMp-N_6pw-pdhgKxLgkXWXOpIMEfQ9qHOJryAln-fm5PbLUvdCozDpaUF5Wb2pd9j6FecPYaUUtGLRjQD6AmqriWMXqCsgqicT1ZFoRkTNVbVQAD2xFY6rvYgSbibYeYCQlXTZQMWg0P0"
+    iconUrl: "/assets/profile/ali-avatar.jpg"
   },
   {
     id: "exp-concentrix",
-    role: "Operations Team Leader & Process Automation Lead",
-    company: "Concentrix CVG",
-    location: "Kuala Lumpur, Malaysia",
+    role: "Team Leader, Operations & Certified Lark Developer",
+    company: "Concentrix",
+    location: "Kuala Lumpur, Federal Territory of Kuala Lumpur, Malaysia",
     period: "May 2023 – April 2025",
-    tags: ["Team Scaling", "SLA Management", "Power Apps", "Power BI", "Workflow Analytics"],
+    tags: ["Team Scaling", "SLA Management", "Power Apps", "Power BI", "Lark Developer", "AI Builder"],
     bulletPoints: [
-      "Managed and mentored a 34-member multilingual customer support and operations team across 7 international markets, maintaining over 98% SLA compliance.",
-      "Scaled operational team capacity by 380% within 18 months (from 9 to 34 agents) while maintaining operational quality, low attrition, and high customer satisfaction.",
-      "Built PulseTrack and SmartFlow analytics tools using Power Apps and Power BI, eliminating 90% of manual reporting and freeing 60-80% of leadership administrative workload.",
-      "Implemented automated reporting frameworks in Power BI and QlikView, enhancing operational efficiency by 25% and standardizing KPI visibility across teams.",
-      "Engineered real-time data tracking pipelines achieving over 90% data accuracy and reducing average handling time (AHT) by 25%."
+      "Managed Line of Business operations across 7 international markets, ensuring stringent adherence to 98%+ SLA compliance standards and cultivating superior client service delivery.",
+      "Oversaw workforce expansion, scaling the multilingual team by 380% (from 9 to 34 members) while maintaining peak efficiency, low attrition, and a 25% AHT reduction.",
+      "Spearheaded automation initiatives using Power Platform and Lark Open Platform (8 custom tools), reducing manual reporting by 90% and increasing data accuracy to 98%.",
+      "Led the CS Resolver project—an AI-powered classification system using Microsoft AI Builder across 120+ SOP categories—accelerating issue resolution by 30–50%.",
+      "Implemented PulseTrack (agent monitoring dashboard reducing leadership workload by 60–80%) and SmartFlow (automated request intake achieving 90% data accuracy and 80% efficiency gains)."
     ],
-    iconUrl: "https://lh3.googleusercontent.com/aida/AP1WRLvmmzx9g8QWMTnbVE5HiJ0Irunu5Gtf2ebevSFo95ySGtpMDBWPfFNg_FwzmCyJhHZufYZ9NNx98kiGNdmGVeFPP-GDa4zFBKy0uA8FMmewuUVgDgj4lU9Vl4uHA9cJ9iGSsDweASYMdl1lU9yhk8aaTgN90ntn5_N3xy1Nd4mSUNw1eoVbwjC8DgMT5D9RBEaIQOws3VpHkMu-YxRQL9hvDcNSO_plh7LeeNR3Lx_2iIVUiNU3yV3qvFo"
+    iconUrl: "/assets/profile/ali-avatar.jpg"
   },
   {
     id: "exp-accenture-lead",
-    role: "Senior Team Lead / Operations Team Lead",
+    role: "Service Delivery Ops Sr Team Lead (2019–2022) & Ops Team Lead (2018–2019)",
     company: "Accenture",
-    location: "Kuala Lumpur, Malaysia",
-    period: "July 2017 – November 2022",
-    tags: ["Leadership", "Efficiency", "Incident Protocol", "Talent Pipeline", "SQL Reporting"],
+    location: "Kuala Lumpur, Federal Territory of Kuala Lumpur, Malaysia",
+    period: "May 2018 – November 2022",
+    tags: ["Leadership", "SLA Management", "Power Apps", "Power BI", "Six Sigma Green Belt", "SQL Reporting"],
     bulletPoints: [
-      "Directed a cross-functional team of 25-34 direct reports across 7 global markets, consistently exceeding 98% SLA compliance.",
-      "Architected a new incident response protocol, reducing triage time by 60% and standardizing root-cause escalation paths.",
-      "Mentored junior analysts, establishing a robust internal talent pipeline and career progression framework.",
-      "Developed SQL-backed reporting dashboards using Tableau and QlikView to analyze decision accuracy, critical error rates, and escalation trends."
+      "Directed a cross-functional service delivery team of 20–34 members across global markets over 5+ years at Accenture, consistently exceeding 90–98% SLA compliance and earning the Accenture Diamond Award.",
+      "Pioneered Power Platform adoption on the operations floor in 2021—building SharePoint-backed tracking tools, Power Automate escalation workflows, and Power BI dashboards.",
+      "Developed real-time performance monitoring tools and implemented data-driven insights that delivered a 15% increase in operational efficiency and 60% faster incident triage.",
+      "Designed training and coaching programs and participated in Weekly Business Reviews (WBRs) to address failing metrics and execute root-cause action plans."
     ],
-    iconUrl: "https://lh3.googleusercontent.com/aida/AP1WRLuWNX9kpNESeN2LE9ZXEuM9faNOispkbhER3yOGZhkNWsbcKk2R-Sw4nsBnRZNbpQj78ce0zGX38bQWx2w1AHfh9Za1Zd0ap5E6G4Td0TKeDdpHY49etM5UZ_dW416O0p3Za3vVT0eo805LJw2_nzXXeo3IRcEVl6H5BCwszFhZm5eCKXtrGc0r98GFzEyucidiXCF7FQT5TiHAG_pF_EW6Xh6NB-lEFY8vkep7_n_dYdmLmN_f63REMnw"
+    iconUrl: "/assets/profile/ali-avatar.jpg"
   },
   {
     id: "exp-accenture-analyst",
     role: "Data Analyst",
     company: "Accenture",
-    location: "Kuala Lumpur, Malaysia",
-    period: "Aug 2017 – May 2018",
+    location: "Federal Territory of Kuala Lumpur, Malaysia",
+    period: "August 2017 – May 2018",
     tags: ["Data Analysis", "KPI Tracking", "PL/SQL", "Process Bottlenecks"],
     bulletPoints: [
-      "Conducted rigorous KPI analysis for enterprise service delivery metrics across multiple customer accounts.",
+      "Conducted rigorous KPI analysis for enterprise service delivery metrics across multiple global customer accounts, earning two rapid promotions within 5 years.",
       "Identified critical operational bottlenecks, informing strategic pivot plans and automation opportunities."
     ],
-    iconUrl: "https://lh3.googleusercontent.com/aida/AP1WRLvMeGtVB-hkpzhJr1SmjJO1LGK5TgTd9cNasMmoNHqYRHtjIffVePmeKQcNcwZP2ih7bOE1yOcLFBDpFuHWlhAF--iCWFupocXWOayfV63jiWnEYHIFNVjM4VbVgSxkNHl9jjNWqXneRIJgW5TahbGQ1OVqLjn5tqNr1B2iNDFlm1hkz7jL3U1cBJ2RavDaPfLs-i9A7vUY99HtIsQ7iJl2JE3N-B_5uYzlLL4VVhk0_D1A2rkoqA3dkWE"
+    iconUrl: "/assets/profile/ali-avatar.jpg"
+  },
+  {
+    id: "exp-thelorry",
+    role: "Digital Marketing Specialist",
+    company: "TheLorry",
+    location: "Petaling, Selangor, Malaysia",
+    period: "February 2017 – August 2017",
+    tags: ["Digital Strategy", "Campaign Analytics", "Growth Marketing"],
+    bulletPoints: [
+      "Conducted data-driven digital marketing campaigns and planned cross-functional marketing strategies for Malaysia's leading logistics platform.",
+      "Established foundational expertise in conversion analytics, funnel optimization, and stakeholder collaboration immediately following university graduation."
+    ],
+    iconUrl: "/assets/profile/ali-avatar.jpg"
   },
   {
     id: "exp-education",
-    role: "Academic Foundation",
+    role: "Bachelor of International Business Management (Honours)",
     company: "Universiti Utara Malaysia (UUM)",
     location: "Sintok, Kedah, Malaysia",
-    period: "Feb 2013 – Dec 2016",
+    period: "2013 – 2017",
     tags: ["Bachelor Degree", "International Business", "Scholarship Recipient", "Dean's Award"],
     bulletPoints: [
-      "Bachelor of International Business Management (Honours).",
-      "Minor in Logistics & Transportation.",
-      "UUM International Scheme Scholarship Recipient.",
-      "3x Dean's Academic Award recipient."
+      "Bachelor's Degree in International Business Management With Honours (Minor in Logistics & Transportation).",
+      "Universiti Utara Malaysia International Scholarship Scheme Award Recipient.",
+      "3× Dean's Academic Award Recipient and Special Achievement in Leadership Awardee."
     ],
-    iconUrl: "https://lh3.googleusercontent.com/aida/AP1WRLsF2AZQa5UP7hM2UK6rk7VNQgF5ETWXXe-83-WuHc7KnrUO7-ItBHf8EqJ1vsh-G4xiWTEMlrDqIV8EmAzNOMM5kl_cxvL8mU2Qr-BN_n84YztVEEkjQIrEgBCCPX97ph6JEsGrsnc9aPuPlC6vd_E3wsw3_NMt6_4T3r-CqpDhNjSz4xhDbJ6lNTPNI41h2QNfQKIVACPb4MzZaDRHT1m0AoB8HwBxPO1aQraK_nMgrI5u9Vm_rSKlS4c"
+    iconUrl: "/assets/profile/ali-avatar.jpg"
   }
 ];
 
@@ -1376,4 +1424,312 @@ export const THOUGHT_LEADERSHIP: ThoughtLeadershipItem[] = [
     ]
   }
 ];
+
+export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
+  {
+    id: "cert-data-analysis",
+    name: "Career Essentials in Data Analysis",
+    issuer: "Microsoft & LinkedIn",
+    issueDate: "Jun 2025",
+    category: "Data & Analytics",
+    credentialType: "Professional Certificate",
+    skills: ["Data Analysis", "Power BI", "Data Modeling", "KPI Telemetry", "DAX Queries", "SQL Analytics"],
+    verified: true,
+    credentialUrl: "https://www.linkedin.com/in/aliakhmadf/",
+    credentialId: "MS-LI-CEDA-2025-06",
+    summary: "Comprehensive professional specialization by Microsoft and LinkedIn covering enterprise data modeling, DAX aggregation patterns, executive KPI storytelling, and automated ETL pipelines in Power BI.",
+    productionApplication: "Applied directly to PulseTrack & SmartFlow executive telemetry dashboards across 7 regional APAC markets, driving 98% data accuracy and eliminating 90% of manual spreadsheet reporting.",
+    verificationMethod: "Microsoft & LinkedIn Learning Official Transcript",
+    hoursOrModules: "18 Hours · 5 Core Courses & Capstone Exam",
+    expiryDate: "No Expiration · Lifetime Credential"
+  },
+  {
+    id: "cert-pm-foundations",
+    name: "Project Management Foundations",
+    issuer: "LinkedIn Learning (PMI Aligned)",
+    issueDate: "Jun 2025",
+    category: "Project & Process",
+    credentialType: "Verified Credential",
+    skills: ["Project Governance", "SOW Delivery", "Risk Mitigation", "Stakeholder Alignment", "WBS & Critical Path"],
+    verified: true,
+    credentialUrl: "https://www.linkedin.com/in/aliakhmadf/",
+    credentialId: "PMI-LL-PMF-2025-06",
+    summary: "PMI-aligned project delivery methodology covering statement-of-work (SOW) scoping, critical path scheduling, change control boards, and multi-site cutover risk management.",
+    productionApplication: "Used at Meraki Malaysia & IOI Group to structure the 6-slice Domino-to-M365 cutover across 28+ business units with 100% on-time milestone sign-off.",
+    verificationMethod: "LinkedIn Learning PMI Registered Education Provider",
+    hoursOrModules: "12 Hours · 4 PDU-Eligible Modules",
+    expiryDate: "No Expiration · Lifetime Credential"
+  },
+  {
+    id: "cert-ai-managers",
+    name: "AI for Managers",
+    issuer: "Microsoft & LinkedIn",
+    issueDate: "Dec 2024",
+    category: "AI & Copilot",
+    credentialType: "Microsoft Learning Path",
+    skills: ["AI Strategy", "Workforce Productivity", "AI Governance", "Operational Scaling", "HITL Workflows"],
+    verified: true,
+    credentialUrl: "https://www.linkedin.com/in/aliakhmadf/",
+    credentialId: "MS-LI-AIM-2024-12",
+    summary: "Executive framework for deploying generative AI across operational squads, establishing human-in-the-loop (HITL) confidence thresholds, and measuring ROI on automated triage.",
+    productionApplication: "Guided the deployment of CS Resolver (85% confidence gate across 120+ SOP categories) and the 34-agent multilingual BPO transformation at Concentrix.",
+    verificationMethod: "Microsoft & LinkedIn Learning Official Transcript",
+    hoursOrModules: "10 Hours · 4 Leadership Modules",
+    expiryDate: "No Expiration · Lifetime Credential"
+  },
+  {
+    id: "cert-power-automate",
+    name: "Microsoft Power Automate Essential Training",
+    issuer: "LinkedIn Learning",
+    issueDate: "Dec 2024",
+    category: "Power Platform",
+    credentialType: "Verified Credential",
+    skills: ["Power Automate", "Cloud Flows", "Multi-Stage Approvals", "SharePoint Connectors", "OData Filtering", "Error Scope Handling"],
+    verified: true,
+    credentialUrl: "https://www.linkedin.com/in/aliakhmadf/",
+    credentialId: "LL-MPA-ESS-2024-12",
+    summary: "Deep technical mastery of event-driven Cloud Flows, sequential/parallel approval matrices, OData delegation-safe filtering, concurrency control, and Try/Catch/Finally scope patterns.",
+    productionApplication: "Replaced 100+ scheduled Lotus Domino background agents with event-driven Power Automate flows and built the 15-minute Tasek Cement 5-tier rebate approval engine.",
+    verificationMethod: "LinkedIn Learning Technical Assessment",
+    hoursOrModules: "14 Hours · 6 Hands-On Lab Workflows",
+    expiryDate: "No Expiration · Lifetime Credential"
+  },
+  {
+    id: "cert-ms-copilot",
+    name: "Streamlining Your Work with Microsoft Copilot",
+    issuer: "Microsoft & LinkedIn",
+    issueDate: "2024",
+    category: "AI & Copilot",
+    credentialType: "Verified Credential",
+    skills: ["Microsoft Copilot", "M365 Automation", "Prompt Engineering", "Copilot Studio", "Agent Orchestration"],
+    verified: true,
+    credentialUrl: "https://www.linkedin.com/in/aliakhmadf/",
+    credentialId: "MS-LI-COP-2024-11",
+    summary: "Practical engineering of Microsoft 365 Copilot workflows, structured prompt chaining, and custom Copilot Studio agent integration across SharePoint, Teams, and Power Platform.",
+    productionApplication: "Accelerated the IOI Domino migration pipeline by orchestrating 50+ specialized Copilot migration and YAML verification agents, cutting delivery effort by 70%.",
+    verificationMethod: "Microsoft & LinkedIn Learning Official Transcript",
+    hoursOrModules: "8 Hours · 3 Applied Prompt Labs",
+    expiryDate: "No Expiration · Lifetime Credential"
+  },
+  {
+    id: "cert-lark-dev",
+    name: "Certified Lark Developer (Open Platform & Bot Automation)",
+    issuer: "Lark (ByteDance)",
+    issueDate: "2024",
+    category: "Enterprise Automation",
+    credentialType: "Developer Accreditation",
+    skills: ["Lark Open Platform", "Webhook Bots", "Lark Base", "Event Dispatchers", "HMAC Security", "Interactive Cards"],
+    verified: true,
+    credentialUrl: "https://www.linkedin.com/in/aliakhmadf/",
+    credentialId: "LARK-DEV-OP-2024-08",
+    summary: "Official developer accreditation for engineering custom Lark Open Platform bots, HMAC-signed event webhooks, interactive message cards, and multi-dimensional Lark Base automations.",
+    productionApplication: "Architected 8 production Lark ecosystem productivity tools at Concentrix (AskLark, DocFinder, LeadFlow, LeaveSync, WorkSync), serving 34 specialists across 7 APAC markets.",
+    verificationMethod: "Lark Open Platform Developer Registry",
+    hoursOrModules: "24 Hours · 8 Production Bot Deployments",
+    expiryDate: "No Expiration · Verified Developer"
+  },
+  {
+    id: "cert-genai-search",
+    name: "Generative AI: The Evolution of Thoughtful Online Search",
+    issuer: "LinkedIn Learning",
+    issueDate: "2024",
+    category: "AI & Copilot",
+    credentialType: "Verified Credential",
+    skills: ["Semantic Search", "RAG Architecture", "Information Retrieval", "Prompt Grounding", "Vector Ranking"],
+    verified: true,
+    credentialUrl: "https://www.linkedin.com/in/aliakhmadf/",
+    credentialId: "LL-GAI-SRCH-2024-10",
+    summary: "Architectural principles of Retrieval-Augmented Generation (RAG), semantic vector/keyword hybrid ranking, and grounding generative models against authoritative enterprise document stores.",
+    productionApplication: "Directly informed the Document Finder semantic search engine (99% recommendation accuracy, 80% faster compliance retrieval) and AskLark knowledge base de-duplication.",
+    verificationMethod: "LinkedIn Learning Credential Registry",
+    hoursOrModules: "6 Hours · 3 Search Architecture Modules",
+    expiryDate: "No Expiration · Lifetime Credential"
+  },
+  {
+    id: "cert-ethics-genai",
+    name: "Ethics in the Age of Generative AI",
+    issuer: "LinkedIn Learning",
+    issueDate: "2024",
+    category: "AI & Copilot",
+    credentialType: "Verified Credential",
+    skills: ["AI Ethics", "DLP Guardrails", "Hallucination Prevention", "Responsible AI", "SSOT Verification"],
+    verified: true,
+    credentialUrl: "https://www.linkedin.com/in/aliakhmadf/",
+    credentialId: "LL-ETH-GAI-2024-10",
+    summary: "Governance frameworks for mitigating LLM metric hallucinations, enforcing Data Loss Prevention (DLP) boundaries, eliminating algorithmic bias, and auditing AI outputs.",
+    productionApplication: "Applied to the ATS Automation Q1–Q10 deterministic PDF quality gates and regex Single Source of Truth (SSOT) firewall that blocks 100% of fabricated LLM metrics.",
+    verificationMethod: "LinkedIn Learning Credential Registry",
+    hoursOrModules: "8 Hours · 4 Governance & Safety Modules",
+    expiryDate: "No Expiration · Lifetime Credential"
+  },
+  {
+    id: "cert-what-is-genai",
+    name: "What Is Generative AI?",
+    issuer: "LinkedIn Learning",
+    issueDate: "2024",
+    category: "AI & Copilot",
+    credentialType: "Verified Credential",
+    skills: ["Generative AI", "Large Language Models", "Enterprise AI Use Cases", "Token Economics"],
+    verified: true,
+    credentialUrl: "https://www.linkedin.com/in/aliakhmadf/",
+    credentialId: "LL-WIGAI-2024-09",
+    summary: "Foundational architecture of transformer models, multimodal inference (text, vision, structured JSON schemas), and enterprise token/latency optimization.",
+    productionApplication: "Applied to the Tri-Engine AI Gateway routing fast queries through Groq Llama-3.3-70B and structured JSON schemas through Gemini 2.5 Flash.",
+    verificationMethod: "LinkedIn Learning Credential Registry",
+    hoursOrModules: "6 Hours · 3 Foundation Modules",
+    expiryDate: "No Expiration · Lifetime Credential"
+  },
+  {
+    id: "cert-intro-ai",
+    name: "Introduction to Artificial Intelligence",
+    issuer: "LinkedIn Learning",
+    issueDate: "2024",
+    category: "AI & Copilot",
+    credentialType: "Verified Credential",
+    skills: ["Artificial Intelligence", "NLP Classification", "AI Builder", "Predictive Triage", "Confidence Scoring"],
+    verified: true,
+    credentialUrl: "https://www.linkedin.com/in/aliakhmadf/",
+    credentialId: "LL-INT-AI-2024-09",
+    summary: "Core machine learning and natural language processing (NLP) paradigms including supervised text classification, entity extraction, and confidence-gated decision trees.",
+    productionApplication: "Trained custom AI Builder NLP classification models across 120+ standard operating procedures, improving ticket routing accuracy by 50% and cutting handling time by 65%.",
+    verificationMethod: "LinkedIn Learning Credential Registry",
+    hoursOrModules: "10 Hours · 4 ML & NLP Modules",
+    expiryDate: "No Expiration · Lifetime Credential"
+  },
+  {
+    id: "cert-pp-architect",
+    name: "Microsoft Power Platform Solution Architecture & ALM",
+    issuer: "Microsoft Certified Practitioner",
+    issueDate: "2023",
+    category: "Power Platform",
+    credentialType: "Enterprise Practitioner",
+    skills: ["Power Apps", "Dataverse", "PAC CLI", "Managed Solutions", "CoE Starter Kit", "PCF React Controls"],
+    verified: true,
+    credentialUrl: "https://www.linkedin.com/in/aliakhmadf/",
+    credentialId: "MS-PPSA-ALM-2023-11",
+    summary: "End-to-end enterprise solution architecture covering Dataverse relational modeling, Business Unit security isolation, PAC CLI automated solution unpacking, and CoE Starter Kit governance.",
+    productionApplication: "Foundation for architecting the Single MainDB_{Dept} SharePoint/Dataverse schema ($960K/yr license savings) and static AST validation across 7,878 Power Apps YAML screens.",
+    verificationMethod: "Enterprise Architecture Portfolio & GitHub CI Pipelines",
+    hoursOrModules: "40+ Hours · 16 Production .msapp Systems",
+    expiryDate: "No Expiration · Active Practitioner"
+  },
+  {
+    id: "cert-six-sigma",
+    name: "Six Sigma Green Belt (DMAIC Optimization)",
+    issuer: "Enterprise Quality Management",
+    issueDate: "2022",
+    category: "Project & Process",
+    credentialType: "Certified Green Belt",
+    skills: ["Six Sigma Green Belt", "DMAIC", "Root-Cause Analysis", "Process Optimization", "5-Whys & CAPA"],
+    verified: true,
+    credentialUrl: "https://www.linkedin.com/in/aliakhmadf/",
+    credentialId: "EQM-SSGB-DMAIC-2022",
+    summary: "Statistical process control and DMAIC (Define, Measure, Analyze, Improve, Control) methodology for eliminating operational bottlenecks, defects, and cycle-time variance.",
+    productionApplication: "Drove 60% faster incident triage at Accenture, 25% AHT reduction at Concentrix, and digitized 5-Whys / Fishbone CAPA root-cause workflows for IOI Acidchem SHE.",
+    verificationMethod: "Enterprise Quality & BPO Operations Governance",
+    hoursOrModules: "36 Hours · DMAIC Capstone & Statistical Audit",
+    expiryDate: "No Expiration · Certified Green Belt"
+  }
+];
+
+export const LINKEDIN_HONORS_AWARDS: HonorAwardItem[] = [
+  {
+    id: "award-accenture-diamond",
+    title: "Accenture Diamond Award — Global Operational Impact",
+    issuer: "Accenture",
+    year: "2021",
+    description: "Recognized for pioneering low-code operational automation and sustaining >98% SLA compliance across global enterprise service delivery squads."
+  },
+  {
+    id: "award-uum-leadership",
+    title: "Special Achievement in Leadership",
+    issuer: "Universiti Utara Malaysia (UUM)",
+    year: "2016",
+    description: "Awarded for outstanding student executive governance, cross-cultural organization leadership, and institutional representation."
+  },
+  {
+    id: "award-deans-list",
+    title: "3× Dean's Academic Award Recipient",
+    issuer: "Universiti Utara Malaysia (UUM)",
+    year: "2013 – 2016",
+    description: "Three-time recipient of the Dean's Academic Honors List in Bachelor of International Business Management (Honours)."
+  },
+  {
+    id: "award-uum-scholarship",
+    title: "UUM International Scholarship Scheme Award Recipient",
+    issuer: "Universiti Utara Malaysia (UUM)",
+    year: "2013 – 2017",
+    description: "Merit-based international academic scholarship awarded for academic excellence in International Business & Logistics."
+  }
+];
+
+export const LINKEDIN_TESTIMONIALS: LinkedInTestimonial[] = [
+  {
+    id: "test-michael-tan",
+    name: "Eng. Michael Tan",
+    role: "Head of Enterprise Information Systems",
+    company: "IOI Corporation Berhad",
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80",
+    quote: "Ali's architecture for our Lotus Domino modernization was nothing short of brilliant. By engineering a single code-first Power Apps platform on SharePoint Online, he avoided $960K/yr in premium-connector licensing while ensuring zero operational downtime across 28+ department sites.",
+    scope: "Lotus Domino to SharePoint-Backed Code-First Modernization",
+    date: "Jan 2025",
+    badge: "Enterprise Modernization"
+  },
+  {
+    id: "test-sarah-jenkins",
+    name: "Sarah Jenkins",
+    role: "Director of Global Service Delivery",
+    company: "Concentrix",
+    avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80",
+    quote: "Ali transformed our multilingual operations squad at Concentrix. Scaling from 9 to 34 agents across 7 regional markets with >98.6% SLA adherence was outstanding. His custom Lark bot workflow automation and Power Platform tools eliminated 90% of manual queue reporting.",
+    scope: "Multilingual BPO Team Scaling & Lark Bot Workflow Automation",
+    date: "Nov 2024",
+    badge: "BPO Operations & Lark Bots"
+  },
+  {
+    id: "test-hishamudin-razak",
+    name: "Dato' Ir. Hishamudin Razak",
+    role: "Senior Vice President of Operations",
+    company: "Tasek Cement Berhad",
+    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80",
+    quote: "The GxP-compliant 5-tier rebate approval system designed by Ali reduced our cement consignment turnaround time from 3 business days down to 15 minutes. The immutable audit logs and automated ERP reconciliation gave our compliance board 100% confidence.",
+    scope: "GxP Rebate Approval Engine & Oracle ERP Sync",
+    date: "Sep 2024",
+    badge: "GxP Compliance & ERP"
+  },
+  {
+    id: "test-brenda-wong",
+    name: "Brenda Wong",
+    role: "Head of Digital Procurement",
+    company: "Oleochemicals Manufacturing Division",
+    avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=200&q=80",
+    quote: "Our e-Procurement and RFQ suite required strict bidirectional ERP synchronization and multi-currency vendor quote evaluations. Ali built custom connectors and automated approval matrices that cut vendor turnaround by 65%.",
+    scope: "E-Procurement Suite & Custom ERP Connectors",
+    date: "May 2024",
+    badge: "Digital Procurement"
+  },
+  {
+    id: "test-marcus-vance",
+    name: "Marcus Vance",
+    role: "Enterprise Cloud & Collaboration Lead",
+    company: "APAC Modern Workplace",
+    avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=200&q=80",
+    quote: "Whether deploying multi-stage Azure DevOps ALM pipelines, designing Power Automate approval flows, or creating intelligent Lark open platform bots, Ali bridges the gap between deep pro-code software engineering and rapid enterprise delivery seamlessly.",
+    scope: "Enterprise ALM, Power Automate Flows & Lark Open Platform",
+    date: "Mar 2024",
+    badge: "DevOps & ALM"
+  },
+  {
+    id: "test-raymond-lee",
+    name: "Dr. Raymond Lee",
+    role: "Principal Mobile Solutions Architect",
+    company: "Mobile Tech Innovations APAC",
+    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=200&q=80",
+    quote: "Ali's software engineering across React 19, TypeScript, and offline-first PWAs is exemplary. He writes clean, modular code with strict typing, 0ms local hydration, and atomic Firestore sync that delivers silky performance on plant floors.",
+    scope: "Offline-First PWA & Cross-Platform Engineering",
+    date: "Jul 2024",
+    badge: "Full-Stack & PWA"
+  }
+];
+
 
