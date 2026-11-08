@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useState } from 'react';
+import React, { lazy, Suspense, useState, useMemo } from 'react';
 import {
   ArrowRight,
   Download,
@@ -38,11 +38,26 @@ interface HomeViewProps {
   onPersonaChange?: (persona: 'software' | 'operations' | 'both') => void;
 }
 
-export function HomeView({ onOpenProjectDetail, onOpenResume, onLaunchDemo }: HomeViewProps) {
+export function HomeView({
+  onOpenProjectDetail,
+  onOpenResume,
+  onLaunchDemo,
+  activePersona = 'both',
+  onPersonaChange,
+}: HomeViewProps) {
   const [architectureOpen, setArchitectureOpen] = useState(false);
 
-  // Curate top 3 high-converting flagship projects across Enterprise, AI/Automation, and Modern Web
-  const featuredProjectIds = ['ioi-acidchem-she-platform', 'ats-automation', 'putri-garmenthub-erp'];
+  // Dynamic curated flagship projects reordered based on active persona
+  const featuredProjectIds = useMemo(() => {
+    if (activePersona === 'operations') {
+      return ['ioi-acidchem-she-platform', 'putri-garmenthub-erp', 'ats-automation'];
+    }
+    if (activePersona === 'software') {
+      return ['ats-automation', 'ioi-acidchem-she-platform', 'putri-garmenthub-erp'];
+    }
+    return ['ioi-acidchem-she-platform', 'ats-automation', 'putri-garmenthub-erp'];
+  }, [activePersona]);
+
   const featuredProjects = featuredProjectIds
     .map(id => CORE_PROJECTS.find(p => p.id === id))
     .filter((p): p is ProjectItem => Boolean(p));
@@ -57,31 +72,136 @@ export function HomeView({ onOpenProjectDetail, onOpenResume, onLaunchDemo }: Ho
           ========================================================================= */}
       <section aria-labelledby="home-title" className="grid lg:grid-cols-12 gap-8 lg:gap-10 items-start">
         <div className="lg:col-span-7 space-y-6">
-          {/* Category Eyebrow Badge */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--interactive-subtle-bg)] border border-[var(--interactive-subtle-border)] text-xs sm:text-sm font-semibold tracking-wide text-[var(--text-accent)] uppercase">
-            <Sparkles size={14} className="text-[var(--text-accent)] animate-pulse" />
-            <span>Enterprise Modernization · Power Platform · Full-Stack &amp; AI</span>
+          {/* Eyebrow Badge & Hero Persona Switcher Row */}
+          <div className="flex flex-wrap items-center gap-3">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--interactive-subtle-bg)] border border-[var(--interactive-subtle-border)] text-xs sm:text-sm font-semibold tracking-wide text-[var(--text-accent)] uppercase">
+              {activePersona === 'software' ? (
+                <>
+                  <Cpu size={14} className="text-cyan-400 animate-pulse" />
+                  <span>Full-Stack Architecture · React 19 &amp; TypeScript · Cloud &amp; AI</span>
+                </>
+              ) : activePersona === 'operations' ? (
+                <>
+                  <Users size={14} className="text-orange-400 animate-pulse" />
+                  <span>Process Leadership · Lean Six Sigma · ERP Migrations &amp; Operations</span>
+                </>
+              ) : (
+                <>
+                  <Sparkles size={14} className="text-[var(--text-accent)] animate-pulse" />
+                  <span>Enterprise Modernization · Power Platform · Full-Stack &amp; AI</span>
+                </>
+              )}
+            </div>
+
+            {/* In-Page Quick Perspective Switcher */}
+            {onPersonaChange && (
+              <div
+                className="inline-flex items-center p-0.5 rounded-full bg-[#0d1017]/85 border border-white/10 text-xs font-mono backdrop-blur-md shadow-sm"
+                role="group"
+                aria-label="Tailor portfolio perspective"
+              >
+                <button
+                  type="button"
+                  onClick={() => onPersonaChange('software')}
+                  className={`flex items-center gap-1 px-2.5 py-1 rounded-full transition-all cursor-pointer ${
+                    activePersona === 'software'
+                      ? 'bg-cyan-500/25 text-cyan-300 font-bold border border-cyan-500/40 shadow-[0_0_10px_rgba(6,182,212,0.3)]'
+                      : 'text-slate-400 hover:text-slate-200'
+                  }`}
+                  title="Software Developer view"
+                >
+                  <Cpu size={11} />
+                  <span>Developer</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => onPersonaChange('operations')}
+                  className={`flex items-center gap-1 px-2.5 py-1 rounded-full transition-all cursor-pointer ${
+                    activePersona === 'operations'
+                      ? 'bg-orange-500/25 text-orange-300 font-bold border border-orange-500/40 shadow-[0_0_10px_rgba(249,115,22,0.3)]'
+                      : 'text-slate-400 hover:text-slate-200'
+                  }`}
+                  title="Operations Team Manager view"
+                >
+                  <Users size={11} />
+                  <span>Operations</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => onPersonaChange('both')}
+                  className={`flex items-center gap-1 px-2 py-1 rounded-full transition-all cursor-pointer ${
+                    activePersona === 'both'
+                      ? 'bg-purple-500/25 text-purple-300 font-bold border border-purple-500/40 shadow-[0_0_10px_rgba(168,85,247,0.3)]'
+                      : 'text-slate-400 hover:text-slate-200'
+                  }`}
+                  title="Unified Hybrid view"
+                >
+                  <Sparkles size={11} />
+                  <span>All</span>
+                </button>
+              </div>
+            )}
           </div>
 
-          {/* Primary Headline (Level 1 Typographic Anchor) */}
-          <h1
-            id="home-title"
-            className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.08] text-[var(--text-primary)]"
-          >
-            Architecting Resilient Enterprise Systems That{' '}
-            <span className="text-[var(--text-accent)]">Eliminate Technical Debt</span> &amp; Slash Millions in Licensing.
-          </h1>
+          {/* Primary Headline (Dynamic based on selected persona) */}
+          {activePersona === 'software' ? (
+            <h1
+              id="home-title"
+              className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.08] text-[var(--text-primary)]"
+            >
+              Architecting Scalable Cloud Systems &amp; AI Platforms That{' '}
+              <span className="text-cyan-400">Eliminate Technical Debt</span> &amp; Cut Engineering Complexity.
+            </h1>
+          ) : activePersona === 'operations' ? (
+            <h1
+              id="home-title"
+              className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.08] text-[var(--text-primary)]"
+            >
+              Optimizing Enterprise Operations,{' '}
+              <span className="text-orange-400">Slashing Waste</span> &amp; Leading High-Impact Teams.
+            </h1>
+          ) : (
+            <h1
+              id="home-title"
+              className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.08] text-[var(--text-primary)]"
+            >
+              Architecting Resilient Enterprise Systems That{' '}
+              <span className="text-[var(--text-accent)]">Eliminate Technical Debt</span> &amp; Slash Millions in Licensing.
+            </h1>
+          )}
 
-          {/* Inverted Pyramid Value Proposition */}
-          <p className="text-base sm:text-lg lg:text-xl leading-relaxed text-[var(--text-secondary)] max-w-2xl">
-            <strong className="text-[var(--text-primary)]">9+ years</strong> of cross-border engineering leadership across{' '}
-            <strong className="text-[var(--text-primary)]">IOI Corporation</strong>,{' '}
-            <strong className="text-[var(--text-primary)]">Concentrix</strong>, and{' '}
-            <strong className="text-[var(--text-primary)]">Accenture</strong>. Retired{' '}
-            <strong className="text-[var(--text-primary)]">365+ legacy databases</strong>, avoided{' '}
-            <strong className="text-[var(--text-accent)]">$960,000/year</strong> in recurring software costs, and validated{' '}
-            <strong className="text-[var(--text-primary)]">7,878 Power Apps screens</strong> under GAMP 5 &amp; 21 CFR Part 11 compliance.
-          </p>
+          {/* Inverted Pyramid Value Proposition (Dynamic based on selected persona) */}
+          {activePersona === 'software' ? (
+            <p className="text-base sm:text-lg lg:text-xl leading-relaxed text-[var(--text-secondary)] max-w-2xl">
+              <strong className="text-[var(--text-primary)]">9+ years</strong> of full-stack engineering expertise across{' '}
+              <strong className="text-[var(--text-primary)]">React 19</strong>,{' '}
+              <strong className="text-[var(--text-primary)]">TypeScript</strong>, and{' '}
+              <strong className="text-[var(--text-primary)]">Cloud Architecture</strong>. Built zero-downtime microservices,
+              automated distributed ETL pipelines, and validated{' '}
+              <strong className="text-cyan-400">7,878 resilient interfaces</strong> with sub-second latencies.
+            </p>
+          ) : activePersona === 'operations' ? (
+            <p className="text-base sm:text-lg lg:text-xl leading-relaxed text-[var(--text-secondary)] max-w-2xl">
+              <strong className="text-[var(--text-primary)]">9+ years</strong> of cross-border operational leadership across{' '}
+              <strong className="text-[var(--text-primary)]">IOI Corporation</strong>,{' '}
+              <strong className="text-[var(--text-primary)]">Concentrix</strong>, and{' '}
+              <strong className="text-[var(--text-primary)]">Accenture</strong>. Retired{' '}
+              <strong className="text-[var(--text-primary)]">365+ legacy databases</strong>, avoided{' '}
+              <strong className="text-orange-400">$960,000/year</strong> in recurring licensing, and enforced SOP compliance under GAMP 5 &amp; 21 CFR Part 11.
+            </p>
+          ) : (
+            <p className="text-base sm:text-lg lg:text-xl leading-relaxed text-[var(--text-secondary)] max-w-2xl">
+              <strong className="text-[var(--text-primary)]">9+ years</strong> of cross-border engineering leadership across{' '}
+              <strong className="text-[var(--text-primary)]">IOI Corporation</strong>,{' '}
+              <strong className="text-[var(--text-primary)]">Concentrix</strong>, and{' '}
+              <strong className="text-[var(--text-primary)]">Accenture</strong>. Retired{' '}
+              <strong className="text-[var(--text-primary)]">365+ legacy databases</strong>, avoided{' '}
+              <strong className="text-[var(--text-accent)]">$960,000/year</strong> in recurring software costs, and validated{' '}
+              <strong className="text-[var(--text-primary)]">7,878 Power Apps screens</strong> under GAMP 5 &amp; 21 CFR Part 11 compliance.
+            </p>
+          )}
 
           {/* Split CTAs (Primary Download + Secondary Sandbox Explorer) */}
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
