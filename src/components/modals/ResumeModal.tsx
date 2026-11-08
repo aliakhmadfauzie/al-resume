@@ -215,9 +215,28 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose, onOpe
                           </span>
                         )}
                       </div>
-                      <p className="text-xs text-[var(--text-accent)] font-medium">
-                        {exp.company} · {exp.location}
-                      </p>
+                      <div className="flex items-center gap-1.5 pt-0.5">
+                        {exp.companyLogoId && exp.companyLogoId !== 'general' && (
+                          <div className="w-4 h-4 rounded bg-[#10121a] border border-[var(--border-subtle)] flex items-center justify-center p-0.5 shrink-0 overflow-hidden">
+                            <OrganizationLogo logoId={exp.companyLogoId} orgName={exp.company} size="xs" />
+                          </div>
+                        )}
+                        <p className="text-xs text-[var(--text-accent)] font-medium">
+                          {exp.company} · {exp.location}
+                        </p>
+                      </div>
+
+                      {exp.clients && exp.clients.length > 0 && (
+                        <div className="flex items-center gap-1.5 pt-1 flex-wrap">
+                          <span className="text-[10px] font-mono text-[var(--text-tertiary)]">Enterprise Clients:</span>
+                          {exp.clients.map((c) => (
+                            <span key={c.id} className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-[#131520] border border-[var(--border-subtle)] text-[10px] font-mono text-[var(--text-primary)]">
+                              <OrganizationLogo logoId={c.logoId} orgName={c.name} size="xs" />
+                              <span>{c.name}</span>
+                            </span>
+                          ))}
+                        </div>
+                      )}
                     </div>
                     <span className="text-xs font-mono text-[var(--text-tertiary)]">
                       {exp.period}

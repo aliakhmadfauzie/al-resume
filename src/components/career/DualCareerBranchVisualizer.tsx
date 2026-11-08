@@ -186,15 +186,17 @@ export const DualCareerBranchVisualizer: React.FC = () => {
   const operationsMilestones: Record<string, MilestoneDetail> = {
     'ops-concentrix': {
       period: 'May 2023 – Apr 2025',
-      role: 'Operations Team Leader',
+      role: 'Operations Team Leader (QA, Policy & Training)',
       company: 'Concentrix CVG',
-      headline: 'Team Scaling (9→34 Multilingual Agents), Shift Rostering & 98%+ Contractual SLA',
+      headline: 'Hands-on QA DPR Auditing, Policy Creation, Conducting Training & 34 Reports Across 7 Language Pods',
       category: 'operations',
       promotionBadge: '★ Enterprise Scale Leader',
       leadershipSalesHighlights: [
-        'Owned end-to-end people management, coaching, rotational rostering, and career development for 34 direct reports across 7 international markets.',
-        'Scaled operational team headcount by 380% within 18 months while maintaining low attrition and high CSAT.',
-        'Presented weekly operational telemetry and SLA performance in Client Business Reviews (QBRs).'
+        'QA DPR & Transaction Auditing: Personally managed and adjudicated QA DPR (Dispute Performance Reports / Daily Performance Reviews), conducted deep-dive transaction audits across live chat and email cases, and led weekly calibration sessions to ensure grading consistency.',
+        'Policy Creation & Formulation: Authored and created operational policy documentation, SOPs, and edge-case decision trees for Trust & Safety (content moderation) and Advertising Integrity (Ads Review), converting complex client guidelines into clear frontline action rules.',
+        'Direct Training Delivery: Personally conducted new-hire classroom training, nesting phase coaching, and upskilling clinics, preparing incoming specialists across 7 language pods (Indonesian, Chinese, Korean, Japanese, English, Thai, Vietnamese) and elevating 90-day competency from 78% to 94%.',
+        'BPO Floor Operations & Team Scale: Commanded 24/7 floor operations scaling headcount by 380% (9 to 34 multilingual associates) in Trust & Safety, Ads Review, and Live Chat/Email, maintaining >98%+ contractual SLA adherence and <5% attrition.',
+        'Executive Governance: Presented SLA telemetry, QA compliance ratings, and Six Sigma DMAIC variance analyses during Weekly and Quarterly Business Reviews (WBRs/QBRs) with multinational stakeholders.'
       ],
       techOrOpsHighlights: [
         'Executed Six Sigma DMAIC process controls to reduce Average Handling Time (AHT) by 25%.',
@@ -207,18 +209,19 @@ export const DualCareerBranchVisualizer: React.FC = () => {
         { label: 'SLA Adherence', value: '98%+', color: '#22c55e' },
         { label: 'AHT Reduction', value: '-25%', color: '#eab308' }
       ],
-      tags: ['Operations Lead', '34 Direct Reports', 'Six Sigma DMAIC', 'Team Scaling', 'SLA Governance']
+      tags: ['QA DPR & Auditing', 'Policy Creation', 'Training Delivery', 'Trust & Safety', 'Ads Review', 'Live Chat & Email', 'BPO Operations', 'Six Sigma DMAIC']
     },
     'ops-accenture-sr-lead': {
       period: 'Jan 2021 – Nov 2022',
       role: 'Senior Team Lead / Service Delivery Lead',
       company: 'Accenture',
-      headline: 'Promoted to Senior Team Lead: 25–34 Members, Power Platform Adoption & Diamond Award',
+      headline: 'Promoted to Senior Team Lead: Trust & Safety, Ads Integrity, QA/Policy Alignment & Diamond Award',
       category: 'operations',
       promotionBadge: '★ Promoted to Senior Team Lead',
       leadershipSalesHighlights: [
-        'Promoted to Senior Team Lead; directed customer support and service delivery operations across 7 global APAC markets.',
-        'Maintained annualized team attrition below 5% through structured 1-on-1 coaching, QA audit loops, and career progression ladders.',
+        'Promoted to Senior Team Lead directing cross-functional BPO operations across Trust & Safety, advertising integrity, and multilingual customer support for 25–34 direct reports across 7 global APAC markets.',
+        'Partnered cross-functionally with QA auditors, Policy specialists, and SMEs to standardize edge-case resolutions, eliminate quality blind spots, and run structured calibration sessions.',
+        'Delivered frontline training modules and nesting mentorship for incoming cohorts, driving first-contact resolution (FCR) improvements and holding team attrition below 5%.',
         'Received the prestigious Hang Tuah Award (July 2021) as top-performing Team Lead and the Accenture Diamond Award for sustained client delivery excellence.'
       ],
       techOrOpsHighlights: [
@@ -232,7 +235,7 @@ export const DualCareerBranchVisualizer: React.FC = () => {
         { label: 'Team Retention', value: '<5% Attrition', color: '#22c55e' },
         { label: 'Recognition', value: 'Diamond Award', color: '#38bdf8' }
       ],
-      tags: ['Promoted Senior Lead', 'Power Platform', 'Incident Command', 'Diamond Award', '7 Markets']
+      tags: ['Promoted Senior Lead', 'BPO Operations', 'Trust & Safety', 'Ads Review', 'QA Calibration', 'Policy & SME', 'Training Delivery', 'Diamond Award']
     },
     'ops-accenture-lead': {
       period: 'Jun 2019 – Dec 2020',
@@ -334,7 +337,7 @@ export const DualCareerBranchVisualizer: React.FC = () => {
       period: '2013 – 2017',
       role: 'B.Sc. International Business Management (Honours)',
       company: 'Universiti Utara Malaysia (UUM)',
-      headline: 'Scholastic Rigor, Logistics Minor, Full Scholarship & 5x Dean’s Academic Honors',
+      headline: "5× Dean's List Academic Honors, SRC for International Affairs & President of IBMS",
       category: 'root',
       promotionBadge: '★ Full Academic Scholar',
       leadershipSalesHighlights: [
@@ -366,7 +369,7 @@ export const DualCareerBranchVisualizer: React.FC = () => {
       {
         id: 'trunk-uum',
         title: 'B.Sc. International Business Management (Honours)',
-        detail: 'Universiti Utara Malaysia (CGPA 3.48, Second Upper Class Honours, Minor in Logistics) · Full UUM Scholarship Recipient · 5x Dean\'s Academic Honors Award.'
+        detail: "Universiti Utara Malaysia (CGPA 3.48, Second Upper Class Honours, Minor in Logistics) · 5× Dean's List Recipient · SRC for International Affairs · President of IBMS · Full RM10k/sem Scholarship"
       },
       {
         id: 'ops-thelorry',
@@ -391,7 +394,7 @@ export const DualCareerBranchVisualizer: React.FC = () => {
     'software-current': { x: 170, y: 45, label: 'Enterprise Architect & Pre-Sales', year: '2025–Pres', branch: 'software', color: '#00dbe7' },
     'software-fullstack': { x: 250, y: 110, label: 'Full-Stack Commercial PWAs', year: '2023–25', branch: 'software', color: '#00dbe7' },
     'software-initiator': { x: 340, y: 165, label: 'Power Platform Pioneer', year: '2021–22', branch: 'software', color: '#00dbe7' },
-    'ops-concentrix': { x: 770, y: 45, label: 'Operations Lead (34 Reports)', year: '2023–25', branch: 'operations', color: '#f59e0b' },
+    'ops-concentrix': { x: 770, y: 45, label: 'Operations Team Mgr (34 Reports)', year: '2023–25', branch: 'operations', color: '#f59e0b' },
     'ops-accenture-sr-lead': { x: 680, y: 110, label: 'Senior Team Lead (7 Markets)', year: '2021–22', branch: 'operations', color: '#f59e0b' },
     'ops-accenture-lead': { x: 600, y: 165, label: 'Operations Team Lead', year: '2019–20', branch: 'operations', color: '#f59e0b' },
     'ops-accenture-jr-lead': { x: 520, y: 205, label: 'Junior Team Lead', year: '2018–19', branch: 'operations', color: '#f59e0b' },
@@ -517,16 +520,16 @@ export const DualCareerBranchVisualizer: React.FC = () => {
                   <Users className="w-4 h-4" />
                 </div>
                 <div>
-                  <span className="text-[10px] font-mono font-bold text-[#f59e0b] uppercase tracking-wider">BRANCH 02 · LEADERSHIP &amp; SCALE</span>
-                  <h3 className="text-sm font-bold text-white">Operations Leadership &amp; BPO Scaling</h3>
+                  <span className="text-[10px] font-mono font-bold text-[#f59e0b] uppercase tracking-wider">BRANCH 02 · OPERATIONS, QA, POLICY &amp; TRAINING</span>
+                  <h3 className="text-sm font-bold text-white">Operations Leadership, QA DPR, Policy &amp; Training</h3>
                 </div>
               </div>
               <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-[#f59e0b]/10 text-[#f59e0b] border border-[#f59e0b]/20 shrink-0">
-                34 Reports · 380% Growth
+                QA DPR · Policy · Training · 34 Reports
               </span>
             </div>
             <p className="text-xs text-neutral-300 mt-2.5 leading-relaxed">
-              Leading high-velocity international teams across 7 global markets, managing capacity from 9 to 34 agents, ensuring 98%+ SLA compliance, and driving Six Sigma DMAIC continuous improvement.
+              Comprehensive BPO leadership not only managing floor operations, but directly handling QA DPR &amp; transaction auditing, authoring operational policies/SOPs, conducting new-hire training academies, and directing Trust &amp; Safety and Ads Review across 7 markets.
             </p>
           </div>
         </div>

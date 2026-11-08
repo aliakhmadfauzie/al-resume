@@ -2,6 +2,7 @@ import {
   ProjectItem,
   MigrationSlice,
   ExperienceItem,
+  ClientRosterItem,
   DevStackItem,
   GovernanceItem,
   BusinessCompetency,
@@ -1047,89 +1048,224 @@ export const MIGRATION_SLICES: MigrationSlice[] = [
   }
 ];
 
+export const FREELANCE_CLIENTS: ClientRosterItem[] = [
+  {
+    id: "client-texchem",
+    name: "Texchem",
+    industry: "Conglomerate & Industrial Manufacturing",
+    role: "Enterprise Solutions Architect & Modernization Consultant",
+    scope: "Rapid React/TypeScript Prototypes, SOW Scoping, Workflow Optimization & Digital Modernization",
+    logoUrl: "/assets/logos/texchem.png",
+    logoId: "texchem"
+  },
+  {
+    id: "client-ioi-acidchem",
+    name: "IOI Acidchem",
+    industry: "Oleochemicals & Agro-Industrial",
+    role: "Lotus Domino to M365 / Dataverse Enterprise Migration Architect",
+    scope: "365+ Form Cutover, DOSH 5x5 SHE Platform, 878 Canvas Screens & Dataverse Relational Modeling",
+    logoUrl: "/assets/logos/ioi-acidchem.png",
+    logoId: "ioi-acidchem"
+  },
+  {
+    id: "client-nippon-paint",
+    name: "Nippon Paint",
+    industry: "Coatings & Chemical Manufacturing",
+    role: "Digital Workflow & Commercial Automation Architect",
+    scope: "Enterprise Pre-Sales Architectures, Automated Workflows & Systems Modernization Roadmap",
+    logoUrl: "/assets/logos/nippon-paint.png",
+    logoId: "nippon-paint"
+  },
+  {
+    id: "client-tasek-cement",
+    name: "Tasek Cement",
+    industry: "Building Materials & Cement Manufacturing",
+    role: "Enterprise Workflow & Power Automate Architect",
+    scope: "15-Minute 5-Tier Commercial Rebate Approval Engine & Multi-Tier ERP Integration",
+    logoUrl: "/assets/logos/tasek-cement.png",
+    logoId: "tasek-cement"
+  },
+  {
+    id: "client-ipenet",
+    name: "IPENET Solutions",
+    industry: "Enterprise ICT & Cloud Infrastructure",
+    role: "Enterprise Cloud & Modernization Solutions Consultant",
+    scope: "Pre-Sales Technical Architectures, ICT Infrastructure Delivery & Systems Automation",
+    logoUrl: "/assets/logos/ipenet.png",
+    logoId: "ipenet"
+  }
+];
+
 export const WORK_EXPERIENCE: ExperienceItem[] = [
   {
     id: "exp-freelance",
     role: "Enterprise Solutions Architect & Pre-Sales Lead",
     company: "Self-Employed / Independent Contractor",
+    companyLogoId: "general",
+    clients: [
+      {
+        id: "client-texchem",
+        name: "Texchem",
+        industry: "Conglomerate & Industrial Manufacturing",
+        role: "Enterprise Solutions Architect & Modernization Consultant",
+        scope: "Rapid React/TypeScript Prototypes, SOW Scoping, Digital Workflows",
+        logoUrl: "/assets/logos/texchem.png",
+        logoId: "texchem"
+      },
+      {
+        id: "client-ioi-acidchem",
+        name: "IOI Acidchem",
+        industry: "Oleochemicals & Agro-Industrial",
+        role: "Lotus Domino to M365 & Dataverse Migration Architect",
+        scope: "365+ Domino Applications Cutover, DOSH 5x5 SHE Platform & Dataverse Modeling",
+        logoUrl: "/assets/logos/ioi-acidchem.png",
+        logoId: "ioi-acidchem"
+      },
+      {
+        id: "client-nippon-paint",
+        name: "Nippon Paint",
+        industry: "Coatings & Chemical Manufacturing",
+        role: "Digital Workflow & Commercial Automation Architect",
+        scope: "Enterprise Pre-Sales Architectures, Automated Workflows & Systems Modernization",
+        logoUrl: "/assets/logos/nippon-paint.png",
+        logoId: "nippon-paint"
+      },
+      {
+        id: "client-tasek-cement",
+        name: "Tasek Cement",
+        industry: "Building Materials & Cement Manufacturing",
+        role: "Enterprise Workflow & Power Automate Architect",
+        scope: "15-Minute 5-Tier Commercial Rebate Approval Engine & Multi-Tier ERP Integration",
+        logoUrl: "/assets/logos/tasek-cement.png",
+        logoId: "tasek-cement"
+      },
+      {
+        id: "client-ipenet",
+        name: "IPENET Solutions",
+        industry: "Enterprise ICT & Cloud Infrastructure",
+        role: "Enterprise Cloud & Modernization Solutions Consultant",
+        scope: "Pre-Sales Technical Architectures, ICT Infrastructure Delivery & Systems Automation",
+        logoUrl: "/assets/logos/ipenet.png",
+        logoId: "ipenet"
+      }
+    ],
     location: "Remote",
     period: "Feb 2025 – Present",
     isCurrent: true,
-    tags: ["Pre-Sales", "Leadership", "React", "TypeScript", "Dataverse", "SharePoint"],
+    tags: [
+      "Pre-Sales",
+      "Leadership",
+      "React",
+      "TypeScript",
+      "Dataverse",
+      "SharePoint",
+      "Texchem",
+      "IOI Acidchem",
+      "Nippon Paint",
+      "Tasek Cement",
+      "IPENET"
+    ],
     bulletPoints: [
+      "Partnered with flagship enterprise clients including Texchem, IOI Acidchem, Nippon Paint, Tasek Cement (Hong Leong Asia), and IPENET Solutions to architect digital workflows, systems cutovers, and rapid modernization prototypes.",
       "Closed RM 70,000+ in signed SOWs by converting discovery sessions into delivery contracts using rapid React/TypeScript prototypes and Dataverse architectures.",
       "Led a 3-person technical pod; managed sprint milestones, billable capacity, and QA to deliver client solutions on schedule with no scope overruns.",
       "Scoped and secured executive sign-off for modernization of 365+ legacy applications across 28 business units to Microsoft 365/SharePoint/Dataverse, defining a phased commercial roadmap.",
       "Expanded account value by 35% through workflow optimization and cross-selling integrations and ongoing automation support while sustaining 30-35% project margins.",
       "Accelerated sales velocity by delivering working POCs within 72 hours, shortening enterprise sales cycles by ~2 weeks."
     ],
-    iconUrl: "/assets/profile/ali-avatar.jpg"
+    iconUrl: "/assets/logos/tasek-cement.png"
   },
   {
     id: "exp-concentrix",
-    role: "Operations Team Leader",
+    role: "Operations Team Leader (QA, Policy & Training)",
     company: "Concentrix CVG",
+    companyLogoId: "concentrix",
     location: "Kuala Lumpur, Malaysia",
     period: "May 2023 – Apr 2025",
-    tags: ["BPO Leadership", "SLA Governance", "Six Sigma DMAIC", "Team Scaling", "Process Optimization"],
-    bulletPoints: [
-      "Led daily floor operations for a BPO team of 9 to 34 associates across rotational shifts, owning rostering, real-time adherence, and shift handovers to sustain 98%+ contractual SLA compliance and keep abandonment below target.",
-      "Scaled operational team capacity and headcount by 380% (from 9 to 34 multilingual agents) across 7 international markets while maintaining strict operational quality and low attrition.",
-      "Reduced Average Handling Time (AHT) by 25% through Six Sigma DMAIC controls and targeted coaching; improved 90-day competency from 78% to 94% via structured 1:1s and performance action plans.",
-      "Built and deployed automated productivity trackers (PulseTrack) and automated ticket intake triage (SmartFlow), slashing manual reporting by 90% and intake triage effort by 80%."
+    tags: [
+      "QA DPR & Auditing",
+      "Policy Creation",
+      "Training Delivery",
+      "Trust & Safety",
+      "Ads Review",
+      "Live Chat & Email",
+      "BPO Operations",
+      "SLA Governance",
+      "Six Sigma DMAIC"
     ],
-    iconUrl: "/assets/profile/ali-avatar.jpg"
+    bulletPoints: [
+      "QA DPR & Transaction Auditing: Personally managed and adjudicated QA DPR (Dispute Performance Reports / Daily Performance Reviews), conducted deep-dive transaction audits across live chat and email cases, and led calibration panels to eliminate scoring variance and defect outliers.",
+      "Policy Creation & SOP Authoring: Directly authored, created, and updated operational policy documentation, decision trees, and standard operating procedures (SOPs) for Trust & Safety (content moderation) and Advertising Integrity (Ads Review), translating complex client policy changes into clear frontline enforcement standards.",
+      "Conducting Training & Nesting Academies: Designed instructional materials and directly conducted onboarding training bootcamps, nesting clinics, and refresher workshops, coaching frontline specialists and raising 90-day associate competency from 78% to 94%.",
+      "BPO Floor Leadership & Scaling: Commanded daily 24/7 BPO operations scaling headcount by 380% (from 9 to 34 multilingual associates across 7 APAC language pods: Indonesian, Chinese Mainland, Korean, Japanese, English, Thai, Vietnamese) in Trust & Safety, Ads Review, and Omnichannel Live Chat/Email, sustaining >98%+ contractual SLA compliance.",
+      "Continuous Improvement & Automation: Executed Six Sigma DMAIC process controls reducing Average Handling Time (AHT) by 25%; engineered PulseTrack real-time productivity tracker and SmartFlow automated intake, cutting manual queue reporting by 90%."
+    ],
+    iconUrl: "/assets/logos/concentrix.png"
   },
   {
     id: "exp-accenture-sr-lead",
     role: "Senior Team Lead / Service Delivery Operations Lead",
     company: "Accenture",
+    companyLogoId: "accenture",
     location: "Kuala Lumpur, Malaysia",
     period: "Jan 2021 – Nov 2022",
-    tags: ["Promotions", "Senior Leadership", "SLA Management", "Power Platform", "Attrition <5%", "Diamond Award"],
+    tags: [
+      "Promotions",
+      "Senior Leadership",
+      "BPO Operations",
+      "Trust & Safety",
+      "Ads Review",
+      "QA & Policy",
+      "Training Delivery",
+      "Power Platform",
+      "Diamond Award"
+    ],
     promotionBadge: "★ Promoted to Senior Team Lead",
     bulletPoints: [
-      "Promoted to Senior Team Lead to direct cross-functional customer support and trust & safety service delivery operations of 25–34 direct reports across 7 international markets, sustaining >90–98% SLA compliance.",
-      "Pioneered Power Platform adoption across the operations floor in 2021—building SharePoint-backed tracking tools, Power Automate escalation flows, and live Power BI executive dashboards.",
-      "Reduced operational handling costs by 15% and cut critical incident triage time by 60% through standardized escalation protocols and data-driven floor tooling.",
-      "Maintained exceptional team retention with annualized attrition under 5% over 4 years through structured 1-on-1 coaching, QA audit loops, and clear career ladders, earning the Accenture Diamond Award."
+      "Promoted to Senior Team Lead directing cross-functional BPO operations across Trust & Safety, advertising review integrity, and multilingual customer support for 25–34 direct reports spanning 7 global APAC markets, sustaining >90–98% SLA compliance.",
+      "Partnered cross-functionally with QA auditors, Policy specialists, and SMEs to standardize edge-case resolutions, eliminate quality blind spots, and run structured calibration sessions.",
+      "Conducted training delivery and coaching academies for frontline specialists; pioneered Power Platform adoption across the operations floor in 2021 (Power Apps, Power Automate, Power BI), cutting handling costs by 15% and incident triage duration by 60%.",
+      "Maintained annualized attrition below 5% through structured 1-on-1 coaching, QA audit loops, and career progression ladders, earning the prestigious Hang Tuah Award and the Accenture Diamond Award."
     ],
-    iconUrl: "/assets/profile/ali-avatar.jpg"
+    iconUrl: "/assets/logos/accenture.png"
   },
   {
     id: "exp-accenture-lead",
     role: "Operations Team Lead",
     company: "Accenture",
+    companyLogoId: "accenture",
     location: "Kuala Lumpur, Malaysia",
     period: "Jun 2019 – Dec 2020",
-    tags: ["Promotions", "Leadership", "Incident Command", "Service Delivery", "SLA Governance"],
+    tags: ["Promotions", "BPO Leadership", "Trust & Safety", "Live Chat & Email", "Incident Command", "QA Calibration", "SLA Governance"],
     promotionBadge: "★ Promoted to Team Lead",
     bulletPoints: [
-      "Promoted from Junior Team Lead to full Operations Team Lead, overseeing 20–25 direct reports handling high-stakes queue surges and critical escalations.",
-      "Commanded real-time incident command during queue disruptions, establishing rapid-response SOPs that stabilized service delivery within contractual response thresholds.",
+      "Promoted from Junior Team Lead to full Operations Team Lead, overseeing 20–25 direct reports handling high-stakes BPO queue surges, live chat/email escalations, and advertising review workflows.",
+      "Commanded real-time queue recovery during major platform disruptions, establishing rapid-response SOPs with QA and Policy teams that restored full contractual SLA within 48 hours without associate burnout.",
       "Led Weekly Business Reviews (WBRs) with international account stakeholders, analyzing KPI variances, defect distributions, and implementing corrective DMAIC action plans."
     ],
-    iconUrl: "/assets/profile/ali-avatar.jpg"
+    iconUrl: "/assets/logos/accenture.png"
   },
   {
     id: "exp-accenture-jr-lead",
     role: "Junior Team Lead (Operations)",
     company: "Accenture",
+    companyLogoId: "accenture",
     location: "Kuala Lumpur, Malaysia",
     period: "May 2018 – May 2019",
-    tags: ["Promotions", "Floor Management", "Rostering", "Coaching", "Queue Adherence"],
+    tags: ["Promotions", "Floor Management", "Live Chat & Email", "Training & Coaching", "Queue Adherence"],
     promotionBadge: "★ Promoted from Data Analyst",
     bulletPoints: [
-      "Promoted from Data Analyst within 9 months into operational frontline management, leading a dedicated pod of 10–15 customer support specialists.",
-      "Owned daily floor management, shift rostering, break schedules, and real-time queue adherence, preventing SLA degradation during peak volume hours.",
-      "Conducted weekly 1-on-1 coaching, quality audits, and root-cause analysis on escalated tickets, lifting first-contact resolution (FCR) rates by 18%."
+      "Promoted from Data Analyst within 9 months into frontline BPO management, directing a dedicated pod of 10–15 customer support specialists across live chat and email channels.",
+      "Delivered SOP training and nesting coaching for newly onboarded associates, establishing standardized triage protocols that lifted first-contact resolution (FCR) by 18%.",
+      "Owned daily floor management, rotational shift rostering, break schedules, and real-time queue adherence, awarded the Best People Award (QBR Sep 2018)."
     ],
-    iconUrl: "/assets/profile/ali-avatar.jpg"
+    iconUrl: "/assets/logos/accenture.png"
   },
   {
     id: "exp-accenture-analyst",
     role: "Data Analyst — Operations",
     company: "Accenture",
+    companyLogoId: "accenture",
     location: "Kuala Lumpur, Malaysia",
     period: "Aug 2017 – May 2018",
     tags: ["Data Analytics", "KPI Modeling", "PL/SQL", "Queue Forecasting", "Bottleneck Triage"],
@@ -1138,7 +1274,7 @@ export const WORK_EXPERIENCE: ExperienceItem[] = [
       "Collaborated with operational leadership to diagnose frontline queue bottlenecks, translating raw telemetry into actionable coaching insights and automation initiatives.",
       "Demonstrated high-velocity execution and analytical leadership that directly secured a merit promotion to Junior Team Lead within 9 months."
     ],
-    iconUrl: "/assets/profile/ali-avatar.jpg"
+    iconUrl: "/assets/logos/accenture.png"
   },
   {
     id: "exp-thelorry",
@@ -1160,12 +1296,13 @@ export const WORK_EXPERIENCE: ExperienceItem[] = [
     company: "Universiti Utara Malaysia (UUM)",
     location: "Sintok, Kedah, Malaysia",
     period: "2013 – 2017",
-    tags: ["Bachelor Degree", "International Business", "Scholarship Recipient", "Dean's Award"],
+    tags: ["Bachelor Degree", "5× Dean's List", "SRC Intl Affairs", "IBMS President", "Full Scholarship"],
     bulletPoints: [
-      "Bachelor's Degree in International Business Management With Honours (CGPA 3.48, Second Upper Class Honours, Minor in Logistics & Transportation).",
-      "Universiti Utara Malaysia International Scholarship Scheme Award Recipient (RM10,000 per semester).",
-      "5× Dean's Academic Honors Award Recipient across semesters and Special Achievement in Leadership Awardee (Anugerah Kerana Jasa - AK_J).",
-      "Active student executive leader: Exco Integrity, Community & International on Student Representative Council (MPPUUM) and Vice President of the International Business Management Society."
+      "Graduated with Bachelor's Degree in International Business Management With Honours (CGPA 3.48, Second Upper Class Honours, Minor in Logistics & Transportation).",
+      "Received total of 5× Dean's List Academic Honors Awards across 5 academic semesters (Semesters 1, 2, 3, 4, and 5) and Special Achievement in Leadership Award (Anugerah Kerana Jasa - AK_J).",
+      "Elected to the Student Representative Council (SRC / MPPUUM) for International Affairs, directing campus-wide international student governance, cross-cultural initiatives, and diplomatic delegations.",
+      "Served as President of IBMS (International Business Management Association), presiding over student governance, trade symposiums, and cross-border commercial study missions.",
+      "Recipient of the prestigious Universiti Utara Malaysia International Scholarship Scheme (RM10,000 per semester)."
     ],
     iconUrl: "/assets/profile/ali-avatar.jpg"
   }
@@ -1228,12 +1365,56 @@ export const BUSINESS_COMPETENCIES: BusinessCompetency[] = [
 
 export const ADDITIONAL_COMPETENCIES = [
   {
+    category: "QA Auditing & Quality DPR",
+    skills: [
+      "QA DPR Handling & Dispute Resolution",
+      "Transaction & Case Auditing",
+      "Quality Calibration Sessions",
+      "Defect Taxonomy & Root-Cause Analysis",
+      "Quality Scoring & Scorecard Governance",
+      "Auditing Compliance Standards"
+    ]
+  },
+  {
+    category: "Policy Creation & SOP Authoring",
+    skills: [
+      "Policy Creation & Drafting",
+      "Standard Operating Procedure (SOP) Authoring",
+      "Trust & Safety Enforcement Guidelines",
+      "Advertising Integrity (Ads Review) Policy",
+      "Edge-Case Decision Trees & Escalation Matrices",
+      "Regulatory Compliance Alignment"
+    ]
+  },
+  {
+    category: "Training Delivery & Instructional Coaching",
+    skills: [
+      "Conducting Classroom & Virtual Training",
+      "Onboarding Academies & Nesting Facilitation",
+      "Curriculum Design & Training Material Authoring",
+      "1-on-1 Performance Coaching & Refresher Clinics",
+      "Agent Competency Upskilling (78% to 94%)",
+      "Training Evaluation & Knowledge Checks"
+    ]
+  },
+  {
+    category: "BPO Operations, Trust & Safety & Ads Review",
+    skills: [
+      "Trust & Safety (T&S) Content Moderation",
+      "Ads Review & Advertising Authenticity",
+      "Omnichannel Support (Live Chat & Email)",
+      "SLA & KPI Governance (>98% Compliance)",
+      "Rotational Shift Rostering & Capacity Forecasting",
+      "Six Sigma DMAIC & AHT Reduction (-25%)"
+    ]
+  },
+  {
     category: "Customer Service Management",
     skills: ["SLA & KPI Management", "Service Delivery", "Operational Efficiency", "Escalation Management", "Quality Assurance (QA)", "Contact Center Operations", "Shift & Capacity Planning"]
   },
   {
     category: "Team Leadership & Development",
-    skills: ["Performance Management", "Coaching & Mentoring", "Cross-Functional Leadership", "Change Enablement", "Hiring & Onboarding", "Attrition Reduction"]
+    skills: ["Performance Management", "Coaching & Mentoring", "Cross-Functional Leadership", "Change Enablement", "Hiring & Onboarding", "Attrition Reduction (<5%)"]
   },
   {
     category: "Support Tools & Platforms",
@@ -2050,12 +2231,12 @@ export const LINKEDIN_HONORS_AWARDS: HonorAwardItem[] = [
   },
   {
     id: "award-cnx-excellence",
-    title: "Concentrix Leadership & Service Delivery Distinction",
+    title: "Concentrix Operations Team Manager Distinction",
     issuer: "Concentrix",
     organization: "Concentrix",
     organizationLogoId: "concentrix",
     year: "2024",
-    description: "Awarded for exceptional operational leadership: scaled squad from 9 to 34 members (380% growth), sustained >98% SLA compliance across 7 markets, and reduced AHT by 25% via Six Sigma DMAIC.",
+    description: "Awarded by Concentrix senior executive leadership as Operations Team Manager: led 34 direct reports across 7 language pods (Indonesian, Chinese Mainland, Korean, Japanese, English, Thai, Vietnamese), scaled squad by 380%, sustained >98% contractual SLA, and reduced AHT by 25% via Six Sigma DMAIC.",
     certificatePdfUrl: "/certificates/Concentrix_2024_Employment_Certificate.pdf"
   },
   {
@@ -2120,12 +2301,12 @@ export const LINKEDIN_HONORS_AWARDS: HonorAwardItem[] = [
   },
   {
     id: "award-uum-mpp-exco",
-    title: "Student Representative Council Executive & Director Distinction (MPPUUM)",
-    issuer: "Majlis Perwakilan Pelajar UUM (Student Representative Council)",
+    title: "Student Representative Council (SRC) for International Affairs & President of IBMS",
+    issuer: "Universiti Utara Malaysia (UUM) / Majlis Perwakilan Pelajar (SRC)",
     organization: "Universiti Utara Malaysia (UUM)",
     organizationLogoId: "uum",
-    year: "2014 – 2016",
-    description: "Appointed as Exco Integrity, Community & International on the Student Representative Council (MPPUUM) and Vice President of the International Business Management Society, directing international delegations and cultural mobility programs.",
+    year: "2014 – 2017",
+    description: "Elected to Student Representative Council (SRC / MPPUUM) for International Affairs and served as President of IBMS (International Business Management Association), directing campus-wide international student governance, cross-cultural mobility programs, and global commerce symposia.",
     certificatePdfUrl: "/certificates/ABOUT_ME.pdf"
   }
 ];

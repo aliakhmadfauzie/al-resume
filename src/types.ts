@@ -62,6 +62,16 @@ export interface MigrationSlice {
   gallery?: ProjectGalleryItem[];
 }
 
+export interface ClientRosterItem {
+  id: string;
+  name: string;
+  logoUrl: string;
+  logoId: 'texchem' | 'ioi-acidchem' | 'nippon-paint' | 'tasek-cement' | 'ipenet';
+  role?: string;
+  industry?: string;
+  scope?: string;
+}
+
 export interface ExperienceItem {
   id: string;
   role: string;
@@ -73,6 +83,23 @@ export interface ExperienceItem {
   tags: string[];
   bulletPoints: string[];
   iconUrl: string;
+  companyLogoId?:
+    | 'microsoft'
+    | 'linkedin'
+    | 'microsoft-linkedin'
+    | 'pmi'
+    | 'lark'
+    | 'six-sigma'
+    | 'concentrix'
+    | 'accenture'
+    | 'uum'
+    | 'texchem'
+    | 'ioi-acidchem'
+    | 'nippon-paint'
+    | 'tasek-cement'
+    | 'ipenet'
+    | 'general';
+  clients?: ClientRosterItem[];
 }
 
 export interface SkillCategory {
@@ -187,6 +214,11 @@ export interface CertificationItem {
     | 'concentrix'
     | 'accenture'
     | 'uum'
+    | 'texchem'
+    | 'ioi-acidchem'
+    | 'nippon-paint'
+    | 'tasek-cement'
+    | 'ipenet'
     | 'general';
   issueDate: string;
   category: 'Power Platform' | 'AI & Copilot' | 'Data & Analytics' | 'Project & Process' | 'Enterprise Automation';
@@ -218,6 +250,11 @@ export interface HonorAwardItem {
     | 'concentrix'
     | 'accenture'
     | 'uum'
+    | 'texchem'
+    | 'ioi-acidchem'
+    | 'nippon-paint'
+    | 'tasek-cement'
+    | 'ipenet'
     | 'general';
   year: string;
   description: string;

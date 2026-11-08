@@ -343,17 +343,17 @@ const CODE_TABS: CodeTab[] = [
     projectId: 'concentrix-team-lead',
     demoId: 'sla-telemetry',
     demoLabel: 'Review BPO SLA Governance',
-    terminalCmd: '> node _audit_team_kpi.js --headcount 34 --markets 7',
-    terminalLine1: 'Active Headcount: 34 direct reports across 7 APAC markets',
-    terminalLine2: 'Contractual SLA: >98% sustained compliance | AHT: -25% via DMAIC',
-    terminalLine3: 'Honors: Hang Tuah Best Team Lead & Accenture Diamond Award',
+    terminalCmd: '> node _audit_team_kpi.js --headcount 34 --pods 7',
+    terminalLine1: 'Operations Team Manager: 34 direct reports across 7 language pods',
+    terminalLine2: 'Pods: Indonesian, CN Mainland, Korean, Japanese, English, Thai, Vietnamese',
+    terminalLine3: 'Contractual SLA: >98% sustained compliance | AHT: -25% via DMAIC',
     lines: [
       {
         num: 1,
         content: (
           <>
             <span className="text-[#fb923c]">export interface</span>{' '}
-            <span className="text-[#fbbf24]">OperationsLeadershipKPI</span> {'{'}
+            <span className="text-[#fbbf24]">OperationsManagerKPI</span> {'{'}
           </>
         )
       },
@@ -372,8 +372,8 @@ const CODE_TABS: CodeTab[] = [
         content: (
           <>
             {'  '}
-            <span className="text-[#cbd5e1]">internationalMarkets:</span>{' '}
-            <span className="text-[#fb923c]">7</span>; <span className="text-[#64748b]">// SG, MY, PH, TH, VN, ID, JP</span>
+            <span className="text-[#cbd5e1]">languagePodsHandled:</span>{' '}
+            <span className="text-[#fb923c]">7</span>; <span className="text-[#64748b]">// Indo, CN Mainland, KR, JP, EN, TH, VN</span>
           </>
         )
       },

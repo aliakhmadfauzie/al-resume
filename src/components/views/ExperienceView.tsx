@@ -13,7 +13,8 @@ import {
   Trophy,
   ExternalLink,
   Download,
-  Award
+  Award,
+  Sparkles
 } from 'lucide-react';
 import { DualCareerBranchVisualizer } from '../career/DualCareerBranchVisualizer';
 import { OrganizationLogo } from '../OrganizationLogo';
@@ -24,13 +25,19 @@ export const ExperienceView: React.FC = () => {
   const allTags = [
     'all',
     'Promotions',
+    'QA DPR & Auditing',
+    'Policy Creation',
+    'Training Delivery',
+    'Trust & Safety',
+    'Ads Review',
+    'Live Chat & Email',
+    'BPO Operations',
     'Pre-Sales',
     'Data Analytics',
     'Leadership',
     'React',
     'TypeScript',
     'Dataverse',
-    'SharePoint',
     'Power Platform',
     'SLA Governance',
     'Six Sigma DMAIC'
@@ -154,8 +161,12 @@ export const ExperienceView: React.FC = () => {
             <div className="hidden md:block absolute -left-[14px] top-6 w-[14px] h-[2px] bg-gradient-to-r from-orange-500/40 via-orange-500/20 to-transparent group-hover:from-orange-500 group-hover:via-orange-400/60 group-hover:w-[16px] transition-all duration-300" />
 
             {/* Timeline Node Icon with Active Radar Pulse */}
-            <div className="absolute -left-[30px] md:-left-[54px] top-1.5 w-10 h-10 rounded-[var(--radius-sm)] bg-[#0c0e15] border border-[var(--border-focus)] p-1.5 flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:border-orange-500/70 group-hover:shadow-[0_0_16px_rgba(249,115,22,0.35)]">
-              <Briefcase className="w-4 h-4 text-[var(--text-accent)] transition-transform duration-300 group-hover:rotate-6" />
+            <div className="absolute -left-[30px] md:-left-[54px] top-1.5 w-10 h-10 rounded-[var(--radius-sm)] bg-[#0c0e15] border border-[var(--border-focus)] p-1 flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:border-orange-500/70 group-hover:shadow-[0_0_16px_rgba(249,115,22,0.35)] overflow-hidden shadow-inner">
+              {item.companyLogoId ? (
+                <OrganizationLogo logoId={item.companyLogoId} orgName={item.company} size="sm" />
+              ) : (
+                <Briefcase className="w-4 h-4 text-[var(--text-accent)] transition-transform duration-300 group-hover:rotate-6" />
+              )}
               {item.isCurrent && (
                 <span className="absolute -top-1 -right-1 flex h-3 w-3">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
@@ -167,7 +178,7 @@ export const ExperienceView: React.FC = () => {
             {/* Experience Card with Smooth Kinetic Hover */}
             <div className="glass-card p-6 sm:p-8 space-y-4 transition-[transform,border-color,box-shadow] duration-300 ease-out hover:-translate-y-1 hover:border-orange-500/40 hover:shadow-[0_12px_32px_-8px_rgba(0,0,0,0.6),0_0_20px_-4px_rgba(249,115,22,0.12)]">
               <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2 border-b border-[var(--border-subtle)] pb-4">
-                <div className="space-y-1">
+                <div className="space-y-1.5">
                   <div className="flex flex-wrap items-center gap-2">
                     <h3 className="text-lg sm:text-xl font-semibold text-[var(--text-primary)] tracking-tight">
                       {item.role}
@@ -183,7 +194,14 @@ export const ExperienceView: React.FC = () => {
                       </span>
                     )}
                   </div>
-                  <p className="text-sm font-medium text-[var(--text-accent)]">{item.company}</p>
+                  <div className="flex items-center gap-2">
+                    {item.companyLogoId && item.companyLogoId !== 'general' && (
+                      <div className="w-5 h-5 rounded bg-[#10121a] border border-[var(--border-subtle)] flex items-center justify-center p-0.5 shrink-0 overflow-hidden">
+                        <OrganizationLogo logoId={item.companyLogoId} orgName={item.company} size="xs" />
+                      </div>
+                    )}
+                    <p className="text-sm font-medium text-[var(--text-accent)]">{item.company}</p>
+                  </div>
                 </div>
 
                 <div className="flex flex-col sm:items-end space-y-1 font-mono text-xs text-[var(--text-secondary)]">
@@ -196,6 +214,47 @@ export const ExperienceView: React.FC = () => {
                   )}
                 </div>
               </div>
+
+              {/* Enterprise Freelance Clients Showcase */}
+              {item.clients && item.clients.length > 0 && (
+                <div className="rounded-[var(--radius-md)] bg-[#0d0f17] border border-[var(--border-subtle)] p-4 space-y-3">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[11px] font-mono text-[var(--text-accent)] font-semibold uppercase tracking-wider flex items-center gap-1.5">
+                      <Sparkles className="w-3.5 h-3.5 text-[var(--interactive-primary)]" />
+                      <span>Enterprise Freelance Clients</span>
+                    </span>
+                    <span className="text-[10px] font-mono text-[var(--text-tertiary)]">
+                      Direct Client Engagements
+                    </span>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    {item.clients.map((client) => (
+                      <div
+                        key={client.id}
+                        className="rounded-[var(--radius-sm)] bg-[#121520] border border-[var(--border-subtle)] hover:border-orange-500/40 p-3 flex flex-col justify-between space-y-2 transition-colors group/client"
+                      >
+                        <div className="flex items-center space-x-2.5">
+                          <div className="w-8 h-8 rounded bg-white/95 p-1 flex items-center justify-center shrink-0 shadow-inner">
+                            <OrganizationLogo logoId={client.logoId} orgName={client.name} size="sm" />
+                          </div>
+                          <div className="min-w-0">
+                            <h4 className="text-xs font-bold text-[var(--text-primary)] group-hover/client:text-[var(--text-accent)] transition-colors truncate">
+                              {client.name}
+                            </h4>
+                            <p className="text-[10px] font-mono text-[var(--text-tertiary)] truncate">
+                              {client.industry}
+                            </p>
+                          </div>
+                        </div>
+                        <p className="text-[11px] text-[var(--text-secondary)] leading-snug line-clamp-2">
+                          {client.scope}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
 
               {/* Bullet Points */}
               <ul className="space-y-2.5 text-sm text-[var(--text-secondary)] leading-relaxed">

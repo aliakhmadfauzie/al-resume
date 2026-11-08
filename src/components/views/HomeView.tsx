@@ -105,7 +105,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
             {/* Kicker with Copper-Orange Line & Dot */}
             <div className="flex items-center space-x-3">
               <span className="text-xs font-mono uppercase tracking-[0.2em] text-[var(--text-accent)] font-semibold">
-                SOLUTIONS ARCHITECT &amp; OPERATIONS TEAM LEADER
+                SOLUTIONS ARCHITECT &amp; OPERATIONS TEAM MANAGER
               </span>
               <span className="h-[1px] w-12 bg-[var(--interactive-primary)]/60 relative flex items-center justify-end">
                 <span className="w-1.5 h-1.5 rounded-full bg-[var(--interactive-primary)] shadow-[0_0_8px_#f97316]" />
@@ -133,7 +133,8 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 'Power Platform',
                 'Dataverse',
                 'React 19 / TS',
-                'BPO Team Lead (34 Reports)',
+                'Operations Team Mgr (34 Reports)',
+                '7 Language Pods (APAC)',
                 '>98% SLA Governance',
                 'Pre-Sales (RM70k+ SOWs)'
               ].map((tech) => (
@@ -222,7 +223,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
               </span>
             </div>
             <span className="px-2.5 py-0.5 rounded-full bg-orange-500/10 border border-orange-500/25 text-[10px] font-mono font-semibold text-orange-400">
-              Dual-Track: Solutions Architect &amp; Operations Team Leader
+              Dual-Track: Solutions Architect &amp; Operations Team Manager
             </span>
           </div>
 
@@ -256,7 +257,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
               {/* Bottom Label */}
               <div className="absolute bottom-2 left-2 right-2 p-1 rounded bg-black/70 backdrop-blur-md border border-white/10 text-center z-10">
                 <div className="text-[10px] font-bold text-white leading-tight">Ali Akhmad Fauzie</div>
-                <div className="text-[8px] font-mono text-orange-400">Solutions Architect &amp; Operations Lead</div>
+                <div className="text-[8px] font-mono text-orange-400">Solutions Architect &amp; Operations Team Manager</div>
               </div>
             </div>
 
@@ -269,7 +270,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 </span>
               </h2>
               <p className="text-xs text-zinc-300 leading-relaxed font-normal">
-                I&apos;m Ali Akhmad Fauzie, an Enterprise Solutions Architect, Pre-Sales Lead, and seasoned Operations Team Leader (Accenture &amp; Concentrix). Over 9+ years, I have led 34 direct reports across 7 APAC markets achieving 380% scale and &gt;98% SLA compliance, while simultaneously engineering zero-downtime Lotus Domino migrations (365+ apps), Dataverse architectures, and RM70k+ enterprise SOWs.
+                I&apos;m Ali Akhmad Fauzie, an Enterprise Solutions Architect, Pre-Sales Lead, and seasoned Operations Team Manager (Concentrix) &amp; Operations Team Lead (Accenture). Over 9+ years, I have led 34 direct reports across 7 language pods (Indonesian, Chinese Mainland, Korean, Japanese, English, Thai, Vietnamese) achieving 380% scale and &gt;98% SLA compliance, while simultaneously engineering zero-downtime Lotus Domino migrations (365+ apps), Dataverse architectures, and RM70k+ enterprise SOWs.
               </p>
             </div>
           </div>
@@ -282,7 +283,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
               </div>
               <div>
                 <div className="text-xs font-bold text-white leading-tight">34 Direct Reports</div>
-                <div className="text-[10px] text-zinc-400 font-mono">380% Scale · 7 APAC Markets</div>
+                <div className="text-[10px] text-zinc-400 font-mono">380% Scale · 7 Language Pods</div>
               </div>
             </div>
 
@@ -302,7 +303,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
               </div>
               <div>
                 <div className="text-xs font-bold text-white leading-tight">26 Verified Certifications</div>
-                <div className="text-[10px] text-zinc-400 font-mono">16 Honors &amp; Awards · UUM 3.48</div>
+                <div className="text-[10px] text-zinc-400 font-mono">5× Dean's List · SRC Intl · IBMS Pres</div>
               </div>
             </div>
 
@@ -555,7 +556,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
             </div>
           </div>
 
-          {/* PILLAR 2: Operations Team Leader & BPO Scaling */}
+          {/* PILLAR 2: Operations, QA DPR, Policy Creation & Training */}
           <div className="rounded-xl bg-[#0e1017]/90 border border-emerald-500/30 p-5 sm:p-6 space-y-4 hover:border-emerald-500/50 transition-colors shadow-lg flex flex-col justify-between">
             <div className="space-y-4">
               <div className="flex items-center justify-between">
@@ -565,18 +566,18 @@ export const HomeView: React.FC<HomeViewProps> = ({
                   </div>
                   <div>
                     <h3 className="text-base font-bold text-white tracking-tight">
-                      Operations Team Leader &amp; BPO Scaling
+                      Operations, QA DPR, Policy &amp; Training
                     </h3>
-                    <div className="text-xs font-mono text-emerald-400">People Leadership &amp; SLA Track</div>
+                    <div className="text-xs font-mono text-emerald-400">QA Auditing, Policy Creation &amp; Training Track</div>
                   </div>
                 </div>
                 <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">
-                  Operations Track
+                  Operations &amp; Governance
                 </span>
               </div>
 
               <p className="text-xs text-zinc-300 leading-relaxed">
-                Directly managing, coaching, and scaling up to 34 multilingual specialists across 7 international APAC markets, sustaining contractual SLAs and driving Six Sigma DMAIC continuous improvement.
+                Operations Team Leader at Concentrix &amp; Accenture leading 34 direct reports across 7 APAC markets. Direct hands-on ownership of QA DPR &amp; transaction auditing, policy creation &amp; SOP authoring, conducting training academies, and directing Trust &amp; Safety and Ads Review operations.
               </p>
 
               {/* 4 Metric Bento Mini-Tiles */}
@@ -587,7 +588,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 </div>
                 <div className="p-3 rounded-lg bg-[#141622] border border-white/[0.06] space-y-1">
                   <div className="text-lg font-bold font-mono text-emerald-400">7 Markets</div>
-                  <div className="text-[10px] text-zinc-400 font-mono">SG, MY, PH, TH, VN, ID, JP</div>
+                  <div className="text-[10px] text-zinc-400 font-mono">7 Language Pods (APAC)</div>
                 </div>
                 <div className="p-3 rounded-lg bg-[#141622] border border-white/[0.06] space-y-1">
                   <div className="text-lg font-bold font-mono text-emerald-400">&gt;98% SLA</div>
@@ -921,6 +922,117 @@ export const HomeView: React.FC<HomeViewProps> = ({
               </div>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* ====================================================================
+          5A. // ENTERPRISE CLIENTS & CORPORATE LEADERSHIP
+         ==================================================================== */}
+      <section className="rounded-[var(--radius-lg)] bg-[var(--bg-surface)] border border-[var(--border-subtle)] p-6 sm:p-7 space-y-5 shadow-[var(--shadow-card)]">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[var(--border-subtle)] pb-4">
+          <div className="space-y-1">
+            <p className="text-xs font-mono text-[var(--text-accent)] font-semibold tracking-wider uppercase">
+              // ENTERPRISE CLIENTS &amp; CORPORATE LEADERSHIP
+            </p>
+            <h2 className="text-lg sm:text-xl font-bold text-[var(--text-primary)]">
+              Freelance Client Roster &amp; Operational Leadership
+            </h2>
+          </div>
+          <span className="text-xs font-mono text-[var(--text-tertiary)]">
+            Texchem · IOI Acidchem · Nippon Paint · Concentrix · Accenture
+          </span>
+        </div>
+
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3.5">
+          {/* Texchem */}
+          <div className="rounded-[var(--radius-md)] bg-[#0f1117] border border-[var(--border-subtle)] hover:border-orange-500/40 p-4 flex flex-col items-center text-center space-y-2.5 transition-all duration-200 group hover:-translate-y-0.5 shadow-sm">
+            <div className="w-12 h-12 rounded-[var(--radius-sm)] bg-white p-1.5 flex items-center justify-center shadow-inner group-hover:scale-105 transition-transform overflow-hidden">
+              <OrganizationLogo logoId="texchem" orgName="Texchem" size="md" />
+            </div>
+            <div>
+              <h3 className="text-xs font-bold text-[var(--text-primary)] group-hover:text-[var(--text-accent)] transition-colors">
+                Texchem
+              </h3>
+              <p className="text-[10px] font-mono text-[var(--text-accent)] font-semibold mt-0.5">
+                Freelance Client
+              </p>
+              <p className="text-[10px] text-[var(--text-tertiary)] mt-1 line-clamp-1 font-mono">
+                Industrial Manufacturing
+              </p>
+            </div>
+          </div>
+
+          {/* IOI Acidchem */}
+          <div className="rounded-[var(--radius-md)] bg-[#0f1117] border border-[var(--border-subtle)] hover:border-orange-500/40 p-4 flex flex-col items-center text-center space-y-2.5 transition-all duration-200 group hover:-translate-y-0.5 shadow-sm">
+            <div className="w-12 h-12 rounded-[var(--radius-sm)] bg-white p-1.5 flex items-center justify-center shadow-inner group-hover:scale-105 transition-transform overflow-hidden">
+              <OrganizationLogo logoId="ioi-acidchem" orgName="IOI Acidchem" size="md" />
+            </div>
+            <div>
+              <h3 className="text-xs font-bold text-[var(--text-primary)] group-hover:text-[var(--text-accent)] transition-colors">
+                IOI Acidchem
+              </h3>
+              <p className="text-[10px] font-mono text-[var(--text-accent)] font-semibold mt-0.5">
+                Freelance Client
+              </p>
+              <p className="text-[10px] text-[var(--text-tertiary)] mt-1 line-clamp-1 font-mono">
+                365+ Domino Cutover &amp; SHE
+              </p>
+            </div>
+          </div>
+
+          {/* Nippon Paint */}
+          <div className="rounded-[var(--radius-md)] bg-[#0f1117] border border-[var(--border-subtle)] hover:border-orange-500/40 p-4 flex flex-col items-center text-center space-y-2.5 transition-all duration-200 group hover:-translate-y-0.5 shadow-sm">
+            <div className="w-12 h-12 rounded-[var(--radius-sm)] bg-[#00479E] p-1.5 flex items-center justify-center shadow-inner group-hover:scale-105 transition-transform overflow-hidden">
+              <OrganizationLogo logoId="nippon-paint" orgName="Nippon Paint" size="md" />
+            </div>
+            <div>
+              <h3 className="text-xs font-bold text-[var(--text-primary)] group-hover:text-[var(--text-accent)] transition-colors">
+                Nippon Paint
+              </h3>
+              <p className="text-[10px] font-mono text-[var(--text-accent)] font-semibold mt-0.5">
+                Freelance Client
+              </p>
+              <p className="text-[10px] text-[var(--text-tertiary)] mt-1 line-clamp-1 font-mono">
+                Coatings &amp; Workflows
+              </p>
+            </div>
+          </div>
+
+          {/* Concentrix */}
+          <div className="rounded-[var(--radius-md)] bg-[#0f1117] border border-[var(--border-subtle)] hover:border-orange-500/40 p-4 flex flex-col items-center text-center space-y-2.5 transition-all duration-200 group hover:-translate-y-0.5 shadow-sm">
+            <div className="w-12 h-12 rounded-[var(--radius-sm)] bg-[#041B23] p-1.5 flex items-center justify-center shadow-inner group-hover:scale-105 transition-transform overflow-hidden">
+              <OrganizationLogo logoId="concentrix" orgName="Concentrix" size="md" />
+            </div>
+            <div>
+              <h3 className="text-xs font-bold text-[var(--text-primary)] group-hover:text-[var(--text-accent)] transition-colors">
+                Concentrix
+              </h3>
+              <p className="text-[10px] font-mono text-[#00D9AF] font-semibold mt-0.5">
+                Operations Leader
+              </p>
+              <p className="text-[10px] text-[var(--text-tertiary)] mt-1 line-clamp-1 font-mono">
+                34-Agent Squad (380% Scale)
+              </p>
+            </div>
+          </div>
+
+          {/* Accenture */}
+          <div className="rounded-[var(--radius-md)] bg-[#0f1117] border border-[var(--border-subtle)] hover:border-orange-500/40 p-4 flex flex-col items-center text-center space-y-2.5 transition-all duration-200 group hover:-translate-y-0.5 shadow-sm">
+            <div className="w-12 h-12 rounded-[var(--radius-sm)] bg-[#0F1117] p-1.5 flex items-center justify-center shadow-inner group-hover:scale-105 transition-transform overflow-hidden">
+              <OrganizationLogo logoId="accenture" orgName="Accenture" size="md" />
+            </div>
+            <div>
+              <h3 className="text-xs font-bold text-[var(--text-primary)] group-hover:text-[var(--text-accent)] transition-colors">
+                Accenture
+              </h3>
+              <p className="text-[10px] font-mono text-[#A100FF] font-semibold mt-0.5">
+                Senior Team Lead
+              </p>
+              <p className="text-[10px] text-[var(--text-tertiary)] mt-1 line-clamp-1 font-mono">
+                5 Yrs · 4 Merit Promotions
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
