@@ -186,7 +186,7 @@ export const DualCareerBranchVisualizer: React.FC = () => {
   const operationsMilestones: Record<string, MilestoneDetail> = {
     'ops-concentrix': {
       period: 'May 2023 – Apr 2025',
-      role: 'Operations Team Leader (QA, Policy & Training)',
+      role: 'Operations Team Manager (QA, Policy & Training)',
       company: 'Concentrix CVG',
       headline: 'Hands-on QA DPR Auditing, Policy Creation, Conducting Training & 34 Reports Across 7 Language Pods',
       category: 'operations',

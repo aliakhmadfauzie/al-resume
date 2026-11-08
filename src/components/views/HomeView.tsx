@@ -589,7 +589,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
               </div>
 
               <p className="text-xs text-zinc-300 leading-relaxed">
-                Operations Team Leader at Concentrix &amp; Accenture leading 34 direct reports across 7 APAC markets. Direct hands-on ownership of QA DPR &amp; transaction auditing, policy creation &amp; SOP authoring, conducting training academies, and directing Trust &amp; Safety and Ads Review operations.
+                Operations Team Manager at Concentrix &amp; Senior Team Lead at Accenture leading 34 direct reports across 7 APAC markets. Direct hands-on ownership of QA DPR &amp; transaction auditing, policy creation &amp; SOP authoring, conducting training academies, and directing Trust &amp; Safety and Ads Review operations.
               </p>
 
               {/* 4 Metric Bento Mini-Tiles */}

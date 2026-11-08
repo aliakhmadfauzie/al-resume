@@ -1178,7 +1178,7 @@ export const WORK_EXPERIENCE: ExperienceItem[] = [
   },
   {
     id: "exp-concentrix",
-    role: "Operations Team Leader (QA, Policy & Training)",
+    role: "Operations Team Manager (QA, Policy & Training)",
     company: "Concentrix CVG",
     companyLogoId: "concentrix",
     location: "Kuala Lumpur, Malaysia",
