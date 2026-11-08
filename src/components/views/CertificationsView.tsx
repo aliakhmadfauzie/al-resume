@@ -41,10 +41,11 @@ export const CertificationsView: React.FC = () => {
   const categories = useMemo(
     () => [
       'All',
-      'Power Platform',
+      'Learning Paths',
       'AI & Copilot',
-      'Data & Analytics',
+      'Power Platform',
       'Project & Process',
+      'Data & Analytics',
       'Enterprise Automation'
     ],
     []
@@ -53,7 +54,11 @@ export const CertificationsView: React.FC = () => {
   const filteredCertifications = useMemo(() => {
     return LINKEDIN_CERTIFICATIONS.filter((cert) => {
       const matchesCategory =
-        selectedCategory === 'All' || cert.category === selectedCategory;
+        selectedCategory === 'All'
+          ? true
+          : selectedCategory === 'Learning Paths'
+          ? cert.credentialType === 'Learning Path'
+          : cert.category === selectedCategory;
 
       if (!matchesCategory) return false;
 
@@ -68,6 +73,7 @@ export const CertificationsView: React.FC = () => {
         (cert.summary && cert.summary.toLowerCase().includes(q)) ||
         (cert.productionApplication &&
           cert.productionApplication.toLowerCase().includes(q)) ||
+        (cert.hoursOrModules && cert.hoursOrModules.toLowerCase().includes(q)) ||
         cert.skills.some((s) => s.toLowerCase().includes(q))
       );
     });
@@ -163,7 +169,7 @@ export const CertificationsView: React.FC = () => {
           </div>
           <div className="space-y-1">
             <div className="text-2xl font-extrabold font-mono text-[var(--text-primary)] tabular-nums">
-              190+ Hrs
+              250+ Hrs
             </div>
             <div className="text-xs text-[var(--text-secondary)]">
               Assessed Lab &amp; Capstone Curriculum
@@ -195,6 +201,8 @@ export const CertificationsView: React.FC = () => {
               const count =
                 cat === 'All'
                   ? LINKEDIN_CERTIFICATIONS.length
+                  : cat === 'Learning Paths'
+                  ? LINKEDIN_CERTIFICATIONS.filter((c) => c.credentialType === 'Learning Path').length
                   : LINKEDIN_CERTIFICATIONS.filter((c) => c.category === cat).length;
               const isSelected = selectedCategory === cat;
               return (
@@ -292,7 +300,7 @@ export const CertificationsView: React.FC = () => {
               No matching credentials found
             </h3>
             <p className="text-xs text-[var(--text-secondary)] max-w-md mx-auto">
-              No certifications matched &ldquo;{searchQuery}&rdquo; in {selectedCategory}. Reset filters to view all 12 verified credentials.
+              No certifications matched &ldquo;{searchQuery}&rdquo; in {selectedCategory}. Reset filters to view all {LINKEDIN_CERTIFICATIONS.length} verified credentials.
             </p>
             <button
               type="button"
@@ -366,6 +374,12 @@ export const CertificationsView: React.FC = () => {
                             ·
                           </span>
                           <span>{cert.issueDate}</span>
+                          {cert.hoursOrModules && (
+                            <>
+                              <span aria-hidden="true" className="mx-1 text-[var(--text-tertiary)]">·</span>
+                              <span className="text-amber-400 font-semibold">{cert.hoursOrModules}</span>
+                            </>
+                          )}
                         </div>
                       </div>
 
