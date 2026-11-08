@@ -376,7 +376,7 @@ export const CinematicDoorGate: React.FC<CinematicDoorGateProps> = ({
                         Operations Team Manager
                       </div>
                       <div className="text-[10px] text-slate-400 font-mono mt-0.5">
-                        98%+ SLA · 25% AHT Cut · Floor Adherence
+                        98%+ SLA · Trust &amp; Safety · Content Moderation
                       </div>
                     </div>
                   </div>

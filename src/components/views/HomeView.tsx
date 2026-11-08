@@ -13,7 +13,10 @@ import {
   Mail,
   MapPin,
   Sparkles,
-  Activity
+  Activity,
+  Briefcase,
+  ShieldAlert,
+  Gamepad2
 } from 'lucide-react';
 import {
   CORE_PROJECTS,
@@ -63,9 +66,9 @@ export function HomeView({
   const activeMetrics = useMemo(() => {
     if (activePersona === 'operations') {
       return [
-        { label: "CONTRACTUAL SLA", value: "98%+", subtext: "Concentrix & Accenture Floor" },
-        { label: "AHT REDUCTION", value: "-25%", subtext: "Lean Six Sigma DMAIC" },
-        { label: "LEADERSHIP HRS SAVED", value: "120+h/wk", subtext: "PulseTrack & SmartFlow" },
+        { label: "CONTRACTUAL SLA", value: "98%+", subtext: "24/7 Multi-Shift Rotational Floor" },
+        { label: "POLICY & QA ACCURACY", value: "96–99%", subtext: "Content Moderation, Ads & Game Review" },
+        { label: "AHT REDUCTION", value: "-25%", subtext: "Lean Six Sigma DMAIC Controls" },
         { label: "SQUAD SCALING", value: "34 Agents", subtext: "7 APAC Pods (<5% Attrition)" }
       ];
     }
@@ -105,7 +108,7 @@ export function HomeView({
               ) : activePersona === 'operations' ? (
                 <>
                   <Users size={14} className="text-orange-400 animate-pulse" />
-                  <span>Operations Leadership · Contact Center &amp; BPO · 98%+ SLA &amp; Lean Six Sigma</span>
+                  <span>Operations Leadership · 8+ Years BPO &amp; Contact Center · Content Moderation, Trust &amp; Safety, Ads &amp; Game Review</span>
                 </>
               ) : (
                 <>
@@ -206,7 +209,11 @@ export function HomeView({
             </p>
           ) : activePersona === 'operations' ? (
             <p className="text-base sm:text-lg lg:text-xl leading-relaxed text-[var(--text-secondary)] max-w-2xl">
-              <strong className="text-[var(--text-primary)]">8+ years</strong> of BPO and contact center operations leadership across{' '}
+              <strong className="text-[var(--text-primary)]">8+ years</strong> of BPO and contact center operations leadership, specializing in{' '}
+              <strong className="text-orange-400">Content Moderation</strong>,{' '}
+              <strong className="text-orange-400">Trust &amp; Safety</strong>,{' '}
+              <strong className="text-orange-400">Ads Review</strong>, and{' '}
+              <strong className="text-orange-400">Game Review</strong> across{' '}
               <strong className="text-[var(--text-primary)]">Concentrix CVG</strong> and{' '}
               <strong className="text-[var(--text-primary)]">Accenture</strong>. Scaled frontline squads from{' '}
               <strong className="text-[var(--text-primary)]">9 to 34 agents</strong> across 7 international markets, maintained{' '}
@@ -313,39 +320,132 @@ export function HomeView({
               </p>
               <p className="text-xs text-[var(--text-tertiary)] mt-1">
                 {activePersona === 'operations'
-                  ? 'BPO & Contact Center Floor Operations'
+                  ? 'BPO Operations · Trust & Safety · Content Moderation'
                   : activePersona === 'software'
                   ? 'Full-Stack, Cloud & AI Architecture'
                   : 'Dual-Track: Enterprise & Full-Stack AI'}
               </p>
+              {activePersona === 'operations' && (
+                <div className="flex flex-wrap gap-1.5 pt-2">
+                  <span className="px-2 py-0.5 rounded-md bg-orange-500/15 border border-orange-500/30 text-[10px] font-mono text-orange-300">
+                    Content Moderation
+                  </span>
+                  <span className="px-2 py-0.5 rounded-md bg-orange-500/15 border border-orange-500/30 text-[10px] font-mono text-orange-300">
+                    Trust &amp; Safety
+                  </span>
+                  <span className="px-2 py-0.5 rounded-md bg-orange-500/15 border border-orange-500/30 text-[10px] font-mono text-orange-300">
+                    Ads Review
+                  </span>
+                  <span className="px-2 py-0.5 rounded-md bg-orange-500/15 border border-orange-500/30 text-[10px] font-mono text-orange-300">
+                    Game Review
+                  </span>
+                </div>
+              )}
             </div>
           </div>
 
-          {/* Quick Dual-Metric Anchor */}
-          <dl className="grid grid-cols-2 gap-4 py-4 border-y border-[var(--border-subtle)]">
-            <div className="bg-[var(--bg-surface)] p-3.5 rounded-xl border border-[var(--border-subtle)]">
-              <dt className="text-xs font-medium uppercase tracking-wider text-[var(--text-tertiary)]">
-                {activePersona === 'operations' ? 'Squad Scaling' : 'Databases Retired'}
-              </dt>
-              <dd className="text-3xl font-extrabold text-[var(--text-accent)] font-mono mt-1">
-                {activePersona === 'operations' ? '34 Agents' : '365+'}
-              </dd>
-              <p className="text-xs text-[var(--text-tertiary)] mt-1">
-                {activePersona === 'operations' ? '7 APAC jurisdictions' : '28 BUs (0h downtime)'}
-              </p>
+          {/* Quick Dual / Quad Metric Anchor */}
+          {activePersona === 'operations' ? (
+            <dl className="grid grid-cols-2 gap-3 py-4 border-y border-[var(--border-subtle)]">
+              <div className="bg-[var(--bg-surface)] p-3 rounded-xl border border-[var(--border-subtle)]">
+                <dt className="text-[10px] font-medium uppercase tracking-wider text-[var(--text-tertiary)] font-mono">
+                  Squad Scaling
+                </dt>
+                <dd className="text-2xl font-extrabold text-orange-400 font-mono mt-0.5">
+                  34 Agents
+                </dd>
+                <p className="text-[11px] text-[var(--text-tertiary)] mt-0.5">
+                  7 APAC language pods (&lt;5% attrition)
+                </p>
+              </div>
+              <div className="bg-[var(--bg-surface)] p-3 rounded-xl border border-[var(--border-subtle)]">
+                <dt className="text-[10px] font-medium uppercase tracking-wider text-[var(--text-tertiary)] font-mono">
+                  SLA Delivery
+                </dt>
+                <dd className="text-2xl font-extrabold text-orange-400 font-mono mt-0.5">
+                  &gt;98%
+                </dd>
+                <p className="text-[11px] text-[var(--text-tertiary)] mt-0.5">
+                  24/7 rotational multi-shift floor
+                </p>
+              </div>
+              <div className="bg-[var(--bg-surface)] p-3 rounded-xl border border-[var(--border-subtle)]">
+                <dt className="text-[10px] font-medium uppercase tracking-wider text-[var(--text-tertiary)] font-mono">
+                  Policy QA Accuracy
+                </dt>
+                <dd className="text-2xl font-extrabold text-orange-400 font-mono mt-0.5">
+                  96–99%
+                </dd>
+                <p className="text-[11px] text-[var(--text-tertiary)] mt-0.5">
+                  Content, Ads &amp; Game review
+                </p>
+              </div>
+              <div className="bg-[var(--bg-surface)] p-3 rounded-xl border border-[var(--border-subtle)]">
+                <dt className="text-[10px] font-medium uppercase tracking-wider text-[var(--text-tertiary)] font-mono">
+                  AHT Reduction
+                </dt>
+                <dd className="text-2xl font-extrabold text-orange-400 font-mono mt-0.5">
+                  -25%
+                </dd>
+                <p className="text-[11px] text-[var(--text-tertiary)] mt-0.5">
+                  Lean Six Sigma DMAIC controls
+                </p>
+              </div>
+            </dl>
+          ) : (
+            <dl className="grid grid-cols-2 gap-4 py-4 border-y border-[var(--border-subtle)]">
+              <div className="bg-[var(--bg-surface)] p-3.5 rounded-xl border border-[var(--border-subtle)]">
+                <dt className="text-xs font-medium uppercase tracking-wider text-[var(--text-tertiary)]">
+                  Databases Retired
+                </dt>
+                <dd className="text-3xl font-extrabold text-[var(--text-accent)] font-mono mt-1">
+                  365+
+                </dd>
+                <p className="text-xs text-[var(--text-tertiary)] mt-1">
+                  28 BUs (0h downtime)
+                </p>
+              </div>
+              <div className="bg-[var(--bg-surface)] p-3.5 rounded-xl border border-[var(--border-subtle)]">
+                <dt className="text-xs font-medium uppercase tracking-wider text-[var(--text-tertiary)]">
+                  License Avoidance
+                </dt>
+                <dd className="text-3xl font-extrabold text-[var(--text-accent)] font-mono mt-1">
+                  $960K/yr
+                </dd>
+                <p className="text-xs text-[var(--text-tertiary)] mt-1">
+                  Single MainDB Architecture
+                </p>
+              </div>
+            </dl>
+          )}
+
+          {/* Main Roles & Responsibilities Section in Hero Aside */}
+          {activePersona === 'operations' && (
+            <div className="p-3.5 rounded-xl bg-[var(--bg-surface)] border border-orange-500/25 space-y-2">
+              <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-orange-400 font-mono">
+                <Briefcase size={14} />
+                <span>Main Roles &amp; Responsibilities</span>
+              </div>
+              <ul className="space-y-1.5 text-xs text-[var(--text-secondary)]">
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 size={13} className="text-orange-400 shrink-0 mt-0.5" />
+                  <span><strong>Floor &amp; Capacity Command:</strong> 24/7 queue telemetry, 90–95% schedule adherence, shrinkage control, and Sev-1 incident command.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 size={13} className="text-orange-400 shrink-0 mt-0.5" />
+                  <span><strong>Trust &amp; Safety Governance:</strong> Content moderation, commercial ads review, game community safety, and PII safeguarding.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 size={13} className="text-orange-400 shrink-0 mt-0.5" />
+                  <span><strong>Tier-2 Escalations &amp; DoA:</strong> TikTok public-to-private de-escalation, 3-strike abuse enforcement, and $100–$150 DoA concessions.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 size={13} className="text-orange-400 shrink-0 mt-0.5" />
+                  <span><strong>People Leadership &amp; Coaching:</strong> Skill vs. Will silent shadowing, 14–30d SMART remediation plans, and weekly GROW 1-on-1s.</span>
+                </li>
+              </ul>
             </div>
-            <div className="bg-[var(--bg-surface)] p-3.5 rounded-xl border border-[var(--border-subtle)]">
-              <dt className="text-xs font-medium uppercase tracking-wider text-[var(--text-tertiary)]">
-                {activePersona === 'operations' ? 'SLA Governance' : 'License Avoidance'}
-              </dt>
-              <dd className="text-3xl font-extrabold text-[var(--text-accent)] font-mono mt-1">
-                {activePersona === 'operations' ? '>98%' : '$960K/yr'}
-              </dd>
-              <p className="text-xs text-[var(--text-tertiary)] mt-1">
-                {activePersona === 'operations' ? 'Six Sigma DMAIC control' : 'Single MainDB Architecture'}
-              </p>
-            </div>
-          </dl>
+          )}
 
           {/* Industry Accolades Badge */}
           <div className="p-4 rounded-xl bg-[var(--interactive-subtle-bg)] border border-[var(--interactive-subtle-border)] space-y-2">
@@ -355,8 +455,13 @@ export function HomeView({
             </div>
             <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
               Recipient of the <strong>Hang Tuah Distinction</strong> and <strong>Accenture Diamond Award</strong> for
-              stabilizing an <strong>800% queue surge in 48 hours</strong> during a regional platform crisis.
+              stabilizing an <strong>800% queue surge in 48 hours</strong> during a regional platform crisis with zero associate burnout.
             </p>
+            {activePersona === 'operations' && (
+              <p className="text-xs text-[var(--text-secondary)] pt-2 border-t border-[var(--border-subtle)] leading-relaxed">
+                Led <strong>TikTok Public-to-Private de-escalations</strong> safeguarding customer PII and enforced strict 3-strike policy boundaries with <strong>99.4% audit compliance</strong>.
+              </p>
+            )}
           </div>
 
           <div className="flex items-center justify-between pt-1">
@@ -388,11 +493,11 @@ export function HomeView({
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[var(--border-subtle)]">
           <div>
             <p className="section-eyebrow">
-              {activePersona === 'operations' ? 'Operational Performance' : 'Empirical Track Record'}
+              {activePersona === 'operations' ? 'Operational Performance & Delivery' : 'Empirical Track Record'}
             </p>
             <h2 id="proof-ticker-title" className="text-xl sm:text-2xl font-bold text-[var(--text-primary)] mt-1">
               {activePersona === 'operations'
-                ? 'Contact Center & Operational Impact Metrics'
+                ? 'Contact Center, Trust & Safety and Operational Metrics'
                 : 'Engineered Business & Architectural Impact'}
             </h2>
           </div>
@@ -417,6 +522,63 @@ export function HomeView({
             </div>
           ))}
         </div>
+
+        {/* Operational Specialization Scope Matrix */}
+        {activePersona === 'operations' && (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-6 border-t border-[var(--border-subtle)] mt-6">
+            <div className="p-3.5 rounded-xl bg-[var(--bg-surface)] border border-orange-500/20 space-y-2">
+              <div className="flex items-center gap-2 text-xs font-bold text-orange-400 font-mono uppercase">
+                <ShieldAlert size={15} />
+                <span>Content Moderation</span>
+              </div>
+              <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+                High-risk queue governance across hate speech, violence, NSFW, self-harm, and TikTok public-to-private de-escalation protocols.
+              </p>
+              <div className="text-[10px] font-mono text-orange-300 pt-1 border-t border-[var(--border-subtle)]">
+                96–99% Policy Accuracy · Zero PII Leaks
+              </div>
+            </div>
+
+            <div className="p-3.5 rounded-xl bg-[var(--bg-surface)] border border-orange-500/20 space-y-2">
+              <div className="flex items-center gap-2 text-xs font-bold text-orange-400 font-mono uppercase">
+                <ShieldCheck size={15} />
+                <span>Trust &amp; Safety &amp; Ads</span>
+              </div>
+              <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+                Commercial ad policy enforcement, advertiser fraud detection, deceptive claims review, and brand protection compliance.
+              </p>
+              <div className="text-[10px] font-mono text-orange-300 pt-1 border-t border-[var(--border-subtle)]">
+                Sub-Second Decision SLA · &lt;1% Disputes
+              </div>
+            </div>
+
+            <div className="p-3.5 rounded-xl bg-[var(--bg-surface)] border border-orange-500/20 space-y-2">
+              <div className="flex items-center gap-2 text-xs font-bold text-orange-400 font-mono uppercase">
+                <Gamepad2 size={15} />
+                <span>Game Review Safety</span>
+              </div>
+              <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+                In-game player conduct moderation, anti-cheat policy compliance, toxic behavior mitigation, and player community guidelines.
+              </p>
+              <div className="text-[10px] font-mono text-orange-300 pt-1 border-t border-[var(--border-subtle)]">
+                Multi-Language APAC Pods · 24/7 Coverage
+              </div>
+            </div>
+
+            <div className="p-3.5 rounded-xl bg-[var(--bg-surface)] border border-orange-500/20 space-y-2">
+              <div className="flex items-center gap-2 text-xs font-bold text-orange-400 font-mono uppercase">
+                <Activity size={15} />
+                <span>Crisis Incident Command</span>
+              </div>
+              <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+                Sev-1 platform outage leadership, 800% surge containment in 48h, real-time WFM capacity, and 120+h/wk reporting automation.
+              </p>
+              <div className="text-[10px] font-mono text-orange-300 pt-1 border-t border-[var(--border-subtle)]">
+                Diamond Award · Hang Tuah Distinction
+              </div>
+            </div>
+          </div>
+        )}
       </section>
 
       {/* =========================================================================
@@ -427,11 +589,11 @@ export function HomeView({
         <div className="flex flex-wrap justify-between items-end gap-4">
           <div>
             <p className="section-eyebrow">
-              {activePersona === 'operations' ? 'Operational Methodology' : 'Core Competencies'}
+              {activePersona === 'operations' ? 'Operational Methodology & Domain Mastery' : 'Core Competencies'}
             </p>
             <h2 id="competency-architecture-title" className="section-title">
               {activePersona === 'operations'
-                ? 'The 3 Daily Operational Pillars of Floor Leadership.'
+                ? 'The 3 Operational Pillars of High-Performance Floor Leadership.'
                 : 'Three Pillars of Enterprise Architecture & Delivery.'}
             </h2>
           </div>
@@ -443,98 +605,232 @@ export function HomeView({
         {activePersona === 'operations' ? (
           <div className="grid md:grid-cols-3 gap-6">
             {/* Operational Pillar 1 */}
-            <div className="glass-card p-6 sm:p-7 flex flex-col justify-between space-y-5 border border-orange-500/25 hover:border-orange-500/60 transition-colors">
+            <div className="glass-card p-6 sm:p-7 flex flex-col justify-between space-y-6 border border-orange-500/25 hover:border-orange-500/60 transition-colors">
               <div className="space-y-4">
-                <div className="w-12 h-12 rounded-xl bg-orange-500/15 border border-orange-500/30 flex items-center justify-center text-orange-400">
-                  <Activity size={26} />
+                <div className="flex items-center justify-between">
+                  <div className="w-12 h-12 rounded-xl bg-orange-500/15 border border-orange-500/30 flex items-center justify-center text-orange-400">
+                    <Activity size={26} />
+                  </div>
+                  <span className="text-[11px] font-mono uppercase tracking-wider text-orange-400/80 px-2.5 py-1 rounded-full bg-orange-500/10 border border-orange-500/20">
+                    Pillar 01
+                  </span>
                 </div>
-                <h3 className="text-xl font-bold text-white">Pillar 1: Real-Time Floor Operations &amp; Capacity</h3>
-                <p className="text-sm leading-relaxed text-[var(--text-secondary)]">
-                  Live queue capacity governance, tracking 90–95% schedule adherence, balancing planned &amp; unplanned shrinkage, and incident command during Sev-1 platform crises.
-                </p>
-                <ul className="space-y-2 text-xs sm:text-sm text-[var(--text-secondary)]">
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 size={16} className="text-orange-400 shrink-0 mt-0.5" />
-                    <span>90–95% schedule adherence across multi-shift rotational schedules</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 size={16} className="text-orange-400 shrink-0 mt-0.5" />
-                    <span>Dynamic shrinkage balancing &amp; shift-handover telemetry</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 size={16} className="text-orange-400 shrink-0 mt-0.5" />
-                    <span>Incident command during Sev-1/P1 outages (stabilized 800% surge in 48h)</span>
-                  </li>
-                </ul>
+                <div>
+                  <h3 className="text-xl font-bold text-white">Real-Time Floor Operations &amp; Capacity Command</h3>
+                  <p className="text-xs text-orange-400 font-mono mt-0.5">Queue Telemetry · Shrinkage Control · Incident Triage</p>
+                </div>
+
+                {/* Sub-block 1: Main Roles and Responsibilities */}
+                <div className="p-3 rounded-lg bg-[var(--bg-surface)] border border-[var(--border-subtle)] space-y-1.5">
+                  <p className="text-[11px] font-mono font-bold uppercase tracking-wider text-orange-300 flex items-center gap-1.5">
+                    <Briefcase size={12} />
+                    <span>Main Roles &amp; Responsibilities</span>
+                  </p>
+                  <ul className="space-y-1 text-xs text-[var(--text-secondary)]">
+                    <li className="flex items-start gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-orange-400 shrink-0 mt-1.5" />
+                      <span>Command 24/7 multi-shift rotational floor operations across 7 APAC language pods.</span>
+                    </li>
+                    <li className="flex items-start gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-orange-400 shrink-0 mt-1.5" />
+                      <span>Govern real-time queue capacity, 90–95% schedule adherence, and shrinkage balancing.</span>
+                    </li>
+                    <li className="flex items-start gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-orange-400 shrink-0 mt-1.5" />
+                      <span>Serve as Incident Commander during Sev-1/P1 platform outages and queue surges.</span>
+                    </li>
+                  </ul>
+                </div>
+
+                {/* Sub-block 2: Performance & Deliverables */}
+                <div className="p-3 rounded-lg bg-[var(--bg-surface)] border border-[var(--border-subtle)] space-y-1.5">
+                  <p className="text-[11px] font-mono font-bold uppercase tracking-wider text-orange-300 flex items-center gap-1.5">
+                    <Award size={12} />
+                    <span>Performance &amp; Empirical Results</span>
+                  </p>
+                  <ul className="space-y-1 text-xs text-[var(--text-secondary)]">
+                    <li className="flex items-start gap-1.5">
+                      <CheckCircle2 size={13} className="text-orange-400 shrink-0 mt-0.5" />
+                      <span><strong>98%+ Contractual SLA</strong> sustained across multi-shift rotational schedules.</span>
+                    </li>
+                    <li className="flex items-start gap-1.5">
+                      <CheckCircle2 size={13} className="text-orange-400 shrink-0 mt-0.5" />
+                      <span><strong>800% Queue Crisis Surge Recovered in 48 Hours</strong> without associate burnout (Diamond Award).</span>
+                    </li>
+                    <li className="flex items-start gap-1.5">
+                      <CheckCircle2 size={13} className="text-orange-400 shrink-0 mt-0.5" />
+                      <span><strong>120+ Leadership Hours Saved/wk</strong> &amp; 90% reduction in manual queue reporting via PulseTrack.</span>
+                    </li>
+                  </ul>
+                </div>
               </div>
-              <div className="pt-4 border-t border-[var(--border-subtle)] flex flex-wrap gap-1.5 text-xs font-mono text-orange-300">
-                <span className="px-2 py-0.5 rounded bg-orange-500/10 border border-orange-500/20">Floor Adherence</span>
-                <span className="px-2 py-0.5 rounded bg-orange-500/10 border border-orange-500/20">Shrinkage</span>
-                <span className="px-2 py-0.5 rounded bg-orange-500/10 border border-orange-500/20">Sev-1 Command</span>
+
+              {/* Sub-block 3: Skills Applied (Indicate Skill After Performance) */}
+              <div className="pt-3 border-t border-[var(--border-subtle)] space-y-2">
+                <p className="text-[10px] font-mono uppercase tracking-wider text-[var(--text-tertiary)]">
+                  Skills &amp; Methodologies Applied:
+                </p>
+                <div className="flex flex-wrap gap-1.5 text-xs font-mono text-orange-300">
+                  <span className="px-2 py-0.5 rounded bg-orange-500/10 border border-orange-500/20">Real-Time Queue Telemetry</span>
+                  <span className="px-2 py-0.5 rounded bg-orange-500/10 border border-orange-500/20">WFM Capacity Planning</span>
+                  <span className="px-2 py-0.5 rounded bg-orange-500/10 border border-orange-500/20">Schedule Adherence (90-95%)</span>
+                  <span className="px-2 py-0.5 rounded bg-orange-500/10 border border-orange-500/20">Shrinkage Balancing</span>
+                  <span className="px-2 py-0.5 rounded bg-orange-500/10 border border-orange-500/20">Sev-1 Incident Command</span>
+                </div>
               </div>
             </div>
 
             {/* Operational Pillar 2 */}
-            <div className="glass-card p-6 sm:p-7 flex flex-col justify-between space-y-5 border border-orange-500/25 hover:border-orange-500/60 transition-colors">
+            <div className="glass-card p-6 sm:p-7 flex flex-col justify-between space-y-6 border border-orange-500/25 hover:border-orange-500/60 transition-colors">
               <div className="space-y-4">
-                <div className="w-12 h-12 rounded-xl bg-orange-500/15 border border-orange-500/30 flex items-center justify-center text-orange-400">
-                  <ShieldCheck size={26} />
+                <div className="flex items-center justify-between">
+                  <div className="w-12 h-12 rounded-xl bg-orange-500/15 border border-orange-500/30 flex items-center justify-center text-orange-400">
+                    <ShieldCheck size={26} />
+                  </div>
+                  <span className="text-[11px] font-mono uppercase tracking-wider text-orange-400/80 px-2.5 py-1 rounded-full bg-orange-500/10 border border-orange-500/20">
+                    Pillar 02
+                  </span>
                 </div>
-                <h3 className="text-xl font-bold text-white">Pillar 2: Escalations &amp; Brand Protection</h3>
-                <p className="text-sm leading-relaxed text-[var(--text-secondary)]">
-                  Serving as Tier-2 escalation point, converting high-visibility TikTok complaints from public comments to private DMs to safeguard PII, and executing bounded DoA resolutions.
-                </p>
-                <ul className="space-y-2 text-xs sm:text-sm text-[var(--text-secondary)]">
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 size={16} className="text-orange-400 shrink-0 mt-0.5" />
-                    <span>TikTok public-to-private de-escalation protocol safeguarding PII</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 size={16} className="text-orange-400 shrink-0 mt-0.5" />
-                    <span>Strict 3-strike policy boundary enforcement against customer abuse</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 size={16} className="text-orange-400 shrink-0 mt-0.5" />
-                    <span>Bounded Commercial Decisions within pre-approved $100–$150 DoA threshold</span>
-                  </li>
-                </ul>
+                <div>
+                  <h3 className="text-xl font-bold text-white">Content Moderation, Trust &amp; Safety, Ads &amp; Game Review</h3>
+                  <p className="text-xs text-orange-400 font-mono mt-0.5">Policy Governance · PII De-escalation · Commercial DoA</p>
+                </div>
+
+                {/* Sub-block 1: Main Roles and Responsibilities */}
+                <div className="p-3 rounded-lg bg-[var(--bg-surface)] border border-[var(--border-subtle)] space-y-1.5">
+                  <p className="text-[11px] font-mono font-bold uppercase tracking-wider text-orange-300 flex items-center gap-1.5">
+                    <Briefcase size={12} />
+                    <span>Main Roles &amp; Responsibilities</span>
+                  </p>
+                  <ul className="space-y-1 text-xs text-[var(--text-secondary)]">
+                    <li className="flex items-start gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-orange-400 shrink-0 mt-1.5" />
+                      <span>Govern Trust &amp; Safety queues: Content Moderation, commercial Ads review &amp; Game review safety.</span>
+                    </li>
+                    <li className="flex items-start gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-orange-400 shrink-0 mt-1.5" />
+                      <span>Command Tier-2 escalations: convert public TikTok comments into private DMs to protect PII.</span>
+                    </li>
+                    <li className="flex items-start gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-orange-400 shrink-0 mt-1.5" />
+                      <span>Enforce strict 3-strike abuse boundaries and execute commercial resolutions ($100–$150 DoA).</span>
+                    </li>
+                  </ul>
+                </div>
+
+                {/* Sub-block 2: Performance & Deliverables */}
+                <div className="p-3 rounded-lg bg-[var(--bg-surface)] border border-[var(--border-subtle)] space-y-1.5">
+                  <p className="text-[11px] font-mono font-bold uppercase tracking-wider text-orange-300 flex items-center gap-1.5">
+                    <Award size={12} />
+                    <span>Performance &amp; Empirical Results</span>
+                  </p>
+                  <ul className="space-y-1 text-xs text-[var(--text-secondary)]">
+                    <li className="flex items-start gap-1.5">
+                      <CheckCircle2 size={13} className="text-orange-400 shrink-0 mt-0.5" />
+                      <span><strong>96–99% Policy &amp; QA Accuracy</strong> across Content Moderation, Ads &amp; Game Review.</span>
+                    </li>
+                    <li className="flex items-start gap-1.5">
+                      <CheckCircle2 size={13} className="text-orange-400 shrink-0 mt-0.5" />
+                      <span><strong>100% PII Confidentiality Compliance</strong> with zero viral PR spills during TikTok escalations.</span>
+                    </li>
+                    <li className="flex items-start gap-1.5">
+                      <CheckCircle2 size={13} className="text-orange-400 shrink-0 mt-0.5" />
+                      <span><strong>30–50% Faster Resolution</strong> and 40–60% less misclassification via AI Builder SOP routing.</span>
+                    </li>
+                  </ul>
+                </div>
               </div>
-              <div className="pt-4 border-t border-[var(--border-subtle)] flex flex-wrap gap-1.5 text-xs font-mono text-orange-300">
-                <span className="px-2 py-0.5 rounded bg-orange-500/10 border border-orange-500/20">TikTok DMs</span>
-                <span className="px-2 py-0.5 rounded bg-orange-500/10 border border-orange-500/20">3-Strike Boundary</span>
-                <span className="px-2 py-0.5 rounded bg-orange-500/10 border border-orange-500/20">DoA Concessions</span>
+
+              {/* Sub-block 3: Skills Applied (Indicate Skill After Performance) */}
+              <div className="pt-3 border-t border-[var(--border-subtle)] space-y-2">
+                <p className="text-[10px] font-mono uppercase tracking-wider text-[var(--text-tertiary)]">
+                  Skills &amp; Methodologies Applied:
+                </p>
+                <div className="flex flex-wrap gap-1.5 text-xs font-mono text-orange-300">
+                  <span className="px-2 py-0.5 rounded bg-orange-500/10 border border-orange-500/20">Content Moderation</span>
+                  <span className="px-2 py-0.5 rounded bg-orange-500/10 border border-orange-500/20">Trust &amp; Safety Policy</span>
+                  <span className="px-2 py-0.5 rounded bg-orange-500/10 border border-orange-500/20">Ads Review &amp; Monetization</span>
+                  <span className="px-2 py-0.5 rounded bg-orange-500/10 border border-orange-500/20">Game Community Safety</span>
+                  <span className="px-2 py-0.5 rounded bg-orange-500/10 border border-orange-500/20">PII Privacy Protocol</span>
+                  <span className="px-2 py-0.5 rounded bg-orange-500/10 border border-orange-500/20">Commercial DoA ($100-$150)</span>
+                </div>
               </div>
             </div>
 
             {/* Operational Pillar 3 */}
-            <div className="glass-card p-6 sm:p-7 flex flex-col justify-between space-y-5 border border-orange-500/25 hover:border-orange-500/60 transition-colors">
+            <div className="glass-card p-6 sm:p-7 flex flex-col justify-between space-y-6 border border-orange-500/25 hover:border-orange-500/60 transition-colors">
               <div className="space-y-4">
-                <div className="w-12 h-12 rounded-xl bg-orange-500/15 border border-orange-500/30 flex items-center justify-center text-orange-400">
-                  <Users size={26} />
+                <div className="flex items-center justify-between">
+                  <div className="w-12 h-12 rounded-xl bg-orange-500/15 border border-orange-500/30 flex items-center justify-center text-orange-400">
+                    <Users size={26} />
+                  </div>
+                  <span className="text-[11px] font-mono uppercase tracking-wider text-orange-400/80 px-2.5 py-1 rounded-full bg-orange-500/10 border border-orange-500/20">
+                    Pillar 03
+                  </span>
                 </div>
-                <h3 className="text-xl font-bold text-white">Pillar 3: People Leadership &amp; Quality Coaching</h3>
-                <p className="text-sm leading-relaxed text-[var(--text-secondary)]">
-                  Diagnosing Skill vs. Will root causes via silent screen-shadowing, executing 14- to 30-day SMART action plans, conducting weekly GROW 1-on-1s, and QA calibrations.
-                </p>
-                <ul className="space-y-2 text-xs sm:text-sm text-[var(--text-secondary)]">
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 size={16} className="text-orange-400 shrink-0 mt-0.5" />
-                    <span>Skill vs. Will diagnostic framework with silent side-by-side shadowing</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 size={16} className="text-orange-400 shrink-0 mt-0.5" />
-                    <span>Structured 14- to 30-day SMART performance remediation plans</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 size={16} className="text-orange-400 shrink-0 mt-0.5" />
-                    <span>Weekly GROW 1-on-1 coaching &amp; multilingual QA calibrations (&lt;5% attrition)</span>
-                  </li>
-                </ul>
+                <div>
+                  <h3 className="text-xl font-bold text-white">People Leadership, Coaching &amp; QA Calibration</h3>
+                  <p className="text-xs text-orange-400 font-mono mt-0.5">GROW Coaching · Skill vs. Will · DMAIC Continuous Improvement</p>
+                </div>
+
+                {/* Sub-block 1: Main Roles and Responsibilities */}
+                <div className="p-3 rounded-lg bg-[var(--bg-surface)] border border-[var(--border-subtle)] space-y-1.5">
+                  <p className="text-[11px] font-mono font-bold uppercase tracking-wider text-orange-300 flex items-center gap-1.5">
+                    <Briefcase size={12} />
+                    <span>Main Roles &amp; Responsibilities</span>
+                  </p>
+                  <ul className="space-y-1 text-xs text-[var(--text-secondary)]">
+                    <li className="flex items-start gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-orange-400 shrink-0 mt-1.5" />
+                      <span>Scale frontline multilingual associates (scaled 9 to 34 agents across 7 APAC language pods).</span>
+                    </li>
+                    <li className="flex items-start gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-orange-400 shrink-0 mt-1.5" />
+                      <span>Conduct silent side-by-side screen-shadowing to diagnose root causes: <strong>Skill vs. Will</strong>.</span>
+                    </li>
+                    <li className="flex items-start gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-orange-400 shrink-0 mt-1.5" />
+                      <span>Design 14–30d SMART action plans, weekly GROW 1-on-1s, and weekly cross-pod QA calibrations.</span>
+                    </li>
+                  </ul>
+                </div>
+
+                {/* Sub-block 2: Performance & Deliverables */}
+                <div className="p-3 rounded-lg bg-[var(--bg-surface)] border border-[var(--border-subtle)] space-y-1.5">
+                  <p className="text-[11px] font-mono font-bold uppercase tracking-wider text-orange-300 flex items-center gap-1.5">
+                    <Award size={12} />
+                    <span>Performance &amp; Empirical Results</span>
+                  </p>
+                  <ul className="space-y-1 text-xs text-[var(--text-secondary)]">
+                    <li className="flex items-start gap-1.5">
+                      <CheckCircle2 size={13} className="text-orange-400 shrink-0 mt-0.5" />
+                      <span><strong>&lt;5% Annualized Attrition</strong> maintained across 34 associates (vs. 30%+ BPO average).</span>
+                    </li>
+                    <li className="flex items-start gap-1.5">
+                      <CheckCircle2 size={13} className="text-orange-400 shrink-0 mt-0.5" />
+                      <span><strong>90-Day Competency Raised from 78% to 94%</strong> through structured Nesting Academies.</span>
+                    </li>
+                    <li className="flex items-start gap-1.5">
+                      <CheckCircle2 size={13} className="text-orange-400 shrink-0 mt-0.5" />
+                      <span><strong>25% AHT Cut</strong> via Lean Six Sigma DMAIC workspace optimizations and macro libraries.</span>
+                    </li>
+                  </ul>
+                </div>
               </div>
-              <div className="pt-4 border-t border-[var(--border-subtle)] flex flex-wrap gap-1.5 text-xs font-mono text-orange-300">
-                <span className="px-2 py-0.5 rounded bg-orange-500/10 border border-orange-500/20">GROW Coaching</span>
-                <span className="px-2 py-0.5 rounded bg-orange-500/10 border border-orange-500/20">Skill vs Will</span>
-                <span className="px-2 py-0.5 rounded bg-orange-500/10 border border-orange-500/20">QA Calibrations</span>
+
+              {/* Sub-block 3: Skills Applied (Indicate Skill After Performance) */}
+              <div className="pt-3 border-t border-[var(--border-subtle)] space-y-2">
+                <p className="text-[10px] font-mono uppercase tracking-wider text-[var(--text-tertiary)]">
+                  Skills &amp; Methodologies Applied:
+                </p>
+                <div className="flex flex-wrap gap-1.5 text-xs font-mono text-orange-300">
+                  <span className="px-2 py-0.5 rounded bg-orange-500/10 border border-orange-500/20">GROW Coaching Framework</span>
+                  <span className="px-2 py-0.5 rounded bg-orange-500/10 border border-orange-500/20">Skill vs. Will Diagnostics</span>
+                  <span className="px-2 py-0.5 rounded bg-orange-500/10 border border-orange-500/20">QA Calibration Variance Control</span>
+                  <span className="px-2 py-0.5 rounded bg-orange-500/10 border border-orange-500/20">Nesting Academy Design</span>
+                  <span className="px-2 py-0.5 rounded bg-orange-500/10 border border-orange-500/20">Lean Six Sigma DMAIC</span>
+                  <span className="px-2 py-0.5 rounded bg-orange-500/10 border border-orange-500/20">Associate Retention Strategy</span>
+                </div>
               </div>
             </div>
           </div>
