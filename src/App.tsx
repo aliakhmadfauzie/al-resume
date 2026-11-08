@@ -1,12 +1,15 @@
-import { BrandSplashIntro } from './components/BrandSplashIntro';
 import React, { useState, useEffect, Suspense, lazy } from 'react';
-import { motion, AnimatePresence, useScroll, useSpring } from 'motion/react';
+import { CORE_PROJECTS, MIGRATION_SLICES } from './data/portfolioData';
+import { navigate, useRoute } from './navigation';
+import { motion, AnimatePresence, useScroll, useSpring, MotionConfig } from 'motion/react';
+import { useSystemReducedMotion } from './motionPreference';
 import { ArrowUp } from 'lucide-react';
 import { NavTab, ProjectItem, MigrationSlice } from './types';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { VibrantAmbientBackground } from './components/canvas/VibrantAmbientBackground';
 import { HomeView } from './components/views/HomeView';
+import { CinematicDoorGate, PersonaType } from './components/gate/CinematicDoorGate';
 
 // Code-split non-home views to minimize initial JavaScript bundle & maximize LCP/TTFB
 const ProjectsView = lazy(() => import('./components/views/ProjectsView').then(m => ({ default: m.ProjectsView })));
@@ -28,20 +31,78 @@ const ViewLoader: React.FC = () => (
       <div className="w-10 h-10 rounded-full border-2 border-orange-500/20 border-t-orange-500 animate-spin" />
     </div>
     <p className="text-xs font-mono text-[var(--text-accent)] uppercase tracking-wider">
-      Loading view modules...
+      Loading page…
     </p>
   </div>
 );
 
 export default function App() {
-  const [currentTab, setCurrentTab] = useState<NavTab>('home');
-  const [selectedProject, setSelectedProject] = useState<ProjectItem | MigrationSlice | null>(null);
-  const [isProjectDetailOpen, setIsProjectDetailOpen] = useState<boolean>(false);
-  const [isResumeOpen, setIsResumeOpen] = useState<boolean>(false);
-  const [isContactOpen, setIsContactOpen] = useState<boolean>(false);
-  const [activeDemoId, setActiveDemoId] = useState<string>('finops');
-  const [showScrollTop, setShowScrollTop] = useState<boolean>(false);
-  const [isWebGLActive, setIsWebGLActive] = useState<boolean>(true);
+  const route = useRoute();
+  const currentTab = route.tab;
+  const selectedProject = [...CORE_PROJECTS, ...MIGRATION_SLICES].find(item => item.id === route.projectId) || null;
+  const isProjectDetailOpen = Boolean(selectedProject);
+  const isResumeOpen = route.overlay === 'resume';
+  const isContactOpen = route.overlay === 'contact';
+  const activeDemoId = route.demoId;
+  const setCurrentTab = (tab: NavTab) => navigate(tab);
+  const closeOverlay = () => navigate(currentTab === 'demos' ? `demos?demo=${encodeURIComponent(activeDemoId)}` : currentTab);
+  const openOverlay = (modal: 'resume' | 'contact') => navigate(`${currentTab}?modal=${modal}${currentTab === 'demos' ? `&demo=${encodeURIComponent(activeDemoId)}` : ''}`);
+  const [showScrollTop, setShowScrollTop] = useState(false);
+  const [activePersona, setActivePersona] = useState<PersonaType>(() => {
+    try {
+      const saved = sessionStorage.getItem('portfolio-persona');
+      if (saved === 'software' || saved === 'operations' || saved === 'both') {
+        return saved;
+      }
+    } catch {
+      /* Safe fallback in private browsing */
+    }
+    return 'both';
+  });
+
+  const [showDoorGate, setShowDoorGate] = useState(() => {
+    try {
+      const dismissed = sessionStorage.getItem('door-gate-dismissed') === 'true';
+      return !dismissed && route.tab === 'home' && !route.projectId && !route.overlay;
+    } catch {
+      return false;
+    }
+  });
+
+  const handleSelectPersona = (persona: PersonaType) => {
+    setActivePersona(persona);
+    setShowDoorGate(false);
+    try {
+      sessionStorage.setItem('portfolio-persona', persona);
+      sessionStorage.setItem('door-gate-dismissed', 'true');
+    } catch {
+      /* Safe fallback in private browsing */
+    }
+  };
+
+  const handleSkipDoorGate = () => {
+    setShowDoorGate(false);
+    try {
+      sessionStorage.setItem('door-gate-dismissed', 'true');
+    } catch {
+      /* Safe fallback in private browsing */
+    }
+  };
+
+  const [motionEnabled, setMotionEnabled] = useState(() => {
+    try { return localStorage.getItem('portfolio-motion') !== 'paused'; } catch { return true; }
+  });
+  const systemReducedMotion = useSystemReducedMotion();
+  const isMotionActive = motionEnabled && !systemReducedMotion;
+  useEffect(() => {
+    document.documentElement.dataset.motion = isMotionActive ? 'active' : 'paused';
+    try { localStorage.setItem('portfolio-motion', motionEnabled ? 'active' : 'paused'); } catch { /* Preference is optional. */ }
+  }, [isMotionActive, motionEnabled]);
+
+  useEffect(() => {
+    const titles: Record<NavTab, string> = { home: 'Portfolio', projects: 'Projects', skills: 'Skills', experience: 'Experience', certifications: 'Credentials', demos: 'Simulators', interview: 'Architecture Q&A' };
+    document.title = titles[currentTab] + ' · Ali Akhmad Fauzie';
+  }, [currentTab]);
 
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
@@ -51,8 +112,15 @@ export default function App() {
   });
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (!route.anchor) {
+      window.scrollTo({ top: 0, behavior: 'instant' });
+      document.getElementById('main-content')?.focus({ preventScroll: true });
+    }
   }, [currentTab]);
+
+  useEffect(() => {
+    if (route.anchor) document.getElementById(`section-${route.anchor}`)?.scrollIntoView({ behavior: isMotionActive ? 'smooth' : 'instant' });
+  }, [route.anchor, isMotionActive]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -65,23 +133,18 @@ export default function App() {
   }, []);
 
   const handleScrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: isMotionActive ? 'smooth' : 'instant' });
   };
 
-  const handleOpenProjectDetail = (project: ProjectItem | MigrationSlice) => {
-    setSelectedProject(project);
-    setIsProjectDetailOpen(true);
-  };
-
-  const handleLaunchDemo = (demoId?: string) => {
-    if (demoId) setActiveDemoId(demoId);
-    setCurrentTab('demos');
-  };
+  const handleOpenProjectDetail = (project: ProjectItem | MigrationSlice) => navigate(`projects/${encodeURIComponent(project.id)}`);
+  const handleLaunchDemo = (demoId = 'finops') => navigate(`demos?demo=${encodeURIComponent(demoId)}`);
 
   const isAnyModalOpen = isProjectDetailOpen || isResumeOpen || isContactOpen;
 
   return (
+    <MotionConfig reducedMotion={isMotionActive ? "never" : "always"}>
     <div className="min-h-screen bg-[var(--bg-canvas)] text-[var(--text-primary)] flex flex-col relative selection:bg-[var(--interactive-primary)] selection:text-[#090a0d] overflow-x-hidden">
+      <a href="#main-content" onClick={event => { event.preventDefault(); document.getElementById('main-content')?.focus(); }} className="skip-link">Skip to content</a>
       {/* Scroll Progress Bar (Top Edge) */}
       <motion.div
         className="fixed top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-[#f97316] via-[#fb923c] to-[#00dbe7] origin-left z-50 shadow-[0_0_8px_rgba(249,115,22,0.6)]"
@@ -89,18 +152,18 @@ export default function App() {
       />
 
       {/* Hardware-Accelerated 3D Ambient Background Layer */}
-      <VibrantAmbientBackground isMotionActive={isWebGLActive} />
+      <VibrantAmbientBackground isMotionActive={isMotionActive} />
 
       {/* Sticky Global Top Navigation */}
       <Navbar
         currentTab={currentTab}
-        onSelectTab={setCurrentTab}
-        onOpenResume={() => setIsResumeOpen(true)}
-        onOpenContact={() => setIsContactOpen(true)}
+        onOpenResume={() => openOverlay('resume')}
+        onOpenContact={() => openOverlay('contact')}
       />
 
+      {route.projectId && !selectedProject && <div role="status" className="max-w-7xl mx-auto p-4 text-sm">This case study could not be found. <a href="#/projects" className="underline text-[var(--text-accent)]">Browse all projects</a></div>}
       {/* Main Page View Container */}
-      <main className="relative z-10 flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-28 sm:pb-32 overflow-x-hidden">
+      <main id="main-content" tabIndex={-1} className="relative z-10 flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-28 sm:pb-32 overflow-x-hidden">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentTab}
@@ -112,18 +175,17 @@ export default function App() {
           >
             {currentTab === 'home' && (
               <HomeView
-                onSelectTab={setCurrentTab}
                 onOpenProjectDetail={handleOpenProjectDetail}
-                onOpenResume={() => setIsResumeOpen(true)}
-                onOpenContact={() => setIsContactOpen(true)}
+                onOpenResume={() => openOverlay('resume')}
                 onLaunchDemo={handleLaunchDemo}
+                activePersona={activePersona}
+                onPersonaChange={setActivePersona}
               />
             )}
 
             <Suspense fallback={<ViewLoader />}>
               {currentTab === 'projects' && (
                 <ProjectsView
-                  onOpenProjectDetail={handleOpenProjectDetail}
                   onLaunchDemo={handleLaunchDemo}
                 />
               )}
@@ -134,7 +196,7 @@ export default function App() {
 
               {currentTab === 'certifications' && <CertificationsView />}
 
-              {currentTab === 'demos' && <LiveDemosView initialDemo={activeDemoId} />}
+              {currentTab === 'demos' && <LiveDemosView key={activeDemoId} initialDemo={activeDemoId} />}
 
               {currentTab === 'interview' && <InterviewModeView />}
             </Suspense>
@@ -143,21 +205,23 @@ export default function App() {
       </main>
 
       {/* 3D WebGL Motion Status Indicator & Toggle */}
-      <div className="fixed bottom-6 left-6 z-40 hidden sm:flex items-center space-x-2">
+      <div className="fixed bottom-4 left-4 sm:bottom-6 sm:left-6 z-40 flex items-center space-x-2">
         <button
           type="button"
-          onClick={() => setIsWebGLActive(!isWebGLActive)}
-          className="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-[#0c0d12]/85 backdrop-blur-md border border-[var(--border-subtle)] hover:border-[var(--interactive-subtle-border)] text-[10px] font-mono text-[var(--text-secondary)] hover:text-[var(--text-accent)] shadow-lg transition-all cursor-pointer group"
-          title="Toggle Interactive 3D WebGL Aurora & Constellation"
+          onClick={() => setMotionEnabled(!motionEnabled)}
+          aria-pressed={isMotionActive}
+          disabled={Boolean(systemReducedMotion)}
+          className="inline-flex items-center space-x-2 min-h-11 px-3 py-2 rounded-full bg-[#0c0d12]/85 backdrop-blur-md border border-[var(--border-subtle)] hover:border-[var(--interactive-subtle-border)] text-[10px] font-mono text-[var(--text-secondary)] hover:text-[var(--text-accent)] shadow-lg transition-all cursor-pointer group"
+          title={systemReducedMotion ? "Motion paused by your device preference" : "Pause or enable decorative motion"}
         >
           <span className={`relative flex h-2 w-2`}>
-            {isWebGLActive && (
+            {isMotionActive && (
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#22c55e] opacity-75" />
             )}
-            <span className={`relative inline-flex rounded-full h-2 w-2 ${isWebGLActive ? 'bg-[#22c55e] shadow-[0_0_8px_#22c55e]' : 'bg-zinc-600'}`} />
+            <span className={`relative inline-flex rounded-full h-2 w-2 ${isMotionActive ? 'bg-[#22c55e] shadow-[0_0_8px_#22c55e]' : 'bg-zinc-600'}`} />
           </span>
           <span className="group-hover:text-white transition-colors">
-            3D Ambient: {isWebGLActive ? 'Active' : 'Paused'}
+            Motion: {isMotionActive ? 'On' : 'Paused'}{systemReducedMotion ? ' (device)' : ''}
           </span>
         </button>
       </div>
@@ -188,24 +252,33 @@ export default function App() {
       {/* Footer */}
       <Footer
         onSelectTab={setCurrentTab}
-        onOpenResume={() => setIsResumeOpen(true)}
-        onOpenContact={() => setIsContactOpen(true)}
+        onOpenResume={() => openOverlay('resume')}
+        onOpenContact={() => openOverlay('contact')}
       />
+
+      {/* Cinematic 3D Doorway Entrance Gate */}
+      {showDoorGate && (
+        <CinematicDoorGate
+          onSelectPersona={handleSelectPersona}
+          onSkip={handleSkipDoorGate}
+          isMotionActive={isMotionActive}
+        />
+      )}
 
       {/* Lazy-Loaded Modals */}
       <Suspense fallback={null}>
         {isResumeOpen && (
           <ResumeModal
             isOpen={isResumeOpen}
-            onClose={() => setIsResumeOpen(false)}
-            onOpenContact={() => setIsContactOpen(true)}
+            onClose={closeOverlay}
+            onOpenContact={() => openOverlay('contact')}
           />
         )}
 
         {isContactOpen && (
           <ContactModal
             isOpen={isContactOpen}
-            onClose={() => setIsContactOpen(false)}
+            onClose={closeOverlay}
           />
         )}
 
@@ -213,11 +286,12 @@ export default function App() {
           <ProjectDetailModal
             project={selectedProject}
             isOpen={isProjectDetailOpen}
-            onClose={() => setIsProjectDetailOpen(false)}
+            onClose={closeOverlay}
             onLaunchDemo={handleLaunchDemo}
           />
         )}
       </Suspense>
     </div>
+    </MotionConfig>
   );
 }
