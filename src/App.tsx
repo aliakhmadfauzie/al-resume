@@ -62,12 +62,28 @@ export default function App() {
 
   const [showDoorGate, setShowDoorGate] = useState(() => {
     try {
+      const href = typeof window !== 'undefined' ? window.location.href.toLowerCase() : '';
+      if (href.includes('gate') || href.includes('door')) {
+        return true;
+      }
       const dismissed = sessionStorage.getItem('door-gate-dismissed') === 'true';
       return !dismissed && route.tab === 'home' && !route.projectId && !route.overlay;
     } catch {
       return false;
     }
   });
+
+  useEffect(() => {
+    const handleUrlGateCheck = () => {
+      const href = window.location.href.toLowerCase();
+      if (href.includes('gate=true') || href.includes('door=true') || href.includes('#/gate') || href.includes('#gate')) {
+        setShowDoorGate(true);
+      }
+    };
+    handleUrlGateCheck();
+    window.addEventListener('hashchange', handleUrlGateCheck);
+    return () => window.removeEventListener('hashchange', handleUrlGateCheck);
+  }, []);
 
   const handleSelectPersona = (persona: PersonaType) => {
     setActivePersona(persona);
@@ -77,6 +93,9 @@ export default function App() {
       sessionStorage.setItem('door-gate-dismissed', 'true');
     } catch {
       /* Safe fallback in private browsing */
+    }
+    if (window.location.hash.toLowerCase().includes('gate')) {
+      navigate('home');
     }
   };
 
@@ -95,6 +114,9 @@ export default function App() {
       sessionStorage.setItem('door-gate-dismissed', 'true');
     } catch {
       /* Safe fallback in private browsing */
+    }
+    if (window.location.hash.toLowerCase().includes('gate')) {
+      navigate('home');
     }
   };
 
@@ -168,6 +190,7 @@ export default function App() {
         currentTab={currentTab}
         onOpenResume={() => openOverlay('resume')}
         onOpenContact={() => openOverlay('contact')}
+        onOpenDoorGate={() => setShowDoorGate(true)}
       />
 
       {route.projectId && !selectedProject && <div role="status" className="max-w-7xl mx-auto p-4 text-sm">This case study could not be found. <a href="#/projects" className="underline text-[var(--text-accent)]">Browse all projects</a></div>}
@@ -189,6 +212,7 @@ export default function App() {
                 onLaunchDemo={handleLaunchDemo}
                 activePersona={activePersona}
                 onPersonaChange={handlePersonaChange}
+                onOpenDoorGate={() => setShowDoorGate(true)}
               />
             )}
 

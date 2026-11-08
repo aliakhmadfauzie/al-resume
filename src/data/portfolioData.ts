@@ -18,7 +18,7 @@ import {
 } from '../types';
 
 export const PERSONAL_INFO = {
-  name: "Ali Akhmad Fauzie",
+  name: "Ali Akhmad Fauzie, B.I.B.M. (Hons.)",
   title: "Power Platform Solution Architect & Enterprise Modernization Specialist",
   linkedInHeadline: "Power Platform Solution Manager | Operation Lead | Process Improvement | Project Management",
   tagline: "Power Platform Developer | Solution Architect | Driving digital transformation through scalable, intelligent automation.",

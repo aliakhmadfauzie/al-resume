@@ -19,7 +19,8 @@ import {
   Gamepad2,
   Scale,
   HeartHandshake,
-  AlertTriangle
+  AlertTriangle,
+  DoorOpen
 } from 'lucide-react';
 import {
   CORE_PROJECTS,
@@ -43,6 +44,7 @@ interface HomeViewProps {
   onLaunchDemo: (demoId: string) => void;
   activePersona?: 'software' | 'operations' | 'both';
   onPersonaChange?: (persona: 'software' | 'operations' | 'both') => void;
+  onOpenDoorGate?: () => void;
 }
 
 export function HomeView({
@@ -51,6 +53,7 @@ export function HomeView({
   onLaunchDemo,
   activePersona = 'both',
   onPersonaChange,
+  onOpenDoorGate,
 }: HomeViewProps) {
   const [architectureOpen, setArchitectureOpen] = useState(false);
 
@@ -197,6 +200,21 @@ export function HomeView({
                   <Sparkles size={11} />
                   <span>All</span>
                 </button>
+
+                {onOpenDoorGate && (
+                  <>
+                    <span className="w-px h-3.5 bg-white/10 mx-0.5" />
+                    <button
+                      type="button"
+                      onClick={onOpenDoorGate}
+                      className="flex items-center gap-1 px-2 py-1 rounded-full text-slate-400 hover:text-amber-300 transition-colors cursor-pointer"
+                      title="Experience 3D Cinematic Door Entrance Gate"
+                    >
+                      <DoorOpen size={12} className="text-amber-400" />
+                      <span className="text-[11px] font-mono">Door Gate</span>
+                    </button>
+                  </>
+                )}
               </div>
             )}
           </div>
@@ -438,7 +456,7 @@ export function HomeView({
               />
             </div>
             <div>
-              <p className="font-bold text-lg text-[var(--text-primary)]">Ali Akhmad Fauzie</p>
+              <p className="font-bold text-lg text-[var(--text-primary)]">{PERSONAL_INFO.name}</p>
               <p className="text-xs font-semibold text-[var(--text-accent)] uppercase tracking-wider mt-0.5">
                 {activePersona === 'operations'
                   ? 'Operations Leader & Team Manager'

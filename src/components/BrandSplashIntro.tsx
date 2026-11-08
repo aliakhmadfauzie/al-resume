@@ -72,7 +72,7 @@ export const BrandSplashIntro: React.FC<BrandSplashIntroProps> = ({
               className="space-y-1.5"
             >
               <div className="text-lg sm:text-xl font-extrabold tracking-widest text-white uppercase font-sans">
-                ALI AKHMAD FAUZIE
+                ALI AKHMAD FAUZIE, B.I.B.M. (HONS.)
               </div>
               <div className="text-[11px] sm:text-xs font-mono font-medium tracking-widest text-[#f97316] uppercase">
                 ENTERPRISE SOLUTION ARCHITECT

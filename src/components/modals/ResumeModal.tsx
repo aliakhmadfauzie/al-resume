@@ -60,7 +60,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose, onOpe
               Executive Resume &amp; LinkedIn Credentials
             </h2>
             <p className="text-xs text-[var(--text-tertiary)] font-mono">
-              Curriculum Vitae · Ali Akhmad Fauzie (in/aliakhmadf)
+              Curriculum Vitae · {PERSONAL_INFO.name} (in/aliakhmadf)
             </p>
           </div>
 
@@ -321,7 +321,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose, onOpe
         {/* Footer Actions */}
         <div className="px-6 py-4 border-t border-[var(--border-subtle)] bg-[var(--bg-primary)] flex flex-wrap gap-3 items-center justify-between">
           <span className="text-xs text-[var(--text-tertiary)] font-mono">
-            Ali Akhmad Fauzie (AL) · linkedin.com/in/aliakhmadf
+            {PERSONAL_INFO.name} (AL) · linkedin.com/in/aliakhmadf
           </span>
           <div className="flex items-center gap-3">
             <button
