@@ -139,8 +139,8 @@ export const CertificationsView: React.FC = () => {
               <ExternalLink className="w-3.5 h-3.5" />
             </a>
             <a
-              href="/certificates/ABOUT_ME.pdf"
-              download="Ali_Akhmad_Fauzie_Career_Dossier.pdf"
+              href="/assets/profile/Resume.pdf"
+              download="Ali_Akhmad_Fauzie_Resume.pdf"
               className="inline-flex items-center space-x-2 px-4 py-2.5 rounded-[var(--radius-sm)] bg-[#0f1117] hover:bg-[var(--bg-surface-elevated)] text-[var(--text-primary)] text-xs font-medium border border-[var(--border-subtle)] hover:border-[var(--border-focus)] transition-colors"
             >
               <Download className="w-3.5 h-3.5 text-[var(--text-accent)]" />

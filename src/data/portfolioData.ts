@@ -1798,13 +1798,12 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
       "Copilot Studio"
     ],
     "verified": true,
-    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/",
+    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/details/certifications/",
     "credentialId": "MS-PL-PRO-2024",
     "summary": "Full-lifecycle enterprise certification covering the entire Microsoft Power Platform suite: Canvas Apps YAML architecture, Model-driven relational Dataverse schemas, complex Power Automate cloud/desktop RPA flows, security governance via Entra ID, and solution lifecycle ALM deployment pipelines.",
     "productionApplication": "Deployed across enterprise clients (IOI Acidchem, Nippon Paint, Tasek Cement) to architect zero-downtime cutovers, Dataverse migration models, and production Canvas applications.",
     "verificationMethod": "Verified Microsoft Official Credential Registry",
-    "hoursOrModules": "120+ Curriculum Hours",
-    "pdfUrl": "/certificates/Microsoft_PowerPlatform_SolutionArchitect.pdf"
+    "hoursOrModules": "120+ Curriculum Hours"
   },
   {
     "id": "cert-power-bi-data-analyst",
@@ -1825,13 +1824,12 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
       "Row-Level Security (RLS)"
     ],
     "verified": true,
-    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/",
+    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/details/certifications/",
     "credentialId": "MS-PBI-DA-2024",
     "summary": "Professional certification validating mastery in enterprise business intelligence, advanced DAX calculations, Power Query ETL pipelines, star schema semantic modeling, and interactive C-suite executive dashboard design.",
     "productionApplication": "Designed real-time financial, delivery SLA, and multi-market BPO operational performance dashboards with automated scheduled gateway refreshes.",
     "verificationMethod": "Verified Microsoft Official Credential Registry",
-    "hoursOrModules": "85+ Curriculum Hours",
-    "pdfUrl": "/certificates/Microsoft_PowerBI_DataAnalyst.pdf"
+    "hoursOrModules": "85+ Curriculum Hours"
   },
   {
     "id": "cert-power-excel-pro",
@@ -1852,13 +1850,12 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
       "Financial Forecasting"
     ],
     "verified": true,
-    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/",
+    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/details/certifications/",
     "credentialId": "MS-EXCEL-PRO-2024",
     "summary": "Advanced analytical accreditation focusing on Power Pivot data models, Power Query M code transformations, complex statistical modeling, multi-criteria dynamic arrays, and process automation.",
     "productionApplication": "Built complex financial models, pricing calculators for RM70k+ SOWs, and workforce capacity forecasting models across 34-agent teams.",
     "verificationMethod": "Verified Microsoft & LinkedIn Learning Transcript",
-    "hoursOrModules": "40+ Practical Hours",
-    "pdfUrl": "/certificates/Power_Excel_Professional.pdf"
+    "hoursOrModules": "40+ Practical Hours"
   },
   {
     "id": "cert-casper-professional",
@@ -1878,13 +1875,12 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
       "Executive Empathy"
     ],
     "verified": true,
-    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/",
+    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/details/certifications/",
     "credentialId": "CASPER-LEAD-2024",
     "summary": "Standardized evaluation score for situational judgment, ethical reasoning, conflict mediation, and cross-cultural people leadership under intense operational constraints.",
     "productionApplication": "Applied directly in directing 34 direct reports across 7 international language pods at Concentrix and Accenture, holding attrition under 5%.",
     "verificationMethod": "Official Acuity Insights Assessment Verification",
-    "hoursOrModules": "Standardized Assessment",
-    "pdfUrl": "/certificates/CASPER_Leadership_Assessment.pdf"
+    "hoursOrModules": "Standardized Assessment"
   },
   {
     "id": "cert-lark-developer",
@@ -1904,13 +1900,12 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
       "Microservices"
     ],
     "verified": true,
-    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/",
+    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/details/certifications/",
     "credentialId": "LARK-DEV-2024-8841",
     "summary": "Technical accreditation for engineering automated bots, custom Lark Base automations, and webhook-driven incident escalation systems via the Lark Open Platform API.",
     "productionApplication": "Created automated shift-handover bots and real-time SLA incident dispatch bots at Concentrix, eliminating 90% of manual queue reporting.",
     "verificationMethod": "Lark Open Platform Developer Registry",
-    "hoursOrModules": "30+ Dev Hours",
-    "pdfUrl": "/certificates/Lark_Developer_Certification.pdf"
+    "hoursOrModules": "30+ Dev Hours"
   },
   {
     "id": "cert-concentrix-leadership",
@@ -1931,13 +1926,12 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
       "WBR/QBR Governance"
     ],
     "verified": true,
-    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/",
+    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/details/certifications/",
     "credentialId": "CNX-LEAD-2024-001",
     "summary": "Corporate executive verification certifying operational mastery in leading multilingual operations teams, managing QA department audits, authoring policies, and sustaining >98% contractual SLA compliance.",
     "productionApplication": "Led 34 direct reports across 7 APAC language pods; achieved 380% squad headcount scale with under 5% annual attrition.",
     "verificationMethod": "Concentrix Official Certificate of Employment & Service",
-    "hoursOrModules": "Full Operational Tenure",
-    "pdfUrl": "/certificates/Concentrix_2024_Employment_Certificate.pdf"
+    "hoursOrModules": "Full Operational Tenure"
   },
   {
     "id": "path-career-essentials-genai",
@@ -1957,12 +1951,13 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
       "Workplace Productivity"
     ],
     "verified": true,
-    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/",
+    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/details/certifications/",
     "credentialId": "LP-MS-GENAI-2025",
     "summary": "Premier Microsoft & LinkedIn accreditation covering foundational AI concepts, transformer architectures, prompt engineering patterns, and generative AI workplace deployment.",
     "productionApplication": "Applied in developing Gemini Flash multi-agent prompts and AI-assisted workflow engines for enterprise modernizations.",
     "verificationMethod": "Microsoft & LinkedIn Verified Learning Path",
-    "hoursOrModules": "4h 14m 22s (5 Modules)"
+    "hoursOrModules": "4h 14m 22s (5 Modules)",
+    "pdfUrl": "/certificates/CertificateOfCompletion_Career%20Essentials%20in%20Generative%20AI%20by%20Microsoft%20and%20LinkedIn.pdf"
   },
   {
     "id": "path-career-essentials-pm",
@@ -1983,7 +1978,7 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
       "Agile & Waterfall"
     ],
     "verified": true,
-    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/",
+    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/details/certifications/",
     "credentialId": "LP-MS-PM-2025",
     "summary": "Comprehensive 14+ hour project governance track aligning PMI standards with modern Microsoft 365 toolchains: schedules, budgets, risk registers, stakeholder engagement, and team leadership.",
     "productionApplication": "Managed sprint milestones, billable technical capacity, and SOW cutovers across 28 business units at IOI Acidchem, Nippon Paint, and Tasek Cement.",
@@ -2007,7 +2002,7 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
       "Autonomous Task Routing"
     ],
     "verified": true,
-    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/",
+    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/details/certifications/",
     "credentialId": "LP-GENAI-PROD-2025",
     "summary": "Advanced generative productivity track mastering AI-accelerated writing, contextual summarization, automated code generation, and multi-turn conversational agents.",
     "productionApplication": "Used to speed up enterprise RFP discovery documentation, user story creation, and system specification generation by 4x.",
@@ -2033,7 +2028,7 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
       "Data Storytelling"
     ],
     "verified": true,
-    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/",
+    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/details/certifications/",
     "credentialId": "LP-MS-DATA-2025",
     "summary": "In-depth 12+ hour data analysis program spanning statistical inquiry, relational data modeling, query optimization, KPI synthesis, and executive data presentation.",
     "productionApplication": "Informed analytical reporting engines, defect variance tracking, and queue performance analysis across 7 regional APAC markets.",
@@ -2057,12 +2052,13 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
       "Change Management"
     ],
     "verified": true,
-    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/",
+    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/details/certifications/",
     "credentialId": "LP-MS-AIMGR-2025",
     "summary": "Strategic management path addressing ethical AI adoption, workforce transition planning, bias mitigation, and augmenting human management coaching through AI tools.",
     "productionApplication": "Guided ethical policy frameworks and training academies for Trust & Safety and content moderation operations.",
     "verificationMethod": "Microsoft & LinkedIn Verified Learning Path",
-    "hoursOrModules": "4h 33m 49s"
+    "hoursOrModules": "4h 33m 49s",
+    "pdfUrl": "/certificates/CertificateOfCompletion_AI%20for%20Managers%20by%20Microsoft%20and%20LinkedIn.pdf"
   },
   {
     "id": "course-intro-ai-rose",
@@ -2080,9 +2076,10 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
       "Algorithmic Logic"
     ],
     "verified": true,
-    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/",
+    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/details/certifications/",
     "summary": "Foundational breakdown of machine learning algorithms, deep neural nets, and enterprise AI transformation strategies.",
-    "hoursOrModules": "2h 26m 32s"
+    "hoursOrModules": "2h 26m 32s",
+    "pdfUrl": "/certificates/CertificateOfCompletion_Introduction%20to%20Artificial%20Intelligence.pdf"
   },
   {
     "id": "course-genai-creative-content",
@@ -2101,9 +2098,10 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
       "Content Moderation"
     ],
     "verified": true,
-    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/",
+    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/details/certifications/",
     "summary": "Deep dive into generative media synthesis, synthetic asset ethics, legal frameworks, and creative workflow augmentation.",
-    "hoursOrModules": "1h 02m 27s"
+    "hoursOrModules": "1h 02m 27s",
+    "pdfUrl": "/certificates/CertificateOfCompletion_Generative%20AI%20Skills%20for%20Creative%20Content%20Opportunities%20Issues%20and%20Ethics.pdf"
   },
   {
     "id": "course-excel-copilot-mount",
@@ -2122,7 +2120,7 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
       "Pattern Recognition"
     ],
     "verified": true,
-    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/",
+    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/details/certifications/",
     "summary": "Harnessing Microsoft 365 Copilot within Excel to query structured data via natural language, generate complex formulas, and uncover statistical correlations.",
     "hoursOrModules": "1h 55m 12s"
   },
@@ -2143,7 +2141,7 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
       "Visual Storytelling"
     ],
     "verified": true,
-    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/",
+    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/details/certifications/",
     "summary": "Authoring high-impact executive decks from raw Word docs, technical specs, and natural language prompts using Copilot in PowerPoint.",
     "hoursOrModules": "45m 06s"
   },
@@ -2163,7 +2161,7 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
       "Workflow Acceleration"
     ],
     "verified": true,
-    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/",
+    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/details/certifications/",
     "summary": "Tactical strategies to automate daily administrative overhead, structure meeting syntheses, and leverage LLMs as cognitive force multipliers.",
     "hoursOrModules": "30m 58s"
   },
@@ -2184,7 +2182,7 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
       "Hallucination Reduction"
     ],
     "verified": true,
-    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/",
+    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/details/certifications/",
     "summary": "Core prompt engineering methodologies: role definition, few-shot conditioning, chain-of-thought elicitation, and output schema constraints.",
     "hoursOrModules": "1h 03m 29s"
   },
@@ -2204,7 +2202,7 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
       "Process Automation"
     ],
     "verified": true,
-    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/",
+    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/details/certifications/",
     "summary": "Designing automated enterprise operational loops combining LLM API endpoints with modern workplace workflows.",
     "hoursOrModules": "20m 33s"
   },
@@ -2224,9 +2222,10 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
       "Organizational Scaling"
     ],
     "verified": true,
-    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/",
+    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/details/certifications/",
     "summary": "Framework for evaluating generative AI initiatives, calculating infrastructure ROI, and deploying LLM applications safely in regulated environments.",
-    "hoursOrModules": "1h 17m 58s"
+    "hoursOrModules": "1h 17m 58s",
+    "pdfUrl": "/certificates/CertificateOfCompletion_Generative%20AI%20for%20Business%20Leaders%202025.pdf"
   },
   {
     "id": "course-prompt-engineering-chatgpt",
@@ -2245,9 +2244,10 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
       "API Scripting"
     ],
     "verified": true,
-    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/",
+    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/details/certifications/",
     "summary": "Practical prompting tactics for conversational LLMs: output conditioning, recursive critique, and structured JSON parsing.",
-    "hoursOrModules": "54m 55s"
+    "hoursOrModules": "54m 55s",
+    "pdfUrl": "/certificates/CertificateOfCompletion_Prompt%20Engineering%20with%20ChatGPT.pdf"
   },
   {
     "id": "course-what-is-genai-demirdag",
@@ -2265,7 +2265,7 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
       "Diffusion Models"
     ],
     "verified": true,
-    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/",
+    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/details/certifications/",
     "summary": "Comprehensive walkthrough of generative algorithms, multi-modal synthesis, and industry use-cases across software and design.",
     "hoursOrModules": "1h 17m 41s"
   },
@@ -2285,7 +2285,7 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
       "Source Verification"
     ],
     "verified": true,
-    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/",
+    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/details/certifications/",
     "summary": "Evolution of web indexing into neural semantic search, grounding, and retrieval-augmented verification techniques.",
     "hoursOrModules": "31m 17s"
   },
@@ -2306,7 +2306,7 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
       "Compliance & Governance"
     ],
     "verified": true,
-    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/",
+    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/details/certifications/",
     "summary": "Examination of accountability, algorithmic transparency, copyright litigation, and regulatory compliance (EU AI Act, PDPA).",
     "hoursOrModules": "45m 59s"
   },
@@ -2326,7 +2326,7 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
       "Workplace Automation"
     ],
     "verified": true,
-    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/",
+    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/details/certifications/",
     "summary": "Leveraging Copilot across Outlook, Teams, Word, and Excel to summarize complex correspondence and draft technical deliverables.",
     "hoursOrModules": "Official Microsoft Curriculum"
   },
@@ -2346,7 +2346,7 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
       "Prompt Library"
     ],
     "verified": true,
-    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/",
+    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/details/certifications/",
     "summary": "Mastering Microsoft Graph grounding, tenant-level data security, and enterprise copilot prompting across collaborative workspaces.",
     "hoursOrModules": "29m 49s"
   },
@@ -2366,7 +2366,7 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
       "Compliance"
     ],
     "verified": true,
-    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/",
+    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/details/certifications/",
     "summary": "Equipping operations managers with frameworks to evaluate algorithm outputs, detect bias, and safeguard associate trust.",
     "hoursOrModules": "23m 26s"
   },
@@ -2386,7 +2386,7 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
       "Associate Retention"
     ],
     "verified": true,
-    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/",
+    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/details/certifications/",
     "summary": "Guiding direct reports on AI upskilling paths, alleviating replacement anxiety, and aligning career progression with modern tools.",
     "hoursOrModules": "57m 21s"
   },
@@ -2406,7 +2406,7 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
       "Performance Management"
     ],
     "verified": true,
-    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/",
+    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/details/certifications/",
     "summary": "Modern people management techniques utilizing AI for objective feedback drafting, sentiment tracking, and performance reviews.",
     "hoursOrModules": "54m 58s"
   },
@@ -2426,7 +2426,7 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
       "Knowledge Sharing"
     ],
     "verified": true,
-    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/",
+    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/details/certifications/",
     "summary": "Fostering psychological safety and transparent peer collaboration when integrating automated AI tools into team workflows.",
     "hoursOrModules": "39m 49s"
   },
@@ -2446,7 +2446,7 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
       "Performance Diagnosis"
     ],
     "verified": true,
-    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/",
+    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/details/certifications/",
     "summary": "Synthesizing associate performance telemetry using AI to prepare high-impact, empathetic 1-on-1 coaching conversations.",
     "hoursOrModules": "37m 51s"
   },
@@ -2466,7 +2466,7 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
       "Strategic Analysis"
     ],
     "verified": true,
-    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/",
+    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/details/certifications/",
     "summary": "Using AI as an intellectual sparring partner to challenge assumptions, reveal blind spots, and stress-test strategic roadmaps.",
     "hoursOrModules": "1h 10m 24s"
   },
@@ -2486,9 +2486,10 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
       "Project Charters"
     ],
     "verified": true,
-    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/",
+    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/details/certifications/",
     "summary": "Core foundations of the Project Management Institute (PMI) framework: project initiation, WBS development, and milestone delivery.",
-    "hoursOrModules": "4h 01m 41s"
+    "hoursOrModules": "4h 01m 41s",
+    "pdfUrl": "/certificates/CertificateOfCompletion_Project%20Management%20Foundations.pdf"
   },
   {
     "id": "course-pm-schedules-biafore",
@@ -2506,9 +2507,10 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
       "Float / Slack Calculation"
     ],
     "verified": true,
-    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/",
+    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/details/certifications/",
     "summary": "Rigorous schedule design: dependency sequencing, lead/lag optimization, critical path analysis, and baseline maintenance.",
-    "hoursOrModules": "2h 21m 40s"
+    "hoursOrModules": "2h 21m 40s",
+    "pdfUrl": "/certificates/CertificateOfCompletion_Project%20Management%20Foundations%20Schedules.pdf"
   },
   {
     "id": "course-pm-risk-mcgannon",
@@ -2526,9 +2528,10 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
       "Risk Mitigation"
     ],
     "verified": true,
-    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/",
+    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/details/certifications/",
     "summary": "Quantitative and qualitative risk modeling, trigger definition, contingency reserves, and enterprise mitigation strategies.",
-    "hoursOrModules": "1h 26m 03s"
+    "hoursOrModules": "1h 26m 03s",
+    "pdfUrl": "/certificates/CertificateOfCompletion_Project%20Management%20Foundations%20Risk.pdf"
   },
   {
     "id": "course-pm-ethics-mcgannon",
@@ -2546,9 +2549,10 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
       "Professional Transparency"
     ],
     "verified": true,
-    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/",
+    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/details/certifications/",
     "summary": "Application of the PMI Code of Ethics & Professional Conduct in client engagements, resource allocation, and reporting.",
-    "hoursOrModules": "1h 20m 36s"
+    "hoursOrModules": "1h 20m 36s",
+    "pdfUrl": "/certificates/CertificateOfCompletion_Project%20Management%20Foundations%20Ethics.pdf"
   },
   {
     "id": "course-pm-budgets-mcgannon",
@@ -2566,9 +2570,10 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
       "Capex / Opex Allocation"
     ],
     "verified": true,
-    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/",
+    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/details/certifications/",
     "summary": "Cost estimation methods, parametric costing, Earned Value Management (CPI/SPI), and budget variance control.",
-    "hoursOrModules": "57m 33s"
+    "hoursOrModules": "57m 33s",
+    "pdfUrl": "/certificates/CertificateOfCompletion_Project%20Management%20Foundations%20Budgets.pdf"
   },
   {
     "id": "course-pm-communication-rose",
@@ -2586,9 +2591,10 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
       "Status Reporting"
     ],
     "verified": true,
-    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/",
+    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/details/certifications/",
     "summary": "Designing communication management plans, cross-functional stakeholder cadence, and executive crisis messaging.",
-    "hoursOrModules": "1h 00m 55s"
+    "hoursOrModules": "1h 00m 55s",
+    "pdfUrl": "/certificates/CertificateOfCompletion_Project%20Management%20Foundations%20Communication.pdf"
   },
   {
     "id": "course-pm-requirements-stanton",
@@ -2606,7 +2612,7 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
       "Scope Creep Defense"
     ],
     "verified": true,
-    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/",
+    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/details/certifications/",
     "summary": "Eliciting, documenting, and validating functional and non-functional requirements to guarantee delivery scope containment.",
     "hoursOrModules": "29m 18s"
   },
@@ -2626,9 +2632,10 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
       "Pod Leadership"
     ],
     "verified": true,
-    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/",
+    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/details/certifications/",
     "summary": "Leading high-performance delivery squads through Forming-Storming-Norming-Performing transitions.",
-    "hoursOrModules": "28m 29s"
+    "hoursOrModules": "28m 29s",
+    "pdfUrl": "/certificates/CertificateOfCompletion_Project%20Management%20Foundations%20Teams.pdf"
   },
   {
     "id": "course-managing-stakeholders-kasimtseva",
@@ -2646,9 +2653,10 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
       "Executive Buy-In"
     ],
     "verified": true,
-    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/",
+    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/details/certifications/",
     "summary": "Mapping stakeholder influence, diagnosing resistance, and orchestrating steering committee alignment for enterprise cutovers.",
-    "hoursOrModules": "23m 03s"
+    "hoursOrModules": "23m 03s",
+    "pdfUrl": "/certificates/CertificateOfCompletion_Managing%20Project%20Stakeholders.pdf"
   },
   {
     "id": "course-portfolio-management-jordan",
@@ -2666,9 +2674,10 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
       "Capex Prioritization"
     ],
     "verified": true,
-    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/",
+    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/details/certifications/",
     "summary": "Prioritizing multi-project portfolios against corporate strategic objectives, balancing technical risk and capital allocation.",
-    "hoursOrModules": "1h 15m 22s"
+    "hoursOrModules": "1h 15m 22s",
+    "pdfUrl": "/certificates/CertificateOfCompletion_Project%20Portfolio%20Management%20Foundations.pdf"
   },
   {
     "id": "course-optimizing-m365-mackey",
@@ -2686,7 +2695,7 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
       "Workplace Productivity"
     ],
     "verified": true,
-    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/",
+    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/details/certifications/",
     "summary": "Maximizing collaborative cloud productivity across modern SharePoint libraries, Teams hubs, and Microsoft 365 services.",
     "hoursOrModules": "1h 45m 12s"
   },
@@ -2707,9 +2716,10 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
       "Status Dashboards"
     ],
     "verified": true,
-    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/",
+    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/details/certifications/",
     "summary": "Architecting agile task-tracking and status dispatch pipelines using Planner, SharePoint Lists, and automated notification flows.",
-    "hoursOrModules": "49m 21s"
+    "hoursOrModules": "49m 21s",
+    "pdfUrl": "/certificates/CertificateOfCompletion_Managing%20Projects%20with%20Microsoft%20365.pdf"
   },
   {
     "id": "course-collaborating-m365-hodge",
@@ -2727,7 +2737,7 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
       "External Sharing Governance"
     ],
     "verified": true,
-    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/",
+    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/details/certifications/",
     "summary": "Establishing secure multi-tenant collaboration policies, co-authoring workflows, and external guest permission boundaries.",
     "hoursOrModules": "48m 54s"
   },
@@ -2748,7 +2758,7 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
       "Role-Based Security"
     ],
     "verified": true,
-    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/",
+    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/details/certifications/",
     "summary": "Relational entity schema design, field validation rules, and transactional security modeling inside the Common Data Service (now Dataverse).",
     "hoursOrModules": "1h 23m 30s"
   },
@@ -2769,7 +2779,7 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
       "Delegation Rules"
     ],
     "verified": true,
-    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/",
+    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/details/certifications/",
     "summary": "Designing enterprise mobile and desktop Canvas applications with responsive layouts, delegation-safe queries, and custom Power Fx logic.",
     "hoursOrModules": "1h 33m 20s"
   },
@@ -2790,7 +2800,7 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
       "Data Connectors"
     ],
     "verified": true,
-    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/",
+    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/details/certifications/",
     "summary": "Developing complex data-driven applications powered by multi-table Dataverse schemas and multi-stage guided business process flows.",
     "hoursOrModules": "2h 01m 32s"
   },
@@ -2811,7 +2821,7 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
       "Approval Engines"
     ],
     "verified": true,
-    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/",
+    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/details/certifications/",
     "summary": "Building robust cloud flows with conditional branching, parallel approval routes, error-trapping run-after blocks, and automated notifications.",
     "hoursOrModules": "2h 17m 22s"
   },
@@ -2832,7 +2842,7 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
       "Desktop RPA"
     ],
     "verified": true,
-    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/",
+    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/details/certifications/",
     "summary": "Advanced enterprise automation: OData filter queries, complex JSON parsing, reusable modular child flows, and service principal authentication.",
     "hoursOrModules": "1h 07m 31s"
   },
@@ -2852,7 +2862,7 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
       "Analytical Framing"
     ],
     "verified": true,
-    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/",
+    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/details/certifications/",
     "summary": "Translating ambiguous operational problems into structured analytical inquiries, data cleansing protocols, and decision models.",
     "hoursOrModules": "2h 21m 36s"
   },
@@ -2872,7 +2882,7 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
       "Descriptive Statistics"
     ],
     "verified": true,
-    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/",
+    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/details/certifications/",
     "summary": "Core foundations of data querying, relational database normal forms (1NF-3NF), data types, and descriptive statistical measures.",
     "hoursOrModules": "3h 29m 13s"
   },
@@ -2892,7 +2902,7 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
       "Hypothesis Validation"
     ],
     "verified": true,
-    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/",
+    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/details/certifications/",
     "summary": "Extending foundational analytics: multi-table joins, subqueries, group rollups, and empirical hypothesis verification.",
     "hoursOrModules": "3h 22m 51s"
   },
@@ -2912,9 +2922,10 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
       "Visual Hierarchy"
     ],
     "verified": true,
-    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/",
+    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/details/certifications/",
     "summary": "Crafting bespoke executive charts, bullet graphs, sparklines, and dynamic dashboards tailored for C-suite decision support.",
-    "hoursOrModules": "2h 03m 50s"
+    "hoursOrModules": "2h 03m 50s",
+    "pdfUrl": "/certificates/CertificateOfCompletion_Excel%20Data%20Visualization%20Designing%20Custom%20Visualizations.pdf"
   },
   {
     "id": "course-excel-essential-taylor",
@@ -2933,7 +2944,7 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
       "Conditional Formatting"
     ],
     "verified": true,
-    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/",
+    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/details/certifications/",
     "summary": "Comprehensive mastery of Excel 365: dynamic formulas (XLOOKUP, FILTER, UNIQUE), PivotTable slicing, and automated data audits.",
     "hoursOrModules": "2h 29m 28s"
   },
@@ -2953,7 +2964,7 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
       "Statistical Process Control (SPC)"
     ],
     "verified": true,
-    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/",
+    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/details/certifications/",
     "summary": "Rigorous continuous process improvement using DMAIC methodology, defect reduction metrics, control charts, and variance elimination.",
     "productionApplication": "Applied at Concentrix to eliminate defect outliers, cut ticket AHT by 25%, and stabilize quality grading.",
     "hoursOrModules": "2h 02m 01s"
@@ -2975,7 +2986,7 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
       "Postman Testing"
     ],
     "verified": true,
-    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/",
+    "credentialUrl": "https://www.linkedin.com/in/aliakhmadf/details/certifications/",
     "summary": "Deep architectural grounding in RESTful Web APIs, endpoint routing, authorization tokens, rate limiting, and webhook dispatch.",
     "hoursOrModules": "1h 20m 48s"
   }
@@ -2983,196 +2994,196 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
 
 export const LINKEDIN_HONORS_AWARDS: HonorAwardItem[] = [
   {
-    id: "award-accenture-hang-tuah",
-    title: "Hang Tuah Award — Best Team Lead Distinction",
-    issuer: "Accenture",
-    organization: "Accenture",
-    organizationLogoId: "accenture",
-    year: "July 2021",
-    tier: "pinnacle",
-    highlightBadge: "#1 Team Lead Across Delivery Center",
-    description: "Conferred the prestigious Hang Tuah Award as the top-performing Team Lead across the Accenture delivery center, recognized for exceptional people leadership, frontline morale, and commanding high-stakes queue crisis governance.",
-    certificatePdfUrl: "/certificates/ABOUT_ME.pdf"
+    "id": "award-accenture-hang-tuah",
+    "title": "Hang Tuah Award — Best Team Lead Distinction",
+    "issuer": "Accenture",
+    "organization": "Accenture",
+    "organizationLogoId": "accenture",
+    "year": "July 2021",
+    "tier": "pinnacle",
+    "highlightBadge": "#1 Team Lead Across Delivery Center",
+    "description": "Conferred the prestigious Hang Tuah Award as the top-performing Team Lead across the Accenture delivery center, recognized for exceptional people leadership, frontline morale, and commanding high-stakes queue crisis governance.",
+    "verificationUrl": "https://www.linkedin.com/in/aliakhmadf/details/honors/"
   },
   {
-    id: "award-accenture-diamond",
-    title: "Accenture Diamond Award — Global Operational Impact",
-    issuer: "Accenture",
-    organization: "Accenture",
-    organizationLogoId: "accenture",
-    year: "2021",
-    tier: "pinnacle",
-    highlightBadge: "Global Low-Code Operational Automation",
-    description: "Recognized for pioneering low-code operational automation on the floor (Power Apps, Power Automate, Power BI) and sustaining >98% SLA compliance across global enterprise accounts.",
-    certificatePdfUrl: "/certificates/ABOUT_ME.pdf"
+    "id": "award-accenture-diamond",
+    "title": "Accenture Diamond Award — Global Operational Impact",
+    "issuer": "Accenture",
+    "organization": "Accenture",
+    "organizationLogoId": "accenture",
+    "year": "2021",
+    "tier": "pinnacle",
+    "highlightBadge": "Global Low-Code Operational Automation",
+    "description": "Recognized for pioneering low-code operational automation on the floor (Power Apps, Power Automate, Power BI) and sustaining >98% SLA compliance across global enterprise accounts.",
+    "verificationUrl": "https://www.linkedin.com/in/aliakhmadf/details/honors/"
   },
   {
-    id: "award-cnx-excellence",
-    title: "Concentrix Operations Team Manager Distinction",
-    issuer: "Concentrix",
-    organization: "Concentrix",
-    organizationLogoId: "concentrix",
-    year: "2024",
-    tier: "pinnacle",
-    highlightBadge: "380% Scale · 7 Language Pods · >98% SLA",
-    description: "Awarded by Concentrix senior executive leadership as Operations Team Manager: led 34 direct reports across 7 language pods (Indonesian, Chinese Mainland, Korean, Japanese, English, Thai, Vietnamese), scaled squad by 380%, sustained >98% contractual SLA, and reduced AHT by 25% via Six Sigma DMAIC.",
-    certificatePdfUrl: "/certificates/Concentrix_2024_Employment_Certificate.pdf"
+    "id": "award-cnx-excellence",
+    "title": "Concentrix Operations Team Manager Distinction",
+    "issuer": "Concentrix",
+    "organization": "Concentrix",
+    "organizationLogoId": "concentrix",
+    "year": "2024",
+    "tier": "pinnacle",
+    "highlightBadge": "380% Scale · 7 Language Pods · >98% SLA",
+    "description": "Awarded by Concentrix senior executive leadership as Operations Team Manager: led 34 direct reports across 7 language pods (Indonesian, Chinese Mainland, Korean, Japanese, English, Thai, Vietnamese), scaled squad by 380%, sustained >98% contractual SLA, and reduced AHT by 25% via Six Sigma DMAIC.",
+    "verificationUrl": "https://www.linkedin.com/in/aliakhmadf/details/honors/"
   },
   {
-    id: "award-uum-akj-leadership",
-    title: "Special Achievement in Leadership — Anugerah Kerana Jasa (AK_J)",
-    issuer: "Universiti Utara Malaysia (UUM)",
-    organization: "Universiti Utara Malaysia (UUM)",
-    organizationLogoId: "uum",
-    year: "April 2015",
-    tier: "pinnacle",
-    highlightBadge: "Top Institutional Honor (Anugerah Kerana Jasa)",
-    description: "Received the prestigious AK_J (Anugerah Kerana Jasa) award from UUM for special achievement in student governance, cross-cultural leadership, and international institutional representation.",
-    certificatePdfUrl: "/certificates/ABOUT_ME.pdf"
+    "id": "award-uum-akj-leadership",
+    "title": "Special Achievement in Leadership — Anugerah Kerana Jasa (AK_J)",
+    "issuer": "Universiti Utara Malaysia (UUM)",
+    "organization": "Universiti Utara Malaysia (UUM)",
+    "organizationLogoId": "uum",
+    "year": "April 2015",
+    "tier": "pinnacle",
+    "highlightBadge": "Top Institutional Honor (Anugerah Kerana Jasa)",
+    "description": "Received the prestigious AK_J (Anugerah Kerana Jasa) award from UUM for special achievement in student governance, cross-cultural leadership, and international institutional representation.",
+    "verificationUrl": "https://www.linkedin.com/in/aliakhmadf/details/honors/"
   },
   {
-    id: "award-uum-scholarship",
-    title: "UUM International Scholarship Scheme Achievement Award",
-    issuer: "Universiti Utara Malaysia (UUM)",
-    organization: "Universiti Utara Malaysia (UUM)",
-    organizationLogoId: "uum",
-    year: "February 2014",
-    tier: "pinnacle",
-    highlightBadge: "RM10,000 / Semester Merit Fellowship",
-    description: "Awarded a competitive merit scholarship of RM10,000 per semester, selected among 10,000+ domestic and 200+ international students for outstanding performance in academics, student governance, and community involvement.",
-    certificatePdfUrl: "/certificates/ABOUT_ME.pdf"
+    "id": "award-uum-scholarship",
+    "title": "UUM International Scholarship Scheme Achievement Award",
+    "issuer": "Universiti Utara Malaysia (UUM)",
+    "organization": "Universiti Utara Malaysia (UUM)",
+    "organizationLogoId": "uum",
+    "year": "February 2014",
+    "tier": "pinnacle",
+    "highlightBadge": "RM10,000 / Semester Merit Fellowship",
+    "description": "Awarded a competitive merit scholarship of RM10,000 per semester, selected among 10,000+ domestic and 200+ international students for outstanding performance in academics, student governance, and community involvement.",
+    "verificationUrl": "https://www.linkedin.com/in/aliakhmadf/details/honors/"
   },
   {
-    id: "award-accenture-leadership",
-    title: "Accenture Leadership Award — Operational Leadership Contribution",
-    issuer: "Accenture",
-    organization: "Accenture",
-    organizationLogoId: "accenture",
-    year: "July 2020",
-    tier: "corporate",
-    highlightBadge: "Senior Leadership Recognition",
-    description: "Awarded by Accenture senior leadership for outstanding leadership contributions, cross-functional coaching, and sustained SLA performance across global enterprise service delivery queues.",
-    certificatePdfUrl: "/certificates/ABOUT_ME.pdf"
+    "id": "award-accenture-leadership",
+    "title": "Accenture Leadership Award — Operational Leadership Contribution",
+    "issuer": "Accenture",
+    "organization": "Accenture",
+    "organizationLogoId": "accenture",
+    "year": "July 2020",
+    "tier": "corporate",
+    "highlightBadge": "Senior Leadership Recognition",
+    "description": "Awarded by Accenture senior leadership for outstanding leadership contributions, cross-functional coaching, and sustained SLA performance across global enterprise service delivery queues.",
+    "verificationUrl": "https://www.linkedin.com/in/aliakhmadf/details/honors/"
   },
   {
-    id: "award-accenture-best-tl-apr-2019",
-    title: "The Best Operations Team Lead Award (April 2019)",
-    issuer: "Accenture",
-    organization: "Accenture",
-    organizationLogoId: "accenture",
-    year: "April 2019",
-    tier: "corporate",
-    highlightBadge: "Consecutive Streak #3 (April 2019)",
-    description: "Acknowledged for achieving the #1 best team performance and highest SLA adherence across all service delivery teams on the operations floor for April 2019.",
-    certificatePdfUrl: "/certificates/ABOUT_ME.pdf"
+    "id": "award-accenture-best-tl-apr-2019",
+    "title": "The Best Operations Team Lead Award (April 2019)",
+    "issuer": "Accenture",
+    "organization": "Accenture",
+    "organizationLogoId": "accenture",
+    "year": "April 2019",
+    "tier": "corporate",
+    "highlightBadge": "Consecutive Streak #3 (April 2019)",
+    "description": "Acknowledged for achieving the #1 best team performance and highest SLA adherence across all service delivery teams on the operations floor for April 2019.",
+    "verificationUrl": "https://www.linkedin.com/in/aliakhmadf/details/honors/"
   },
   {
-    id: "award-accenture-best-tl-mar-2019",
-    title: "The Best Operations Team Lead Award (March 2019)",
-    issuer: "Accenture",
-    organization: "Accenture",
-    organizationLogoId: "accenture",
-    year: "March 2019",
-    tier: "corporate",
-    highlightBadge: "Consecutive Streak #2 (March 2019)",
-    description: "Recognized for leading the operations team to top monthly performance, driving queue optimization, and meeting all service quality targets for March 2019.",
-    certificatePdfUrl: "/certificates/ABOUT_ME.pdf"
+    "id": "award-accenture-best-tl-mar-2019",
+    "title": "The Best Operations Team Lead Award (March 2019)",
+    "issuer": "Accenture",
+    "organization": "Accenture",
+    "organizationLogoId": "accenture",
+    "year": "March 2019",
+    "tier": "corporate",
+    "highlightBadge": "Consecutive Streak #2 (March 2019)",
+    "description": "Recognized for leading the operations team to top monthly performance, driving queue optimization, and meeting all service quality targets for March 2019.",
+    "verificationUrl": "https://www.linkedin.com/in/aliakhmadf/details/honors/"
   },
   {
-    id: "award-accenture-best-tl-feb-2019",
-    title: "The Best Operations Team Lead Award (February 2019)",
-    issuer: "Accenture",
-    organization: "Accenture",
-    organizationLogoId: "accenture",
-    year: "February 2019",
-    tier: "corporate",
-    highlightBadge: "Consecutive Streak #1 (February 2019)",
-    description: "Awarded for consistently driving the highest team performance, schedule adherence, and resolution velocity across rotational shifts for February 2019.",
-    certificatePdfUrl: "/certificates/ABOUT_ME.pdf"
+    "id": "award-accenture-best-tl-feb-2019",
+    "title": "The Best Operations Team Lead Award (February 2019)",
+    "issuer": "Accenture",
+    "organization": "Accenture",
+    "organizationLogoId": "accenture",
+    "year": "February 2019",
+    "tier": "corporate",
+    "highlightBadge": "Consecutive Streak #1 (February 2019)",
+    "description": "Awarded for consistently driving the highest team performance, schedule adherence, and resolution velocity across rotational shifts for February 2019.",
+    "verificationUrl": "https://www.linkedin.com/in/aliakhmadf/details/honors/"
   },
   {
-    id: "award-accenture-best-people",
-    title: "The Best People Award (Team Lead) — Quarterly Business Review (QBR)",
-    issuer: "Accenture",
-    organization: "Accenture",
-    organizationLogoId: "accenture",
-    year: "September 2018",
-    tier: "corporate",
-    highlightBadge: "QBR Best People Award · <5% Attrition",
-    description: "Honored with the prestigious Best People Award during the Quarterly Business Review (QBR) for excellence in people management, frontline coaching, and maintaining annualized team attrition below 5%.",
-    certificatePdfUrl: "/certificates/ABOUT_ME.pdf"
+    "id": "award-accenture-best-people",
+    "title": "The Best People Award (Team Lead) — Quarterly Business Review (QBR)",
+    "issuer": "Accenture",
+    "organization": "Accenture",
+    "organizationLogoId": "accenture",
+    "year": "September 2018",
+    "tier": "corporate",
+    "highlightBadge": "QBR Best People Award · <5% Attrition",
+    "description": "Honored with the prestigious Best People Award during the Quarterly Business Review (QBR) for excellence in people management, frontline coaching, and maintaining annualized team attrition below 5%.",
+    "verificationUrl": "https://www.linkedin.com/in/aliakhmadf/details/honors/"
   },
   {
-    id: "award-deans-list-sem5",
-    title: "Dean's Academic Award — Semester 5 (Final Year Distinction)",
-    issuer: "Universiti Utara Malaysia (UUM)",
-    organization: "Universiti Utara Malaysia (UUM)",
-    organizationLogoId: "uum",
-    year: "October 2016",
-    tier: "academic",
-    highlightBadge: "5th Consecutive Dean's Honor (Final Year)",
-    description: "Awarded Dean's Academic Honors by Universiti Utara Malaysia for distinguished scholastic achievement in Bachelor of International Business Management (Honours).",
-    certificatePdfUrl: "/certificates/ABOUT_ME.pdf"
+    "id": "award-deans-list-sem5",
+    "title": "Dean's Academic Award — Semester 5 (Final Year Distinction)",
+    "issuer": "Universiti Utara Malaysia (UUM)",
+    "organization": "Universiti Utara Malaysia (UUM)",
+    "organizationLogoId": "uum",
+    "year": "October 2016",
+    "tier": "academic",
+    "highlightBadge": "5th Consecutive Dean's Honor (Final Year)",
+    "description": "Awarded Dean's Academic Honors by Universiti Utara Malaysia for distinguished scholastic achievement in Bachelor of International Business Management (Honours).",
+    "verificationUrl": "https://www.linkedin.com/in/aliakhmadf/details/honors/"
   },
   {
-    id: "award-deans-list-sem4",
-    title: "Dean's Academic Award — Semester 4",
-    issuer: "Universiti Utara Malaysia (UUM)",
-    organization: "Universiti Utara Malaysia (UUM)",
-    organizationLogoId: "uum",
-    year: "October 2015",
-    tier: "academic",
-    highlightBadge: "4th Consecutive Dean's Honor",
-    description: "Conferred by Universiti Utara Malaysia for top-tier academic GPA standing in International Business & Logistics.",
-    certificatePdfUrl: "/certificates/ABOUT_ME.pdf"
+    "id": "award-deans-list-sem4",
+    "title": "Dean's Academic Award — Semester 4",
+    "issuer": "Universiti Utara Malaysia (UUM)",
+    "organization": "Universiti Utara Malaysia (UUM)",
+    "organizationLogoId": "uum",
+    "year": "October 2015",
+    "tier": "academic",
+    "highlightBadge": "4th Consecutive Dean's Honor",
+    "description": "Conferred by Universiti Utara Malaysia for top-tier academic GPA standing in International Business & Logistics.",
+    "verificationUrl": "https://www.linkedin.com/in/aliakhmadf/details/honors/"
   },
   {
-    id: "award-deans-list-sem3",
-    title: "Dean's Academic Award — Semester 3",
-    issuer: "School of International Studies, UUM",
-    organization: "Universiti Utara Malaysia (UUM)",
-    organizationLogoId: "uum",
-    year: "March 2015",
-    tier: "academic",
-    highlightBadge: "3rd Consecutive Dean's Honor",
-    description: "Conferred by the Dean of the School of International Studies (COLGIS) for top-percentile academic standing.",
-    certificatePdfUrl: "/certificates/ABOUT_ME.pdf"
+    "id": "award-deans-list-sem3",
+    "title": "Dean's Academic Award — Semester 3",
+    "issuer": "School of International Studies, UUM",
+    "organization": "Universiti Utara Malaysia (UUM)",
+    "organizationLogoId": "uum",
+    "year": "March 2015",
+    "tier": "academic",
+    "highlightBadge": "3rd Consecutive Dean's Honor",
+    "description": "Conferred by the Dean of the School of International Studies (COLGIS) for top-percentile academic standing.",
+    "verificationUrl": "https://www.linkedin.com/in/aliakhmadf/details/honors/"
   },
   {
-    id: "award-deans-list-sem2",
-    title: "Dean's Academic Award — Semester 2",
-    issuer: "School of International Business Management, UUM",
-    organization: "Universiti Utara Malaysia (UUM)",
-    organizationLogoId: "uum",
-    year: "March 2014",
-    tier: "academic",
-    highlightBadge: "2nd Consecutive Dean's Honor",
-    description: "Conferred by the Dean of the School of International Business Management for outstanding coursework mastery and academic distinction.",
-    certificatePdfUrl: "/certificates/ABOUT_ME.pdf"
+    "id": "award-deans-list-sem2",
+    "title": "Dean's Academic Award — Semester 2",
+    "issuer": "School of International Business Management, UUM",
+    "organization": "Universiti Utara Malaysia (UUM)",
+    "organizationLogoId": "uum",
+    "year": "March 2014",
+    "tier": "academic",
+    "highlightBadge": "2nd Consecutive Dean's Honor",
+    "description": "Conferred by the Dean of the School of International Business Management for outstanding coursework mastery and academic distinction.",
+    "verificationUrl": "https://www.linkedin.com/in/aliakhmadf/details/honors/"
   },
   {
-    id: "award-deans-list-sem1",
-    title: "Dean's Academic Award — Semester 1",
-    issuer: "School of International Study, UUM",
-    organization: "Universiti Utara Malaysia (UUM)",
-    organizationLogoId: "uum",
-    year: "October 2013",
-    tier: "academic",
-    highlightBadge: "Dean's Academic Honor (Semester 1)",
-    description: "Awarded Dean's Academic Honors in the first academic semester for exemplary academic achievement.",
-    certificatePdfUrl: "/certificates/ABOUT_ME.pdf"
+    "id": "award-deans-list-sem1",
+    "title": "Dean's Academic Award — Semester 1",
+    "issuer": "School of International Study, UUM",
+    "organization": "Universiti Utara Malaysia (UUM)",
+    "organizationLogoId": "uum",
+    "year": "October 2013",
+    "tier": "academic",
+    "highlightBadge": "Dean's Academic Honor (Semester 1)",
+    "description": "Awarded Dean's Academic Honors in the first academic semester for exemplary academic achievement.",
+    "verificationUrl": "https://www.linkedin.com/in/aliakhmadf/details/honors/"
   },
   {
-    id: "award-uum-mpp-exco",
-    title: "Student Representative Council (SRC) for International Affairs & President of IBMS",
-    issuer: "Universiti Utara Malaysia (UUM) / Majlis Perwakilan Pelajar (SRC)",
-    organization: "Universiti Utara Malaysia (UUM)",
-    organizationLogoId: "uum",
-    year: "2014 – 2017",
-    tier: "academic",
-    highlightBadge: "Elected Campus Representative & IBMS President",
-    description: "Elected to Student Representative Council (SRC / MPPUUM) for International Affairs and served as President of IBMS (International Business Management Association), directing campus-wide international student governance, cross-cultural mobility programs, and global commerce symposia.",
-    certificatePdfUrl: "/certificates/ABOUT_ME.pdf"
+    "id": "award-uum-mpp-exco",
+    "title": "Student Representative Council (SRC) for International Affairs & President of IBMS",
+    "issuer": "Universiti Utara Malaysia (UUM) / Majlis Perwakilan Pelajar (SRC)",
+    "organization": "Universiti Utara Malaysia (UUM)",
+    "organizationLogoId": "uum",
+    "year": "2014 – 2017",
+    "tier": "academic",
+    "highlightBadge": "Elected Campus Representative & IBMS President",
+    "description": "Elected to Student Representative Council (SRC / MPPUUM) for International Affairs and served as President of IBMS (International Business Management Association), directing campus-wide international student governance, cross-cultural mobility programs, and global commerce symposia.",
+    "verificationUrl": "https://www.linkedin.com/in/aliakhmadf/details/honors/"
   }
 ];
 
