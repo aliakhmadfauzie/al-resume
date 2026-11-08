@@ -242,7 +242,7 @@ export const CinematicDoorGate: React.FC<CinematicDoorGateProps> = ({
             </div>
 
             <div className="self-end text-[10px] font-mono text-slate-600">
-              SEC.OPS // PROCESS & ERP
+              SEC.OPS // 98%+ SLA · SQUAD FLOOR
             </div>
           </motion.div>
 
@@ -315,10 +315,13 @@ export const CinematicDoorGate: React.FC<CinematicDoorGateProps> = ({
                     </div>
                     <div>
                       <div className="text-[10px] font-mono font-bold text-cyan-400 tracking-wider uppercase">
-                        Track 01 // Code
+                        Track 01 // Code &amp; Cloud
                       </div>
                       <div className="text-xs sm:text-[13px] font-bold text-white group-hover:text-cyan-200 transition-colors">
                         Software Developer
+                      </div>
+                      <div className="text-[10px] text-slate-400 font-mono mt-0.5">
+                        React 19 · TypeScript · Cloud Architect
                       </div>
                     </div>
                   </div>
@@ -367,10 +370,13 @@ export const CinematicDoorGate: React.FC<CinematicDoorGateProps> = ({
                     </div>
                     <div>
                       <div className="text-[10px] font-mono font-bold text-orange-400 tracking-wider uppercase">
-                        Track 02 // Ops
+                        Track 02 // Ops Leadership
                       </div>
                       <div className="text-xs sm:text-[13px] font-bold text-white group-hover:text-orange-200 transition-colors">
                         Operations Team Manager
+                      </div>
+                      <div className="text-[10px] text-slate-400 font-mono mt-0.5">
+                        98%+ SLA · 25% AHT Cut · Floor Adherence
                       </div>
                     </div>
                   </div>
