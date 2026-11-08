@@ -128,6 +128,19 @@ export interface GovernanceItem {
   description: string;
 }
 
+export interface PowerPlatformArchLayer {
+  id: string;
+  layer: string;
+  title: string;
+  subtitle: string;
+  primaryTech: string;
+  description: string;
+  components: string[];
+  capabilities: string[];
+  docLinks?: { label: string; url: string }[];
+  accentColor?: string;
+}
+
 export interface BusinessCompetency {
   icon: string;
   title: string;
@@ -259,6 +272,8 @@ export interface HonorAwardItem {
   year: string;
   description: string;
   certificatePdfUrl?: string;
+  tier?: 'pinnacle' | 'corporate' | 'academic';
+  highlightBadge?: string;
 }
 
 export interface LinkedInTestimonial {

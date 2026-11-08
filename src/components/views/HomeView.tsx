@@ -302,7 +302,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 <Award className="w-4 h-4" />
               </div>
               <div>
-                <div className="text-xs font-bold text-white leading-tight">26 Verified Certifications</div>
+                <div className="text-xs font-bold text-white leading-tight">{LINKEDIN_CERTIFICATIONS.length} Verified Certifications</div>
                 <div className="text-[10px] text-zinc-400 font-mono">5× Dean's List · SRC Intl · IBMS Pres</div>
               </div>
             </div>
@@ -928,7 +928,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
       {/* ====================================================================
           5A. // ENTERPRISE CLIENTS & CORPORATE LEADERSHIP
          ==================================================================== */}
-      <section className="rounded-[var(--radius-lg)] bg-[var(--bg-surface)] border border-[var(--border-subtle)] p-6 sm:p-7 space-y-5 shadow-[var(--shadow-card)]">
+      <section className="rounded-[var(--radius-lg)] bg-[var(--bg-surface)] border border-[var(--border-subtle)] p-6 sm:p-7 space-y-6 shadow-[var(--shadow-card)]">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[var(--border-subtle)] pb-4">
           <div className="space-y-1">
             <p className="text-xs font-mono text-[var(--text-accent)] font-semibold tracking-wider uppercase">
@@ -938,99 +938,173 @@ export const HomeView: React.FC<HomeViewProps> = ({
               Freelance Client Roster &amp; Operational Leadership
             </h2>
           </div>
-          <span className="text-xs font-mono text-[var(--text-tertiary)]">
-            Texchem · IOI Acidchem · Nippon Paint · Concentrix · Accenture
+          <span className="text-xs font-mono text-[var(--text-tertiary)] hidden sm:inline-block">
+            5 Direct Client Engagements · 2 Global Corporate Tenures
           </span>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3.5">
-          {/* Texchem */}
-          <div className="rounded-[var(--radius-md)] bg-[#0f1117] border border-[var(--border-subtle)] hover:border-orange-500/40 p-4 flex flex-col items-center text-center space-y-2.5 transition-all duration-200 group hover:-translate-y-0.5 shadow-sm">
-            <div className="w-12 h-12 rounded-[var(--radius-sm)] bg-white p-1.5 flex items-center justify-center shadow-inner group-hover:scale-105 transition-transform overflow-hidden">
-              <OrganizationLogo logoId="texchem" orgName="Texchem" size="md" />
-            </div>
-            <div>
-              <h3 className="text-xs font-bold text-[var(--text-primary)] group-hover:text-[var(--text-accent)] transition-colors">
-                Texchem
-              </h3>
-              <p className="text-[10px] font-mono text-[var(--text-accent)] font-semibold mt-0.5">
-                Freelance Client
-              </p>
-              <p className="text-[10px] text-[var(--text-tertiary)] mt-1 line-clamp-1 font-mono">
-                Industrial Manufacturing
-              </p>
-            </div>
+        {/* Enterprise Freelance Clients Sub-Grid (5 Clients) */}
+        <div className="space-y-3">
+          <div className="flex items-center justify-between">
+            <span className="text-[11px] font-mono text-[var(--text-accent)] font-semibold uppercase tracking-wider flex items-center gap-1.5">
+              <Sparkles className="w-3.5 h-3.5 text-[var(--interactive-primary)]" />
+              <span>Enterprise Freelance Clients (Direct Engagements)</span>
+            </span>
+            <span className="text-[10px] font-mono text-[var(--text-tertiary)]">
+              5 Flagship Organizations
+            </span>
           </div>
 
-          {/* IOI Acidchem */}
-          <div className="rounded-[var(--radius-md)] bg-[#0f1117] border border-[var(--border-subtle)] hover:border-orange-500/40 p-4 flex flex-col items-center text-center space-y-2.5 transition-all duration-200 group hover:-translate-y-0.5 shadow-sm">
-            <div className="w-12 h-12 rounded-[var(--radius-sm)] bg-white p-1.5 flex items-center justify-center shadow-inner group-hover:scale-105 transition-transform overflow-hidden">
-              <OrganizationLogo logoId="ioi-acidchem" orgName="IOI Acidchem" size="md" />
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3.5">
+            {/* Texchem */}
+            <div className="rounded-[var(--radius-md)] bg-[#0f1117] border border-[var(--border-subtle)] hover:border-orange-500/40 p-4 flex flex-col items-center text-center space-y-2.5 transition-all duration-200 group hover:-translate-y-0.5 shadow-sm">
+              <div className="w-12 h-12 rounded-[var(--radius-sm)] bg-white p-1.5 flex items-center justify-center shadow-inner group-hover:scale-105 transition-transform overflow-hidden">
+                <OrganizationLogo logoId="texchem" orgName="Texchem" size="md" />
+              </div>
+              <div>
+                <h3 className="text-xs font-bold text-[var(--text-primary)] group-hover:text-[var(--text-accent)] transition-colors">
+                  Texchem
+                </h3>
+                <p className="text-[10px] font-mono text-[var(--text-accent)] font-semibold mt-0.5">
+                  Freelance Client
+                </p>
+                <p className="text-[10px] text-[var(--text-tertiary)] mt-1 line-clamp-1 font-mono">
+                  Industrial Manufacturing
+                </p>
+              </div>
             </div>
-            <div>
-              <h3 className="text-xs font-bold text-[var(--text-primary)] group-hover:text-[var(--text-accent)] transition-colors">
-                IOI Acidchem
-              </h3>
-              <p className="text-[10px] font-mono text-[var(--text-accent)] font-semibold mt-0.5">
-                Freelance Client
-              </p>
-              <p className="text-[10px] text-[var(--text-tertiary)] mt-1 line-clamp-1 font-mono">
-                365+ Domino Cutover &amp; SHE
-              </p>
+
+            {/* IOI Acidchem */}
+            <div className="rounded-[var(--radius-md)] bg-[#0f1117] border border-[var(--border-subtle)] hover:border-orange-500/40 p-4 flex flex-col items-center text-center space-y-2.5 transition-all duration-200 group hover:-translate-y-0.5 shadow-sm">
+              <div className="w-12 h-12 rounded-[var(--radius-sm)] bg-white p-1.5 flex items-center justify-center shadow-inner group-hover:scale-105 transition-transform overflow-hidden">
+                <OrganizationLogo logoId="ioi-acidchem" orgName="IOI Acidchem" size="md" />
+              </div>
+              <div>
+                <h3 className="text-xs font-bold text-[var(--text-primary)] group-hover:text-[var(--text-accent)] transition-colors">
+                  IOI Acidchem
+                </h3>
+                <p className="text-[10px] font-mono text-[var(--text-accent)] font-semibold mt-0.5">
+                  Freelance Client
+                </p>
+                <p className="text-[10px] text-[var(--text-tertiary)] mt-1 line-clamp-1 font-mono">
+                  365+ Domino Cutover &amp; SHE
+                </p>
+              </div>
+            </div>
+
+            {/* Nippon Paint */}
+            <div className="rounded-[var(--radius-md)] bg-[#0f1117] border border-[var(--border-subtle)] hover:border-orange-500/40 p-4 flex flex-col items-center text-center space-y-2.5 transition-all duration-200 group hover:-translate-y-0.5 shadow-sm">
+              <div className="w-12 h-12 rounded-[var(--radius-sm)] bg-white p-1.5 flex items-center justify-center shadow-inner group-hover:scale-105 transition-transform overflow-hidden">
+                <OrganizationLogo logoId="nippon-paint" orgName="Nippon Paint" size="md" />
+              </div>
+              <div>
+                <h3 className="text-xs font-bold text-[var(--text-primary)] group-hover:text-[var(--text-accent)] transition-colors">
+                  Nippon Paint
+                </h3>
+                <p className="text-[10px] font-mono text-[var(--text-accent)] font-semibold mt-0.5">
+                  Freelance Client
+                </p>
+                <p className="text-[10px] text-[var(--text-tertiary)] mt-1 line-clamp-1 font-mono">
+                  Coatings &amp; Workflows
+                </p>
+              </div>
+            </div>
+
+            {/* Tasek Cement */}
+            <div className="rounded-[var(--radius-md)] bg-[#0f1117] border border-[var(--border-subtle)] hover:border-orange-500/40 p-4 flex flex-col items-center text-center space-y-2.5 transition-all duration-200 group hover:-translate-y-0.5 shadow-sm">
+              <div className="w-12 h-12 rounded-[var(--radius-sm)] bg-white p-1.5 flex items-center justify-center shadow-inner group-hover:scale-105 transition-transform overflow-hidden">
+                <OrganizationLogo logoId="tasek-cement" orgName="Tasek Cement" size="md" />
+              </div>
+              <div>
+                <h3 className="text-xs font-bold text-[var(--text-primary)] group-hover:text-[var(--text-accent)] transition-colors">
+                  Tasek Cement
+                </h3>
+                <p className="text-[10px] font-mono text-[var(--text-accent)] font-semibold mt-0.5">
+                  Freelance Client
+                </p>
+                <p className="text-[10px] text-[var(--text-tertiary)] mt-1 line-clamp-1 font-mono">
+                  Building Materials &amp; ERP
+                </p>
+              </div>
+            </div>
+
+            {/* IPENET */}
+            <div className="rounded-[var(--radius-md)] bg-[#0f1117] border border-[var(--border-subtle)] hover:border-orange-500/40 p-4 flex flex-col items-center text-center space-y-2.5 transition-all duration-200 group hover:-translate-y-0.5 shadow-sm">
+              <div className="w-12 h-12 rounded-[var(--radius-sm)] bg-white p-1.5 flex items-center justify-center shadow-inner group-hover:scale-105 transition-transform overflow-hidden">
+                <OrganizationLogo logoId="ipenet" orgName="IPENET" size="md" />
+              </div>
+              <div>
+                <h3 className="text-xs font-bold text-[var(--text-primary)] group-hover:text-[var(--text-accent)] transition-colors">
+                  IPENET
+                </h3>
+                <p className="text-[10px] font-mono text-[var(--text-accent)] font-semibold mt-0.5">
+                  Freelance Client
+                </p>
+                <p className="text-[10px] text-[var(--text-tertiary)] mt-1 line-clamp-1 font-mono">
+                  Enterprise ICT &amp; Cloud
+                </p>
+              </div>
             </div>
           </div>
+        </div>
 
-          {/* Nippon Paint */}
-          <div className="rounded-[var(--radius-md)] bg-[#0f1117] border border-[var(--border-subtle)] hover:border-orange-500/40 p-4 flex flex-col items-center text-center space-y-2.5 transition-all duration-200 group hover:-translate-y-0.5 shadow-sm">
-            <div className="w-12 h-12 rounded-[var(--radius-sm)] bg-[#00479E] p-1.5 flex items-center justify-center shadow-inner group-hover:scale-105 transition-transform overflow-hidden">
-              <OrganizationLogo logoId="nippon-paint" orgName="Nippon Paint" size="md" />
-            </div>
-            <div>
-              <h3 className="text-xs font-bold text-[var(--text-primary)] group-hover:text-[var(--text-accent)] transition-colors">
-                Nippon Paint
-              </h3>
-              <p className="text-[10px] font-mono text-[var(--text-accent)] font-semibold mt-0.5">
-                Freelance Client
-              </p>
-              <p className="text-[10px] text-[var(--text-tertiary)] mt-1 line-clamp-1 font-mono">
-                Coatings &amp; Workflows
-              </p>
-            </div>
+        {/* Corporate Operations Leadership Sub-Grid (2 Employers) */}
+        <div className="space-y-3 pt-3 border-t border-[var(--border-subtle)]">
+          <div className="flex items-center justify-between">
+            <span className="text-[11px] font-mono text-[#00D9AF] font-semibold uppercase tracking-wider flex items-center gap-1.5">
+              <Briefcase className="w-3.5 h-3.5 text-[#00D9AF]" />
+              <span>Corporate Operations Leadership (Flagship Tenures)</span>
+            </span>
+            <span className="text-[10px] font-mono text-[var(--text-tertiary)]">
+              MNC BPO &amp; Tech Consulting Leadership
+            </span>
           </div>
 
-          {/* Concentrix */}
-          <div className="rounded-[var(--radius-md)] bg-[#0f1117] border border-[var(--border-subtle)] hover:border-orange-500/40 p-4 flex flex-col items-center text-center space-y-2.5 transition-all duration-200 group hover:-translate-y-0.5 shadow-sm">
-            <div className="w-12 h-12 rounded-[var(--radius-sm)] bg-[#041B23] p-1.5 flex items-center justify-center shadow-inner group-hover:scale-105 transition-transform overflow-hidden">
-              <OrganizationLogo logoId="concentrix" orgName="Concentrix" size="md" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+            {/* Concentrix */}
+            <div className="rounded-[var(--radius-md)] bg-[#0f1117] border border-[var(--border-subtle)] hover:border-[#00D9AF]/40 p-4 flex items-center space-x-4 transition-all duration-200 group hover:-translate-y-0.5 shadow-sm">
+              <div className="w-14 h-14 rounded-[var(--radius-sm)] bg-[#041B23] p-1.5 flex items-center justify-center shadow-inner shrink-0 group-hover:scale-105 transition-transform overflow-hidden border border-white/5">
+                <OrganizationLogo logoId="concentrix" orgName="Concentrix" size="md" />
+              </div>
+              <div className="min-w-0">
+                <div className="flex items-center gap-2">
+                  <h3 className="text-sm font-bold text-[var(--text-primary)] group-hover:text-[#00D9AF] transition-colors">
+                    Concentrix
+                  </h3>
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#00D9AF]/10 text-[#00D9AF] border border-[#00D9AF]/20 font-semibold">
+                    Operations Leader
+                  </span>
+                </div>
+                <p className="text-xs text-[var(--text-secondary)] mt-1 font-medium">
+                  34-Agent Multilingual Squad · 380% Scale · &gt;98% SLA
+                </p>
+                <p className="text-[10px] text-[var(--text-tertiary)] mt-0.5 font-mono">
+                  7 Language Pods · Workday, Avaya, Lean Six Sigma
+                </p>
+              </div>
             </div>
-            <div>
-              <h3 className="text-xs font-bold text-[var(--text-primary)] group-hover:text-[var(--text-accent)] transition-colors">
-                Concentrix
-              </h3>
-              <p className="text-[10px] font-mono text-[#00D9AF] font-semibold mt-0.5">
-                Operations Leader
-              </p>
-              <p className="text-[10px] text-[var(--text-tertiary)] mt-1 line-clamp-1 font-mono">
-                34-Agent Squad (380% Scale)
-              </p>
-            </div>
-          </div>
 
-          {/* Accenture */}
-          <div className="rounded-[var(--radius-md)] bg-[#0f1117] border border-[var(--border-subtle)] hover:border-orange-500/40 p-4 flex flex-col items-center text-center space-y-2.5 transition-all duration-200 group hover:-translate-y-0.5 shadow-sm">
-            <div className="w-12 h-12 rounded-[var(--radius-sm)] bg-[#0F1117] p-1.5 flex items-center justify-center shadow-inner group-hover:scale-105 transition-transform overflow-hidden">
-              <OrganizationLogo logoId="accenture" orgName="Accenture" size="md" />
-            </div>
-            <div>
-              <h3 className="text-xs font-bold text-[var(--text-primary)] group-hover:text-[var(--text-accent)] transition-colors">
-                Accenture
-              </h3>
-              <p className="text-[10px] font-mono text-[#A100FF] font-semibold mt-0.5">
-                Senior Team Lead
-              </p>
-              <p className="text-[10px] text-[var(--text-tertiary)] mt-1 line-clamp-1 font-mono">
-                5 Yrs · 4 Merit Promotions
-              </p>
+            {/* Accenture */}
+            <div className="rounded-[var(--radius-md)] bg-[#0f1117] border border-[var(--border-subtle)] hover:border-[#A100FF]/40 p-4 flex items-center space-x-4 transition-all duration-200 group hover:-translate-y-0.5 shadow-sm">
+              <div className="w-14 h-14 rounded-[var(--radius-sm)] bg-white p-1.5 flex items-center justify-center shadow-inner shrink-0 group-hover:scale-105 transition-transform overflow-hidden border border-white/5">
+                <OrganizationLogo logoId="accenture" orgName="Accenture" size="md" />
+              </div>
+              <div className="min-w-0">
+                <div className="flex items-center gap-2">
+                  <h3 className="text-sm font-bold text-[var(--text-primary)] group-hover:text-[#A100FF] transition-colors">
+                    Accenture
+                  </h3>
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#A100FF]/10 text-[#c05eff] border border-[#A100FF]/20 font-semibold">
+                    Senior Team Lead
+                  </span>
+                </div>
+                <p className="text-xs text-[var(--text-secondary)] mt-1 font-medium">
+                  5 Years · 4 Merit Promotions · Diamond &amp; Hang Tuah Awards
+                </p>
+                <p className="text-[10px] text-[var(--text-tertiary)] mt-0.5 font-mono">
+                  3x Consecutive Monthly Best Team Leader · 150+ Direct Audits
+                </p>
+              </div>
             </div>
           </div>
         </div>

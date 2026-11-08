@@ -5,6 +5,7 @@ import {
   ClientRosterItem,
   DevStackItem,
   GovernanceItem,
+  PowerPlatformArchLayer,
   BusinessCompetency,
   InterviewTopic,
   TransformationMetric,
@@ -1302,9 +1303,135 @@ export const WORK_EXPERIENCE: ExperienceItem[] = [
       "Received total of 5× Dean's List Academic Honors Awards across 5 academic semesters (Semesters 1, 2, 3, 4, and 5) and Special Achievement in Leadership Award (Anugerah Kerana Jasa - AK_J).",
       "Elected to the Student Representative Council (SRC / MPPUUM) for International Affairs, directing campus-wide international student governance, cross-cultural initiatives, and diplomatic delegations.",
       "Served as President of IBMS (International Business Management Association), presiding over student governance, trade symposiums, and cross-border commercial study missions.",
-      "Recipient of the prestigious Universiti Utara Malaysia International Scholarship Scheme (RM10,000 per semester)."
+      "Awarded the prestigious UUM International Scholarship Scheme Achievement Award (February 2014, RM10,000 per semester) for outstanding academic, leadership, and community merit."
     ],
     iconUrl: "/assets/profile/ali-avatar.jpg"
+  }
+];
+
+export const POWER_PLATFORM_ARCH_SUITE: PowerPlatformArchLayer[] = [
+  {
+    id: "data-layer",
+    layer: "01 · Data Layer",
+    title: "Microsoft Dataverse & Fabric Lakehouses",
+    subtitle: "Enterprise Relational Schema, Poly-Lookups & OneLake Sync",
+    primaryTech: "Dataverse · SQL Server · SharePoint Online · Microsoft Fabric Lakehouses",
+    description: "Powered primarily by Microsoft Dataverse for relational enterprise data (polymorphic lookups, calculated rollup fields, column-level security), alongside connected and federated data sources including Azure SQL Server, SharePoint Online, and Microsoft Fabric Lakehouses via Azure Synapse Link.",
+    components: [
+      "Microsoft Dataverse (Primary Relational Engine)",
+      "Azure SQL Server (Transactional Store)",
+      "SharePoint Online (Documents & Lists)",
+      "Microsoft Fabric Lakehouses (OneLake Delta Parquet)"
+    ],
+    capabilities: [
+      "Zero-Loss Polymorphic Lookups & Relational Data Models",
+      "Azure Synapse Link for Real-Time Fabric OneLake Sync",
+      "Virtual Tables & Custom OData v4 Integration",
+      "Field-Level Security & Encrypted Profiles"
+    ],
+    docLinks: [
+      { label: "Dataverse Architecture (Microsoft Learn)", url: "https://learn.microsoft.com/en-us/power-platform/architecture/products/power-apps" },
+      { label: "Power Platform Architecture Guide", url: "https://www.linkedin.com/pulse/microsoft-power-platform-architecture-complete-guide-darshil-barot-uj5if" }
+    ],
+    accentColor: "#0284c7"
+  },
+  {
+    id: "application-layer",
+    layer: "02 · Application Layer",
+    title: "Power Apps & Power Pages",
+    subtitle: "Internal Operations Hubs & External-Facing Secure Portals",
+    primaryTech: "Power Apps (Canvas & Model-Driven) · Power Pages",
+    description: "Built using Power Apps (Canvas apps for responsive frontline mobile/tablet workflows, Model-driven apps for high-density transactional operational hubs) and Power Pages for secure, external-facing customer and supplier self-service portals.",
+    components: [
+      "Power Apps Canvas (Mobile & Tablet UX)",
+      "Power Apps Model-Driven (Data-Dense Back Office)",
+      "Power Pages (External Customer/Supplier Portals)",
+      "PCF Custom React 19 UI Controls (Pro-Code Extensions)"
+    ],
+    capabilities: [
+      "Responsive Multi-Form Factor Layouts",
+      "Multi-Tier Business Process Flows (BPFs)",
+      "External Partner Authentication & Role Scopes",
+      "Zero-Polling Push Cache & Offline Resilience"
+    ],
+    docLinks: [
+      { label: "Understanding Power Platform Architecture (Medium)", url: "https://medium.com/@walidchafroud/understanding-microsoft-power-platform-architecture-7bb5e756d7f7" },
+      { label: "Power Pages Architecture Walkthrough", url: "https://www.youtube.com/watch?v=6xKlq-qZdsI" }
+    ],
+    accentColor: "#8b5cf6"
+  },
+  {
+    id: "automation-layer",
+    layer: "03 · Automation Layer",
+    title: "Power Automate Multi-Tier Orchestration",
+    subtitle: "Cloud Flows, Desktop Flows (RPA) & Business Process Flows",
+    primaryTech: "Power Automate (Cloud Flows, Desktop RPA, BPF)",
+    description: "Orchestrated through Power Automate spanning automated, instant, and scheduled cloud flows, attended and unattended Desktop Flows (RPA) for legacy system cutovers, and multi-tier Business Process Flows enforcing deterministic governance.",
+    components: [
+      "Automated & Scheduled Cloud Flows",
+      "Desktop Flows / Unattended RPA (Legacy ERP)",
+      "Business Process Flows (State Machines)",
+      "Custom REST Webhooks & Adaptive Cards"
+    ],
+    capabilities: [
+      "15-Minute 5-Tier Commercial Approval Matrices",
+      "Unattended Desktop RPA for Legacy Domino / ERP",
+      "Automated Exception Handling & Run Telemetry",
+      "Cross-Tenant Webhooks & Microsoft Graph Triggers"
+    ],
+    docLinks: [
+      { label: "Power Automate Architecture Deep Dive", url: "https://www.youtube.com/watch?v=6xKlq-qZdsI" }
+    ],
+    accentColor: "#00dbe7"
+  },
+  {
+    id: "analytics-ai-layer",
+    layer: "04 · Analytics & AI Layer",
+    title: "Power BI & Copilot Studio",
+    subtitle: "Executive Telemetry Dashboards & Conversational AI Copilots",
+    primaryTech: "Power BI · Copilot Studio · AI Builder",
+    description: "Delivers real-time executive business intelligence via Power BI semantic models and interactive dashboards, paired with conversational AI experiences, document RAG, and autonomous agent triggers through Copilot Studio and AI Builder.",
+    components: [
+      "Power BI Semantic Models & DirectLake Telemetry",
+      "Copilot Studio Conversational Agents",
+      "AI Builder Document Processing & OCR",
+      "Tri-Engine AI Routing (Gemini, Groq, Copilot)"
+    ],
+    capabilities: [
+      "Real-Time Executive SLA & Burn Rate Telemetry",
+      "Natural Language Enterprise Data Exploration",
+      "Grounded Document RAG with Citation Provenance",
+      "Autonomous Multi-Agent Handshake & Routing"
+    ],
+    docLinks: [
+      { label: "Power Platform AI Architecture (Microsoft Learn)", url: "https://learn.microsoft.com/en-us/power-platform/architecture/" },
+      { label: "Copilot Studio & Power BI Integration", url: "https://www.youtube.com/watch?v=6xKlq-qZdsI&t=12" }
+    ],
+    accentColor: "#f59e0b"
+  },
+  {
+    id: "security-governance-layer",
+    layer: "05 · Security & Governance Layer",
+    title: "Microsoft Entra ID, RBAC & DLP Policies",
+    subtitle: "Zero-Trust Identity, Column-Level Security & CoE ALM",
+    primaryTech: "Microsoft Entra ID · RBAC · DLP Policies · CoE Kit",
+    description: "Handled centrally by Microsoft Entra ID for unified Single Sign-On (SSO) and Conditional Access, granular Role-Based Access Control (RBAC) with column/field-level security in Dataverse, and rigorous tenant-wide Data Loss Prevention (DLP) connector classifications.",
+    components: [
+      "Microsoft Entra ID (SSO & Conditional Access)",
+      "Dataverse Role-Based Access Control (RBAC)",
+      "Tenant Data Loss Prevention (DLP) Policies",
+      "Center of Excellence (CoE) Starter Kit & ALM"
+    ],
+    capabilities: [
+      "Zero-Trust Identity & Granular Security Roles",
+      "Column / Field-Level Security Profiles",
+      "DLP Connector Classification (Business vs Blocked)",
+      "Automated Multi-Stage CI/CD Pipeline Routing"
+    ],
+    docLinks: [
+      { label: "Microsoft Power Platform Security Architecture", url: "https://learn.microsoft.com/en-us/power-platform/admin/security/overview" }
+    ],
+    accentColor: "#22c55e"
   }
 ];
 
@@ -1636,6 +1763,86 @@ export const THOUGHT_LEADERSHIP: ThoughtLeadershipItem[] = [
 ];
 
 export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
+  {
+    id: "cert-power-platform-professional",
+    name: "Microsoft Certified: Power Platform Professional & Solution Architect",
+    issuer: "Microsoft",
+    organization: "Microsoft",
+    organizationLogoId: "microsoft",
+    issueDate: "2024",
+    category: "Power Platform",
+    credentialType: "Professional Certification",
+    skills: ["Power Apps (Canvas & Model-Driven)", "Power Automate", "Dataverse", "Power Fx", "ALM & Solutions", "PCF React Controls", "Copilot Studio"],
+    verified: true,
+    credentialUrl: "https://www.linkedin.com/in/aliakhmadf/",
+    credentialId: "MS-PL-PRO-2024",
+    summary: "Full-lifecycle enterprise certification covering the entire Microsoft Power Platform suite: Canvas Apps YAML architecture, Dataverse relational design and security boundaries, automated cloud flows, PAC CLI ALM pipelines, and custom pro-code TypeScript PCF controls.",
+    productionApplication: "Architected 365+ legacy Lotus Domino applications into Microsoft 365 & Dataverse at IOI Corporation/Acidchem, saving $960K/year in licensing, and designed 23 production Canvas apps with 878 screens.",
+    verificationMethod: "Microsoft Certified Official Credential",
+    hoursOrModules: "Enterprise Solution Architecture Labs & Examination",
+    expiryDate: "Active Credential",
+    pdfUrl: "/certificates/Power_Platform.pdf"
+  },
+  {
+    id: "cert-power-bi-professional",
+    name: "Microsoft Certified: Power BI Data Analyst Professional",
+    issuer: "Microsoft",
+    organization: "Microsoft",
+    organizationLogoId: "microsoft",
+    issueDate: "2024",
+    category: "Data & Analytics",
+    credentialType: "Professional Certification",
+    skills: ["Power BI", "DAX Formulas", "Power Query M", "Data Modeling", "Executive Dashboards", "KPI Telemetry", "Row-Level Security (RLS)"],
+    verified: true,
+    credentialUrl: "https://www.linkedin.com/in/aliakhmadf/",
+    credentialId: "MS-PL300-PBI-2024",
+    summary: "Professional certification validating end-to-end expertise in Microsoft Power BI: relational data modeling (Star/Snowflake schemas), advanced DAX aggregation formulas, Power Query M transformations, and row-level security (RLS) for enterprise scorecards.",
+    productionApplication: "Deployed directly to executive reporting and PulseTrack telemetry dashboards at Concentrix across 7 language pods and Accenture operational reviews, automating SLA tracking and eliminating manual spreadsheet reporting.",
+    verificationMethod: "Microsoft Certified Official Credential",
+    hoursOrModules: "Comprehensive Examination & Hands-On Performance Lab",
+    expiryDate: "Active Credential",
+    pdfUrl: "/certificates/CertificateOfCompletion_Excel Data Visualization Designing Custom Visualizations.pdf"
+  },
+  {
+    id: "cert-power-excel-professional",
+    name: "Power Excel Professional: Advanced Data Modeling, Power Pivot & Automation",
+    issuer: "Microsoft & LinkedIn",
+    organization: "Microsoft & LinkedIn",
+    organizationLogoId: "microsoft-linkedin",
+    issueDate: "2024",
+    category: "Data & Analytics",
+    credentialType: "Professional Certification",
+    skills: ["Power Excel", "Power Pivot", "Power Query", "DAX", "Dynamic Array Formulas", "Financial Modeling", "Capacity Rostering"],
+    verified: true,
+    credentialUrl: "https://www.linkedin.com/in/aliakhmadf/",
+    credentialId: "MS-LL-PEXCEL-PRO-2024",
+    summary: "Mastery of advanced Microsoft Excel technologies: dimensional data modeling with Power Pivot (xVelocity database), ETL pipelines in Power Query (M code), complex DAX time-intelligence formulas, and dynamic financial/operational models.",
+    productionApplication: "Engineered 24/7 rotational rostering algorithms and capacity models for 34 associates at Concentrix and validated historical inventory ledgers during enterprise ERP migrations.",
+    verificationMethod: "Microsoft & LinkedIn Learning Official Transcript",
+    hoursOrModules: "Comprehensive Advanced Curriculum & Practical Capstone",
+    expiryDate: "No Expiration · Lifetime Credential",
+    pdfUrl: "/certificates/CertificateOfCompletion_Excel Data Visualization Designing Custom Visualizations.pdf"
+  },
+  {
+    id: "cert-casper-professional",
+    name: "CASPER Professional: Situational Judgment, Ethical Decision-Making & People Leadership",
+    issuer: "Acuity Insights / Altus Assessments",
+    organization: "CASPER",
+    organizationLogoId: "general",
+    issueDate: "2024",
+    category: "Project & Process",
+    credentialType: "Professional Accreditation",
+    skills: ["Situational Judgment", "Ethical Leadership", "Conflict Resolution", "Critical Problem Solving", "Cross-Cultural Communication", "Empathy & High-Stakes Decision-Making"],
+    verified: true,
+    credentialUrl: "https://www.linkedin.com/in/aliakhmadf/",
+    credentialId: "CASPER-SJT-LEAD-2024",
+    summary: "Standardized evaluation and certification in behavioral situational judgment, ethical reasoning, crisis communication, and high-stakes people leadership across diverse operational environments.",
+    productionApplication: "Core operational framework applied when managing 34 direct reports across 7 dedicated language pods, sustaining <5% annualized attrition, coaching junior team leads, and resolving cross-market escalation deadlocks.",
+    verificationMethod: "Official Standardized Assessment & Evaluation Transcript",
+    hoursOrModules: "Standardized Multi-Station Situational Scenario Assessment",
+    expiryDate: "Active Credential",
+    pdfUrl: "/certificates/ABOUT_ME.pdf"
+  },
   {
     id: "cert-data-analysis",
     name: "Career Essentials in Data Analysis",
@@ -2166,17 +2373,9 @@ export const LINKEDIN_HONORS_AWARDS: HonorAwardItem[] = [
     organization: "Accenture",
     organizationLogoId: "accenture",
     year: "July 2021",
+    tier: "pinnacle",
+    highlightBadge: "#1 Team Lead Across Delivery Center",
     description: "Conferred the prestigious Hang Tuah Award as the top-performing Team Lead across the Accenture delivery center, recognized for exceptional people leadership, frontline morale, and commanding high-stakes queue crisis governance.",
-    certificatePdfUrl: "/certificates/ABOUT_ME.pdf"
-  },
-  {
-    id: "award-accenture-leadership",
-    title: "Accenture Leadership Award — Operational Leadership Contribution",
-    issuer: "Accenture",
-    organization: "Accenture",
-    organizationLogoId: "accenture",
-    year: "July 2020",
-    description: "Awarded by Accenture senior leadership for outstanding leadership contributions, cross-functional coaching, and sustained SLA performance across global enterprise service delivery queues.",
     certificatePdfUrl: "/certificates/ABOUT_ME.pdf"
   },
   {
@@ -2186,47 +2385,9 @@ export const LINKEDIN_HONORS_AWARDS: HonorAwardItem[] = [
     organization: "Accenture",
     organizationLogoId: "accenture",
     year: "2021",
+    tier: "pinnacle",
+    highlightBadge: "Global Low-Code Operational Automation",
     description: "Recognized for pioneering low-code operational automation on the floor (Power Apps, Power Automate, Power BI) and sustaining >98% SLA compliance across global enterprise accounts.",
-    certificatePdfUrl: "/certificates/ABOUT_ME.pdf"
-  },
-  {
-    id: "award-accenture-best-tl-apr-2019",
-    title: "The Best Operations Team Lead Award (April 2019)",
-    issuer: "Accenture",
-    organization: "Accenture",
-    organizationLogoId: "accenture",
-    year: "April 2019",
-    description: "Acknowledged for achieving the #1 best team performance and highest SLA adherence across all service delivery teams on the operations floor for April 2019.",
-    certificatePdfUrl: "/certificates/ABOUT_ME.pdf"
-  },
-  {
-    id: "award-accenture-best-tl-mar-2019",
-    title: "The Best Operations Team Lead Award (March 2019)",
-    issuer: "Accenture",
-    organization: "Accenture",
-    organizationLogoId: "accenture",
-    year: "March 2019",
-    description: "Recognized for leading the operations team to top monthly performance, driving queue optimization, and meeting all service quality targets for March 2019.",
-    certificatePdfUrl: "/certificates/ABOUT_ME.pdf"
-  },
-  {
-    id: "award-accenture-best-tl-feb-2019",
-    title: "The Best Operations Team Lead Award (February 2019)",
-    issuer: "Accenture",
-    organization: "Accenture",
-    organizationLogoId: "accenture",
-    year: "February 2019",
-    description: "Awarded for consistently driving the highest team performance, schedule adherence, and resolution velocity across rotational shifts for February 2019.",
-    certificatePdfUrl: "/certificates/ABOUT_ME.pdf"
-  },
-  {
-    id: "award-accenture-best-people",
-    title: "The Best People Award (Team Lead) — Quarterly Business Review (QBR)",
-    issuer: "Accenture",
-    organization: "Accenture",
-    organizationLogoId: "accenture",
-    year: "September 2018",
-    description: "Honored with the prestigious Best People Award during the Quarterly Business Review (QBR) for excellence in people management, frontline coaching, and maintaining annualized team attrition below 5%.",
     certificatePdfUrl: "/certificates/ABOUT_ME.pdf"
   },
   {
@@ -2236,6 +2397,8 @@ export const LINKEDIN_HONORS_AWARDS: HonorAwardItem[] = [
     organization: "Concentrix",
     organizationLogoId: "concentrix",
     year: "2024",
+    tier: "pinnacle",
+    highlightBadge: "380% Scale · 7 Language Pods · >98% SLA",
     description: "Awarded by Concentrix senior executive leadership as Operations Team Manager: led 34 direct reports across 7 language pods (Indonesian, Chinese Mainland, Korean, Japanese, English, Thai, Vietnamese), scaled squad by 380%, sustained >98% contractual SLA, and reduced AHT by 25% via Six Sigma DMAIC.",
     certificatePdfUrl: "/certificates/Concentrix_2024_Employment_Certificate.pdf"
   },
@@ -2246,6 +2409,8 @@ export const LINKEDIN_HONORS_AWARDS: HonorAwardItem[] = [
     organization: "Universiti Utara Malaysia (UUM)",
     organizationLogoId: "uum",
     year: "April 2015",
+    tier: "pinnacle",
+    highlightBadge: "Top Institutional Honor (Anugerah Kerana Jasa)",
     description: "Received the prestigious AK_J (Anugerah Kerana Jasa) award from UUM for special achievement in student governance, cross-cultural leadership, and international institutional representation.",
     certificatePdfUrl: "/certificates/ABOUT_ME.pdf"
   },
@@ -2255,15 +2420,81 @@ export const LINKEDIN_HONORS_AWARDS: HonorAwardItem[] = [
     issuer: "Universiti Utara Malaysia (UUM)",
     organization: "Universiti Utara Malaysia (UUM)",
     organizationLogoId: "uum",
-    year: "February 2015",
+    year: "February 2014",
+    tier: "pinnacle",
+    highlightBadge: "RM10,000 / Semester Merit Fellowship",
     description: "Awarded a competitive merit scholarship of RM10,000 per semester, selected among 10,000+ domestic and 200+ international students for outstanding performance in academics, student governance, and community involvement.",
+    certificatePdfUrl: "/certificates/ABOUT_ME.pdf"
+  },
+  {
+    id: "award-accenture-leadership",
+    title: "Accenture Leadership Award — Operational Leadership Contribution",
+    issuer: "Accenture",
+    organization: "Accenture",
+    organizationLogoId: "accenture",
+    year: "July 2020",
+    tier: "corporate",
+    highlightBadge: "Senior Leadership Recognition",
+    description: "Awarded by Accenture senior leadership for outstanding leadership contributions, cross-functional coaching, and sustained SLA performance across global enterprise service delivery queues.",
+    certificatePdfUrl: "/certificates/ABOUT_ME.pdf"
+  },
+  {
+    id: "award-accenture-best-tl-apr-2019",
+    title: "The Best Operations Team Lead Award (April 2019)",
+    issuer: "Accenture",
+    organization: "Accenture",
+    organizationLogoId: "accenture",
+    year: "April 2019",
+    tier: "corporate",
+    highlightBadge: "Consecutive Streak #3 (April 2019)",
+    description: "Acknowledged for achieving the #1 best team performance and highest SLA adherence across all service delivery teams on the operations floor for April 2019.",
+    certificatePdfUrl: "/certificates/ABOUT_ME.pdf"
+  },
+  {
+    id: "award-accenture-best-tl-mar-2019",
+    title: "The Best Operations Team Lead Award (March 2019)",
+    issuer: "Accenture",
+    organization: "Accenture",
+    organizationLogoId: "accenture",
+    year: "March 2019",
+    tier: "corporate",
+    highlightBadge: "Consecutive Streak #2 (March 2019)",
+    description: "Recognized for leading the operations team to top monthly performance, driving queue optimization, and meeting all service quality targets for March 2019.",
+    certificatePdfUrl: "/certificates/ABOUT_ME.pdf"
+  },
+  {
+    id: "award-accenture-best-tl-feb-2019",
+    title: "The Best Operations Team Lead Award (February 2019)",
+    issuer: "Accenture",
+    organization: "Accenture",
+    organizationLogoId: "accenture",
+    year: "February 2019",
+    tier: "corporate",
+    highlightBadge: "Consecutive Streak #1 (February 2019)",
+    description: "Awarded for consistently driving the highest team performance, schedule adherence, and resolution velocity across rotational shifts for February 2019.",
+    certificatePdfUrl: "/certificates/ABOUT_ME.pdf"
+  },
+  {
+    id: "award-accenture-best-people",
+    title: "The Best People Award (Team Lead) — Quarterly Business Review (QBR)",
+    issuer: "Accenture",
+    organization: "Accenture",
+    organizationLogoId: "accenture",
+    year: "September 2018",
+    tier: "corporate",
+    highlightBadge: "QBR Best People Award · <5% Attrition",
+    description: "Honored with the prestigious Best People Award during the Quarterly Business Review (QBR) for excellence in people management, frontline coaching, and maintaining annualized team attrition below 5%.",
     certificatePdfUrl: "/certificates/ABOUT_ME.pdf"
   },
   {
     id: "award-deans-list-sem5",
     title: "Dean's Academic Award — Semester 5 (Final Year Distinction)",
     issuer: "Universiti Utara Malaysia (UUM)",
+    organization: "Universiti Utara Malaysia (UUM)",
+    organizationLogoId: "uum",
     year: "October 2016",
+    tier: "academic",
+    highlightBadge: "5th Consecutive Dean's Honor (Final Year)",
     description: "Awarded Dean's Academic Honors by Universiti Utara Malaysia for distinguished scholastic achievement in Bachelor of International Business Management (Honours).",
     certificatePdfUrl: "/certificates/ABOUT_ME.pdf"
   },
@@ -2271,7 +2502,11 @@ export const LINKEDIN_HONORS_AWARDS: HonorAwardItem[] = [
     id: "award-deans-list-sem4",
     title: "Dean's Academic Award — Semester 4",
     issuer: "Universiti Utara Malaysia (UUM)",
+    organization: "Universiti Utara Malaysia (UUM)",
+    organizationLogoId: "uum",
     year: "October 2015",
+    tier: "academic",
+    highlightBadge: "4th Consecutive Dean's Honor",
     description: "Conferred by Universiti Utara Malaysia for top-tier academic GPA standing in International Business & Logistics.",
     certificatePdfUrl: "/certificates/ABOUT_ME.pdf"
   },
@@ -2279,7 +2514,11 @@ export const LINKEDIN_HONORS_AWARDS: HonorAwardItem[] = [
     id: "award-deans-list-sem3",
     title: "Dean's Academic Award — Semester 3",
     issuer: "School of International Studies, UUM",
+    organization: "Universiti Utara Malaysia (UUM)",
+    organizationLogoId: "uum",
     year: "March 2015",
+    tier: "academic",
+    highlightBadge: "3rd Consecutive Dean's Honor",
     description: "Conferred by the Dean of the School of International Studies (COLGIS) for top-percentile academic standing.",
     certificatePdfUrl: "/certificates/ABOUT_ME.pdf"
   },
@@ -2287,7 +2526,11 @@ export const LINKEDIN_HONORS_AWARDS: HonorAwardItem[] = [
     id: "award-deans-list-sem2",
     title: "Dean's Academic Award — Semester 2",
     issuer: "School of International Business Management, UUM",
+    organization: "Universiti Utara Malaysia (UUM)",
+    organizationLogoId: "uum",
     year: "March 2014",
+    tier: "academic",
+    highlightBadge: "2nd Consecutive Dean's Honor",
     description: "Conferred by the Dean of the School of International Business Management for outstanding coursework mastery and academic distinction.",
     certificatePdfUrl: "/certificates/ABOUT_ME.pdf"
   },
@@ -2295,7 +2538,11 @@ export const LINKEDIN_HONORS_AWARDS: HonorAwardItem[] = [
     id: "award-deans-list-sem1",
     title: "Dean's Academic Award — Semester 1",
     issuer: "School of International Study, UUM",
+    organization: "Universiti Utara Malaysia (UUM)",
+    organizationLogoId: "uum",
     year: "October 2013",
+    tier: "academic",
+    highlightBadge: "Dean's Academic Honor (Semester 1)",
     description: "Awarded Dean's Academic Honors in the first academic semester for exemplary academic achievement.",
     certificatePdfUrl: "/certificates/ABOUT_ME.pdf"
   },
@@ -2306,6 +2553,8 @@ export const LINKEDIN_HONORS_AWARDS: HonorAwardItem[] = [
     organization: "Universiti Utara Malaysia (UUM)",
     organizationLogoId: "uum",
     year: "2014 – 2017",
+    tier: "academic",
+    highlightBadge: "Elected Campus Representative & IBMS President",
     description: "Elected to Student Representative Council (SRC / MPPUUM) for International Affairs and served as President of IBMS (International Business Management Association), directing campus-wide international student governance, cross-cultural mobility programs, and global commerce symposia.",
     certificatePdfUrl: "/certificates/ABOUT_ME.pdf"
   }

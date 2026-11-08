@@ -369,7 +369,7 @@ export const DualCareerBranchVisualizer: React.FC = () => {
       {
         id: 'trunk-uum',
         title: 'B.Sc. International Business Management (Honours)',
-        detail: "Universiti Utara Malaysia (CGPA 3.48, Second Upper Class Honours, Minor in Logistics) · 5× Dean's List Recipient · SRC for International Affairs · President of IBMS · Full RM10k/sem Scholarship"
+        detail: "Universiti Utara Malaysia (CGPA 3.48, Second Upper Class Honours, Minor in Logistics) · 5× Dean's List Recipient · SRC for International Affairs · President of IBMS · Full RM10k/sem Scholarship (Feb 2014)"
       },
       {
         id: 'ops-thelorry',

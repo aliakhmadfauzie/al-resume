@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { motion } from 'motion/react';
 import {
+  POWER_PLATFORM_ARCH_SUITE,
   DEV_STACK,
   GOVERNANCE_ITEMS,
   BUSINESS_COMPETENCIES,
@@ -12,6 +13,7 @@ import {
 import {
   Terminal,
   Layers,
+  ExternalLink,
   ShieldCheck,
   Workflow,
   Database,
@@ -387,90 +389,156 @@ export const SkillsView: React.FC = () => {
         </div>
       </section>
 
-      {/* SECTION 2: Power Platform Architecture Suite */}
-      <section className="space-y-4">
-        <div className="border-b border-[var(--border-subtle)] pb-3">
-          <p className="text-xs font-mono text-[var(--text-accent)] font-medium">02 · Core Platform Stack</p>
-          <h2
-            className="font-medium text-[var(--text-primary)] tracking-tight mt-1"
-            style={{ fontSize: 'var(--text-h2)', lineHeight: 1.25 }}
-          >
-            Power Platform Architecture Suite
-          </h2>
+      {/* SECTION 2: Power Platform Enterprise Architecture Suite */}
+      <section className="space-y-6">
+        <div className="border-b border-[var(--border-subtle)] pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+          <div>
+            <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-[var(--interactive-subtle-bg)] border border-[var(--interactive-subtle-border)] text-xs font-mono text-[var(--text-accent)] font-semibold uppercase tracking-wider mb-2">
+              <Layers className="w-3.5 h-3.5 text-[var(--interactive-primary)]" />
+              <span>02 · Enterprise Architecture Stack</span>
+            </div>
+            <h2
+              className="font-bold text-[var(--text-primary)] tracking-tight"
+              style={{ fontSize: 'var(--text-h2)', lineHeight: 1.2 }}
+            >
+              Power Platform Enterprise Architecture Suite
+            </h2>
+            <p className="text-sm text-[var(--text-secondary)] mt-1.5 max-w-3xl leading-relaxed">
+              5-Tier architectural framework governing enterprise data persistence, application user experience, automated workflow orchestration, real-time analytics/AI, and zero-trust security.
+            </p>
+          </div>
+          <span className="text-xs font-mono text-[var(--text-accent)] bg-[#0f1117] border border-[var(--border-subtle)] px-3 py-1.5 rounded-[var(--radius-sm)] shrink-0 self-start sm:self-auto">
+            5 Architectural Layers
+          </span>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <div className="glass-card p-6 space-y-4 flex flex-col justify-between">
-            <div className="space-y-3">
-              <div className="w-9 h-9 rounded-[var(--radius-sm)] bg-[var(--bg-surface-elevated)] border border-[var(--border-subtle)] flex items-center justify-center text-[var(--text-accent)]">
-                <Layers className="w-4 h-4" />
-              </div>
-              <div>
-                <h3 className="text-base font-semibold text-[var(--text-primary)]">Power Apps</h3>
-                <p className="text-xs text-[var(--text-tertiary)] font-mono mt-0.5">Canvas · Model-Driven</p>
-              </div>
-              <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-                Responsive, accessible canvas applications and complex model-driven architectures with custom business process flows (BPFs) and role-tailored forms.
-              </p>
-            </div>
-            <div className="pt-3 border-t border-[var(--border-subtle)] text-xs text-[var(--text-tertiary)] font-mono">
-              Responsive UI · Offline Sync · PCF Controls
-            </div>
-          </div>
+        {/* 5-Layer Stack Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {POWER_PLATFORM_ARCH_SUITE.map((layer) => {
+            const getLayerIcon = (id: string) => {
+              switch (id) {
+                case 'data-layer':
+                  return <Database className="w-4 h-4" />;
+                case 'application-layer':
+                  return <Layers className="w-4 h-4" />;
+                case 'automation-layer':
+                  return <Workflow className="w-4 h-4" />;
+                case 'analytics-ai-layer':
+                  return <BarChart className="w-4 h-4" />;
+                case 'security-governance-layer':
+                  return <ShieldCheck className="w-4 h-4" />;
+                default:
+                  return <Sparkles className="w-4 h-4" />;
+              }
+            };
 
-          <div className="glass-card p-6 space-y-4 flex flex-col justify-between">
-            <div className="space-y-3">
-              <div className="w-9 h-9 rounded-[var(--radius-sm)] bg-[var(--bg-surface-elevated)] border border-[var(--border-subtle)] flex items-center justify-center text-[var(--text-accent)]">
-                <Workflow className="w-4 h-4" />
-              </div>
-              <div>
-                <h3 className="text-base font-semibold text-[var(--text-primary)]">Power Automate</h3>
-                <p className="text-xs text-[var(--text-tertiary)] font-mono mt-0.5">Cloud Flows · Desktop RPA</p>
-              </div>
-              <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-                Automated multi-stage approval matrices, scheduled Domino agent replacements, exception handlers, REST API webhooks, and desktop RPA.
-              </p>
-            </div>
-            <div className="pt-3 border-t border-[var(--border-subtle)] text-xs text-[var(--text-tertiary)] font-mono">
-              Error Tracing · Adaptive Cards · OData
-            </div>
-          </div>
+            return (
+              <div
+                key={layer.id}
+                className="glass-card p-5 sm:p-6 space-y-4 flex flex-col justify-between relative overflow-hidden transition-[transform,border-color,box-shadow] duration-300 hover:-translate-y-1 hover:border-orange-500/40 hover:shadow-[0_12px_32px_-8px_rgba(0,0,0,0.6),0_0_20px_-4px_rgba(249,115,22,0.12)] group"
+              >
+                {/* Top Accent Glint */}
+                <div
+                  className="absolute top-0 inset-x-0 h-[2px] transition-opacity duration-300 opacity-60 group-hover:opacity-100"
+                  style={{ backgroundColor: layer.accentColor || '#f97316' }}
+                />
 
-          <div className="glass-card p-6 space-y-4 flex flex-col justify-between">
-            <div className="space-y-3">
-              <div className="w-9 h-9 rounded-[var(--radius-sm)] bg-[var(--bg-surface-elevated)] border border-[var(--border-subtle)] flex items-center justify-center text-[var(--text-accent)]">
-                <Database className="w-4 h-4" />
-              </div>
-              <div>
-                <h3 className="text-base font-semibold text-[var(--text-primary)]">Microsoft Dataverse</h3>
-                <p className="text-xs text-[var(--text-tertiary)] font-mono mt-0.5">Relational Enterprise Data</p>
-              </div>
-              <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-                Enterprise relational data modeling, custom tables, 1:N &amp; N:N relationships, business rules, field-level security, and database isolation.
-              </p>
-            </div>
-            <div className="pt-3 border-t border-[var(--border-subtle)] text-xs text-[var(--text-tertiary)] font-mono">
-              Security Roles · Audit Trails · Isolation
-            </div>
-          </div>
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between gap-2">
+                    <span
+                      className="text-[11px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded border"
+                      style={{
+                        color: layer.accentColor || '#f97316',
+                        borderColor: (layer.accentColor || '#f97316') + '33',
+                        backgroundColor: (layer.accentColor || '#f97316') + '15'
+                      }}
+                    >
+                      {layer.layer}
+                    </span>
+                    <div
+                      className="w-8 h-8 rounded-[var(--radius-sm)] bg-[#0f1117] border border-[var(--border-subtle)] flex items-center justify-center shrink-0 transition-transform group-hover:scale-110"
+                      style={{ color: layer.accentColor || '#f97316' }}
+                    >
+                      {getLayerIcon(layer.id)}
+                    </div>
+                  </div>
 
-          <div className="glass-card p-6 space-y-4 flex flex-col justify-between">
-            <div className="space-y-3">
-              <div className="w-9 h-9 rounded-[var(--radius-sm)] bg-[var(--bg-surface-elevated)] border border-[var(--border-subtle)] flex items-center justify-center text-[var(--text-accent)]">
-                <Sparkles className="w-4 h-4" />
+                  <div>
+                    <h3 className="text-base font-bold text-[var(--text-primary)] group-hover:text-white transition-colors">
+                      {layer.title}
+                    </h3>
+                    <p className="text-xs text-[var(--text-accent)] font-mono mt-0.5 font-medium">
+                      {layer.subtitle}
+                    </p>
+                  </div>
+
+                  <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
+                    {layer.description}
+                  </p>
+
+                  {/* Components Breakdown */}
+                  <div className="space-y-1.5 pt-2 border-t border-[var(--border-subtle)]">
+                    <p className="text-[10px] font-mono text-[var(--text-tertiary)] uppercase font-semibold">
+                      // CORE COMPONENTS:
+                    </p>
+                    <div className="flex flex-wrap gap-1.5">
+                      {layer.components.map((comp, cIdx) => (
+                        <span
+                          key={cIdx}
+                          className="px-2 py-0.5 rounded text-[10px] font-mono bg-[#11131c] text-neutral-300 border border-white/5"
+                        >
+                          {comp}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Capabilities Checklist */}
+                  <div className="space-y-1.5 pt-2 border-t border-[var(--border-subtle)]">
+                    <p className="text-[10px] font-mono text-[var(--text-tertiary)] uppercase font-semibold">
+                      // ARCHITECTURAL CAPABILITIES:
+                    </p>
+                    <ul className="space-y-1 text-xs text-[var(--text-secondary)]">
+                      {layer.capabilities.map((cap, capIdx) => (
+                        <li key={capIdx} className="flex items-start space-x-1.5">
+                          <span
+                            className="mt-0.5 shrink-0 text-[10px] font-bold"
+                            style={{ color: layer.accentColor || '#f97316' }}
+                          >
+                            ✓
+                          </span>
+                          <span>{cap}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                {/* Documentation Provenance Links */}
+                {layer.docLinks && layer.docLinks.length > 0 && (
+                  <div className="pt-3 border-t border-[var(--border-subtle)] space-y-1.5">
+                    <p className="text-[10px] font-mono text-[var(--text-tertiary)] uppercase font-semibold">
+                      // ARCHITECTURAL REFERENCES:
+                    </p>
+                    <div className="flex flex-col gap-1">
+                      {layer.docLinks.map((doc, dIdx) => (
+                        <a
+                          key={dIdx}
+                          href={doc.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center justify-between text-[11px] font-mono text-[var(--text-accent)] hover:text-white transition-colors py-0.5 px-1.5 rounded hover:bg-white/[0.04]"
+                        >
+                          <span className="truncate pr-2">{doc.label}</span>
+                          <ExternalLink className="w-3 h-3 shrink-0 opacity-70" />
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
-              <div>
-                <h3 className="text-base font-semibold text-[var(--text-primary)]">AI Builder &amp; Copilot</h3>
-                <p className="text-xs text-[var(--text-tertiary)] font-mono mt-0.5">Intelligent Automation</p>
-              </div>
-              <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-                Custom prompt engineering, document processing, NLP classification across 120+ SOP categories, semantic search ranking, and Copilot Studio agents.
-              </p>
-            </div>
-            <div className="pt-3 border-t border-[var(--border-subtle)] text-xs text-[var(--text-tertiary)] font-mono">
-              NLP Classifier · SOP Extraction · RAG
-            </div>
-          </div>
+            );
+          })}
         </div>
       </section>
 
