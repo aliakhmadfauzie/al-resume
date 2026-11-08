@@ -1184,7 +1184,7 @@ export const WORK_EXPERIENCE: ExperienceItem[] = [
     location: "Kuala Lumpur, Malaysia",
     period: "May 2023 – Apr 2025",
     tags: [
-      "QA DPR & Auditing",
+      "QA Department & Auditing",
       "Policy Creation",
       "Training Delivery",
       "Trust & Safety",
@@ -1195,7 +1195,7 @@ export const WORK_EXPERIENCE: ExperienceItem[] = [
       "Six Sigma DMAIC"
     ],
     bulletPoints: [
-      "QA DPR & Transaction Auditing: Personally managed and adjudicated QA DPR (Dispute Performance Reports / Daily Performance Reviews), conducted deep-dive transaction audits across live chat and email cases, and led calibration panels to eliminate scoring variance and defect outliers.",
+      "QA Department Leadership & Transaction Auditing: Directed QA department workflows, conducted deep-dive transaction audits across live chat and email cases, and led calibration panels to eliminate scoring variance and defect outliers.",
       "Policy Creation & SOP Authoring: Directly authored, created, and updated operational policy documentation, decision trees, and standard operating procedures (SOPs) for Trust & Safety (content moderation) and Advertising Integrity (Ads Review), translating complex client policy changes into clear frontline enforcement standards.",
       "Conducting Training & Nesting Academies: Designed instructional materials and directly conducted onboarding training bootcamps, nesting clinics, and refresher workshops, coaching frontline specialists and raising 90-day associate competency from 78% to 94%.",
       "BPO Floor Leadership & Scaling: Commanded daily 24/7 BPO operations scaling headcount by 380% (from 9 to 34 multilingual associates across 7 APAC language pods: Indonesian, Chinese Mainland, Korean, Japanese, English, Thai, Vietnamese) in Trust & Safety, Ads Review, and Omnichannel Live Chat/Email, sustaining >98%+ contractual SLA compliance.",
@@ -1508,9 +1508,9 @@ export const BUSINESS_COMPETENCIES: BusinessCompetency[] = [
 
 export const ADDITIONAL_COMPETENCIES = [
   {
-    category: "QA Auditing & Quality DPR",
+    category: "QA Department & Quality Auditing",
     skills: [
-      "QA DPR Handling & Dispute Resolution",
+      "QA Department Operations & Dispute Adjudication",
       "Transaction & Case Auditing",
       "Quality Calibration Sessions",
       "Defect Taxonomy & Root-Cause Analysis",

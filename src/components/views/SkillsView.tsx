@@ -207,7 +207,7 @@ export const SkillsView: React.FC = () => {
         subtitle: 'Service delivery governance, SLA & KPI management, contact center operations, and cross-functional team leadership.',
         categories: ADDITIONAL_COMPETENCIES.filter((c) =>
           [
-            'QA Auditing & Quality DPR',
+            'QA Department & Quality Auditing',
             'Policy Creation & SOP Authoring',
             'Training Delivery & Instructional Coaching',
             'BPO Operations, Trust & Safety & Ads Review',

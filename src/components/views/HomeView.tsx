@@ -568,7 +568,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
             </div>
           </div>
 
-          {/* PILLAR 2: Operations, QA DPR, Policy Creation & Training */}
+          {/* PILLAR 2: Operations, QA Department, Policy Creation & Training */}
           <div className="rounded-xl bg-[#0e1017]/90 border border-emerald-500/30 p-5 sm:p-6 space-y-4 hover:border-emerald-500/50 transition-colors shadow-lg flex flex-col justify-between">
             <div className="space-y-4">
               <div className="flex items-center justify-between">
@@ -578,7 +578,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
                   </div>
                   <div>
                     <h3 className="text-base font-bold text-white tracking-tight">
-                      Operations, QA DPR, Policy &amp; Training
+                      Operations, QA Department, Policy &amp; Training
                     </h3>
                     <div className="text-xs font-mono text-emerald-400">QA Auditing, Policy Creation &amp; Training Track</div>
                   </div>
@@ -589,7 +589,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
               </div>
 
               <p className="text-xs text-zinc-300 leading-relaxed">
-                Operations Team Manager at Concentrix &amp; Senior Team Lead at Accenture leading 34 direct reports across 7 APAC markets. Direct hands-on ownership of QA DPR &amp; transaction auditing, policy creation &amp; SOP authoring, conducting training academies, and directing Trust &amp; Safety and Ads Review operations.
+                Operations Team Manager at Concentrix &amp; Senior Team Lead at Accenture leading 34 direct reports across 7 APAC markets. Direct hands-on ownership of QA department operations &amp; transaction auditing, policy creation &amp; SOP authoring, conducting training academies, and directing Trust &amp; Safety and Ads Review operations.
               </p>
 
               {/* 4 Metric Bento Mini-Tiles */}

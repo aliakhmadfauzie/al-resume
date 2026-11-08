@@ -188,11 +188,11 @@ export const DualCareerBranchVisualizer: React.FC = () => {
       period: 'May 2023 – Apr 2025',
       role: 'Operations Team Manager (QA, Policy & Training)',
       company: 'Concentrix CVG',
-      headline: 'Hands-on QA DPR Auditing, Policy Creation, Conducting Training & 34 Reports Across 7 Language Pods',
+      headline: 'Hands-on QA Department Auditing, Policy Creation, Conducting Training & 34 Reports Across 7 Language Pods',
       category: 'operations',
       promotionBadge: '★ Enterprise Scale Leader',
       leadershipSalesHighlights: [
-        'QA DPR & Transaction Auditing: Personally managed and adjudicated QA DPR (Dispute Performance Reports / Daily Performance Reviews), conducted deep-dive transaction audits across live chat and email cases, and led weekly calibration sessions to ensure grading consistency.',
+        'QA Department Leadership & Transaction Auditing: Directed QA department operations, conducted deep-dive transaction audits across live chat and email cases, and led weekly calibration sessions to ensure grading consistency.',
         'Policy Creation & Formulation: Authored and created operational policy documentation, SOPs, and edge-case decision trees for Trust & Safety (content moderation) and Advertising Integrity (Ads Review), converting complex client guidelines into clear frontline action rules.',
         'Direct Training Delivery: Personally conducted new-hire classroom training, nesting phase coaching, and upskilling clinics, preparing incoming specialists across 7 language pods (Indonesian, Chinese, Korean, Japanese, English, Thai, Vietnamese) and elevating 90-day competency from 78% to 94%.',
         'BPO Floor Operations & Team Scale: Commanded 24/7 floor operations scaling headcount by 380% (9 to 34 multilingual associates) in Trust & Safety, Ads Review, and Live Chat/Email, maintaining >98%+ contractual SLA adherence and <5% attrition.',
@@ -209,7 +209,7 @@ export const DualCareerBranchVisualizer: React.FC = () => {
         { label: 'SLA Adherence', value: '98%+', color: '#22c55e' },
         { label: 'AHT Reduction', value: '-25%', color: '#eab308' }
       ],
-      tags: ['QA DPR & Auditing', 'Policy Creation', 'Training Delivery', 'Trust & Safety', 'Ads Review', 'Live Chat & Email', 'BPO Operations', 'Six Sigma DMAIC']
+      tags: ['QA Department & Auditing', 'Policy Creation', 'Training Delivery', 'Trust & Safety', 'Ads Review', 'Live Chat & Email', 'BPO Operations', 'Six Sigma DMAIC']
     },
     'ops-accenture-sr-lead': {
       period: 'Jan 2021 – Nov 2022',
@@ -550,15 +550,15 @@ export const DualCareerBranchVisualizer: React.FC = () => {
                 </div>
                 <div>
                   <span className="text-[10px] font-mono font-bold text-[#f59e0b] uppercase tracking-wider">BRANCH 02 · OPERATIONS, QA, POLICY &amp; TRAINING</span>
-                  <h3 className="text-sm font-bold text-white">Operations Leadership, QA DPR, Policy &amp; Training</h3>
+                  <h3 className="text-sm font-bold text-white">Operations Leadership, QA Department, Policy &amp; Training</h3>
                 </div>
               </div>
               <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-[#f59e0b]/10 text-[#f59e0b] border border-[#f59e0b]/20 shrink-0">
-                QA DPR · Policy · Training · 34 Reports
+                QA Department · Policy · Training · 34 Reports
               </span>
             </div>
             <p className="text-xs text-neutral-300 mt-2.5 leading-relaxed">
-              Comprehensive BPO leadership not only managing floor operations, but directly handling QA DPR &amp; transaction auditing, authoring operational policies/SOPs, conducting new-hire training academies, and directing Trust &amp; Safety and Ads Review across 7 markets.
+              Comprehensive BPO leadership not only managing floor operations, but directly handling QA department oversight &amp; transaction auditing, authoring operational policies/SOPs, conducting new-hire training academies, and directing Trust &amp; Safety and Ads Review across 7 markets.
             </p>
           </div>
         </div>

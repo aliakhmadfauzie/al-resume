@@ -25,7 +25,7 @@ export const ExperienceView: React.FC = () => {
   const allTags = [
     'all',
     'Promotions',
-    'QA DPR & Auditing',
+    'QA Department & Auditing',
     'Policy Creation',
     'Training Delivery',
     'Trust & Safety',
