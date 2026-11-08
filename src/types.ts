@@ -211,3 +211,31 @@ export interface LinkedInTestimonial {
   badge: string;
 }
 
+export interface ExecutiveNarrativeBeat {
+  beatNumber: number;
+  title: string;
+  subtitle: string;
+  content: string;
+}
+
+export interface ImpactDeltaRow {
+  dimension: string;
+  before: string;
+  after: string;
+  delta: string;
+}
+
+export interface LockedContextFlag {
+  id: string;
+  name: string;
+  value: string;
+}
+
+export interface ExecutiveCareerNarrative {
+  hook: string;
+  beats: ExecutiveNarrativeBeat[];
+  impactDelta: ImpactDeltaRow[];
+  lockedFlags: LockedContextFlag[];
+}
+
+

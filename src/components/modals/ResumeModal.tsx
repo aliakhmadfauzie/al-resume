@@ -206,7 +206,14 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose, onOpe
 
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
                     <div>
-                      <h4 className="text-sm font-semibold text-[var(--text-primary)]">{exp.role}</h4>
+                      <div className="flex flex-wrap items-center gap-2">
+                        <h4 className="text-sm font-semibold text-[var(--text-primary)]">{exp.role}</h4>
+                        {exp.promotionBadge && (
+                          <span className="px-1.5 py-0.5 rounded text-[10px] font-mono font-semibold bg-[#22c55e]/15 text-[#22c55e] border border-[#22c55e]/30">
+                            {exp.promotionBadge}
+                          </span>
+                        )}
+                      </div>
                       <p className="text-xs text-[var(--text-accent)] font-medium">
                         {exp.company} · {exp.location}
                       </p>

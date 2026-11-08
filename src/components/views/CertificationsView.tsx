@@ -542,7 +542,7 @@ export const CertificationsView: React.FC = () => {
             </h2>
           </div>
           <span className="text-xs font-mono text-[var(--text-secondary)]">
-            Accenture · Universiti Utara Malaysia (UUM)
+            Accenture · Concentrix · Universiti Utara Malaysia (UUM)
           </span>
         </div>
 

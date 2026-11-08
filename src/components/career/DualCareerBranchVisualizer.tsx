@@ -138,7 +138,7 @@ export const DualCareerBranchVisualizer: React.FC = () => {
       leadershipSalesHighlights: [
         'Promoted to Senior Team Lead; directed customer support and service delivery operations across 7 global APAC markets.',
         'Maintained annualized team attrition below 5% through structured 1-on-1 coaching, QA audit loops, and career progression ladders.',
-        'Received the prestigious Accenture Diamond Award for sustained client delivery excellence and operational crisis governance.'
+        'Received the prestigious Hang Tuah Award (July 2021) as top-performing Team Lead and the Accenture Diamond Award for sustained client delivery excellence.'
       ],
       techOrOpsHighlights: [
         'Pioneered Power Platform adoption across the operations floor in 2021 (Power Apps, Power Automate, Power BI), cutting handling costs by 15%.',
@@ -162,6 +162,7 @@ export const DualCareerBranchVisualizer: React.FC = () => {
       leadershipSalesHighlights: [
         'Promoted from Junior Team Lead to full Operations Team Lead, managing 20–25 direct reports handling high-stakes escalations.',
         'Commanded high-stakes incident management during major queue disruptions, establishing rapid root-cause escalation paths.',
+        'Won 3× consecutive Best Operations Team Lead Awards (Feb, Mar, Apr 2019) for top monthly performance across all floor squads.',
         'Owned client SLA targets, achieving consistent >90% compliance across international queues.'
       ],
       techOrOpsHighlights: [
@@ -185,7 +186,8 @@ export const DualCareerBranchVisualizer: React.FC = () => {
       leadershipSalesHighlights: [
         'Earned accelerated merit promotion from Data Analyst to Junior Team Lead within 9 months.',
         'Managed frontline operations and rotational shift rostering for a pod of 10–15 customer support specialists.',
-        'Supervised real-time schedule adherence and break rotations to prevent queue abandonment during peak volume spikes.'
+        'Supervised real-time schedule adherence and break rotations to prevent queue abandonment during peak volume spikes.',
+        'Awarded the Best People Award during the September 2018 Quarterly Business Review (QBR) for excellence in team mentoring and morale.'
       ],
       techOrOpsHighlights: [
         'Conducted weekly 1-on-1 coaching sessions and quality audits, improving first-contact resolution (FCR) by 18%.',
@@ -253,7 +255,7 @@ export const DualCareerBranchVisualizer: React.FC = () => {
     anchors: [
       {
         title: 'B.Sc. International Business Management (Honours)',
-        detail: 'Universiti Utara Malaysia (CGPA 3.63, Minor in Logistics) · Full UUM Scholarship Recipient · 3x Dean\'s Academic Honors Award.'
+        detail: 'Universiti Utara Malaysia (CGPA 3.48, Second Upper Class Honours, Minor in Logistics) · Full UUM Scholarship Recipient · 5x Dean\'s Academic Honors Award.'
       },
       {
         title: 'TheLorry E-Logistics Growth Marketing (2017)',

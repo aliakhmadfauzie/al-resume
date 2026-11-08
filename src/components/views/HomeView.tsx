@@ -804,7 +804,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
               // HONORS &amp; ACADEMIC AWARDS (LINKEDIN VERIFIED)
             </span>
             <span className="text-xs font-mono text-[var(--text-accent)]">
-              Accenture &amp; Universiti Utara Malaysia (UUM)
+              Accenture · Concentrix · Universiti Utara Malaysia (UUM)
             </span>
           </div>
 

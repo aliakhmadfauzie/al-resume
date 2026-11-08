@@ -213,7 +213,7 @@ export const ExperienceView: React.FC = () => {
               02 · Licenses &amp; Certifications (LinkedIn Verified)
             </p>
             <h2 className="text-xl sm:text-2xl font-bold text-[var(--text-primary)] mt-1">
-              12 Professional Credentials &amp; Accreditations
+              {LINKEDIN_CERTIFICATIONS.length} Professional Credentials &amp; Accreditations
             </h2>
           </div>
           <span className="text-xs font-mono text-[var(--text-tertiary)]">
@@ -243,6 +243,7 @@ export const ExperienceView: React.FC = () => {
                 <p className="text-xs text-[var(--text-secondary)] font-mono">
                   {cert.issuer}
                 </p>
+
               </div>
 
               <div className="pt-3 border-t border-[var(--border-subtle)] flex items-center justify-between text-[11px] font-mono">
@@ -263,7 +264,7 @@ export const ExperienceView: React.FC = () => {
             03 · Honors &amp; Academic Awards
           </p>
           <h2 className="text-xl sm:text-2xl font-bold text-[var(--text-primary)] mt-1">
-            Corporate &amp; Institutional Recognition
+            Corporate &amp; Institutional Recognition ({LINKEDIN_HONORS_AWARDS.length} Honors)
           </h2>
         </div>
 
@@ -289,6 +290,21 @@ export const ExperienceView: React.FC = () => {
                 <p className="text-xs text-[var(--text-secondary)] leading-relaxed pt-1">
                   {award.description}
                 </p>
+
+                {award.certificatePdfUrl && (
+                  <div className="pt-2">
+                    <a
+                      href={award.certificatePdfUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center space-x-1.5 text-[11px] font-mono text-[var(--text-accent)] hover:underline"
+                    >
+                      <ExternalLink className="w-3 h-3 text-[var(--interactive-primary)]" />
+                      <span>View Credential Document</span>
+                    </a>
+                  </div>
+                )}
+
               </div>
             </div>
           ))}
