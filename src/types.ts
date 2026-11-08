@@ -98,6 +98,8 @@ export interface ExperienceItem {
     | 'nippon-paint'
     | 'tasek-cement'
     | 'ipenet'
+    | 'zalora'
+    | 'thelorry'
     | 'general';
   clients?: ClientRosterItem[];
 }
@@ -232,6 +234,8 @@ export interface CertificationItem {
     | 'nippon-paint'
     | 'tasek-cement'
     | 'ipenet'
+    | 'zalora'
+    | 'thelorry'
     | 'general';
   issueDate: string;
   category: 'Power Platform' | 'AI & Copilot' | 'Data & Analytics' | 'Project & Process' | 'Enterprise Automation';
@@ -268,6 +272,8 @@ export interface HonorAwardItem {
     | 'nippon-paint'
     | 'tasek-cement'
     | 'ipenet'
+    | 'zalora'
+    | 'thelorry'
     | 'general';
   year: string;
   description: string;

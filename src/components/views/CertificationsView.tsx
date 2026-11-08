@@ -10,6 +10,8 @@ import { OrganizationLogo } from '../OrganizationLogo';
 import {
   ShieldCheck,
   Award,
+  Crown,
+  Trophy,
   Search,
   ExternalLink,
   Copy,
@@ -578,57 +580,83 @@ export const CertificationsView: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {LINKEDIN_HONORS_AWARDS.map((award) => (
-            <div
-              key={award.id}
-              className="cert-hologram-card group rounded-[var(--radius-lg)] bg-[var(--bg-surface)] hover:bg-[var(--bg-surface-elevated)] border border-[var(--border-subtle)] hover:border-amber-500/40 p-6 flex items-start space-x-4 transition-all duration-200 shadow-[var(--shadow-card)] hover:shadow-[0_12px_32px_-8px_rgba(0,0,0,0.5),0_0_20px_-4px_rgba(245,158,11,0.12)]"
-            >
-              <div className="w-11 h-11 rounded-[var(--radius-md)] bg-[#1b1613] border border-[var(--interactive-subtle-border)] group-hover:border-amber-500/40 group-hover:scale-105 flex items-center justify-center shrink-0 transition-all duration-300 p-2 overflow-hidden shadow-inner">
-                <OrganizationLogo
-                  logoId={award.organizationLogoId}
-                  orgName={award.organization || award.issuer}
-                  size="md"
-                />
-              </div>
-              <div className="space-y-1.5 flex-1">
-                <div className="flex flex-wrap items-center justify-between gap-2">
-                  <h3 className="text-sm sm:text-base font-bold text-[var(--text-primary)]">
-                    {award.title}
-                  </h3>
-                  <span className="text-xs font-mono text-[var(--text-accent)]">
-                    {award.year}
-                  </span>
-                </div>
-                <div className="flex items-center gap-1.5 text-xs font-mono text-[var(--text-secondary)]">
+          {LINKEDIN_HONORS_AWARDS.map((award) => {
+            const isPinnacle = award.tier === 'pinnacle';
+            const cardStyle = isPinnacle
+              ? 'border-amber-500/40 bg-gradient-to-br from-[#1a150e]/90 via-[#10121a]/95 to-[var(--bg-surface)] hover:border-amber-400 hover:shadow-[0_12px_32px_-8px_rgba(0,0,0,0.6),0_0_24px_-4px_rgba(245,158,11,0.2)]'
+              : 'border-[var(--border-subtle)] hover:border-amber-500/40 bg-[var(--bg-surface)] hover:bg-[var(--bg-surface-elevated)] hover:shadow-[0_12px_32px_-8px_rgba(0,0,0,0.5),0_0_20px_-4px_rgba(245,158,11,0.12)]';
+
+            return (
+              <div
+                key={award.id}
+                className={`cert-hologram-card group rounded-[var(--radius-lg)] border p-6 flex items-start space-x-4 transition-all duration-300 shadow-[var(--shadow-card)] relative overflow-hidden ${cardStyle}`}
+              >
+                {isPinnacle && (
+                  <div className="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-amber-400/80 to-transparent pointer-events-none" />
+                )}
+
+                <div className="w-12 h-12 rounded-[var(--radius-md)] bg-[#1b1613] border border-[var(--interactive-subtle-border)] group-hover:border-amber-500/40 group-hover:scale-105 flex items-center justify-center shrink-0 transition-all duration-300 p-2 overflow-hidden shadow-inner">
                   <OrganizationLogo
                     logoId={award.organizationLogoId}
                     orgName={award.organization || award.issuer}
-                    size="xs"
+                    size="md"
                   />
-                  <span className="font-semibold text-[var(--text-primary)]">
-                    {award.organization || award.issuer}
-                  </span>
-                  <span className="text-[var(--text-tertiary)]">· Official Distinction</span>
                 </div>
-                <p className="text-xs text-[var(--text-secondary)] leading-relaxed pt-1">
-                  {award.description}
-                </p>
-                {award.certificatePdfUrl && (
-                  <div className="pt-2">
-                    <a
-                      href={award.certificatePdfUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center space-x-1.5 text-xs font-mono text-[var(--text-accent)] hover:underline"
-                    >
-                      <FileCheck2 className="w-3.5 h-3.5 text-[var(--interactive-primary)]" />
-                      <span>View Verification Evidence (PDF) →</span>
-                    </a>
+                <div className="space-y-2 flex-1">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <div className="flex items-center gap-2">
+                      {isPinnacle && (
+                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[9px] font-mono font-bold bg-amber-500/15 text-amber-300 border border-amber-500/30 uppercase tracking-wider">
+                          <Crown className="w-2.5 h-2.5 text-amber-400" />
+                          <span>Pinnacle</span>
+                        </span>
+                      )}
+                      <h3 className="text-sm sm:text-base font-bold text-[var(--text-primary)] group-hover:text-white transition-colors">
+                        {award.title}
+                      </h3>
+                    </div>
+                    <span className="text-xs font-mono text-[var(--text-accent)] shrink-0 px-2 py-0.5 rounded bg-white/5 border border-white/5">
+                      {award.year}
+                    </span>
                   </div>
-                )}
+
+                  {award.highlightBadge && (
+                    <div className="inline-block px-2.5 py-0.5 rounded bg-amber-500/10 border border-amber-500/20 text-[10px] font-mono font-semibold text-amber-300">
+                      ★ {award.highlightBadge}
+                    </div>
+                  )}
+
+                  <div className="flex items-center gap-1.5 text-xs font-mono text-[var(--text-secondary)]">
+                    <OrganizationLogo
+                      logoId={award.organizationLogoId}
+                      orgName={award.organization || award.issuer}
+                      size="xs"
+                    />
+                    <span className="font-semibold text-[var(--text-primary)]">
+                      {award.organization || award.issuer}
+                    </span>
+                    <span className="text-[var(--text-tertiary)]">· Official Distinction</span>
+                  </div>
+                  <p className="text-xs text-[var(--text-secondary)] leading-relaxed pt-1">
+                    {award.description}
+                  </p>
+                  {award.certificatePdfUrl && (
+                    <div className="pt-2">
+                      <a
+                        href={award.certificatePdfUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center space-x-1.5 text-xs font-mono text-[var(--text-accent)] hover:underline"
+                      >
+                        <FileCheck2 className="w-3.5 h-3.5 text-[var(--interactive-primary)]" />
+                        <span>View Verification Evidence (PDF) →</span>
+                      </a>
+                    </div>
+                  )}
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </section>
     </div>

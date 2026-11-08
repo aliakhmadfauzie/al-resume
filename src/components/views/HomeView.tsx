@@ -26,6 +26,8 @@ import {
   Code2,
   Users,
   Trophy,
+  Crown,
+  Medal,
   Mail,
   Phone,
   MapPin,
@@ -59,7 +61,13 @@ export const HomeView: React.FC<HomeViewProps> = ({
   const [contactMessage, setContactMessage] = useState('');
   const [contactSent, setContactSent] = useState(false);
   const [certCategory, setCertCategory] = useState<string>('All');
+  const [honorFilter, setHonorFilter] = useState<'all' | 'pinnacle' | 'corporate' | 'academic'>('all');
   const [testimonialPage, setTestimonialPage] = useState<number>(0);
+
+  const filteredHonors = LINKEDIN_HONORS_AWARDS.filter((award) => {
+    if (honorFilter === 'all') return true;
+    return award.tier === honorFilter;
+  });
 
   const handleInlineContactSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -234,6 +242,10 @@ export const HomeView: React.FC<HomeViewProps> = ({
               <img
                 src={PERSONAL_INFO.avatarUrl}
                 alt={PERSONAL_INFO.name}
+                loading="eager"
+                fetchPriority="high"
+                width={144}
+                height={176}
                 className="w-full h-full object-cover object-center group-hover/frame:scale-105 transition-transform duration-500"
               />
               {/* Studio Copper-Orange Rim Light & Bottom Vignette Overlay */}
@@ -1111,7 +1123,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
       </section>
 
       {/* ====================================================================
-          5B. // LICENSES, CERTIFICATIONS & HONORS (From LinkedIn in/aliakhmadf)
+          5B. // LICENSES & VERIFIED CREDENTIALS (From LinkedIn in/aliakhmadf)
          ==================================================================== */}
       <section
         id="section-certifications"
@@ -1120,10 +1132,10 @@ export const HomeView: React.FC<HomeViewProps> = ({
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[var(--border-subtle)] pb-4">
           <div className="space-y-1">
             <p className="text-xs font-mono text-[var(--text-accent)] font-semibold tracking-wider uppercase">
-              // LICENSES, CERTIFICATIONS &amp; HONORS
+              // LICENSES &amp; VERIFIED CERTIFICATIONS
             </p>
             <h2 className="text-lg sm:text-xl font-bold text-[var(--text-primary)]">
-              Verified LinkedIn Credentials &amp; Executive Awards
+              Verified Technical Certifications &amp; Engineering Credentials
             </h2>
           </div>
 
@@ -1220,43 +1232,257 @@ export const HomeView: React.FC<HomeViewProps> = ({
             </div>
           ))}
         </div>
+      </section>
 
-        {/* Honors & Awards Sub-Row */}
-        <div className="pt-4 border-t border-[var(--border-subtle)] space-y-3">
+      {/* ====================================================================
+          5C. // EXECUTIVE HONORS & SCHOLASTIC DISTINCTIONS (LINKEDIN VERIFIED)
+         ==================================================================== */}
+      <section
+        id="section-honors"
+        className="rounded-[var(--radius-lg)] bg-[var(--bg-surface)] border border-amber-500/30 p-6 sm:p-7 space-y-6 shadow-[0_12px_40px_-10px_rgba(0,0,0,0.6),0_0_30px_-4px_rgba(245,158,11,0.12)] relative overflow-hidden"
+      >
+        {/* Radiant top-right golden/amber flare */}
+        <div
+          className="absolute -top-24 right-1/4 w-96 h-48 bg-gradient-to-b from-amber-500/15 via-orange-500/5 to-transparent rounded-full blur-3xl pointer-events-none"
+          aria-hidden="true"
+        />
+
+        {/* Section Header */}
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-[var(--border-subtle)] pb-4 relative z-10">
+          <div className="space-y-1.5">
+            <div className="flex items-center gap-2">
+              <div className="w-6 h-6 rounded-md bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 shadow-[0_0_12px_rgba(245,158,11,0.25)]">
+                <Trophy className="w-3.5 h-3.5" />
+              </div>
+              <p className="text-xs font-mono text-amber-400 font-bold tracking-wider uppercase">
+                // EXECUTIVE HONORS &amp; ACADEMIC DISTINCTIONS
+              </p>
+            </div>
+            <h2 className="text-lg sm:text-xl font-bold text-[var(--text-primary)]">
+              Hall of Honors &amp; Corporate Leadership Distinctions
+            </h2>
+            <p className="text-xs text-[var(--text-secondary)]">
+              16 Verified Distinctions Across Accenture · Concentrix · Universiti Utara Malaysia (UUM)
+            </p>
+          </div>
+
+          {/* Quick Metrics & Filter Badges */}
+          <div className="flex flex-wrap items-center gap-2 shrink-0">
+            {[
+              { id: 'all', label: `All Honors (${LINKEDIN_HONORS_AWARDS.length})` },
+              { id: 'pinnacle', label: '👑 Pinnacle Distinctions (5)' },
+              { id: 'corporate', label: '🏢 Corporate Operations (5)' },
+              { id: 'academic', label: '🎓 Academic & Scholastic (6)' }
+            ].map((tab) => (
+              <button
+                key={tab.id}
+                type="button"
+                onClick={() => setHonorFilter(tab.id as any)}
+                className={`px-3 py-1.5 rounded-[var(--radius-sm)] text-xs font-mono font-medium transition-all cursor-pointer ${
+                  honorFilter === tab.id
+                    ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-black font-bold shadow-[0_2px_12px_rgba(245,158,11,0.35)]'
+                    : 'bg-[#0f1117] text-[var(--text-secondary)] hover:text-white border border-[var(--border-subtle)] hover:border-amber-500/30'
+                }`}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* PINNACLE SHOWCASE BANNER (Visible on 'all' or 'pinnacle') */}
+        {(honorFilter === 'all' || honorFilter === 'pinnacle') && (
+          <div className="space-y-3.5 relative z-10">
+            <div className="flex items-center justify-between">
+              <span className="text-[11px] font-mono text-amber-400 font-bold uppercase tracking-wider flex items-center gap-1.5">
+                <Crown className="w-3.5 h-3.5 text-amber-400" />
+                <span>Pinnacle Crown Jewel Distinctions</span>
+              </span>
+              <span className="text-[10px] font-mono text-[var(--text-tertiary)]">
+                Highest Institutional &amp; Enterprise Accolades
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3.5">
+              {LINKEDIN_HONORS_AWARDS.filter((a) => a.tier === 'pinnacle').map((award) => (
+                <div
+                  key={award.id}
+                  className="group relative rounded-[var(--radius-md)] bg-gradient-to-b from-[#181410] via-[#10121a] to-[#090b10] border border-amber-500/35 hover:border-amber-400 p-4 flex flex-col justify-between space-y-3 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_28px_-6px_rgba(0,0,0,0.7),0_0_24px_-4px_rgba(245,158,11,0.25)]"
+                >
+                  {/* Top glint */}
+                  <div className="absolute top-0 inset-x-0 h-[1.5px] bg-gradient-to-r from-transparent via-amber-400/60 to-transparent group-hover:via-amber-300 transition-all pointer-events-none" />
+
+                  <div className="space-y-2.5">
+                    {/* Top Row: Crown Tag & Year */}
+                    <div className="flex items-center justify-between gap-1.5">
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[9px] font-mono font-bold bg-amber-500/15 text-amber-300 border border-amber-500/30 uppercase tracking-wide">
+                        <Crown className="w-2.5 h-2.5 text-amber-400 shrink-0" />
+                        <span>Pinnacle</span>
+                      </span>
+                      <span className="text-[10px] font-mono text-zinc-400 px-1.5 py-0.5 rounded bg-white/5 border border-white/5 shrink-0">
+                        {award.year}
+                      </span>
+                    </div>
+
+                    {/* Organization */}
+                    <div className="flex items-center gap-2">
+                      <div className="w-7 h-7 rounded bg-white p-1 flex items-center justify-center shrink-0 shadow-sm overflow-hidden">
+                        <OrganizationLogo
+                          logoId={award.organizationLogoId}
+                          orgName={award.organization || award.issuer}
+                          size="xs"
+                        />
+                      </div>
+                      <div className="min-w-0">
+                        <p className="text-[11px] font-bold text-zinc-200 truncate font-mono">
+                          {award.organization || award.issuer}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Highlight Badge Pill */}
+                    {award.highlightBadge && (
+                      <div className="px-2 py-1 rounded bg-amber-500/10 border border-amber-500/25 text-[10px] font-mono font-semibold text-amber-300 leading-snug">
+                        ★ {award.highlightBadge}
+                      </div>
+                    )}
+
+                    {/* Title */}
+                    <h3 className="text-xs sm:text-[13px] font-bold text-white leading-snug group-hover:text-amber-200 transition-colors">
+                      {award.title}
+                    </h3>
+
+                    {/* Description */}
+                    <p className="text-[11px] text-zinc-300 leading-relaxed line-clamp-4">
+                      {award.description}
+                    </p>
+                  </div>
+
+                  {/* Footer */}
+                  <div className="pt-2 border-t border-white/10 flex items-center justify-between text-[10px] font-mono">
+                    <span className="text-emerald-400 font-semibold flex items-center gap-1">
+                      <ShieldCheck className="w-3 h-3 text-emerald-400 shrink-0" />
+                      <span>Verified</span>
+                    </span>
+                    {award.certificatePdfUrl && (
+                      <a
+                        href={award.certificatePdfUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-amber-400 hover:text-amber-300 inline-flex items-center gap-1 font-semibold group/link"
+                      >
+                        <span>PDF Proof</span>
+                        <ExternalLink className="w-2.5 h-2.5 group-hover/link:translate-x-0.5 transition-transform" />
+                      </a>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* COMPLETE HONORS CATALOG GRID (Filtered) */}
+        <div className="space-y-3 relative z-10">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-mono text-[var(--text-secondary)] uppercase">
-              // HONORS &amp; ACADEMIC AWARDS (LINKEDIN VERIFIED)
+            <span className="text-[11px] font-mono text-[var(--text-accent)] font-semibold uppercase tracking-wider flex items-center gap-1.5">
+              <Medal className="w-3.5 h-3.5 text-orange-400" />
+              <span>
+                {honorFilter === 'all'
+                  ? 'All Honors & Distinctions Catalog'
+                  : honorFilter === 'pinnacle'
+                  ? 'Pinnacle Distinctions (5 Honors)'
+                  : honorFilter === 'corporate'
+                  ? 'Corporate Operations Leadership Awards (5 Honors)'
+                  : 'Academic Distinctions & Scholarships (6 Honors)'}
+              </span>
             </span>
-            <span className="text-xs font-mono text-[var(--text-accent)]">
-              Accenture · Concentrix · Universiti Utara Malaysia (UUM)
+            <span className="text-[10px] font-mono text-[var(--text-tertiary)]">
+              Showing {filteredHonors.length} of {LINKEDIN_HONORS_AWARDS.length} Honors
             </span>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
-            {LINKEDIN_HONORS_AWARDS.map((award) => (
-              <div
-                key={award.id}
-                className="cert-hologram-card group relative rounded-[var(--radius-sm)] bg-[#0f1117] hover:bg-[#121520] border border-[var(--border-subtle)] hover:border-amber-500/40 p-3.5 space-y-1.5 transition-[transform,border-color,box-shadow] duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_8px_20px_-6px_rgba(0,0,0,0.5),0_0_14px_-4px_rgba(245,158,11,0.14)]"
-              >
-                <div className="flex items-center justify-between text-[10px] font-mono relative z-10">
-                  <span className="text-[var(--text-accent)] font-bold flex items-center gap-1.5 truncate">
-                    <OrganizationLogo
-                      logoId={award.organizationLogoId}
-                      orgName={award.organization || award.issuer}
-                      size="xs"
-                    />
-                    <span className="truncate">{award.organization || award.issuer}</span>
-                  </span>
-                  <span className="text-[var(--text-tertiary)] shrink-0">{award.year}</span>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3.5">
+            {filteredHonors.map((award) => {
+              const isAccenture = award.organizationLogoId === 'accenture';
+              const isConcentrix = award.organizationLogoId === 'concentrix';
+
+              const borderGlow = isAccenture
+                ? 'hover:border-[#A100FF]/50 hover:shadow-[0_8px_24px_-4px_rgba(161,0,255,0.2)]'
+                : isConcentrix
+                ? 'hover:border-[#00D9AF]/50 hover:shadow-[0_8px_24px_-4px_rgba(0,217,175,0.2)]'
+                : 'hover:border-amber-500/50 hover:shadow-[0_8px_24px_-4px_rgba(245,158,11,0.2)]';
+
+              const orgColor = isAccenture
+                ? 'text-[#c084fc]'
+                : isConcentrix
+                ? 'text-[#00D9AF]'
+                : 'text-amber-400';
+
+              return (
+                <div
+                  key={award.id}
+                  className={`group relative rounded-[var(--radius-md)] bg-[#0f1117] hover:bg-[#131622] border border-[var(--border-subtle)] p-3.5 flex flex-col justify-between space-y-2.5 transition-all duration-200 hover:-translate-y-0.5 shadow-sm ${borderGlow}`}
+                >
+                  <div className="space-y-2">
+                    {/* Header Row: Organization Pill & Date */}
+                    <div className="flex items-center justify-between gap-1.5">
+                      <div className="flex items-center gap-1.5 min-w-0">
+                        <div className="w-5 h-5 rounded bg-white p-0.5 flex items-center justify-center shrink-0 shadow-xs">
+                          <OrganizationLogo
+                            logoId={award.organizationLogoId}
+                            orgName={award.organization || award.issuer}
+                            size="xs"
+                          />
+                        </div>
+                        <span className={`text-[10px] font-mono font-bold truncate ${orgColor}`}>
+                          {award.organization || award.issuer}
+                        </span>
+                      </div>
+                      <span className="text-[10px] font-mono text-zinc-400 shrink-0 bg-white/5 px-1.5 py-0.5 rounded">
+                        {award.year}
+                      </span>
+                    </div>
+
+                    {/* Highlight Badge */}
+                    {award.highlightBadge && (
+                      <span className="inline-block text-[9px] font-mono font-semibold px-2 py-0.5 rounded bg-white/5 border border-white/10 text-zinc-300">
+                        {award.highlightBadge}
+                      </span>
+                    )}
+
+                    {/* Title */}
+                    <h4 className="text-xs font-bold text-zinc-100 group-hover:text-white transition-colors leading-snug">
+                      {award.title}
+                    </h4>
+
+                    {/* Description */}
+                    <p className="text-[11px] text-zinc-300 leading-relaxed line-clamp-3">
+                      {award.description}
+                    </p>
+                  </div>
+
+                  {/* Card Bottom: Verification link */}
+                  <div className="pt-2 border-t border-white/5 flex items-center justify-between text-[10px] font-mono">
+                    <span className="text-zinc-400 flex items-center gap-1">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                      <span>Verified</span>
+                    </span>
+                    {award.certificatePdfUrl && (
+                      <a
+                        href={award.certificatePdfUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[var(--text-accent)] hover:text-orange-300 inline-flex items-center gap-1 font-semibold"
+                      >
+                        <span>PDF</span>
+                        <ExternalLink className="w-2.5 h-2.5" />
+                      </a>
+                    )}
+                  </div>
                 </div>
-                <div className="text-xs font-bold text-[var(--text-primary)] leading-snug relative z-10 group-hover:text-white transition-colors">
-                  {award.title}
-                </div>
-                <p className="text-[11px] text-[var(--text-secondary)] leading-relaxed relative z-10">
-                  {award.description}
-                </p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

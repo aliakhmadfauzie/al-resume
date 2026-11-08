@@ -147,6 +147,7 @@ export const Footer: React.FC<FooterProps> = ({
             <div className="flex items-center space-x-2.5">
               <a
                 id="footer-link-github"
+                aria-label="Ali Akhmad Fauzie GitHub Profile"
                 href={PERSONAL_INFO.github}
                 target="_blank"
                 rel="noreferrer"
@@ -157,6 +158,7 @@ export const Footer: React.FC<FooterProps> = ({
               </a>
               <a
                 id="footer-link-linkedin"
+                aria-label="Ali Akhmad Fauzie LinkedIn Profile"
                 href={PERSONAL_INFO.linkedIn}
                 target="_blank"
                 rel="noreferrer"
@@ -167,6 +169,7 @@ export const Footer: React.FC<FooterProps> = ({
               </a>
               <button
                 id="footer-btn-resume"
+                aria-label="Open Executive Resume Modal"
                 type="button"
                 onClick={onOpenResume}
                 className="w-8 h-8 rounded-[var(--radius-sm)] bg-[#13151c] hover:bg-[var(--interactive-subtle-bg)] text-[var(--text-secondary)] hover:text-[var(--text-accent)] flex items-center justify-center transition-colors border border-[var(--border-subtle)] hover:border-[var(--interactive-subtle-border)] cursor-pointer"
@@ -176,6 +179,7 @@ export const Footer: React.FC<FooterProps> = ({
               </button>
               <button
                 id="footer-btn-email"
+                aria-label="Open Contact Message Modal"
                 type="button"
                 onClick={onOpenContact}
                 className="w-8 h-8 rounded-[var(--radius-sm)] bg-[#13151c] hover:bg-[var(--interactive-subtle-bg)] text-[var(--text-secondary)] hover:text-[var(--text-accent)] flex items-center justify-center transition-colors border border-[var(--border-subtle)] hover:border-[var(--interactive-subtle-border)] cursor-pointer"

@@ -1279,17 +1279,33 @@ export const WORK_EXPERIENCE: ExperienceItem[] = [
   },
   {
     id: "exp-thelorry",
-    role: "Digital Marketing Specialist",
+    role: "B2B Digital Marketing Specialist (1st Professional Role)",
     company: "TheLorry",
+    companyLogoId: "thelorry",
     location: "Petaling, Selangor, Malaysia",
     period: "Feb 2017 – Aug 2017",
-    tags: ["Growth Marketing", "Campaign Analytics", "Funnel Optimization", "E-Logistics"],
+    tags: ["1st Job", "B2B Digital Marketing", "Lead Generation", "Funnel Analytics", "E-Logistics"],
     bulletPoints: [
-      "Spearheaded data-driven digital marketing campaigns and acquisition funnel experiments for Southeast Asia's leading on-demand logistics tech platform immediately following university graduation.",
-      "Conducted conversion analytics across paid channels, driver-partner onboarding pipelines, and commercial logistics inquiries to optimize acquisition CAC.",
-      "Collaborated cross-functionally with product, operations, and regional sales teams to execute localized growth initiatives across Malaysia."
+      "Launched professional career as 1st full-time role immediately post-graduation, driving B2B digital marketing, corporate client acquisition, and commercial lead generation for Southeast Asia's leading on-demand logistics tech platform.",
+      "Managed end-to-end B2B marketing funnels, commercial freight inquiry pipelines, and digital conversion analytics across Google Ads and paid acquisition channels to optimize CAC.",
+      "Collaborated cross-functionally with corporate sales, enterprise account executives, and operations teams to accelerate B2B fleet partner onboarding and revenue growth."
     ],
-    iconUrl: "/assets/profile/ali-avatar.jpg"
+    iconUrl: "/assets/logos/thelorry.png"
+  },
+  {
+    id: "exp-zalora-intern",
+    role: "E-Commerce Operations & Marketing Intern",
+    company: "ZALORA Group",
+    companyLogoId: "zalora",
+    location: "Kuala Lumpur, Malaysia",
+    period: "2016",
+    tags: ["Undergraduate Internship", "ZALORA", "E-Commerce", "Catalog Operations", "Supply Chain"],
+    bulletPoints: [
+      "Completed foundational undergraduate industry internship at ZALORA Group, Southeast Asia's premier online fashion & lifestyle destination.",
+      "Managed product catalog inventory data reconciliation, listing quality audits, and stock replenishment tracking across regional fulfillment centers.",
+      "Supported cross-functional campaign rollouts between digital marketing, merchandising, and warehouse fulfillment teams during regional retail sales events."
+    ],
+    iconUrl: "/assets/logos/zalora.png"
   },
   {
     id: "exp-education",
@@ -1356,7 +1372,7 @@ export const POWER_PLATFORM_ARCH_SUITE: PowerPlatformArchLayer[] = [
     ],
     docLinks: [
       { label: "Understanding Power Platform Architecture (Medium)", url: "https://medium.com/@walidchafroud/understanding-microsoft-power-platform-architecture-7bb5e756d7f7" },
-      { label: "Power Pages Architecture Walkthrough", url: "https://www.youtube.com/watch?v=6xKlq-qZdsI" }
+      { label: "Power Pages Architecture (Microsoft Learn)", url: "https://learn.microsoft.com/en-us/power-pages/architecture" }
     ],
     accentColor: "#8b5cf6"
   },
@@ -1380,7 +1396,7 @@ export const POWER_PLATFORM_ARCH_SUITE: PowerPlatformArchLayer[] = [
       "Cross-Tenant Webhooks & Microsoft Graph Triggers"
     ],
     docLinks: [
-      { label: "Power Automate Architecture Deep Dive", url: "https://www.youtube.com/watch?v=6xKlq-qZdsI" }
+      { label: "Power Automate Architecture & Guidance (Microsoft Learn)", url: "https://learn.microsoft.com/en-us/power-automate/guidance/architecture/" }
     ],
     accentColor: "#00dbe7"
   },
@@ -1405,7 +1421,7 @@ export const POWER_PLATFORM_ARCH_SUITE: PowerPlatformArchLayer[] = [
     ],
     docLinks: [
       { label: "Power Platform AI Architecture (Microsoft Learn)", url: "https://learn.microsoft.com/en-us/power-platform/architecture/" },
-      { label: "Copilot Studio & Power BI Integration", url: "https://www.youtube.com/watch?v=6xKlq-qZdsI&t=12" }
+      { label: "Copilot Studio Architecture (Microsoft Learn)", url: "https://learn.microsoft.com/en-us/microsoft-copilot-studio/guidance/architecture-overview" }
     ],
     accentColor: "#f59e0b"
   },
@@ -1780,8 +1796,7 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
     productionApplication: "Architected 365+ legacy Lotus Domino applications into Microsoft 365 & Dataverse at IOI Corporation/Acidchem, saving $960K/year in licensing, and designed 23 production Canvas apps with 878 screens.",
     verificationMethod: "Microsoft Certified Official Credential",
     hoursOrModules: "Enterprise Solution Architecture Labs & Examination",
-    expiryDate: "Active Credential",
-    pdfUrl: "/certificates/Power_Platform.pdf"
+    expiryDate: "Active Credential"
   },
   {
     id: "cert-power-bi-professional",
@@ -1800,8 +1815,7 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
     productionApplication: "Deployed directly to executive reporting and PulseTrack telemetry dashboards at Concentrix across 7 language pods and Accenture operational reviews, automating SLA tracking and eliminating manual spreadsheet reporting.",
     verificationMethod: "Microsoft Certified Official Credential",
     hoursOrModules: "Comprehensive Examination & Hands-On Performance Lab",
-    expiryDate: "Active Credential",
-    pdfUrl: "/certificates/CertificateOfCompletion_Excel Data Visualization Designing Custom Visualizations.pdf"
+    expiryDate: "Active Credential"
   },
   {
     id: "cert-power-excel-professional",
@@ -1820,8 +1834,7 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
     productionApplication: "Engineered 24/7 rotational rostering algorithms and capacity models for 34 associates at Concentrix and validated historical inventory ledgers during enterprise ERP migrations.",
     verificationMethod: "Microsoft & LinkedIn Learning Official Transcript",
     hoursOrModules: "Comprehensive Advanced Curriculum & Practical Capstone",
-    expiryDate: "No Expiration · Lifetime Credential",
-    pdfUrl: "/certificates/CertificateOfCompletion_Excel Data Visualization Designing Custom Visualizations.pdf"
+    expiryDate: "No Expiration · Lifetime Credential"
   },
   {
     id: "cert-casper-professional",
@@ -1840,8 +1853,7 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
     productionApplication: "Core operational framework applied when managing 34 direct reports across 7 dedicated language pods, sustaining <5% annualized attrition, coaching junior team leads, and resolving cross-market escalation deadlocks.",
     verificationMethod: "Official Standardized Assessment & Evaluation Transcript",
     hoursOrModules: "Standardized Multi-Station Situational Scenario Assessment",
-    expiryDate: "Active Credential",
-    pdfUrl: "/certificates/ABOUT_ME.pdf"
+    expiryDate: "Active Credential"
   },
   {
     id: "cert-data-analysis",
@@ -1860,8 +1872,7 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
     productionApplication: "Applied directly to PulseTrack & SmartFlow executive telemetry dashboards across 7 regional APAC markets, driving 98% data accuracy and eliminating 90% of manual spreadsheet reporting.",
     verificationMethod: "Microsoft & LinkedIn Learning Official Transcript",
     hoursOrModules: "18 Hours · 5 Core Courses & Capstone Exam",
-    expiryDate: "No Expiration · Lifetime Credential",
-    pdfUrl: "/certificates/CertificateOfCompletion_Excel Data Visualization Designing Custom Visualizations.pdf"
+    expiryDate: "No Expiration · Lifetime Credential"
   },
   {
     id: "cert-genai-essentials",
@@ -1869,13 +1880,13 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
     issuer: "Microsoft & LinkedIn",
     organization: "Microsoft & LinkedIn",
     organizationLogoId: "microsoft-linkedin",
-    issueDate: "2024",
+    issueDate: "May 2025",
     category: "AI & Copilot",
     credentialType: "Professional Certificate",
     skills: ["Generative AI", "Large Language Models", "Prompt Engineering", "Responsible AI", "Copilot Studio"],
     verified: true,
-    credentialUrl: "https://www.linkedin.com/in/aliakhmadf/",
-    credentialId: "MS-LI-CEGAI-2024",
+    credentialUrl: "https://www.linkedin.com/learning/certificates/bddb6561010db75a32b3388b8be924cd4fe0cb0b22ac4e281b14fd8049ad5349",
+    credentialId: "bddb6561010db75a32b3388b8be924cd4fe0cb0b22ac4e281b14fd8049ad5349",
     summary: "Foundational professional credential by Microsoft and LinkedIn covering generative AI paradigms, transformer architectures, ethical AI governance, and automated enterprise workflows.",
     productionApplication: "Applied across AI Builder and custom GPT copilots for automated BPO triage and Lotus Domino form field synthesis.",
     verificationMethod: "Microsoft & LinkedIn Official Certificate",
@@ -1894,8 +1905,8 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
     credentialType: "Verified Credential",
     skills: ["Project Governance", "SOW Delivery", "Risk Mitigation", "Stakeholder Alignment", "WBS & Critical Path"],
     verified: true,
-    credentialUrl: "https://www.linkedin.com/in/aliakhmadf/",
-    credentialId: "PMI-LL-PMF-2025-06",
+    credentialUrl: "https://www.linkedin.com/learning/certificates/7fc5157e5983897e424ee6acc44fa5432aa91033a7f96bbfa81769ba252af65f",
+    credentialId: "7fc5157e5983897e424ee6acc44fa5432aa91033a7f96bbfa81769ba252af65f",
     summary: "PMI-aligned project delivery methodology covering statement-of-work (SOW) scoping, critical path scheduling, change control boards, and multi-site cutover risk management.",
     productionApplication: "Used at Meraki Malaysia & IOI Group to structure the 6-slice Domino-to-M365 cutover across 28+ business units with 100% on-time milestone sign-off.",
     verificationMethod: "LinkedIn Learning PMI Registered Education Provider",
@@ -1909,13 +1920,13 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
     issuer: "Microsoft & LinkedIn",
     organization: "Microsoft & LinkedIn",
     organizationLogoId: "microsoft-linkedin",
-    issueDate: "Dec 2024",
+    issueDate: "Jun 2025",
     category: "AI & Copilot",
     credentialType: "Microsoft Learning Path",
     skills: ["AI Strategy", "Workforce Productivity", "AI Governance", "Operational Scaling", "HITL Workflows"],
     verified: true,
-    credentialUrl: "https://www.linkedin.com/in/aliakhmadf/",
-    credentialId: "MS-LI-AIM-2024-12",
+    credentialUrl: "https://www.linkedin.com/learning/certificates/0c7a81c966ad869a5092f5b921ebef1e47d21b80709939ca74c5cba3ee17b105",
+    credentialId: "0c7a81c966ad869a5092f5b921ebef1e47d21b80709939ca74c5cba3ee17b105",
     summary: "Executive framework for deploying generative AI across operational squads, establishing human-in-the-loop (HITL) confidence thresholds, and measuring ROI on automated triage.",
     productionApplication: "Guided the deployment of CS Resolver (85% confidence gate across 120+ SOP categories) and the 34-agent multilingual BPO transformation at Concentrix.",
     verificationMethod: "Microsoft & LinkedIn Learning Official Transcript",
@@ -1929,13 +1940,13 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
     issuer: "LinkedIn Learning",
     organization: "LinkedIn Learning",
     organizationLogoId: "linkedin",
-    issueDate: "2025",
+    issueDate: "May 2025",
     category: "AI & Copilot",
     credentialType: "Verified Credential",
     skills: ["Enterprise AI Strategy", "ROI Measurement", "Agentic Automation", "Executive AI Transformation"],
     verified: true,
-    credentialUrl: "https://www.linkedin.com/in/aliakhmadf/",
-    credentialId: "LL-GAI-BL-2025",
+    credentialUrl: "https://www.linkedin.com/learning/certificates/4603e0dc51b069247180f5e4bdc16ba2a66f64bb5e9b4e71dfeb531dfe567d99",
+    credentialId: "4603e0dc51b069247180f5e4bdc16ba2a66f64bb5e9b4e71dfeb531dfe567d99",
     summary: "Strategic leadership curriculum covering executive AI adoption frameworks, measuring business ROI on LLM workflows, and orchestrating human-in-the-loop operational squads.",
     productionApplication: "Guided executive stakeholder roadmap and capacity modeling for multi-market low-code modernization.",
     verificationMethod: "LinkedIn Learning Credential Registry",
@@ -1949,13 +1960,13 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
     issuer: "LinkedIn Learning",
     organization: "LinkedIn Learning",
     organizationLogoId: "linkedin",
-    issueDate: "2024",
+    issueDate: "Jun 2025",
     category: "AI & Copilot",
     credentialType: "Verified Credential",
     skills: ["Creative AI", "Content Synthesis", "AI Ethics", "Bias Mitigation", "Responsible AI"],
     verified: true,
-    credentialUrl: "https://www.linkedin.com/in/aliakhmadf/",
-    credentialId: "LL-GAI-CC-2024",
+    credentialUrl: "https://www.linkedin.com/learning/certificates/38d3d3c53b5efb1648f175d24812feb265d94ab5959557fd52bca9cee92d1986",
+    credentialId: "38d3d3c53b5efb1648f175d24812feb265d94ab5959557fd52bca9cee92d1986",
     summary: "In-depth exploration of multimodal AI synthesis, content generation boundaries, intellectual property protections, and algorithmic fairness.",
     productionApplication: "Established content guardrails and prompt safety boundaries for automated executive summaries.",
     verificationMethod: "LinkedIn Learning Credential Registry",
@@ -1969,13 +1980,13 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
     issuer: "LinkedIn Learning",
     organization: "LinkedIn Learning",
     organizationLogoId: "linkedin",
-    issueDate: "2024",
+    issueDate: "Dec 2024",
     category: "AI & Copilot",
     credentialType: "Verified Credential",
     skills: ["Structured Prompting", "Few-Shot Chaining", "JSON Mode", "System Directives", "Context Window Optimization"],
     verified: true,
-    credentialUrl: "https://www.linkedin.com/in/aliakhmadf/",
-    credentialId: "LL-PE-GPT-2024",
+    credentialUrl: "https://www.linkedin.com/learning/certificates/dc47b123ea41db03aa16143a6699e9c3b9d323f9c3edcee69196ac54bc1df600",
+    credentialId: "dc47b123ea41db03aa16143a6699e9c3b9d323f9c3edcee69196ac54bc1df600",
     summary: "Advanced prompt design techniques including dynamic few-shot injection, structured JSON schema outputs, step-back reasoning, and adversarial prompt injection defenses.",
     productionApplication: "Engineered system prompts for 50+ GitHub Copilot workspace agents automating Lotus Domino DXL AST schema extraction.",
     verificationMethod: "LinkedIn Learning Credential Registry",
@@ -2000,8 +2011,7 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
     productionApplication: "Replaced 100+ scheduled Lotus Domino background agents with event-driven Power Automate flows and built the 15-minute Tasek Cement 5-tier rebate approval engine.",
     verificationMethod: "LinkedIn Learning Technical Assessment",
     hoursOrModules: "14 Hours · 6 Hands-On Lab Workflows",
-    expiryDate: "No Expiration · Lifetime Credential",
-    pdfUrl: "/certificates/Power_Platform.pdf"
+    expiryDate: "No Expiration · Lifetime Credential"
   },
   {
     id: "cert-ms-copilot",
@@ -2020,8 +2030,7 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
     productionApplication: "Used to design zero-code natural language querying interfaces on top of Dataverse entity relationships and Power BI executive scorecards.",
     verificationMethod: "Microsoft & LinkedIn Learning Official Transcript",
     hoursOrModules: "8 Hours · Practical Laboratory Work",
-    expiryDate: "No Expiration · Lifetime Credential",
-    pdfUrl: "/certificates/CertificateOfCompletion_AI for Managers by Microsoft and LinkedIn.pdf"
+    expiryDate: "No Expiration · Lifetime Credential"
   },
   {
     id: "cert-excel-data-viz",
@@ -2029,13 +2038,13 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
     issuer: "LinkedIn Learning",
     organization: "LinkedIn Learning",
     organizationLogoId: "linkedin",
-    issueDate: "2024",
+    issueDate: "May 2025",
     category: "Data & Analytics",
     credentialType: "Course Certificate",
     skills: ["Data Visualization", "Advanced Excel", "KPI Architecture", "Dynamic Dashboards", "Visual Storytelling"],
     verified: true,
-    credentialUrl: "https://www.linkedin.com/in/aliakhmadf/",
-    credentialId: "LL-EDV-DCV-2024",
+    credentialUrl: "https://www.linkedin.com/learning/certificates/bd1cb25bdbb974a385c90d37f056ef1ccafdf5aa5a2e6a6d68e32eda8e19b6a5",
+    credentialId: "bd1cb25bdbb974a385c90d37f056ef1ccafdf5aa5a2e6a6d68e32eda8e19b6a5",
     summary: "Techniques for engineering custom KPI dashboards, dynamic interactive charts, conditional formatting alert layers, and high-density executive reporting in Excel.",
     productionApplication: "Designed operational KPI visualization templates for BPO service delivery squads at Concentrix and Accenture.",
     verificationMethod: "LinkedIn Learning Credential Registry",
@@ -2049,13 +2058,13 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
     issuer: "Microsoft & LinkedIn",
     organization: "Microsoft & LinkedIn",
     organizationLogoId: "microsoft-linkedin",
-    issueDate: "2024",
+    issueDate: "Jun 2025",
     category: "Enterprise Automation",
     credentialType: "Verified Credential",
     skills: ["Microsoft 365", "SharePoint Online", "Teams Governance", "Power Automate", "Planner & Lists"],
     verified: true,
-    credentialUrl: "https://www.linkedin.com/in/aliakhmadf/",
-    credentialId: "MS-LI-M365-PM-2024",
+    credentialUrl: "https://www.linkedin.com/learning/certificates/330cd450b425e1ecdf71b8168fca67894fb3633bbd00adb638dda9fe53a80e4a",
+    credentialId: "330cd450b425e1ecdf71b8168fca67894fb3633bbd00adb638dda9fe53a80e4a",
     summary: "Comprehensive operational governance for coordinating multi-team workstreams using Microsoft 365, SharePoint list schemas, Power Automate approval flows, and Planner task pipelines.",
     productionApplication: "Governed the multi-team delivery cadence and SharePoint cutover lists during the 361-form enterprise modernization.",
     verificationMethod: "Microsoft & LinkedIn Official Certificate",
@@ -2080,8 +2089,7 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
     productionApplication: "Built the AskLark intelligent query router and AlignHub team knowledge repository, cutting repeat tier-1 queries by 40–60% across 34 operational squad members.",
     verificationMethod: "Lark Open Platform Developer Assessment",
     hoursOrModules: "24 Hours · API Assessment & Deployed Bot Verification",
-    expiryDate: "No Expiration · Active Developer Credential",
-    pdfUrl: "/certificates/ABOUT_ME.pdf"
+    expiryDate: "No Expiration · Active Developer Credential"
   },
   {
     id: "cert-genai-search",
@@ -2100,8 +2108,7 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
     productionApplication: "Architected DocFinder (70–90% faster operational guideline retrieval) and the RAG-powered Q&A knowledge engine across 4,500+ pages of BPO and IT standard operating procedures.",
     verificationMethod: "LinkedIn Learning Credential Registry",
     hoursOrModules: "6 Hours · 3 Technical Modules",
-    expiryDate: "No Expiration · Lifetime Credential",
-    pdfUrl: "/certificates/CertificateOfCompletion_Career Essentials in Generative AI by Microsoft and LinkedIn.pdf"
+    expiryDate: "No Expiration · Lifetime Credential"
   },
   {
     id: "cert-ethics-genai",
@@ -2120,8 +2127,7 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
     productionApplication: "Applied to the ATS Automation Q1–Q10 deterministic PDF quality gates and regex Single Source of Truth (SSOT) firewall that blocks 100% of fabricated LLM metrics.",
     verificationMethod: "LinkedIn Learning Credential Registry",
     hoursOrModules: "8 Hours · 4 Governance & Safety Modules",
-    expiryDate: "No Expiration · Lifetime Credential",
-    pdfUrl: "/certificates/CertificateOfCompletion_Generative AI Skills for Creative Content Opportunities Issues and Ethics.pdf"
+    expiryDate: "No Expiration · Lifetime Credential"
   },
   {
     id: "cert-what-is-genai",
@@ -2140,8 +2146,7 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
     productionApplication: "Applied to the Tri-Engine AI Gateway routing fast queries through Groq Llama-3.3-70B and structured JSON schemas through Gemini 2.5 Flash.",
     verificationMethod: "LinkedIn Learning Credential Registry",
     hoursOrModules: "6 Hours · 3 Foundation Modules",
-    expiryDate: "No Expiration · Lifetime Credential",
-    pdfUrl: "/certificates/CertificateOfCompletion_Generative AI for Business Leaders 2025.pdf"
+    expiryDate: "No Expiration · Lifetime Credential"
   },
   {
     id: "cert-intro-ai",
@@ -2149,13 +2154,13 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
     issuer: "LinkedIn Learning",
     organization: "LinkedIn Learning",
     organizationLogoId: "linkedin",
-    issueDate: "2024",
+    issueDate: "May 2025",
     category: "AI & Copilot",
     credentialType: "Verified Credential",
     skills: ["Artificial Intelligence", "NLP Classification", "AI Builder", "Predictive Triage", "Confidence Scoring"],
     verified: true,
-    credentialUrl: "https://www.linkedin.com/in/aliakhmadf/",
-    credentialId: "LL-INT-AI-2024-09",
+    credentialUrl: "https://www.linkedin.com/learning/certificates/0a6fe19d9b5b4e1674036d5dda2238927b870aab1d2aa3f71d59bb36db7e6cde",
+    credentialId: "0a6fe19d9b5b4e1674036d5dda2238927b870aab1d2aa3f71d59bb36db7e6cde",
     summary: "Core machine learning and natural language processing (NLP) paradigms including supervised text classification, entity extraction, and confidence-gated decision trees.",
     productionApplication: "Trained custom AI Builder NLP classification models across 120+ standard operating procedures, improving ticket routing accuracy by 50% and cutting handling time by 65%.",
     verificationMethod: "LinkedIn Learning Credential Registry",
@@ -2180,8 +2185,7 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
     productionApplication: "Foundation for architecting the Single MainDB_{Dept} SharePoint/Dataverse schema ($960K/yr license savings) and static AST validation across 7,878 Power Apps YAML screens.",
     verificationMethod: "Enterprise Architecture Portfolio & GitHub CI Pipelines",
     hoursOrModules: "40+ Hours · 16 Production .msapp Systems",
-    expiryDate: "No Expiration · Active Practitioner",
-    pdfUrl: "/certificates/Power_Platform.pdf"
+    expiryDate: "No Expiration · Active Practitioner"
   },
   {
     id: "cert-six-sigma",
@@ -2200,8 +2204,7 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
     productionApplication: "Drove 60% faster incident triage at Accenture, 25% AHT reduction at Concentrix, and digitized 5-Whys / Fishbone CAPA root-cause workflows for IOI Acidchem SHE.",
     verificationMethod: "Enterprise Quality & BPO Operations Governance",
     hoursOrModules: "36 Hours · DMAIC Capstone & Statistical Audit",
-    expiryDate: "No Expiration · Certified Green Belt",
-    pdfUrl: "/certificates/ABOUT_ME.pdf"
+    expiryDate: "No Expiration · Certified Green Belt"
   },
   {
     id: "cert-pm-stakeholders",
@@ -2209,13 +2212,13 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
     issuer: "LinkedIn Learning (PMI Aligned)",
     organization: "Project Management Institute (PMI)",
     organizationLogoId: "pmi",
-    issueDate: "2024",
+    issueDate: "Jun 2025",
     category: "Project & Process",
     credentialType: "Verified Credential",
     skills: ["Stakeholder Mapping", "Salience Model", "Engagement Strategies", "Expectation Alignment"],
     verified: true,
-    credentialUrl: "https://www.linkedin.com/in/aliakhmadf/",
-    credentialId: "PMI-LL-MPS-2024",
+    credentialUrl: "https://www.linkedin.com/learning/certificates/cdc955c1c39ed519f4b59ce7b02b262aabb94719cf8ed2d952e8f8ebd1e766f4",
+    credentialId: "cdc955c1c39ed519f4b59ce7b02b262aabb94719cf8ed2d952e8f8ebd1e766f4",
     summary: "Techniques for identifying hidden stakeholders, navigating organizational politics, managing expectations, and converting detractors into project champions.",
     productionApplication: "Managed change adoption across 28 department heads and 2 factory plant directors at IOI Group.",
     verificationMethod: "LinkedIn Learning PMI Registered Education Provider",
@@ -2229,13 +2232,13 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
     issuer: "LinkedIn Learning (PMI Aligned)",
     organization: "Project Management Institute (PMI)",
     organizationLogoId: "pmi",
-    issueDate: "2024",
+    issueDate: "Jun 2025",
     category: "Project & Process",
     credentialType: "Verified Credential",
     skills: ["CapEx/OpEx Budgeting", "Cost Variance Analysis", "EVM (Earned Value Management)", "Financial Forecasting"],
     verified: true,
-    credentialUrl: "https://www.linkedin.com/in/aliakhmadf/",
-    credentialId: "PMI-LL-PMF-BUD-2024",
+    credentialUrl: "https://www.linkedin.com/learning/certificates/2e0d7737e1e06f58ae685fe1c7002d71ec9e4c85d26db0bad40e1e30a33f2383",
+    credentialId: "2e0d7737e1e06f58ae685fe1c7002d71ec9e4c85d26db0bad40e1e30a33f2383",
     summary: "Financial control frameworks for enterprise IT projects, establishing cost baselines, calculating Cost Performance Index (CPI), and tracking budget burn rates.",
     productionApplication: "Applied to vendor SOW budgeting and resource allocation at Meraki Malaysia.",
     verificationMethod: "LinkedIn Learning PMI Registered Education Provider",
@@ -2249,13 +2252,13 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
     issuer: "LinkedIn Learning (PMI Aligned)",
     organization: "Project Management Institute (PMI)",
     organizationLogoId: "pmi",
-    issueDate: "2024",
+    issueDate: "Jun 2025",
     category: "Project & Process",
     credentialType: "Verified Credential",
     skills: ["Risk Matrix Design", "Qualitative/Quantitative Risk Analysis", "Mitigation Strategies", "Contingency Reserves"],
     verified: true,
-    credentialUrl: "https://www.linkedin.com/in/aliakhmadf/",
-    credentialId: "PMI-LL-PMF-RISK-2024",
+    credentialUrl: "https://www.linkedin.com/learning/certificates/ede71ad7fb513a386e2e0946198db35db08bface2f569127cc168163e802dc3c",
+    credentialId: "ede71ad7fb513a386e2e0946198db35db08bface2f569127cc168163e802dc3c",
     summary: "Structured risk identification, severity-probability scoring, risk register management, and cutover fallback strategies.",
     productionApplication: "Engineered the zero-downtime cutover risk matrix for migrating 361 Lotus Domino applications.",
     verificationMethod: "LinkedIn Learning PMI Registered Education Provider",
@@ -2269,13 +2272,13 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
     issuer: "LinkedIn Learning (PMI Aligned)",
     organization: "Project Management Institute (PMI)",
     organizationLogoId: "pmi",
-    issueDate: "2024",
+    issueDate: "Jun 2025",
     category: "Project & Process",
     credentialType: "Verified Credential",
     skills: ["Critical Path Method (CPM)", "Work Breakdown Structure (WBS)", "Gantt Planning", "Resource Leveling"],
     verified: true,
-    credentialUrl: "https://www.linkedin.com/in/aliakhmadf/",
-    credentialId: "PMI-LL-PMF-SCHED-2024",
+    credentialUrl: "https://www.linkedin.com/learning/certificates/bc8cb2211558df4969c3f766fba2d491c7c4343abdb165217cb33d9e572783b7",
+    credentialId: "bc8cb2211558df4969c3f766fba2d491c7c4343abdb165217cb33d9e572783b7",
     summary: "Advanced schedule architecture, identifying float/slack, dependencies (FS/SS/FF), and fast-tracking/crashing techniques.",
     productionApplication: "Scheduled and delivered the 6-slice migration timeline across Penang and Johor plant sites.",
     verificationMethod: "LinkedIn Learning PMI Registered Education Provider",
@@ -2284,18 +2287,38 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
     pdfUrl: "/certificates/CertificateOfCompletion_Project Management Foundations Schedules.pdf"
   },
   {
+    id: "cert-pm-communication",
+    name: "Project Management Foundations: Communication",
+    issuer: "LinkedIn Learning (PMI Aligned)",
+    organization: "Project Management Institute (PMI)",
+    organizationLogoId: "pmi",
+    issueDate: "Jun 2025",
+    category: "Project & Process",
+    credentialType: "Verified Credential",
+    skills: ["Project Communication", "Stakeholder Reporting", "Communication Plans", "Status Meetings", "Expectation Management"],
+    verified: true,
+    credentialUrl: "https://www.linkedin.com/learning/certificates/f114e44c8ad9868876ce06fb95dc95b73f1cd0ec42d26425dee4a26d8c9c140d",
+    credentialId: "f114e44c8ad9868876ce06fb95dc95b73f1cd0ec42d26425dee4a26d8c9c140d",
+    summary: "PMI-aligned communication framework for establishing multi-tier stakeholder communication matrices, transparent status cadence, and cross-functional operational alignment.",
+    productionApplication: "Governed cross-departmental migration briefings across 28+ business units and 2 factory plant directors at IOI Group with weekly steering committee reporting.",
+    verificationMethod: "LinkedIn Learning PMI Registered Education Provider",
+    hoursOrModules: "1.00 PDU · Activity #4101J5VUG1",
+    expiryDate: "No Expiration · Lifetime Credential",
+    pdfUrl: "/certificates/CertificateOfCompletion_Project Management Foundations Communication.pdf"
+  },
+  {
     id: "cert-pm-teams",
     name: "Project Management Foundations: Teams",
     issuer: "LinkedIn Learning (PMI Aligned)",
     organization: "Project Management Institute (PMI)",
     organizationLogoId: "pmi",
-    issueDate: "2024",
+    issueDate: "Jun 2025",
     category: "Project & Process",
     credentialType: "Verified Credential",
     skills: ["Team Dynamics", "Agile Squad Leadership", "Psychological Safety", "Conflict Resolution"],
     verified: true,
-    credentialUrl: "https://www.linkedin.com/in/aliakhmadf/",
-    credentialId: "PMI-LL-PMF-TEAM-2024",
+    credentialUrl: "https://www.linkedin.com/learning/certificates/2b82a6d111f06c286276108e500962163ee11848d1f52c4f1588e47ee0f8054c",
+    credentialId: "2b82a6d111f06c286276108e500962163ee11848d1f52c4f1588e47ee0f8054c",
     summary: "High-performance team cultivation, servant leadership, team charters, and fostering innovation in cross-cultural engineering teams.",
     productionApplication: "Scaled and mentored engineering delivery squads at Meraki Malaysia and operations at Concentrix.",
     verificationMethod: "LinkedIn Learning PMI Registered Education Provider",
@@ -2309,13 +2332,13 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
     issuer: "LinkedIn Learning (PMI Aligned)",
     organization: "Project Management Institute (PMI)",
     organizationLogoId: "pmi",
-    issueDate: "2024",
+    issueDate: "Jun 2025",
     category: "Project & Process",
     credentialType: "Verified Credential",
     skills: ["PMI Code of Ethics", "Fairness & Responsibility", "Conflict of Interest", "Regulatory Compliance"],
     verified: true,
-    credentialUrl: "https://www.linkedin.com/in/aliakhmadf/",
-    credentialId: "PMI-LL-PMF-ETH-2024",
+    credentialUrl: "https://www.linkedin.com/learning/certificates/2d4138f4f8e3d4e77b524cf0d06c0da0ab8d54d06b7b47c8fd41a7addd71a643",
+    credentialId: "2d4138f4f8e3d4e77b524cf0d06c0da0ab8d54d06b7b47c8fd41a7addd71a643",
     summary: "PMI professional code of ethics, fiduciary responsibility, conflict-of-interest avoidance, and transparent governance.",
     productionApplication: "Ensured audit compliance and confidentiality across enterprise client SOWs.",
     verificationMethod: "LinkedIn Learning PMI Registered Education Provider",
@@ -2329,13 +2352,13 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
     issuer: "LinkedIn Learning (PMI Aligned)",
     organization: "Project Management Institute (PMI)",
     organizationLogoId: "pmi",
-    issueDate: "2024",
+    issueDate: "Jun 2025",
     category: "Project & Process",
     credentialType: "Verified Credential",
     skills: ["Portfolio Optimization", "Resource Capacity Balancing", "Strategic Alignment", "Multi-Project Dashboards"],
     verified: true,
-    credentialUrl: "https://www.linkedin.com/in/aliakhmadf/",
-    credentialId: "PMI-LL-PPMF-2024",
+    credentialUrl: "https://www.linkedin.com/learning/certificates/1b2a3340a80d330a427b169d0c18921d35bd9a9446e919d72f5ec13ef8be07f6",
+    credentialId: "1b2a3340a80d330a427b169d0c18921d35bd9a9446e919d72f5ec13ef8be07f6",
     summary: "Enterprise portfolio management, aligning multi-project pipelines with organizational strategic goals, and balancing resource capacity.",
     productionApplication: "Governed simultaneous delivery across 16 Power Apps systems and code-first React extensions.",
     verificationMethod: "LinkedIn Learning PMI Registered Education Provider",

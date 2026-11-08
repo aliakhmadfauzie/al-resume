@@ -15,6 +15,8 @@ export type OrganizationLogoId =
   | 'nippon-paint'
   | 'tasek-cement'
   | 'ipenet'
+  | 'zalora'
+  | 'thelorry'
   | 'general';
 
 interface OrganizationLogoProps {
@@ -40,6 +42,12 @@ export function resolveOrganizationLogoId(
   }
   if (text.includes('ipenet')) {
     return 'ipenet';
+  }
+  if (text.includes('zalora')) {
+    return 'zalora';
+  }
+  if (text.includes('thelorry') || text.includes('the lorry') || text.includes('lorry')) {
+    return 'thelorry';
   }
   if (text.includes('texchem')) {
     return 'texchem';
@@ -202,6 +210,30 @@ export const OrganizationLogo: React.FC<OrganizationLogoProps> = ({
             <img
               src="/assets/logos/ipenet.png"
               alt="IPENET Official Logo"
+              className="w-full h-full object-contain"
+              loading="lazy"
+            />
+          </div>
+        );
+
+      case 'zalora':
+        return (
+          <div className={`${iconSize} shrink-0 flex items-center justify-center overflow-hidden rounded-[var(--radius-sm)] bg-black p-0.5 ${className}`}>
+            <img
+              src="/assets/logos/zalora.png"
+              alt="ZALORA Official Logo"
+              className="w-full h-full object-contain"
+              loading="lazy"
+            />
+          </div>
+        );
+
+      case 'thelorry':
+        return (
+          <div className={`${iconSize} shrink-0 flex items-center justify-center overflow-hidden rounded-[var(--radius-sm)] bg-[#C9252C] p-0.5 ${className}`}>
+            <img
+              src="/assets/logos/thelorry.png"
+              alt="TheLorry Official Logo"
               className="w-full h-full object-contain"
               loading="lazy"
             />

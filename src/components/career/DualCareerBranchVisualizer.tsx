@@ -312,26 +312,49 @@ export const DualCareerBranchVisualizer: React.FC = () => {
     },
     'ops-thelorry': {
       period: 'Feb 2017 – Aug 2017',
-      role: 'Digital Marketing Specialist',
+      role: 'B2B Digital Marketing Specialist (1st Job)',
       company: 'TheLorry',
-      headline: 'E-Logistics Growth Marketing, Campaign Analytics & Acquisition Funnels',
+      headline: '1st Job Post-Grad: B2B Growth Marketing, Corporate Freight Acquisition & Funnel Analytics',
       category: 'root',
-      promotionBadge: '★ Career Launch (Post-Grad)',
+      promotionBadge: '★ 1st Professional Job (B2B)',
       leadershipSalesHighlights: [
-        'Spearheaded digital marketing campaigns and cross-functional acquisition strategies for Malaysia’s premier on-demand logistics platform.',
-        'Collaborated with regional operations, product teams, and driver-partner acquisition leads to optimize growth campaigns.'
+        'Served as 1st professional full-time role post-graduation, driving B2B digital marketing, corporate freight demand generation, and business logistics client acquisition across Malaysia.',
+        'Partnered cross-functionally with enterprise sales, driver fleet operations, and regional growth teams to establish B2B customer conversion pipelines.'
       ],
       techOrOpsHighlights: [
-        'Analyzed customer acquisition funnels, channel conversion rates, and paid ad spend to optimize customer acquisition cost (CAC).',
-        'Tracked driver-partner signups and logistics customer booking retention cohorts using web analytics.',
-        'Applied university background in International Business & Logistics to digital commercialization.'
+        'Analyzed B2B customer acquisition funnels, corporate lead generation forms, and paid campaign ROI across Google Ads and commercial channels.',
+        'Monitored driver-partner onboarding retention cohorts and commercial freight booking conversion velocity.',
+        'Applied degree specialization in International Business & Logistics directly to tech-enabled commercial logistics operations.'
       ],
       metrics: [
-        { label: 'Industry', value: 'On-Demand Logistics', color: '#38bdf8' },
-        { label: 'Focus', value: 'Funnel Optimization', color: '#f59e0b' },
-        { label: 'Foundation', value: 'UUM Honors', color: '#6366f1' }
+        { label: 'Role Type', value: '1st Job (B2B)', color: '#C9252C' },
+        { label: 'Sector', value: 'B2B Logistics Tech', color: '#38bdf8' },
+        { label: 'Focus', value: 'Commercial Growth', color: '#f59e0b' }
       ],
-      tags: ['Digital Marketing', 'TheLorry', 'Funnel Analytics', 'E-Logistics', 'Growth Strategy']
+      tags: ['1st Job', 'TheLorry', 'B2B Digital Marketing', 'Corporate Acquisition', 'E-Logistics']
+    },
+    'ops-zalora': {
+      period: '2016',
+      role: 'E-Commerce Operations & Marketing Intern',
+      company: 'ZALORA Group',
+      headline: 'Undergraduate Internship: E-Commerce Catalog Operations, Inventory Reconciliation & Campaign Logistics',
+      category: 'root',
+      promotionBadge: '★ University Internship',
+      leadershipSalesHighlights: [
+        'Selected for competitive undergraduate internship at ZALORA Group, Southeast Asia\'s premier online fashion & lifestyle destination.',
+        'Coordinated across commercial merchandising, marketing, and fulfillment hub operations during high-velocity online shopping campaigns.'
+      ],
+      techOrOpsHighlights: [
+        'Conducted product catalog quality audits, SKU data validation, and inventory reconciliation across regional fulfillment hubs.',
+        'Tracked stock turnover rates and supported fulfillment logistics SLAs during peak retail promotional events.',
+        'Gained hands-on immersion in regional e-commerce supply chains, data auditing, and digital consumer operations.'
+      ],
+      metrics: [
+        { label: 'Role Type', value: 'Internship', color: '#6366f1' },
+        { label: 'Platform', value: 'ZALORA E-Commerce', color: '#38bdf8' },
+        { label: 'Focus', value: 'Catalog Ops & Logistics', color: '#22c55e' }
+      ],
+      tags: ['ZALORA', 'Internship', 'E-Commerce Operations', 'Inventory Reconciliation', 'Supply Chain']
     },
     'trunk-uum': {
       period: '2013 – 2017',
@@ -363,7 +386,7 @@ export const DualCareerBranchVisualizer: React.FC = () => {
   const sharedRoot = {
     period: '2013 – 2018',
     role: 'Scholastic & Analytical Foundation (The Common Trunk)',
-    institution: 'Universiti Utara Malaysia · TheLorry · Accenture Data Analytics',
+    institution: 'Universiti Utara Malaysia · ZALORA (Internship) · TheLorry (1st Job B2B) · Accenture Data Analytics',
     summary: 'The dual-career trunk combines rigorous scholastic training in International Business & Logistics with high-growth startup marketing and enterprise ground-level data analytics.',
     anchors: [
       {
@@ -372,9 +395,14 @@ export const DualCareerBranchVisualizer: React.FC = () => {
         detail: "Universiti Utara Malaysia (CGPA 3.48, Second Upper Class Honours, Minor in Logistics) · 5× Dean's List Recipient · SRC for International Affairs · President of IBMS · Full RM10k/sem Scholarship (Feb 2014)"
       },
       {
+        id: 'ops-zalora',
+        title: 'ZALORA Group E-Commerce Operations Internship (2016)',
+        detail: 'Undergraduate industry internship managing catalog operations, SKU data reconciliation, and e-commerce campaign fulfillment logistics.'
+      },
+      {
         id: 'ops-thelorry',
-        title: 'TheLorry E-Logistics Growth Marketing (2017)',
-        detail: 'Commercial digital marketing, customer acquisition funnel optimization, and conversion analytics for Southeast Asia\'s leading logistics tech platform.'
+        title: 'TheLorry B2B Digital Marketing Specialist (1st Job - 2017)',
+        detail: '1st full-time professional role: corporate logistics acquisition, B2B digital marketing funnels, and freight inquiry conversion analytics.'
       },
       {
         id: 'ops-accenture-analyst',
@@ -398,9 +426,10 @@ export const DualCareerBranchVisualizer: React.FC = () => {
     'ops-accenture-sr-lead': { x: 680, y: 110, label: 'Senior Team Lead (7 Markets)', year: '2021–22', branch: 'operations', color: '#f59e0b' },
     'ops-accenture-lead': { x: 600, y: 165, label: 'Operations Team Lead', year: '2019–20', branch: 'operations', color: '#f59e0b' },
     'ops-accenture-jr-lead': { x: 520, y: 205, label: 'Junior Team Lead', year: '2018–19', branch: 'operations', color: '#f59e0b' },
-    'ops-accenture-analyst': { x: 470, y: 250, label: 'Data Analyst (Accenture)', year: '2017–18', branch: 'root', color: '#6366f1' },
-    'ops-thelorry': { x: 470, y: 285, label: 'Growth Marketing (TheLorry)', year: '2017', branch: 'root', color: '#6366f1' },
-    'trunk-uum': { x: 470, y: 325, label: 'UUM Logistics (CGPA 3.48)', year: '2013–17', branch: 'root', color: '#6366f1' }
+    'ops-accenture-analyst': { x: 470, y: 235, label: 'Data Analyst (Accenture)', year: '2017–18', branch: 'root', color: '#6366f1' },
+    'ops-thelorry': { x: 470, y: 270, label: '1st Job: B2B Marketing (TheLorry)', year: '2017', branch: 'root', color: '#6366f1' },
+    'ops-zalora': { x: 470, y: 305, label: 'Intern (ZALORA Group)', year: '2016', branch: 'root', color: '#6366f1' },
+    'trunk-uum': { x: 470, y: 340, label: 'UUM Logistics (CGPA 3.48)', year: '2013–17', branch: 'root', color: '#6366f1' }
   };
 
   return (
@@ -629,7 +658,7 @@ export const DualCareerBranchVisualizer: React.FC = () => {
 
             {/* 1. Base Conduit: Central Root Trunk (2013-2018) */}
             <path
-              d="M 470 335 L 470 230"
+              d="M 470 345 L 470 230"
               stroke="url(#trunkConduitGrad)"
               strokeWidth="5"
               strokeLinecap="round"
