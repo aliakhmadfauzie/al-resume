@@ -1,3 +1,4 @@
+import { navigate } from '../navigation';
 import React from 'react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 import { NavTab } from '../types';
@@ -15,11 +16,7 @@ export const Footer: React.FC<FooterProps> = ({
   onOpenContact
 }) => {
   const scrollToHomeAnchor = (anchorId: string) => {
-    onSelectTab('home');
-    setTimeout(() => {
-      const el = document.getElementById(anchorId);
-      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 80);
+    navigate(`home/${anchorId.replace('section-', '')}`);
   };
 
   return (

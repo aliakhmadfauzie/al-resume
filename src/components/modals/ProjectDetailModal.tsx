@@ -1,3 +1,4 @@
+import { Dialog } from '../Dialog';
 import React from 'react';
 import { ProjectItem, MigrationSlice } from '../../types';
 import { ProjectGallery } from '../ProjectGallery';
@@ -36,10 +37,10 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
   const galleryPlaceholders = getGalleryForItem(project);
 
   return (
-    <div className="fixed inset-0 z-50 overflow-hidden flex justify-end bg-black/70 backdrop-blur-sm animate-in fade-in duration-200">
+    <Dialog onClose={onClose} label={itemTitle} className="w-[calc(100%-1.5rem)] max-w-4xl p-0 border-0 bg-transparent text-[var(--text-primary)]">
       <div
-        id="project-detail-drawer-container"
-        className="relative w-full max-w-2xl h-full bg-[var(--bg-surface)] border-l border-[var(--border-subtle)] shadow-2xl overflow-hidden flex flex-col animate-in slide-in-from-right duration-200"
+        id="project-detail-modal-container"
+        className="relative w-full max-w-3xl sm:max-w-4xl max-h-[92vh] bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-[var(--radius-lg)] shadow-2xl overflow-hidden flex flex-col animate-in zoom-in-95 duration-200"
       >
         {/* Header */}
         <div className="flex items-center justify-between px-6 py-5 border-b border-[var(--border-subtle)] bg-[var(--bg-primary)]">
@@ -67,7 +68,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
             type="button"
             onClick={onClose}
             className="p-2 rounded-[var(--radius-sm)] bg-[var(--bg-surface)] hover:bg-[var(--bg-surface-elevated)] text-[var(--text-secondary)] hover:text-white border border-[var(--border-subtle)] transition-colors"
-            aria-label="Close drawer"
+            aria-label="Close modal"
           >
             <X className="w-5 h-5" />
           </button>
@@ -200,7 +201,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
                     {project.technicalDetails.map((td, idx) => (
                       <li
                         key={idx}
-                        className="flex items-start space-x-2.5 text-xs text-[var(--text-secondary)] bg-[var(--bg-surface)] p-3 rounded-[var(--radius-sm)] border border-[var(--border-subtle)]"
+                        className="flex items-start space-x-2.5 text-sm text-[var(--text-secondary)] bg-[var(--bg-surface)] p-3 rounded-[var(--radius-sm)] border border-[var(--border-subtle)]"
                       >
                         <CheckCircle2 className="w-4 h-4 text-[var(--text-accent)] shrink-0 mt-0.5" />
                         <span className="leading-relaxed">{td}</span>
@@ -270,14 +271,14 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
                 onClose();
                 onLaunchDemo(project.liveDemoId!);
               }}
-              className="flex items-center space-x-2 px-5 py-2 rounded-[var(--radius-sm)] text-xs font-semibold bg-[var(--accent-blue)] text-white hover:bg-[var(--accent-blue-hover)] transition-colors"
+              className="flex items-center space-x-2 px-5 py-2 rounded-[var(--radius-sm)] text-xs font-semibold bg-[var(--accent-blue)] text-[#090a0d] hover:bg-[var(--accent-blue-hover)] transition-colors"
             >
               <MonitorPlay className="w-4 h-4" />
-              <span>Launch Live Simulation</span>
+              <span>Open simulator</span>
             </button>
           )}
         </div>
       </div>
-    </div>
+    </Dialog>
   );
 };

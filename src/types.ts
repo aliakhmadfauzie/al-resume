@@ -252,11 +252,21 @@ export interface CertificationItem {
   pdfUrl?: string;
 }
 
+export interface DeansListSemesterDetail {
+  semester: string;
+  session: string;
+  period: string;
+  standing: string;
+  school: string;
+  description: string;
+}
+
 export interface HonorAwardItem {
   id: string;
   title: string;
   issuer: string;
   organization?: string;
+  departmentOrScope?: string;
   organizationLogoId?:
     | 'microsoft'
     | 'linkedin'
@@ -276,10 +286,16 @@ export interface HonorAwardItem {
     | 'thelorry'
     | 'general';
   year: string;
+  shortDate?: string;
   description: string;
   certificatePdfUrl?: string;
+  verificationUrl?: string;
   tier?: 'pinnacle' | 'corporate' | 'academic';
+  category?: 'enterprise' | 'academic';
   highlightBadge?: string;
+  metricHighlight?: string;
+  isMarqueeMilestone?: boolean;
+  deansListSemesters?: DeansListSemesterDetail[];
 }
 
 export interface LinkedInTestimonial {

@@ -7,6 +7,7 @@ import {
 } from '../../data/portfolioData';
 import { CertificationItem } from '../../types';
 import { OrganizationLogo } from '../OrganizationLogo';
+import { CorporateRecognitionSection } from '../career/CorporateRecognitionSection';
 import {
   ShieldCheck,
   Award,
@@ -26,7 +27,9 @@ import {
   Eye,
   LayoutGrid,
   Columns3,
-  Download
+  Download,
+  Plus,
+  ChevronDown
 } from 'lucide-react';
 
 export const CertificationsView: React.FC = () => {
@@ -37,6 +40,7 @@ export const CertificationsView: React.FC = () => {
   const [expandAllMetadata, setExpandAllMetadata] = useState<boolean>(false);
   const [layoutMode, setLayoutMode] = useState<'masonry' | 'grid'>('masonry');
   const [copiedId, setCopiedId] = useState<string | null>(null);
+  const [visibleLimit, setVisibleLimit] = useState<number>(12);
 
   const categories = useMemo(
     () => [
@@ -78,6 +82,11 @@ export const CertificationsView: React.FC = () => {
       );
     });
   }, [selectedCategory, searchQuery]);
+
+  const displayedCertifications = useMemo(() => {
+    if (searchQuery.trim()) return filteredCertifications;
+    return filteredCertifications.slice(0, visibleLimit);
+  }, [filteredCertifications, searchQuery, visibleLimit]);
 
   const getCategoryIcon = (category: CertificationItem['category']) => {
     switch (category) {
@@ -155,7 +164,7 @@ export const CertificationsView: React.FC = () => {
             <div className="text-2xl font-extrabold font-mono text-[var(--text-accent)] tabular-nums">
               {LINKEDIN_CERTIFICATIONS.length}
             </div>
-            <div className="text-xs text-[var(--text-secondary)]">
+            <div className="text-sm text-[var(--text-secondary)]">
               Verified Certifications · 100% Active
             </div>
           </div>
@@ -163,7 +172,7 @@ export const CertificationsView: React.FC = () => {
             <div className="text-2xl font-extrabold font-mono text-[var(--text-primary)] tabular-nums">
               6
             </div>
-            <div className="text-xs text-[var(--text-secondary)]">
+            <div className="text-sm text-[var(--text-secondary)]">
               Issuing Authorities · MS / LinkedIn / PMI / Lark / EQM / CNX
             </div>
           </div>
@@ -171,7 +180,7 @@ export const CertificationsView: React.FC = () => {
             <div className="text-2xl font-extrabold font-mono text-[var(--text-primary)] tabular-nums">
               250+ Hrs
             </div>
-            <div className="text-xs text-[var(--text-secondary)]">
+            <div className="text-sm text-[var(--text-secondary)]">
               Assessed Lab &amp; Capstone Curriculum
             </div>
           </div>
@@ -179,7 +188,7 @@ export const CertificationsView: React.FC = () => {
             <div className="text-2xl font-extrabold font-mono text-[var(--text-accent)] tabular-nums">
               {LINKEDIN_HONORS_AWARDS.length}
             </div>
-            <div className="text-xs text-[var(--text-secondary)]">
+            <div className="text-sm text-[var(--text-secondary)]">
               Corporate &amp; Academic Honors
             </div>
           </div>
@@ -194,7 +203,7 @@ export const CertificationsView: React.FC = () => {
           {/* Segmented Category Filter Controls */}
           <div
             className="flex flex-wrap items-center gap-1.5"
-            role="tablist"
+            role="group"
             aria-label="Filter certifications by domain"
           >
             {categories.map((cat) => {
@@ -209,8 +218,7 @@ export const CertificationsView: React.FC = () => {
                 <button
                   key={cat}
                   type="button"
-                  role="tab"
-                  aria-selected={isSelected}
+                  aria-pressed={isSelected}
                   onClick={() => setSelectedCategory(cat)}
                   className={`px-3 py-2 rounded-[var(--radius-sm)] text-xs font-medium transition-colors cursor-pointer whitespace-nowrap ${
                     isSelected
@@ -299,7 +307,7 @@ export const CertificationsView: React.FC = () => {
             <h3 className="text-base font-semibold text-[var(--text-primary)]">
               No matching credentials found
             </h3>
-            <p className="text-xs text-[var(--text-secondary)] max-w-md mx-auto">
+            <p className="text-sm text-[var(--text-secondary)] max-w-md mx-auto">
               No certifications matched &ldquo;{searchQuery}&rdquo; in {selectedCategory}. Reset filters to view all {LINKEDIN_CERTIFICATIONS.length} verified credentials.
             </p>
             <button
@@ -314,9 +322,10 @@ export const CertificationsView: React.FC = () => {
             </button>
           </div>
         ) : (
-          /* ==================================================================
+          <>
+          {/* ==================================================================
              DYNAMIC MASONRY LAYOUT WITH HOVER-ENABLED CREDENTIAL METADATA CARDS
-             ================================================================== */
+             ================================================================== */}
           <div
             className={
               layoutMode === 'masonry'
@@ -324,7 +333,7 @@ export const CertificationsView: React.FC = () => {
                 : 'grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 items-start'
             }
           >
-            {filteredCertifications.map((cert, index) => {
+            {displayedCertifications.map((cert, index) => {
               const showDetail = isDetailActive(cert.id);
               const isPinned = pinnedCertId === cert.id;
 
@@ -417,7 +426,7 @@ export const CertificationsView: React.FC = () => {
 
                     {/* Executive Summary (Always Visible, Variable Length for Masonry) */}
                     {cert.summary && (
-                      <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+                      <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
                         {cert.summary}
                       </p>
                     )}
@@ -511,7 +520,7 @@ export const CertificationsView: React.FC = () => {
                               <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--text-accent)] block">
                                 Production Impact &amp; Enterprise Application
                               </span>
-                              <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+                              <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
                                 {cert.productionApplication}
                               </p>
                             </div>
@@ -572,107 +581,63 @@ export const CertificationsView: React.FC = () => {
               );
             })}
           </div>
+
+          {/* Progressive Disclosure Controls ("do not show all, just add some more after show some") */}
+          {!searchQuery.trim() && filteredCertifications.length > 12 && (
+            <div className="mt-8 p-4 sm:p-6 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] flex flex-col sm:flex-row items-center justify-between gap-4 shadow-sm">
+              <div className="space-y-1 text-center sm:text-left">
+                <p className="text-xs font-mono uppercase tracking-wider text-[var(--text-accent)] font-semibold">
+                  Progressive Credential Vault
+                </p>
+                <p className="text-xs sm:text-sm text-[var(--text-secondary)]">
+                  Displaying <strong className="text-[var(--text-primary)] font-mono">{displayedCertifications.length}</strong> of{' '}
+                  <strong className="text-[var(--text-primary)] font-mono">{filteredCertifications.length}</strong> accredited credentials &amp; certifications.
+                </p>
+              </div>
+
+              <div className="flex flex-wrap items-center justify-center gap-2.5 w-full sm:w-auto">
+                {visibleLimit < filteredCertifications.length ? (
+                  <>
+                    <button
+                      type="button"
+                      onClick={() => setVisibleLimit(prev => Math.min(prev + 12, filteredCertifications.length))}
+                      className="action-secondary min-h-[44px] px-4 py-2 text-xs font-semibold inline-flex items-center gap-1.5 cursor-pointer touch-manipulation"
+                    >
+                      <Plus className="w-3.5 h-3.5 text-[var(--text-accent)]" />
+                      <span>Load 12 More</span>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setVisibleLimit(filteredCertifications.length)}
+                      className="action-primary min-h-[44px] px-4 py-2 text-xs font-bold inline-flex items-center gap-1.5 cursor-pointer touch-manipulation"
+                    >
+                      <Eye className="w-3.5 h-3.5" />
+                      <span>Show All ({filteredCertifications.length})</span>
+                    </button>
+                  </>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => setVisibleLimit(12)}
+                    className="action-secondary min-h-[44px] px-4 py-2 text-xs font-semibold inline-flex items-center gap-1.5 cursor-pointer touch-manipulation"
+                  >
+                    <span>Show Top 12 Priority Credentials (Collapse)</span>
+                  </button>
+                )}
+              </div>
+            </div>
+          )}
+          </>
         )}
       </section>
 
       {/* ====================================================================
-          03. CORPORATE HONORS & ACADEMIC DISTINCTIONS
+          03. CORPORATE HONORS & ACADEMIC DISTINCTIONS (Elevated with Tiering & 5x Dean's Showcase)
          ==================================================================== */}
-      <section className="space-y-5 pt-4 border-t border-[var(--border-subtle)]">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2">
-          <div>
-            <p className="text-xs font-mono text-[var(--text-accent)] font-semibold uppercase">
-              02. Corporate Honors &amp; Academic Distinctions
-            </p>
-            <h2 className="text-xl sm:text-2xl font-bold text-[var(--text-primary)] mt-1">
-              Global Delivery &amp; University Leadership Recognition
-            </h2>
-          </div>
-          <span className="text-xs font-mono text-[var(--text-secondary)]">
-            Accenture · Concentrix · Universiti Utara Malaysia (UUM)
-          </span>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {LINKEDIN_HONORS_AWARDS.map((award) => {
-            const isPinnacle = award.tier === 'pinnacle';
-            const cardStyle = isPinnacle
-              ? 'border-amber-500/40 bg-gradient-to-br from-[#1a150e]/90 via-[#10121a]/95 to-[var(--bg-surface)] hover:border-amber-400 hover:shadow-[0_12px_32px_-8px_rgba(0,0,0,0.6),0_0_24px_-4px_rgba(245,158,11,0.2)]'
-              : 'border-[var(--border-subtle)] hover:border-amber-500/40 bg-[var(--bg-surface)] hover:bg-[var(--bg-surface-elevated)] hover:shadow-[0_12px_32px_-8px_rgba(0,0,0,0.5),0_0_20px_-4px_rgba(245,158,11,0.12)]';
-
-            return (
-              <div
-                key={award.id}
-                className={`cert-hologram-card group rounded-[var(--radius-lg)] border p-6 flex items-start space-x-4 transition-all duration-300 shadow-[var(--shadow-card)] relative overflow-hidden ${cardStyle}`}
-              >
-                {isPinnacle && (
-                  <div className="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-amber-400/80 to-transparent pointer-events-none" />
-                )}
-
-                <div className="w-12 h-12 rounded-[var(--radius-md)] bg-[#1b1613] border border-[var(--interactive-subtle-border)] group-hover:border-amber-500/40 group-hover:scale-105 flex items-center justify-center shrink-0 transition-all duration-300 p-2 overflow-hidden shadow-inner">
-                  <OrganizationLogo
-                    logoId={award.organizationLogoId}
-                    orgName={award.organization || award.issuer}
-                    size="md"
-                  />
-                </div>
-                <div className="space-y-2 flex-1">
-                  <div className="flex flex-wrap items-center justify-between gap-2">
-                    <div className="flex items-center gap-2">
-                      {isPinnacle && (
-                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[9px] font-mono font-bold bg-amber-500/15 text-amber-300 border border-amber-500/30 uppercase tracking-wider">
-                          <Crown className="w-2.5 h-2.5 text-amber-400" />
-                          <span>Pinnacle</span>
-                        </span>
-                      )}
-                      <h3 className="text-sm sm:text-base font-bold text-[var(--text-primary)] group-hover:text-white transition-colors">
-                        {award.title}
-                      </h3>
-                    </div>
-                    <span className="text-xs font-mono text-[var(--text-accent)] shrink-0 px-2 py-0.5 rounded bg-white/5 border border-white/5">
-                      {award.year}
-                    </span>
-                  </div>
-
-                  {award.highlightBadge && (
-                    <div className="inline-block px-2.5 py-0.5 rounded bg-amber-500/10 border border-amber-500/20 text-[10px] font-mono font-semibold text-amber-300">
-                      ★ {award.highlightBadge}
-                    </div>
-                  )}
-
-                  <div className="flex items-center gap-1.5 text-xs font-mono text-[var(--text-secondary)]">
-                    <OrganizationLogo
-                      logoId={award.organizationLogoId}
-                      orgName={award.organization || award.issuer}
-                      size="xs"
-                    />
-                    <span className="font-semibold text-[var(--text-primary)]">
-                      {award.organization || award.issuer}
-                    </span>
-                    <span className="text-[var(--text-tertiary)]">· Official Distinction</span>
-                  </div>
-                  <p className="text-xs text-[var(--text-secondary)] leading-relaxed pt-1">
-                    {award.description}
-                  </p>
-                  {award.certificatePdfUrl && (
-                    <div className="pt-2">
-                      <a
-                        href={award.certificatePdfUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center space-x-1.5 text-xs font-mono text-[var(--text-accent)] hover:underline"
-                      >
-                        <FileCheck2 className="w-3.5 h-3.5 text-[var(--interactive-primary)]" />
-                        <span>View Verification Evidence (PDF) →</span>
-                      </a>
-                    </div>
-                  )}
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </section>
+      <CorporateRecognitionSection
+        sectionNumber="02. Corporate Honors & Academic Distinctions"
+        sectionTitle="Global Delivery & University Leadership Recognition"
+      />
     </div>
   );
 };

@@ -72,7 +72,7 @@ export function HomeView({
         { label: "CONTRACTUAL SLA", value: "98%+", subtext: "24/7 Multi-Shift Rotational Floor" },
         { label: "POLICY & QA ACCURACY", value: "96–99%", subtext: "Content Moderation, Ads & Game Review" },
         { label: "AHT REDUCTION", value: "-25%", subtext: "Lean Six Sigma DMAIC Controls" },
-        { label: "SQUAD SCALING", value: "34 Agents", subtext: "Indonesia · China · Korea · Japan · Thailand · Vietnam (<5% Attrition)" }
+        { label: "SQUAD SCALING", value: "34 Agents", subtext: "Malaysia · Indonesia · China · Korea · Japan · Thailand · Vietnam (<5% Attrition)" }
       ];
     }
     if (activePersona === 'software') {
@@ -115,11 +115,11 @@ export function HomeView({
           aria-hidden="true"
           className="absolute inset-0 pointer-events-none -z-10 overflow-hidden"
         >
-          <div className="absolute inset-0 -left-12 sm:left-0 lg:-left-20 w-full lg:w-[85%] h-full">
+          <div className="absolute inset-0 -left-16 sm:-left-8 lg:-left-28 w-[105%] lg:w-[85%] h-full">
             <img
               src="/assets/profile/hero-bg.webp"
               alt=""
-              className="w-full h-full object-cover object-[15%_top] sm:object-[20%_top] lg:object-[25%_top] opacity-20 filter grayscale contrast-125 mix-blend-luminosity scale-105"
+              className="w-full h-full object-cover object-[10%_top] sm:object-[15%_top] lg:object-[18%_top] opacity-18 filter grayscale contrast-125 mix-blend-luminosity scale-105"
             />
           </div>
           {/* Multi-layered gradient & radial masks for seamless dark canvas color merging */}
@@ -483,7 +483,7 @@ export function HomeView({
                   34 Agents
                 </dd>
                 <p className="text-[11px] text-[var(--text-tertiary)] mt-0.5">
-                  Indonesia, China, Korea, Japan, Thailand, Vietnam (&lt;5% attrition)
+                  Malaysia, Indonesia, China, Korea, Japan, Thailand, Vietnam (&lt;5% attrition)
                 </p>
               </div>
               <div className="bg-[var(--bg-surface)] p-3 rounded-xl border border-[var(--border-subtle)]">
@@ -1376,7 +1376,7 @@ export function HomeView({
           {displayProjects.map(project => (
             <article
               key={project.id}
-              className="glass-card p-5 sm:p-6 flex flex-col justify-between gap-5 border border-[var(--border-subtle)] hover:border-[var(--interactive-subtle-border)] transition-all duration-200"
+              className="glass-card p-4 sm:p-6 flex flex-col justify-between gap-5 border border-[var(--border-subtle)] hover:border-[var(--interactive-subtle-border)] transition-all duration-200"
             >
               <div className="space-y-4">
                 <ProjectCardGalleryPreview item={project} />
@@ -1398,59 +1398,59 @@ export function HomeView({
                     {project.problem}
                   </p>
 
-                  {/* Quantified Outcome Box */}
-                  <div className="p-3.5 rounded-xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] space-y-1">
-                    <p className="text-xs font-mono font-semibold uppercase tracking-wider text-[var(--text-accent)]">
-                      Engineered Outcome:
-                    </p>
-                    <p className="text-xs sm:text-sm text-[var(--text-primary)] font-medium leading-relaxed">
-                      {project.impact}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Categorized Tools */}
-                <div className="flex flex-wrap gap-1.5 pt-1">
-                  {project.tools.slice(0, 5).map(tool => (
-                    <span
-                      key={tool}
-                      className="text-xs px-2.5 py-1 rounded-md bg-[var(--bg-surface)] border border-[var(--border-subtle)] text-[var(--text-tertiary)]"
-                    >
-                      {tool}
-                    </span>
-                  ))}
-                  {project.tools.length > 5 && (
-                    <span className="text-xs px-2 py-1 text-[var(--text-tertiary)] font-mono">
-                      +{project.tools.length - 5}
-                    </span>
-                  )}
+                {/* Quantified Outcome Box */}
+                <div className="p-3.5 rounded-xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] space-y-1">
+                  <p className="text-xs font-mono font-semibold uppercase tracking-wider text-[var(--text-accent)]">
+                    Engineered Outcome:
+                  </p>
+                  <p className="text-xs sm:text-sm text-[var(--text-primary)] font-medium leading-relaxed">
+                    {project.impact}
+                  </p>
                 </div>
               </div>
 
-              {/* Action Buttons */}
-              <div className="flex items-center gap-2 pt-3 border-t border-[var(--border-subtle)]">
-                <a
-                  href={`#/projects/${encodeURIComponent(project.id)}`}
-                  className="action-primary text-sm py-2 px-3.5 flex-1 text-center justify-center"
-                  aria-label={`View case study: ${project.title}`}
-                >
-                  <span>Case Study</span>
-                  <ArrowRight size={15} />
-                </a>
-                {project.liveDemoId && (
-                  <button
-                    type="button"
-                    onClick={() => onLaunchDemo(project.liveDemoId!)}
-                    className="action-secondary text-sm py-2 px-3 inline-flex items-center gap-1.5"
-                    title="Launch live interactive simulator"
+              {/* Categorized Tools */}
+              <div className="flex flex-wrap gap-1.5 pt-1">
+                {project.tools.slice(0, 5).map(tool => (
+                  <span
+                    key={tool}
+                    className="text-xs px-2.5 py-1 rounded-md bg-[var(--bg-surface)] border border-[var(--border-subtle)] text-[var(--text-tertiary)]"
                   >
-                    <Play size={14} className="text-[var(--text-accent)]" />
-                    <span>Demo</span>
-                  </button>
+                    {tool}
+                  </span>
+                ))}
+                {project.tools.length > 5 && (
+                  <span className="text-xs px-2 py-1 text-[var(--text-tertiary)] font-mono">
+                    +{project.tools.length - 5}
+                  </span>
                 )}
               </div>
-            </article>
-          ))}
+            </div>
+
+            {/* Action Buttons */}
+            <div className="flex items-center gap-2 pt-3 border-t border-[var(--border-subtle)]">
+              <a
+                href={`#/projects/${encodeURIComponent(project.id)}`}
+                className="action-primary text-sm min-h-[44px] py-2 px-3.5 flex-1 text-center justify-center touch-manipulation"
+                aria-label={`View case study: ${project.title}`}
+              >
+                <span>Case Study</span>
+                <ArrowRight size={15} />
+              </a>
+              {project.liveDemoId && (
+                <button
+                  type="button"
+                  onClick={() => onLaunchDemo(project.liveDemoId!)}
+                  className="action-secondary text-sm min-h-[44px] py-2 px-3 inline-flex items-center gap-1.5 touch-manipulation"
+                  title="Launch live interactive simulator"
+                >
+                  <Play size={14} className="text-[var(--text-accent)]" />
+                  <span>Demo</span>
+                </button>
+              )}
+            </div>
+          </article>
+        ))}
         </div>
       </section>
 
@@ -1495,7 +1495,7 @@ export function HomeView({
           {featuredExperiences.map(experience => (
             <li
               key={experience.id}
-              className="p-6 rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-surface)] hover:border-[var(--interactive-subtle-border)] transition-colors space-y-3"
+              className="p-4 sm:p-6 rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-surface)] hover:border-[var(--interactive-subtle-border)] transition-colors space-y-3"
             >
               <div className="flex items-center justify-between gap-2">
                 <span className="text-xs font-mono text-[var(--text-tertiary)]">{experience.period}</span>

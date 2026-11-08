@@ -1,7 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { CORE_PROJECTS, MIGRATION_OVERVIEW, MIGRATION_SLICES } from '../../data/portfolioData';
-import { ProjectItem, MigrationSlice } from '../../types';
 import { ProjectCardGalleryPreview } from '../ProjectGallery';
 import {
   Search,
@@ -15,12 +14,10 @@ import {
 } from 'lucide-react';
 
 interface ProjectsViewProps {
-  onOpenProjectDetail: (item: ProjectItem | MigrationSlice) => void;
   onLaunchDemo: (demoId: string) => void;
 }
 
 export const ProjectsView: React.FC<ProjectsViewProps> = ({
-  onOpenProjectDetail,
   onLaunchDemo
 }) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
@@ -87,33 +84,37 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
       </div>
 
       {/* Flagship Banner: IOI Oleo Domino Migration */}
-      <section className="bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-[var(--radius-lg)] p-6 sm:p-8 space-y-6 shadow-[var(--shadow-card)]">
+      <section className="bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-[var(--radius-lg)] p-4 sm:p-6 md:p-8 space-y-6 shadow-[var(--shadow-card)]">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-[var(--border-subtle)] pb-6">
           <div className="space-y-1.5">
             <div className="flex items-center space-x-2 text-xs font-mono text-[var(--text-accent)] font-medium">
               <Database className="w-3.5 h-3.5" />
               <span>Flagship Enterprise Migration · 365+ Applications</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-semibold text-[var(--text-primary)] tracking-tight">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-[var(--text-primary)] tracking-tight">
               {MIGRATION_OVERVIEW.title}
             </h2>
-            <p className="text-xs text-[var(--text-secondary)] font-mono">
+            <p className="text-xs sm:text-sm text-[var(--text-secondary)] font-mono">
               {MIGRATION_OVERVIEW.period} · {MIGRATION_OVERVIEW.role}
             </p>
           </div>
 
-          <div className="grid grid-cols-3 gap-3 shrink-0 font-mono tabular-nums">
-            <div className="bg-[var(--bg-primary)] p-3.5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] text-center">
-              <span className="text-xl font-semibold text-[var(--text-primary)]">24</span>
-              <p className="text-[11px] text-[var(--text-tertiary)] mt-0.5">High Complexity</p>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 shrink-0 font-mono tabular-nums">
+            <div className="bg-[var(--bg-primary)] p-3 sm:p-3.5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] text-center">
+              <span className="text-lg sm:text-2xl font-bold text-[var(--text-accent)]">$960K/yr</span>
+              <p className="text-[10px] sm:text-[11px] text-[var(--text-tertiary)] mt-0.5 font-sans">Licensing Avoided</p>
             </div>
-            <div className="bg-[var(--bg-primary)] p-3.5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] text-center">
-              <span className="text-xl font-semibold text-[var(--text-accent)]">28</span>
-              <p className="text-[11px] text-[var(--text-tertiary)] mt-0.5">Medium Complexity</p>
+            <div className="bg-[var(--bg-primary)] p-3 sm:p-3.5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] text-center">
+              <span className="text-lg sm:text-2xl font-bold text-[var(--text-primary)]">365+</span>
+              <p className="text-[10px] sm:text-[11px] text-[var(--text-tertiary)] mt-0.5 font-sans">DBs Retired (0h Downtime)</p>
             </div>
-            <div className="bg-[var(--bg-primary)] p-3.5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] text-center">
-              <span className="text-xl font-semibold text-[var(--text-secondary)]">12</span>
-              <p className="text-[11px] text-[var(--text-tertiary)] mt-0.5">Low Complexity</p>
+            <div className="bg-[var(--bg-primary)] p-3 sm:p-3.5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] text-center">
+              <span className="text-lg sm:text-2xl font-bold text-[var(--text-primary)]">7,878</span>
+              <p className="text-[10px] sm:text-[11px] text-[var(--text-tertiary)] mt-0.5 font-sans">YAML Screens in CI</p>
+            </div>
+            <div className="bg-[var(--bg-primary)] p-3 sm:p-3.5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] text-center">
+              <span className="text-lg sm:text-2xl font-bold text-[var(--text-accent)]">-73%</span>
+              <p className="text-[10px] sm:text-[11px] text-[var(--text-tertiary)] mt-0.5 font-sans">CAPA Investigation Time</p>
             </div>
           </div>
         </div>
@@ -135,7 +136,7 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
                 <span className="text-2xl font-semibold text-[var(--text-primary)]">
                   {MIGRATION_OVERVIEW.consolidationStats.uniqueGroups}
                 </span>
-                <p className="text-xs text-[var(--text-secondary)] mt-1 font-sans">
+                <p className="text-sm text-[var(--text-secondary)] mt-1 font-sans">
                   Unique App Groups Analyzed
                 </p>
               </div>
@@ -143,7 +144,7 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
                 <span className="text-2xl font-semibold text-[var(--text-accent)]">
                   {MIGRATION_OVERVIEW.consolidationStats.sharedCrossDepartment}
                 </span>
-                <p className="text-xs text-[var(--text-secondary)] mt-1 font-sans">
+                <p className="text-sm text-[var(--text-secondary)] mt-1 font-sans">
                   Cross-Dept Shared Apps Merged
                 </p>
               </div>
@@ -151,7 +152,7 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
                 <span className="text-2xl font-semibold text-[var(--text-primary)]">
                   {MIGRATION_OVERVIEW.consolidationStats.sameDepartmentVariants}
                 </span>
-                <p className="text-xs text-[var(--text-secondary)] mt-1 font-sans">
+                <p className="text-sm text-[var(--text-secondary)] mt-1 font-sans">
                   Same-Dept Variants Unified
                 </p>
               </div>
@@ -159,7 +160,7 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
                 <span className="text-2xl font-semibold text-[var(--text-accent)]">
                   {MIGRATION_OVERVIEW.consolidationStats.routingDifferencesResolved}
                 </span>
-                <p className="text-xs text-[var(--text-secondary)] mt-1 font-sans">
+                <p className="text-sm text-[var(--text-secondary)] mt-1 font-sans">
                   Routing Conflicts Resolved
                 </p>
               </div>
@@ -179,7 +180,7 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
                       {highlight.type}
                     </span>
                   </div>
-                  <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+                  <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
                     {highlight.resolution}
                   </p>
                 </div>
@@ -206,9 +207,10 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
                   <button
                     key={filter.id}
                     onClick={() => setSliceCategoryFilter(filter.id)}
+                    aria-pressed={sliceCategoryFilter === filter.id}
                     className={`px-3 py-1 rounded-[4px] text-xs font-medium transition-colors whitespace-nowrap ${
                       sliceCategoryFilter === filter.id
-                        ? 'bg-[var(--accent-blue)] text-white'
+                        ? 'bg-[var(--accent-blue)] text-[#090a0d]'
                         : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
                     }`}
                   >
@@ -227,6 +229,7 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
                   <button
                     key={filter.id}
                     onClick={() => setSliceTechFilter(filter.id)}
+                    aria-pressed={sliceTechFilter === filter.id}
                     className={`px-3 py-1 rounded-[4px] text-xs font-medium transition-colors whitespace-nowrap ${
                       sliceTechFilter === filter.id
                         ? 'bg-[var(--bg-surface-elevated)] text-[var(--text-primary)] border border-[var(--border-focus)]'
@@ -254,8 +257,7 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
                   className="h-full"
                 >
                   <div
-                    onClick={() => onOpenProjectDetail(slice)}
-                    className="h-full bg-[var(--bg-primary)] hover:bg-[var(--bg-surface-elevated)] p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] hover:border-orange-500/40 hover:shadow-[0_12px_32px_-8px_rgba(0,0,0,0.5),0_0_24px_-4px_rgba(249,115,22,0.1)] space-y-3 cursor-pointer group flex flex-col justify-between transition-all duration-200"
+                      className="relative h-full bg-[var(--bg-primary)] hover:bg-[var(--bg-surface-elevated)] p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] hover:border-orange-500/40 hover:shadow-[0_12px_32px_-8px_rgba(0,0,0,0.5),0_0_24px_-4px_rgba(249,115,22,0.1)] space-y-3 group flex flex-col justify-between transition-all duration-200"
                   >
                     <div className="space-y-2.5">
                       <div className="flex items-center justify-between">
@@ -271,19 +273,19 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
                         {slice.title}
                       </h4>
 
-                      <p className="text-xs text-[var(--text-secondary)] line-clamp-3 leading-relaxed">
+                      <p className="text-sm text-[var(--text-secondary)] line-clamp-3 leading-relaxed">
                         {slice.problem}
                       </p>
                     </div>
 
                     <div className="pt-3 border-t border-[var(--border-subtle)] space-y-2">
-                      <div className="flex items-start space-x-2 text-xs text-[var(--text-primary)] font-medium">
+                      <div className="flex items-start space-x-2 text-sm text-[var(--text-primary)] font-medium">
                         <TrendingUp className="w-3.5 h-3.5 text-[var(--text-accent)] shrink-0" />
                         <span className="line-clamp-2 leading-relaxed">{slice.impact}</span>
                       </div>
 
                       <div className="flex items-center justify-between text-xs font-medium text-[var(--text-accent)]">
-                        <span>Inspect Slice Architecture</span>
+                        <a href={`#/projects/${encodeURIComponent(slice.id)}`} className="case-study-link" aria-label={`View case study: ${slice.title}`}>View case study</a>
                         <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-200" />
                       </div>
                     </div>
@@ -297,8 +299,8 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
 
       {/* Filter and Search Bar for Standalone & Core Projects */}
       <section className="space-y-6 pt-2">
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 bg-[var(--bg-surface)] p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)]">
-          <div className="flex flex-wrap gap-2">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 sm:gap-4 bg-[var(--bg-surface)] p-3.5 sm:p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)]">
+          <div className="flex flex-wrap gap-1.5 sm:gap-2">
             {[
               { id: 'all', label: `All Case Studies (${CORE_PROJECTS.length})` },
               {
@@ -317,9 +319,10 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
               <button
                 key={cat.id}
                 onClick={() => setSelectedCategory(cat.id)}
+                aria-pressed={selectedCategory === cat.id}
                 className={`px-3.5 py-1.5 rounded-[var(--radius-sm)] text-xs font-medium transition-colors whitespace-nowrap ${
                   selectedCategory === cat.id
-                    ? 'bg-[var(--accent-blue)] text-white'
+                    ? 'bg-[var(--accent-blue)] text-[#090a0d]'
                     : 'bg-[var(--bg-primary)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--border-subtle)]'
                 }`}
               >
@@ -330,12 +333,14 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
 
           <div className="relative w-full lg:w-72 shrink-0">
             <Search className="w-4 h-4 text-[var(--text-tertiary)] absolute left-3 top-1/2 -translate-y-1/2" />
+            <label htmlFor="project-search" className="sr-only">Search projects by keyword, tool, or problem</label>
             <input
-              type="text"
+              id="project-search"
+              type="search"
               placeholder="Filter by keyword, tool, problem..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-3.5 py-2 rounded-[var(--radius-sm)] bg-[var(--bg-primary)] border border-[var(--border-subtle)] focus:border-[var(--border-focus)] focus:outline-none text-xs text-[var(--text-primary)] placeholder-[var(--text-tertiary)] transition-colors"
+              className="w-full pl-9 pr-3.5 py-2 rounded-[var(--radius-sm)] bg-[var(--bg-primary)] border border-[var(--border-subtle)] focus:border-[var(--border-focus)] focus:outline-none text-sm text-[var(--text-primary)] placeholder-[var(--text-tertiary)] transition-colors"
             />
           </div>
         </div>
@@ -358,8 +363,7 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
                 className="h-full"
               >
                 <div
-                  className="h-full glass-card p-6 space-y-5 flex flex-col justify-between cursor-pointer group hover:border-orange-500/40 hover:shadow-[0_12px_32px_-8px_rgba(0,0,0,0.5),0_0_24px_-4px_rgba(249,115,22,0.1)] transition-all duration-200"
-                  onClick={() => onOpenProjectDetail(proj)}
+                  className="relative h-full glass-card p-4 sm:p-6 space-y-4 sm:space-y-5 flex flex-col justify-between group hover:border-orange-500/40 hover:shadow-[0_12px_32px_-8px_rgba(0,0,0,0.5),0_0_24px_-4px_rgba(249,115,22,0.1)] transition-all duration-200"
                 >
                   <div className="space-y-3.5">
                     {/* Project Architectural Thumbnail Header */}
@@ -395,27 +399,44 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
                     </div>
 
                     <div className="space-y-1">
-                      <p className="text-xs font-mono text-[var(--text-tertiary)]">Challenge</p>
-                      <p className="text-xs text-[var(--text-secondary)] leading-relaxed line-clamp-2">
+                      <p className="text-xs font-mono text-[var(--text-tertiary)] uppercase">Challenge</p>
+                      <p className="text-sm text-[var(--text-secondary)] leading-relaxed line-clamp-2">
                         {proj.problem}
                       </p>
                     </div>
 
-                    <div className="space-y-1">
-                      <p className="text-xs font-mono text-[var(--text-tertiary)]">Architected Solution</p>
-                      <p className="text-xs text-[var(--text-secondary)] leading-relaxed line-clamp-2">
-                        {proj.solution}
+                    {/* Quantified Verifiable Outcome (Spotted Scanning Anchor) */}
+                    <div className="p-3 rounded-lg bg-[var(--bg-primary)] border border-[var(--border-subtle)] space-y-1">
+                      <div className="flex items-center gap-1.5 text-xs font-mono text-[var(--text-accent)] font-semibold uppercase">
+                        <TrendingUp className="w-3.5 h-3.5" />
+                        <span>Verifiable Outcome</span>
+                      </div>
+                      <p className="text-xs text-[var(--text-primary)] leading-relaxed font-medium">
+                        {proj.impact}
                       </p>
                     </div>
 
-                    <div className="pt-1 text-xs font-mono text-[var(--text-tertiary)] truncate">
-                      {proj.tools.join(' · ')}
+                    {/* Categorized Tools Chips */}
+                    <div className="flex flex-wrap gap-1.5 pt-1">
+                      {proj.tools.slice(0, 4).map((tool) => (
+                        <span
+                          key={tool}
+                          className="text-xs px-2 py-0.5 rounded bg-[var(--bg-surface)] border border-[var(--border-subtle)] text-[var(--text-tertiary)] font-mono"
+                        >
+                          {tool}
+                        </span>
+                      ))}
+                      {proj.tools.length > 4 && (
+                        <span className="text-xs px-1.5 py-0.5 rounded bg-[var(--bg-surface)] text-[var(--text-tertiary)] font-mono">
+                          +{proj.tools.length - 4}
+                        </span>
+                      )}
                     </div>
                   </div>
 
                   <div className="pt-4 border-t border-[var(--border-subtle)] flex items-center justify-between">
                     <span className="text-xs font-medium text-[var(--text-secondary)] group-hover:text-[var(--text-primary)] flex items-center space-x-1">
-                      <span>Detailed Specs</span>
+                      <a href={`#/projects/${encodeURIComponent(proj.id)}`} className="case-study-link" aria-label={`View case study: ${proj.title}`}>View case study</a>
                       <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-200" />
                     </span>
 
@@ -425,7 +446,7 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
                           e.stopPropagation();
                           onLaunchDemo(proj.liveDemoId!);
                         }}
-                        className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-[var(--radius-sm)] bg-[var(--bg-surface-elevated)] hover:border-[var(--border-focus)] text-[var(--text-primary)] text-xs font-medium border border-[var(--border-subtle)] transition-colors whitespace-nowrap"
+                        className="relative z-10 inline-flex items-center space-x-1.5 min-h-11 px-3 py-1.5 rounded-[var(--radius-sm)] bg-[var(--bg-surface-elevated)] hover:border-[var(--border-focus)] text-[var(--text-primary)] text-xs font-medium border border-[var(--border-subtle)] transition-colors whitespace-nowrap"
                       >
                         <MonitorPlay className="w-3.5 h-3.5 text-[var(--text-accent)]" />
                         <span>Run Simulation</span>

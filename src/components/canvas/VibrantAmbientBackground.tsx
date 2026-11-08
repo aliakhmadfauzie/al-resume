@@ -1,44 +1,33 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 // Zero-dependency motion check
 import { AppleWebGLMesh } from './AppleWebGLMesh';
 
-export const VibrantAmbientBackground: React.FC = () => {
-  const shouldReduceMotion = false;
-  const [mousePos, setMousePos] = useState({ x: -1000, y: -1000 });
+export const VibrantAmbientBackground: React.FC<{ isMotionActive?: boolean }> = ({ isMotionActive = true }) => {
+  const shouldReduceMotion = !isMotionActive;
+  const spotlightRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (shouldReduceMotion) return;
-
-    let rafId: number;
-    let targetX = -1000;
-    let targetY = -1000;
-    let currentX = -1000;
-    let currentY = -1000;
-
-    const handlePointerMove = (e: PointerEvent) => {
-      targetX = e.clientX;
-      targetY = e.clientY;
-      if (currentX === -1000) {
-        currentX = targetX;
-        currentY = targetY;
-      }
-    };
-
+    let frame: number | undefined;
+    let targetX = 0, targetY = 0, currentX = 0, currentY = 0;
     const updatePosition = () => {
-      currentX += (targetX - currentX) * 0.08;
-      currentY += (targetY - currentY) * 0.08;
-      setMousePos({ x: Math.round(currentX), y: Math.round(currentY) });
-      rafId = requestAnimationFrame(updatePosition);
+      currentX += (targetX - currentX) * 0.12;
+      currentY += (targetY - currentY) * 0.12;
+      if (spotlightRef.current) {
+        spotlightRef.current.style.transform = 'translate3d(' + Math.round(currentX) + 'px,' + Math.round(currentY) + 'px,0) translate(-50%,-50%)';
+        spotlightRef.current.style.visibility = 'visible';
+      }
+      frame = Math.abs(targetX - currentX) + Math.abs(targetY - currentY) > 0.5 ? requestAnimationFrame(updatePosition) : undefined;
     };
-
-    window.addEventListener('pointermove', handlePointerMove, { passive: true });
-    rafId = requestAnimationFrame(updatePosition);
-
-    return () => {
-      window.removeEventListener('pointermove', handlePointerMove);
-      cancelAnimationFrame(rafId);
+    const move = (event: PointerEvent) => {
+      targetX = event.clientX; targetY = event.clientY;
+      if (!document.hidden && frame === undefined) frame = requestAnimationFrame(updatePosition);
     };
+    const stop = () => { if (frame !== undefined) cancelAnimationFrame(frame); frame = undefined; };
+    window.addEventListener('pointermove', move, { passive: true });
+    document.addEventListener('visibilitychange', stop);
+    return () => { stop(); window.removeEventListener('pointermove', move); document.removeEventListener('visibilitychange', stop); };
   }, [shouldReduceMotion]);
 
   return (
@@ -121,7 +110,7 @@ export const VibrantAmbientBackground: React.FC = () => {
             src="/showcase-articles/enterprise-m365-ioi/portfolio-ui-screenshot.png"
             alt=""
             loading="lazy"
-            className="w-full h-full object-cover object-top opacity-35 filter brightness-110 contrast-125 saturate-125"
+            className="w-full h-full object-cover object-top opacity-10 filter brightness-110 contrast-125 saturate-125"
           />
           {/* Cyan/Azure Rim Gradient Overlay */}
           <div className="absolute inset-0 bg-gradient-to-tr from-[#0078d4]/20 via-transparent to-[#00dbe7]/30 pointer-events-none" />
@@ -144,7 +133,7 @@ export const VibrantAmbientBackground: React.FC = () => {
             src="/showcase-articles/power-platform-portfolio/portfolio-ui-screenshot.png"
             alt=""
             loading="lazy"
-            className="w-full h-full object-cover object-top opacity-30 filter brightness-110 contrast-125 saturate-125"
+            className="w-full h-full object-cover object-top opacity-10 filter brightness-110 contrast-125 saturate-125"
           />
           {/* Violet/Indigo Rim Gradient Overlay */}
           <div className="absolute inset-0 bg-gradient-to-bl from-[#7209b7]/25 via-transparent to-[#2563eb]/25 pointer-events-none" />
@@ -172,12 +161,12 @@ export const VibrantAmbientBackground: React.FC = () => {
       </div>
 
       {/* â”€â”€ Interactive Pointer Spotlight Aura Follower â”€â”€ */}
-      {!shouldReduceMotion && mousePos.x !== -1000 && (
+      {!shouldReduceMotion && (
         <div
-          className="absolute w-[560px] h-[560px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[100px] pointer-events-none transition-opacity duration-500 opacity-25 mix-blend-screen"
+          ref={spotlightRef}
+          className="absolute top-0 left-0 w-[560px] h-[560px] rounded-full blur-[100px] pointer-events-none transition-opacity duration-500 opacity-25 mix-blend-screen"
           style={{
-            left: `${mousePos.x}px`,
-            top: `${mousePos.y}px`,
+            visibility: 'hidden',
             background: 'radial-gradient(circle, rgba(0, 219, 231, 0.45) 0%, rgba(168, 85, 247, 0.25) 40%, rgba(0, 0, 0, 0) 70%)'
           }}
         />
@@ -185,7 +174,7 @@ export const VibrantAmbientBackground: React.FC = () => {
 
       {/* â”€â”€ Luminous 3D WebGL Constellation Canvas â”€â”€ */}
       <div className="absolute inset-0">
-        <AppleWebGLMesh className="w-full h-full" opacity={0.65} />
+        <AppleWebGLMesh className="w-full h-full" opacity={0.65} isMotionActive={isMotionActive} />
       </div>
 
       {/* â”€â”€ Subtle Cybernetic Precision Micro-Grid Pattern â”€â”€ */}

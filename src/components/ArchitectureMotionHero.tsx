@@ -344,7 +344,7 @@ const CODE_TABS: CodeTab[] = [
     demoId: 'sla-telemetry',
     demoLabel: 'Review BPO SLA Governance',
     terminalCmd: '> node _audit_team_kpi.js --headcount 34 --pods 7',
-    terminalLine1: 'Operations Team Manager: 34 direct reports across 7 language pods',
+    terminalLine1: 'Operation Team Manager: 34 direct reports across 7 language pods',
     terminalLine2: 'Pods: Indonesian, CN Mainland, Korean, Japanese, English, Thai, Vietnamese',
     terminalLine3: 'Contractual SLA: >98% sustained compliance | AHT: -25% via DMAIC',
     lines: [

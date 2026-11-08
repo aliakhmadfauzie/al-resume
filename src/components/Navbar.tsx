@@ -1,163 +1,76 @@
-import React, { useState } from 'react';
-import { NavTab } from '../types';
-import { Menu, X } from 'lucide-react';
+import React, { useEffect, useRef, useState } from 'react';
+import { Menu, X, ChevronDown } from 'lucide-react';
+import type { NavTab } from '../types';
 
 interface NavbarProps {
   currentTab: NavTab;
-  onSelectTab: (tab: NavTab) => void;
   onOpenResume: () => void;
   onOpenContact: () => void;
 }
-
-export const Navbar: React.FC<NavbarProps> = ({
-  currentTab,
-  onSelectTab,
-  onOpenContact
-}) => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  const handleNavClick = (tab: NavTab, anchorId?: string) => {
-    onSelectTab(tab);
-    setMobileMenuOpen(false);
-    if (anchorId) {
-      setTimeout(() => {
-        const el = document.getElementById(anchorId);
-        if (el) {
-          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }, 80);
-    }
-  };
-
-  const navItems: { id: string; label: string; tab: NavTab; anchor?: string }[] = [
-    { id: 'home', label: 'Home', tab: 'home' },
-    { id: 'about', label: 'About', tab: 'home', anchor: 'section-about' },
-    { id: 'services', label: 'Services', tab: 'home', anchor: 'section-services' },
-    { id: 'certs', label: 'Certifications', tab: 'certifications' },
-    { id: 'stack', label: 'Stack', tab: 'skills' },
-    { id: 'projects', label: 'Projects', tab: 'projects' },
-    { id: 'demos', label: 'Simulators', tab: 'demos' },
-    { id: 'experience', label: 'Experience', tab: 'experience' },
-    { id: 'interview', label: 'Architecture Q&A', tab: 'interview' }
-  ];
-
+const primary: { tab: NavTab; label: string }[] = [
+  { tab: 'home', label: 'Home' }, { tab: 'projects', label: 'Projects' },
+  { tab: 'experience', label: 'Experience' }, { tab: 'skills', label: 'Skills' },
+];
+const secondary: { tab: NavTab; label: string }[] = [
+  { tab: 'certifications', label: 'Credentials' }, { tab: 'demos', label: 'Simulators' },
+  { tab: 'interview', label: 'Architecture Q&A' },
+];
+export function Navbar({ currentTab, onOpenContact, onOpenResume }: NavbarProps) {
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const moreRef = useRef<HTMLDetailsElement>(null);
+  const menuRef = useRef<HTMLButtonElement>(null);
+  const headerRef = useRef<HTMLElement>(null);
+  useEffect(() => {
+    setMobileOpen(false);
+    if (moreRef.current) moreRef.current.open = false;
+  }, [currentTab]);
+  useEffect(() => {
+    const closeOutside = (event: PointerEvent) => {
+      if (!headerRef.current?.contains(event.target as Node)) {
+        setMobileOpen(false);
+        if (moreRef.current) moreRef.current.open = false;
+      }
+    };
+    document.addEventListener('pointerdown', closeOutside);
+    return () => document.removeEventListener('pointerdown', closeOutside);
+  }, []);
+  const link = (item: typeof primary[number]) => (
+    <a key={item.tab} id={`nav-link-${item.tab}`} href={`#/${item.tab}`}
+      onClick={() => { setMobileOpen(false); if (moreRef.current) moreRef.current.open = false; if (item.tab === "home" && currentTab === "home") window.scrollTo({ top: 0, behavior: "instant" }); }}
+      aria-current={currentTab === item.tab ? 'page' : undefined}
+      className={`nav-link ${currentTab === item.tab ? 'nav-link-active' : ''}`}>{item.label}</a>
+  );
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-[var(--nav-border)] bg-[var(--nav-surface)] backdrop-blur-md">
+    <header ref={headerRef} className="sticky top-0 z-50 border-b border-[var(--nav-border)] bg-[var(--nav-surface)] backdrop-blur-md"
+      onKeyDown={(event) => {
+        if (event.key !== 'Escape') return;
+        if (mobileOpen) { setMobileOpen(false); menuRef.current?.focus(); }
+        if (moreRef.current?.open) { moreRef.current.open = false; moreRef.current.querySelector('summary')?.focus(); }
+      }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between gap-6 h-16">
-          {/* Zone 1: < /> Code Icon + Two-Line Developer Identity */}
-          <button
-            id="nav-brand-logo"
-            type="button"
-            onClick={() => handleNavClick('home')}
-            className="flex items-center gap-3 text-left group cursor-pointer shrink-0"
-          >
-            <span className="text-[var(--interactive-primary)] font-mono font-bold text-xl tracking-tighter group-hover:scale-105 transition-transform">
-              &lt;/&gt;
-            </span>
-            <div className="leading-none">
-              <div className="text-sm sm:text-base font-bold tracking-wider text-[var(--text-primary)] uppercase">
-                ALI AKHMAD FAUZIE
-              </div>
-              <div className="text-[10px] font-mono tracking-widest text-[var(--text-tertiary)] uppercase mt-1">
-                SOLUTION ARCHITECT
-              </div>
-            </div>
-          </button>
-
-          {/* Zone 2: Horizontal Navigation Links with Active Orange Underline */}
-          <nav
-            className="hidden lg:flex items-center gap-6 text-xs font-medium"
-            aria-label="Primary"
-          >
-            {navItems.map((item) => {
-              const isActive =
-                currentTab === item.tab &&
-                (!item.anchor || item.id === 'home');
-              return (
-                <button
-                  key={item.id}
-                  id={`nav-link-${item.id}`}
-                  type="button"
-                  onClick={() => handleNavClick(item.tab, item.anchor)}
-                  aria-current={isActive ? 'page' : undefined}
-                  className={`relative py-2 transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
-                    isActive
-                      ? 'text-[var(--text-primary)] font-semibold'
-                      : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
-                  }`}
-                >
-                  <span>{item.label}</span>
-                  {isActive && (
-                    <span className="absolute inset-x-0 -bottom-[1px] h-[2px] bg-[var(--interactive-primary)] shadow-[0_0_8px_rgba(249,115,22,0.8)]" />
-                  )}
-                </button>
-              );
-            })}
+        <div className="min-h-18 flex items-center justify-between gap-3">
+          <a href="#/home" onClick={() => window.scrollTo({ top: 0, behavior: "instant" })} id="nav-brand-logo" aria-label="Ali Akhmad Fauzie, home" className="flex items-center gap-3 min-w-0 py-3">
+            <span aria-hidden="true" className="text-[var(--text-accent)] font-mono font-bold text-xl hidden sm:block">&lt;/&gt;</span>
+            <span className="min-w-0"><span className="block text-sm sm:text-base font-bold tracking-wide">ALI AKHMAD FAUZIE</span><span className="block mt-1 text-xs text-[var(--text-tertiary)]">Technology &amp; operations</span></span>
+          </a>
+          <nav aria-label="Primary" className="hidden xl:flex items-center gap-1">
+            {primary.map(link)}
+            <details ref={moreRef} className="relative">
+              <summary className={`nav-link cursor-pointer list-none flex items-center gap-1 ${secondary.some(item => item.tab === currentTab) ? 'nav-link-active' : ''}`}>More <ChevronDown size={15} /></summary>
+              <div className="absolute right-0 top-full mt-2 w-56 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface)] p-2 shadow-xl flex flex-col">{secondary.map(link)}<button type="button" className="nav-link text-left" onClick={() => { if (moreRef.current) moreRef.current.open = false; onOpenResume(); }}>View resume</button></div>
+            </details>
           </nav>
-
-          {/* Zone 3: Outlined Copper-Orange "Let's Build" Action Button */}
-          <div className="hidden lg:flex items-center shrink-0">
-            <button
-              id="nav-btn-contact"
-              type="button"
-              onClick={onOpenContact}
-              className="px-4 py-2 rounded-[var(--radius-sm)] text-xs font-semibold text-[var(--text-accent)] bg-[var(--interactive-subtle-bg)] hover:bg-[var(--interactive-primary)] hover:text-white border border-[var(--interactive-subtle-border)] shadow-[0_0_16px_rgba(249,115,22,0.15)] transition-all whitespace-nowrap shrink-0 cursor-pointer"
-            >
-              Let&apos;s Build
-            </button>
-          </div>
-
-          {/* Mobile Controls */}
-          <div className="flex lg:hidden items-center gap-2.5 shrink-0">
-            <button
-              id="nav-btn-mobile-contact"
-              type="button"
-              onClick={onOpenContact}
-              className="px-3.5 py-1.5 rounded-[var(--radius-sm)] text-xs font-semibold text-[var(--text-accent)] bg-[var(--interactive-subtle-bg)] border border-[var(--interactive-subtle-border)] whitespace-nowrap shrink-0"
-            >
-              Let&apos;s Build
-            </button>
-            <button
-              id="nav-btn-mobile-menu"
-              type="button"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="min-h-[44px] min-w-[44px] flex items-center justify-center p-2.5 rounded-[var(--radius-sm)] bg-[var(--btn-secondary-bg)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--btn-secondary-border)] transition-colors"
-              aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
-              aria-expanded={mobileMenuOpen}
-            >
-              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </button>
+          <div className="flex items-center gap-2 shrink-0">
+            <button id="nav-btn-contact" type="button" className="action-secondary hidden sm:inline-flex" onClick={onOpenContact}>Contact</button>
+            <button ref={menuRef} id="nav-btn-mobile-menu" type="button" className="dialog-close xl:hidden" aria-label={mobileOpen ? 'Close navigation' : 'Open navigation'} aria-expanded={mobileOpen} aria-controls="mobile-navigation" onClick={() => setMobileOpen(!mobileOpen)}>{mobileOpen ? <X size={20} /> : <Menu size={20} />}</button>
           </div>
         </div>
+        {mobileOpen && <nav id="mobile-navigation" aria-label="Mobile primary" className="xl:hidden pb-4 grid grid-cols-2 gap-2">
+          {[...primary, ...secondary].map(link)}
+          <button type="button" className="nav-link text-left" onClick={() => { setMobileOpen(false); onOpenResume(); }}>View resume</button>
+          <button type="button" className="action-primary col-span-2" onClick={() => { setMobileOpen(false); onOpenContact(); }}>Contact Ali</button>
+        </nav>}
       </div>
-
-      {/* Mobile Navigation Drawer */}
-      {mobileMenuOpen && (
-        <div className="lg:hidden border-t border-[var(--nav-border)] bg-[var(--bg-default)] px-4 py-4 space-y-2">
-          <div className="grid grid-cols-2 gap-1.5">
-            {navItems.map((item) => {
-              const isActive = currentTab === item.tab && !item.anchor;
-              return (
-                <button
-                  key={item.id}
-                  id={`mobile-nav-${item.id}`}
-                  type="button"
-                  onClick={() => handleNavClick(item.tab, item.anchor)}
-                  aria-current={isActive ? 'page' : undefined}
-                  className={`text-left px-3 py-2.5 rounded-[var(--radius-sm)] text-xs font-medium transition-colors whitespace-nowrap ${
-                    isActive
-                      ? 'text-[var(--text-primary)] bg-[var(--bg-surface-elevated)] border border-[var(--border-focus)]'
-                      : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-surface)]'
-                  }`}
-                >
-                  {item.label}
-                </button>
-              );
-            })}
-          </div>
-        </div>
-      )}
     </header>
   );
-};
+}

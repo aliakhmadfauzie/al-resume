@@ -4,14 +4,16 @@ import React, { useEffect, useRef } from 'react';
 interface AppleWebGLMeshProps {
   className?: string;
   opacity?: number;
+  isMotionActive?: boolean;
 }
 
 export const AppleWebGLMesh: React.FC<AppleWebGLMeshProps> = ({
   className = '',
-  opacity = 0.75
+  opacity = 0.75,
+  isMotionActive = true
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const shouldReduceMotion = false;
+  const shouldReduceMotion = !isMotionActive;
 
   useEffect(() => {
     const canvas = canvasRef.current;

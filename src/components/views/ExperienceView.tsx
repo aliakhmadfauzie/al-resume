@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import { DualCareerBranchVisualizer } from '../career/DualCareerBranchVisualizer';
 import { OrganizationLogo } from '../OrganizationLogo';
+import { CorporateRecognitionSection } from '../career/CorporateRecognitionSection';
 
 function formatBulletText(text: string) {
   const colonIndex = text.indexOf(':');
@@ -69,9 +70,9 @@ export const ExperienceView: React.FC = () => {
   return (
     <div className="space-y-12 py-6">
       {/* LinkedIn Profile Identity Header */}
-      <div className="rounded-[var(--radius-lg)] bg-[var(--bg-surface)] border border-[var(--border-subtle)] p-6 sm:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-[var(--shadow-card)]">
-        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5">
-          <div className="relative w-24 h-24 rounded-full overflow-hidden border-2 border-[var(--interactive-primary)] shadow-[0_0_24px_rgba(249,115,22,0.28)] shrink-0">
+      <div className="rounded-[var(--radius-lg)] bg-[var(--bg-surface)] border border-[var(--border-subtle)] p-4 sm:p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-[var(--shadow-card)]">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-5">
+          <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-[var(--interactive-primary)] shadow-[0_0_24px_rgba(249,115,22,0.28)] shrink-0">
             <img
               src={PERSONAL_INFO.avatarUrl}
               alt={PERSONAL_INFO.name}
@@ -88,25 +89,25 @@ export const ExperienceView: React.FC = () => {
                 in/aliakhmadf
               </span>
             </div>
-            <h1 className="text-2xl sm:text-3xl font-bold text-[var(--text-primary)] tracking-tight">
+            <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-[var(--text-primary)] tracking-tight">
               {PERSONAL_INFO.name}
             </h1>
             <p className="text-xs sm:text-sm font-mono text-[var(--text-accent)]">
               {PERSONAL_INFO.linkedInHeadline}
             </p>
-            <p className="text-sm text-[var(--text-secondary)] flex items-center gap-1.5">
+            <p className="text-xs sm:text-sm text-[var(--text-secondary)] flex items-center gap-1.5">
               <MapPin className="w-3.5 h-3.5 text-[var(--interactive-primary)] shrink-0" />
               <span>{PERSONAL_INFO.location}</span>
             </p>
           </div>
         </div>
 
-        <div className="flex flex-wrap items-center gap-3 shrink-0">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 w-full md:w-auto shrink-0">
           <a
             href={PERSONAL_INFO.linkedIn}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center space-x-2 px-4 py-2.5 rounded-[var(--radius-sm)] bg-gradient-to-r from-[#f97316] to-[#fb923c] text-[#090a0d] text-xs font-bold shadow-[0_4px_18px_rgba(249,115,22,0.3)] transition-all"
+            className="inline-flex items-center justify-center space-x-2 px-4 py-2.5 rounded-[var(--radius-sm)] bg-gradient-to-r from-[#f97316] to-[#fb923c] text-[#090a0d] text-xs font-bold shadow-[0_4px_18px_rgba(249,115,22,0.3)] transition-all min-h-[44px]"
           >
             <span>Open LinkedIn Profile</span>
             <ExternalLink className="w-3.5 h-3.5" />
@@ -114,7 +115,7 @@ export const ExperienceView: React.FC = () => {
           <a
             href="/assets/profile/LinkedIn_Profile.pdf"
             download="Ali_Akhmad_Fauzie_LinkedIn_Profile.pdf"
-            className="inline-flex items-center space-x-2 px-4 py-2.5 rounded-[var(--radius-sm)] bg-[#0f1117] hover:bg-[var(--bg-surface-elevated)] text-[var(--text-primary)] text-xs font-medium border border-[var(--border-subtle)] hover:border-[var(--border-focus)] transition-colors"
+            className="inline-flex items-center justify-center space-x-2 px-4 py-2.5 rounded-[var(--radius-sm)] bg-[#0f1117] hover:bg-[var(--bg-surface-elevated)] text-[var(--text-primary)] text-xs font-medium border border-[var(--border-subtle)] hover:border-[var(--border-focus)] transition-colors min-h-[44px]"
           >
             <Download className="w-3.5 h-3.5 text-[var(--text-accent)]" />
             <span>LinkedIn PDF</span>
@@ -123,26 +124,26 @@ export const ExperienceView: React.FC = () => {
       </div>
 
       {/* Executive Pedigree & Progression Rail (The 6-Second Recruiter Triage) */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="bg-[var(--bg-surface)] p-4 sm:p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-1">
-          <p className="text-[11px] font-mono uppercase tracking-wider text-[var(--text-tertiary)]">CAREER TENURE</p>
-          <p className="text-2xl sm:text-3xl font-extrabold text-[var(--text-accent)] font-mono">9+ Years</p>
-          <p className="text-xs text-[var(--text-secondary)]">Modernization &amp; Ops Leadership</p>
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4">
+        <div className="bg-[var(--bg-surface)] p-3 sm:p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-1">
+          <p className="text-[10px] sm:text-[11px] font-mono uppercase tracking-wider text-[var(--text-tertiary)]">CAREER TENURE</p>
+          <p className="text-xl sm:text-3xl font-extrabold text-[var(--text-accent)] font-mono">9+ Years</p>
+          <p className="text-[11px] sm:text-xs text-[var(--text-secondary)]">Modernization &amp; Ops Leadership</p>
         </div>
-        <div className="bg-[var(--bg-surface)] p-4 sm:p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-1">
-          <p className="text-[11px] font-mono uppercase tracking-wider text-[var(--text-tertiary)]">MERIT ADVANCEMENT</p>
-          <p className="text-2xl sm:text-3xl font-extrabold text-[var(--text-primary)] font-mono">4 Promotions</p>
-          <p className="text-xs text-[var(--text-secondary)]">Analyst → Sr. Lead &amp; Ops Manager</p>
+        <div className="bg-[var(--bg-surface)] p-3 sm:p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-1">
+          <p className="text-[10px] sm:text-[11px] font-mono uppercase tracking-wider text-[var(--text-tertiary)]">MERIT ADVANCEMENT</p>
+          <p className="text-xl sm:text-3xl font-extrabold text-[var(--text-primary)] font-mono">4 Promotions</p>
+          <p className="text-[11px] sm:text-xs text-[var(--text-secondary)]">Analyst → Sr. Lead &amp; Ops Manager</p>
         </div>
-        <div className="bg-[var(--bg-surface)] p-4 sm:p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-1">
-          <p className="text-[11px] font-mono uppercase tracking-wider text-[var(--text-tertiary)]">CROSS-BORDER SCALE</p>
-          <p className="text-2xl sm:text-3xl font-extrabold text-[var(--text-accent)] font-mono">380% Growth</p>
-          <p className="text-xs text-[var(--text-secondary)]">9 to 34 Agents · 7 APAC Markets</p>
+        <div className="bg-[var(--bg-surface)] p-3 sm:p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-1">
+          <p className="text-[10px] sm:text-[11px] font-mono uppercase tracking-wider text-[var(--text-tertiary)]">CROSS-BORDER SCALE</p>
+          <p className="text-xl sm:text-3xl font-extrabold text-[var(--text-accent)] font-mono">380% Growth</p>
+          <p className="text-[11px] sm:text-xs text-[var(--text-secondary)]">9 to 34 Agents · 7 APAC Markets</p>
         </div>
-        <div className="bg-[var(--bg-surface)] p-4 sm:p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-1">
-          <p className="text-[11px] font-mono uppercase tracking-wider text-[var(--text-tertiary)]">CRISIS RECOGNITION</p>
-          <p className="text-2xl sm:text-3xl font-extrabold text-[var(--text-primary)] font-mono">Diamond Award</p>
-          <p className="text-xs text-[var(--text-secondary)]">Hang Tuah Distinction · 800% Surge</p>
+        <div className="bg-[var(--bg-surface)] p-3 sm:p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-1">
+          <p className="text-[10px] sm:text-[11px] font-mono uppercase tracking-wider text-[var(--text-tertiary)]">CRISIS RECOGNITION</p>
+          <p className="text-xl sm:text-3xl font-extrabold text-[var(--text-primary)] font-mono">Diamond Award</p>
+          <p className="text-[11px] sm:text-xs text-[var(--text-secondary)]">Hang Tuah Distinction · 800% Surge</p>
         </div>
       </div>
 
@@ -190,7 +191,7 @@ export const ExperienceView: React.FC = () => {
       </div>
 
       {/* Timeline Section with Ambient Laser Conduit & Synapses */}
-      <div className="relative pl-6 md:pl-16 space-y-8">
+      <div className="relative pl-7 sm:pl-12 md:pl-16 space-y-6 sm:space-y-8">
         <div className="timeline-track overflow-hidden">
           {/* Animated Photon Laser Sweep along the Timeline */}
           <div className="timeline-laser-sweep absolute inset-x-0 h-32 bg-gradient-to-b from-transparent via-orange-400 to-transparent opacity-80 pointer-events-none" />
@@ -202,22 +203,22 @@ export const ExperienceView: React.FC = () => {
             <div className="hidden md:block absolute -left-[14px] top-6 w-[14px] h-[2px] bg-gradient-to-r from-orange-500/40 via-orange-500/20 to-transparent group-hover:from-orange-500 group-hover:via-orange-400/60 group-hover:w-[16px] transition-all duration-300" />
 
             {/* Timeline Node Icon with Active Radar Pulse */}
-            <div className="absolute -left-[30px] md:-left-[54px] top-1.5 w-10 h-10 rounded-[var(--radius-sm)] bg-[#0c0e15] border border-[var(--border-focus)] p-1 flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:border-orange-500/70 group-hover:shadow-[0_0_16px_rgba(249,115,22,0.35)] overflow-hidden shadow-inner">
+            <div className="absolute -left-[20px] sm:-left-[28px] md:-left-[54px] top-2 sm:top-1.5 w-8 h-8 sm:w-10 sm:h-10 rounded-[var(--radius-sm)] bg-[#0c0e15] border border-[var(--border-focus)] p-1 flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:border-orange-500/70 group-hover:shadow-[0_0_16px_rgba(249,115,22,0.35)] overflow-hidden shadow-inner shrink-0">
               {item.companyLogoId ? (
                 <OrganizationLogo logoId={item.companyLogoId} orgName={item.company} size="sm" />
               ) : (
-                <Briefcase className="w-4 h-4 text-[var(--text-accent)] transition-transform duration-300 group-hover:rotate-6" />
+                <Briefcase className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[var(--text-accent)] transition-transform duration-300 group-hover:rotate-6" />
               )}
               {item.isCurrent && (
-                <span className="absolute -top-1 -right-1 flex h-3 w-3">
+                <span className="absolute -top-1 -right-1 flex h-2.5 w-2.5 sm:h-3 sm:w-3">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                  <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500 shadow-[0_0_8px_#22c55e]" />
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 sm:h-3 sm:w-3 bg-emerald-500 shadow-[0_0_8px_#22c55e]" />
                 </span>
               )}
             </div>
 
             {/* Experience Card with Smooth Kinetic Hover */}
-            <div className="glass-card p-6 sm:p-8 space-y-4 transition-[transform,border-color,box-shadow] duration-300 ease-out hover:-translate-y-1 hover:border-orange-500/40 hover:shadow-[0_12px_32px_-8px_rgba(0,0,0,0.6),0_0_20px_-4px_rgba(249,115,22,0.12)]">
+            <div className="glass-card p-4 sm:p-6 md:p-8 space-y-4 transition-[transform,border-color,box-shadow] duration-300 ease-out hover:-translate-y-1 hover:border-orange-500/40 hover:shadow-[0_12px_32px_-8px_rgba(0,0,0,0.6),0_0_20px_-4px_rgba(249,115,22,0.12)]">
               <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2 border-b border-[var(--border-subtle)] pb-4">
                 <div className="space-y-1.5">
                   <div className="flex flex-wrap items-center gap-2">
@@ -429,72 +430,11 @@ export const ExperienceView: React.FC = () => {
         </div>
       </div>
 
-      {/* LinkedIn Honors & Awards Section */}
-      <div className="space-y-5 pt-4 border-t border-[var(--border-subtle)]">
-        <div>
-          <p className="text-xs font-mono text-[var(--text-accent)] font-semibold uppercase">
-            03 · Honors &amp; Academic Awards
-          </p>
-          <h2 className="text-xl sm:text-2xl font-bold text-[var(--text-primary)] mt-1">
-            Corporate &amp; Institutional Recognition ({LINKEDIN_HONORS_AWARDS.length} Honors)
-          </h2>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {LINKEDIN_HONORS_AWARDS.map((award) => (
-            <div
-              key={award.id}
-              className="rounded-[var(--radius-md)] bg-[var(--bg-surface)] border border-[var(--border-subtle)] p-5 flex items-start space-x-4"
-            >
-              <div className="w-10 h-10 rounded-[var(--radius-sm)] bg-[#1b1613] border border-[var(--interactive-subtle-border)] flex items-center justify-center shrink-0 p-1.5 shadow-inner">
-                <OrganizationLogo
-                  logoId={award.organizationLogoId}
-                  orgName={award.organization || award.issuer}
-                  size="sm"
-                />
-              </div>
-              <div className="space-y-1">
-                <div className="flex items-center justify-between gap-2">
-                  <h3 className="text-sm font-bold text-[var(--text-primary)]">
-                    {award.title}
-                  </h3>
-                  <span className="text-xs font-mono text-[var(--text-accent)] shrink-0">
-                    {award.year}
-                  </span>
-                </div>
-                <div className="flex items-center gap-1.5 text-xs font-mono text-[var(--text-secondary)]">
-                  <OrganizationLogo
-                    logoId={award.organizationLogoId}
-                    orgName={award.organization || award.issuer}
-                    size="xs"
-                  />
-                  <span className="font-semibold text-[var(--text-primary)]">
-                    {award.organization || award.issuer}
-                  </span>
-                </div>
-                <p className="text-sm text-[var(--text-secondary)] leading-relaxed pt-1">
-                  {award.description}
-                </p>
-
-                {award.certificatePdfUrl && (
-                  <div className="pt-2">
-                    <a
-                      href={award.certificatePdfUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center space-x-1.5 text-[11px] font-mono text-[var(--text-accent)] hover:underline"
-                    >
-                      <ExternalLink className="w-3 h-3 text-[var(--interactive-primary)]" />
-                      <span>View Credential Document</span>
-                    </a>
-                  </div>
-                )}
-
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
+      {/* LinkedIn Honors & Awards Section (Elevated with Tiering, Segmented Filter & 5x Dean's Showcase) */}
+      <CorporateRecognitionSection
+        sectionNumber="03 · Honors & Academic Awards"
+        sectionTitle="Corporate & Institutional Recognition"
+      />
     </div>
   );
 };

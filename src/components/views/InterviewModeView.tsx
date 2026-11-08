@@ -15,13 +15,14 @@ export const InterviewModeView: React.FC = () => {
       <div className="space-y-4 border-b border-[var(--border-subtle)] pb-8">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <p className="text-xs font-mono text-[var(--text-accent)] font-medium">
-            01 · Executive Career Narrative &amp; Interview Console
+            01 · Career story &amp; architecture decisions
           </p>
           
           {/* View Mode Switcher */}
           <div className="inline-flex rounded-lg bg-[var(--bg-surface)] p-1 border border-[var(--border-subtle)]">
             <button
               onClick={() => setActiveViewMode('narrative')}
+              aria-pressed={activeViewMode === 'narrative'}
               className={`flex items-center space-x-2 px-3.5 py-1.5 rounded-md text-xs font-mono transition-all ${
                 activeViewMode === 'narrative'
                   ? 'bg-[var(--interactive-primary)] text-[#090a0d] font-bold shadow-sm'
@@ -29,10 +30,11 @@ export const InterviewModeView: React.FC = () => {
               }`}
             >
               <BookOpen className="w-3.5 h-3.5" />
-              <span>Four-Beat Narrative Arc</span>
+              <span>Career story</span>
             </button>
             <button
               onClick={() => setActiveViewMode('scenarios')}
+              aria-pressed={activeViewMode === 'scenarios'}
               className={`flex items-center space-x-2 px-3.5 py-1.5 rounded-md text-xs font-mono transition-all ${
                 activeViewMode === 'scenarios'
                   ? 'bg-[var(--interactive-primary)] text-[#090a0d] font-bold shadow-sm'
@@ -50,12 +52,12 @@ export const InterviewModeView: React.FC = () => {
           style={{ fontSize: 'var(--text-h1)', lineHeight: 1.2 }}
         >
           {activeViewMode === 'narrative'
-            ? 'Executive Career Narrative & Architectural Odyssey'
-            : 'Architectural Deep Dives & Technical Defense'}
+            ? 'Career story & architecture decisions'
+            : 'Architecture decisions & tradeoffs'}
         </h1>
         <p className="text-base text-[var(--text-secondary)] max-w-3xl leading-relaxed">
           {activeViewMode === 'narrative'
-            ? 'A story-driven career narrative following the Four-Beat Narrative Arc: from frontline BPO operations and crisis response to $960K/yr Domino-to-M365 enterprise modernization and GAMP 5 / GxP compliance.'
+            ? 'A story-driven career narrative following the Career story: from frontline BPO operations and crisis response to $960K/yr Domino-to-M365 enterprise modernization and GAMP 5 / GxP compliance.'
             : 'Structured answers to enterprise modernization scenarios, real-world technical tradeoffs, Domino-to-Dataverse cutovers, and pro-code ALM deployment strategies.'}
         </p>
       </div>
@@ -77,7 +79,7 @@ export const InterviewModeView: React.FC = () => {
           {/* Four Narrative Beats */}
           <div className="space-y-6">
             <h2 className="text-sm font-mono text-[var(--text-accent)] uppercase tracking-wider font-semibold">
-              // The Four-Beat Narrative Arc
+              // The Career story
             </h2>
 
             <div className="grid grid-cols-1 gap-6">
@@ -197,6 +199,7 @@ export const InterviewModeView: React.FC = () => {
                   <button
                     key={topic.id}
                     onClick={() => setSelectedTopicId(topic.id)}
+                    aria-pressed={selectedTopicId === topic.id}
                     className={`w-full text-left p-4 rounded-[var(--radius-md)] transition-colors border ${
                       isSelected
                         ? 'bg-[var(--bg-surface-elevated)] text-[var(--text-primary)] border-[var(--border-focus)]'

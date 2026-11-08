@@ -11,7 +11,7 @@
 ## 1. Project Overview & Problem Solved
 
 ### The Enterprise Job Application & Profile Governance Challenge
-Senior engineers and solution architects operating across dual career tracks—such as **Track A (Enterprise Power Platform & Dynamics 365 Solution Architecture)** and **Track B (Operations Team Leadership & AI QA Management)**—face four compounding engineering bottlenecks during job applications:
+Senior engineers and solution architects operating across dual career tracks—such as **Track A (Enterprise Power Platform & Dynamics 365 Solution Architecture)** and **Track B (Operations Team Manager - QA, Policy & Training)**—face four compounding engineering bottlenecks during job applications:
 
 1. **LLM Hallucinations & Resume Fact Drift:** Generic AI resume tailors invent metrics, fabricate employers, drop critical technical keywords, or conflate distinct enterprise products (such as confusing *Dynamics 365 Customer Engagement (CE)* with *Dynamics 365 Finance & Operations (F&O)*), creating severe credibility and audit risks.
 2. **Hostile Multi-Step ATS Portals (Workday / Greenhouse):** Enterprise portals like **Workday** (`myworkdayjobs.com`) render forms asynchronously after `DOMContentLoaded`, hide `<input type="file">` controls behind custom drop-zones, implement custom ARIA listbox dropdowns (`button[aria-haspopup='listbox']`) instead of native `<select>` elements, keep `Next` buttons enabled-but-inert while parsing resumes, and reject names containing more than two capital letters.
@@ -106,7 +106,7 @@ flowchart TB
 - **Live Tri-Engine AI & Hybrid Cloud Telemetry (`lines 524–531`, `772–800`):** Exposes `/api/ai/status` for real-time RPM/RPD quota bars across Groq, Gemini, and OpenCode Zen, `/api/supabase/status` for database/bucket health, and `/api/nb/status` for Google Cloud NotebookLM integration.
 
 ### 2. Dual-Track JD Gap Analyzer & Governance Gate (`tailor_to_jd.py` & `verify_pdfs.py`)
-- **Dual-Track Specialization (`tailor_to_jd.py`, `lines 73–88`):** Supports **Track A** (*Enterprise Power Platform & Dynamics 365 Solution Architect | AI & ALM Lead*) and **Track B** (*Operations Team Leader | QA Lead (AI Moderation & Safety) | Process Automation*).
+- **Dual-Track Specialization (`tailor_to_jd.py`, `lines 73–88`):** Supports **Track A** (*Enterprise Power Platform & Dynamics 365 Solution Architect | AI & ALM Lead*) and **Track B** (*Operations Team Manager (QA, Policy & Training) | Process Automation*).
 - **Strict Verbatim Fact Lock (`lines 284–315`):** Instructs the AI engine via Pydantic schema `TailoredDocument` (`lines 119–129`) to copy `experience`, `projects`, and `education` bullets **verbatim** from the base resume, reorder `skills` without dropping or inventing items, check certification gaps against the SSOT, and never confuse *Dynamics 365 CE* with *Dynamics 365 F&O/SCM*.
 - **10-Gate PDF Verification Suite (`verify_pdfs.py`, `lines 155–263`):** Validates every generated PDF across 10 deterministic gates:
   - `Q1 Selectable text` (`>= 50` words extracted via `pypdf`)

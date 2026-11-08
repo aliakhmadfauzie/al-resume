@@ -1,3 +1,4 @@
+import { navigate } from '../../navigation';
 import React, { useState } from 'react';
 import {
   Layers,
@@ -24,7 +25,8 @@ interface LiveDemosViewProps {
 }
 
 export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'finops' }) => {
-  const [activeDemo, setActiveDemo] = useState<string>(initialDemo);
+  const demoIds = ['ats-automation', 'she-matrix', 'garment-erp', 'finops', 'it-service', 'erp', 'warehouse', 'maintenance', 'rebate', 'cs-resolver'];
+  const activeDemo = demoIds.includes(initialDemo) ? initialDemo : 'finops';
 
   // State for Rebate Calculator
   const [rebateBaseRate, setRebateBaseRate] = useState<number>(0.08);
@@ -212,6 +214,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
         </p>
       </div>
 
+      <p role="note" className="text-sm text-[var(--text-secondary)] border border-[var(--border-subtle)] rounded-xl p-4">These demos use sample data. Actions do not change live systems, and changes reset when you reload or switch simulators.</p>
       {/* Demo Selector Tabs */}
       <div className="flex items-center space-x-2 overflow-x-auto pb-2 border-b border-[var(--border-subtle)]">
         {demosList.map((d) => {
@@ -219,10 +222,11 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
           return (
             <button
               key={d.id}
-              onClick={() => setActiveDemo(d.id)}
+              onClick={() => navigate('demos?demo=' + encodeURIComponent(d.id))}
+              aria-pressed={isActive}
               className={`flex items-center space-x-2 px-4 py-2.5 rounded-[var(--radius-sm)] text-xs font-medium whitespace-nowrap transition-colors ${
                 isActive
-                  ? 'bg-[var(--accent-blue)] text-white'
+                  ? 'bg-[var(--accent-blue)] text-[#090a0d]'
                   : 'bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-surface-elevated)] border border-[var(--border-subtle)]'
               }`}
             >
@@ -330,7 +334,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
                       className={`px-3.5 py-1.5 rounded-[var(--radius-sm)] text-xs font-medium transition-colors whitespace-nowrap ${
                         approvals[req.id]
                           ? 'bg-[var(--bg-primary)] text-[var(--text-accent)] border border-[var(--border-focus)]'
-                          : 'bg-[var(--accent-blue)] text-white hover:bg-[var(--accent-blue-hover)]'
+                          : 'bg-[var(--accent-blue)] text-[#090a0d] hover:bg-[var(--accent-blue-hover)]'
                       }`}
                     >
                       {approvals[req.id] ? '✓ Approved' : 'Sign & Approve'}
@@ -1055,7 +1059,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
                           onClick={() => setAtsTrack(track)}
                           className={`px-3 py-2 rounded-[var(--radius-sm)] text-xs font-mono border transition-colors ${
                             atsTrack === track
-                              ? 'bg-[var(--accent-blue)] text-white border-[var(--border-focus)]'
+                              ? 'bg-[var(--accent-blue)] text-[#090a0d] border-[var(--border-focus)]'
                               : 'bg-[var(--bg-primary)] text-[var(--text-secondary)] border-[var(--border-subtle)]'
                           }`}
                         >
@@ -1076,7 +1080,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
                           onClick={() => setAtsTaskMode(mode)}
                           className={`px-3 py-2 rounded-[var(--radius-sm)] text-xs font-mono border transition-colors ${
                             atsTaskMode === mode
-                              ? 'bg-[var(--accent-blue)] text-white border-[var(--border-focus)]'
+                              ? 'bg-[var(--accent-blue)] text-[#090a0d] border-[var(--border-focus)]'
                               : 'bg-[var(--bg-primary)] text-[var(--text-secondary)] border-[var(--border-subtle)]'
                           }`}
                         >
@@ -1240,7 +1244,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
                   onClick={() => setGarmentActiveRole(role)}
                   className={`px-3 py-1.5 rounded-[var(--radius-sm)] text-xs font-mono uppercase border transition-colors ${
                     garmentActiveRole === role
-                      ? 'bg-[var(--accent-blue)] text-white border-[var(--border-focus)]'
+                      ? 'bg-[var(--accent-blue)] text-[#090a0d] border-[var(--border-focus)]'
                       : 'bg-[var(--bg-primary)] text-[var(--text-secondary)] border-[var(--border-subtle)]'
                   }`}
                 >
@@ -1448,7 +1452,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
                   onClick={() => setHiradcPlant(plant)}
                   className={`px-3 py-1.5 rounded-[var(--radius-sm)] text-xs font-mono border transition-colors ${
                     hiradcPlant === plant
-                      ? 'bg-[var(--accent-blue)] text-white border-[var(--border-focus)]'
+                      ? 'bg-[var(--accent-blue)] text-[#090a0d] border-[var(--border-focus)]'
                       : 'bg-[var(--bg-primary)] text-[var(--text-secondary)] border-[var(--border-subtle)]'
                   }`}
                 >
@@ -1533,7 +1537,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
                         }}
                         className={`p-2.5 rounded-[var(--radius-sm)] border text-center transition-all ${
                           isSelected
-                            ? 'bg-[var(--accent-blue)] text-white border-white scale-105 font-bold'
+                            ? 'bg-[var(--accent-blue)] text-[#090a0d] border-white scale-105 font-bold'
                             : cellScore >= 15
                             ? 'bg-[var(--bg-default)] text-[var(--status-warning-fg)] border-[var(--status-warning-border)] hover:border-[var(--status-warning-fg)]'
                             : cellScore >= 5

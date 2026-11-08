@@ -1,3 +1,4 @@
+import { Dialog } from './Dialog';
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ProjectItem, MigrationSlice, ProjectGalleryItem } from '../types';
@@ -300,6 +301,8 @@ export interface ProjectGalleryProps {
   onClose?: () => void;
   /** Callback when user updates/uploads images in the gallery */
   onUpdateImages?: (updated: ProjectGalleryItem[]) => void;
+  /** Explicit local preview mode; never enabled in the public portfolio. */
+  allowEditing?: boolean;
 }
 
 /**
@@ -314,7 +317,8 @@ export const ProjectGallery: React.FC<ProjectGalleryProps> = ({
   initialIndex = 0,
   isOpen: controlledIsOpen,
   onClose: controlledOnClose,
-  onUpdateImages
+  onUpdateImages,
+  allowEditing = false
 }) => {
   const resolveSlots = useCallback((): ProjectGalleryItem[] => {
     if (images && images.length > 0) return images;
@@ -371,10 +375,8 @@ export const ProjectGallery: React.FC<ProjectGalleryProps> = ({
   useEffect(() => {
     if (!isLightboxOpen) return;
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        e.stopPropagation();
-        setLightboxOpen(false);
-      } else if (e.key === 'ArrowLeft') {
+      if ((e.target as HTMLElement)?.matches('input, textarea, select')) return;
+      if (e.key === 'ArrowLeft') {
         prevSlide();
       } else if (e.key === 'ArrowRight') {
         nextSlide();
@@ -458,7 +460,7 @@ export const ProjectGallery: React.FC<ProjectGalleryProps> = ({
       <div className="flex flex-wrap items-center justify-between gap-2">
         <div className="flex items-center space-x-2 text-xs font-mono text-[var(--text-secondary)]">
           <ImageIcon className="w-4 h-4 text-[var(--text-accent)]" />
-          <span>Project Gallery · {slots.length} Deliverable Placeholders</span>
+          <span>Project gallery · {slots.length} views</span>
         </div>
 
         <div className="flex flex-wrap items-center gap-1.5">
@@ -470,23 +472,23 @@ export const ProjectGallery: React.FC<ProjectGalleryProps> = ({
             <Maximize2 className="w-3.5 h-3.5" />
             <span>Lightbox View</span>
           </button>
-          <button
+          {allowEditing && (<button
             type="button"
             onClick={() => fileInputRef.current?.click()}
             className="inline-flex items-center space-x-1.5 px-2.5 py-1 rounded-[var(--radius-sm)] bg-[var(--bg-default)] hover:bg-[var(--bg-surface-elevated)] text-[var(--text-accent)] border border-[var(--border-subtle)] text-xs font-mono transition-colors"
           >
             <Upload className="w-3.5 h-3.5" />
             <span>Upload</span>
-          </button>
-          <button
+          </button>)}
+          {allowEditing && (<button
             type="button"
             onClick={() => setShowUrlInput(!showUrlInput)}
             className="inline-flex items-center space-x-1 px-2.5 py-1 rounded-[var(--radius-sm)] bg-[var(--bg-primary)] hover:bg-[var(--bg-surface-elevated)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--border-subtle)] text-xs font-mono transition-colors"
           >
             <Link2 className="w-3.5 h-3.5" />
             <span>URL</span>
-          </button>
-          <button
+          </button>)}
+          {allowEditing && (<button
             type="button"
             onClick={handleAddSlot}
             className="inline-flex items-center space-x-1 px-2.5 py-1 rounded-[var(--radius-sm)] bg-[var(--bg-primary)] hover:bg-[var(--bg-surface-elevated)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--border-subtle)] text-xs font-mono transition-colors"
@@ -494,7 +496,7 @@ export const ProjectGallery: React.FC<ProjectGalleryProps> = ({
           >
             <Plus className="w-3.5 h-3.5" />
             <span>Slot</span>
-          </button>
+          </button>)}
           <input
             ref={fileInputRef}
             type="file"
@@ -505,6 +507,7 @@ export const ProjectGallery: React.FC<ProjectGalleryProps> = ({
         </div>
       </div>
 
+      {allowEditing && <p className="text-sm text-[var(--text-tertiary)]">Local preview only. These edits are saved in this browser and do not publish changes.</p>}
       {/* Optional Paste Image URL Bar */}
       {showUrlInput && (
         <div className="flex items-center gap-2 p-2.5 rounded-[var(--radius-sm)] bg-[var(--bg-primary)] border border-[var(--border-focus)]">
@@ -540,7 +543,7 @@ export const ProjectGallery: React.FC<ProjectGalleryProps> = ({
           </div>
 
           <div className="flex items-center space-x-1.5 shrink-0">
-            {currentSlot.imageUrl && (
+            {allowEditing && currentSlot.imageUrl && (
               <button
                 type="button"
                 onClick={handleClearSlotImage}
@@ -573,7 +576,7 @@ export const ProjectGallery: React.FC<ProjectGalleryProps> = ({
               type="button"
               onClick={() => setLightboxOpen(true)}
               className="p-1 rounded-[4px] bg-[var(--bg-default)] text-[var(--text-accent)] hover:bg-[var(--bg-surface-elevated)] border border-[var(--border-subtle)]"
-              title="Open Lightbox Modal"
+              aria-label="Open image gallery"
             >
               <Maximize2 className="w-3.5 h-3.5" />
             </button>
@@ -581,7 +584,7 @@ export const ProjectGallery: React.FC<ProjectGalleryProps> = ({
         </div>
 
         {/* 16:9 Stage Viewport */}
-        <div
+        <button type="button" aria-label="Open image gallery"
           onClick={() => setLightboxOpen(true)}
           className="relative aspect-[16/9] w-full bg-[var(--bg-primary)] flex items-center justify-center overflow-hidden cursor-zoom-in group"
         >
@@ -606,7 +609,7 @@ export const ProjectGallery: React.FC<ProjectGalleryProps> = ({
               projectTitle={displayTitle}
             />
           )}
-        </div>
+        </button>
 
         {/* Caption Bar */}
         <div className="px-4 py-2.5 border-t border-[var(--border-subtle)] bg-[var(--bg-surface)] flex flex-col sm:flex-row sm:items-center justify-between gap-2">
@@ -614,7 +617,7 @@ export const ProjectGallery: React.FC<ProjectGalleryProps> = ({
             {currentSlot.caption}
           </p>
           <span className="text-[11px] font-mono text-[var(--text-tertiary)] shrink-0">
-            {isCurrentLoaded ? 'Custom Image Loaded' : 'Interactive Placeholder'}
+            {isCurrentLoaded ? 'Project image' : 'Illustrative preview'}
           </span>
         </div>
       </div>
@@ -664,17 +667,7 @@ export const ProjectGallery: React.FC<ProjectGalleryProps> = ({
       {/* Full-Screen Lightbox Modal with Thumbnail Navigation */}
       <AnimatePresence>
         {isLightboxOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.18 }}
-            className="fixed inset-0 z-[90] bg-black/95 backdrop-blur-md flex flex-col justify-between p-4 sm:p-6 lg:p-8"
-            onClick={() => setLightboxOpen(false)}
-            role="dialog"
-            aria-modal="true"
-            aria-label={`${displayTitle} Lightbox Modal`}
-          >
+          <Dialog onClose={() => setLightboxOpen(false)} label={displayTitle + " gallery"} className="w-[calc(100%-1rem)] max-w-7xl h-[94dvh] max-h-[94dvh] bg-[var(--bg-surface)] text-[var(--text-primary)] border border-[var(--border-subtle)] rounded-xl flex flex-col justify-between p-4 sm:p-6">
             {/* Top Lightbox Header Bar */}
             <div
               className="flex flex-wrap items-center justify-between gap-4 border-b border-[var(--border-subtle)] pb-4"
@@ -698,22 +691,22 @@ export const ProjectGallery: React.FC<ProjectGalleryProps> = ({
               </div>
 
               <div className="flex items-center space-x-2">
-                <button
+                {allowEditing && (<button
                   type="button"
                   onClick={() => fileInputRef.current?.click()}
                   className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-[var(--radius-sm)] bg-[var(--bg-surface)] hover:bg-[var(--bg-surface-elevated)] text-[var(--text-accent)] border border-[var(--border-subtle)] text-xs font-mono transition-colors"
                 >
                   <Upload className="w-3.5 h-3.5" />
-                  <span>Upload Image</span>
-                </button>
-                <button
+                  <span>Preview image locally</span>
+                </button>)}
+                {allowEditing && (<button
                   type="button"
                   onClick={handleAddSlot}
                   className="inline-flex items-center space-x-1 px-3 py-1.5 rounded-[var(--radius-sm)] bg-[var(--bg-surface)] hover:bg-[var(--bg-surface-elevated)] text-[var(--text-secondary)] hover:text-white border border-[var(--border-subtle)] text-xs font-mono transition-colors"
                 >
                   <Plus className="w-3.5 h-3.5" />
                   <span>Add Placeholder</span>
-                </button>
+                </button>)}
                 <button
                   type="button"
                   onClick={() => setLightboxOpen(false)}
@@ -790,7 +783,7 @@ export const ProjectGallery: React.FC<ProjectGalleryProps> = ({
                   <Sparkles className="w-3.5 h-3.5 text-[var(--text-accent)]" />
                   <span>THUMBNAIL NAVIGATION · CLICK ANY THUMBNAIL OR USE ← / → KEYS</span>
                 </span>
-                <span>{currentSlot.expectedPath}</span>
+                {allowEditing && <span>{currentSlot.expectedPath}</span>}
               </div>
 
               <div className="flex items-center gap-3 overflow-x-auto pb-1">
@@ -846,7 +839,7 @@ export const ProjectGallery: React.FC<ProjectGalleryProps> = ({
                 })}
               </div>
             </div>
-          </motion.div>
+          </Dialog>
         )}
       </AnimatePresence>
     </div>
@@ -974,9 +967,9 @@ export const ProjectCardGalleryPreview: React.FC<ProjectCardGalleryPreviewProps>
                 key={s.id}
                 type="button"
                 onClick={() => setActiveIndex(idx)}
-                className={`w-4 h-4 rounded-[3px] font-mono text-[9px] flex items-center justify-center transition-colors ${
+                className={`min-w-6 min-h-6 sm:min-w-5 sm:min-h-5 px-1 rounded-[4px] font-mono text-[11px] sm:text-[9px] flex items-center justify-center transition-colors cursor-pointer touch-manipulation ${
                   idx === activeIndex
-                    ? 'bg-[var(--btn-primary-bg)] text-[var(--btn-primary-fg)] font-semibold'
+                    ? 'bg-[var(--btn-primary-bg)] text-[var(--btn-primary-fg)] font-semibold shadow-sm'
                     : 'bg-[var(--bg-default)] text-[var(--text-tertiary)] hover:text-[var(--text-primary)] border border-[var(--border-subtle)]'
                 }`}
                 title={s.title}
@@ -987,16 +980,16 @@ export const ProjectCardGalleryPreview: React.FC<ProjectCardGalleryPreviewProps>
             <button
               type="button"
               onClick={() => setIsLightboxOpen(true)}
-              className="w-5 h-4 rounded-[3px] bg-[var(--bg-default)] text-[var(--text-accent)] hover:bg-[var(--bg-surface-elevated)] border border-[var(--border-subtle)] flex items-center justify-center transition-colors ml-0.5"
-              title="Open Lightbox Modal"
+              className="min-w-7 min-h-7 sm:min-w-6 sm:min-h-6 rounded-[4px] bg-[var(--bg-default)] text-[var(--text-accent)] hover:bg-[var(--bg-surface-elevated)] border border-[var(--border-subtle)] flex items-center justify-center transition-colors ml-0.5 cursor-pointer touch-manipulation"
+              aria-label="Open image gallery"
             >
-              <Maximize2 className="w-2.5 h-2.5" />
+              <Maximize2 className="w-3 h-3 sm:w-2.5 sm:h-2.5" />
             </button>
           </div>
         </div>
 
         {/* Viewport Area (16:9 Aspect Frame) */}
-        <div
+        <button type="button" aria-label="Open image gallery"
           className="relative aspect-[16/9] w-full bg-[var(--bg-primary)] flex flex-col items-center justify-center overflow-hidden"
           onClick={(e) => {
             e.stopPropagation();
@@ -1029,7 +1022,7 @@ export const ProjectCardGalleryPreview: React.FC<ProjectCardGalleryPreviewProps>
               projectTitle={'title' in item ? item.title : item.name}
             />
           )}
-        </div>
+        </button>
       </div>
 
       {isLightboxOpen && (
