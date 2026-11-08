@@ -2,7 +2,6 @@ import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { CORE_PROJECTS, MIGRATION_OVERVIEW, MIGRATION_SLICES } from '../../data/portfolioData';
 import { ProjectItem, MigrationSlice } from '../../types';
-import { ImpactTooltip } from '../ImpactTooltip';
 import { ProjectCardGalleryPreview } from '../ProjectGallery';
 import {
   Search,
@@ -249,46 +248,46 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -8 }}
-                  transition={{ duration: 0.16 }}
+                  whileHover={{ y: -2.5 }}
+                  transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
                   key={slice.id}
+                  className="h-full"
                 >
-                  <ImpactTooltip impact={slice.impact} className="h-full">
-                    <div
-                      onClick={() => onOpenProjectDetail(slice)}
-                      className="h-full bg-[var(--bg-primary)] hover:bg-[var(--bg-surface-elevated)] p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] hover:border-[var(--border-focus)] space-y-3 cursor-pointer group flex flex-col justify-between transition-colors"
-                    >
-                      <div className="space-y-2.5">
-                        <div className="flex items-center justify-between">
-                          <span className="w-8 h-8 rounded-[var(--radius-sm)] bg-[var(--bg-surface)] border border-[var(--border-subtle)] text-[var(--text-accent)] font-mono font-semibold text-sm flex items-center justify-center">
-                            {slice.letter}
-                          </span>
-                          <span className="text-xs font-mono text-[var(--text-secondary)] tabular-nums">
-                            {slice.appCount} Rebuilt Apps
-                          </span>
-                        </div>
-
-                        <h4 className="text-base font-semibold text-[var(--text-primary)] group-hover:text-[var(--text-accent)] transition-colors">
-                          {slice.title}
-                        </h4>
-
-                        <p className="text-xs text-[var(--text-secondary)] line-clamp-3 leading-relaxed">
-                          {slice.problem}
-                        </p>
+                  <div
+                    onClick={() => onOpenProjectDetail(slice)}
+                    className="h-full bg-[var(--bg-primary)] hover:bg-[var(--bg-surface-elevated)] p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] hover:border-orange-500/40 hover:shadow-[0_12px_32px_-8px_rgba(0,0,0,0.5),0_0_24px_-4px_rgba(249,115,22,0.1)] space-y-3 cursor-pointer group flex flex-col justify-between transition-all duration-200"
+                  >
+                    <div className="space-y-2.5">
+                      <div className="flex items-center justify-between">
+                        <span className="w-8 h-8 rounded-[var(--radius-sm)] bg-[var(--bg-surface)] border border-[var(--border-subtle)] group-hover:border-orange-500/30 text-[var(--text-accent)] font-mono font-semibold text-sm flex items-center justify-center transition-colors">
+                          {slice.letter}
+                        </span>
+                        <span className="text-xs font-mono text-[var(--text-secondary)] tabular-nums">
+                          {slice.appCount} Rebuilt Apps
+                        </span>
                       </div>
 
-                      <div className="pt-3 border-t border-[var(--border-subtle)] space-y-2">
-                        <div className="flex items-start space-x-2 text-xs text-[var(--text-primary)] font-medium">
-                          <TrendingUp className="w-3.5 h-3.5 text-[var(--text-accent)] shrink-0" />
-                          <span className="line-clamp-2 leading-relaxed">{slice.impact}</span>
-                        </div>
+                      <h4 className="text-base font-semibold text-[var(--text-primary)] group-hover:text-[var(--text-accent)] transition-colors">
+                        {slice.title}
+                      </h4>
 
-                        <div className="flex items-center justify-between text-xs font-medium text-[var(--text-accent)]">
-                          <span>Inspect Slice Architecture</span>
-                          <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                        </div>
+                      <p className="text-xs text-[var(--text-secondary)] line-clamp-3 leading-relaxed">
+                        {slice.problem}
+                      </p>
+                    </div>
+
+                    <div className="pt-3 border-t border-[var(--border-subtle)] space-y-2">
+                      <div className="flex items-start space-x-2 text-xs text-[var(--text-primary)] font-medium">
+                        <TrendingUp className="w-3.5 h-3.5 text-[var(--text-accent)] shrink-0" />
+                        <span className="line-clamp-2 leading-relaxed">{slice.impact}</span>
+                      </div>
+
+                      <div className="flex items-center justify-between text-xs font-medium text-[var(--text-accent)]">
+                        <span>Inspect Slice Architecture</span>
+                        <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-200" />
                       </div>
                     </div>
-                  </ImpactTooltip>
+                  </div>
                 </motion.div>
               ))}
             </AnimatePresence>
@@ -341,10 +340,9 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
           </div>
         </div>
 
-        {/* Project Cards Grid with 3D Perspective Motion */}
+        {/* Project Cards Grid with Subtle Executive Motion */}
         <motion.div
           layout
-          style={{ perspective: '1200px' }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           <AnimatePresence mode="popLayout">
@@ -354,88 +352,87 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -8 }}
-                whileHover={{ y: -4, rotateX: 1.5, rotateY: -1.5 }}
-                transition={{ duration: 0.16, ease: [0.16, 1, 0.3, 1] }}
+                whileHover={{ y: -2.5 }}
+                transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
                 key={proj.id}
+                className="h-full"
               >
-                <ImpactTooltip impact={proj.impact} className="h-full">
-                  <div
-                    className="h-full glass-card p-6 space-y-5 flex flex-col justify-between cursor-pointer group"
-                    onClick={() => onOpenProjectDetail(proj)}
-                  >
-                    <div className="space-y-3.5">
-                      {/* Project Architectural Thumbnail Header */}
-                      <div className="p-3.5 rounded-[var(--radius-md)] bg-[var(--bg-primary)] border border-[var(--border-subtle)] group-hover:border-[var(--border-focus)] transition-colors flex items-center justify-between">
-                        <div className="flex items-center gap-2.5">
-                          <div className="w-8 h-8 rounded-[var(--radius-sm)] bg-[var(--bg-surface)] border border-[var(--border-subtle)] flex items-center justify-center text-[var(--text-accent)]">
-                            <Layers className="w-4 h-4" />
+                <div
+                  className="h-full glass-card p-6 space-y-5 flex flex-col justify-between cursor-pointer group hover:border-orange-500/40 hover:shadow-[0_12px_32px_-8px_rgba(0,0,0,0.5),0_0_24px_-4px_rgba(249,115,22,0.1)] transition-all duration-200"
+                  onClick={() => onOpenProjectDetail(proj)}
+                >
+                  <div className="space-y-3.5">
+                    {/* Project Architectural Thumbnail Header */}
+                    <div className="p-3.5 rounded-[var(--radius-md)] bg-[var(--bg-primary)] border border-[var(--border-subtle)] group-hover:border-orange-500/30 group-hover:bg-[#141620] transition-all duration-200 flex items-center justify-between">
+                      <div className="flex items-center gap-2.5">
+                        <div className="w-8 h-8 rounded-[var(--radius-sm)] bg-[var(--bg-surface)] border border-[var(--border-subtle)] group-hover:border-orange-500/30 flex items-center justify-center text-[var(--text-accent)] transition-colors">
+                          <Layers className="w-4 h-4" />
+                        </div>
+                        <div>
+                          <div className="text-[11px] font-mono text-[var(--text-tertiary)] uppercase">
+                            {proj.category} · {proj.date}
                           </div>
-                          <div>
-                            <div className="text-[11px] font-mono text-[var(--text-tertiary)] uppercase">
-                              {proj.category} · {proj.date}
-                            </div>
-                            <div className="text-xs font-mono text-[var(--text-accent)] font-medium">
-                              {proj.impactMetrics?.[0]
-                                ? `${proj.impactMetrics[0].value} ${proj.impactMetrics[0].label}`
-                                : 'Hover for Impact Statement'}
-                            </div>
+                          <div className="text-xs font-mono text-[var(--text-accent)] font-medium">
+                            {proj.impactMetrics?.[0]
+                              ? `${proj.impactMetrics[0].value} ${proj.impactMetrics[0].label}`
+                              : 'Verified Architecture'}
                           </div>
                         </div>
-                        <TrendingUp className="w-4 h-4 text-[var(--text-tertiary)] group-hover:text-[var(--text-accent)] transition-colors" />
                       </div>
-
-                      {/* Project Gallery Preview Strip */}
-                      <ProjectCardGalleryPreview item={proj} />
-
-                      <div>
-                        <h3 className="text-lg font-semibold text-[var(--text-primary)] leading-snug group-hover:text-[var(--text-accent)] transition-colors">
-                          {proj.title}
-                        </h3>
-                        {proj.subtitle && (
-                          <p className="text-xs text-[var(--text-accent)] font-medium mt-0.5">{proj.subtitle}</p>
-                        )}
-                      </div>
-
-                      <div className="space-y-1">
-                        <p className="text-xs font-mono text-[var(--text-tertiary)]">Challenge</p>
-                        <p className="text-xs text-[var(--text-secondary)] leading-relaxed line-clamp-2">
-                          {proj.problem}
-                        </p>
-                      </div>
-
-                      <div className="space-y-1">
-                        <p className="text-xs font-mono text-[var(--text-tertiary)]">Architected Solution</p>
-                        <p className="text-xs text-[var(--text-secondary)] leading-relaxed line-clamp-2">
-                          {proj.solution}
-                        </p>
-                      </div>
-
-                      <div className="pt-1 text-xs font-mono text-[var(--text-tertiary)] truncate">
-                        {proj.tools.join(' · ')}
-                      </div>
+                      <TrendingUp className="w-4 h-4 text-[var(--text-tertiary)] group-hover:text-[var(--text-accent)] transition-colors" />
                     </div>
 
-                    <div className="pt-4 border-t border-[var(--border-subtle)] flex items-center justify-between">
-                      <span className="text-xs font-medium text-[var(--text-secondary)] group-hover:text-[var(--text-primary)] flex items-center space-x-1">
-                        <span>Detailed Specs</span>
-                        <ArrowRight className="w-3.5 h-3.5" />
-                      </span>
+                    {/* Project Gallery Preview Strip */}
+                    <ProjectCardGalleryPreview item={proj} />
 
-                      {proj.liveDemoId && (
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            onLaunchDemo(proj.liveDemoId!);
-                          }}
-                          className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-[var(--radius-sm)] bg-[var(--bg-surface-elevated)] hover:border-[var(--border-focus)] text-[var(--text-primary)] text-xs font-medium border border-[var(--border-subtle)] transition-colors whitespace-nowrap"
-                        >
-                          <MonitorPlay className="w-3.5 h-3.5 text-[var(--text-accent)]" />
-                          <span>Run Simulation</span>
-                        </button>
+                    <div>
+                      <h3 className="text-lg font-semibold text-[var(--text-primary)] leading-snug group-hover:text-[var(--text-accent)] transition-colors">
+                        {proj.title}
+                      </h3>
+                      {proj.subtitle && (
+                        <p className="text-xs text-[var(--text-accent)] font-medium mt-0.5">{proj.subtitle}</p>
                       )}
                     </div>
+
+                    <div className="space-y-1">
+                      <p className="text-xs font-mono text-[var(--text-tertiary)]">Challenge</p>
+                      <p className="text-xs text-[var(--text-secondary)] leading-relaxed line-clamp-2">
+                        {proj.problem}
+                      </p>
+                    </div>
+
+                    <div className="space-y-1">
+                      <p className="text-xs font-mono text-[var(--text-tertiary)]">Architected Solution</p>
+                      <p className="text-xs text-[var(--text-secondary)] leading-relaxed line-clamp-2">
+                        {proj.solution}
+                      </p>
+                    </div>
+
+                    <div className="pt-1 text-xs font-mono text-[var(--text-tertiary)] truncate">
+                      {proj.tools.join(' · ')}
+                    </div>
                   </div>
-                </ImpactTooltip>
+
+                  <div className="pt-4 border-t border-[var(--border-subtle)] flex items-center justify-between">
+                    <span className="text-xs font-medium text-[var(--text-secondary)] group-hover:text-[var(--text-primary)] flex items-center space-x-1">
+                      <span>Detailed Specs</span>
+                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-200" />
+                    </span>
+
+                    {proj.liveDemoId && (
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          onLaunchDemo(proj.liveDemoId!);
+                        }}
+                        className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-[var(--radius-sm)] bg-[var(--bg-surface-elevated)] hover:border-[var(--border-focus)] text-[var(--text-primary)] text-xs font-medium border border-[var(--border-subtle)] transition-colors whitespace-nowrap"
+                      >
+                        <MonitorPlay className="w-3.5 h-3.5 text-[var(--text-accent)]" />
+                        <span>Run Simulation</span>
+                      </button>
+                    )}
+                  </div>
+                </div>
               </motion.div>
             ))}
           </AnimatePresence>

@@ -104,7 +104,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
             {/* Kicker with Copper-Orange Line & Dot */}
             <div className="flex items-center space-x-3">
               <span className="text-xs font-mono uppercase tracking-[0.2em] text-[var(--text-accent)] font-semibold">
-                ENTERPRISE SOLUTION ARCHITECT
+                SOLUTIONS ARCHITECT &amp; OPERATIONS TEAM LEADER
               </span>
               <span className="h-[1px] w-12 bg-[var(--interactive-primary)]/60 relative flex items-center justify-end">
                 <span className="w-1.5 h-1.5 rounded-full bg-[var(--interactive-primary)] shadow-[0_0_8px_#f97316]" />
@@ -122,8 +122,8 @@ export const HomeView: React.FC<HomeViewProps> = ({
             </h1>
 
             {/* Subtitle */}
-            <p className="text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed max-w-md">
-              I build scalable enterprise modernizations, governed Power Platform ecosystems, and deterministic AI systems with clean architecture.
+            <p className="text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed max-w-lg">
+              Dual-track technology and operations leader. I bridge enterprise solutions architecture (Power Platform, Dataverse, React 19) with high-scale people leadership (34 direct reports, 380% headcount scale, &gt;98% SLA governance).
             </p>
 
             {/* Outlined Tech Stack Boxes */}
@@ -131,10 +131,10 @@ export const HomeView: React.FC<HomeViewProps> = ({
               {[
                 'Power Platform',
                 'Dataverse',
-                'SharePoint MainDB',
-                'TypeScript',
-                'React 19',
-                'Python AI'
+                'React 19 / TS',
+                'BPO Team Lead (34 Reports)',
+                '>98% SLA Governance',
+                'Pre-Sales (RM70k+ SOWs)'
               ].map((tech) => (
                 <span
                   key={tech}
@@ -221,7 +221,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
               </span>
             </div>
             <span className="px-2.5 py-0.5 rounded-full bg-orange-500/10 border border-orange-500/25 text-[10px] font-mono font-semibold text-orange-400">
-              Enterprise Solutions Architect
+              Dual-Track: Solutions Architect &amp; Operations Team Leader
             </span>
           </div>
 
@@ -255,39 +255,39 @@ export const HomeView: React.FC<HomeViewProps> = ({
               {/* Bottom Label */}
               <div className="absolute bottom-2 left-2 right-2 p-1 rounded bg-black/70 backdrop-blur-md border border-white/10 text-center z-10">
                 <div className="text-[10px] font-bold text-white leading-tight">Ali Akhmad Fauzie</div>
-                <div className="text-[8px] font-mono text-orange-400">Pre-Sales &amp; Architect</div>
+                <div className="text-[8px] font-mono text-orange-400">Solutions Architect &amp; Operations Lead</div>
               </div>
             </div>
 
             {/* Headline & Bio */}
             <div className="space-y-2 flex-1">
               <h2 className="text-lg sm:text-xl font-extrabold text-white tracking-tight leading-snug">
-                Architecting Enterprise Systems That{' '}
+                Architecting Enterprise Systems &amp; Leading High-Velocity{' '}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-amber-400 to-orange-500">
-                  Scale.
+                  Teams.
                 </span>
               </h2>
               <p className="text-xs text-zinc-300 leading-relaxed font-normal">
-                I&apos;m Ali Akhmad Fauzie, an Enterprise Solutions Architect &amp; Pre-Sales Lead and former Operations Team Leader (Concentrix &amp; Accenture). I specialize in zero-downtime legacy Lotus Domino migrations to Microsoft 365, Dataverse enterprise architectures, and deterministic AI automation.
+                I&apos;m Ali Akhmad Fauzie, an Enterprise Solutions Architect, Pre-Sales Lead, and seasoned Operations Team Leader (Accenture &amp; Concentrix). Over 9+ years, I have led 34 direct reports across 7 APAC markets achieving 380% scale and &gt;98% SLA compliance, while simultaneously engineering zero-downtime Lotus Domino migrations (365+ apps), Dataverse architectures, and RM70k+ enterprise SOWs.
               </p>
             </div>
           </div>
 
           {/* 4 Strategic Capability Chips (2x2 Grid) */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 relative z-10">
-            <div className="p-2.5 rounded-lg bg-[#11131c]/80 border border-white/[0.07] hover:border-orange-500/30 transition-colors flex items-center space-x-3">
-              <div className="w-8 h-8 rounded-lg bg-orange-500/10 border border-orange-500/20 flex items-center justify-center shrink-0 text-orange-400 shadow-[0_0_10px_rgba(249,115,22,0.12)]">
-                <Briefcase className="w-4 h-4" />
+            <div className="p-2.5 rounded-lg bg-[#11131c]/80 border border-white/[0.07] hover:border-emerald-500/30 transition-colors flex items-center space-x-3">
+              <div className="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center shrink-0 text-emerald-400 shadow-[0_0_10px_rgba(34,197,94,0.12)]">
+                <Users className="w-4 h-4" />
               </div>
               <div>
-                <div className="text-xs font-bold text-white leading-tight">9+ Years Leadership</div>
-                <div className="text-[10px] text-zinc-400 font-mono">Enterprise &amp; BPO Operations</div>
+                <div className="text-xs font-bold text-white leading-tight">34 Direct Reports</div>
+                <div className="text-[10px] text-zinc-400 font-mono">380% Scale · 7 APAC Markets</div>
               </div>
             </div>
 
-            <div className="p-2.5 rounded-lg bg-[#11131c]/80 border border-white/[0.07] hover:border-emerald-500/30 transition-colors flex items-center space-x-3">
-              <div className="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center shrink-0 text-emerald-400 shadow-[0_0_10px_rgba(34,197,94,0.12)]">
-                <CheckCircle2 className="w-4 h-4" />
+            <div className="p-2.5 rounded-lg bg-[#11131c]/80 border border-white/[0.07] hover:border-orange-500/30 transition-colors flex items-center space-x-3">
+              <div className="w-8 h-8 rounded-lg bg-orange-500/10 border border-orange-500/20 flex items-center justify-center shrink-0 text-orange-400 shadow-[0_0_10px_rgba(249,115,22,0.12)]">
+                <Briefcase className="w-4 h-4" />
               </div>
               <div>
                 <div className="text-xs font-bold text-white leading-tight">365+ DBs Modernized</div>
@@ -300,18 +300,18 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 <Award className="w-4 h-4" />
               </div>
               <div>
-                <div className="text-xs font-bold text-white leading-tight">12 Verified Credentials</div>
-                <div className="text-[10px] text-zinc-400 font-mono">Microsoft, Lark &amp; Six Sigma</div>
+                <div className="text-xs font-bold text-white leading-tight">26 Verified Certifications</div>
+                <div className="text-[10px] text-zinc-400 font-mono">16 Honors &amp; Awards · UUM 3.48</div>
               </div>
             </div>
 
-            <div className="p-2.5 rounded-lg bg-[#11131c]/80 border border-white/[0.07] hover:border-orange-500/30 transition-colors flex items-center space-x-3">
-              <div className="w-8 h-8 rounded-lg bg-orange-500/10 border border-orange-500/20 flex items-center justify-center shrink-0 text-orange-400 shadow-[0_0_10px_rgba(249,115,22,0.12)]">
-                <Zap className="w-4 h-4" />
+            <div className="p-2.5 rounded-lg bg-[#11131c]/80 border border-white/[0.07] hover:border-cyan-500/30 transition-colors flex items-center space-x-3">
+              <div className="w-8 h-8 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center shrink-0 text-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.12)]">
+                <CheckCircle2 className="w-4 h-4" />
               </div>
               <div>
-                <div className="text-xs font-bold text-white leading-tight">$960K+/yr Saved</div>
-                <div className="text-[10px] text-zinc-400 font-mono">Standard M365 Sharding</div>
+                <div className="text-xs font-bold text-white leading-tight">&gt;98% SLA &amp; $960K Saved</div>
+                <div className="text-[10px] text-zinc-400 font-mono">Six Sigma DMAIC · FinOps</div>
               </div>
             </div>
           </div>
@@ -409,9 +409,9 @@ export const HomeView: React.FC<HomeViewProps> = ({
             ].map((srv, idx) => (
               <motion.div
                 key={idx}
-                whileHover={{ y: -3, scale: 1.01 }}
-                transition={{ duration: 0.2 }}
-                className="service-card rounded-xl p-3.5 flex flex-col justify-between group cursor-default relative overflow-hidden bg-[#10121a]/90 border border-white/[0.07] hover:border-orange-500/40 hover:bg-[#161824] transition-all shadow-sm"
+                whileHover={{ y: -2 }}
+                transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+                className="service-card rounded-xl p-3.5 flex flex-col justify-between group cursor-default relative overflow-hidden bg-[#10121a]/90 border border-white/[0.07] hover:border-orange-500/40 hover:bg-[#161824] hover:shadow-[0_8px_24px_-4px_rgba(0,0,0,0.4),0_0_20px_-4px_rgba(249,115,22,0.08)] transition-all duration-200 shadow-sm"
               >
                 {/* Ambient hover sheen */}
                 <div className="absolute -top-12 -right-12 w-20 h-20 bg-orange-500/10 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
@@ -442,6 +442,193 @@ export const HomeView: React.FC<HomeViewProps> = ({
           </div>
         </div>
       </section>
+
+      {/* ====================================================================
+          2B. // DUAL-CAREER EXECUTIVE PILLARS (Architecture & Operations)
+         ==================================================================== */}
+      <section className="rounded-2xl surface-glass-1 border border-white/10 p-6 sm:p-7 space-y-6 shadow-2xl relative overflow-hidden">
+        {/* Subtle Ambient Backlight */}
+        <div className="absolute -top-32 right-1/4 w-96 h-96 bg-orange-500/5 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/[0.08] pb-4 relative z-10">
+          <div className="space-y-1">
+            <div className="flex items-center space-x-2.5">
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-orange-500 shadow-[0_0_8px_#f97316]" />
+              </span>
+              <p className="text-xs font-mono font-bold tracking-widest uppercase text-orange-400">
+                // DUAL-CAREER EXECUTIVE PILLARS
+              </p>
+              <span className="px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-[10px] font-mono text-zinc-300">
+                System Architecture + People Operations
+              </span>
+            </div>
+            <h2 className="text-lg sm:text-xl font-extrabold text-white tracking-tight">
+              Two Distinct Executive Careers. One Synergistic Delivery Engine.
+            </h2>
+          </div>
+
+          <button
+            type="button"
+            onClick={() => onSelectTab('experience')}
+            className="inline-flex items-center space-x-2 px-4 py-2 rounded-lg bg-gradient-to-r from-[#f97316] to-[#ea580c] hover:from-[#fb923c] hover:to-[#f97316] text-[#090a0d] text-xs font-bold shadow-[0_4px_16px_rgba(249,115,22,0.28)] transition-all cursor-pointer group shrink-0"
+          >
+            <span>Explore Dual-Branch Career Tree</span>
+            <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+          </button>
+        </div>
+
+        {/* 2 Symmetrical Executive Pillars */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 relative z-10">
+          {/* PILLAR 1: Enterprise Solutions Architect & Pre-Sales */}
+          <div className="rounded-xl bg-[#0e1017]/90 border border-orange-500/30 p-5 sm:p-6 space-y-4 hover:border-orange-500/50 transition-colors shadow-lg flex flex-col justify-between">
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center space-x-3">
+                  <div className="w-10 h-10 rounded-lg bg-orange-500/10 border border-orange-500/25 flex items-center justify-center text-orange-400 shadow-[0_0_12px_rgba(249,115,22,0.2)]">
+                    <Layers className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h3 className="text-base font-bold text-white tracking-tight">
+                      Enterprise Solutions Architect &amp; Pre-Sales
+                    </h3>
+                    <div className="text-xs font-mono text-orange-400">Software &amp; Digital Modernization Track</div>
+                  </div>
+                </div>
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-orange-500/15 text-orange-300 border border-orange-500/30">
+                  Engineering Track
+                </span>
+              </div>
+
+              <p className="text-xs text-zinc-300 leading-relaxed">
+                Architecting zero-downtime legacy application cutovers, governed Power Platform ecosystems, statutory financial workflows, and Pre-Sales commercial proposals (RM70,000+ SOWs won).
+              </p>
+
+              {/* 4 Metric Bento Mini-Tiles */}
+              <div className="grid grid-cols-2 gap-2.5">
+                <div className="p-3 rounded-lg bg-[#141622] border border-white/[0.06] space-y-1">
+                  <div className="text-lg font-bold font-mono text-orange-400">365+ DBs</div>
+                  <div className="text-[10px] text-zinc-400 font-mono">Domino to M365 Cutover</div>
+                </div>
+                <div className="p-3 rounded-lg bg-[#141622] border border-white/[0.06] space-y-1">
+                  <div className="text-lg font-bold font-mono text-orange-400">878 Screens</div>
+                  <div className="text-[10px] text-zinc-400 font-mono">Canvas YAML &amp; Model-Driven</div>
+                </div>
+                <div className="p-3 rounded-lg bg-[#141622] border border-white/[0.06] space-y-1">
+                  <div className="text-lg font-bold font-mono text-orange-400">RM70K+ SOW</div>
+                  <div className="text-[10px] text-zinc-400 font-mono">Pre-Sales Proposal Won</div>
+                </div>
+                <div className="p-3 rounded-lg bg-[#141622] border border-white/[0.06] space-y-1">
+                  <div className="text-lg font-bold font-mono text-orange-400">$960K/yr</div>
+                  <div className="text-[10px] text-zinc-400 font-mono">License Sharding Savings</div>
+                </div>
+              </div>
+
+              {/* Highlights */}
+              <div className="space-y-2 pt-1 border-t border-white/[0.06]">
+                <div className="flex items-start space-x-2 text-xs text-zinc-300">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-orange-400 shrink-0 mt-0.5" />
+                  <span>Zero-downtime cutover strategy across 28 manufacturing &amp; trading Business Units.</span>
+                </div>
+                <div className="flex items-start space-x-2 text-xs text-zinc-300">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-orange-400 shrink-0 mt-0.5" />
+                  <span>Deterministic Tri-Engine AI routers (Gemini 2.5 Pro, Groq, AI Builder) with SSOT guards.</span>
+                </div>
+                <div className="flex items-start space-x-2 text-xs text-zinc-300">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-orange-400 shrink-0 mt-0.5" />
+                  <span>ALM DevOps automation: PAC CLI solutions, AST linters, and GitHub Actions CI/CD.</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="pt-3">
+              <button
+                type="button"
+                onClick={() => onSelectTab('projects')}
+                className="w-full py-2 px-3 rounded-lg bg-orange-500/10 hover:bg-orange-500/20 text-orange-400 border border-orange-500/25 text-xs font-mono font-semibold flex items-center justify-center space-x-2 transition-colors cursor-pointer"
+              >
+                <span>Inspect Enterprise Case Studies</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+            </div>
+          </div>
+
+          {/* PILLAR 2: Operations Team Leader & BPO Scaling */}
+          <div className="rounded-xl bg-[#0e1017]/90 border border-emerald-500/30 p-5 sm:p-6 space-y-4 hover:border-emerald-500/50 transition-colors shadow-lg flex flex-col justify-between">
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center space-x-3">
+                  <div className="w-10 h-10 rounded-lg bg-emerald-500/10 border border-emerald-500/25 flex items-center justify-center text-emerald-400 shadow-[0_0_12px_rgba(34,197,94,0.2)]">
+                    <Users className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h3 className="text-base font-bold text-white tracking-tight">
+                      Operations Team Leader &amp; BPO Scaling
+                    </h3>
+                    <div className="text-xs font-mono text-emerald-400">People Leadership &amp; SLA Track</div>
+                  </div>
+                </div>
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">
+                  Operations Track
+                </span>
+              </div>
+
+              <p className="text-xs text-zinc-300 leading-relaxed">
+                Directly managing, coaching, and scaling up to 34 multilingual specialists across 7 international APAC markets, sustaining contractual SLAs and driving Six Sigma DMAIC continuous improvement.
+              </p>
+
+              {/* 4 Metric Bento Mini-Tiles */}
+              <div className="grid grid-cols-2 gap-2.5">
+                <div className="p-3 rounded-lg bg-[#141622] border border-white/[0.06] space-y-1">
+                  <div className="text-lg font-bold font-mono text-emerald-400">34 Reports</div>
+                  <div className="text-[10px] text-zinc-400 font-mono">Managed Directly (380% Scale)</div>
+                </div>
+                <div className="p-3 rounded-lg bg-[#141622] border border-white/[0.06] space-y-1">
+                  <div className="text-lg font-bold font-mono text-emerald-400">7 Markets</div>
+                  <div className="text-[10px] text-zinc-400 font-mono">SG, MY, PH, TH, VN, ID, JP</div>
+                </div>
+                <div className="p-3 rounded-lg bg-[#141622] border border-white/[0.06] space-y-1">
+                  <div className="text-lg font-bold font-mono text-emerald-400">&gt;98% SLA</div>
+                  <div className="text-[10px] text-zinc-400 font-mono">Sustained Quality Benchmark</div>
+                </div>
+                <div className="p-3 rounded-lg bg-[#141622] border border-white/[0.06] space-y-1">
+                  <div className="text-lg font-bold font-mono text-emerald-400">-25% AHT</div>
+                  <div className="text-[10px] text-zinc-400 font-mono">Six Sigma DMAIC Optimization</div>
+                </div>
+              </div>
+
+              {/* Highlights */}
+              <div className="space-y-2 pt-1 border-t border-white/[0.06]">
+                <div className="flex items-start space-x-2 text-xs text-zinc-300">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
+                  <span>Awarded Hang Tuah Award (Best Operations Team Lead) &amp; Accenture Diamond Award.</span>
+                </div>
+                <div className="flex items-start space-x-2 text-xs text-zinc-300">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
+                  <span>3x Consecutive Monthly Best Team Leader Award (Feb, Mar, Apr 2019) at Accenture.</span>
+                </div>
+                <div className="flex items-start space-x-2 text-xs text-zinc-300">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
+                  <span>Scaled team headcount by 380% (9 to 34 agents) within 6 months during hypergrowth.</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="pt-3">
+              <button
+                type="button"
+                onClick={() => onSelectTab('experience')}
+                className="w-full py-2 px-3 rounded-lg bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/25 text-xs font-mono font-semibold flex items-center justify-center space-x-2 transition-colors cursor-pointer"
+              >
+                <span>View Full Operations Tenure Timeline</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
 
       {/* ====================================================================
           3. // TECH STACK (5-Column Categorized Icon Showcase)
@@ -562,10 +749,10 @@ export const HomeView: React.FC<HomeViewProps> = ({
           {featuredProjects.map((proj) => (
             <motion.div
               key={proj.id}
-              whileHover={{ y: -4 }}
-              transition={{ duration: 0.16 }}
+              whileHover={{ y: -2.5 }}
+              transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
               onClick={() => onOpenProjectDetail(proj)}
-              className="rounded-[var(--radius-md)] bg-[#0f1117] border border-[var(--border-subtle)] hover:border-[var(--border-focus)] overflow-hidden flex flex-col justify-between cursor-pointer group transition-colors"
+              className="rounded-[var(--radius-md)] bg-[#0f1117] hover:bg-[#141620] border border-[var(--border-subtle)] hover:border-orange-500/40 hover:shadow-[0_12px_32px_-8px_rgba(0,0,0,0.5),0_0_24px_-4px_rgba(249,115,22,0.1)] overflow-hidden flex flex-col justify-between cursor-pointer group transition-all duration-200"
             >
               <div className="p-4 space-y-4">
                 {/* Browser Frame Preview */}
@@ -603,7 +790,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
 
               {/* Card Footer: View Case Study + Run Simulator */}
               <div className="px-4 py-3 border-t border-[var(--border-subtle)] flex items-center justify-between">
-                <span className="text-xs font-semibold text-[var(--text-accent)] inline-flex items-center space-x-1 group-hover:translate-x-0.5 transition-transform">
+                <span className="text-xs font-semibold text-[var(--text-accent)] inline-flex items-center space-x-1 group-hover:translate-x-1 transition-transform duration-200">
                   <span>View Case Study</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </span>
@@ -669,19 +856,19 @@ export const HomeView: React.FC<HomeViewProps> = ({
               label: 'Legacy Apps Modernized'
             },
             {
-              icon: <Code2 className="w-6 h-6 text-[var(--interactive-primary)]" />,
-              value: '9+',
-              label: 'Years Experience'
+              icon: <Users className="w-6 h-6 text-[var(--interactive-primary)]" />,
+              value: '34',
+              label: 'Direct Reports (380% Scale)'
             },
             {
               icon: <Award className="w-6 h-6 text-[var(--interactive-primary)]" />,
-              value: '12',
-              label: 'LinkedIn & MS Certifications'
+              value: `${LINKEDIN_CERTIFICATIONS.length}`,
+              label: `Verified Certs (${LINKEDIN_HONORS_AWARDS.length} Honors)`
             },
             {
               icon: <Trophy className="w-6 h-6 text-[var(--interactive-primary)]" />,
-              value: '98%+',
-              label: 'SLA & Audit Compliance'
+              value: '>98%',
+              label: 'Sustained SLA (7 APAC Markets)'
             }
           ].map((stat, idx) => (
             <div

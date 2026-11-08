@@ -93,7 +93,7 @@ export const CertificationsView: React.FC = () => {
   };
 
   const isDetailActive = (certId: string) =>
-    expandAllMetadata || hoveredCertId === certId || pinnedCertId === certId;
+    expandAllMetadata || pinnedCertId === certId;
 
   return (
     <div className="space-y-12 py-6">
@@ -322,7 +322,8 @@ export const CertificationsView: React.FC = () => {
                   layout
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.2, delay: index * 0.03 }}
+                  whileHover={{ y: -2.5 }}
+                  transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
                   onMouseEnter={() => setHoveredCertId(cert.id)}
                   onMouseLeave={() => setHoveredCertId(null)}
                   onFocus={() => setHoveredCertId(cert.id)}
@@ -333,17 +334,20 @@ export const CertificationsView: React.FC = () => {
                   tabIndex={0}
                   role="button"
                   aria-expanded={showDetail}
-                  className={`break-inside-avoid rounded-[var(--radius-lg)] bg-[var(--bg-surface)] border transition-all duration-200 p-6 flex flex-col justify-between cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-[var(--border-focus)] ${
+                  className={`break-inside-avoid cert-hologram-card group rounded-[var(--radius-lg)] bg-[var(--bg-surface)] border transition-all duration-200 p-6 flex flex-col justify-between cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-[var(--border-focus)] ${
                     showDetail
                       ? 'border-[var(--border-focus)] shadow-[0_12px_34px_rgba(249,115,22,0.16)] bg-[var(--bg-surface-elevated)]'
-                      : 'border-[var(--border-subtle)] shadow-[var(--shadow-card)] hover:border-[var(--interactive-subtle-border)]'
+                      : 'border-[var(--border-subtle)] shadow-[var(--shadow-card)] hover:border-orange-500/40 hover:shadow-[0_12px_32px_-8px_rgba(0,0,0,0.5),0_0_24px_-4px_rgba(249,115,22,0.12)]'
                   }`}
                 >
+                  {/* Top Ambient Hologram Glint Edge */}
+                  <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#f97316]/70 to-[#22c55e]/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10" />
+
                   {/* Top Header: Icon + Unboxed Domain Kicker + Issue Date */}
                   <div className="space-y-3.5">
                     <div className="flex items-center justify-between gap-3">
                       <div className="flex items-center space-x-2.5 min-w-0">
-                        <div className="w-9 h-9 rounded-[var(--radius-sm)] bg-[#0f1117] border border-[var(--border-subtle)] flex items-center justify-center shrink-0">
+                        <div className="w-9 h-9 rounded-[var(--radius-sm)] bg-[#0f1117] border border-[var(--border-subtle)] group-hover:border-orange-500/40 group-hover:scale-105 group-hover:rotate-3 flex items-center justify-center shrink-0 transition-all duration-300">
                           {getCategoryIcon(cert.category)}
                         </div>
                         <div className="text-xs font-mono text-[var(--text-secondary)] truncate">
@@ -357,7 +361,7 @@ export const CertificationsView: React.FC = () => {
                         </div>
                       </div>
 
-                      <span className="text-[11px] font-mono text-[#22c55e] shrink-0 flex items-center gap-1">
+                      <span className="text-[11px] font-mono text-[#22c55e] shrink-0 flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 group-hover:border-emerald-500/50 group-hover:shadow-[0_0_12px_rgba(34,197,94,0.3)] transition-all duration-300">
                         <ShieldCheck className="w-3.5 h-3.5" />
                         <span>Verified</span>
                       </span>
@@ -518,7 +522,7 @@ export const CertificationsView: React.FC = () => {
                         ? 'Pinned · Click to unpin'
                         : showDetail
                         ? 'Click to pin metadata'
-                        : 'Hover for credential metadata →'}
+                        : 'Click to inspect metadata →'}
                     </span>
                   </div>
                 </motion.article>
@@ -550,9 +554,9 @@ export const CertificationsView: React.FC = () => {
           {LINKEDIN_HONORS_AWARDS.map((award) => (
             <div
               key={award.id}
-              className="rounded-[var(--radius-lg)] bg-[var(--bg-surface)] border border-[var(--border-subtle)] hover:border-[var(--border-focus)] p-6 flex items-start space-x-4 transition-colors shadow-[var(--shadow-card)]"
+              className="cert-hologram-card group rounded-[var(--radius-lg)] bg-[var(--bg-surface)] hover:bg-[var(--bg-surface-elevated)] border border-[var(--border-subtle)] hover:border-amber-500/40 p-6 flex items-start space-x-4 transition-all duration-200 shadow-[var(--shadow-card)] hover:shadow-[0_12px_32px_-8px_rgba(0,0,0,0.5),0_0_20px_-4px_rgba(245,158,11,0.12)]"
             >
-              <div className="w-11 h-11 rounded-[var(--radius-md)] bg-[#1b1613] border border-[var(--interactive-subtle-border)] flex items-center justify-center shrink-0">
+              <div className="w-11 h-11 rounded-[var(--radius-md)] bg-[#1b1613] border border-[var(--interactive-subtle-border)] group-hover:border-amber-500/40 group-hover:scale-105 group-hover:-rotate-3 flex items-center justify-center shrink-0 transition-all duration-300">
                 <Award className="w-5 h-5 text-[var(--interactive-primary)]" />
               </div>
               <div className="space-y-1.5 flex-1">

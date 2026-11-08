@@ -336,6 +336,83 @@ const CODE_TABS: CodeTab[] = [
         content: <>{'};'}</>
       }
     ]
+  },
+  {
+    id: 'ops-lead',
+    filename: 'team_sla_governance.ts',
+    projectId: 'concentrix-team-lead',
+    demoId: 'sla-telemetry',
+    demoLabel: 'Review BPO SLA Governance',
+    terminalCmd: '> node _audit_team_kpi.js --headcount 34 --markets 7',
+    terminalLine1: 'Active Headcount: 34 direct reports across 7 APAC markets',
+    terminalLine2: 'Contractual SLA: >98% sustained compliance | AHT: -25% via DMAIC',
+    terminalLine3: 'Honors: Hang Tuah Best Team Lead & Accenture Diamond Award',
+    lines: [
+      {
+        num: 1,
+        content: (
+          <>
+            <span className="text-[#fb923c]">export interface</span>{' '}
+            <span className="text-[#fbbf24]">OperationsLeadershipKPI</span> {'{'}
+          </>
+        )
+      },
+      {
+        num: 2,
+        content: (
+          <>
+            {'  '}
+            <span className="text-[#cbd5e1]">directReports:</span>{' '}
+            <span className="text-[#fb923c]">34</span>; <span className="text-[#64748b]">// Scaled 380% (9 to 34)</span>
+          </>
+        )
+      },
+      {
+        num: 3,
+        content: (
+          <>
+            {'  '}
+            <span className="text-[#cbd5e1]">internationalMarkets:</span>{' '}
+            <span className="text-[#fb923c]">7</span>; <span className="text-[#64748b]">// SG, MY, PH, TH, VN, ID, JP</span>
+          </>
+        )
+      },
+      {
+        num: 4,
+        content: (
+          <>
+            {'  '}
+            <span className="text-[#cbd5e1]">contractualSLA:</span>{' '}
+            <span className="text-[#4ade80]">&apos;&gt;98% Sustained&apos;</span>;
+          </>
+        )
+      },
+      {
+        num: 5,
+        content: (
+          <>
+            {'  '}
+            <span className="text-[#cbd5e1]">sixSigmaOptimization:</span>{' '}
+            <span className="text-[#4ade80]">&apos;DMAIC -25% AHT&apos;</span>;
+          </>
+        )
+      },
+      {
+        num: 6,
+        content: (
+          <>
+            {'  '}
+            <span className="text-[#cbd5e1]">leadershipHonors:</span> [
+            <span className="text-[#4ade80]">&apos;Hang Tuah Award&apos;</span>,{' '}
+            <span className="text-[#4ade80]">&apos;Accenture Diamond&apos;</span>];
+          </>
+        )
+      },
+      {
+        num: 7,
+        content: <>{'}'}</>
+      }
+    ]
   }
 ];
 
@@ -583,9 +660,9 @@ export const ArchitectureMotionHero: React.FC<ArchitectureMotionHeroProps> = ({
                 </div>
                 <div className="flex items-baseline space-x-1.5 mt-0.5">
                   <span className="text-lg font-bold font-mono text-[var(--text-primary)]">
-                    99.98%
+                    &gt;98%
                   </span>
-                  <span className="text-[10px] font-mono text-[#4ade80]">+ISO/DOSH</span>
+                  <span className="text-[10px] font-mono text-[#4ade80]">Sustained SLA</span>
                 </div>
               </div>
               <svg className="w-24 h-8 overflow-visible" viewBox="0 0 100 32">
