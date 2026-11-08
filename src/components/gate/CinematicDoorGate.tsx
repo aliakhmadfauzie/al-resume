@@ -63,17 +63,49 @@ export const CinematicDoorGate: React.FC<CinematicDoorGateProps> = ({
   // 'closed' -> 'cracked' -> 'shattering' -> 'opening' -> 'skipping'
   const [phase, setPhase] = useState<'closed' | 'cracked' | 'shattering' | 'opening' | 'skipping'>('closed');
   const [chosenPersona, setChosenPersona] = useState<PersonaType | null>(null);
-  const [welcomeOpen, setWelcomeOpen] = useState(true);
+  const [welcomeOpen, setWelcomeOpen] = useState(false);
 
   const animTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const finishTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const welcomeShowTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const welcomeHideTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     return () => {
       if (animTimerRef.current) clearTimeout(animTimerRef.current);
       if (finishTimerRef.current) clearTimeout(finishTimerRef.current);
+      if (welcomeShowTimerRef.current) clearTimeout(welcomeShowTimerRef.current);
+      if (welcomeHideTimerRef.current) clearTimeout(welcomeHideTimerRef.current);
     };
   }, []);
+
+  // Show welcome message 2s after selection is fully appeared, then auto-close after 5s
+  useEffect(() => {
+    if (phase !== 'cracked') {
+      if (welcomeShowTimerRef.current) clearTimeout(welcomeShowTimerRef.current);
+      if (welcomeHideTimerRef.current) clearTimeout(welcomeHideTimerRef.current);
+      setWelcomeOpen(false);
+      return;
+    }
+
+    // HUD takes 800ms (120ms delay + 680ms duration) to be fully appeared in 'cracked' phase
+    const appearanceDurationMs = isMotionActive ? 800 : 0;
+    const showDelayMs = appearanceDurationMs + 2000; // 2 seconds after selection fully appeared
+
+    welcomeShowTimerRef.current = setTimeout(() => {
+      setWelcomeOpen(true);
+
+      // Auto close after 5 seconds
+      welcomeHideTimerRef.current = setTimeout(() => {
+        setWelcomeOpen(false);
+      }, 5000);
+    }, showDelayMs);
+
+    return () => {
+      if (welcomeShowTimerRef.current) clearTimeout(welcomeShowTimerRef.current);
+      if (welcomeHideTimerRef.current) clearTimeout(welcomeHideTimerRef.current);
+    };
+  }, [phase, isMotionActive]);
 
   // Transition from closed to cracked after a brief pause
   useEffect(() => {
@@ -342,7 +374,7 @@ export const CinematicDoorGate: React.FC<CinematicDoorGateProps> = ({
                     initial={{ opacity: 0, height: 0, scale: 0.96 }}
                     animate={{ opacity: 1, height: 'auto', scale: 1 }}
                     exit={{ opacity: 0, height: 0, scale: 0.95 }}
-                    transition={{ delay: 0.18, duration: 0.38, ease: [0.16, 1, 0.3, 1] }}
+                    transition={{ duration: 0.38, ease: [0.16, 1, 0.3, 1] }}
                     className="overflow-hidden w-full"
                     role="alert"
                     aria-live="polite"
@@ -358,6 +390,7 @@ export const CinematicDoorGate: React.FC<CinematicDoorGateProps> = ({
                           type="button"
                           onClick={(e) => {
                             e.stopPropagation();
+                            if (welcomeHideTimerRef.current) clearTimeout(welcomeHideTimerRef.current);
                             setWelcomeOpen(false);
                           }}
                           className="text-slate-400 hover:text-white p-1 rounded-full hover:bg-white/10 transition-all cursor-pointer"
