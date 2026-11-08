@@ -1,3 +1,4 @@
+import { BrandSplashIntro } from './components/BrandSplashIntro';
 import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { motion, AnimatePresence, useScroll, useSpring } from 'motion/react';
 import { ArrowUp } from 'lucide-react';

@@ -1,0 +1,38 @@
+{
+  "name": "Ali Akhmad Fauzie — Solution Architect & Enterprise Modernization",
+  "short_name": "Ali Fauzie",
+  "description": "Enterprise Solution Architecture, Power Platform & Full-Stack Modernization Portfolio of Ali Akhmad Fauzie",
+  "start_url": "/",
+  "id": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0a0b0d",
+  "theme_color": "#f97316",
+  "categories": ["business", "productivity", "utilities"],
+  "icons": [
+    {
+      "src": "/assets/branding/pwa-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/branding/pwa-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/branding/maskable-icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
