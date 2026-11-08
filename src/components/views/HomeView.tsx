@@ -16,7 +16,10 @@ import {
   Activity,
   Briefcase,
   ShieldAlert,
-  Gamepad2
+  Gamepad2,
+  Scale,
+  HeartHandshake,
+  AlertTriangle
 } from 'lucide-react';
 import {
   CORE_PROJECTS,
@@ -89,6 +92,14 @@ export function HomeView({
 
   // Fallback to top items if any specific ID is missing
   const displayProjects = featuredProjects.length === 3 ? featuredProjects : CORE_PROJECTS.slice(0, 3);
+
+  // Dynamic career experience cards reordered based on active persona
+  const featuredExperiences = useMemo(() => {
+    if (activePersona === 'operations') {
+      return WORK_EXPERIENCE.filter(exp => exp.id !== 'exp-self-employed').slice(0, 3);
+    }
+    return WORK_EXPERIENCE.slice(0, 3);
+  }, [activePersona]);
 
   return (
     <div className="space-y-16 sm:space-y-24 py-6 sm:py-12">
@@ -307,7 +318,7 @@ export function HomeView({
             </a>
           </div>
 
-          {/* Dual-Discipline Tools & Key Certifications (Bridging Operations & Software Engineering) */}
+          {/* Dual-Discipline Tools & Key Certifications Table (Bridging Operations & Software Engineering) */}
           <div className="pt-4 border-t border-[var(--border-subtle)] space-y-3">
             <div className="flex items-center justify-between">
               <span className="text-xs font-mono font-bold uppercase tracking-wider text-[var(--text-accent)] flex items-center gap-1.5">
@@ -319,44 +330,89 @@ export function HomeView({
               </span>
             </div>
 
-            {/* Core Tool Suite */}
-            <div className="flex flex-wrap gap-1.5 text-xs">
-              <span className="px-2.5 py-1 rounded-lg bg-orange-500/15 border border-orange-500/30 text-orange-300 font-mono font-medium flex items-center gap-1">
-                <span className="w-1.5 h-1.5 rounded-full bg-orange-400" />
-                Power Platform (Power Apps · Automate · Power BI)
-              </span>
-              <span className="px-2.5 py-1 rounded-lg bg-cyan-500/15 border border-cyan-500/30 text-cyan-300 font-mono font-medium flex items-center gap-1">
-                <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
-                React 19 &amp; TypeScript
-              </span>
-              <span className="px-2.5 py-1 rounded-lg bg-[var(--bg-surface)] border border-[var(--border-subtle)] text-[var(--text-secondary)] font-mono">
-                SharePoint Online &amp; Dataverse
-              </span>
-              <span className="px-2.5 py-1 rounded-lg bg-[var(--bg-surface)] border border-[var(--border-subtle)] text-[var(--text-secondary)] font-mono">
-                AI Builder &amp; NLP SOPs
-              </span>
-              <span className="px-2.5 py-1 rounded-lg bg-[var(--bg-surface)] border border-[var(--border-subtle)] text-[var(--text-secondary)] font-mono">
-                PulseTrack &amp; SmartFlow
-              </span>
-              <span className="px-2.5 py-1 rounded-lg bg-[var(--bg-surface)] border border-[var(--border-subtle)] text-[var(--text-secondary)] font-mono">
-                Python &amp; SQL / PL-SQL
-              </span>
-            </div>
+            {/* Clean Structured Table Format */}
+            <div className="rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface)] overflow-hidden shadow-sm">
+              <table className="w-full text-left text-xs border-collapse">
+                <tbody>
+                  <tr className="border-b border-[var(--border-subtle)]">
+                    <td className="py-2.5 px-3.5 font-mono font-semibold text-orange-400 bg-orange-500/5 w-32 sm:w-44 shrink-0 align-top">
+                      Power Platform &amp; Cloud
+                    </td>
+                    <td className="py-2.5 px-3.5 text-[var(--text-secondary)]">
+                      <ul className="grid sm:grid-cols-2 gap-x-3 gap-y-1 text-xs">
+                        <li className="flex items-center gap-1.5">
+                          <span className="w-1.5 h-1.5 rounded-full bg-orange-400 shrink-0" />
+                          <span><strong>Power Apps &amp; Automate:</strong> Canvas apps, flows &amp; RPA</span>
+                        </li>
+                        <li className="flex items-center gap-1.5">
+                          <span className="w-1.5 h-1.5 rounded-full bg-orange-400 shrink-0" />
+                          <span><strong>Power BI &amp; Dataverse:</strong> DAX, KPI modeling &amp; telemetry</span>
+                        </li>
+                        <li className="flex items-center gap-1.5">
+                          <span className="w-1.5 h-1.5 rounded-full bg-orange-400 shrink-0" />
+                          <span><strong>SharePoint Online:</strong> MainDB architecture &amp; lists</span>
+                        </li>
+                        <li className="flex items-center gap-1.5">
+                          <span className="w-1.5 h-1.5 rounded-full bg-orange-400 shrink-0" />
+                          <span><strong>AI Builder:</strong> NLP SOPs &amp; automated routing</span>
+                        </li>
+                      </ul>
+                    </td>
+                  </tr>
 
-            {/* Verified Certifications Badges */}
-            <div className="flex flex-wrap items-center gap-2 pt-1">
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[var(--interactive-subtle-bg)] border border-[var(--interactive-subtle-border)] text-xs text-[var(--text-accent)] font-medium">
-                <Award size={13} className="text-orange-400" />
-                <span>Microsoft Certified: Power Platform &amp; Power BI</span>
-              </span>
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[var(--interactive-subtle-bg)] border border-[var(--interactive-subtle-border)] text-xs text-orange-300 font-medium">
-                <Award size={13} className="text-orange-400" />
-                <span>Lean Six Sigma DMAIC</span>
-              </span>
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[var(--interactive-subtle-bg)] border border-[var(--interactive-subtle-border)] text-xs text-emerald-300 font-medium">
-                <Award size={13} className="text-emerald-400" />
-                <span>2x Innovation Winner · Accenture Diamond Award</span>
-              </span>
+                  <tr className="border-b border-[var(--border-subtle)]">
+                    <td className="py-2.5 px-3.5 font-mono font-semibold text-cyan-400 bg-cyan-500/5 align-top">
+                      Pro-Code &amp; Ops Telemetry
+                    </td>
+                    <td className="py-2.5 px-3.5 text-[var(--text-secondary)]">
+                      <ul className="grid sm:grid-cols-2 gap-x-3 gap-y-1 text-xs">
+                        <li className="flex items-center gap-1.5">
+                          <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0" />
+                          <span><strong>React 19 &amp; TypeScript:</strong> High-performance modern web</span>
+                        </li>
+                        <li className="flex items-center gap-1.5">
+                          <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0" />
+                          <span><strong>PulseTrack &amp; SmartFlow:</strong> Real-time queue telemetry</span>
+                        </li>
+                        <li className="flex items-center gap-1.5">
+                          <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0" />
+                          <span><strong>Python &amp; SQL / PL-SQL:</strong> Queue analytics &amp; scripts</span>
+                        </li>
+                        <li className="flex items-center gap-1.5">
+                          <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0" />
+                          <span><strong>Lark Open Platform:</strong> Webhook bots &amp; automation</span>
+                        </li>
+                      </ul>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td className="py-2.5 px-3.5 font-mono font-semibold text-emerald-400 bg-emerald-500/5 align-top">
+                      Verified Certifications
+                    </td>
+                    <td className="py-2.5 px-3.5 text-[var(--text-secondary)]">
+                      <ul className="grid sm:grid-cols-2 gap-x-3 gap-y-1 text-xs">
+                        <li className="flex items-center gap-1.5">
+                          <CheckCircle2 size={13} className="text-emerald-400 shrink-0" />
+                          <span><strong>Microsoft Certified:</strong> Power Platform &amp; Power BI</span>
+                        </li>
+                        <li className="flex items-center gap-1.5">
+                          <CheckCircle2 size={13} className="text-emerald-400 shrink-0" />
+                          <span><strong>Lean Six Sigma:</strong> DMAIC Process Controls</span>
+                        </li>
+                        <li className="flex items-center gap-1.5">
+                          <CheckCircle2 size={13} className="text-emerald-400 shrink-0" />
+                          <span><strong>2× Innovation Winner:</strong> Enterprise Competition</span>
+                        </li>
+                        <li className="flex items-center gap-1.5">
+                          <CheckCircle2 size={13} className="text-emerald-400 shrink-0" />
+                          <span><strong>Accenture Diamond Award</strong> &amp; Hang Tuah Distinction</span>
+                        </li>
+                      </ul>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
@@ -679,7 +735,7 @@ export function HomeView({
             </p>
             <h2 id="competency-architecture-title" className="section-title">
               {activePersona === 'operations'
-                ? 'The 3 Operational Pillars of High-Performance Floor Leadership.'
+                ? 'The 4 Operational Pillars of High-Performance Leadership.'
                 : 'Three Pillars of Enterprise Architecture & Delivery.'}
             </h2>
           </div>
@@ -936,6 +992,157 @@ export function HomeView({
                   <span className="px-2 py-0.5 rounded bg-orange-500/10 border border-orange-500/20">Nesting Academy Design</span>
                   <span className="px-2 py-0.5 rounded bg-orange-500/10 border border-orange-500/20">Lean Six Sigma DMAIC</span>
                   <span className="px-2 py-0.5 rounded bg-orange-500/10 border border-orange-500/20">Associate Retention Strategy</span>
+                </div>
+              </div>
+            </div>
+
+            {/* =========================================================================
+                Operational Pillar 4: The Standard · Policy Governance, Compliance & Platform Integrity
+                (Alternative Operational Title: Trust, Safety & Regulatory Standards)
+                Spans full 3 columns below Pillars 1, 2, and 3
+                ========================================================================= */}
+            <div className="md:col-span-3 glass-card p-6 sm:p-8 flex flex-col justify-between space-y-6 border border-orange-500/35 hover:border-orange-500/60 transition-colors shadow-xl">
+              <div className="space-y-6">
+                <div className="flex flex-wrap items-center justify-between gap-3">
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 rounded-xl bg-orange-500/15 border border-orange-500/35 flex items-center justify-center text-orange-400 shrink-0">
+                      <Scale size={26} />
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-[11px] font-mono uppercase tracking-wider text-orange-400 font-bold px-2.5 py-0.5 rounded-full bg-orange-500/15 border border-orange-500/30">
+                          Pillar 04 · Specialized Domain
+                        </span>
+                        <span className="text-xs font-mono text-slate-400 hidden sm:inline">
+                          Trust, Safety &amp; Regulatory Standards
+                        </span>
+                      </div>
+                      <h3 className="text-xl sm:text-2xl font-bold text-white mt-1">
+                        The Standard: Policy Governance, Compliance &amp; Platform Integrity
+                      </h3>
+                    </div>
+                  </div>
+                  <span className="text-xs font-mono text-orange-400/90 px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/20">
+                    Zero-Tolerance Quality · Risk Prevention
+                  </span>
+                </div>
+
+                <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed max-w-4xl">
+                  Anchoring technical compliance, zero-tolerance quality gates, and brand risk prevention demanded across 
+                  high-velocity Ads Review, Content Moderation, and Gaming Community ecosystems.
+                </p>
+
+                {/* 4 Specialized Pillar Components Grid */}
+                <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                  {/* 1. Policy Drift Control & Edge-Case Adjudication */}
+                  <div className="p-4 rounded-xl bg-[var(--bg-surface)] border border-orange-500/25 space-y-2.5 flex flex-col justify-between">
+                    <div className="space-y-2">
+                      <div className="flex items-center gap-2 text-xs font-bold text-orange-300 font-mono uppercase">
+                        <FileText size={15} className="text-orange-400 shrink-0" />
+                        <span>1. Policy Drift &amp; Adjudication</span>
+                      </div>
+                      <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+                        <strong className="text-white">Operational Reality:</strong> Guidelines evolve weekly (elections, local market legislation, scam vectors). Frontline reviewers develop inconsistent &ldquo;policy drift.&rdquo;
+                      </p>
+                      <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+                        <strong className="text-orange-300">Leadership Role:</strong> Chaired weekly calibrations with Legal &amp; QA. Acted as final floor adjudicator on gray-area cases, codifying precedent into living SOPs.
+                      </p>
+                    </div>
+                    <div className="pt-2 border-t border-[var(--border-subtle)] text-[11px] font-mono text-orange-400/90 font-medium">
+                      Zero Policy Divergence · Binding Precedent
+                    </div>
+                  </div>
+
+                  {/* 2. Ads Integrity & Regulatory Compliance (Zero-Tolerance) */}
+                  <div className="p-4 rounded-xl bg-[var(--bg-surface)] border border-orange-500/25 space-y-2.5 flex flex-col justify-between">
+                    <div className="space-y-2">
+                      <div className="flex items-center gap-2 text-xs font-bold text-orange-300 font-mono uppercase">
+                        <ShieldAlert size={15} className="text-orange-400 shrink-0" />
+                        <span>2. Ads Integrity &amp; Compliance</span>
+                      </div>
+                      <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+                        <strong className="text-white">Operational Reality:</strong> Approving prohibited creatives (counterfeit goods, financial scams, predatory lending, illicit pharma) triggers regulatory sanctions &amp; chargebacks.
+                      </p>
+                      <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+                        <strong className="text-orange-300">Leadership Role:</strong> Enforced zero-tolerance thresholds on Fatal Compliance Errors. Audited high-risk ad verticals pre-flight with 100% verification before delivery.
+                      </p>
+                    </div>
+                    <div className="pt-2 border-t border-[var(--border-subtle)] text-[11px] font-mono text-orange-400/90 font-medium">
+                      Zero Fatal Errors · Regulatory Guardrails
+                    </div>
+                  </div>
+
+                  {/* 3. Fraud Detection & Bad-Actor Evasion Tracking */}
+                  <div className="p-4 rounded-xl bg-[var(--bg-surface)] border border-orange-500/25 space-y-2.5 flex flex-col justify-between">
+                    <div className="space-y-2">
+                      <div className="flex items-center gap-2 text-xs font-bold text-orange-300 font-mono uppercase">
+                        <AlertTriangle size={15} className="text-orange-400 shrink-0" />
+                        <span>3. Fraud &amp; Evasion Tracking</span>
+                      </div>
+                      <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+                        <strong className="text-white">Operational Reality:</strong> Syndicated bad actors probe platform loopholes via URL cloaking, deliberate typography obfuscation, and stealth frame-switching.
+                      </p>
+                      <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+                        <strong className="text-orange-300">Leadership Role:</strong> Served as frontline escalation filter diagnosing exploit patterns; fed tactical telemetry directly to Product &amp; Engineering to harden automated filters.
+                      </p>
+                    </div>
+                    <div className="pt-2 border-t border-[var(--border-subtle)] text-[11px] font-mono text-orange-400/90 font-medium">
+                      Exploit Loop Closure · AI Filter Hardening
+                    </div>
+                  </div>
+
+                  {/* 4. Reviewer Wellness & Psychological Safety */}
+                  <div className="p-4 rounded-xl bg-[var(--bg-surface)] border border-orange-500/25 space-y-2.5 flex flex-col justify-between">
+                    <div className="space-y-2">
+                      <div className="flex items-center gap-2 text-xs font-bold text-orange-300 font-mono uppercase">
+                        <HeartHandshake size={15} className="text-orange-400 shrink-0" />
+                        <span>4. Reviewer Wellness &amp; Safety</span>
+                      </div>
+                      <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+                        <strong className="text-white">Operational Reality:</strong> Continuous exposure to graphic/sensitive content causes cognitive fatigue and secondary trauma, directly correlating with review slips.
+                      </p>
+                      <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+                        <strong className="text-orange-300">Leadership Role:</strong> Capped graphic queue exposure to 2–4 hours/shift; instituted proactive 1-on-1 resilience checks and protected counseling aux codes with zero penalty.
+                      </p>
+                    </div>
+                    <div className="pt-2 border-t border-[var(--border-subtle)] text-[11px] font-mono text-orange-400/90 font-medium">
+                      &lt;5% Attrition · Shift Queue Rotation Caps
+                    </div>
+                  </div>
+                </div>
+
+                {/* Executive Operational Interview Narrative Quote Callout */}
+                <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-orange-500/10 via-orange-500/5 to-transparent border border-orange-500/30 flex items-start gap-4">
+                  <div className="p-2 rounded-xl bg-orange-500/20 text-orange-400 shrink-0 mt-0.5">
+                    <Award size={20} />
+                  </div>
+                  <div className="space-y-1">
+                    <p className="text-[11px] font-mono uppercase tracking-wider text-orange-300 font-bold">
+                      Executive Operational Leadership Philosophy
+                    </p>
+                    <blockquote className="text-xs sm:text-sm italic text-slate-200 leading-relaxed">
+                      &ldquo;In Operations, managing SLA and AHT is only half the battle. If your team hits 100% SLA but approves fraudulent ads or violates platform safety guidelines, the operational cost is catastrophic. My fourth pillar is The Standard: building zero-tolerance policy adherence into the daily floor rhythm while actively protecting reviewer psychological safety from burnout.&rdquo;
+                    </blockquote>
+                  </div>
+                </div>
+              </div>
+
+              {/* Pillar 4 Skills & Methodologies Applied */}
+              <div className="pt-4 border-t border-[var(--border-subtle)] space-y-2">
+                <p className="text-[10px] font-mono uppercase tracking-wider text-[var(--text-tertiary)]">
+                  Skills &amp; Methodologies Applied:
+                </p>
+                <div className="flex flex-wrap gap-1.5 text-xs font-mono text-orange-300">
+                  <span className="px-2 py-0.5 rounded bg-orange-500/10 border border-orange-500/20">Policy Drift Calibration</span>
+                  <span className="px-2 py-0.5 rounded bg-orange-500/10 border border-orange-500/20">Fatal Compliance Auditing</span>
+                  <span className="px-2 py-0.5 rounded bg-orange-500/10 border border-orange-500/20">Trust &amp; Safety Governance</span>
+                  <span className="px-2 py-0.5 rounded bg-orange-500/10 border border-orange-500/20">Anti-Fraud Pattern Recognition</span>
+                  <span className="px-2 py-0.5 rounded bg-orange-500/10 border border-orange-500/20">SOP Precedent Codification</span>
+                  <span className="px-2 py-0.5 rounded bg-orange-500/10 border border-orange-500/20">Gray-Area Adjudication</span>
+                  <span className="px-2 py-0.5 rounded bg-orange-500/10 border border-orange-500/20">Reviewer Wellness Protocols</span>
+                  <span className="px-2 py-0.5 rounded bg-orange-500/10 border border-orange-500/20">Secondary Trauma Mitigation</span>
+                  <span className="px-2 py-0.5 rounded bg-orange-500/10 border border-orange-500/20">Legal &amp; QA Calibration Syncs</span>
+                  <span className="px-2 py-0.5 rounded bg-orange-500/10 border border-orange-500/20">Zero-Tolerance Quality Gates</span>
                 </div>
               </div>
             </div>
@@ -1222,9 +1429,15 @@ export function HomeView({
       <section id="section-about" aria-labelledby="career-summary-title" className="space-y-8">
         <div className="flex flex-wrap justify-between items-end gap-4">
           <div>
-            <p className="section-eyebrow">Career Momentum</p>
+            <p className="section-eyebrow">
+              {activePersona === 'operations' ? 'Operations Leadership Pedigree' : 'Career Momentum'}
+            </p>
             <h2 id="career-summary-title" className="section-title">
-              Dual-Track Execution: Technical Architecture &amp; Team Leadership.
+              {activePersona === 'operations'
+                ? 'Operations Leadership & BPO Delivery Track Record.'
+                : activePersona === 'software'
+                ? 'Enterprise Software Engineering & Architecture Track.'
+                : 'Dual-Track Execution: Technical Architecture & Team Leadership.'}
             </h2>
           </div>
           <a href="#/experience" className="action-secondary">
@@ -1232,12 +1445,22 @@ export function HomeView({
           </a>
         </div>
 
-        <p className="text-base text-[var(--text-secondary)] leading-relaxed max-w-3xl">
-          {PERSONAL_INFO.summary}
-        </p>
+        {activePersona === 'operations' ? (
+          <p className="text-base text-[var(--text-secondary)] leading-relaxed max-w-3xl">
+            A battle-tested Operations Leader and Team Manager with 8+ years directing high-volume BPO and contact center operations across Concentrix CVG and Accenture. Proven track record commanding multilingual squads up to 34 agents across 7 APAC markets, sustaining &gt;98% contractual SLA compliance, enforcing zero-tolerance Trust &amp; Safety, Content Moderation, and Ads Review policy standards, and pioneering automated queue telemetry that reduced AHT by 25% with &lt;5% annual attrition.
+          </p>
+        ) : activePersona === 'software' ? (
+          <p className="text-base text-[var(--text-secondary)] leading-relaxed max-w-3xl">
+            A results-driven Enterprise Solutions Architect and Full-Stack Engineer specializing in modernizing mission-critical legacy architectures to modern cloud platforms (React 19, TypeScript, Cloud Functions, Power Platform). Proven track record delivering zero-downtime cutovers across 365+ production applications, automated CI/CD code verification pipelines, and AI-driven automation workflows.
+          </p>
+        ) : (
+          <p className="text-base text-[var(--text-secondary)] leading-relaxed max-w-3xl">
+            {PERSONAL_INFO.summary}
+          </p>
+        )}
 
         <ol className="grid md:grid-cols-3 gap-6">
-          {WORK_EXPERIENCE.slice(0, 3).map(experience => (
+          {featuredExperiences.map(experience => (
             <li
               key={experience.id}
               className="p-6 rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-surface)] hover:border-[var(--interactive-subtle-border)] transition-colors space-y-3"
