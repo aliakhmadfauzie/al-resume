@@ -3197,15 +3197,15 @@ export const LINKEDIN_HONORS_AWARDS: HonorAwardItem[] = [
 
 export const LINKEDIN_TESTIMONIALS: LinkedInTestimonial[] = [
   {
-    id: "test-michael-tan",
-    name: "Eng. Michael Tan",
-    role: "Head of Enterprise Information Systems",
-    company: "IOI Corporation Berhad",
-    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80",
-    quote: "Ali's architecture for our Lotus Domino modernization was nothing short of brilliant. By engineering a single code-first Power Apps platform on SharePoint Online, he avoided $960K/yr in premium-connector licensing while ensuring zero operational downtime across 28+ department sites.",
-    scope: "Lotus Domino to SharePoint-Backed Code-First Modernization",
-    date: "Jan 2025",
-    badge: "Enterprise Modernization"
+    id: "test-accenture-sdl",
+    name: "Service Delivery Lead (SDL)",
+    role: "Service Delivery Leader & Senior Operations Manager",
+    company: "Accenture",
+    avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
+    quote: "All our leadership recognized Ali's exceptional talent in operational innovation. He was consistently a benchmark top performer on the floor, and I continually encouraged him to join our Business Excellence (BE) team because of his unique ability to automate operational friction and elevate quality metrics across every shift.",
+    scope: "Floor Innovation, Business Excellence (BE) & Top Operational Performance",
+    date: "Nov 2022",
+    badge: "Accenture SDL · Business Excellence"
   },
   {
     id: "test-sarah-jenkins",
@@ -3217,6 +3217,17 @@ export const LINKEDIN_TESTIMONIALS: LinkedInTestimonial[] = [
     scope: "Multilingual BPO Team Scaling & Lark Bot Workflow Automation",
     date: "Nov 2024",
     badge: "BPO Operations & Lark Bots"
+  },
+  {
+    id: "test-michael-tan",
+    name: "Eng. Michael Tan",
+    role: "Head of Enterprise Information Systems",
+    company: "IOI Corporation Berhad",
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80",
+    quote: "Ali's architecture for our Lotus Domino modernization was nothing short of brilliant. By engineering a single code-first Power Apps platform on SharePoint Online, he avoided $960K/yr in premium-connector licensing while ensuring zero operational downtime across 28+ department sites.",
+    scope: "Lotus Domino to SharePoint-Backed Code-First Modernization",
+    date: "Jan 2025",
+    badge: "Enterprise Modernization"
   },
   {
     id: "test-hishamudin-razak",

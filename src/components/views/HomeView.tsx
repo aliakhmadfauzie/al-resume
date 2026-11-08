@@ -69,7 +69,7 @@ export function HomeView({
         { label: "CONTRACTUAL SLA", value: "98%+", subtext: "24/7 Multi-Shift Rotational Floor" },
         { label: "POLICY & QA ACCURACY", value: "96–99%", subtext: "Content Moderation, Ads & Game Review" },
         { label: "AHT REDUCTION", value: "-25%", subtext: "Lean Six Sigma DMAIC Controls" },
-        { label: "SQUAD SCALING", value: "34 Agents", subtext: "7 APAC Pods (<5% Attrition)" }
+        { label: "SQUAD SCALING", value: "34 Agents", subtext: "Indonesia · China · Korea · Japan · Thailand · Vietnam (<5% Attrition)" }
       ];
     }
     if (activePersona === 'software') {
@@ -95,7 +95,25 @@ export function HomeView({
       {/* =========================================================================
           SECTION 1: HERO & ABOVE-THE-FOLD REAL ESTATE (6-SECOND RECRUITER GATE)
           ========================================================================= */}
-      <section aria-labelledby="home-title" className="grid lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+      <section 
+        aria-labelledby="home-title" 
+        className="relative grid lg:grid-cols-12 gap-8 lg:gap-10 items-start rounded-3xl p-4 sm:p-8 -mx-4 sm:-mx-8 overflow-hidden"
+      >
+        {/* Subtle Ambient Background Portrait Merge with Low Opacity & Seamless Dark Vignette */}
+        <div 
+          aria-hidden="true"
+          className="absolute inset-0 pointer-events-none -z-10 overflow-hidden"
+        >
+          <img
+            src="/assets/profile/hero-bg.webp"
+            alt=""
+            className="w-full h-full object-cover object-top opacity-15 filter grayscale contrast-125 mix-blend-luminosity scale-105"
+          />
+          {/* Multi-layered gradient & radial masks for seamless dark canvas color merging */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[var(--bg-canvas)] via-[var(--bg-canvas)]/50 to-[var(--bg-canvas)]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-canvas)] via-transparent to-[var(--bg-canvas)]/80" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,transparent_10%,var(--bg-canvas)_80%)]" />
+        </div>
         <div className="lg:col-span-7 space-y-6">
           {/* Eyebrow Badge & Hero Persona Switcher Row */}
           <div className="flex flex-wrap items-center gap-3">
@@ -288,6 +306,59 @@ export function HomeView({
               <span>LinkedIn Profile</span>
             </a>
           </div>
+
+          {/* Dual-Discipline Tools & Key Certifications (Bridging Operations & Software Engineering) */}
+          <div className="pt-4 border-t border-[var(--border-subtle)] space-y-3">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-mono font-bold uppercase tracking-wider text-[var(--text-accent)] flex items-center gap-1.5">
+                <Sparkles size={13} className="text-orange-400" />
+                <span>Tool Stack &amp; Verified Certifications</span>
+              </span>
+              <span className="text-[10px] font-mono text-[var(--text-tertiary)] uppercase">
+                Unified: Operations &amp; Engineering
+              </span>
+            </div>
+
+            {/* Core Tool Suite */}
+            <div className="flex flex-wrap gap-1.5 text-xs">
+              <span className="px-2.5 py-1 rounded-lg bg-orange-500/15 border border-orange-500/30 text-orange-300 font-mono font-medium flex items-center gap-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-orange-400" />
+                Power Platform (Power Apps · Automate · Power BI)
+              </span>
+              <span className="px-2.5 py-1 rounded-lg bg-cyan-500/15 border border-cyan-500/30 text-cyan-300 font-mono font-medium flex items-center gap-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+                React 19 &amp; TypeScript
+              </span>
+              <span className="px-2.5 py-1 rounded-lg bg-[var(--bg-surface)] border border-[var(--border-subtle)] text-[var(--text-secondary)] font-mono">
+                SharePoint Online &amp; Dataverse
+              </span>
+              <span className="px-2.5 py-1 rounded-lg bg-[var(--bg-surface)] border border-[var(--border-subtle)] text-[var(--text-secondary)] font-mono">
+                AI Builder &amp; NLP SOPs
+              </span>
+              <span className="px-2.5 py-1 rounded-lg bg-[var(--bg-surface)] border border-[var(--border-subtle)] text-[var(--text-secondary)] font-mono">
+                PulseTrack &amp; SmartFlow
+              </span>
+              <span className="px-2.5 py-1 rounded-lg bg-[var(--bg-surface)] border border-[var(--border-subtle)] text-[var(--text-secondary)] font-mono">
+                Python &amp; SQL / PL-SQL
+              </span>
+            </div>
+
+            {/* Verified Certifications Badges */}
+            <div className="flex flex-wrap items-center gap-2 pt-1">
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[var(--interactive-subtle-bg)] border border-[var(--interactive-subtle-border)] text-xs text-[var(--text-accent)] font-medium">
+                <Award size={13} className="text-orange-400" />
+                <span>Microsoft Certified: Power Platform &amp; Power BI</span>
+              </span>
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[var(--interactive-subtle-bg)] border border-[var(--interactive-subtle-border)] text-xs text-orange-300 font-medium">
+                <Award size={13} className="text-orange-400" />
+                <span>Lean Six Sigma DMAIC</span>
+              </span>
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[var(--interactive-subtle-bg)] border border-[var(--interactive-subtle-border)] text-xs text-emerald-300 font-medium">
+                <Award size={13} className="text-emerald-400" />
+                <span>2x Innovation Winner · Accenture Diamond Award</span>
+              </span>
+            </div>
+          </div>
         </div>
 
         {/* Aside Card: Verified Pedigree & Operational Impact */}
@@ -355,7 +426,7 @@ export function HomeView({
                   34 Agents
                 </dd>
                 <p className="text-[11px] text-[var(--text-tertiary)] mt-0.5">
-                  7 APAC language pods (&lt;5% attrition)
+                  Indonesia, China, Korea, Japan, Thailand, Vietnam (&lt;5% attrition)
                 </p>
               </div>
               <div className="bg-[var(--bg-surface)] p-3 rounded-xl border border-[var(--border-subtle)]">
@@ -1232,8 +1303,8 @@ export function HomeView({
               What Senior Leaders &amp; Stakeholders Say.
             </h2>
           </div>
-          <div className="grid md:grid-cols-2 gap-6">
-            {LINKEDIN_TESTIMONIALS.slice(0, 2).map(person => (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {LINKEDIN_TESTIMONIALS.slice(0, 3).map(person => (
               <figure key={person.id} className="glass-card p-6 sm:p-8 space-y-5 border border-[var(--border-subtle)]">
                 <blockquote className="text-sm sm:text-base leading-relaxed text-[var(--text-secondary)] italic">
                   “{person.quote}”
