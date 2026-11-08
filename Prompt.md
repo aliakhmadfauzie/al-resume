@@ -9,6 +9,14 @@ The output must strictly implement the empirical findings from the Architectural
 - **Candidate Identity**: Ali Akhmad Fauzie
 - **Target Profiles**: Power Platform Solution Architect / Enterprise Modernization Specialist & Lead Full-Stack / AI Systems Architect
 - **Years of Experience**: 9+ Years (Accenture $\rightarrow$ Concentrix $\rightarrow$ IOI Corporation)
+- **Mandatory Career Invariant Fact Locks (DO NOT ALTER)**:
+  - **Concentrix Position**: Strictly **Operations Team Manager (QA, Policy & Training)**. NEVER use "Team Leader" for Concentrix.
+  - **QA Department Oversight**: Hands-on **QA Department** leadership and deep-dive transaction auditing (NOT "QA DPR").
+  - **Governance & Policy Creation**: Direct authoring of SOPs and decision trees for Trust & Safety and Ads Review.
+  - **Instructional Delivery**: Directly conducting onboarding training, nesting phase coaching, and upskilling clinics.
+  - **Scale & Language Pods**: Commanded 34 direct reports across 7 APAC language pods (Indonesian, Chinese Mainland, Korean, Japanese, English, Thai, Vietnamese).
+  - **Innovation Honors**: Core driver on Operational Innovation Team; crowned Winner of Enterprise Innovation Competition for 2 consecutive years.
+  - **Accenture Roles**: Data Analyst $\rightarrow$ Junior Team Lead $\rightarrow$ Team Lead $\rightarrow$ Senior Team Lead / Service Delivery Operations Lead (Hang Tuah Award & Diamond Award).
 - **Verified Flagship Metrics & Telemetry**:
   - **$960,000/year** recurring enterprise software licensing avoided via partitioned single-table `MainDB_{Dept}` SharePoint list architecture.
   - **365+ legacy Lotus Domino databases** systematically retired across 28 business units with 0 hours of unplanned downtime and 1.4M records migrated.

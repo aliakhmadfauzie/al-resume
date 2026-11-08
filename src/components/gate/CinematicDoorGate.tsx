@@ -63,6 +63,7 @@ export const CinematicDoorGate: React.FC<CinematicDoorGateProps> = ({
   // 'closed' -> 'cracked' -> 'shattering' -> 'opening' -> 'skipping'
   const [phase, setPhase] = useState<'closed' | 'cracked' | 'shattering' | 'opening' | 'skipping'>('closed');
   const [chosenPersona, setChosenPersona] = useState<PersonaType | null>(null);
+  const [welcomeOpen, setWelcomeOpen] = useState(true);
 
   const animTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const finishTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -277,8 +278,8 @@ export const CinematicDoorGate: React.FC<CinematicDoorGateProps> = ({
               <span>CHOOSE PERSPECTIVE</span>
             </div>
 
-            {/* Stack of Two Compact Rectangular Bars */}
-            <div className="flex flex-col gap-2.5 w-full">
+            {/* Stack of Two Compact Rectangular Bars with In-Between Transparent Welcome Banner */}
+            <div className="relative flex flex-col gap-2.5 w-full">
               {/* CARD 1: Software Developer */}
               <div className="relative w-full">
                 <motion.button
@@ -334,6 +335,59 @@ export const CinematicDoorGate: React.FC<CinematicDoorGateProps> = ({
                 )}
               </div>
 
+              {/* Transparent In-Between Context Banner (Placed physically in between Track 1 and Track 2) */}
+              <AnimatePresence>
+                {welcomeOpen && phase === 'cracked' && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0, scale: 0.96 }}
+                    animate={{ opacity: 1, height: 'auto', scale: 1 }}
+                    exit={{ opacity: 0, height: 0, scale: 0.95 }}
+                    transition={{ delay: 0.18, duration: 0.38, ease: [0.16, 1, 0.3, 1] }}
+                    className="overflow-hidden w-full"
+                    role="alert"
+                    aria-live="polite"
+                  >
+                    <div className="p-3 sm:p-3.5 rounded-xl bg-[#050a14]/65 backdrop-blur-md border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.65),0_0_20px_rgba(255,255,255,0.08)] text-left select-none my-0.5">
+                      {/* Header: Greeting & Close Button */}
+                      <div className="flex items-center justify-between gap-1 mb-1">
+                        <span className="text-xs font-bold text-slate-100 flex items-center gap-1.5 drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]">
+                          <span className="text-sm">👋</span>
+                          <span>Welcome!</span>
+                        </span>
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setWelcomeOpen(false);
+                          }}
+                          className="text-slate-400 hover:text-white p-1 rounded-full hover:bg-white/10 transition-all cursor-pointer"
+                          aria-label="Dismiss welcome message"
+                        >
+                          <X size={13} strokeWidth={2.5} />
+                        </button>
+                      </div>
+
+                      {/* Concise Context Message */}
+                      <p className="text-[11px] sm:text-xs leading-snug text-slate-200 font-normal">
+                        I lead dual careers in{' '}
+                        <strong className="text-cyan-300 font-bold">
+                          Software Architecture
+                        </strong>{' '}
+                        &amp;{' '}
+                        <strong className="text-orange-400 font-bold">
+                          Operations Leadership
+                        </strong>
+                        . Select a track to tailor case studies, or view{' '}
+                        <span className="text-white font-bold underline decoration-white/60 underline-offset-2">
+                          Both
+                        </span>
+                        .
+                      </p>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
               {/* CARD 2: Operations Team Manager */}
               <div className="relative w-full">
                 <motion.button
@@ -376,7 +430,7 @@ export const CinematicDoorGate: React.FC<CinematicDoorGateProps> = ({
                         Operations Team Manager
                       </div>
                       <div className="text-[10px] text-slate-400 font-mono mt-0.5">
-                        98%+ SLA · Trust &amp; Safety · Content Moderation
+                        98%+ SLA · Customer Service · Trust &amp; Safety · Content Moderation
                       </div>
                     </div>
                   </div>

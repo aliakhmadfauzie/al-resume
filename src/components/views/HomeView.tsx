@@ -73,7 +73,7 @@ export function HomeView({
     if (activePersona === 'operations') {
       return [
         { label: "CONTRACTUAL SLA", value: "98%+", subtext: "24/7 Multi-Shift Rotational Floor" },
-        { label: "POLICY & QA ACCURACY", value: "96–99%", subtext: "Content Moderation, Ads & Game Review" },
+        { label: "POLICY & QA ACCURACY", value: "96–99%", subtext: "Customer Service, Content & Ads Review" },
         { label: "AHT REDUCTION", value: "-25%", subtext: "Lean Six Sigma DMAIC Controls" },
         { label: "SQUAD SCALING", value: "34 Agents", subtext: "Malaysia · Indonesia · China · Korea · Japan · Thailand · Vietnam (<5% Attrition)" }
       ];
@@ -142,7 +142,7 @@ export function HomeView({
               ) : activePersona === 'operations' ? (
                 <>
                   <Users size={14} className="text-orange-400 animate-pulse" />
-                  <span>Operations Leadership · 8+ Years BPO &amp; Contact Center · Content Moderation, Trust &amp; Safety, Ads &amp; Game Review</span>
+                  <span>Operations Leadership · 8+ Years BPO &amp; Contact Center · Customer Service, Content Moderation, Trust &amp; Safety, Ads &amp; Game Review</span>
                 </>
               ) : (
                 <>
@@ -259,6 +259,7 @@ export function HomeView({
           ) : activePersona === 'operations' ? (
             <p className="text-base sm:text-lg lg:text-xl leading-relaxed text-[var(--text-secondary)] max-w-2xl">
               <strong className="text-[var(--text-primary)]">8+ years</strong> of BPO and contact center operations leadership, specializing in{' '}
+              <strong className="text-orange-400">Customer Service</strong>,{' '}
               <strong className="text-orange-400">Content Moderation</strong>,{' '}
               <strong className="text-orange-400">Trust &amp; Safety</strong>,{' '}
               <strong className="text-orange-400">Ads Review</strong>, and{' '}
@@ -884,7 +885,7 @@ export function HomeView({
                   </span>
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-white">Content Moderation, Trust &amp; Safety, Ads &amp; Game Review</h3>
+                  <h3 className="text-xl font-bold text-white">Customer Service, Content Moderation, Trust &amp; Safety, Ads &amp; Game Review</h3>
                   <p className="text-xs text-orange-400 font-mono mt-0.5">Policy Governance · PII De-escalation · Commercial DoA</p>
                 </div>
 
@@ -897,7 +898,7 @@ export function HomeView({
                   <ul className="space-y-1 text-xs text-[var(--text-secondary)]">
                     <li className="flex items-start gap-1.5">
                       <span className="w-1.5 h-1.5 rounded-full bg-orange-400 shrink-0 mt-1.5" />
-                      <span>Govern Trust &amp; Safety queues: Content Moderation, commercial Ads review &amp; Game review safety.</span>
+                      <span>Govern high-volume Trust &amp; Safety queues: Customer Service, Content Moderation, commercial Ads review &amp; Game review safety.</span>
                     </li>
                     <li className="flex items-start gap-1.5">
                       <span className="w-1.5 h-1.5 rounded-full bg-orange-400 shrink-0 mt-1.5" />
@@ -1497,7 +1498,7 @@ export function HomeView({
 
         {activePersona === 'operations' ? (
           <p className="text-base text-[var(--text-secondary)] leading-relaxed max-w-3xl">
-            A battle-tested Operations Leader and Team Manager with 8+ years directing high-volume BPO and contact center operations across Concentrix CVG and Accenture. Proven track record commanding multilingual squads up to 34 agents across 7 APAC markets, sustaining &gt;98% contractual SLA compliance, enforcing zero-tolerance Trust &amp; Safety, Content Moderation, and Ads Review policy standards, and pioneering automated queue telemetry that reduced AHT by 25% with &lt;5% annual attrition.
+            A battle-tested Operations Leader and Team Manager with 8+ years directing high-volume BPO and contact center operations across Concentrix CVG and Accenture. Proven track record commanding multilingual squads up to 34 agents across 7 APAC markets, sustaining &gt;98% contractual SLA compliance, enforcing zero-tolerance Customer Service, Trust &amp; Safety, Content Moderation, and Ads Review policy standards, and pioneering automated queue telemetry that reduced AHT by 25% with &lt;5% annual attrition.
           </p>
         ) : activePersona === 'software' ? (
           <p className="text-base text-[var(--text-secondary)] leading-relaxed max-w-3xl">
