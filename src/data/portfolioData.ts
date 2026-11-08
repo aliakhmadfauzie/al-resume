@@ -35,10 +35,10 @@ export const PERSONAL_INFO = {
 };
 
 export const KEY_METRICS = [
-  { label: "DATABASES MIGRATED", value: "365+", subtext: "Across 28+ Business Units" },
-  { label: "BUS TRANSFORMED", value: "28+", subtext: "Quality, Supply Chain, IT, HR" },
-  { label: "APPS DELIVERED", value: "16+", subtext: "Production Power Apps (Slice) & 23 Enterprise" },
-  { label: "AUTOMATION IMPACT", value: "90%", subtext: "Manual Reporting Reduction" }
+  { label: "LICENSE AVOIDED", value: "$960K/yr", subtext: "Single MainDB Partitioning" },
+  { label: "DATABASES RETIRED", value: "365+", subtext: "28 BUs (0h Unplanned Downtime)" },
+  { label: "SCREENS IN CI", value: "7,878", subtext: "Power Apps YAML AST Verified" },
+  { label: "BPO SCALING", value: "380%", subtext: "34 Agents · >98% SLA Sustained" }
 ];
 
 export const CORE_PROJECTS: ProjectItem[] = [
@@ -1185,16 +1185,24 @@ export const WORK_EXPERIENCE: ExperienceItem[] = [
     period: "May 2023 – Apr 2025",
     tags: [
       "QA Department & Auditing",
+      "Weekly Business Review (WBR)",
+      "Client Quality Representative",
+      "Innovation Team",
+      "2x Innovation Winner",
       "Policy Creation",
       "Training Delivery",
       "Trust & Safety",
+      "Content Moderation",
       "Ads Review",
+      "Game Review",
       "Live Chat & Email",
       "BPO Operations",
       "SLA Governance",
       "Six Sigma DMAIC"
     ],
     bulletPoints: [
+      "Client WBR Quality Representation: Served as the primary client-facing Weekly Business Review (WBR) representative for Quality, leading weekly calibration panels, error variance triage, and contractual SLA compliance sign-offs with global client leadership.",
+      "Innovation Team & 2-Time Innovation Competition Winner: Core driver on the operational Innovation Team; crowned the Winner of the Enterprise Innovation Competition for 2 consecutive years respectively for engineering PulseTrack real-time productivity telemetry and automated queue orchestrators.",
       "QA Department Leadership & Transaction Auditing: Directed QA department workflows, conducted deep-dive transaction audits across live chat and email cases, and led calibration panels to eliminate scoring variance and defect outliers.",
       "Policy Creation & SOP Authoring: Directly authored, created, and updated operational policy documentation, decision trees, and standard operating procedures (SOPs) for Trust & Safety (content moderation) and Advertising Integrity (Ads Review), translating complex client policy changes into clear frontline enforcement standards.",
       "Conducting Training & Nesting Academies: Designed instructional materials and directly conducted onboarding training bootcamps, nesting clinics, and refresher workshops, coaching frontline specialists and raising 90-day associate competency from 78% to 94%.",
@@ -3019,14 +3027,14 @@ export const LINKEDIN_HONORS_AWARDS: HonorAwardItem[] = [
   },
   {
     "id": "award-cnx-excellence",
-    "title": "Concentrix Operations Team Manager Distinction",
+    "title": "Concentrix Operation Team Manager Distinction",
     "issuer": "Concentrix",
     "organization": "Concentrix",
     "organizationLogoId": "concentrix",
     "year": "2024",
     "tier": "pinnacle",
     "highlightBadge": "380% Scale · 7 Language Pods · >98% SLA",
-    "description": "Awarded by Concentrix senior executive leadership as Operations Team Manager: led 34 direct reports across 7 language pods (Indonesian, Chinese Mainland, Korean, Japanese, English, Thai, Vietnamese), scaled squad by 380%, sustained >98% contractual SLA, and reduced AHT by 25% via Six Sigma DMAIC.",
+    "description": "Awarded by Concentrix senior executive leadership as Operations Team Manager (QA, Policy & Training): led 34 direct reports across 7 language pods (Indonesian, Chinese Mainland, Korean, Japanese, English, Thai, Vietnamese), scaled squad by 380%, sustained >98% contractual SLA, and reduced AHT by 25% via Six Sigma DMAIC.",
     "verificationUrl": "https://www.linkedin.com/in/aliakhmadf/details/honors/"
   },
   {
@@ -3263,7 +3271,7 @@ export const EXECUTIVE_CAREER_NARRATIVE: ExecutiveCareerNarrative = {
       beatNumber: 1,
       title: "The Broken Status Quo",
       subtitle: "The Stakes & Legacy Baggage",
-      content: `Before stepping into enterprise solution architecture, I spent four years on the operations floor at Accenture and Concentrix. I started in August 2017 writing PL/SQL queries and forecasting queues as a frontline Data Analyst. Over four merit promotions, I moved from frontline analytics to Junior Team Lead, Team Lead, and eventually Senior Team Lead directing cross-functional customer support and trust-and-safety delivery across seven APAC markets.
+      content: `Before stepping into enterprise solution architecture, I spent four years on the operations floor at Accenture and Concentrix. I started in August 2017 writing PL/SQL queries and forecasting queues as a frontline Data Analyst. Over four merit promotions, I moved from frontline analytics to Junior Team Lead, Team Lead, and Senior Team Lead at Accenture, followed by serving as Operations Team Manager (QA, Policy & Training) at Concentrix directing cross-functional customer support and trust-and-safety delivery across seven APAC markets.
 
 Floor management taught me how systems actually fail. At Concentrix, we scaled a multilingual operations pod from 9 to 34 agents handling seven international jurisdictions. When queue spikes hit, our biggest friction was not agent motivation—it was tooling blindness. Shift handovers and agent statuses were tracked through chaotic WhatsApp groups. Team leads burned two to three hours every shift manually tallying agent availability in spreadsheets instead of coaching underperforming queues. During customer triage, agents toggled between four disconnected browser tabs, bleeding 110 seconds of pure navigation latency on every single ticket.
 

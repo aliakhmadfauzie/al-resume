@@ -429,6 +429,14 @@ export function HomeView({
               <ul className="space-y-1.5 text-xs text-[var(--text-secondary)]">
                 <li className="flex items-start gap-2">
                   <CheckCircle2 size={13} className="text-orange-400 shrink-0 mt-0.5" />
+                  <span><strong>Client WBR Quality Lead:</strong> Primary Weekly Business Review (WBR) representative for Quality directly with client executives, leading calibrations &amp; defect analysis.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 size={13} className="text-orange-400 shrink-0 mt-0.5" />
+                  <span><strong>Innovation Team &amp; Tooling:</strong> Core member of the Innovation Team; Winner of the Enterprise Innovation Competition for 2 consecutive years respectively.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 size={13} className="text-orange-400 shrink-0 mt-0.5" />
                   <span><strong>Floor &amp; Capacity Command:</strong> 24/7 queue telemetry, 90–95% schedule adherence, shrinkage control, and Sev-1 incident command.</span>
                 </li>
                 <li className="flex items-start gap-2">
@@ -448,19 +456,26 @@ export function HomeView({
           )}
 
           {/* Industry Accolades Badge */}
-          <div className="p-4 rounded-xl bg-[var(--interactive-subtle-bg)] border border-[var(--interactive-subtle-border)] space-y-2">
+          <div className="p-4 rounded-xl bg-[var(--interactive-subtle-bg)] border border-[var(--interactive-subtle-border)] space-y-2.5">
             <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[var(--text-accent)]">
               <Award size={16} />
-              <span>Distinctions &amp; Incident Command</span>
+              <span>Distinctions, Innovation &amp; Client Governance</span>
             </div>
             <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
               Recipient of the <strong>Hang Tuah Distinction</strong> and <strong>Accenture Diamond Award</strong> for
               stabilizing an <strong>800% queue surge in 48 hours</strong> during a regional platform crisis with zero associate burnout.
             </p>
             {activePersona === 'operations' && (
-              <p className="text-xs text-[var(--text-secondary)] pt-2 border-t border-[var(--border-subtle)] leading-relaxed">
-                Led <strong>TikTok Public-to-Private de-escalations</strong> safeguarding customer PII and enforced strict 3-strike policy boundaries with <strong>99.4% audit compliance</strong>.
-              </p>
+              <div className="pt-2 border-t border-[var(--border-subtle)] space-y-1.5 text-xs text-[var(--text-secondary)]">
+                <div className="flex items-start gap-2">
+                  <Sparkles size={14} className="text-orange-400 shrink-0 mt-0.5" />
+                  <span><strong>Innovation Competition Winner (2 Years Respectively):</strong> Crowned consecutive back-to-back winner on the operational Innovation Team for automating frontline queue telemetry &amp; PulseTrack.</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <ShieldCheck size={14} className="text-orange-400 shrink-0 mt-0.5" />
+                  <span><strong>Weekly Business Review (WBR) Quality Representative:</strong> Trusted client-facing lead presenting calibration panels, QA variance triage, and contractual SLA health.</span>
+                </div>
+              </div>
             )}
           </div>
 
@@ -568,13 +583,13 @@ export function HomeView({
             <div className="p-3.5 rounded-xl bg-[var(--bg-surface)] border border-orange-500/20 space-y-2">
               <div className="flex items-center gap-2 text-xs font-bold text-orange-400 font-mono uppercase">
                 <Activity size={15} />
-                <span>Crisis Incident Command</span>
+                <span>Client WBR &amp; Innovation</span>
               </div>
               <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
-                Sev-1 platform outage leadership, 800% surge containment in 48h, real-time WFM capacity, and 120+h/wk reporting automation.
+                Primary client-facing Weekly Business Review (WBR) Quality lead. Winner of the Enterprise Innovation Competition for 2 consecutive years respectively.
               </p>
               <div className="text-[10px] font-mono text-orange-300 pt-1 border-t border-[var(--border-subtle)]">
-                Diamond Award · Hang Tuah Distinction
+                2x Innovation Winner · WBR Governance
               </div>
             </div>
           </div>
@@ -709,7 +724,11 @@ export function HomeView({
                     </li>
                     <li className="flex items-start gap-1.5">
                       <span className="w-1.5 h-1.5 rounded-full bg-orange-400 shrink-0 mt-1.5" />
-                      <span>Command Tier-2 escalations: convert public TikTok comments into private DMs to protect PII.</span>
+                      <span>Serve as primary Weekly Business Review (WBR) representative for Quality directly with client executives.</span>
+                    </li>
+                    <li className="flex items-start gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-orange-400 shrink-0 mt-1.5" />
+                      <span>Command Tier-2 escalations: convert public TikTok comments into private DMs to protect customer PII.</span>
                     </li>
                     <li className="flex items-start gap-1.5">
                       <span className="w-1.5 h-1.5 rounded-full bg-orange-400 shrink-0 mt-1.5" />
@@ -731,6 +750,10 @@ export function HomeView({
                     </li>
                     <li className="flex items-start gap-1.5">
                       <CheckCircle2 size={13} className="text-orange-400 shrink-0 mt-0.5" />
+                      <span><strong>100% Client WBR Quality Alignment</strong> with zero escalation spills or SLA breaches.</span>
+                    </li>
+                    <li className="flex items-start gap-1.5">
+                      <CheckCircle2 size={13} className="text-orange-400 shrink-0 mt-0.5" />
                       <span><strong>100% PII Confidentiality Compliance</strong> with zero viral PR spills during TikTok escalations.</span>
                     </li>
                     <li className="flex items-start gap-1.5">
@@ -747,6 +770,8 @@ export function HomeView({
                   Skills &amp; Methodologies Applied:
                 </p>
                 <div className="flex flex-wrap gap-1.5 text-xs font-mono text-orange-300">
+                  <span className="px-2 py-0.5 rounded bg-orange-500/10 border border-orange-500/20">Weekly Business Review (WBR)</span>
+                  <span className="px-2 py-0.5 rounded bg-orange-500/10 border border-orange-500/20">Client Quality Calibration</span>
                   <span className="px-2 py-0.5 rounded bg-orange-500/10 border border-orange-500/20">Content Moderation</span>
                   <span className="px-2 py-0.5 rounded bg-orange-500/10 border border-orange-500/20">Trust &amp; Safety Policy</span>
                   <span className="px-2 py-0.5 rounded bg-orange-500/10 border border-orange-500/20">Ads Review &amp; Monetization</span>
@@ -769,8 +794,8 @@ export function HomeView({
                   </span>
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-white">People Leadership, Coaching &amp; QA Calibration</h3>
-                  <p className="text-xs text-orange-400 font-mono mt-0.5">GROW Coaching · Skill vs. Will · DMAIC Continuous Improvement</p>
+                  <h3 className="text-xl font-bold text-white">People Leadership, Coaching &amp; Innovation Team</h3>
+                  <p className="text-xs text-orange-400 font-mono mt-0.5">GROW Coaching · Innovation Competition Winner · DMAIC</p>
                 </div>
 
                 {/* Sub-block 1: Main Roles and Responsibilities */}
@@ -783,6 +808,10 @@ export function HomeView({
                     <li className="flex items-start gap-1.5">
                       <span className="w-1.5 h-1.5 rounded-full bg-orange-400 shrink-0 mt-1.5" />
                       <span>Scale frontline multilingual associates (scaled 9 to 34 agents across 7 APAC language pods).</span>
+                    </li>
+                    <li className="flex items-start gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-orange-400 shrink-0 mt-1.5" />
+                      <span>Core member of the Innovation Team, driving internal tooling hackathons and automated queue telemetry.</span>
                     </li>
                     <li className="flex items-start gap-1.5">
                       <span className="w-1.5 h-1.5 rounded-full bg-orange-400 shrink-0 mt-1.5" />
@@ -802,6 +831,10 @@ export function HomeView({
                     <span>Performance &amp; Empirical Results</span>
                   </p>
                   <ul className="space-y-1 text-xs text-[var(--text-secondary)]">
+                    <li className="flex items-start gap-1.5">
+                      <CheckCircle2 size={13} className="text-orange-400 shrink-0 mt-0.5" />
+                      <span><strong>Winner of Innovation Competition (2 Years Respectively)</strong> as part of the core Innovation Team.</span>
+                    </li>
                     <li className="flex items-start gap-1.5">
                       <CheckCircle2 size={13} className="text-orange-400 shrink-0 mt-0.5" />
                       <span><strong>&lt;5% Annualized Attrition</strong> maintained across 34 associates (vs. 30%+ BPO average).</span>
@@ -824,6 +857,8 @@ export function HomeView({
                   Skills &amp; Methodologies Applied:
                 </p>
                 <div className="flex flex-wrap gap-1.5 text-xs font-mono text-orange-300">
+                  <span className="px-2 py-0.5 rounded bg-orange-500/10 border border-orange-500/20">Innovation Team Leadership</span>
+                  <span className="px-2 py-0.5 rounded bg-orange-500/10 border border-orange-500/20">PulseTrack Telemetry</span>
                   <span className="px-2 py-0.5 rounded bg-orange-500/10 border border-orange-500/20">GROW Coaching Framework</span>
                   <span className="px-2 py-0.5 rounded bg-orange-500/10 border border-orange-500/20">Skill vs. Will Diagnostics</span>
                   <span className="px-2 py-0.5 rounded bg-orange-500/10 border border-orange-500/20">QA Calibration Variance Control</span>
