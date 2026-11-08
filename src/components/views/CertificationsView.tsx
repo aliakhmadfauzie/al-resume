@@ -6,6 +6,7 @@ import {
   PERSONAL_INFO
 } from '../../data/portfolioData';
 import { CertificationItem } from '../../types';
+import { OrganizationLogo } from '../OrganizationLogo';
 import {
   ShieldCheck,
   Award,
@@ -59,6 +60,7 @@ export const CertificationsView: React.FC = () => {
       return (
         cert.name.toLowerCase().includes(q) ||
         cert.issuer.toLowerCase().includes(q) ||
+        (cert.organization && cert.organization.toLowerCase().includes(q)) ||
         cert.category.toLowerCase().includes(q) ||
         (cert.credentialId && cert.credentialId.toLowerCase().includes(q)) ||
         (cert.summary && cert.summary.toLowerCase().includes(q)) ||
@@ -113,7 +115,7 @@ export const CertificationsView: React.FC = () => {
               Professional Certifications &amp; Honors
             </h1>
             <p className="text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed">
-              Hover or focus on any masonry card to inspect full credential metadata, verification registry IDs, curriculum hours, and how each certification was applied in production across IOI Group, Meraki Malaysia, Concentrix, and Accenture.
+              Click or expand any masonry card to inspect full credential metadata, verification registry IDs, curriculum hours, and how each certification was applied in production across IOI Group, Meraki Malaysia, Concentrix, and Accenture.
             </p>
           </div>
 
@@ -151,10 +153,10 @@ export const CertificationsView: React.FC = () => {
           </div>
           <div className="space-y-1">
             <div className="text-2xl font-extrabold font-mono text-[var(--text-primary)] tabular-nums">
-              4
+              6
             </div>
             <div className="text-xs text-[var(--text-secondary)]">
-              Issuing Authorities · MS / LinkedIn / Lark / EQM
+              Issuing Authorities · MS / LinkedIn / PMI / Lark / EQM / CNX
             </div>
           </div>
           <div className="space-y-1">
@@ -347,8 +349,12 @@ export const CertificationsView: React.FC = () => {
                   <div className="space-y-3.5">
                     <div className="flex items-center justify-between gap-3">
                       <div className="flex items-center space-x-2.5 min-w-0">
-                        <div className="w-9 h-9 rounded-[var(--radius-sm)] bg-[#0f1117] border border-[var(--border-subtle)] group-hover:border-orange-500/40 group-hover:scale-105 group-hover:rotate-3 flex items-center justify-center shrink-0 transition-all duration-300">
-                          {getCategoryIcon(cert.category)}
+                        <div className="w-9 h-9 rounded-[var(--radius-sm)] bg-[#0d0f17] border border-[var(--border-subtle)] group-hover:border-orange-500/40 group-hover:scale-105 flex items-center justify-center shrink-0 transition-all duration-300 p-1.5 shadow-inner">
+                          <OrganizationLogo
+                            logoId={cert.organizationLogoId}
+                            orgName={cert.organization || cert.issuer}
+                            size="sm"
+                          />
                         </div>
                         <div className="text-xs font-mono text-[var(--text-secondary)] truncate">
                           <span className="text-[var(--text-accent)] font-semibold">
@@ -367,18 +373,30 @@ export const CertificationsView: React.FC = () => {
                       </span>
                     </div>
 
-                    {/* Primary Credential Title & Issuer */}
-                    <div className="space-y-1">
+                    {/* Primary Credential Title & Issuing Organization with Official Logo */}
+                    <div className="space-y-2">
                       <h2 className="text-base sm:text-lg font-bold text-[var(--text-primary)] leading-snug">
                         {cert.name}
                       </h2>
-                      <p className="text-xs font-mono text-[var(--text-secondary)]">
-                        {cert.issuer}
-                        <span aria-hidden="true" className="mx-1.5 text-[var(--text-tertiary)]">
-                          ·
-                        </span>
-                        <span className="text-[var(--text-tertiary)]">{cert.credentialType}</span>
-                      </p>
+
+                      {/* Official Issuing Organization Badge with Logo */}
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-[var(--radius-sm)] bg-[#0d0f17] border border-[var(--border-subtle)] group-hover:border-[var(--border-focus)] transition-colors">
+                          <OrganizationLogo
+                            logoId={cert.organizationLogoId}
+                            orgName={cert.organization || cert.issuer}
+                            size="xs"
+                          />
+                          <span className="text-[11px] font-mono font-bold text-[var(--text-primary)] tracking-tight">
+                            {cert.organization || cert.issuer}
+                          </span>
+                        </div>
+                        {cert.credentialType && (
+                          <span className="text-[11px] font-mono text-[var(--text-tertiary)]">
+                            · {cert.credentialType}
+                          </span>
+                        )}
+                      </div>
                     </div>
 
                     {/* Executive Summary (Always Visible, Variable Length for Masonry) */}
@@ -408,15 +426,24 @@ export const CertificationsView: React.FC = () => {
                         className="overflow-hidden"
                       >
                         <div className="rounded-[var(--radius-md)] bg-[#0c0d12] border border-[var(--interactive-subtle-border)] p-4 space-y-3.5">
-                          {/* Credential ID + Copy Button */}
-                          <div className="flex items-center justify-between gap-2 pb-2.5 border-b border-[var(--border-subtle)]">
-                            <div className="space-y-0.5 min-w-0">
-                              <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--text-tertiary)] block">
-                                Credential Registry ID
-                              </span>
-                              <span className="text-xs font-mono font-bold text-[var(--text-accent)] truncate block">
-                                {cert.credentialId || cert.id.toUpperCase()}
-                              </span>
+                          {/* Issuing Authority & Credential ID Header */}
+                          <div className="flex items-center justify-between gap-3 pb-2.5 border-b border-[var(--border-subtle)]">
+                            <div className="flex items-center gap-2 min-w-0">
+                              <div className="w-8 h-8 rounded bg-[#141622] border border-[var(--border-subtle)] flex items-center justify-center p-1 shrink-0">
+                                <OrganizationLogo
+                                  logoId={cert.organizationLogoId}
+                                  orgName={cert.organization || cert.issuer}
+                                  size="xs"
+                                />
+                              </div>
+                              <div className="space-y-0.5 min-w-0">
+                                <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--text-tertiary)] block">
+                                  Issuing Organization
+                                </span>
+                                <span className="text-xs font-mono font-bold text-[var(--text-primary)] truncate block">
+                                  {cert.organization || cert.issuer}
+                                </span>
+                              </div>
                             </div>
 
                             <button
@@ -556,8 +583,12 @@ export const CertificationsView: React.FC = () => {
               key={award.id}
               className="cert-hologram-card group rounded-[var(--radius-lg)] bg-[var(--bg-surface)] hover:bg-[var(--bg-surface-elevated)] border border-[var(--border-subtle)] hover:border-amber-500/40 p-6 flex items-start space-x-4 transition-all duration-200 shadow-[var(--shadow-card)] hover:shadow-[0_12px_32px_-8px_rgba(0,0,0,0.5),0_0_20px_-4px_rgba(245,158,11,0.12)]"
             >
-              <div className="w-11 h-11 rounded-[var(--radius-md)] bg-[#1b1613] border border-[var(--interactive-subtle-border)] group-hover:border-amber-500/40 group-hover:scale-105 group-hover:-rotate-3 flex items-center justify-center shrink-0 transition-all duration-300">
-                <Award className="w-5 h-5 text-[var(--interactive-primary)]" />
+              <div className="w-11 h-11 rounded-[var(--radius-md)] bg-[#1b1613] border border-[var(--interactive-subtle-border)] group-hover:border-amber-500/40 group-hover:scale-105 flex items-center justify-center shrink-0 transition-all duration-300 p-2 overflow-hidden shadow-inner">
+                <OrganizationLogo
+                  logoId={award.organizationLogoId}
+                  orgName={award.organization || award.issuer}
+                  size="md"
+                />
               </div>
               <div className="space-y-1.5 flex-1">
                 <div className="flex flex-wrap items-center justify-between gap-2">
@@ -568,9 +599,17 @@ export const CertificationsView: React.FC = () => {
                     {award.year}
                   </span>
                 </div>
-                <p className="text-xs font-mono text-[var(--text-secondary)]">
-                  {award.issuer} · Official Honor
-                </p>
+                <div className="flex items-center gap-1.5 text-xs font-mono text-[var(--text-secondary)]">
+                  <OrganizationLogo
+                    logoId={award.organizationLogoId}
+                    orgName={award.organization || award.issuer}
+                    size="xs"
+                  />
+                  <span className="font-semibold text-[var(--text-primary)]">
+                    {award.organization || award.issuer}
+                  </span>
+                  <span className="text-[var(--text-tertiary)]">· Official Distinction</span>
+                </div>
                 <p className="text-xs text-[var(--text-secondary)] leading-relaxed pt-1">
                   {award.description}
                 </p>

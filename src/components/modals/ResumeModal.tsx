@@ -18,6 +18,7 @@ import {
   ShieldCheck,
   Award
 } from 'lucide-react';
+import { OrganizationLogo } from '../OrganizationLogo';
 
 interface ResumeModalProps {
   isOpen: boolean;
@@ -247,14 +248,20 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose, onOpe
                   key={cert.id}
                   className="bg-[var(--bg-primary)] p-3.5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] flex items-start justify-between gap-3"
                 >
-                  <div className="space-y-1">
+                  <div className="space-y-1 min-w-0">
                     <div className="flex items-center gap-1.5">
-                      <ShieldCheck className="w-3.5 h-3.5 text-[var(--interactive-primary)] shrink-0" />
-                      <p className="text-xs font-semibold text-[var(--text-primary)]">{cert.name}</p>
+                      <OrganizationLogo
+                        logoId={cert.organizationLogoId}
+                        orgName={cert.organization || cert.issuer}
+                        size="xs"
+                      />
+                      <p className="text-xs font-semibold text-[var(--text-primary)] truncate">{cert.name}</p>
                     </div>
-                    <p className="text-[11px] font-mono text-[var(--text-secondary)]">
-                      {cert.issuer}
-                    </p>
+                    <div className="flex items-center gap-1.5 pl-5">
+                      <p className="text-[11px] font-mono text-[var(--text-secondary)] truncate">
+                        {cert.organization || cert.issuer}
+                      </p>
+                    </div>
                   </div>
                   <span className="text-[11px] font-mono text-[var(--text-accent)] shrink-0">
                     {cert.issueDate}
@@ -276,15 +283,23 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose, onOpe
                   className="bg-[var(--bg-primary)] p-3.5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-1"
                 >
                   <div className="flex items-center justify-between gap-2">
-                    <div className="flex items-center gap-1.5">
-                      <Award className="w-3.5 h-3.5 text-[var(--interactive-primary)] shrink-0" />
-                      <p className="text-xs font-semibold text-[var(--text-primary)]">{award.title}</p>
+                    <div className="flex items-center gap-1.5 min-w-0">
+                      <OrganizationLogo
+                        logoId={award.organizationLogoId}
+                        orgName={award.organization || award.issuer}
+                        size="xs"
+                      />
+                      <p className="text-xs font-semibold text-[var(--text-primary)] truncate">{award.title}</p>
                     </div>
                     <span className="text-[11px] font-mono text-[var(--text-accent)] shrink-0">
                       {award.year}
                     </span>
                   </div>
-                  <p className="text-[11px] font-mono text-[var(--text-tertiary)]">{award.issuer}</p>
+                  <div className="flex items-center gap-1.5 pl-5">
+                    <p className="text-[11px] font-mono text-[var(--text-tertiary)] truncate">
+                      {award.organization || award.issuer}
+                    </p>
+                  </div>
                   <p className="text-xs text-[var(--text-secondary)] leading-relaxed">{award.description}</p>
                 </div>
               ))}

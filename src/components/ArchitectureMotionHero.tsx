@@ -428,7 +428,8 @@ export const ArchitectureMotionHero: React.FC<ArchitectureMotionHeroProps> = ({
   onSelectProject,
   onLaunchDemo
 }) => {
-  const [activeTabId, setActiveTabId] = useState<string>(CODE_TABS[0].id);
+  const [activeTabId, setActiveTabId] = useState<string>('ops-lead');
+  const [telemetryMode, setTelemetryMode] = useState<'operations' | 'architecture'>('operations');
   const currentTab = CODE_TABS.find((t) => t.id === activeTabId) || CODE_TABS[0];
 
   const handleOpenLinkedProject = () => {
@@ -480,22 +481,34 @@ export const ArchitectureMotionHero: React.FC<ArchitectureMotionHeroProps> = ({
                 </span>
               </div>
 
-              {/* Interactive File Switcher */}
+              {/* Interactive File Switcher with Badges */}
               <div className="flex items-center gap-1">
-                {CODE_TABS.map((tab) => (
-                  <button
-                    key={tab.id}
-                    type="button"
-                    onClick={() => setActiveTabId(tab.id)}
-                    className={`px-2 py-0.5 rounded text-[10px] font-mono transition-colors cursor-pointer ${
-                      tab.id === activeTabId
-                        ? 'bg-[var(--interactive-subtle-bg)] text-[var(--text-accent)] border border-[var(--interactive-subtle-border)]'
-                        : 'text-[var(--text-tertiary)] hover:text-[var(--text-primary)]'
-                    }`}
-                  >
-                    {tab.id}
-                  </button>
-                ))}
+                {CODE_TABS.map((tab) => {
+                  const isOps = tab.id === 'ops-lead';
+                  const isSelected = tab.id === activeTabId;
+                  return (
+                    <button
+                      key={tab.id}
+                      type="button"
+                      onClick={() => {
+                        setActiveTabId(tab.id);
+                        if (isOps) setTelemetryMode('operations');
+                      }}
+                      className={`px-2 py-0.5 rounded text-[10px] font-mono transition-all cursor-pointer flex items-center space-x-1 ${
+                        isSelected
+                          ? isOps
+                            ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 font-bold shadow-[0_0_8px_rgba(34,197,94,0.2)]'
+                            : 'bg-[var(--interactive-subtle-bg)] text-[var(--text-accent)] border border-[var(--interactive-subtle-border)] font-bold'
+                          : isOps
+                          ? 'text-emerald-400/80 hover:text-emerald-300 border border-emerald-500/20 bg-emerald-500/5'
+                          : 'text-[var(--text-tertiary)] hover:text-[var(--text-primary)]'
+                      }`}
+                    >
+                      {isOps && <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />}
+                      <span>{isOps ? 'operations.ts' : tab.id}</span>
+                    </button>
+                  );
+                })}
               </div>
             </div>
 

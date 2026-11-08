@@ -312,14 +312,22 @@
   transform: skewX(-22deg) translateX(320%);
 }
 
-/* Timeline Track */
+/* Timeline Track with ambient luminescence */
 .timeline-track {
   position: absolute;
   left: 24px;
   transform: translateX(-50%);
-  width: 1px;
-  background: var(--border-subtle);
+  width: 2px;
+  background: linear-gradient(
+    180deg,
+    rgba(249, 115, 22, 0.9) 0%,
+    rgba(0, 219, 231, 0.8) 45%,
+    rgba(99, 102, 241, 0.7) 80%,
+    rgba(255, 255, 255, 0.08) 100%
+  );
+  box-shadow: 0 0 10px rgba(249, 115, 22, 0.3);
   height: 100%;
+  border-radius: 9999px;
 }
 
 @media (min-width: 768px) {
@@ -438,4 +446,46 @@ a:focus-visible {
 .animate-float-panel-2 {
   animation: float-panel-2 26s ease-in-out infinite;
   will-change: transform;
+}
+
+
+/* Circuit Energy Flow & Timeline Pulse Animations */
+@keyframes circuit-flow-dash {
+  from {
+    stroke-dashoffset: 80;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.circuit-energy-flow-cyan {
+  stroke-dasharray: 10 18;
+  animation: circuit-flow-dash 2s linear infinite;
+}
+
+.circuit-energy-flow-amber {
+  stroke-dasharray: 10 18;
+  animation: circuit-flow-dash 2.4s linear infinite reverse;
+}
+
+@keyframes timeline-laser-sweep {
+  0% {
+    top: -5%;
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+.timeline-laser-sweep {
+  animation: timeline-laser-sweep 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }

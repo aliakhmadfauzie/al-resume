@@ -16,6 +16,7 @@ import {
   Award
 } from 'lucide-react';
 import { DualCareerBranchVisualizer } from '../career/DualCareerBranchVisualizer';
+import { OrganizationLogo } from '../OrganizationLogo';
 
 export const ExperienceView: React.FC = () => {
   const [selectedTag, setSelectedTag] = useState<string>('all');
@@ -140,19 +141,31 @@ export const ExperienceView: React.FC = () => {
         </div>
       </div>
 
-      {/* Timeline Section */}
+      {/* Timeline Section with Ambient Laser Conduit & Synapses */}
       <div className="relative pl-6 md:pl-16 space-y-8">
-        <div className="timeline-track" />
+        <div className="timeline-track overflow-hidden">
+          {/* Animated Photon Laser Sweep along the Timeline */}
+          <div className="timeline-laser-sweep absolute inset-x-0 h-32 bg-gradient-to-b from-transparent via-orange-400 to-transparent opacity-80 pointer-events-none" />
+        </div>
 
         {filteredExperience.map((item) => (
           <div key={item.id} className="relative group">
-            {/* Timeline Node Icon */}
-            <div className="absolute -left-[30px] md:-left-[54px] top-1.5 w-10 h-10 rounded-[var(--radius-sm)] bg-[var(--bg-surface)] border border-[var(--border-focus)] p-1.5 flex items-center justify-center">
-              <Briefcase className="w-4 h-4 text-[var(--text-accent)]" />
+            {/* Horizontal Synapse Conduit connecting Track Node to Card (Desktop) */}
+            <div className="hidden md:block absolute -left-[14px] top-6 w-[14px] h-[2px] bg-gradient-to-r from-orange-500/40 via-orange-500/20 to-transparent group-hover:from-orange-500 group-hover:via-orange-400/60 group-hover:w-[16px] transition-all duration-300" />
+
+            {/* Timeline Node Icon with Active Radar Pulse */}
+            <div className="absolute -left-[30px] md:-left-[54px] top-1.5 w-10 h-10 rounded-[var(--radius-sm)] bg-[#0c0e15] border border-[var(--border-focus)] p-1.5 flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:border-orange-500/70 group-hover:shadow-[0_0_16px_rgba(249,115,22,0.35)]">
+              <Briefcase className="w-4 h-4 text-[var(--text-accent)] transition-transform duration-300 group-hover:rotate-6" />
+              {item.isCurrent && (
+                <span className="absolute -top-1 -right-1 flex h-3 w-3">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500 shadow-[0_0_8px_#22c55e]" />
+                </span>
+              )}
             </div>
 
-            {/* Experience Card */}
-            <div className="glass-card p-6 sm:p-8 space-y-4">
+            {/* Experience Card with Smooth Kinetic Hover */}
+            <div className="glass-card p-6 sm:p-8 space-y-4 transition-[transform,border-color,box-shadow] duration-300 ease-out hover:-translate-y-1 hover:border-orange-500/40 hover:shadow-[0_12px_32px_-8px_rgba(0,0,0,0.6),0_0_20px_-4px_rgba(249,115,22,0.12)]">
               <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2 border-b border-[var(--border-subtle)] pb-4">
                 <div className="space-y-1">
                   <div className="flex flex-wrap items-center gap-2">
@@ -230,7 +243,11 @@ export const ExperienceView: React.FC = () => {
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
                   <span className="inline-flex items-center gap-1.5 text-[11px] font-mono text-[var(--text-accent)]">
-                    <ShieldCheck className="w-4 h-4 text-[var(--interactive-primary)]" />
+                    <OrganizationLogo
+                      logoId={cert.organizationLogoId}
+                      orgName={cert.organization || cert.issuer}
+                      size="xs"
+                    />
                     <span>{cert.category}</span>
                   </span>
                   <span className="text-xs font-mono text-[var(--text-tertiary)]">
@@ -240,10 +257,16 @@ export const ExperienceView: React.FC = () => {
                 <h3 className="text-sm font-bold text-[var(--text-primary)] leading-snug">
                   {cert.name}
                 </h3>
-                <p className="text-xs text-[var(--text-secondary)] font-mono">
-                  {cert.issuer}
-                </p>
-
+                <div className="flex items-center gap-1.5">
+                  <OrganizationLogo
+                    logoId={cert.organizationLogoId}
+                    orgName={cert.organization || cert.issuer}
+                    size="xs"
+                  />
+                  <p className="text-xs text-[var(--text-secondary)] font-mono font-medium truncate">
+                    {cert.organization || cert.issuer}
+                  </p>
+                </div>
               </div>
 
               <div className="pt-3 border-t border-[var(--border-subtle)] flex items-center justify-between text-[11px] font-mono">
@@ -274,8 +297,12 @@ export const ExperienceView: React.FC = () => {
               key={award.id}
               className="rounded-[var(--radius-md)] bg-[var(--bg-surface)] border border-[var(--border-subtle)] p-5 flex items-start space-x-4"
             >
-              <div className="w-10 h-10 rounded-[var(--radius-sm)] bg-[#1b1613] border border-[var(--interactive-subtle-border)] flex items-center justify-center shrink-0">
-                <Award className="w-5 h-5 text-[var(--interactive-primary)]" />
+              <div className="w-10 h-10 rounded-[var(--radius-sm)] bg-[#1b1613] border border-[var(--interactive-subtle-border)] flex items-center justify-center shrink-0 p-1.5 shadow-inner">
+                <OrganizationLogo
+                  logoId={award.organizationLogoId}
+                  orgName={award.organization || award.issuer}
+                  size="sm"
+                />
               </div>
               <div className="space-y-1">
                 <div className="flex items-center justify-between gap-2">
@@ -286,7 +313,16 @@ export const ExperienceView: React.FC = () => {
                     {award.year}
                   </span>
                 </div>
-                <p className="text-xs font-mono text-[var(--text-tertiary)]">{award.issuer}</p>
+                <div className="flex items-center gap-1.5 text-xs font-mono text-[var(--text-secondary)]">
+                  <OrganizationLogo
+                    logoId={award.organizationLogoId}
+                    orgName={award.organization || award.issuer}
+                    size="xs"
+                  />
+                  <span className="font-semibold text-[var(--text-primary)]">
+                    {award.organization || award.issuer}
+                  </span>
+                </div>
                 <p className="text-xs text-[var(--text-secondary)] leading-relaxed pt-1">
                   {award.description}
                 </p>

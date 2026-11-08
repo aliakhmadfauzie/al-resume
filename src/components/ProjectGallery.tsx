@@ -154,7 +154,7 @@ const ArchitecturalPlaceholderPreview: React.FC<{
       <div className="relative z-10 flex items-center justify-between gap-2 border-b border-[var(--border-subtle)] pb-2.5">
         <div className="flex items-center space-x-2">
           <span className="px-2 py-0.5 rounded bg-[var(--interactive-subtle-bg)] border border-[var(--interactive-subtle-border)] text-[10px] font-mono font-semibold text-[var(--text-accent)]">
-            PLACEHOLDER 0{index + 1}
+            SYSTEM ARCHITECTURE 0{index + 1}
           </span>
           <span className="text-[11px] font-mono text-[var(--text-tertiary)] truncate max-w-[240px] sm:max-w-xs">
             {projectTitle}
@@ -861,9 +861,64 @@ interface ProjectCardGalleryPreviewProps {
  * Compact browser-framed gallery carousel displayed inside each project card
  * in ProjectsView and HomeView.
  */
+const PROJECT_SCREENSHOT_FALLBACKS: Record<string, string[]> = {
+  'ats-automation': [
+    '/showcase-articles/ats-automation/portfolio-ui-screenshot.png',
+    '/screenshots/ats-dashboard-overview.png',
+    '/assets/gallery/ats-automation/01-command-center.png',
+    '/screenshots/ats-dashboard-applications.png'
+  ],
+  'power-platform-portfolio': [
+    '/showcase-articles/power-platform-portfolio/portfolio-ui-screenshot.png',
+    '/screenshots/tasek-cement-rebate-detail.png',
+    '/assets/gallery/power-platform-portfolio/01-executive-hero.png',
+    '/screenshots/ioi-domino-dataverse-detail.png'
+  ],
+  'ioi-acidchem-she-platform': [
+    '/showcase-articles/enterprise-m365-ioi/portfolio-ui-screenshot.png',
+    '/screenshots/ioi-domino-dataverse-detail.png',
+    '/assets/gallery/ioi-acidchem-she-platform/01-she-dashboard.png',
+    '/screenshots/it-server-checklist-detail.png'
+  ],
+  'putri-garmenthub-erp': [
+    '/showcase-articles/putri-garmenthub/portfolio-ui-screenshot.png',
+    '/assets/gallery/putri-garmenthub-erp/01-spk-pipeline.png'
+  ],
+  'jastip-cross-border': [
+    '/showcase-articles/jastip-cross-border/portfolio-ui-screenshot.png',
+    '/assets/gallery/jastip-cross-border/01-mall-triage.png'
+  ],
+  'saltdistribute-b2b-logistics': [
+    '/showcase-articles/saltdistribute/portfolio-ui-screenshot.png',
+    '/assets/gallery/saltdistribute-b2b-logistics/01-admin-dispatch.png'
+  ],
+  'barbershop-power-code-app': [
+    '/showcase-articles/barbershop-management/portfolio-ui-screenshot.png',
+    '/screenshots/barbershop-dashboard.png',
+    '/assets/gallery/barbershop-power-code-app/01-smart-barber-desk.png'
+  ],
+  'dlab-night-match': [
+    '/showcase-articles/e-commerce-site-dlab/portfolio-ui-screenshot.png',
+    '/assets/gallery/dlab-night-match/01-elimination-quiz.png'
+  ],
+  'lewi-house-syariah-pms': [
+    '/showcase-articles/lewihouse/portfolio-ui-screenshot.png',
+    '/screenshots/lewi-house-admin-dashboard.png',
+    '/assets/gallery/lewi-house-syariah-pms/01-room-grid-pms.png'
+  ],
+  'resumeforge-nextjs': [
+    '/showcase-articles/resumeforge/portfolio-ui-screenshot.png',
+    '/assets/gallery/resumeforge-nextjs/01-ats-score-dashboard.png'
+  ],
+  'warung-dewasa-pwa': [
+    '/showcase-articles/warungdewasa-pwa/portfolio-ui-screenshot.png',
+    '/assets/gallery/warung-dewasa-pwa/01-storefront-hero.png'
+  ]
+};
 export const ProjectCardGalleryPreview: React.FC<ProjectCardGalleryPreviewProps> = ({ item }) => {
   const [slots, setSlots] = useState<ProjectGalleryItem[]>(() => getGalleryForItem(item));
   const [activeIndex, setActiveIndex] = useState<number>(0);
+  const [candidateIdx, setCandidateIdx] = useState<number>(0);
   const [brokenPaths, setBrokenPaths] = useState<Record<string, boolean>>({});
   const [isLightboxOpen, setIsLightboxOpen] = useState<boolean>(false);
 
@@ -879,13 +934,25 @@ export const ProjectCardGalleryPreview: React.FC<ProjectCardGalleryPreviewProps>
     return () => window.removeEventListener('portfolio-gallery-updated', handleSync);
   }, [item]);
 
+  useEffect(() => {
+    setCandidateIdx(0);
+  }, [activeIndex, item.id]);
+
   const currentSlot = slots[activeIndex] || slots[0];
   if (!currentSlot) return null;
 
-  const effectiveSrc =
-    currentSlot.imageUrl ||
-    (!brokenPaths[currentSlot.id] ? currentSlot.expectedPath : undefined);
-  const isLoaded = Boolean(effectiveSrc && (!brokenPaths[currentSlot.id] || currentSlot.imageUrl));
+  // Build ordered candidate list: custom override -> expected path -> verified showcase article -> screenshot
+  const candidateUrls = React.useMemo(() => {
+    const list: string[] = [];
+    if (currentSlot.imageUrl) list.push(currentSlot.imageUrl);
+    if (currentSlot.expectedPath) list.push(currentSlot.expectedPath);
+    const fallbacks = PROJECT_SCREENSHOT_FALLBACKS[item.id];
+    if (fallbacks) list.push(...fallbacks);
+    return Array.from(new Set(list));
+  }, [currentSlot, item.id]);
+
+  const activeSrc = candidateUrls[candidateIdx] || candidateUrls[0];
+  const isAllCandidatesFailed = candidateIdx >= candidateUrls.length && Boolean(brokenPaths[currentSlot.id]);
 
   return (
     <>
@@ -936,25 +1003,30 @@ export const ProjectCardGalleryPreview: React.FC<ProjectCardGalleryPreviewProps>
             setIsLightboxOpen(true);
           }}
         >
-          {effectiveSrc && (
+          {activeSrc && !isAllCandidatesFailed && (
             <img
-              src={effectiveSrc}
+              key={activeSrc}
+              src={activeSrc}
               alt={currentSlot.title}
-              className="w-full h-full object-cover"
-              onError={() =>
-                setBrokenPaths((prev) => ({
-                  ...prev,
-                  [currentSlot.id]: true
-                }))
-              }
+              className="w-full h-full object-cover transition-opacity duration-300"
+              onError={() => {
+                if (candidateIdx < candidateUrls.length - 1) {
+                  setCandidateIdx((prev) => prev + 1);
+                } else {
+                  setBrokenPaths((prev) => ({
+                    ...prev,
+                    [currentSlot.id]: true
+                  }));
+                }
+              }}
             />
           )}
 
-          {!isLoaded && (
+          {isAllCandidatesFailed && (
             <ArchitecturalPlaceholderPreview
               slot={currentSlot}
               index={activeIndex}
-              projectTitle={item.title}
+              projectTitle={'title' in item ? item.title : item.name}
             />
           )}
         </div>

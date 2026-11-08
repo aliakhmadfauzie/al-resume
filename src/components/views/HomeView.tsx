@@ -12,6 +12,7 @@ import {
 import { NavTab, ProjectItem, MigrationSlice } from '../../types';
 import { ProjectCardGalleryPreview } from '../ProjectGallery';
 import { ArchitectureMotionHero } from '../ArchitectureMotionHero';
+import { OrganizationLogo } from '../OrganizationLogo';
 import {
   ArrowRight,
   Download,
@@ -637,17 +638,32 @@ export const HomeView: React.FC<HomeViewProps> = ({
         id="section-stack"
         className="rounded-[var(--radius-lg)] bg-[var(--bg-surface)] border border-[var(--border-subtle)] p-6 sm:p-7 space-y-5 shadow-[var(--shadow-card)]"
       >
-        <div className="flex items-center justify-between">
-          <p className="text-xs font-mono text-[var(--text-accent)] font-semibold tracking-wider uppercase">
-            // TECH STACK
-          </p>
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[var(--border-subtle)] pb-4">
+          <div className="space-y-1">
+            <div className="flex items-center space-x-2.5">
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-orange-500 shadow-[0_0_8px_#f97316]" />
+              </span>
+              <p className="text-xs font-mono font-bold tracking-widest uppercase text-orange-400">
+                // TECH STACK &amp; CAPABILITIES
+              </p>
+              <span className="px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-[10px] font-mono text-zinc-300">
+                Dual Competency Matrix
+              </span>
+            </div>
+            <h2 className="text-xl sm:text-2xl font-extrabold text-white tracking-tight">
+              Enterprise Engineering &amp; Operations Competencies
+            </h2>
+          </div>
+
           <button
             type="button"
             onClick={() => onSelectTab('skills')}
-            className="text-xs font-mono text-[var(--text-secondary)] hover:text-[var(--text-accent)] inline-flex items-center space-x-1 transition-colors cursor-pointer"
+            className="inline-flex items-center space-x-2 px-3.5 py-2 rounded-[var(--radius-sm)] bg-[#0f1117] hover:bg-[var(--interactive-subtle-bg)] border border-[var(--interactive-subtle-border)] text-xs font-mono font-semibold text-[var(--text-accent)] transition-colors cursor-pointer group shrink-0"
           >
             <span>Full Competency Matrix</span>
-            <ArrowRight className="w-3.5 h-3.5 text-[var(--text-accent)]" />
+            <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
           </button>
         </div>
 
@@ -730,17 +746,32 @@ export const HomeView: React.FC<HomeViewProps> = ({
           4. // FEATURED PROJECTS (3-Column Showcase + 6 Migration Slices Strip)
          ==================================================================== */}
       <section className="rounded-[var(--radius-lg)] bg-[var(--bg-surface)] border border-[var(--border-subtle)] p-6 sm:p-7 space-y-6 shadow-[var(--shadow-card)]">
-        <div className="flex flex-wrap items-center justify-between gap-2">
-          <p className="text-xs font-mono text-[var(--text-accent)] font-semibold tracking-wider uppercase">
-            // FEATURED PROJECTS
-          </p>
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[var(--border-subtle)] pb-4">
+          <div className="space-y-1">
+            <div className="flex items-center space-x-2.5">
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-orange-500 shadow-[0_0_8px_#f97316]" />
+              </span>
+              <p className="text-xs font-mono font-bold tracking-widest uppercase text-orange-400">
+                // FEATURED PROJECTS
+              </p>
+              <span className="px-2 py-0.5 rounded-full bg-orange-500/10 border border-orange-500/25 text-[10px] font-mono font-semibold text-orange-400">
+                Live Architectures
+              </span>
+            </div>
+            <h2 className="text-xl sm:text-2xl font-extrabold text-white tracking-tight">
+              Production Architectures &amp; Flagship Deployments
+            </h2>
+          </div>
+
           <button
             type="button"
             onClick={() => onSelectTab('projects')}
-            className="text-xs font-semibold text-[var(--text-accent)] hover:underline inline-flex items-center space-x-1 cursor-pointer"
+            className="inline-flex items-center space-x-2 px-3.5 py-2 rounded-[var(--radius-sm)] bg-[#0f1117] hover:bg-[var(--interactive-subtle-bg)] border border-[var(--interactive-subtle-border)] text-xs font-mono font-semibold text-[var(--text-accent)] transition-colors cursor-pointer group shrink-0"
           >
             <span>View All {CORE_PROJECTS.length} Projects</span>
-            <ArrowRight className="w-3.5 h-3.5" />
+            <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
           </button>
         </div>
 
@@ -954,31 +985,51 @@ export const HomeView: React.FC<HomeViewProps> = ({
           {filteredCerts.map((cert) => (
             <div
               key={cert.id}
-              className="rounded-[var(--radius-md)] bg-[#0f1117] hover:bg-[var(--bg-surface-elevated)] border border-[var(--border-subtle)] hover:border-[var(--interactive-subtle-border)] p-4 flex flex-col justify-between space-y-3 transition-colors"
+              className="cert-hologram-card group relative rounded-[var(--radius-md)] bg-[#0f1117] hover:bg-[#121520] border border-[var(--border-subtle)] hover:border-emerald-500/40 p-4 flex flex-col justify-between space-y-3 transition-[transform,border-color,box-shadow] duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_10px_28px_-6px_rgba(0,0,0,0.5),0_0_18px_-4px_rgba(34,197,94,0.12)]"
             >
-              <div className="space-y-2">
+              {/* Subtle top edge glint bar */}
+              <div
+                className="absolute top-0 inset-x-0 h-[1.5px] bg-gradient-to-r from-transparent via-emerald-400/0 group-hover:via-emerald-400/40 to-transparent transition-opacity duration-500 pointer-events-none"
+                aria-hidden="true"
+              />
+
+              <div className="space-y-2 relative z-10">
                 <div className="flex items-center justify-between gap-2">
-                  <div className="w-8 h-8 rounded-[var(--radius-sm)] bg-[#1b1613] border border-[var(--interactive-subtle-border)] flex items-center justify-center text-[var(--interactive-primary)] shrink-0">
-                    <ShieldCheck className="w-4 h-4" />
+                  <div className="w-8 h-8 rounded-[var(--radius-sm)] bg-[#0d0f17] border border-[var(--border-subtle)] flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-105 group-hover:border-orange-500/40 p-1.5 shadow-inner">
+                    <OrganizationLogo
+                      logoId={cert.organizationLogoId}
+                      orgName={cert.organization || cert.issuer}
+                      size="xs"
+                    />
                   </div>
                   <span className="px-2 py-0.5 rounded bg-[#161822] border border-[var(--border-subtle)] text-[10px] font-mono text-[var(--text-accent)]">
                     {cert.issueDate}
                   </span>
                 </div>
 
-                <h3 className="text-xs sm:text-sm font-bold text-[var(--text-primary)] leading-snug">
+                <h3 className="text-xs sm:text-sm font-bold text-[var(--text-primary)] leading-snug group-hover:text-white transition-colors">
                   {cert.name}
                 </h3>
-                <p className="text-[11px] text-[var(--text-secondary)] font-mono">
-                  {cert.issuer}
-                </p>
+                <div className="flex items-center gap-1.5 pt-0.5">
+                  <OrganizationLogo
+                    logoId={cert.organizationLogoId}
+                    orgName={cert.organization || cert.issuer}
+                    size="xs"
+                  />
+                  <p className="text-[11px] text-[var(--text-secondary)] font-mono font-medium truncate">
+                    {cert.organization || cert.issuer}
+                  </p>
+                </div>
               </div>
 
-              <div className="pt-2.5 border-t border-[var(--border-subtle)] flex items-center justify-between text-[10px] font-mono">
+              <div className="pt-2.5 border-t border-[var(--border-subtle)] flex items-center justify-between text-[10px] font-mono relative z-10">
                 <span className="text-[var(--text-tertiary)] truncate pr-2">
                   {cert.skills.slice(0, 2).join(' · ')}
                 </span>
-                <span className="text-[#22c55e] shrink-0">✓ Verified</span>
+                <span className="inline-flex items-center gap-1 text-[#22c55e] font-semibold shrink-0 group-hover:drop-shadow-[0_0_6px_rgba(34,197,94,0.4)] transition-all">
+                  <span>✓</span>
+                  <span>Verified</span>
+                </span>
               </div>
             </div>
           ))}
@@ -999,19 +1050,23 @@ export const HomeView: React.FC<HomeViewProps> = ({
             {LINKEDIN_HONORS_AWARDS.map((award) => (
               <div
                 key={award.id}
-                className="rounded-[var(--radius-sm)] bg-[#0f1117] border border-[var(--border-subtle)] p-3.5 space-y-1.5"
+                className="cert-hologram-card group relative rounded-[var(--radius-sm)] bg-[#0f1117] hover:bg-[#121520] border border-[var(--border-subtle)] hover:border-amber-500/40 p-3.5 space-y-1.5 transition-[transform,border-color,box-shadow] duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_8px_20px_-6px_rgba(0,0,0,0.5),0_0_14px_-4px_rgba(245,158,11,0.14)]"
               >
-                <div className="flex items-center justify-between text-[10px] font-mono">
-                  <span className="text-[var(--text-accent)] font-bold flex items-center gap-1">
-                    <Trophy className="w-3 h-3 text-[var(--interactive-primary)]" />
-                    <span>{award.issuer}</span>
+                <div className="flex items-center justify-between text-[10px] font-mono relative z-10">
+                  <span className="text-[var(--text-accent)] font-bold flex items-center gap-1.5 truncate">
+                    <OrganizationLogo
+                      logoId={award.organizationLogoId}
+                      orgName={award.organization || award.issuer}
+                      size="xs"
+                    />
+                    <span className="truncate">{award.organization || award.issuer}</span>
                   </span>
-                  <span className="text-[var(--text-tertiary)]">{award.year}</span>
+                  <span className="text-[var(--text-tertiary)] shrink-0">{award.year}</span>
                 </div>
-                <div className="text-xs font-bold text-[var(--text-primary)] leading-snug">
+                <div className="text-xs font-bold text-[var(--text-primary)] leading-snug relative z-10 group-hover:text-white transition-colors">
                   {award.title}
                 </div>
-                <p className="text-[11px] text-[var(--text-secondary)] leading-relaxed">
+                <p className="text-[11px] text-[var(--text-secondary)] leading-relaxed relative z-10">
                   {award.description}
                 </p>
               </div>

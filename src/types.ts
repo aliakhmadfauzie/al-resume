@@ -32,6 +32,7 @@ export interface ProjectItem {
   repoUrl?: string;
   codeSnippet?: string;
   gallery?: ProjectGalleryItem[];
+  imageUrl?: string;
   liveDemoId?:
     | 'finops'
     | 'it-service'
@@ -175,6 +176,18 @@ export interface CertificationItem {
   id: string;
   name: string;
   issuer: string;
+  organization?: string;
+  organizationLogoId?:
+    | 'microsoft'
+    | 'linkedin'
+    | 'microsoft-linkedin'
+    | 'pmi'
+    | 'lark'
+    | 'six-sigma'
+    | 'concentrix'
+    | 'accenture'
+    | 'uum'
+    | 'general';
   issueDate: string;
   category: 'Power Platform' | 'AI & Copilot' | 'Data & Analytics' | 'Project & Process' | 'Enterprise Automation';
   credentialType?: string;
@@ -194,6 +207,18 @@ export interface HonorAwardItem {
   id: string;
   title: string;
   issuer: string;
+  organization?: string;
+  organizationLogoId?:
+    | 'microsoft'
+    | 'linkedin'
+    | 'microsoft-linkedin'
+    | 'pmi'
+    | 'lark'
+    | 'six-sigma'
+    | 'concentrix'
+    | 'accenture'
+    | 'uum'
+    | 'general';
   year: string;
   description: string;
   certificatePdfUrl?: string;
