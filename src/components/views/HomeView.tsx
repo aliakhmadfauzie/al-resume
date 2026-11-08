@@ -65,7 +65,8 @@ export function HomeView({
     if (activePersona === 'software') {
       return ['ats-automation', 'ioi-acidchem-she-platform', 'putri-garmenthub-erp'];
     }
-    return ['ioi-acidchem-she-platform', 'ats-automation', 'putri-garmenthub-erp'];
+    // Hybrid (Both Tracks): Balanced 2 Software Architecture + 2 Operations Telemetry Flagships
+    return ['ioi-acidchem-she-platform', 'pulsetrack', 'ats-automation', 'smartflow'];
   }, [activePersona]);
 
   // Dynamic empirical metrics based on active persona
@@ -86,7 +87,13 @@ export function HomeView({
         { label: "LATENCY REDUCTION", value: "sub-1s", subtext: "React 19 & Cloud Platforms" }
       ];
     }
-    return KEY_METRICS;
+    // Hybrid (Both Tracks): 50% Enterprise Architecture + 50% Operations Leadership
+    return [
+      { label: "LICENSE AVOIDED", value: "$960K/yr", subtext: "Single MainDB Partitioning (Track 1)" },
+      { label: "DATABASES RETIRED", value: "365+", subtext: "28 BUs · 7,878 Screens in CI (Track 1)" },
+      { label: "CONTRACTUAL SLA", value: "98%+", subtext: "34 Multilingual Agents · 7 APAC Pods (Track 2)" },
+      { label: "AHT REDUCTION", value: "-25%", subtext: "PulseTrack Telemetry · DMAIC Controls (Track 2)" }
+    ];
   }, [activePersona]);
 
   const featuredProjects = featuredProjectIds
@@ -94,12 +101,18 @@ export function HomeView({
     .filter((p): p is ProjectItem => Boolean(p));
 
   // Fallback to top items if any specific ID is missing
-  const displayProjects = featuredProjects.length === 3 ? featuredProjects : CORE_PROJECTS.slice(0, 3);
+  const displayProjects = featuredProjects.length > 0 ? featuredProjects : CORE_PROJECTS.slice(0, 4);
 
   // Dynamic career experience cards reordered based on active persona
   const featuredExperiences = useMemo(() => {
     if (activePersona === 'operations') {
       return WORK_EXPERIENCE.filter(exp => exp.id !== 'exp-self-employed').slice(0, 3);
+    }
+    if (activePersona === 'both') {
+      // Symmetrically prioritize Enterprise Solution Architect (IOI) + Operations Team Manager (Concentrix) + Senior Team Lead (Accenture)
+      const hybridOrder = ['exp-ioi', 'exp-concentrix', 'exp-accenture-sr-lead'];
+      const picked = hybridOrder.map(id => WORK_EXPERIENCE.find(e => e.id === id)).filter((e): e is ExperienceItem => Boolean(e));
+      return picked.length === 3 ? picked : WORK_EXPERIENCE.slice(0, 3);
     }
     return WORK_EXPERIENCE.slice(0, 3);
   }, [activePersona]);
@@ -146,8 +159,8 @@ export function HomeView({
                 </>
               ) : (
                 <>
-                  <Sparkles size={14} className="text-[var(--text-accent)] animate-pulse" />
-                  <span>Enterprise Modernization · Power Platform · Full-Stack &amp; AI</span>
+                  <Sparkles size={14} className="text-purple-400 animate-pulse" />
+                  <span>Dual-Track Executive: Enterprise Systems Architecture &amp; Operations Team Leadership</span>
                 </>
               )}
             </div>
@@ -241,8 +254,11 @@ export function HomeView({
               id="home-title"
               className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.08] text-[var(--text-primary)]"
             >
-              Architecting Resilient Enterprise Systems That{' '}
-              <span className="text-[var(--text-accent)]">Eliminate Technical Debt</span> &amp; Slash Millions in Licensing.
+              Architecting Mission-Critical Enterprise Systems &amp;{' '}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-amber-300 to-orange-400">
+                Commanding High-Velocity Operations
+              </span>{' '}
+              Delivering $960K Savings &amp; 98%+ SLA.
             </h1>
           )}
 
@@ -272,13 +288,14 @@ export function HomeView({
             </p>
           ) : (
             <p className="text-base sm:text-lg lg:text-xl leading-relaxed text-[var(--text-secondary)] max-w-2xl">
-              <strong className="text-[var(--text-primary)]">9+ years</strong> of cross-border engineering leadership across{' '}
+              <strong className="text-[var(--text-primary)]">9+ years</strong> of dual-track engineering &amp; operational leadership across{' '}
               <strong className="text-[var(--text-primary)]">IOI Corporation</strong>,{' '}
-              <strong className="text-[var(--text-primary)]">Concentrix</strong>, and{' '}
-              <strong className="text-[var(--text-primary)]">Accenture</strong>. Retired{' '}
-              <strong className="text-[var(--text-primary)]">365+ legacy databases</strong>, avoided{' '}
-              <strong className="text-[var(--text-accent)]">$960,000/year</strong> in recurring software costs, and validated{' '}
-              <strong className="text-[var(--text-primary)]">7,878 Power Apps screens</strong> under GAMP 5 &amp; 21 CFR Part 11 compliance.
+              <strong className="text-[var(--text-primary)]">Concentrix CVG</strong>, and{' '}
+              <strong className="text-[var(--text-primary)]">Accenture</strong>. Architected migrations retiring{' '}
+              <strong className="text-cyan-400">365+ legacy databases</strong> saving{' '}
+              <strong className="text-cyan-400">$960,000/year</strong> with 7,878 validated YAML screens under GAMP 5 compliance, while commanding{' '}
+              <strong className="text-orange-400">34 direct reports</strong> across 7 APAC language pods in Trust &amp; Safety, Content Moderation, and Customer Support—sustaining{' '}
+              <strong className="text-orange-400">&gt;98% contractual SLA adherence</strong> and cutting AHT by 25% via Six Sigma DMAIC.
             </p>
           )}
 
@@ -463,14 +480,14 @@ export function HomeView({
                   ? 'Operations Leader & Team Manager'
                   : activePersona === 'software'
                   ? 'Principal Solutions Architect'
-                  : 'Operations Leader & Solutions Architect'}
+                  : 'Enterprise Solution Architect & Operations Team Manager'}
               </p>
               <p className="text-xs text-[var(--text-tertiary)] mt-1">
                 {activePersona === 'operations'
                   ? 'BPO Operations · Trust & Safety · Content Moderation'
                   : activePersona === 'software'
                   ? 'Full-Stack, Cloud & AI Architecture'
-                  : 'Dual-Track: Enterprise & Full-Stack AI'}
+                  : 'Dual-Track: Enterprise Architecture & Frontline Operations Command'}
               </p>
               {activePersona === 'operations' && (
                 <div className="flex flex-wrap gap-1.5 pt-2">
@@ -485,6 +502,25 @@ export function HomeView({
                   </span>
                   <span className="px-2 py-0.5 rounded-md bg-orange-500/15 border border-orange-500/30 text-[10px] font-mono text-orange-300">
                     Game Review
+                  </span>
+                </div>
+              )}
+              {activePersona === 'both' && (
+                <div className="flex flex-wrap gap-1.5 pt-2">
+                  <span className="px-2 py-0.5 rounded-md bg-cyan-500/15 border border-cyan-500/30 text-[10px] font-mono text-cyan-300">
+                    M365 &amp; Power Platform
+                  </span>
+                  <span className="px-2 py-0.5 rounded-md bg-cyan-500/15 border border-cyan-500/30 text-[10px] font-mono text-cyan-300">
+                    React 19 &amp; TypeScript
+                  </span>
+                  <span className="px-2 py-0.5 rounded-md bg-orange-500/15 border border-orange-500/30 text-[10px] font-mono text-orange-300">
+                    Operations Team Manager
+                  </span>
+                  <span className="px-2 py-0.5 rounded-md bg-orange-500/15 border border-orange-500/30 text-[10px] font-mono text-orange-300">
+                    34 Agents · 7 APAC Pods
+                  </span>
+                  <span className="px-2 py-0.5 rounded-md bg-orange-500/15 border border-orange-500/30 text-[10px] font-mono text-orange-300">
+                    Trust &amp; Safety / QA
                   </span>
                 </div>
               )}
@@ -539,13 +575,13 @@ export function HomeView({
                 </p>
               </div>
             </dl>
-          ) : (
+          ) : activePersona === 'software' ? (
             <dl className="grid grid-cols-2 gap-4 py-4 border-y border-[var(--border-subtle)]">
               <div className="bg-[var(--bg-surface)] p-3.5 rounded-xl border border-[var(--border-subtle)]">
                 <dt className="text-xs font-medium uppercase tracking-wider text-[var(--text-tertiary)]">
                   Databases Retired
                 </dt>
-                <dd className="text-3xl font-extrabold text-[var(--text-accent)] font-mono mt-1">
+                <dd className="text-3xl font-extrabold text-cyan-400 font-mono mt-1">
                   365+
                 </dd>
                 <p className="text-xs text-[var(--text-tertiary)] mt-1">
@@ -556,7 +592,7 @@ export function HomeView({
                 <dt className="text-xs font-medium uppercase tracking-wider text-[var(--text-tertiary)]">
                   License Avoidance
                 </dt>
-                <dd className="text-3xl font-extrabold text-[var(--text-accent)] font-mono mt-1">
+                <dd className="text-3xl font-extrabold text-cyan-400 font-mono mt-1">
                   $960K/yr
                 </dd>
                 <p className="text-xs text-[var(--text-tertiary)] mt-1">
@@ -564,10 +600,58 @@ export function HomeView({
                 </p>
               </div>
             </dl>
+          ) : (
+            /* HYBRID BALANCED 4-METRIC GRID (2 Software Architecture + 2 Operations Leadership) */
+            <dl className="grid grid-cols-2 gap-3 py-4 border-y border-[var(--border-subtle)]">
+              <div className="bg-[var(--bg-surface)] p-3 rounded-xl border border-cyan-500/25">
+                <dt className="text-[10px] font-medium uppercase tracking-wider text-cyan-400 font-mono">
+                  Track 01 · Software
+                </dt>
+                <dd className="text-2xl font-extrabold text-cyan-300 font-mono mt-0.5">
+                  $960K/yr
+                </dd>
+                <p className="text-[11px] text-[var(--text-tertiary)] mt-0.5">
+                  License Avoided (365+ DBs)
+                </p>
+              </div>
+              <div className="bg-[var(--bg-surface)] p-3 rounded-xl border border-cyan-500/25">
+                <dt className="text-[10px] font-medium uppercase tracking-wider text-cyan-400 font-mono">
+                  Track 01 · Systems
+                </dt>
+                <dd className="text-2xl font-extrabold text-cyan-300 font-mono mt-0.5">
+                  7,878
+                </dd>
+                <p className="text-[11px] text-[var(--text-tertiary)] mt-0.5">
+                  Screens in CI (GAMP 5)
+                </p>
+              </div>
+              <div className="bg-[var(--bg-surface)] p-3 rounded-xl border border-orange-500/25">
+                <dt className="text-[10px] font-medium uppercase tracking-wider text-orange-400 font-mono">
+                  Track 02 · Operations
+                </dt>
+                <dd className="text-2xl font-extrabold text-orange-400 font-mono mt-0.5">
+                  34 Agents
+                </dd>
+                <p className="text-[11px] text-[var(--text-tertiary)] mt-0.5">
+                  7 APAC Language Pods
+                </p>
+              </div>
+              <div className="bg-[var(--bg-surface)] p-3 rounded-xl border border-orange-500/25">
+                <dt className="text-[10px] font-medium uppercase tracking-wider text-orange-400 font-mono">
+                  Track 02 · Delivery
+                </dt>
+                <dd className="text-2xl font-extrabold text-orange-400 font-mono mt-0.5">
+                  &gt;98%
+                </dd>
+                <p className="text-[11px] text-[var(--text-tertiary)] mt-0.5">
+                  Contractual SLA Adherence
+                </p>
+              </div>
+            </dl>
           )}
 
           {/* Main Roles & Responsibilities Section in Hero Aside */}
-          {activePersona === 'operations' && (
+          {activePersona === 'operations' ? (
             <div className="p-3.5 rounded-xl bg-[var(--bg-surface)] border border-orange-500/25 space-y-2">
               <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-orange-400 font-mono">
                 <Briefcase size={14} />
@@ -600,7 +684,39 @@ export function HomeView({
                 </li>
               </ul>
             </div>
-          )}
+          ) : activePersona === 'both' ? (
+            <div className="p-3.5 rounded-xl bg-[var(--bg-surface)] border border-purple-500/30 space-y-3">
+              <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-purple-300 font-mono">
+                <span className="flex items-center gap-1.5">
+                  <Sparkles size={14} className="text-purple-400" />
+                  <span>Dual-Track Executive Architecture</span>
+                </span>
+                <span className="text-[10px] px-2 py-0.5 rounded bg-purple-500/15 border border-purple-500/30 text-purple-300">
+                  Equal Focus
+                </span>
+              </div>
+              <div className="space-y-2 text-xs text-[var(--text-secondary)]">
+                <div className="p-2.5 rounded-lg bg-[#0c121e] border border-cyan-500/20 space-y-1">
+                  <p className="font-bold text-cyan-300 flex items-center gap-1.5 font-mono text-[11px]">
+                    <Cpu size={12} />
+                    <span>Track 1: Enterprise Architecture &amp; Modernization</span>
+                  </p>
+                  <p className="text-[11px] text-slate-300 leading-snug">
+                    Architect of 365+ Domino migrations, $960K/yr license avoidance, GAMP 5 &amp; 21 CFR Part 11 ALCOA+ audit trails, and 7,878 Power Apps YAML screens in CI.
+                  </p>
+                </div>
+                <div className="p-2.5 rounded-lg bg-[#140c08] border border-orange-500/20 space-y-1">
+                  <p className="font-bold text-orange-300 flex items-center gap-1.5 font-mono text-[11px]">
+                    <Users size={12} />
+                    <span>Track 2: Operations Management &amp; SLA Governance</span>
+                  </p>
+                  <p className="text-[11px] text-slate-300 leading-snug">
+                    Operations Team Manager commanding 34 agents across 7 APAC language pods; QA Department lead, Trust &amp; Safety / Ads Review, and 2× Innovation Winner.
+                  </p>
+                </div>
+              </div>
+            </div>
+          ) : null}
 
           {/* Industry Accolades Badge (Tailored to Active Persona) */}
           <div className="p-4 rounded-xl bg-[var(--interactive-subtle-bg)] border border-[var(--interactive-subtle-border)] space-y-2.5">
@@ -691,7 +807,9 @@ export function HomeView({
             <h2 id="proof-ticker-title" className="text-xl sm:text-2xl font-bold text-[var(--text-primary)] mt-1">
               {activePersona === 'operations'
                 ? 'Contact Center, Trust & Safety and Operational Metrics'
-                : 'Engineered Business & Architectural Impact'}
+                : activePersona === 'software'
+                ? 'Engineered Business & Architectural Impact'
+                : 'Dual-Track Empirical Business & Operational Impact'}
             </h2>
           </div>
           <span className="text-xs font-mono uppercase tracking-wider text-[var(--text-accent)] bg-[var(--interactive-subtle-bg)] px-3 py-1.5 rounded-lg border border-[var(--interactive-subtle-border)] self-start sm:self-auto">
@@ -717,7 +835,7 @@ export function HomeView({
         </div>
 
         {/* Operational Specialization Scope Matrix */}
-        {activePersona === 'operations' && (
+        {activePersona === 'operations' ? (
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-6 border-t border-[var(--border-subtle)] mt-6">
             <div className="p-3.5 rounded-xl bg-[var(--bg-surface)] border border-orange-500/20 space-y-2">
               <div className="flex items-center gap-2 text-xs font-bold text-orange-400 font-mono uppercase">
@@ -771,7 +889,93 @@ export function HomeView({
               </div>
             </div>
           </div>
-        )}
+        ) : activePersona === 'both' ? (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-6 border-t border-[var(--border-subtle)] mt-6">
+            {/* 1. Track 1 Enterprise Modernization */}
+            <div className="p-3.5 rounded-xl bg-[var(--bg-surface)] border border-cyan-500/25 space-y-2 flex flex-col justify-between">
+              <div className="space-y-1.5">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2 text-xs font-bold text-cyan-300 font-mono uppercase">
+                    <ShieldCheck size={15} className="text-cyan-400 shrink-0" />
+                    <span>Enterprise Modernization</span>
+                  </div>
+                  <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-cyan-500/15 text-cyan-300 border border-cyan-500/30">
+                    Track 1
+                  </span>
+                </div>
+                <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+                  Retiring 365+ legacy Lotus Domino DBs into M365 without premium connector fees. GAMP 5 Cat 4 &amp; 21 CFR Part 11 ALCOA+ audit trails.
+                </p>
+              </div>
+              <div className="text-[10px] font-mono text-cyan-300 pt-1 border-t border-[var(--border-subtle)]">
+                $960K/yr Avoided · 0h Downtime
+              </div>
+            </div>
+
+            {/* 2. Track 1 Full-Stack & AI Systems */}
+            <div className="p-3.5 rounded-xl bg-[var(--bg-surface)] border border-cyan-500/25 space-y-2 flex flex-col justify-between">
+              <div className="space-y-1.5">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2 text-xs font-bold text-cyan-300 font-mono uppercase">
+                    <Cpu size={15} className="text-cyan-400 shrink-0" />
+                    <span>Full-Stack &amp; AI Systems</span>
+                  </div>
+                  <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-cyan-500/15 text-cyan-300 border border-cyan-500/30">
+                    Track 1
+                  </span>
+                </div>
+                <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+                  React 19, TypeScript, and offline-first architectures. 0ms synchronous local hydration and automated multi-agent LLM reasoning gateways.
+                </p>
+              </div>
+              <div className="text-[10px] font-mono text-cyan-300 pt-1 border-t border-[var(--border-subtle)]">
+                Sub-Second Latency · 0% Hallucination
+              </div>
+            </div>
+
+            {/* 3. Track 2 Operations Leadership & Floor Command */}
+            <div className="p-3.5 rounded-xl bg-[var(--bg-surface)] border border-orange-500/25 space-y-2 flex flex-col justify-between">
+              <div className="space-y-1.5">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2 text-xs font-bold text-orange-300 font-mono uppercase">
+                    <Users size={15} className="text-orange-400 shrink-0" />
+                    <span>Floor Ops &amp; Squad Scale</span>
+                  </div>
+                  <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-orange-500/15 text-orange-300 border border-orange-500/30">
+                    Track 2
+                  </span>
+                </div>
+                <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+                  Commanding 34 direct reports across 7 APAC language pods. 24/7 rotational floor management, shrinkage control, and Sev-1 incident command.
+                </p>
+              </div>
+              <div className="text-[10px] font-mono text-orange-300 pt-1 border-t border-[var(--border-subtle)]">
+                &gt;98% Contractual SLA · &lt;5% Attrition
+              </div>
+            </div>
+
+            {/* 4. Track 2 QA Department, Trust & Safety & WBR */}
+            <div className="p-3.5 rounded-xl bg-[var(--bg-surface)] border border-orange-500/25 space-y-2 flex flex-col justify-between">
+              <div className="space-y-1.5">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2 text-xs font-bold text-orange-300 font-mono uppercase">
+                    <Activity size={15} className="text-orange-400 shrink-0" />
+                    <span>QA &amp; Trust &amp; Safety</span>
+                  </div>
+                  <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-orange-500/15 text-orange-300 border border-orange-500/30">
+                    Track 2
+                  </span>
+                </div>
+                <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+                  Hands-on QA Department auditing, client Weekly Business Reviews (WBRs), policy creation, and 2× Enterprise Innovation Winner.
+                </p>
+              </div>
+              <div className="text-[10px] font-mono text-orange-300 pt-1 border-t border-[var(--border-subtle)]">
+                96–99% Quality · 2× Innovation Winner
+              </div>
+            </div>
+          </div>
+        ) : null}
       </section>
 
       {/* =========================================================================
@@ -1319,7 +1523,7 @@ export function HomeView({
         {/* =========================================================================
             CANVA INTERACTIVE WEB PROFILE & INTERVIEW DOSSIER ACCESS BANNER
             ========================================================================= */}
-        {activePersona === 'operations' && (
+        {(activePersona === 'operations' || activePersona === 'both') && (
           <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-[#170e08] via-[#0d0a08] to-[#120f18] border border-orange-500/30 shadow-[0_10px_30px_rgba(249,115,22,0.15)] flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 mt-6">
             <div className="space-y-2 max-w-2xl">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/15 border border-orange-500/30 text-xs font-mono text-orange-300 uppercase">
@@ -1378,12 +1582,18 @@ export function HomeView({
         <div className="flex flex-wrap gap-4 justify-between items-end">
           <div>
             <p className="section-eyebrow">
-              {activePersona === 'operations' ? 'Operational Solutions &amp; Telemetry' : 'Curated Flagship Work'}
+              {activePersona === 'operations'
+                ? 'Operational Solutions &amp; Telemetry'
+                : activePersona === 'software'
+                ? 'Curated Engineering Work'
+                : 'Dual-Track Curated Flagship Work'}
             </p>
             <h2 id="selected-work-title" className="section-title">
               {activePersona === 'operations'
                 ? 'Flagship Operational Solutions &amp; Floor Systems.'
-                : 'Problems Solved. Systems Delivered With Verifiable Impact.'}
+                : activePersona === 'software'
+                ? 'Problems Solved. Systems Delivered With Verifiable Impact.'
+                : 'Balanced Deliverables: Enterprise Architecture & Operations Telemetry.'}
             </h2>
           </div>
           <a href="#/projects" className="action-secondary">
@@ -1391,7 +1601,22 @@ export function HomeView({
           </a>
         </div>
 
-        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+        {activePersona === 'both' && (
+          <div className="flex flex-wrap items-center justify-between gap-3 p-3.5 rounded-xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] text-xs">
+            <div className="flex items-center gap-2">
+              <span className="w-2.5 h-2.5 rounded-full bg-cyan-400" />
+              <span className="font-mono text-cyan-300 font-bold">Track 01 (Software):</span>
+              <span className="text-[var(--text-secondary)]">Enterprise Modernization &amp; Full-Stack AI Architecture</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="w-2.5 h-2.5 rounded-full bg-orange-400" />
+              <span className="font-mono text-orange-300 font-bold">Track 02 (Operations):</span>
+              <span className="text-[var(--text-secondary)]">34-Agent Floor Telemetry &amp; BPO Automation</span>
+            </div>
+          </div>
+        )}
+
+        <div className={`grid md:grid-cols-2 ${activePersona === 'both' ? 'xl:grid-cols-2' : 'xl:grid-cols-3'} gap-6`}>
           {displayProjects.map(project => (
             <article
               key={project.id}
@@ -1506,7 +1731,7 @@ export function HomeView({
           </p>
         ) : (
           <p className="text-base text-[var(--text-secondary)] leading-relaxed max-w-3xl">
-            {PERSONAL_INFO.summary}
+            A battle-tested Enterprise Solutions Architect and Operations Team Manager with 9+ years directing mission-critical enterprise systems and high-volume BPO operations across IOI Corporation, Concentrix CVG, and Accenture. Proven track record retiring 365+ legacy databases saving $960,000/year under GAMP 5 compliance, while commanding 34 direct reports across 7 APAC language pods in Trust &amp; Safety, Content Moderation, and Customer Support—sustaining &gt;98% contractual SLA compliance, leading the QA Department, and cutting AHT by 25% via Six Sigma DMAIC.
           </p>
         )}
 
@@ -1643,11 +1868,18 @@ export function HomeView({
           <div>
             <p className="section-eyebrow">Next Steps</p>
             <h2 id="home-contact-title" className="section-title">
-              Let’s Discuss Your Modernization or Systems Roadmap.
+              {activePersona === 'operations'
+                ? 'Let’s Discuss Your Operations Delivery &amp; Floor Leadership Needs.'
+                : activePersona === 'software'
+                ? 'Let’s Discuss Your Modernization &amp; Enterprise Systems Roadmap.'
+                : 'Let’s Discuss Your Enterprise Architecture &amp; Operations Delivery Needs.'}
             </h2>
             <p className="text-sm sm:text-base text-[var(--text-secondary)] mt-1.5 max-w-2xl">
-              Currently open to Principal Solution Architect, Modernization Lead, and Technical Engineering Director
-              opportunities in Kuala Lumpur, Singapore, and remote across APAC.
+              {activePersona === 'operations'
+                ? 'Currently open to Operations Team Manager, BPO Operations Lead, and Service Delivery Director opportunities across Kuala Lumpur, Singapore, and regional APAC.'
+                : activePersona === 'software'
+                ? 'Currently open to Principal Solution Architect, Modernization Lead, and Technical Engineering Director opportunities in Kuala Lumpur, Singapore, and remote across APAC.'
+                : 'Currently open to Enterprise Solution Architect, Operations Team Manager, and Director of Solutions &amp; Service Delivery opportunities in Kuala Lumpur, Singapore, and remote across APAC.'}
             </p>
           </div>
           <a
