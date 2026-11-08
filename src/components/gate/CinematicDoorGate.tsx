@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Code2, Workflow, Sparkles, ArrowRight, X, Cpu, Users } from 'lucide-react';
 
@@ -18,6 +18,13 @@ export const CinematicDoorGate: React.FC<CinematicDoorGateProps> = ({
   // Gate animation phases: 'closed' -> 'cracked' -> 'opening' -> 'complete'
   const [phase, setPhase] = useState<'closed' | 'cracked' | 'opening' | 'skipping'>('closed');
   const [chosenPersona, setChosenPersona] = useState<PersonaType | null>(null);
+  const animTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (animTimerRef.current) clearTimeout(animTimerRef.current);
+    };
+  }, []);
 
   // Transition from closed to cracked after a brief cinematic pause
   useEffect(() => {
@@ -44,10 +51,9 @@ export const CinematicDoorGate: React.FC<CinematicDoorGateProps> = ({
 
     setPhase('opening');
     // Swing doors wide open, then hand off to parent
-    const timer = setTimeout(() => {
+    animTimerRef.current = setTimeout(() => {
       onSelectPersona(persona);
     }, 720);
-    return () => clearTimeout(timer);
   }, [phase, isMotionActive, onSelectPersona]);
 
   const handleFastSkip = useCallback(() => {

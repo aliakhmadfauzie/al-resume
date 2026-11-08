@@ -80,6 +80,15 @@ export default function App() {
     }
   };
 
+  const handlePersonaChange = (persona: PersonaType) => {
+    setActivePersona(persona);
+    try {
+      sessionStorage.setItem('portfolio-persona', persona);
+    } catch {
+      /* Safe fallback in private browsing */
+    }
+  };
+
   const handleSkipDoorGate = () => {
     setShowDoorGate(false);
     try {
@@ -179,7 +188,7 @@ export default function App() {
                 onOpenResume={() => openOverlay('resume')}
                 onLaunchDemo={handleLaunchDemo}
                 activePersona={activePersona}
-                onPersonaChange={setActivePersona}
+                onPersonaChange={handlePersonaChange}
               />
             )}
 
