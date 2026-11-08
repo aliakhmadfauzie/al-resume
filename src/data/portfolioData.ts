@@ -1321,13 +1321,14 @@ export const WORK_EXPERIENCE: ExperienceItem[] = [
     company: "Universiti Utara Malaysia (UUM)",
     location: "Sintok, Kedah, Malaysia",
     period: "2013 – 2017",
-    tags: ["Bachelor Degree", "5× Dean's List", "SRC Intl Affairs", "IBMS President", "Full Scholarship"],
+    tags: ["Bachelor Degree", "1st Intl SRC Member", "5× Dean's List", "SOIS Bus Stop Contributor", "Full Scholarship", "Bond Reform"],
     bulletPoints: [
       "Graduated with Bachelor's Degree in International Business Management With Honours (CGPA 3.48, Second Upper Class Honours, Minor in Logistics & Transportation).",
-      "Received total of 5× Dean's List Academic Honors Awards across 5 academic semesters (Semesters 1, 2, 3, 4, and 5) and Special Achievement in Leadership Award (Anugerah Kerana Jasa - AK_J).",
-      "Elected to the Student Representative Council (SRC / MPPUUM) for International Affairs, directing campus-wide international student governance, cross-cultural initiatives, and diplomatic delegations.",
-      "Served as President of IBMS (International Business Management Association), presiding over student governance, trade symposiums, and cross-border commercial study missions.",
-      "Awarded the prestigious UUM International Scholarship Scheme Achievement Award (February 2014, RM10,000 per semester) for outstanding academic, leadership, and community merit."
+      "Received total of 5× Dean's List Academic Honors Awards across 5 academic semesters and Special Achievement in Leadership Award (Anugerah Kerana Jasa - AK_J).",
+      "Elected as the First International Student to the Student Representative Council (SRC / Majlis Perwakilan Pelajar - MPP UUM) for International Affairs (Kerusi Hal Ehwal Antarabangsa).",
+      "Organized and executed 8 cross-border international delegations as official UUM representative: 4 programs to Indonesia, 2 to Thailand, 1 to South Korea, and 1 to the Philippines.",
+      "Successfully fulfilled landmark student manifesto commitments: (1) Spearheaded the construction of the permanent bus stop at SOIS (School of International Studies) with name officially engraved on the structure as contributor; (2) Successfully negotiated lowering the international student bond and expanding the allowed tuition fee debt threshold from RM150 to RM1,500 to protect student course registration.",
+      "Awarded the prestigious UUM International Scholarship Scheme Achievement Award (February 2014, RM10,000 per semester) for outstanding academic, diplomatic, and leadership merit."
     ],
     iconUrl: "/assets/profile/ali-avatar.jpg"
   }
@@ -3183,14 +3184,14 @@ export const LINKEDIN_HONORS_AWARDS: HonorAwardItem[] = [
   },
   {
     "id": "award-uum-mpp-exco",
-    "title": "Student Representative Council (SRC) for International Affairs & President of IBMS",
+    "title": "First International Student Elected to Student Representative Council (SRC) & President of IBMS",
     "issuer": "Universiti Utara Malaysia (UUM) / Majlis Perwakilan Pelajar (SRC)",
     "organization": "Universiti Utara Malaysia (UUM)",
     "organizationLogoId": "uum",
     "year": "2014 – 2017",
     "tier": "academic",
-    "highlightBadge": "Elected Campus Representative & IBMS President",
-    "description": "Elected to Student Representative Council (SRC / MPPUUM) for International Affairs and served as President of IBMS (International Business Management Association), directing campus-wide international student governance, cross-cultural mobility programs, and global commerce symposia.",
+    "highlightBadge": "1st International Student SRC & IBMS President",
+    "description": "First international student elected to the Student Representative Council (SRC / MPP UUM) for International Affairs (Kerusi Hal Ehwal Antarabangsa) and served as President of IBMS. Spearheaded 8 cross-border international delegations (4 Indonesia, 2 Thailand, 1 South Korea, 1 Philippines). Delivered landmark manifesto commitments: constructed the permanent bus stop at SOIS (School of International Studies) with name engraved as contributor, and lowered international student bonds while expanding outstanding tuition fee debt allowance from RM150 to RM1,500.",
     "verificationUrl": "https://www.linkedin.com/in/aliakhmadf/details/honors/"
   }
 ];

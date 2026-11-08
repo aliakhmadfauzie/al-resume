@@ -19,8 +19,24 @@ import {
 import { DualCareerBranchVisualizer } from '../career/DualCareerBranchVisualizer';
 import { OrganizationLogo } from '../OrganizationLogo';
 
+function formatBulletText(text: string) {
+  const colonIndex = text.indexOf(':');
+  if (colonIndex > 0 && colonIndex < 65) {
+    const label = text.slice(0, colonIndex);
+    const rest = text.slice(colonIndex + 1);
+    return (
+      <>
+        <strong className="text-[var(--text-primary)] font-semibold">{label}:</strong>
+        {rest}
+      </>
+    );
+  }
+  return text;
+}
+
 export const ExperienceView: React.FC = () => {
   const [selectedTag, setSelectedTag] = useState<string>('all');
+  const [visibleCertCount, setVisibleCertCount] = useState<number>(6);
 
   const allTags = [
     'all',
@@ -78,7 +94,7 @@ export const ExperienceView: React.FC = () => {
             <p className="text-xs sm:text-sm font-mono text-[var(--text-accent)]">
               {PERSONAL_INFO.linkedInHeadline}
             </p>
-            <p className="text-xs text-[var(--text-secondary)] flex items-center gap-1.5">
+            <p className="text-sm text-[var(--text-secondary)] flex items-center gap-1.5">
               <MapPin className="w-3.5 h-3.5 text-[var(--interactive-primary)] shrink-0" />
               <span>{PERSONAL_INFO.location}</span>
             </p>
@@ -103,6 +119,30 @@ export const ExperienceView: React.FC = () => {
             <Download className="w-3.5 h-3.5 text-[var(--text-accent)]" />
             <span>LinkedIn PDF</span>
           </a>
+        </div>
+      </div>
+
+      {/* Executive Pedigree & Progression Rail (The 6-Second Recruiter Triage) */}
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="bg-[var(--bg-surface)] p-4 sm:p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-1">
+          <p className="text-[11px] font-mono uppercase tracking-wider text-[var(--text-tertiary)]">CAREER TENURE</p>
+          <p className="text-2xl sm:text-3xl font-extrabold text-[var(--text-accent)] font-mono">9+ Years</p>
+          <p className="text-xs text-[var(--text-secondary)]">Modernization &amp; Ops Leadership</p>
+        </div>
+        <div className="bg-[var(--bg-surface)] p-4 sm:p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-1">
+          <p className="text-[11px] font-mono uppercase tracking-wider text-[var(--text-tertiary)]">MERIT ADVANCEMENT</p>
+          <p className="text-2xl sm:text-3xl font-extrabold text-[var(--text-primary)] font-mono">4 Promotions</p>
+          <p className="text-xs text-[var(--text-secondary)]">Analyst → Sr. Lead &amp; Ops Manager</p>
+        </div>
+        <div className="bg-[var(--bg-surface)] p-4 sm:p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-1">
+          <p className="text-[11px] font-mono uppercase tracking-wider text-[var(--text-tertiary)]">CROSS-BORDER SCALE</p>
+          <p className="text-2xl sm:text-3xl font-extrabold text-[var(--text-accent)] font-mono">380% Growth</p>
+          <p className="text-xs text-[var(--text-secondary)]">9 to 34 Agents · 7 APAC Markets</p>
+        </div>
+        <div className="bg-[var(--bg-surface)] p-4 sm:p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-1">
+          <p className="text-[11px] font-mono uppercase tracking-wider text-[var(--text-tertiary)]">CRISIS RECOGNITION</p>
+          <p className="text-2xl sm:text-3xl font-extrabold text-[var(--text-primary)] font-mono">Diamond Award</p>
+          <p className="text-xs text-[var(--text-secondary)]">Hang Tuah Distinction · 800% Surge</p>
         </div>
       </div>
 
@@ -136,6 +176,7 @@ export const ExperienceView: React.FC = () => {
             <button
               key={tag}
               onClick={() => setSelectedTag(tag)}
+              aria-pressed={selectedTag === tag}
               className={`px-3 py-1.5 rounded-[var(--radius-sm)] text-xs font-medium whitespace-nowrap transition-colors cursor-pointer ${
                 selectedTag === tag
                   ? 'bg-[var(--interactive-primary)] text-[#090a0d] font-bold'
@@ -204,7 +245,7 @@ export const ExperienceView: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="flex flex-col sm:items-end space-y-1 font-mono text-xs text-[var(--text-secondary)]">
+                <div className="flex flex-col sm:items-end space-y-1 font-mono text-sm text-[var(--text-secondary)]">
                   <span className="text-[var(--text-primary)] font-medium">{item.period}</span>
                   {item.location && (
                     <span className="flex items-center space-x-1 text-[11px] text-[var(--text-tertiary)]">
@@ -261,7 +302,7 @@ export const ExperienceView: React.FC = () => {
                 {item.bulletPoints.map((bullet, bIdx) => (
                   <li key={bIdx} className="flex items-start space-x-2.5">
                     <span className="text-[var(--text-accent)] mt-1 shrink-0 font-mono">·</span>
-                    <span>{bullet}</span>
+                    <span>{formatBulletText(bullet)}</span>
                   </li>
                 ))}
               </ul>
@@ -294,7 +335,7 @@ export const ExperienceView: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {LINKEDIN_CERTIFICATIONS.map((cert) => (
+          {LINKEDIN_CERTIFICATIONS.slice(0, visibleCertCount).map((cert) => (
             <div
               key={cert.id}
               className="rounded-[var(--radius-md)] bg-[var(--bg-surface)] border border-[var(--border-subtle)] hover:border-[var(--border-focus)] p-5 flex flex-col justify-between space-y-3 transition-colors"
@@ -322,7 +363,7 @@ export const ExperienceView: React.FC = () => {
                     orgName={cert.organization || cert.issuer}
                     size="xs"
                   />
-                  <p className="text-xs text-[var(--text-secondary)] font-mono font-medium truncate">
+                  <p className="text-sm text-[var(--text-secondary)] font-mono font-medium truncate">
                     {cert.organization || cert.issuer}
                   </p>
                 </div>
@@ -336,6 +377,55 @@ export const ExperienceView: React.FC = () => {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Progressive Disclosure Controls: Prioritizing Top Important Credentials First */}
+        <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-[var(--border-subtle)] bg-[var(--bg-surface)] p-4 rounded-xl border border-[var(--border-subtle)]">
+          <div className="text-xs font-mono text-[var(--text-secondary)] flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-orange-400 animate-pulse" />
+            <span>
+              Showing <strong className="text-[var(--text-primary)] font-bold">{Math.min(visibleCertCount, LINKEDIN_CERTIFICATIONS.length)}</strong> of <strong className="text-[var(--text-primary)] font-bold">{LINKEDIN_CERTIFICATIONS.length}</strong> credentials
+              {visibleCertCount < LINKEDIN_CERTIFICATIONS.length ? ' (Top Priority Curated)' : ' (Full Archive)'}
+            </span>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-2.5">
+            {visibleCertCount < LINKEDIN_CERTIFICATIONS.length ? (
+              <>
+                <button
+                  type="button"
+                  onClick={() => setVisibleCertCount((prev) => Math.min(prev + 6, LINKEDIN_CERTIFICATIONS.length))}
+                  className="px-3.5 py-2 rounded-lg bg-[var(--interactive-subtle-bg)] hover:bg-[var(--interactive-subtle-border)] border border-[var(--interactive-subtle-border)] text-xs font-semibold text-[var(--text-accent)] transition-all cursor-pointer flex items-center gap-1.5"
+                >
+                  <Sparkles size={13} className="text-orange-400" />
+                  <span>Show More (+{Math.min(6, LINKEDIN_CERTIFICATIONS.length - visibleCertCount)})</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setVisibleCertCount(LINKEDIN_CERTIFICATIONS.length)}
+                  className="px-3.5 py-2 rounded-lg bg-[var(--bg-canvas)] hover:bg-[var(--bg-surface)] border border-[var(--border-subtle)] text-xs font-mono text-[var(--text-secondary)] transition-all cursor-pointer"
+                >
+                  Show All ({LINKEDIN_CERTIFICATIONS.length})
+                </button>
+              </>
+            ) : (
+              <button
+                type="button"
+                onClick={() => setVisibleCertCount(6)}
+                className="px-3.5 py-2 rounded-lg bg-[var(--bg-canvas)] hover:bg-[var(--bg-surface)] border border-[var(--border-subtle)] text-xs font-semibold text-[var(--text-secondary)] transition-all cursor-pointer"
+              >
+                Collapse to Top 6
+              </button>
+            )}
+
+            <a
+              href="#/certifications"
+              className="px-3.5 py-2 rounded-lg bg-[var(--interactive-primary)] hover:opacity-90 text-black text-xs font-bold transition-all inline-flex items-center gap-1.5 cursor-pointer"
+            >
+              <span>Explore Certifications Hub</span>
+              <ExternalLink size={13} />
+            </a>
+          </div>
         </div>
       </div>
 
@@ -382,7 +472,7 @@ export const ExperienceView: React.FC = () => {
                     {award.organization || award.issuer}
                   </span>
                 </div>
-                <p className="text-xs text-[var(--text-secondary)] leading-relaxed pt-1">
+                <p className="text-sm text-[var(--text-secondary)] leading-relaxed pt-1">
                   {award.description}
                 </p>
 

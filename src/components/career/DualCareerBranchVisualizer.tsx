@@ -96,10 +96,10 @@ const CircularMetricGauge: React.FC<{
         </span>
       </div>
       <div className="min-w-0 pr-1">
-        <div className="text-xs sm:text-sm font-bold text-white font-mono truncate" title={value}>
+        <div className="text-xs sm:text-sm font-bold text-white font-mono whitespace-nowrap" title={value}>
           {value}
         </div>
-        <div className="text-[10px] font-mono text-neutral-400 truncate" title={label}>
+        <div className="text-[11px] font-mono text-neutral-400 whitespace-nowrap mt-0.5" title={label}>
           {label}
         </div>
       </div>
@@ -107,10 +107,148 @@ const CircularMetricGauge: React.FC<{
   );
 };
 
+/**
+ * Pop-up telemetry inspection card rendered directly adjacent/underneath
+ * the clicked milestone button to ensure immediate contextual visibility.
+ */
+const MilestoneDetailPopup: React.FC<{
+  detail: MilestoneDetail;
+  onClose: () => void;
+}> = ({ detail, onClose }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: -10, scale: 0.98 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      exit={{ opacity: 0, y: -8, scale: 0.98 }}
+      transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+      className="mt-2.5 rounded-2xl bg-[#0c0f17] border border-white/20 p-5 sm:p-6 space-y-4 shadow-2xl relative overflow-hidden ring-1 ring-white/10"
+    >
+      {/* Top ambient glint bar */}
+      <div
+        className={`absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r ${
+          detail.category === 'software'
+            ? 'from-transparent via-[#00dbe7] to-transparent'
+            : detail.category === 'operations'
+            ? 'from-transparent via-[#f59e0b] to-transparent'
+            : 'from-transparent via-indigo-500 to-transparent'
+        }`}
+      />
+
+      {/* Header Row */}
+      <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-3 border-b border-white/10 pb-4">
+        <div>
+          <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--text-accent)] font-bold flex items-center gap-1.5">
+            <Activity className="w-3.5 h-3.5 text-[var(--interactive-primary)]" />
+            <span>// DEEP DIVE CREDENTIALS &amp; EVIDENCE TELEMETRY</span>
+          </span>
+          <h3 className="text-base sm:text-lg font-bold text-white mt-1">
+            {detail.role}
+          </h3>
+          <div className="flex flex-wrap items-center gap-2 mt-1">
+            <p className="text-xs text-[#00dbe7] font-mono font-medium">
+              {detail.company} · {detail.period}
+            </p>
+            {detail.promotionBadge && (
+              <span className="px-2 py-0.5 rounded text-[10px] font-mono font-semibold bg-[#22c55e]/15 text-[#22c55e] border border-[#22c55e]/30">
+                {detail.promotionBadge}
+              </span>
+            )}
+          </div>
+        </div>
+
+        <div className="flex items-center gap-2 self-end xl:self-auto">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 shrink-0">
+            {detail.metrics.map((m, idx) => (
+              <CircularMetricGauge
+                key={idx}
+                label={m.label}
+                value={m.value}
+                color={m.color || (detail.category === 'software' ? '#00dbe7' : '#f59e0b')}
+              />
+            ))}
+          </div>
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              onClose();
+            }}
+            className="p-1.5 rounded-lg bg-white/5 hover:bg-white/15 text-neutral-400 hover:text-white border border-white/10 transition-colors ml-1.5 cursor-pointer"
+            title="Collapse telemetry"
+          >
+            ✕
+          </button>
+        </div>
+      </div>
+
+      {/* Evidence Columns */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-3.5">
+        {/* Leadership & Pre-Sales Achievements */}
+        <div className="space-y-2 bg-white/[0.015] border border-white/5 rounded-xl p-3.5">
+          <div className="flex items-center space-x-2 text-xs font-mono font-bold text-[#f59e0b] uppercase">
+            <Handshake className="w-4 h-4 text-[#f59e0b] shrink-0" />
+            <span>Leadership, Commercial &amp; Pre-Sales Impact</span>
+          </div>
+          <ul className="space-y-2 text-xs text-neutral-300 leading-relaxed">
+            {(detail.leadershipSalesHighlights || []).map((bullet, idx) => (
+              <li key={idx} className="flex items-start space-x-2">
+                <span className="text-[#f59e0b] mt-0.5 shrink-0 font-bold">◆</span>
+                <span>{bullet}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Technical Architecture & Operational Engineering */}
+        <div className="space-y-2 bg-white/[0.015] border border-white/5 rounded-xl p-3.5">
+          <div className="flex items-center space-x-2 text-xs font-mono font-bold text-[#00dbe7] uppercase">
+            <Workflow className="w-4 h-4 text-[#00dbe7] shrink-0" />
+            <span>Technical Execution &amp; Systems Architecture</span>
+          </div>
+          <ul className="space-y-2 text-xs text-neutral-300 leading-relaxed">
+            {detail.techOrOpsHighlights.map((bullet, idx) => (
+              <li key={idx} className="flex items-start space-x-2">
+                <span className="text-[#00dbe7] mt-0.5 shrink-0 font-bold">◆</span>
+                <span>{bullet}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      {/* Tag Pills */}
+      <div className="pt-2 border-t border-white/10 flex flex-wrap gap-1.5">
+        {detail.tags.map((tag, tIdx) => (
+          <span
+            key={tIdx}
+            className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-white/[0.04] text-neutral-300 border border-white/10"
+          >
+            {tag}
+          </span>
+        ))}
+      </div>
+    </motion.div>
+  );
+};
+
 export const DualCareerBranchVisualizer: React.FC = () => {
   const [activeBranch, setActiveBranch] = useState<CareerBranchType>('both');
-  const [selectedMilestone, setSelectedMilestone] = useState<string>('software-current');
+  const [selectedMilestone, setSelectedMilestone] = useState<string | null>(null);
   const [hoveredNode, setHoveredNode] = useState<string | null>(null);
+
+  const handleMilestoneSelect = (key: string) => {
+    if (selectedMilestone === key) {
+      setSelectedMilestone(null);
+    } else {
+      setSelectedMilestone(key);
+      setTimeout(() => {
+        const el = document.getElementById(`milestone-card-${key}`);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      }, 60);
+    }
+  };
 
   const softwareMilestones: Record<string, MilestoneDetail> = {
     'software-current': {
@@ -364,9 +502,11 @@ export const DualCareerBranchVisualizer: React.FC = () => {
       category: 'root',
       promotionBadge: '★ Full Academic Scholar',
       leadershipSalesHighlights: [
-        'Awarded full academic scholarship based on premier matriculation entrance standing.',
-        'Elected to student council leadership committees, organizing cross-campus commercial symposia.',
-        'Maintained top academic standing across all 8 semesters, graduating with Second Class Upper Honours (CGPA 3.48).'
+        'Awarded full academic scholarship based on premier matriculation entrance standing (RM10,000/sem merit scholarship).',
+        'First international student elected to the Student Representative Council (SRC / Majlis Perwakilan Pelajar - MPP UUM) for International Affairs (Kerusi Hal Ehwal Antarabangsa).',
+        'Spearheaded 8 official UUM cross-border international delegations: 4 programs to Indonesia, 2 to Thailand, 1 to South Korea, and 1 to the Philippines.',
+        'Fulfilled historic student manifesto milestones: (1) Constructed permanent bus stop shelter at SOIS (School of International Studies) with name engraved as contributor; (2) Successfully lowered international student bond and expanded tuition fee debt threshold from RM150 to RM1,500 to protect student course registration.',
+        'Maintained top academic standing across all 8 semesters, graduating with Second Class Upper Honours (CGPA 3.48, 5× Dean’s List).'
       ],
       techOrOpsHighlights: [
         'Minor in International Logistics, supply chain network simulation, and statistical business decision modeling.',
@@ -412,10 +552,9 @@ export const DualCareerBranchVisualizer: React.FC = () => {
     ]
   };
 
-  const currentDetail =
-    softwareMilestones[selectedMilestone] ||
-    operationsMilestones[selectedMilestone] ||
-    softwareMilestones['software-current'];
+  const currentDetail = selectedMilestone
+    ? (softwareMilestones[selectedMilestone] || operationsMilestones[selectedMilestone] || softwareMilestones['software-current'])
+    : null;
 
   // SVG Coordinates for the bifurcation nodes
   const nodeCoords: Record<string, { x: number; y: number; label: string; year: string; branch: 'software' | 'operations' | 'root'; color: string }> = {
@@ -467,7 +606,7 @@ export const DualCareerBranchVisualizer: React.FC = () => {
             type="button"
             onClick={() => {
               setActiveBranch('software');
-              if (!selectedMilestone.startsWith('software')) setSelectedMilestone('software-current');
+              if (selectedMilestone && !selectedMilestone.startsWith('software')) setSelectedMilestone('software-current');
             }}
             className={`px-3 py-1.5 rounded-[var(--radius-sm)] text-xs font-mono font-medium transition-all cursor-pointer ${
               activeBranch === 'software'
@@ -481,7 +620,7 @@ export const DualCareerBranchVisualizer: React.FC = () => {
             type="button"
             onClick={() => {
               setActiveBranch('operations');
-              if (!selectedMilestone.startsWith('ops')) setSelectedMilestone('ops-concentrix');
+              if (selectedMilestone && !selectedMilestone.startsWith('ops')) setSelectedMilestone('ops-concentrix');
             }}
             className={`px-3 py-1.5 rounded-[var(--radius-sm)] text-xs font-mono font-medium transition-all cursor-pointer ${
               activeBranch === 'operations'
@@ -550,7 +689,7 @@ export const DualCareerBranchVisualizer: React.FC = () => {
                 </div>
                 <div>
                   <span className="text-[10px] font-mono font-bold text-[#f59e0b] uppercase tracking-wider">BRANCH 02 · OPERATIONS, QA, POLICY &amp; TRAINING</span>
-                  <h3 className="text-sm font-bold text-white">Operations Leadership, QA Department, Policy &amp; Training</h3>
+                  <h3 className="text-sm font-bold text-white">Operations Team Manager (QA, Policy &amp; Training)</h3>
                 </div>
               </div>
               <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-[#f59e0b]/10 text-[#f59e0b] border border-[#f59e0b]/20 shrink-0">
@@ -736,7 +875,12 @@ export const DualCareerBranchVisualizer: React.FC = () => {
                   key={key}
                   transform={`translate(${node.x}, ${node.y})`}
                   className="cursor-pointer transition-transform"
-                  onClick={() => setSelectedMilestone(key)}
+                  onClick={() => handleMilestoneSelect(key)}
+                  role="button"
+                  tabIndex={0}
+                  aria-label={node.label + ", " + node.year}
+                  aria-pressed={isSelected}
+                  onKeyDown={event => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); handleMilestoneSelect(key); } }}
                   onMouseEnter={() => setHoveredNode(key)}
                   onMouseLeave={() => setHoveredNode(null)}
                   opacity={isDimmed ? 0.35 : 1}
@@ -834,37 +978,61 @@ export const DualCareerBranchVisualizer: React.FC = () => {
             {Object.entries(softwareMilestones).map(([key, item]) => {
               const isSelected = selectedMilestone === key;
               return (
-                <div
-                  key={key}
-                  onClick={() => setSelectedMilestone(key)}
-                  className={`rounded-xl p-4 border transition-all cursor-pointer ${
-                    isSelected
-                      ? 'bg-[#00dbe7]/10 border-[#00dbe7] shadow-[0_0_20px_rgba(0,219,231,0.2)]'
-                      : 'bg-white/[0.02] border-white/10 hover:border-white/20'
-                  }`}
-                >
-                  <div className="flex items-start justify-between gap-2">
-                    <div>
-                      <div className="flex items-center gap-2">
-                        <span className="text-[10px] font-mono text-[#00dbe7] bg-[#00dbe7]/10 px-2 py-0.5 rounded">
-                          {item.period}
-                        </span>
-                        <span className="text-xs font-semibold text-neutral-300">{item.company}</span>
+                <div key={key} id={`milestone-card-${key}`} className="space-y-2">
+                  <div
+                    onClick={() => handleMilestoneSelect(key)}
+                    className={`group relative rounded-xl p-4 border transition-all cursor-pointer ${
+                      isSelected
+                        ? 'bg-[#00dbe7]/10 border-[#00dbe7] shadow-[0_0_24px_rgba(0,219,231,0.25)] ring-1 ring-[#00dbe7]/50'
+                        : 'bg-white/[0.02] border-white/10 hover:border-white/20 hover:bg-white/[0.04]'
+                    }`}
+                  >
+                    <div className="flex items-start justify-between gap-2">
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <span className="text-[10px] font-mono text-[#00dbe7] bg-[#00dbe7]/10 px-2 py-0.5 rounded border border-[#00dbe7]/20">
+                            {item.period}
+                          </span>
+                          <span className="text-xs font-semibold text-neutral-300">{item.company}</span>
+                        </div>
+                        <h4 className="text-sm font-bold text-white mt-1">{item.role}</h4>
+                        {item.promotionBadge && (
+                          <span className="inline-block px-1.5 py-0.5 mt-1 rounded text-[10px] font-mono font-semibold bg-[#22c55e]/15 text-[#22c55e] border border-[#22c55e]/30">
+                            {item.promotionBadge}
+                          </span>
+                        )}
                       </div>
-                      <h4 className="text-sm font-bold text-white mt-1">{item.role}</h4>
-                      {item.promotionBadge && (
-                        <span className="inline-block px-1.5 py-0.5 mt-1 rounded text-[10px] font-mono font-semibold bg-[#22c55e]/15 text-[#22c55e] border border-[#22c55e]/30">
-                          {item.promotionBadge}
-                        </span>
-                      )}
+                      <span className="text-xs font-mono font-semibold text-[#00dbe7] shrink-0 flex items-center gap-1">
+                        {isSelected ? (
+                          <>
+                            <span>● Inspected</span>
+                            <motion.span
+                              animate={{ y: [0, 3, 0] }}
+                              transition={{ duration: 1.2, repeat: Infinity, ease: 'easeInOut' }}
+                              className="font-bold text-sm"
+                            >
+                              ↓
+                            </motion.span>
+                          </>
+                        ) : (
+                          '○ View'
+                        )}
+                      </span>
                     </div>
-                    <span className="text-xs font-mono font-semibold text-[#00dbe7] shrink-0">
-                      {isSelected ? '● Inspected' : '○ View'}
-                    </span>
+                    <p className="text-xs text-neutral-400 mt-1.5 leading-snug">
+                      {item.headline}
+                    </p>
                   </div>
-                  <p className="text-xs text-neutral-400 mt-1.5 leading-snug">
-                    {item.headline}
-                  </p>
+
+                  {/* Render detail pop-up directly adjacent underneath this button */}
+                  <AnimatePresence>
+                    {isSelected && (
+                      <MilestoneDetailPopup
+                        detail={item}
+                        onClose={() => setSelectedMilestone(null)}
+                      />
+                    )}
+                  </AnimatePresence>
                 </div>
               );
             })}
@@ -883,149 +1051,67 @@ export const DualCareerBranchVisualizer: React.FC = () => {
             {Object.entries(operationsMilestones).map(([key, item]) => {
               const isSelected = selectedMilestone === key;
               return (
-                <div
-                  key={key}
-                  onClick={() => setSelectedMilestone(key)}
-                  className={`rounded-xl p-4 border transition-all cursor-pointer ${
-                    isSelected
-                      ? 'bg-[#f59e0b]/10 border-[#f59e0b] shadow-[0_0_20px_rgba(245,158,11,0.2)]'
-                      : 'bg-white/[0.02] border-white/10 hover:border-white/20'
-                  }`}
-                >
-                  <div className="flex items-start justify-between gap-2">
-                    <div>
-                      <div className="flex items-center gap-2">
-                        <span className="text-[10px] font-mono text-[#f59e0b] bg-[#f59e0b]/10 px-2 py-0.5 rounded">
-                          {item.period}
-                        </span>
-                        <span className="text-xs font-semibold text-neutral-300">{item.company}</span>
+                <div key={key} id={`milestone-card-${key}`} className="space-y-2">
+                  <div
+                    onClick={() => handleMilestoneSelect(key)}
+                    className={`group relative rounded-xl p-4 border transition-all cursor-pointer ${
+                      isSelected
+                        ? 'bg-[#f59e0b]/10 border-[#f59e0b] shadow-[0_0_24px_rgba(245,158,11,0.25)] ring-1 ring-[#f59e0b]/50'
+                        : 'bg-white/[0.02] border-white/10 hover:border-white/20 hover:bg-white/[0.04]'
+                    }`}
+                  >
+                    <div className="flex items-start justify-between gap-2">
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <span className="text-[10px] font-mono text-[#f59e0b] bg-[#f59e0b]/10 px-2 py-0.5 rounded border border-[#f59e0b]/20">
+                            {item.period}
+                          </span>
+                          <span className="text-xs font-semibold text-neutral-300">{item.company}</span>
+                        </div>
+                        <h4 className="text-sm font-bold text-white mt-1">{item.role}</h4>
+                        {item.promotionBadge && (
+                          <span className="inline-block px-1.5 py-0.5 mt-1 rounded text-[10px] font-mono font-semibold bg-[#22c55e]/15 text-[#22c55e] border border-[#22c55e]/30">
+                            {item.promotionBadge}
+                          </span>
+                        )}
                       </div>
-                      <h4 className="text-sm font-bold text-white mt-1">{item.role}</h4>
-                      {item.promotionBadge && (
-                        <span className="inline-block px-1.5 py-0.5 mt-1 rounded text-[10px] font-mono font-semibold bg-[#22c55e]/15 text-[#22c55e] border border-[#22c55e]/30">
-                          {item.promotionBadge}
-                        </span>
-                      )}
+                      <span className="text-xs font-mono font-semibold text-[#f59e0b] shrink-0 flex items-center gap-1">
+                        {isSelected ? (
+                          <>
+                            <span>● Inspected</span>
+                            <motion.span
+                              animate={{ y: [0, 3, 0] }}
+                              transition={{ duration: 1.2, repeat: Infinity, ease: 'easeInOut' }}
+                              className="font-bold text-sm"
+                            >
+                              ↓
+                            </motion.span>
+                          </>
+                        ) : (
+                          '○ View'
+                        )}
+                      </span>
                     </div>
-                    <span className="text-xs font-mono font-semibold text-[#f59e0b] shrink-0">
-                      {isSelected ? '● Inspected' : '○ View'}
-                    </span>
+                    <p className="text-xs text-neutral-400 mt-1.5 leading-snug">
+                      {item.headline}
+                    </p>
                   </div>
-                  <p className="text-xs text-neutral-400 mt-1.5 leading-snug">
-                    {item.headline}
-                  </p>
+
+                  {/* Render detail pop-up directly adjacent underneath this button */}
+                  <AnimatePresence>
+                    {isSelected && (
+                      <MilestoneDetailPopup
+                        detail={item}
+                        onClose={() => setSelectedMilestone(null)}
+                      />
+                    )}
+                  </AnimatePresence>
                 </div>
               );
             })}
           </div>
 
         </div>
-
-        {/* ── Active Milestone Deep-Dive Inspection Panel with Interactive Telemetry Gauges ── */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={selectedMilestone}
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
-            className="rounded-2xl bg-[#0c0f17] border border-white/15 p-6 sm:p-7 space-y-6 shadow-2xl relative overflow-hidden"
-          >
-            {/* Top ambient glint bar */}
-            <div
-              className={`absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r ${
-                currentDetail.category === 'software'
-                  ? 'from-transparent via-[#00dbe7] to-transparent'
-                  : currentDetail.category === 'operations'
-                  ? 'from-transparent via-[#f59e0b] to-transparent'
-                  : 'from-transparent via-indigo-500 to-transparent'
-              }`}
-            />
-
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/10 pb-5">
-              <div>
-                <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--text-accent)] font-bold flex items-center gap-1.5">
-                  <Activity className="w-3.5 h-3.5 text-[var(--interactive-primary)]" />
-                  <span>// DEEP DIVE CREDENTIALS &amp; EVIDENCE TELEMETRY</span>
-                </span>
-                <h3 className="text-lg sm:text-xl font-bold text-white mt-1">
-                  {currentDetail.role}
-                </h3>
-                <div className="flex flex-wrap items-center gap-2 mt-1.5">
-                  <p className="text-xs text-[#00dbe7] font-mono">
-                    {currentDetail.company} · {currentDetail.period}
-                  </p>
-                  {currentDetail.promotionBadge && (
-                    <span className="px-2 py-0.5 rounded text-[10px] font-mono font-semibold bg-[#22c55e]/15 text-[#22c55e] border border-[#22c55e]/30">
-                      {currentDetail.promotionBadge}
-                    </span>
-                  )}
-                </div>
-              </div>
-
-              {/* Interactive Telemetry Gauges Bento */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-                {currentDetail.metrics.map((m, idx) => (
-                  <CircularMetricGauge
-                    key={idx}
-                    label={m.label}
-                    value={m.value}
-                    color={m.color || (currentDetail.category === 'software' ? '#00dbe7' : '#f59e0b')}
-                  />
-                ))}
-              </div>
-            </div>
-
-            {/* Evidence Columns */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              
-              {/* Leadership & Pre-Sales Achievements */}
-              <div className="space-y-3 bg-white/[0.015] border border-white/5 rounded-xl p-4">
-                <div className="flex items-center space-x-2 text-xs font-mono font-bold text-[#f59e0b] uppercase">
-                  <Handshake className="w-4 h-4 text-[#f59e0b]" />
-                  <span>Leadership, Commercial &amp; Pre-Sales Impact</span>
-                </div>
-                <ul className="space-y-2.5 text-xs sm:text-sm text-neutral-300 leading-relaxed">
-                  {(currentDetail.leadershipSalesHighlights || []).map((bullet, idx) => (
-                    <li key={idx} className="flex items-start space-x-2.5">
-                      <span className="text-[#f59e0b] mt-0.5 shrink-0 font-bold">◆</span>
-                      <span>{bullet}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Technical Architecture & Operational Engineering */}
-              <div className="space-y-3 bg-white/[0.015] border border-white/5 rounded-xl p-4">
-                <div className="flex items-center space-x-2 text-xs font-mono font-bold text-[#00dbe7] uppercase">
-                  <Workflow className="w-4 h-4 text-[#00dbe7]" />
-                  <span>Technical Execution &amp; Systems Architecture</span>
-                </div>
-                <ul className="space-y-2.5 text-xs sm:text-sm text-neutral-300 leading-relaxed">
-                  {currentDetail.techOrOpsHighlights.map((bullet, idx) => (
-                    <li key={idx} className="flex items-start space-x-2.5">
-                      <span className="text-[#00dbe7] mt-0.5 shrink-0 font-bold">◆</span>
-                      <span>{bullet}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-            </div>
-
-            {/* Tag Pills */}
-            <div className="pt-4 border-t border-white/10 flex flex-wrap gap-1.5">
-              {currentDetail.tags.map((tag, tIdx) => (
-                <span
-                  key={tIdx}
-                  className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-white/[0.04] text-neutral-300 border border-white/10 hover:border-white/20 transition-colors"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </motion.div>
-        </AnimatePresence>
 
         {/* ── The Common Academic & Analytical Root (Bottom Anchor) ── */}
         <div className="rounded-2xl bg-gradient-to-r from-blue-950/20 via-indigo-950/20 to-neutral-900/40 border border-blue-500/20 p-5 sm:p-6 space-y-3">
