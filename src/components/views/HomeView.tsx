@@ -115,15 +115,17 @@ export function HomeView({
           aria-hidden="true"
           className="absolute inset-0 pointer-events-none -z-10 overflow-hidden"
         >
-          <img
-            src="/assets/profile/hero-bg.webp"
-            alt=""
-            className="w-full h-full object-cover object-top opacity-15 filter grayscale contrast-125 mix-blend-luminosity scale-105"
-          />
+          <div className="absolute inset-0 -left-12 sm:left-0 lg:-left-20 w-full lg:w-[85%] h-full">
+            <img
+              src="/assets/profile/hero-bg.webp"
+              alt=""
+              className="w-full h-full object-cover object-[15%_top] sm:object-[20%_top] lg:object-[25%_top] opacity-20 filter grayscale contrast-125 mix-blend-luminosity scale-105"
+            />
+          </div>
           {/* Multi-layered gradient & radial masks for seamless dark canvas color merging */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[var(--bg-canvas)] via-[var(--bg-canvas)]/50 to-[var(--bg-canvas)]" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-canvas)] via-transparent to-[var(--bg-canvas)]/80" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,transparent_10%,var(--bg-canvas)_80%)]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[var(--bg-canvas)]/50 via-[var(--bg-canvas)]/70 to-[var(--bg-canvas)] lg:from-transparent lg:via-[var(--bg-canvas)]/60 lg:to-[var(--bg-canvas)]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-canvas)] via-transparent to-[var(--bg-canvas)]/85" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,transparent_25%,var(--bg-canvas)_85%)]" />
         </div>
         <div className="lg:col-span-7 space-y-6">
           {/* Eyebrow Badge & Hero Persona Switcher Row */}
@@ -330,89 +332,88 @@ export function HomeView({
               </span>
             </div>
 
-            {/* Clean Structured Table Format */}
-            <div className="rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface)] overflow-hidden shadow-sm">
-              <table className="w-full text-left text-xs border-collapse">
-                <tbody>
-                  <tr className="border-b border-[var(--border-subtle)]">
-                    <td className="py-2.5 px-3.5 font-mono font-semibold text-orange-400 bg-orange-500/5 w-32 sm:w-44 shrink-0 align-top">
-                      Power Platform &amp; Cloud
-                    </td>
-                    <td className="py-2.5 px-3.5 text-[var(--text-secondary)]">
-                      <ul className="grid sm:grid-cols-2 gap-x-3 gap-y-1 text-xs">
-                        <li className="flex items-center gap-1.5">
-                          <span className="w-1.5 h-1.5 rounded-full bg-orange-400 shrink-0" />
-                          <span><strong>Power Apps &amp; Automate:</strong> Canvas apps, flows &amp; RPA</span>
-                        </li>
-                        <li className="flex items-center gap-1.5">
-                          <span className="w-1.5 h-1.5 rounded-full bg-orange-400 shrink-0" />
-                          <span><strong>Power BI &amp; Dataverse:</strong> DAX, KPI modeling &amp; telemetry</span>
-                        </li>
-                        <li className="flex items-center gap-1.5">
-                          <span className="w-1.5 h-1.5 rounded-full bg-orange-400 shrink-0" />
-                          <span><strong>SharePoint Online:</strong> MainDB architecture &amp; lists</span>
-                        </li>
-                        <li className="flex items-center gap-1.5">
-                          <span className="w-1.5 h-1.5 rounded-full bg-orange-400 shrink-0" />
-                          <span><strong>AI Builder:</strong> NLP SOPs &amp; automated routing</span>
-                        </li>
-                      </ul>
-                    </td>
-                  </tr>
+            {/* Clean Structured Table Format (Fluid Mobile Stacking & Desktop Tabular) */}
+            <div className="rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface)] overflow-hidden shadow-sm divide-y divide-[var(--border-subtle)]">
+              {/* Row 1: Power Platform & Cloud */}
+              <div className="flex flex-col sm:flex-row sm:items-start">
+                <div className="py-2.5 px-3.5 font-mono font-semibold text-xs text-orange-400 bg-orange-500/5 sm:w-44 shrink-0 sm:self-stretch flex items-center">
+                  Power Platform &amp; Cloud
+                </div>
+                <div className="py-2.5 px-3.5 text-[var(--text-secondary)] flex-1">
+                  <ul className="grid sm:grid-cols-2 gap-x-3 gap-y-1.5 text-xs">
+                    <li className="flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-orange-400 shrink-0" />
+                      <span><strong>Power Apps &amp; Automate:</strong> Canvas apps, flows &amp; RPA</span>
+                    </li>
+                    <li className="flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-orange-400 shrink-0" />
+                      <span><strong>Power BI &amp; Dataverse:</strong> DAX, KPI modeling &amp; telemetry</span>
+                    </li>
+                    <li className="flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-orange-400 shrink-0" />
+                      <span><strong>SharePoint Online:</strong> MainDB architecture &amp; lists</span>
+                    </li>
+                    <li className="flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-orange-400 shrink-0" />
+                      <span><strong>AI Builder:</strong> NLP SOPs &amp; automated routing</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
 
-                  <tr className="border-b border-[var(--border-subtle)]">
-                    <td className="py-2.5 px-3.5 font-mono font-semibold text-cyan-400 bg-cyan-500/5 align-top">
-                      Pro-Code &amp; Ops Telemetry
-                    </td>
-                    <td className="py-2.5 px-3.5 text-[var(--text-secondary)]">
-                      <ul className="grid sm:grid-cols-2 gap-x-3 gap-y-1 text-xs">
-                        <li className="flex items-center gap-1.5">
-                          <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0" />
-                          <span><strong>React 19 &amp; TypeScript:</strong> High-performance modern web</span>
-                        </li>
-                        <li className="flex items-center gap-1.5">
-                          <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0" />
-                          <span><strong>PulseTrack &amp; SmartFlow:</strong> Real-time queue telemetry</span>
-                        </li>
-                        <li className="flex items-center gap-1.5">
-                          <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0" />
-                          <span><strong>Python &amp; SQL / PL-SQL:</strong> Queue analytics &amp; scripts</span>
-                        </li>
-                        <li className="flex items-center gap-1.5">
-                          <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0" />
-                          <span><strong>Lark Open Platform:</strong> Webhook bots &amp; automation</span>
-                        </li>
-                      </ul>
-                    </td>
-                  </tr>
+              {/* Row 2: Pro-Code & Ops Telemetry */}
+              <div className="flex flex-col sm:flex-row sm:items-start">
+                <div className="py-2.5 px-3.5 font-mono font-semibold text-xs text-cyan-400 bg-cyan-500/5 sm:w-44 shrink-0 sm:self-stretch flex items-center">
+                  Pro-Code &amp; Ops Telemetry
+                </div>
+                <div className="py-2.5 px-3.5 text-[var(--text-secondary)] flex-1">
+                  <ul className="grid sm:grid-cols-2 gap-x-3 gap-y-1.5 text-xs">
+                    <li className="flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0" />
+                      <span><strong>React 19 &amp; TypeScript:</strong> High-performance modern web</span>
+                    </li>
+                    <li className="flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0" />
+                      <span><strong>PulseTrack &amp; SmartFlow:</strong> Real-time queue telemetry</span>
+                    </li>
+                    <li className="flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0" />
+                      <span><strong>Python &amp; SQL / PL-SQL:</strong> Queue analytics &amp; scripts</span>
+                    </li>
+                    <li className="flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0" />
+                      <span><strong>Lark Open Platform:</strong> Webhook bots &amp; automation</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
 
-                  <tr>
-                    <td className="py-2.5 px-3.5 font-mono font-semibold text-emerald-400 bg-emerald-500/5 align-top">
-                      Verified Certifications
-                    </td>
-                    <td className="py-2.5 px-3.5 text-[var(--text-secondary)]">
-                      <ul className="grid sm:grid-cols-2 gap-x-3 gap-y-1 text-xs">
-                        <li className="flex items-center gap-1.5">
-                          <CheckCircle2 size={13} className="text-emerald-400 shrink-0" />
-                          <span><strong>Microsoft Certified:</strong> Power Platform &amp; Power BI</span>
-                        </li>
-                        <li className="flex items-center gap-1.5">
-                          <CheckCircle2 size={13} className="text-emerald-400 shrink-0" />
-                          <span><strong>Lean Six Sigma:</strong> DMAIC Process Controls</span>
-                        </li>
-                        <li className="flex items-center gap-1.5">
-                          <CheckCircle2 size={13} className="text-emerald-400 shrink-0" />
-                          <span><strong>2× Innovation Winner:</strong> Enterprise Competition</span>
-                        </li>
-                        <li className="flex items-center gap-1.5">
-                          <CheckCircle2 size={13} className="text-emerald-400 shrink-0" />
-                          <span><strong>Accenture Diamond Award</strong> &amp; Hang Tuah Distinction</span>
-                        </li>
-                      </ul>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+              {/* Row 3: Verified Certifications */}
+              <div className="flex flex-col sm:flex-row sm:items-start">
+                <div className="py-2.5 px-3.5 font-mono font-semibold text-xs text-emerald-400 bg-emerald-500/5 sm:w-44 shrink-0 sm:self-stretch flex items-center">
+                  Verified Certifications
+                </div>
+                <div className="py-2.5 px-3.5 text-[var(--text-secondary)] flex-1">
+                  <ul className="grid sm:grid-cols-2 gap-x-3 gap-y-1.5 text-xs">
+                    <li className="flex items-center gap-1.5">
+                      <CheckCircle2 size={13} className="text-emerald-400 shrink-0" />
+                      <span><strong>Microsoft Certified:</strong> Power Platform &amp; Power BI</span>
+                    </li>
+                    <li className="flex items-center gap-1.5">
+                      <CheckCircle2 size={13} className="text-emerald-400 shrink-0" />
+                      <span><strong>Lean Six Sigma:</strong> DMAIC Process Controls</span>
+                    </li>
+                    <li className="flex items-center gap-1.5">
+                      <CheckCircle2 size={13} className="text-emerald-400 shrink-0" />
+                      <span><strong>2× Innovation Winner:</strong> Enterprise Competition</span>
+                    </li>
+                    <li className="flex items-center gap-1.5">
+                      <CheckCircle2 size={13} className="text-emerald-400 shrink-0" />
+                      <span><strong>Accenture Diamond Award</strong> &amp; Hang Tuah Distinction</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -582,16 +583,34 @@ export function HomeView({
             </div>
           )}
 
-          {/* Industry Accolades Badge */}
+          {/* Industry Accolades Badge (Tailored to Active Persona) */}
           <div className="p-4 rounded-xl bg-[var(--interactive-subtle-bg)] border border-[var(--interactive-subtle-border)] space-y-2.5">
             <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[var(--text-accent)]">
               <Award size={16} />
-              <span>Distinctions, Innovation &amp; Client Governance</span>
+              <span>
+                {activePersona === 'operations'
+                  ? 'Operational Distinctions & Incident Command'
+                  : activePersona === 'software'
+                  ? 'Engineering Distinctions & Innovation Honors'
+                  : 'Distinctions, Innovation & Incident Governance'}
+              </span>
             </div>
-            <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
-              Recipient of the <strong>Hang Tuah Distinction</strong> and <strong>Accenture Diamond Award</strong> for
-              stabilizing an <strong>800% queue surge in 48 hours</strong> during a regional platform crisis with zero associate burnout.
-            </p>
+
+            {activePersona === 'operations' ? (
+              <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
+                Recipient of the <strong>Hang Tuah Distinction</strong> and <strong>Accenture Diamond Award</strong> for
+                stabilizing an <strong>800% queue surge in 48 hours</strong> during a regional platform crisis with zero associate burnout.
+              </p>
+            ) : activePersona === 'software' ? (
+              <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
+                Architect of <strong>365+ production database cutovers</strong> securing <strong>$960K/yr license avoidance</strong> with 0h downtime across 28 BUs; Winner of the <strong>Enterprise Innovation Award (2 Years Respectively)</strong> for automated workflow telemetry.
+              </p>
+            ) : (
+              <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
+                Recipient of the <strong>Hang Tuah Distinction</strong>, <strong>Accenture Diamond Award</strong>, and <strong>2× Enterprise Innovation Competition Winner</strong> across cloud telemetry and crisis incident stabilization.
+              </p>
+            )}
+
             {activePersona === 'operations' && (
               <div className="pt-2 border-t border-[var(--border-subtle)] space-y-1.5 text-xs text-[var(--text-secondary)]">
                 <div className="flex items-start gap-2">
@@ -601,6 +620,19 @@ export function HomeView({
                 <div className="flex items-start gap-2">
                   <ShieldCheck size={14} className="text-orange-400 shrink-0 mt-0.5" />
                   <span><strong>Weekly Business Review (WBR) Quality Representative:</strong> Trusted client-facing lead presenting calibration panels, QA variance triage, and contractual SLA health.</span>
+                </div>
+              </div>
+            )}
+
+            {activePersona === 'software' && (
+              <div className="pt-2 border-t border-[var(--border-subtle)] space-y-1.5 text-xs text-[var(--text-secondary)]">
+                <div className="flex items-start gap-2">
+                  <ShieldCheck size={14} className="text-cyan-400 shrink-0 mt-0.5" />
+                  <span><strong>Microsoft Official Certified:</strong> Power Platform Solution Architect &amp; Power BI Data Analyst Professional credentials.</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <Sparkles size={14} className="text-cyan-400 shrink-0 mt-0.5" />
+                  <span><strong>CI/CD AST Verification:</strong> Validated 7,878 Power Apps YAML screens with zero automated regression defects.</span>
                 </div>
               </div>
             )}
