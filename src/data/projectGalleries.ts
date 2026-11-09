@@ -460,7 +460,30 @@ export const PROJECT_GALLERY_MAP: Record<string, ProjectGalleryItem[]> = {
       expectedPath: '/assets/gallery/al-resume-interview-prep/03-ats-vcard-exporter.png',
       imageUrl: '/assets/gallery/al-resume-interview-prep/03-ats-vcard-exporter.png'
     }
-  ]
+  ],
+  pulsetrack: [
+    {
+      id: 'pulsetrack-screen-1',
+      title: 'Live Floor Telemetry & Pod Matrix',
+      caption: 'Real-time production floor headcount, time-in-state stopwatches, and spatial seat occupancy across ASEAN delivery pods.',
+      expectedPath: '/assets/projects/pulsetrack/live-floor-telemetry.png',
+      imageUrl: '/assets/projects/pulsetrack/live-floor-telemetry.png'
+    },
+    {
+      id: 'pulsetrack-screen-2',
+      title: 'Absence & Leave Intake Hub',
+      caption: 'Standardized Microsoft Forms intake with digital MC validation and automated write-back to SharePoint Online.',
+      expectedPath: '/assets/projects/pulsetrack/absence-leave-intake.png',
+      imageUrl: '/assets/projects/pulsetrack/absence-leave-intake.png'
+    },
+    {
+      id: 'pulsetrack-screen-3',
+      title: 'Agent Self-Service Status Portal',
+      caption: 'Desktop portal allowing associates to submit real-time schedule adjustments and sick notices without unauthorized messaging apps.',
+      expectedPath: '/assets/projects/pulsetrack/agent-self-service-portal.png',
+      imageUrl: '/assets/projects/pulsetrack/agent-self-service-portal.png'
+    }
+  ],
 };
 
 /**

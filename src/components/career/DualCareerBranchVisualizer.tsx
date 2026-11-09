@@ -339,7 +339,7 @@ export const DualCareerBranchVisualizer: React.FC = () => {
       techOrOpsHighlights: [
         'Executed Six Sigma DMAIC process controls to reduce Average Handling Time (AHT) by 25%.',
         'Engineered PulseTrack real-time agent status tracking system across M365 (Forms, Automate, SharePoint, Power BI, Teams), eliminating floor-to-locker trips to reduce TL administrative workload by 60–80% with 98% status accuracy.',
-        'Engineered SmartFlow automated intake, reducing manual ticket triage steps by 80% with 90% data accuracy.'
+        'Engineered SmartFlow parallel resource automation engine across M365 (Forms, Automate, SharePoint, Power BI, Teams), eliminating sequential email dispatching across Ops, Finance, HR, and Training to cut admin overhead by 80% with 100% transparency.'
       ],
       metrics: [
         { label: 'Direct Reports', value: '34 Agents', color: '#f59e0b' },

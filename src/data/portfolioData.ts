@@ -680,6 +680,7 @@ const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8' });`
   },
   {
     id: "pulsetrack",
+    imageUrl: "/assets/projects/pulsetrack/live-floor-telemetry.png",
     title: "PulseTrack: Real-Time Agent Status System",
     subtitle: "Centralized Workforce Management & Production Floor Compliance Automation",
     category: "core",
@@ -701,30 +702,55 @@ const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8' });`
       "Live Operational Visibility: Power BI floor telemetry dashboard tracking schedule adherence, active headcount, and cumulative time-in-state",
       "Capacity & SLA Alerting: Microsoft Teams automated push notifications triggering upon SLA threshold breaches or when shift sick-call volume exceeds maximum allowable capacity"
     ],
+    gallery: [
+      {
+        id: "pulsetrack-screen-1",
+        title: "Live Floor Telemetry & Pod Matrix",
+        caption: "Real-time production floor headcount, time-in-state stopwatches, and spatial seat occupancy across ASEAN delivery pods.",
+        imageUrl: "/assets/projects/pulsetrack/live-floor-telemetry.png",
+        expectedPath: "/assets/projects/pulsetrack/live-floor-telemetry.png"
+      },
+      {
+        id: "pulsetrack-screen-2",
+        title: "Absence & Leave Intake Hub",
+        caption: "Standardized Microsoft Forms intake with digital MC validation and automated write-back to SharePoint Online.",
+        imageUrl: "/assets/projects/pulsetrack/absence-leave-intake.png",
+        expectedPath: "/assets/projects/pulsetrack/absence-leave-intake.png"
+      },
+      {
+        id: "pulsetrack-screen-3",
+        title: "Agent Self-Service Status Portal",
+        caption: "Desktop portal allowing associates to submit real-time schedule adjustments and sick notices without unauthorized messaging apps.",
+        imageUrl: "/assets/projects/pulsetrack/agent-self-service-portal.png",
+        expectedPath: "/assets/projects/pulsetrack/agent-self-service-portal.png"
+      }
+    ],
     liveDemoId: "it-service",
     featured: true
   },
   {
     id: "smartflow",
-    title: "SmartFlow",
-    subtitle: "End-to-End Enterprise Request & Approval Orchestrator",
+    title: "SmartFlow: Enterprise Business Request & Resource Automation Engine",
+    subtitle: "Parallel-Processing M365 Orchestration Engine for Client Changes & Resource Provisioning",
     category: "core",
     date: "Nov 2024",
-    role: "End-to-end request/approval system design",
-    tools: ["Power Apps", "Power Automate", "Power BI", "SharePoint", "Teams", "Outlook"],
-    problem: "Requests and approvals were routed via email and spreadsheets, resulting in delayed visibility and poor tracking.",
-    solution: "Developed an integrated request + approval flow with a Power BI dashboard for live tracking, centralizing all requests.",
-    impact: "90% data accuracy; 80% less manual work; 100% real-time tracking.",
+    role: "Power Platform Solution Delivery & Parallel Orchestration Architecture",
+    tools: ["Microsoft Forms", "Power Automate", "SharePoint Online", "Power BI", "Microsoft Teams"],
+    problem: "Executing client-initiated changes—such as scaling headcount, launching a new workflow, or modifying service level agreements (SLAs)—previously triggered a chaotic, manual chain reaction. Project Managers were forced to act as manual dispatchers, coordinating via disjointed email threads across multiple siloed departments. This sequential, manual coordination frequently resulted in misaligned timelines (e.g., Recruitment hiring agents before Operations had secured seating, or Finance missing a billing cycle update), ultimately delaying the time-to-market for the client and risking SLA penalties.",
+    solution: "SmartFlow was engineered as a centralized, parallel-processing automation engine using the Microsoft Power Platform to replace human middleware with intelligent routing:\n\n• Dynamic Intake Portal (Microsoft Forms): The Project Manager initiates the workflow through a standardized, conditional form. If a client requests to \"Add 10 new agents for a localized workflow,\" the form dynamically captures the exact language requirements, shift parameters, and target go-live dates.\n\n• Parallel Orchestration (Power Automate): Instead of sequential emails, Power Automate intercepts the submission and instantly generates and assigns distinct, customized task payloads to four critical departments simultaneously:\n  1. Operations: Triggered to prepare shift schedules, map physical production floor seating, and allocate Team Leader/QA bandwidth.\n  2. Finance: Triggered to update client billing projections, adjust payroll forecasts, and align OPEX budgets for the new headcount.\n  3. Recruitment: Triggered to immediately open specific job requisitions, matching the client's language and skill requirements to the candidate pipeline.\n  4. Training: Triggered to secure training room capacity, allocate subject matter experts (SMEs), and schedule the onboarding timeline.\n\n• The Nerve Center (SharePoint): Every triggered task, document, and departmental sign-off is logged in a centralized SharePoint database. It acts as a single, immutable source of truth and a strict audit trail for client compliance.\n\n• Executive Visibility (Power BI & Teams): A live Power BI dashboard provides the Project Manager and Senior Leadership with a real-time RAG (Red/Amber/Green) readiness status for each department. Microsoft Teams adaptive cards automatically notify the PM the moment a department completes their phase, or alerts them if a department is at risk of missing the go-live deadline.",
+    impact: "Accelerated Time-to-Market by shifting from sequential human coordination to parallel automated task dispatching, significantly reducing client ramp-up lead time; achieved Zero-Defect Billing & Compliance by hardcoding Finance and Training sign-offs; delivered an 80% reduction in administrative overhead by eradicating status-update meetings and email chasing; and established 100% real-time pipeline transparency with 90% improved data accuracy.",
     impactMetrics: [
-      { label: "Data Accuracy", value: "90%" },
-      { label: "Manual Work", value: "-80%" },
-      { label: "Real-Time Tracking", value: "100%" }
+      { label: "Administrative Overhead", value: "-80%" },
+      { label: "Real-Time Pipeline Transparency", value: "100%" },
+      { label: "Data & Billing Accuracy", value: "90%" }
     ],
     technicalDetails: [
-      "Responsive Power Apps Canvas front-end with dynamic form validations",
-      "Multi-stage sequential & parallel Power Automate approval chains with timeout escalations",
-      "Interactive Power BI telemetry embedded inside Microsoft Teams",
-      "Automatic Outlook actionable messages allowing one-click approvals from inbox"
+      "Dynamic Intake Portal: Conditional Microsoft Form dynamically capturing language requirements, shift parameters, and go-live schedules upon client-initiated change requests",
+      "Parallel Orchestration: Power Automate instant workflow dispatching 4 simultaneous departmental task payloads across Operations, Finance, Recruitment, and Training",
+      "Centralized Audit Store: SharePoint Online list schema serving as an immutable single source of truth for cross-departmental deliverables, sign-offs, and compliance records",
+      "Executive RAG Telemetry: Embedded Power BI dashboard visualizing real-time departmental Red/Amber/Green readiness and bottleneck triage",
+      "Automated Milestone Alerting: Microsoft Teams Adaptive Cards alerting Project Managers upon phase completion or escalation risks for upcoming go-live deadlines",
+      "Zero-Defect Enforcement: Hardcoded validation gates guaranteeing 100% of new agents are captured in billing projections and certified before floor deployment"
     ],
     liveDemoId: "finops",
     featured: true
@@ -1190,7 +1216,7 @@ export const WORK_EXPERIENCE: ExperienceItem[] = [
       "Policy Creation & SOP Authoring: Directly authored, created, and updated operational policy documentation, decision trees, and standard operating procedures (SOPs) for Trust & Safety (content moderation) and Advertising Integrity (Ads Review), translating complex client policy changes into clear frontline enforcement standards.",
       "Conducting Training & Nesting Academies: Designed instructional materials and directly conducted onboarding training bootcamps, nesting clinics, and refresher workshops, coaching frontline specialists and raising 90-day associate competency from 78% to 94%.",
       "BPO Floor Leadership & Scaling: Commanded daily 24/7 BPO operations scaling headcount by 380% (from 9 to 34 multilingual associates across 7 APAC language pods: Indonesian, Chinese Mainland, Korean, Japanese, English, Thai, Vietnamese) in Trust & Safety, Ads Review, and Omnichannel Live Chat/Email, sustaining >98%+ contractual SLA compliance.",
-      "Continuous Improvement & Automation: Executed Six Sigma DMAIC process controls reducing Average Handling Time (AHT) by 25%; engineered PulseTrack real-time agent status tracking system (cutting manual reporting by 90%, achieving 98% status accuracy, and eliminating locker room trips under floor zero-phone policies to reduce TL admin workload by 60–80%) and SmartFlow automated intake."
+      "Continuous Improvement & Automation: Executed Six Sigma DMAIC process controls reducing Average Handling Time (AHT) by 25%; engineered PulseTrack real-time agent status tracking system (cutting manual reporting by 90%, achieving 98% status accuracy, and eliminating locker room trips under floor zero-phone policies to reduce TL admin workload by 60–80%) and SmartFlow parallel resource automation engine (dispatching simultaneous task payloads across Operations, Finance, Recruitment, and Training to cut admin overhead by 80% with 100% real-time transparency)."
     ],
     iconUrl: "/assets/logos/concentrix.png"
   },
@@ -3652,7 +3678,7 @@ In Quality and Industrial Safety, paper-based incident forms were replaced by Sl
 • CAPA investigation closure time plummeted from 45 business days to 12 business days (a 73% acceleration), while 30-day post-implementation effectiveness verification adherence jumped from 61% to a perfect 100%.
 • Chemical plant safety equipment compliance reached 99.4%, and consignment rebate approval cycles dropped from 3 days to under 15 minutes.
 
-This same operational discipline reinforced team leadership on the frontline. At Accenture, when a major regional platform outage triggered an 800% ticket surge across Southeast Asian e-commerce queues, I commanded real-time queue recovery, stabilizing operations and restoring full contractual SLA adherence within 48 hours without associate burnout—an achievement recognized with the prestigious Hang Tuah Distinction and the Accenture Diamond Award. Later at Concentrix, the internal tools I built—PulseTrack (centralized Forms + Power Automate + SharePoint + Power BI agent status system with Teams threshold alerting) and SmartFlow—slashed manual reporting by 90%, achieved 98% status accuracy, cut TL admin workload by 60–80% by eliminating locker trips, and eliminated 110 seconds of tab-switching latency per ticket. My operations squad maintained a 98%+ contractual SLA compliance record while scaling 380% across seven countries, holding annualized staff attrition below 5%.
+This same operational discipline reinforced team leadership on the frontline. At Accenture, when a major regional platform outage triggered an 800% ticket surge across Southeast Asian e-commerce queues, I commanded real-time queue recovery, stabilizing operations and restoring full contractual SLA adherence within 48 hours without associate burnout—an achievement recognized with the prestigious Hang Tuah Distinction and the Accenture Diamond Award. Later at Concentrix, the internal tools I built—PulseTrack (centralized Forms + Power Automate + SharePoint + Power BI agent status system with Teams threshold alerting) and SmartFlow (parallel-processing M365 automation engine dispatching Operations, Finance, Recruitment, and Training payloads simultaneously)—slashed manual reporting by 90%, achieved 98% status accuracy, cut TL admin workload by 60–80% by eliminating locker trips, and eliminated 110 seconds of tab-switching latency per ticket. My operations squad maintained a 98%+ contractual SLA compliance record while scaling 380% across seven countries, holding annualized staff attrition below 5%.
 
 Whether commanding frontline crisis response across 34 agents or validating GxP compliance across 7,878 YAML screens for an industrial enterprise, the core lesson remained identical: lasting digital transformation happens only when technical architecture respects frontline operational realities and regulatory rigor.`
     }
@@ -3701,10 +3727,10 @@ Whether commanding frontline crisis response across 34 agents or validating GxP 
       delta: "Approvals cut from 3 days to <15 mins (99% speedup); 0 audit non-compliances"
     },
     {
-      dimension: "Frontline Operations Reporting",
-      before: "2–3 hrs/shift compiling agent status from WhatsApp into Excel; locker room trips due to strict no-phone floor policy",
-      after: "Centralized M365 Forms + Power Automate + SharePoint + Power BI + Teams Alerts (PulseTrack & SmartFlow)",
-      delta: "90% less manual reporting; 98% status accuracy; 60–80% TL admin workload reduction; 110s tab latency eliminated"
+      dimension: "Frontline Operations & Resource Workflows",
+      before: "2–3 hrs/shift compiling agent status from WhatsApp; sequential email coordination across Ops/Finance/HR causing delayed go-lives",
+      after: "Centralized M365 Forms + Power Automate parallel dispatch + SharePoint + Power BI + Teams Alerts (PulseTrack & SmartFlow)",
+      delta: "90% manual reporting drop; 80% admin overhead cut; 100% real-time transparency; zero-defect billing"
     },
     {
       dimension: "Incident Command & SLA Delivery",
