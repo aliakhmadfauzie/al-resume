@@ -1,0 +1,1528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Engineering Portfolio — Interactive 4:3 HD Showcase Gallery</title>
+  <style>
+    :root {
+      --bg-base: #090a0f;
+      --bg-surface: #12151f;
+      --bg-card: #181c2b;
+      --bg-card-hover: #22273d;
+      --border-subtle: #272d45;
+      --text-main: #f0f4f8;
+      --text-muted: #94a3b8;
+      --accent-cyan: #38bdf8;
+      --accent-emerald: #10b981;
+      --accent-gold: #fbbf24;
+      --accent-purple: #a855f7;
+      --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      font-family: var(--font-family);
+      line-height: 1.5;
+      padding: 2.5rem 1.5rem 5rem;
+    }
+
+    .container {
+      max-width: 1500px;
+      margin: 0 auto;
+    }
+
+    header {
+      margin-bottom: 2.5rem;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 2rem;
+    }
+
+    .badge-header {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      background: rgba(56, 189, 248, 0.12);
+      color: var(--accent-cyan);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.75rem;
+    }
+
+    h1 {
+      font-size: 2.6rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 900px;
+      margin-bottom: 1.5rem;
+    }
+
+    .rules-banner {
+      background: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      border-radius: 12px;
+      padding: 1rem 1.5rem;
+      margin-bottom: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      font-size: 0.85rem;
+      color: #cbd5e1;
+    }
+
+    .rules-banner strong { color: var(--accent-emerald); }
+
+    .filter-section {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .filter-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #64748b;
+    }
+
+    .filter-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .filter-btn {
+      padding: 0.5rem 1rem;
+      background: var(--bg-surface);
+      color: var(--text-muted);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-weight: 500;
+    }
+
+    .filter-btn:hover {
+      background: var(--bg-card);
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .filter-btn.active {
+      background: var(--accent-cyan);
+      color: #090a0f;
+      border-color: var(--accent-cyan);
+      font-weight: 700;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .gallery-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .gallery-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(56, 189, 248, 0.4);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6);
+    }
+
+    .card-thumb-wrap {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      background: #0f172a;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .card-thumb {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-card:hover .card-thumb {
+      transform: scale(1.02);
+    }
+
+    .card-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(9, 10, 15, 0.6);
+      opacity: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.2s ease;
+    }
+
+    .gallery-card:hover .card-overlay {
+      opacity: 1;
+    }
+
+    .zoom-btn {
+      padding: 0.5rem 1rem;
+      background: rgba(56, 189, 248, 0.9);
+      color: #090a0f;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .badge-type {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      padding: 0.2rem 0.6rem;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .badge-platform {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      padding: 0.2rem 0.6rem;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--accent-cyan);
+    }
+
+    .card-body {
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .card-app {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent-cyan);
+      margin-bottom: 0.25rem;
+    }
+
+    .card-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      flex-grow: 1;
+      line-height: 1.4;
+    }
+
+    .card-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding-top: 0.75rem;
+      font-size: 0.75rem;
+      color: #64748b;
+    }
+
+    .card-link {
+      color: var(--accent-emerald);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .card-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Lightbox Modal */
+    .lightbox-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 7, 12, 0.95);
+      backdrop-filter: blur(12px);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    .lightbox-modal.active {
+      display: flex;
+    }
+
+    .lightbox-content {
+      max-width: 92vw;
+      max-height: 92vh;
+      display: flex;
+      flex-direction: column;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .lightbox-header {
+      padding: 1rem 1.5rem;
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .lightbox-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .lightbox-sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .close-btn {
+      background: transparent;
+      border: none;
+      color: #94a3b8;
+      font-size: 1.6rem;
+      cursor: pointer;
+      padding: 0 0.5rem;
+    }
+
+    .close-btn:hover {
+      color: #fff;
+    }
+
+    .lightbox-body {
+      overflow: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      background: #000;
+    }
+
+    .lightbox-img {
+      max-width: 100%;
+      max-height: 75vh;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+
+    .lightbox-footer {
+      padding: 0.8rem 1.5rem;
+      background: var(--bg-surface);
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="badge-header">Production Systems Visual Showcase</div>
+      <h1>Interactive 4:3 High Definition Application Gallery</h1>
+      <p class="subtitle">
+        Curated showcase containing 55 high-definition 4:3 interface screenshots across 11 production applications. Every application is comprehensively documented across 5 mandatory core screens: Login, Dashboard, Transaction Form, Profile, and Unique Engineering Features.
+      </p>
+
+      <div class="rules-banner">
+        <div><strong>Rule 1 Compliance:</strong> 100% Freshly Rendered (Zero Reused Repo Images)</div>
+        <div><strong>Rule 2 Compliance:</strong> Explicit Desktop & Mobile Viewports</div>
+        <div><strong>Rule 3 Compliance:</strong> HD 4:3 Aspect Ratio (Zero Marathon Scrolling)</div>
+        <div><strong>Rule 4 Compliance:</strong> 5 Mandatory Screens per Application</div>
+      </div>
+
+      <div class="filter-section">
+        <div class="filter-label">Filter by Application:</div>
+        <div class="filter-row">
+          <button class="filter-btn active" onclick="filterApp('all')">All Applications (55)</button><button class="filter-btn" onclick="filterApp('01_saltdistribute')">SaltDistribute (5)</button><button class="filter-btn" onclick="filterApp('02_lewihouse')">Lewi House PMS (5)</button><button class="filter-btn" onclick="filterApp('03_jastip')">Jastip Cross-Border (5)</button><button class="filter-btn" onclick="filterApp('04_pelatihku')">PelatihKu PRO (5)</button><button class="filter-btn" onclick="filterApp('05_putri_garmenthub')">Putri GarmentHub ERP (5)</button><button class="filter-btn" onclick="filterApp('06_dlab_perfumerie')">DLAB Night Match Atelier (5)</button><button class="filter-btn" onclick="filterApp('07_ioi_m365')">IOI Group M365 (5)</button><button class="filter-btn" onclick="filterApp('08_webcamoid')">Webcamoid Video Engine (5)</button><button class="filter-btn" onclick="filterApp('09_barbershop')">Barbershop POS (5)</button><button class="filter-btn" onclick="filterApp('10_resumeflow_jobllm')">ResumeFlow (Job-LLM) (5)</button><button class="filter-btn" onclick="filterApp('11_headless_ecommerce')">Headless E-Commerce PWA (5)</button>
+        </div>
+
+        <div class="filter-label" style="margin-top: 0.5rem;">Filter by Screen Type:</div>
+        <div class="filter-row">
+          <button class="filter-btn active" onclick="filterType('all')">All Screens</button><button class="filter-btn" onclick="filterType('login')">🔐 Login (11)</button><button class="filter-btn" onclick="filterType('dashboard')">📊 Dashboard (11)</button><button class="filter-btn" onclick="filterType('form')">📝 Form (11)</button><button class="filter-btn" onclick="filterType('profile')">👤 Profile (11)</button><button class="filter-btn" onclick="filterType('feature')">⚡ Features (11)</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="gallery-grid" id="galleryGrid">
+      
+      <div class="gallery-card" data-app="01_saltdistribute" data-type="login">
+        <div class="card-thumb-wrap" onclick="openLightbox('./gallery_assets/01_saltdistribute/01_login.png', 'SaltDistribute — Distributor Authentication', 'Mobile App • Login Screen • High Definition 4:3 (1600×1200)', '01_SaltDistribute_Case_Study.md')">
+          <img src="./gallery_assets/01_saltdistribute/01_login.png" alt="SaltDistribute - Distributor Authentication" class="card-thumb" loading="lazy">
+          <div class="card-overlay">
+            <span class="zoom-btn">🔍 View 4:3 HD</span>
+          </div>
+          <span class="badge-type">Login</span>
+          <span class="badge-platform">Mobile App</span>
+        </div>
+        <div class="card-body">
+          <div class="card-app">SaltDistribute</div>
+          <h3 class="card-title">Distributor Authentication</h3>
+          <p class="card-desc">Mobile OTP & PIN login with offline cryptographic keychain.</p>
+          <div class="card-meta">
+            <span>📐 1600 × 1200 (4:3 HD)</span>
+            <a href="./01_SaltDistribute_Case_Study.md" class="card-link">Case Study →</a>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-card" data-app="01_saltdistribute" data-type="dashboard">
+        <div class="card-thumb-wrap" onclick="openLightbox('./gallery_assets/01_saltdistribute/02_dashboard.png', 'SaltDistribute — Logistics & Dispatch Cockpit', 'Mobile App • Dashboard Screen • High Definition 4:3 (1600×1200)', '01_SaltDistribute_Case_Study.md')">
+          <img src="./gallery_assets/01_saltdistribute/02_dashboard.png" alt="SaltDistribute - Logistics & Dispatch Cockpit" class="card-thumb" loading="lazy">
+          <div class="card-overlay">
+            <span class="zoom-btn">🔍 View 4:3 HD</span>
+          </div>
+          <span class="badge-type">Dashboard</span>
+          <span class="badge-platform">Mobile App</span>
+        </div>
+        <div class="card-body">
+          <div class="card-app">SaltDistribute</div>
+          <h3 class="card-title">Logistics & Dispatch Cockpit</h3>
+          <p class="card-desc">Real-time tonnage telemetry (450t) & Kanban shipment pipeline.</p>
+          <div class="card-meta">
+            <span>📐 1600 × 1200 (4:3 HD)</span>
+            <a href="./01_SaltDistribute_Case_Study.md" class="card-link">Case Study →</a>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-card" data-app="01_saltdistribute" data-type="form">
+        <div class="card-thumb-wrap" onclick="openLightbox('./gallery_assets/01_saltdistribute/03_form.png', 'SaltDistribute — Bulk Order & Tier Calculation', 'Mobile App • Form Screen • High Definition 4:3 (1600×1200)', '01_SaltDistribute_Case_Study.md')">
+          <img src="./gallery_assets/01_saltdistribute/03_form.png" alt="SaltDistribute - Bulk Order & Tier Calculation" class="card-thumb" loading="lazy">
+          <div class="card-overlay">
+            <span class="zoom-btn">🔍 View 4:3 HD</span>
+          </div>
+          <span class="badge-type">Form</span>
+          <span class="badge-platform">Mobile App</span>
+        </div>
+        <div class="card-body">
+          <div class="card-app">SaltDistribute</div>
+          <h3 class="card-title">Bulk Order & Tier Calculation</h3>
+          <p class="card-desc">Interactive tonnage stepper with dynamic tiered bulk pricing.</p>
+          <div class="card-meta">
+            <span>📐 1600 × 1200 (4:3 HD)</span>
+            <a href="./01_SaltDistribute_Case_Study.md" class="card-link">Case Study →</a>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-card" data-app="01_saltdistribute" data-type="profile">
+        <div class="card-thumb-wrap" onclick="openLightbox('./gallery_assets/01_saltdistribute/04_profile.png', 'SaltDistribute — Distributor Profile & Quotas', 'Mobile App • Profile Screen • High Definition 4:3 (1600×1200)', '01_SaltDistribute_Case_Study.md')">
+          <img src="./gallery_assets/01_saltdistribute/04_profile.png" alt="SaltDistribute - Distributor Profile & Quotas" class="card-thumb" loading="lazy">
+          <div class="card-overlay">
+            <span class="zoom-btn">🔍 View 4:3 HD</span>
+          </div>
+          <span class="badge-type">Profile</span>
+          <span class="badge-platform">Mobile App</span>
+        </div>
+        <div class="card-body">
+          <div class="card-app">SaltDistribute</div>
+          <h3 class="card-title">Distributor Profile & Quotas</h3>
+          <p class="card-desc">NET-30 credit limit, warehouse address, and biometric settings.</p>
+          <div class="card-meta">
+            <span>📐 1600 × 1200 (4:3 HD)</span>
+            <a href="./01_SaltDistribute_Case_Study.md" class="card-link">Case Study →</a>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-card" data-app="01_saltdistribute" data-type="feature">
+        <div class="card-thumb-wrap" onclick="openLightbox('./gallery_assets/01_saltdistribute/05_additional_features.png', 'SaltDistribute — Live GPS & Offline Proof Upload', 'Mobile App • Feature Screen • High Definition 4:3 (1600×1200)', '01_SaltDistribute_Case_Study.md')">
+          <img src="./gallery_assets/01_saltdistribute/05_additional_features.png" alt="SaltDistribute - Live GPS & Offline Proof Upload" class="card-thumb" loading="lazy">
+          <div class="card-overlay">
+            <span class="zoom-btn">🔍 View 4:3 HD</span>
+          </div>
+          <span class="badge-type">Feature</span>
+          <span class="badge-platform">Mobile App</span>
+        </div>
+        <div class="card-body">
+          <div class="card-app">SaltDistribute</div>
+          <h3 class="card-title">Live GPS & Offline Proof Upload</h3>
+          <p class="card-desc">Pantura fleet GPS telemetry & client-side canvas image downsampling.</p>
+          <div class="card-meta">
+            <span>📐 1600 × 1200 (4:3 HD)</span>
+            <a href="./01_SaltDistribute_Case_Study.md" class="card-link">Case Study →</a>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-card" data-app="02_lewihouse" data-type="login">
+        <div class="card-thumb-wrap" onclick="openLightbox('./gallery_assets/02_lewihouse/01_login.png', 'Lewi House PMS — Staff Biometric Login', 'Mobile App • Login Screen • High Definition 4:3 (1600×1200)', '02_LewiHouse_PMS_Case_Study.md')">
+          <img src="./gallery_assets/02_lewihouse/01_login.png" alt="Lewi House PMS - Staff Biometric Login" class="card-thumb" loading="lazy">
+          <div class="card-overlay">
+            <span class="zoom-btn">🔍 View 4:3 HD</span>
+          </div>
+          <span class="badge-type">Login</span>
+          <span class="badge-platform">Mobile App</span>
+        </div>
+        <div class="card-body">
+          <div class="card-app">Lewi House PMS</div>
+          <h3 class="card-title">Staff Biometric Login</h3>
+          <p class="card-desc">Capacitor 8.5 native fingerprint & shift handover passcode.</p>
+          <div class="card-meta">
+            <span>📐 1600 × 1200 (4:3 HD)</span>
+            <a href="./02_LewiHouse_PMS_Case_Study.md" class="card-link">Case Study →</a>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-card" data-app="02_lewihouse" data-type="dashboard">
+        <div class="card-thumb-wrap" onclick="openLightbox('./gallery_assets/02_lewihouse/02_dashboard.png', 'Lewi House PMS — Property Operations Cockpit', 'Mobile App • Dashboard Screen • High Definition 4:3 (1600×1200)', '02_LewiHouse_PMS_Case_Study.md')">
+          <img src="./gallery_assets/02_lewihouse/02_dashboard.png" alt="Lewi House PMS - Property Operations Cockpit" class="card-thumb" loading="lazy">
+          <div class="card-overlay">
+            <span class="zoom-btn">🔍 View 4:3 HD</span>
+          </div>
+          <span class="badge-type">Dashboard</span>
+          <span class="badge-platform">Mobile App</span>
+        </div>
+        <div class="card-body">
+          <div class="card-app">Lewi House PMS</div>
+          <h3 class="card-title">Property Operations Cockpit</h3>
+          <p class="card-desc">88.2% occupancy gauge, today's check-ins, and revenue counters.</p>
+          <div class="card-meta">
+            <span>📐 1600 × 1200 (4:3 HD)</span>
+            <a href="./02_LewiHouse_PMS_Case_Study.md" class="card-link">Case Study →</a>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-card" data-app="02_lewihouse" data-type="form">
+        <div class="card-thumb-wrap" onclick="openLightbox('./gallery_assets/02_lewihouse/03_form.png', 'Lewi House PMS — Check-in & Syariah Verification', 'Mobile App • Form Screen • High Definition 4:3 (1600×1200)', '02_LewiHouse_PMS_Case_Study.md')">
+          <img src="./gallery_assets/02_lewihouse/03_form.png" alt="Lewi House PMS - Check-in & Syariah Verification" class="card-thumb" loading="lazy">
+          <div class="card-overlay">
+            <span class="zoom-btn">🔍 View 4:3 HD</span>
+          </div>
+          <span class="badge-type">Form</span>
+          <span class="badge-platform">Mobile App</span>
+        </div>
+        <div class="card-body">
+          <div class="card-app">Lewi House PMS</div>
+          <h3 class="card-title">Check-in & Syariah Verification</h3>
+          <p class="card-desc">KTP document scan, marriage certificate validation, and QRIS deposit.</p>
+          <div class="card-meta">
+            <span>📐 1600 × 1200 (4:3 HD)</span>
+            <a href="./02_LewiHouse_PMS_Case_Study.md" class="card-link">Case Study →</a>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-card" data-app="02_lewihouse" data-type="profile">
+        <div class="card-thumb-wrap" onclick="openLightbox('./gallery_assets/02_lewihouse/04_profile.png', 'Lewi House PMS — General Manager Profile', 'Mobile App • Profile Screen • High Definition 4:3 (1600×1200)', '02_LewiHouse_PMS_Case_Study.md')">
+          <img src="./gallery_assets/02_lewihouse/04_profile.png" alt="Lewi House PMS - General Manager Profile" class="card-thumb" loading="lazy">
+          <div class="card-overlay">
+            <span class="zoom-btn">🔍 View 4:3 HD</span>
+          </div>
+          <span class="badge-type">Profile</span>
+          <span class="badge-platform">Mobile App</span>
+        </div>
+        <div class="card-body">
+          <div class="card-app">Lewi House PMS</div>
+          <h3 class="card-title">General Manager Profile</h3>
+          <p class="card-desc">Audit logging, cash drawer thresholds, and FCM notification access.</p>
+          <div class="card-meta">
+            <span>📐 1600 × 1200 (4:3 HD)</span>
+            <a href="./02_LewiHouse_PMS_Case_Study.md" class="card-link">Case Study →</a>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-card" data-app="02_lewihouse" data-type="feature">
+        <div class="card-thumb-wrap" onclick="openLightbox('./gallery_assets/02_lewihouse/05_additional_features.png', 'Lewi House PMS — Room Housekeeping & FCM Push', 'Mobile App • Feature Screen • High Definition 4:3 (1600×1200)', '02_LewiHouse_PMS_Case_Study.md')">
+          <img src="./gallery_assets/02_lewihouse/05_additional_features.png" alt="Lewi House PMS - Room Housekeeping & FCM Push" class="card-thumb" loading="lazy">
+          <div class="card-overlay">
+            <span class="zoom-btn">🔍 View 4:3 HD</span>
+          </div>
+          <span class="badge-type">Feature</span>
+          <span class="badge-platform">Mobile App</span>
+        </div>
+        <div class="card-body">
+          <div class="card-app">Lewi House PMS</div>
+          <h3 class="card-title">Room Housekeeping & FCM Push</h3>
+          <p class="card-desc">Interactive room status grid with sub-120ms FCM push triggers.</p>
+          <div class="card-meta">
+            <span>📐 1600 × 1200 (4:3 HD)</span>
+            <a href="./02_LewiHouse_PMS_Case_Study.md" class="card-link">Case Study →</a>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-card" data-app="03_jastip" data-type="login">
+        <div class="card-thumb-wrap" onclick="openLightbox('./gallery_assets/03_jastip/01_login.png', 'Jastip Cross-Border — Traveler Trip Authentication', 'Mobile App • Login Screen • High Definition 4:3 (1600×1200)', '03_Jastip_CrossBorder_Case_Study.md')">
+          <img src="./gallery_assets/03_jastip/01_login.png" alt="Jastip Cross-Border - Traveler Trip Authentication" class="card-thumb" loading="lazy">
+          <div class="card-overlay">
+            <span class="zoom-btn">🔍 View 4:3 HD</span>
+          </div>
+          <span class="badge-type">Login</span>
+          <span class="badge-platform">Mobile App</span>
+        </div>
+        <div class="card-body">
+          <div class="card-app">Jastip Cross-Border</div>
+          <h3 class="card-title">Traveler Trip Authentication</h3>
+          <p class="card-desc">Trip token BKK-NOV26 sync and offline vault credentials.</p>
+          <div class="card-meta">
+            <span>📐 1600 × 1200 (4:3 HD)</span>
+            <a href="./03_Jastip_CrossBorder_Case_Study.md" class="card-link">Case Study →</a>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-card" data-app="03_jastip" data-type="dashboard">
+        <div class="card-thumb-wrap" onclick="openLightbox('./gallery_assets/03_jastip/02_dashboard.png', 'Jastip Cross-Border — Active Sourcing Trip Cockpit', 'Mobile App • Dashboard Screen • High Definition 4:3 (1600×1200)', '03_Jastip_CrossBorder_Case_Study.md')">
+          <img src="./gallery_assets/03_jastip/02_dashboard.png" alt="Jastip Cross-Border - Active Sourcing Trip Cockpit" class="card-thumb" loading="lazy">
+          <div class="card-overlay">
+            <span class="zoom-btn">🔍 View 4:3 HD</span>
+          </div>
+          <span class="badge-type">Dashboard</span>
+          <span class="badge-platform">Mobile App</span>
+        </div>
+        <div class="card-body">
+          <div class="card-app">Jastip Cross-Border</div>
+          <h3 class="card-title">Active Sourcing Trip Cockpit</h3>
+          <p class="card-desc">Real-time luggage weight gauge (23.4kg/30kg) and THB/IDR margin tracker.</p>
+          <div class="card-meta">
+            <span>📐 1600 × 1200 (4:3 HD)</span>
+            <a href="./03_Jastip_CrossBorder_Case_Study.md" class="card-link">Case Study →</a>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-card" data-app="03_jastip" data-type="form">
+        <div class="card-thumb-wrap" onclick="openLightbox('./gallery_assets/03_jastip/03_form.png', 'Jastip Cross-Border — In-Store Purchase & Barcode Form', 'Mobile App • Form Screen • High Definition 4:3 (1600×1200)', '03_Jastip_CrossBorder_Case_Study.md')">
+          <img src="./gallery_assets/03_jastip/03_form.png" alt="Jastip Cross-Border - In-Store Purchase & Barcode Form" class="card-thumb" loading="lazy">
+          <div class="card-overlay">
+            <span class="zoom-btn">🔍 View 4:3 HD</span>
+          </div>
+          <span class="badge-type">Form</span>
+          <span class="badge-platform">Mobile App</span>
+        </div>
+        <div class="card-body">
+          <div class="card-app">Jastip Cross-Border</div>
+          <h3 class="card-title">In-Store Purchase & Barcode Form</h3>
+          <p class="card-desc">Fast item logging, retail store tags, foreign currency converter.</p>
+          <div class="card-meta">
+            <span>📐 1600 × 1200 (4:3 HD)</span>
+            <a href="./03_Jastip_CrossBorder_Case_Study.md" class="card-link">Case Study →</a>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-card" data-app="03_jastip" data-type="profile">
+        <div class="card-thumb-wrap" onclick="openLightbox('./gallery_assets/03_jastip/04_profile.png', 'Jastip Cross-Border — Traveler Profile & Luggage Tiers', 'Mobile App • Profile Screen • High Definition 4:3 (1600×1200)', '03_Jastip_CrossBorder_Case_Study.md')">
+          <img src="./gallery_assets/03_jastip/04_profile.png" alt="Jastip Cross-Border - Traveler Profile & Luggage Tiers" class="card-thumb" loading="lazy">
+          <div class="card-overlay">
+            <span class="zoom-btn">🔍 View 4:3 HD</span>
+          </div>
+          <span class="badge-type">Profile</span>
+          <span class="badge-platform">Mobile App</span>
+        </div>
+        <div class="card-body">
+          <div class="card-app">Jastip Cross-Border</div>
+          <h3 class="card-title">Traveler Profile & Luggage Tiers</h3>
+          <p class="card-desc">Baggage limits, multi-currency balances, and payout account binding.</p>
+          <div class="card-meta">
+            <span>📐 1600 × 1200 (4:3 HD)</span>
+            <a href="./03_Jastip_CrossBorder_Case_Study.md" class="card-link">Case Study →</a>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-card" data-app="03_jastip" data-type="feature">
+        <div class="card-thumb-wrap" onclick="openLightbox('./gallery_assets/03_jastip/05_additional_features.png', 'Jastip Cross-Border — Web Bluetooth 58mm Thermal Print', 'Mobile App • Feature Screen • High Definition 4:3 (1600×1200)', '03_Jastip_CrossBorder_Case_Study.md')">
+          <img src="./gallery_assets/03_jastip/05_additional_features.png" alt="Jastip Cross-Border - Web Bluetooth 58mm Thermal Print" class="card-thumb" loading="lazy">
+          <div class="card-overlay">
+            <span class="zoom-btn">🔍 View 4:3 HD</span>
+          </div>
+          <span class="badge-type">Feature</span>
+          <span class="badge-platform">Mobile App</span>
+        </div>
+        <div class="card-body">
+          <div class="card-app">Jastip Cross-Border</div>
+          <h3 class="card-title">Web Bluetooth 58mm Thermal Print</h3>
+          <p class="card-desc">Wireless ESC/POS thermal printing with 384-dot label bitmap preview.</p>
+          <div class="card-meta">
+            <span>📐 1600 × 1200 (4:3 HD)</span>
+            <a href="./03_Jastip_CrossBorder_Case_Study.md" class="card-link">Case Study →</a>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-card" data-app="04_pelatihku" data-type="login">
+        <div class="card-thumb-wrap" onclick="openLightbox('./gallery_assets/04_pelatihku/01_login.png', 'PelatihKu PRO — Coach Authentication', 'Mobile App • Login Screen • High Definition 4:3 (1600×1200)', '04_PelatihKu_Athletic_OS_Case_Study.md')">
+          <img src="./gallery_assets/04_pelatihku/01_login.png" alt="PelatihKu PRO - Coach Authentication" class="card-thumb" loading="lazy">
+          <div class="card-overlay">
+            <span class="zoom-btn">🔍 View 4:3 HD</span>
+          </div>
+          <span class="badge-type">Login</span>
+          <span class="badge-platform">Mobile App</span>
+        </div>
+        <div class="card-body">
+          <div class="card-app">PelatihKu PRO</div>
+          <h3 class="card-title">Coach Authentication</h3>
+          <p class="card-desc">Electric Volt-Lime UI with NSCA credential verification.</p>
+          <div class="card-meta">
+            <span>📐 1600 × 1200 (4:3 HD)</span>
+            <a href="./04_PelatihKu_Athletic_OS_Case_Study.md" class="card-link">Case Study →</a>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-card" data-app="04_pelatihku" data-type="dashboard">
+        <div class="card-thumb-wrap" onclick="openLightbox('./gallery_assets/04_pelatihku/02_dashboard.png', 'PelatihKu PRO — Athlete Readiness Telemetry', 'Mobile App • Dashboard Screen • High Definition 4:3 (1600×1200)', '04_PelatihKu_Athletic_OS_Case_Study.md')">
+          <img src="./gallery_assets/04_pelatihku/02_dashboard.png" alt="PelatihKu PRO - Athlete Readiness Telemetry" class="card-thumb" loading="lazy">
+          <div class="card-overlay">
+            <span class="zoom-btn">🔍 View 4:3 HD</span>
+          </div>
+          <span class="badge-type">Dashboard</span>
+          <span class="badge-platform">Mobile App</span>
+        </div>
+        <div class="card-body">
+          <div class="card-app">PelatihKu PRO</div>
+          <h3 class="card-title">Athlete Readiness Telemetry</h3>
+          <p class="card-desc">HRV (78ms), resting heart rate, and central nervous system fatigue monitoring.</p>
+          <div class="card-meta">
+            <span>📐 1600 × 1200 (4:3 HD)</span>
+            <a href="./04_PelatihKu_Athletic_OS_Case_Study.md" class="card-link">Case Study →</a>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-card" data-app="04_pelatihku" data-type="form">
+        <div class="card-thumb-wrap" onclick="openLightbox('./gallery_assets/04_pelatihku/03_form.png', 'PelatihKu PRO — Workout Builder & RPE Logger', 'Mobile App • Form Screen • High Definition 4:3 (1600×1200)', '04_PelatihKu_Athletic_OS_Case_Study.md')">
+          <img src="./gallery_assets/04_pelatihku/03_form.png" alt="PelatihKu PRO - Workout Builder & RPE Logger" class="card-thumb" loading="lazy">
+          <div class="card-overlay">
+            <span class="zoom-btn">🔍 View 4:3 HD</span>
+          </div>
+          <span class="badge-type">Form</span>
+          <span class="badge-platform">Mobile App</span>
+        </div>
+        <div class="card-body">
+          <div class="card-app">PelatihKu PRO</div>
+          <h3 class="card-title">Workout Builder & RPE Logger</h3>
+          <p class="card-desc">Velocity-based training %1RM calculator, set/rep counter, RPE 8.5.</p>
+          <div class="card-meta">
+            <span>📐 1600 × 1200 (4:3 HD)</span>
+            <a href="./04_PelatihKu_Athletic_OS_Case_Study.md" class="card-link">Case Study →</a>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-card" data-app="04_pelatihku" data-type="profile">
+        <div class="card-thumb-wrap" onclick="openLightbox('./gallery_assets/04_pelatihku/04_profile.png', 'PelatihKu PRO — Coach Profile & Periodization', 'Mobile App • Profile Screen • High Definition 4:3 (1600×1200)', '04_PelatihKu_Athletic_OS_Case_Study.md')">
+          <img src="./gallery_assets/04_pelatihku/04_profile.png" alt="PelatihKu PRO - Coach Profile & Periodization" class="card-thumb" loading="lazy">
+          <div class="card-overlay">
+            <span class="zoom-btn">🔍 View 4:3 HD</span>
+          </div>
+          <span class="badge-type">Profile</span>
+          <span class="badge-platform">Mobile App</span>
+        </div>
+        <div class="card-body">
+          <div class="card-app">PelatihKu PRO</div>
+          <h3 class="card-title">Coach Profile & Periodization</h3>
+          <p class="card-desc">CSCS certification, active meso-cycle hypertrophy programming.</p>
+          <div class="card-meta">
+            <span>📐 1600 × 1200 (4:3 HD)</span>
+            <a href="./04_PelatihKu_Athletic_OS_Case_Study.md" class="card-link">Case Study →</a>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-card" data-app="04_pelatihku" data-type="feature">
+        <div class="card-thumb-wrap" onclick="openLightbox('./gallery_assets/04_pelatihku/05_additional_features.png', 'PelatihKu PRO — Sports Science 1RM Formula Engine', 'Mobile App • Feature Screen • High Definition 4:3 (1600×1200)', '04_PelatihKu_Athletic_OS_Case_Study.md')">
+          <img src="./gallery_assets/04_pelatihku/05_additional_features.png" alt="PelatihKu PRO - Sports Science 1RM Formula Engine" class="card-thumb" loading="lazy">
+          <div class="card-overlay">
+            <span class="zoom-btn">🔍 View 4:3 HD</span>
+          </div>
+          <span class="badge-type">Feature</span>
+          <span class="badge-platform">Mobile App</span>
+        </div>
+        <div class="card-body">
+          <div class="card-app">PelatihKu PRO</div>
+          <h3 class="card-title">Sports Science 1RM Formula Engine</h3>
+          <p class="card-desc">Brzycki vs Epley vs Lombardi mathematical comparison matrix.</p>
+          <div class="card-meta">
+            <span>📐 1600 × 1200 (4:3 HD)</span>
+            <a href="./04_PelatihKu_Athletic_OS_Case_Study.md" class="card-link">Case Study →</a>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-card" data-app="05_putri_garmenthub" data-type="login">
+        <div class="card-thumb-wrap" onclick="openLightbox('./gallery_assets/05_putri_garmenthub/01_login.png', 'Putri GarmentHub ERP — Factory Operator Sign-In', 'Desktop App • Login Screen • High Definition 4:3 (1600×1200)', '05_Putri_GarmentHub_Case_Study.md')">
+          <img src="./gallery_assets/05_putri_garmenthub/01_login.png" alt="Putri GarmentHub ERP - Factory Operator Sign-In" class="card-thumb" loading="lazy">
+          <div class="card-overlay">
+            <span class="zoom-btn">🔍 View 4:3 HD</span>
+          </div>
+          <span class="badge-type">Login</span>
+          <span class="badge-platform">Desktop App</span>
+        </div>
+        <div class="card-body">
+          <div class="card-app">Putri GarmentHub ERP</div>
+          <h3 class="card-title">Factory Operator Sign-In</h3>
+          <p class="card-desc">Departmental SSO and plant shift operator authorization.</p>
+          <div class="card-meta">
+            <span>📐 1600 × 1200 (4:3 HD)</span>
+            <a href="./05_Putri_GarmentHub_Case_Study.md" class="card-link">Case Study →</a>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-card" data-app="05_putri_garmenthub" data-type="dashboard">
+        <div class="card-thumb-wrap" onclick="openLightbox('./gallery_assets/05_putri_garmenthub/02_dashboard.png', 'Putri GarmentHub ERP — Master Production Telemetry', 'Desktop App • Dashboard Screen • High Definition 4:3 (1600×1200)', '05_Putri_GarmentHub_Case_Study.md')">
+          <img src="./gallery_assets/05_putri_garmenthub/02_dashboard.png" alt="Putri GarmentHub ERP - Master Production Telemetry" class="card-thumb" loading="lazy">
+          <div class="card-overlay">
+            <span class="zoom-btn">🔍 View 4:3 HD</span>
+          </div>
+          <span class="badge-type">Dashboard</span>
+          <span class="badge-platform">Desktop App</span>
+        </div>
+        <div class="card-body">
+          <div class="card-app">Putri GarmentHub ERP</div>
+          <h3 class="card-title">Master Production Telemetry</h3>
+          <p class="card-desc">14,850 dozens active volume, cutting line velocity, fabric roll inventory.</p>
+          <div class="card-meta">
+            <span>📐 1600 × 1200 (4:3 HD)</span>
+            <a href="./05_Putri_GarmentHub_Case_Study.md" class="card-link">Case Study →</a>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-card" data-app="05_putri_garmenthub" data-type="form">
+        <div class="card-thumb-wrap" onclick="openLightbox('./gallery_assets/05_putri_garmenthub/03_form.png', 'Putri GarmentHub ERP — SPK Cutting & Order Entry Form', 'Desktop App • Form Screen • High Definition 4:3 (1600×1200)', '05_Putri_GarmentHub_Case_Study.md')">
+          <img src="./gallery_assets/05_putri_garmenthub/03_form.png" alt="Putri GarmentHub ERP - SPK Cutting & Order Entry Form" class="card-thumb" loading="lazy">
+          <div class="card-overlay">
+            <span class="zoom-btn">🔍 View 4:3 HD</span>
+          </div>
+          <span class="badge-type">Form</span>
+          <span class="badge-platform">Desktop App</span>
+        </div>
+        <div class="card-body">
+          <div class="card-app">Putri GarmentHub ERP</div>
+          <h3 class="card-title">SPK Cutting & Order Entry Form</h3>
+          <p class="card-desc">Lot tracking, dozens/kodi breakdown, spreading length calculations.</p>
+          <div class="card-meta">
+            <span>📐 1600 × 1200 (4:3 HD)</span>
+            <a href="./05_Putri_GarmentHub_Case_Study.md" class="card-link">Case Study →</a>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-card" data-app="05_putri_garmenthub" data-type="profile">
+        <div class="card-thumb-wrap" onclick="openLightbox('./gallery_assets/05_putri_garmenthub/04_profile.png', 'Putri GarmentHub ERP — Plant Director Profile', 'Desktop App • Profile Screen • High Definition 4:3 (1600×1200)', '05_Putri_GarmentHub_Case_Study.md')">
+          <img src="./gallery_assets/05_putri_garmenthub/04_profile.png" alt="Putri GarmentHub ERP - Plant Director Profile" class="card-thumb" loading="lazy">
+          <div class="card-overlay">
+            <span class="zoom-btn">🔍 View 4:3 HD</span>
+          </div>
+          <span class="badge-type">Profile</span>
+          <span class="badge-platform">Desktop App</span>
+        </div>
+        <div class="card-body">
+          <div class="card-app">Putri GarmentHub ERP</div>
+          <h3 class="card-title">Plant Director Profile</h3>
+          <p class="card-desc">Full factory authority, digital sign-off, role permissions matrix.</p>
+          <div class="card-meta">
+            <span>📐 1600 × 1200 (4:3 HD)</span>
+            <a href="./05_Putri_GarmentHub_Case_Study.md" class="card-link">Case Study →</a>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-card" data-app="05_putri_garmenthub" data-type="feature">
+        <div class="card-thumb-wrap" onclick="openLightbox('./gallery_assets/05_putri_garmenthub/05_additional_features.png', 'Putri GarmentHub ERP — Dynamic Wholesale Pricing Matrix', 'Desktop App • Feature Screen • High Definition 4:3 (1600×1200)', '05_Putri_GarmentHub_Case_Study.md')">
+          <img src="./gallery_assets/05_putri_garmenthub/05_additional_features.png" alt="Putri GarmentHub ERP - Dynamic Wholesale Pricing Matrix" class="card-thumb" loading="lazy">
+          <div class="card-overlay">
+            <span class="zoom-btn">🔍 View 4:3 HD</span>
+          </div>
+          <span class="badge-type">Feature</span>
+          <span class="badge-platform">Desktop App</span>
+        </div>
+        <div class="card-body">
+          <div class="card-app">Putri GarmentHub ERP</div>
+          <h3 class="card-title">Dynamic Wholesale Pricing Matrix</h3>
+          <p class="card-desc">Tiered volume discounts (Lusin / Kodi / Container) with automated margins.</p>
+          <div class="card-meta">
+            <span>📐 1600 × 1200 (4:3 HD)</span>
+            <a href="./05_Putri_GarmentHub_Case_Study.md" class="card-link">Case Study →</a>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-card" data-app="06_dlab_perfumerie" data-type="login">
+        <div class="card-thumb-wrap" onclick="openLightbox('./gallery_assets/06_dlab_perfumerie/01_login.png', 'DLAB Night Match Atelier — VIP Privé Concierge Login', 'Mobile App • Login Screen • High Definition 4:3 (1600×1200)', '06_DLAB_NightMatch_Case_Study.md')">
+          <img src="./gallery_assets/06_dlab_perfumerie/01_login.png" alt="DLAB Night Match Atelier - VIP Privé Concierge Login" class="card-thumb" loading="lazy">
+          <div class="card-overlay">
+            <span class="zoom-btn">🔍 View 4:3 HD</span>
+          </div>
+          <span class="badge-type">Login</span>
+          <span class="badge-platform">Mobile App</span>
+        </div>
+        <div class="card-body">
+          <div class="card-app">DLAB Night Match Atelier</div>
+          <h3 class="card-title">VIP Privé Concierge Login</h3>
+          <p class="card-desc">Gold-on-obsidian biometric access to private formulation vault.</p>
+          <div class="card-meta">
+            <span>📐 1600 × 1200 (4:3 HD)</span>
+            <a href="./06_DLAB_NightMatch_Case_Study.md" class="card-link">Case Study →</a>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-card" data-app="06_dlab_perfumerie" data-type="dashboard">
+        <div class="card-thumb-wrap" onclick="openLightbox('./gallery_assets/06_dlab_perfumerie/02_dashboard.png', 'DLAB Night Match Atelier — Olfactory Catalog & Night Match', 'Mobile App • Dashboard Screen • High Definition 4:3 (1600×1200)', '06_DLAB_NightMatch_Case_Study.md')">
+          <img src="./gallery_assets/06_dlab_perfumerie/02_dashboard.png" alt="DLAB Night Match Atelier - Olfactory Catalog & Night Match" class="card-thumb" loading="lazy">
+          <div class="card-overlay">
+            <span class="zoom-btn">🔍 View 4:3 HD</span>
+          </div>
+          <span class="badge-type">Dashboard</span>
+          <span class="badge-platform">Mobile App</span>
+        </div>
+        <div class="card-body">
+          <div class="card-app">DLAB Night Match Atelier</div>
+          <h3 class="card-title">Olfactory Catalog & Night Match</h3>
+          <p class="card-desc">93 bespoke Extrait de Parfum formulations with note compatibility scores.</p>
+          <div class="card-meta">
+            <span>📐 1600 × 1200 (4:3 HD)</span>
+            <a href="./06_DLAB_NightMatch_Case_Study.md" class="card-link">Case Study →</a>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-card" data-app="06_dlab_perfumerie" data-type="form">
+        <div class="card-thumb-wrap" onclick="openLightbox('./gallery_assets/06_dlab_perfumerie/03_form.png', 'DLAB Night Match Atelier — Bespoke Formulation Customizer', 'Mobile App • Form Screen • High Definition 4:3 (1600×1200)', '06_DLAB_NightMatch_Case_Study.md')">
+          <img src="./gallery_assets/06_dlab_perfumerie/03_form.png" alt="DLAB Night Match Atelier - Bespoke Formulation Customizer" class="card-thumb" loading="lazy">
+          <div class="card-overlay">
+            <span class="zoom-btn">🔍 View 4:3 HD</span>
+          </div>
+          <span class="badge-type">Form</span>
+          <span class="badge-platform">Mobile App</span>
+        </div>
+        <div class="card-body">
+          <div class="card-app">DLAB Night Match Atelier</div>
+          <h3 class="card-title">Bespoke Formulation Customizer</h3>
+          <p class="card-desc">Sillage slider, 30% concentration selector, custom bottle gold engraving.</p>
+          <div class="card-meta">
+            <span>📐 1600 × 1200 (4:3 HD)</span>
+            <a href="./06_DLAB_NightMatch_Case_Study.md" class="card-link">Case Study →</a>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-card" data-app="06_dlab_perfumerie" data-type="profile">
+        <div class="card-thumb-wrap" onclick="openLightbox('./gallery_assets/06_dlab_perfumerie/04_profile.png', 'DLAB Night Match Atelier — Olfactory Persona Profile', 'Mobile App • Profile Screen • High Definition 4:3 (1600×1200)', '06_DLAB_NightMatch_Case_Study.md')">
+          <img src="./gallery_assets/06_dlab_perfumerie/04_profile.png" alt="DLAB Night Match Atelier - Olfactory Persona Profile" class="card-thumb" loading="lazy">
+          <div class="card-overlay">
+            <span class="zoom-btn">🔍 View 4:3 HD</span>
+          </div>
+          <span class="badge-type">Profile</span>
+          <span class="badge-platform">Mobile App</span>
+        </div>
+        <div class="card-body">
+          <div class="card-app">DLAB Night Match Atelier</div>
+          <h3 class="card-title">Olfactory Persona Profile</h3>
+          <p class="card-desc">Scent DNA preference mapping (Oud, Iris, Ambergris) & bespoke history.</p>
+          <div class="card-meta">
+            <span>📐 1600 × 1200 (4:3 HD)</span>
+            <a href="./06_DLAB_NightMatch_Case_Study.md" class="card-link">Case Study →</a>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-card" data-app="06_dlab_perfumerie" data-type="feature">
+        <div class="card-thumb-wrap" onclick="openLightbox('./gallery_assets/06_dlab_perfumerie/05_additional_features.png', 'DLAB Night Match Atelier — Interactive Olfactory Pyramid', 'Mobile App • Feature Screen • High Definition 4:3 (1600×1200)', '06_DLAB_NightMatch_Case_Study.md')">
+          <img src="./gallery_assets/06_dlab_perfumerie/05_additional_features.png" alt="DLAB Night Match Atelier - Interactive Olfactory Pyramid" class="card-thumb" loading="lazy">
+          <div class="card-overlay">
+            <span class="zoom-btn">🔍 View 4:3 HD</span>
+          </div>
+          <span class="badge-type">Feature</span>
+          <span class="badge-platform">Mobile App</span>
+        </div>
+        <div class="card-body">
+          <div class="card-app">DLAB Night Match Atelier</div>
+          <h3 class="card-title">Interactive Olfactory Pyramid</h3>
+          <p class="card-desc">Top (Bergamot), Heart (Iris Absolu), and Base (Vetiver/Oud) drydown visualizer.</p>
+          <div class="card-meta">
+            <span>📐 1600 × 1200 (4:3 HD)</span>
+            <a href="./06_DLAB_NightMatch_Case_Study.md" class="card-link">Case Study →</a>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-card" data-app="07_ioi_m365" data-type="login">
+        <div class="card-thumb-wrap" onclick="openLightbox('./gallery_assets/07_ioi_m365/01_login.png', 'IOI Group M365 — Microsoft Entra ID Corporate Login', 'Desktop App • Login Screen • High Definition 4:3 (1600×1200)', '07_IOI_Enterprise_M365_Case_Study.md')">
+          <img src="./gallery_assets/07_ioi_m365/01_login.png" alt="IOI Group M365 - Microsoft Entra ID Corporate Login" class="card-thumb" loading="lazy">
+          <div class="card-overlay">
+            <span class="zoom-btn">🔍 View 4:3 HD</span>
+          </div>
+          <span class="badge-type">Login</span>
+          <span class="badge-platform">Desktop App</span>
+        </div>
+        <div class="card-body">
+          <div class="card-app">IOI Group M365</div>
+          <h3 class="card-title">Microsoft Entra ID Corporate Login</h3>
+          <p class="card-desc">Enterprise single sign-on with Azure MFA push token verification.</p>
+          <div class="card-meta">
+            <span>📐 1600 × 1200 (4:3 HD)</span>
+            <a href="./07_IOI_Enterprise_M365_Case_Study.md" class="card-link">Case Study →</a>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-card" data-app="07_ioi_m365" data-type="dashboard">
+        <div class="card-thumb-wrap" onclick="openLightbox('./gallery_assets/07_ioi_m365/02_dashboard.png', 'IOI Group M365 — Plantation Operations Command Center', 'Desktop App • Dashboard Screen • High Definition 4:3 (1600×1200)', '07_IOI_Enterprise_M365_Case_Study.md')">
+          <img src="./gallery_assets/07_ioi_m365/02_dashboard.png" alt="IOI Group M365 - Plantation Operations Command Center" class="card-thumb" loading="lazy">
+          <div class="card-overlay">
+            <span class="zoom-btn">🔍 View 4:3 HD</span>
+          </div>
+          <span class="badge-type">Dashboard</span>
+          <span class="badge-platform">Desktop App</span>
+        </div>
+        <div class="card-body">
+          <div class="card-app">IOI Group M365</div>
+          <h3 class="card-title">Plantation Operations Command Center</h3>
+          <p class="card-desc">361 migrated Domino forms, 7,878 Canvas screens, Oracle 19c sync status.</p>
+          <div class="card-meta">
+            <span>📐 1600 × 1200 (4:3 HD)</span>
+            <a href="./07_IOI_Enterprise_M365_Case_Study.md" class="card-link">Case Study →</a>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-card" data-app="07_ioi_m365" data-type="form">
+        <div class="card-thumb-wrap" onclick="openLightbox('./gallery_assets/07_ioi_m365/03_form.png', 'IOI Group M365 — CapEx Multi-Tier Requisition Form', 'Desktop App • Form Screen • High Definition 4:3 (1600×1200)', '07_IOI_Enterprise_M365_Case_Study.md')">
+          <img src="./gallery_assets/07_ioi_m365/03_form.png" alt="IOI Group M365 - CapEx Multi-Tier Requisition Form" class="card-thumb" loading="lazy">
+          <div class="card-overlay">
+            <span class="zoom-btn">🔍 View 4:3 HD</span>
+          </div>
+          <span class="badge-type">Form</span>
+          <span class="badge-platform">Desktop App</span>
+        </div>
+        <div class="card-body">
+          <div class="card-app">IOI Group M365</div>
+          <h3 class="card-title">CapEx Multi-Tier Requisition Form</h3>
+          <p class="card-desc">Palm oil mill turbine overhaul CapEx workflow with automated approval routing.</p>
+          <div class="card-meta">
+            <span>📐 1600 × 1200 (4:3 HD)</span>
+            <a href="./07_IOI_Enterprise_M365_Case_Study.md" class="card-link">Case Study →</a>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-card" data-app="07_ioi_m365" data-type="profile">
+        <div class="card-thumb-wrap" onclick="openLightbox('./gallery_assets/07_ioi_m365/04_profile.png', 'IOI Group M365 — Group Executive Director Profile', 'Desktop App • Profile Screen • High Definition 4:3 (1600×1200)', '07_IOI_Enterprise_M365_Case_Study.md')">
+          <img src="./gallery_assets/07_ioi_m365/04_profile.png" alt="IOI Group M365 - Group Executive Director Profile" class="card-thumb" loading="lazy">
+          <div class="card-overlay">
+            <span class="zoom-btn">🔍 View 4:3 HD</span>
+          </div>
+          <span class="badge-type">Profile</span>
+          <span class="badge-platform">Desktop App</span>
+        </div>
+        <div class="card-body">
+          <div class="card-app">IOI Group M365</div>
+          <h3 class="card-title">Group Executive Director Profile</h3>
+          <p class="card-desc">Board approval delegations, Dataverse roles, and PKI digital signature status.</p>
+          <div class="card-meta">
+            <span>📐 1600 × 1200 (4:3 HD)</span>
+            <a href="./07_IOI_Enterprise_M365_Case_Study.md" class="card-link">Case Study →</a>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-card" data-app="07_ioi_m365" data-type="feature">
+        <div class="card-thumb-wrap" onclick="openLightbox('./gallery_assets/07_ioi_m365/05_additional_features.png', 'IOI Group M365 — Domino DXL to Canvas YAML Compiler', 'Desktop App • Feature Screen • High Definition 4:3 (1600×1200)', '07_IOI_Enterprise_M365_Case_Study.md')">
+          <img src="./gallery_assets/07_ioi_m365/05_additional_features.png" alt="IOI Group M365 - Domino DXL to Canvas YAML Compiler" class="card-thumb" loading="lazy">
+          <div class="card-overlay">
+            <span class="zoom-btn">🔍 View 4:3 HD</span>
+          </div>
+          <span class="badge-type">Feature</span>
+          <span class="badge-platform">Desktop App</span>
+        </div>
+        <div class="card-body">
+          <div class="card-app">IOI Group M365</div>
+          <h3 class="card-title">Domino DXL to Canvas YAML Compiler</h3>
+          <p class="card-desc">Side-by-side legacy Lotus Domino DXL formula to modern Power Apps Canvas YAML.</p>
+          <div class="card-meta">
+            <span>📐 1600 × 1200 (4:3 HD)</span>
+            <a href="./07_IOI_Enterprise_M365_Case_Study.md" class="card-link">Case Study →</a>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-card" data-app="08_webcamoid" data-type="login">
+        <div class="card-thumb-wrap" onclick="openLightbox('./gallery_assets/08_webcamoid/01_login.png', 'Webcamoid Video Engine — Workstation Session Auth', 'Desktop App • Login Screen • High Definition 4:3 (1600×1200)', '08_Webcamoid_Video_Engine_Case_Study.md')">
+          <img src="./gallery_assets/08_webcamoid/01_login.png" alt="Webcamoid Video Engine - Workstation Session Auth" class="card-thumb" loading="lazy">
+          <div class="card-overlay">
+            <span class="zoom-btn">🔍 View 4:3 HD</span>
+          </div>
+          <span class="badge-type">Login</span>
+          <span class="badge-platform">Desktop App</span>
+        </div>
+        <div class="card-body">
+          <div class="card-app">Webcamoid Video Engine</div>
+          <h3 class="card-title">Workstation Session Auth</h3>
+          <p class="card-desc">Hardware driver authorization and Qt6 virtual camera kernel setup.</p>
+          <div class="card-meta">
+            <span>📐 1600 × 1200 (4:3 HD)</span>
+            <a href="./08_Webcamoid_Video_Engine_Case_Study.md" class="card-link">Case Study →</a>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-card" data-app="08_webcamoid" data-type="dashboard">
+        <div class="card-thumb-wrap" onclick="openLightbox('./gallery_assets/08_webcamoid/02_dashboard.png', 'Webcamoid Video Engine — Multi-Source Video Master Console', 'Desktop App • Dashboard Screen • High Definition 4:3 (1600×1200)', '08_Webcamoid_Video_Engine_Case_Study.md')">
+          <img src="./gallery_assets/08_webcamoid/02_dashboard.png" alt="Webcamoid Video Engine - Multi-Source Video Master Console" class="card-thumb" loading="lazy">
+          <div class="card-overlay">
+            <span class="zoom-btn">🔍 View 4:3 HD</span>
+          </div>
+          <span class="badge-type">Dashboard</span>
+          <span class="badge-platform">Desktop App</span>
+        </div>
+        <div class="card-body">
+          <div class="card-app">Webcamoid Video Engine</div>
+          <h3 class="card-title">Multi-Source Video Master Console</h3>
+          <p class="card-desc">4K 60FPS NV12 live monitor, ASIO low-latency audio, GPU shader load.</p>
+          <div class="card-meta">
+            <span>📐 1600 × 1200 (4:3 HD)</span>
+            <a href="./08_Webcamoid_Video_Engine_Case_Study.md" class="card-link">Case Study →</a>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-card" data-app="08_webcamoid" data-type="form">
+        <div class="card-thumb-wrap" onclick="openLightbox('./gallery_assets/08_webcamoid/03_form.png', 'Webcamoid Video Engine — Capture Device Configuration Form', 'Desktop App • Form Screen • High Definition 4:3 (1600×1200)', '08_Webcamoid_Video_Engine_Case_Study.md')">
+          <img src="./gallery_assets/08_webcamoid/03_form.png" alt="Webcamoid Video Engine - Capture Device Configuration Form" class="card-thumb" loading="lazy">
+          <div class="card-overlay">
+            <span class="zoom-btn">🔍 View 4:3 HD</span>
+          </div>
+          <span class="badge-type">Form</span>
+          <span class="badge-platform">Desktop App</span>
+        </div>
+        <div class="card-body">
+          <div class="card-app">Webcamoid Video Engine</div>
+          <h3 class="card-title">Capture Device Configuration Form</h3>
+          <p class="card-desc">DirectShow/V4L2 backend selector, NVENC hardware encoding, resolution settings.</p>
+          <div class="card-meta">
+            <span>📐 1600 × 1200 (4:3 HD)</span>
+            <a href="./08_Webcamoid_Video_Engine_Case_Study.md" class="card-link">Case Study →</a>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-card" data-app="08_webcamoid" data-type="profile">
+        <div class="card-thumb-wrap" onclick="openLightbox('./gallery_assets/08_webcamoid/04_profile.png', 'Webcamoid Video Engine — Hardware Driver & Shader Profile', 'Desktop App • Profile Screen • High Definition 4:3 (1600×1200)', '08_Webcamoid_Video_Engine_Case_Study.md')">
+          <img src="./gallery_assets/08_webcamoid/04_profile.png" alt="Webcamoid Video Engine - Hardware Driver & Shader Profile" class="card-thumb" loading="lazy">
+          <div class="card-overlay">
+            <span class="zoom-btn">🔍 View 4:3 HD</span>
+          </div>
+          <span class="badge-type">Profile</span>
+          <span class="badge-platform">Desktop App</span>
+        </div>
+        <div class="card-body">
+          <div class="card-app">Webcamoid Video Engine</div>
+          <h3 class="card-title">Hardware Driver & Shader Profile</h3>
+          <p class="card-desc">NVIDIA RTX 4080 Vulkan compute pipeline, GLSL shader cache validation.</p>
+          <div class="card-meta">
+            <span>📐 1600 × 1200 (4:3 HD)</span>
+            <a href="./08_Webcamoid_Video_Engine_Case_Study.md" class="card-link">Case Study →</a>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-card" data-app="08_webcamoid" data-type="feature">
+        <div class="card-thumb-wrap" onclick="openLightbox('./gallery_assets/08_webcamoid/05_additional_features.png', 'Webcamoid Video Engine — Real-Time GLSL Shader Node Graph', 'Desktop App • Feature Screen • High Definition 4:3 (1600×1200)', '08_Webcamoid_Video_Engine_Case_Study.md')">
+          <img src="./gallery_assets/08_webcamoid/05_additional_features.png" alt="Webcamoid Video Engine - Real-Time GLSL Shader Node Graph" class="card-thumb" loading="lazy">
+          <div class="card-overlay">
+            <span class="zoom-btn">🔍 View 4:3 HD</span>
+          </div>
+          <span class="badge-type">Feature</span>
+          <span class="badge-platform">Desktop App</span>
+        </div>
+        <div class="card-body">
+          <div class="card-app">Webcamoid Video Engine</div>
+          <h3 class="card-title">Real-Time GLSL Shader Node Graph</h3>
+          <p class="card-desc">Visual node compositor linking input -> Chroma Key -> LUT -> Virtual Camera Sink.</p>
+          <div class="card-meta">
+            <span>📐 1600 × 1200 (4:3 HD)</span>
+            <a href="./08_Webcamoid_Video_Engine_Case_Study.md" class="card-link">Case Study →</a>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-card" data-app="09_barbershop" data-type="login">
+        <div class="card-thumb-wrap" onclick="openLightbox('./gallery_assets/09_barbershop/01_login.png', 'Barbershop POS — Stylist Quick-Access PIN Login', 'Mobile App • Login Screen • High Definition 4:3 (1600×1200)', '09_Barbershop_Management_Case_Study.md')">
+          <img src="./gallery_assets/09_barbershop/01_login.png" alt="Barbershop POS - Stylist Quick-Access PIN Login" class="card-thumb" loading="lazy">
+          <div class="card-overlay">
+            <span class="zoom-btn">🔍 View 4:3 HD</span>
+          </div>
+          <span class="badge-type">Login</span>
+          <span class="badge-platform">Mobile App</span>
+        </div>
+        <div class="card-body">
+          <div class="card-app">Barbershop POS</div>
+          <h3 class="card-title">Stylist Quick-Access PIN Login</h3>
+          <p class="card-desc">Station selector (Chair #3) and quick 4-digit PIN authentication.</p>
+          <div class="card-meta">
+            <span>📐 1600 × 1200 (4:3 HD)</span>
+            <a href="./09_Barbershop_Management_Case_Study.md" class="card-link">Case Study →</a>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-card" data-app="09_barbershop" data-type="dashboard">
+        <div class="card-thumb-wrap" onclick="openLightbox('./gallery_assets/09_barbershop/02_dashboard.png', 'Barbershop POS — Salon Operations & Queue Cockpit', 'Mobile App • Dashboard Screen • High Definition 4:3 (1600×1200)', '09_Barbershop_Management_Case_Study.md')">
+          <img src="./gallery_assets/09_barbershop/02_dashboard.png" alt="Barbershop POS - Salon Operations & Queue Cockpit" class="card-thumb" loading="lazy">
+          <div class="card-overlay">
+            <span class="zoom-btn">🔍 View 4:3 HD</span>
+          </div>
+          <span class="badge-type">Dashboard</span>
+          <span class="badge-platform">Mobile App</span>
+        </div>
+        <div class="card-body">
+          <div class="card-app">Barbershop POS</div>
+          <h3 class="card-title">Salon Operations & Queue Cockpit</h3>
+          <p class="card-desc">4/5 active chairs, 3 clients waiting, daily revenue IDR 3.85M.</p>
+          <div class="card-meta">
+            <span>📐 1600 × 1200 (4:3 HD)</span>
+            <a href="./09_Barbershop_Management_Case_Study.md" class="card-link">Case Study →</a>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-card" data-app="09_barbershop" data-type="form">
+        <div class="card-thumb-wrap" onclick="openLightbox('./gallery_assets/09_barbershop/03_form.png', 'Barbershop POS — Booking & Service Treatment Form', 'Mobile App • Form Screen • High Definition 4:3 (1600×1200)', '09_Barbershop_Management_Case_Study.md')">
+          <img src="./gallery_assets/09_barbershop/03_form.png" alt="Barbershop POS - Booking & Service Treatment Form" class="card-thumb" loading="lazy">
+          <div class="card-overlay">
+            <span class="zoom-btn">🔍 View 4:3 HD</span>
+          </div>
+          <span class="badge-type">Form</span>
+          <span class="badge-platform">Mobile App</span>
+        </div>
+        <div class="card-body">
+          <div class="card-app">Barbershop POS</div>
+          <h3 class="card-title">Booking & Service Treatment Form</h3>
+          <p class="card-desc">Deluxe fade package, clay pomade retail add-on, automated cashier checkout.</p>
+          <div class="card-meta">
+            <span>📐 1600 × 1200 (4:3 HD)</span>
+            <a href="./09_Barbershop_Management_Case_Study.md" class="card-link">Case Study →</a>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-card" data-app="09_barbershop" data-type="profile">
+        <div class="card-thumb-wrap" onclick="openLightbox('./gallery_assets/09_barbershop/04_profile.png', 'Barbershop POS — Master Barber Profile & Commission', 'Mobile App • Profile Screen • High Definition 4:3 (1600×1200)', '09_Barbershop_Management_Case_Study.md')">
+          <img src="./gallery_assets/09_barbershop/04_profile.png" alt="Barbershop POS - Master Barber Profile & Commission" class="card-thumb" loading="lazy">
+          <div class="card-overlay">
+            <span class="zoom-btn">🔍 View 4:3 HD</span>
+          </div>
+          <span class="badge-type">Profile</span>
+          <span class="badge-platform">Mobile App</span>
+        </div>
+        <div class="card-body">
+          <div class="card-app">Barbershop POS</div>
+          <h3 class="card-title">Master Barber Profile & Commission</h3>
+          <p class="card-desc">60/40 revenue split breakdown, daily tip pool, 4.96-star customer rating.</p>
+          <div class="card-meta">
+            <span>📐 1600 × 1200 (4:3 HD)</span>
+            <a href="./09_Barbershop_Management_Case_Study.md" class="card-link">Case Study →</a>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-card" data-app="09_barbershop" data-type="feature">
+        <div class="card-thumb-wrap" onclick="openLightbox('./gallery_assets/09_barbershop/05_additional_features.png', 'Barbershop POS — Cash Reconciliation & WhatsApp POS', 'Mobile App • Feature Screen • High Definition 4:3 (1600×1200)', '09_Barbershop_Management_Case_Study.md')">
+          <img src="./gallery_assets/09_barbershop/05_additional_features.png" alt="Barbershop POS - Cash Reconciliation & WhatsApp POS" class="card-thumb" loading="lazy">
+          <div class="card-overlay">
+            <span class="zoom-btn">🔍 View 4:3 HD</span>
+          </div>
+          <span class="badge-type">Feature</span>
+          <span class="badge-platform">Mobile App</span>
+        </div>
+        <div class="card-body">
+          <div class="card-app">Barbershop POS</div>
+          <h3 class="card-title">Cash Reconciliation & WhatsApp POS</h3>
+          <p class="card-desc">Drawer cash balance calculation and instant paperless WhatsApp receipt dispatch.</p>
+          <div class="card-meta">
+            <span>📐 1600 × 1200 (4:3 HD)</span>
+            <a href="./09_Barbershop_Management_Case_Study.md" class="card-link">Case Study →</a>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-card" data-app="10_resumeflow_jobllm" data-type="login">
+        <div class="card-thumb-wrap" onclick="openLightbox('./gallery_assets/10_resumeflow_jobllm/01_login.png', 'ResumeFlow (Job-LLM) — Candidate Sign-In & GitHub OAuth', 'Desktop App • Login Screen • High Definition 4:3 (1600×1200)', '10_ResumeFlow_JobLLM_Case_Study.md')">
+          <img src="./gallery_assets/10_resumeflow_jobllm/01_login.png" alt="ResumeFlow (Job-LLM) - Candidate Sign-In & GitHub OAuth" class="card-thumb" loading="lazy">
+          <div class="card-overlay">
+            <span class="zoom-btn">🔍 View 4:3 HD</span>
+          </div>
+          <span class="badge-type">Login</span>
+          <span class="badge-platform">Desktop App</span>
+        </div>
+        <div class="card-body">
+          <div class="card-app">ResumeFlow (Job-LLM)</div>
+          <h3 class="card-title">Candidate Sign-In & GitHub OAuth</h3>
+          <p class="card-desc">Academic AI researcher authentication and OAuth workspace gateway.</p>
+          <div class="card-meta">
+            <span>📐 1600 × 1200 (4:3 HD)</span>
+            <a href="./10_ResumeFlow_JobLLM_Case_Study.md" class="card-link">Case Study →</a>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-card" data-app="10_resumeflow_jobllm" data-type="dashboard">
+        <div class="card-thumb-wrap" onclick="openLightbox('./gallery_assets/10_resumeflow_jobllm/02_dashboard.png', 'ResumeFlow (Job-LLM) — Application Pipeline & ATS Match', 'Desktop App • Dashboard Screen • High Definition 4:3 (1600×1200)', '10_ResumeFlow_JobLLM_Case_Study.md')">
+          <img src="./gallery_assets/10_resumeflow_jobllm/02_dashboard.png" alt="ResumeFlow (Job-LLM) - Application Pipeline & ATS Match" class="card-thumb" loading="lazy">
+          <div class="card-overlay">
+            <span class="zoom-btn">🔍 View 4:3 HD</span>
+          </div>
+          <span class="badge-type">Dashboard</span>
+          <span class="badge-platform">Desktop App</span>
+        </div>
+        <div class="card-body">
+          <div class="card-app">ResumeFlow (Job-LLM)</div>
+          <h3 class="card-title">Application Pipeline & ATS Match</h3>
+          <p class="card-desc">94.8% ATS match score, cosine similarity telemetry, active interview pipeline.</p>
+          <div class="card-meta">
+            <span>📐 1600 × 1200 (4:3 HD)</span>
+            <a href="./10_ResumeFlow_JobLLM_Case_Study.md" class="card-link">Case Study →</a>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-card" data-app="10_resumeflow_jobllm" data-type="form">
+        <div class="card-thumb-wrap" onclick="openLightbox('./gallery_assets/10_resumeflow_jobllm/03_form.png', 'ResumeFlow (Job-LLM) — Job Description Ingestion Form', 'Desktop App • Form Screen • High Definition 4:3 (1600×1200)', '10_ResumeFlow_JobLLM_Case_Study.md')">
+          <img src="./gallery_assets/10_resumeflow_jobllm/03_form.png" alt="ResumeFlow (Job-LLM) - Job Description Ingestion Form" class="card-thumb" loading="lazy">
+          <div class="card-overlay">
+            <span class="zoom-btn">🔍 View 4:3 HD</span>
+          </div>
+          <span class="badge-type">Form</span>
+          <span class="badge-platform">Desktop App</span>
+        </div>
+        <div class="card-body">
+          <div class="card-app">ResumeFlow (Job-LLM)</div>
+          <h3 class="card-title">Job Description Ingestion Form</h3>
+          <p class="card-desc">Role requirement extraction, latent skill mapping, compensation calibration.</p>
+          <div class="card-meta">
+            <span>📐 1600 × 1200 (4:3 HD)</span>
+            <a href="./10_ResumeFlow_JobLLM_Case_Study.md" class="card-link">Case Study →</a>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-card" data-app="10_resumeflow_jobllm" data-type="profile">
+        <div class="card-thumb-wrap" onclick="openLightbox('./gallery_assets/10_resumeflow_jobllm/04_profile.png', 'ResumeFlow (Job-LLM) — Engineering Candidate Master Profile', 'Desktop App • Profile Screen • High Definition 4:3 (1600×1200)', '10_ResumeFlow_JobLLM_Case_Study.md')">
+          <img src="./gallery_assets/10_resumeflow_jobllm/04_profile.png" alt="ResumeFlow (Job-LLM) - Engineering Candidate Master Profile" class="card-thumb" loading="lazy">
+          <div class="card-overlay">
+            <span class="zoom-btn">🔍 View 4:3 HD</span>
+          </div>
+          <span class="badge-type">Profile</span>
+          <span class="badge-platform">Desktop App</span>
+        </div>
+        <div class="card-body">
+          <div class="card-app">ResumeFlow (Job-LLM)</div>
+          <h3 class="card-title">Engineering Candidate Master Profile</h3>
+          <p class="card-desc">Verified production systems portfolio, Google XYZ bullet repository.</p>
+          <div class="card-meta">
+            <span>📐 1600 × 1200 (4:3 HD)</span>
+            <a href="./10_ResumeFlow_JobLLM_Case_Study.md" class="card-link">Case Study →</a>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-card" data-app="10_resumeflow_jobllm" data-type="feature">
+        <div class="card-thumb-wrap" onclick="openLightbox('./gallery_assets/10_resumeflow_jobllm/05_additional_features.png', 'ResumeFlow (Job-LLM) — Semantic Vector Gap Analysis', 'Desktop App • Feature Screen • High Definition 4:3 (1600×1200)', '10_ResumeFlow_JobLLM_Case_Study.md')">
+          <img src="./gallery_assets/10_resumeflow_jobllm/05_additional_features.png" alt="ResumeFlow (Job-LLM) - Semantic Vector Gap Analysis" class="card-thumb" loading="lazy">
+          <div class="card-overlay">
+            <span class="zoom-btn">🔍 View 4:3 HD</span>
+          </div>
+          <span class="badge-type">Feature</span>
+          <span class="badge-platform">Desktop App</span>
+        </div>
+        <div class="card-body">
+          <div class="card-app">ResumeFlow (Job-LLM)</div>
+          <h3 class="card-title">Semantic Vector Gap Analysis</h3>
+          <p class="card-desc">Cosine embedding similarity matrix highlighting missing keywords and injected metrics.</p>
+          <div class="card-meta">
+            <span>📐 1600 × 1200 (4:3 HD)</span>
+            <a href="./10_ResumeFlow_JobLLM_Case_Study.md" class="card-link">Case Study →</a>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-card" data-app="11_headless_ecommerce" data-type="login">
+        <div class="card-thumb-wrap" onclick="openLightbox('./gallery_assets/11_headless_ecommerce/01_login.png', 'Headless E-Commerce PWA — Discreet Passwordless Login', 'Mobile App • Login Screen • High Definition 4:3 (1600×1200)', '11_Headless_Ecommerce_PWA_Case_Study.md')">
+          <img src="./gallery_assets/11_headless_ecommerce/01_login.png" alt="Headless E-Commerce PWA - Discreet Passwordless Login" class="card-thumb" loading="lazy">
+          <div class="card-overlay">
+            <span class="zoom-btn">🔍 View 4:3 HD</span>
+          </div>
+          <span class="badge-type">Login</span>
+          <span class="badge-platform">Mobile App</span>
+        </div>
+        <div class="card-body">
+          <div class="card-app">Headless E-Commerce PWA</div>
+          <h3 class="card-title">Discreet Passwordless Login</h3>
+          <p class="card-desc">Magic link OTP authentication with zero behavioral tracking guarantee.</p>
+          <div class="card-meta">
+            <span>📐 1600 × 1200 (4:3 HD)</span>
+            <a href="./11_Headless_Ecommerce_PWA_Case_Study.md" class="card-link">Case Study →</a>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-card" data-app="11_headless_ecommerce" data-type="dashboard">
+        <div class="card-thumb-wrap" onclick="openLightbox('./gallery_assets/11_headless_ecommerce/02_dashboard.png', 'Headless E-Commerce PWA — Curated Product Showcase', 'Mobile App • Dashboard Screen • High Definition 4:3 (1600×1200)', '11_Headless_Ecommerce_PWA_Case_Study.md')">
+          <img src="./gallery_assets/11_headless_ecommerce/02_dashboard.png" alt="Headless E-Commerce PWA - Curated Product Showcase" class="card-thumb" loading="lazy">
+          <div class="card-overlay">
+            <span class="zoom-btn">🔍 View 4:3 HD</span>
+          </div>
+          <span class="badge-type">Dashboard</span>
+          <span class="badge-platform">Mobile App</span>
+        </div>
+        <div class="card-body">
+          <div class="card-app">Headless E-Commerce PWA</div>
+          <h3 class="card-title">Curated Product Showcase</h3>
+          <p class="card-desc">Sub-1.1s LCP performance, flash sales catalog, discreet packaging guarantee.</p>
+          <div class="card-meta">
+            <span>📐 1600 × 1200 (4:3 HD)</span>
+            <a href="./11_Headless_Ecommerce_PWA_Case_Study.md" class="card-link">Case Study →</a>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-card" data-app="11_headless_ecommerce" data-type="form">
+        <div class="card-thumb-wrap" onclick="openLightbox('./gallery_assets/11_headless_ecommerce/03_form.png', 'Headless E-Commerce PWA — Express One-Step Checkout Form', 'Mobile App • Form Screen • High Definition 4:3 (1600×1200)', '11_Headless_Ecommerce_PWA_Case_Study.md')">
+          <img src="./gallery_assets/11_headless_ecommerce/03_form.png" alt="Headless E-Commerce PWA - Express One-Step Checkout Form" class="card-thumb" loading="lazy">
+          <div class="card-overlay">
+            <span class="zoom-btn">🔍 View 4:3 HD</span>
+          </div>
+          <span class="badge-type">Form</span>
+          <span class="badge-platform">Mobile App</span>
+        </div>
+        <div class="card-body">
+          <div class="card-app">Headless E-Commerce PWA</div>
+          <h3 class="card-title">Express One-Step Checkout Form</h3>
+          <p class="card-desc">Plain cardboard packaging toggle, QRIS instant payment, coupon validation.</p>
+          <div class="card-meta">
+            <span>📐 1600 × 1200 (4:3 HD)</span>
+            <a href="./11_Headless_Ecommerce_PWA_Case_Study.md" class="card-link">Case Study →</a>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-card" data-app="11_headless_ecommerce" data-type="profile">
+        <div class="card-thumb-wrap" onclick="openLightbox('./gallery_assets/11_headless_ecommerce/04_profile.png', 'Headless E-Commerce PWA — Customer Account & Privacy History', 'Mobile App • Profile Screen • High Definition 4:3 (1600×1200)', '11_Headless_Ecommerce_PWA_Case_Study.md')">
+          <img src="./gallery_assets/11_headless_ecommerce/04_profile.png" alt="Headless E-Commerce PWA - Customer Account & Privacy History" class="card-thumb" loading="lazy">
+          <div class="card-overlay">
+            <span class="zoom-btn">🔍 View 4:3 HD</span>
+          </div>
+          <span class="badge-type">Profile</span>
+          <span class="badge-platform">Mobile App</span>
+        </div>
+        <div class="card-body">
+          <div class="card-app">Headless E-Commerce PWA</div>
+          <h3 class="card-title">Customer Account & Privacy History</h3>
+          <p class="card-desc">Encrypted order records, masked identifiers, stealth SMS delivery updates.</p>
+          <div class="card-meta">
+            <span>📐 1600 × 1200 (4:3 HD)</span>
+            <a href="./11_Headless_Ecommerce_PWA_Case_Study.md" class="card-link">Case Study →</a>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-card" data-app="11_headless_ecommerce" data-type="feature">
+        <div class="card-thumb-wrap" onclick="openLightbox('./gallery_assets/11_headless_ecommerce/05_additional_features.png', 'Headless E-Commerce PWA — Offline Service Worker & Edge Cart', 'Mobile App • Feature Screen • High Definition 4:3 (1600×1200)', '11_Headless_Ecommerce_PWA_Case_Study.md')">
+          <img src="./gallery_assets/11_headless_ecommerce/05_additional_features.png" alt="Headless E-Commerce PWA - Offline Service Worker & Edge Cart" class="card-thumb" loading="lazy">
+          <div class="card-overlay">
+            <span class="zoom-btn">🔍 View 4:3 HD</span>
+          </div>
+          <span class="badge-type">Feature</span>
+          <span class="badge-platform">Mobile App</span>
+        </div>
+        <div class="card-body">
+          <div class="card-app">Headless E-Commerce PWA</div>
+          <h3 class="card-title">Offline Service Worker & Edge Cart</h3>
+          <p class="card-desc">Workbox cache inspector & zero-latency client-side cart reconciliation.</p>
+          <div class="card-meta">
+            <span>📐 1600 × 1200 (4:3 HD)</span>
+            <a href="./11_Headless_Ecommerce_PWA_Case_Study.md" class="card-link">Case Study →</a>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div class="lightbox-modal" id="lightboxModal" onclick="closeLightbox(event)">
+    <div class="lightbox-content" onclick="event.stopPropagation()">
+      <div class="lightbox-header">
+        <div>
+          <div class="lightbox-title" id="lightboxTitle">Application Title</div>
+          <div class="lightbox-sub" id="lightboxSub">Metadata info</div>
+        </div>
+        <button class="close-btn" onclick="closeLightbox()">&times;</button>
+      </div>
+      <div class="lightbox-body">
+        <img src="" alt="" class="lightbox-img" id="lightboxImg">
+      </div>
+      <div class="lightbox-footer">
+        <span id="lightboxFooterInfo">1600 × 1200 High Definition (4:3 Aspect Ratio)</span>
+        <a href="#" id="lightboxCaseLink" class="card-link" target="_blank">Open Full Technical Case Study →</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let currentApp = 'all';
+    let currentType = 'all';
+
+    function filterApp(appId) {
+      currentApp = appId;
+      updateCards();
+      // Update app button active states
+      document.querySelectorAll('.filter-section .filter-row:nth-child(2) .filter-btn').forEach(btn => {
+        if (btn.getAttribute('onclick').includes(appId)) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+    }
+
+    function filterType(typeId) {
+      currentType = typeId;
+      updateCards();
+      // Update screen button active states
+      document.querySelectorAll('.filter-section .filter-row:nth-child(4) .filter-btn').forEach(btn => {
+        if (btn.getAttribute('onclick').includes(typeId)) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+    }
+
+    function updateCards() {
+      const cards = document.querySelectorAll('.gallery-card');
+      cards.forEach(card => {
+        const matchesApp = (currentApp === 'all' || card.dataset.app === currentApp);
+        const matchesType = (currentType === 'all' || card.dataset.type === currentType);
+        if (matchesApp && matchesType) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    function openLightbox(src, title, sub, caseLink) {
+      document.getElementById('lightboxImg').src = src;
+      document.getElementById('lightboxTitle').innerText = title;
+      document.getElementById('lightboxSub').innerText = sub;
+      document.getElementById('lightboxCaseLink').href = caseLink;
+      document.getElementById('lightboxModal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox(e) {
+      document.getElementById('lightboxModal').classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
+</body>
+</html>

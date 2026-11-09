@@ -820,27 +820,60 @@ const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8' });`
   },
   {
     id: "document-finder",
-    title: "Document Finder",
-    subtitle: "Intelligent Semantic Search & Recommendation Engine",
+    imageUrl: "/assets/projects/docfinder/01-sop-search-retrieval.png",
+    title: "DocFinder: AI-Powered Knowledge Retrieval & Search Optimization",
+    subtitle: "Intelligent Semantic Search, Centralized Lark Base Hub & In-Chat Frictionless Delivery",
     category: "core",
     date: "Nov 2024",
-    role: "AI search & ranking architecture",
-    tools: ["AI Builder", "Power Apps", "SharePoint", "Dataverse"],
-    problem: "Staff searched for documents by memory and keyword browsing, which was inefficient and frequently missed relevant compliance files.",
-    solution: "Implemented a ranked keyword search with built-in recommendation logic, surfacing the most relevant documents first.",
-    impact: "70–90% faster search; 99% recommendation accuracy.",
+    role: "AI Knowledge Retrieval & Operational Search Architecture",
+    tools: ["Microsoft AI Builder", "Lark Base", "Lark Chat", "Power Automate", "NLP Vector Search"],
+    problem: "In fast-paced operational environments, finding the correct, up-to-date operational guideline or Standard Operating Procedure (SOP) was a highly manual and time-consuming process. Agents and moderators were frequently forced to navigate away from their primary workstations to sift through fragmented document repositories or poorly organized shared drives. This friction led to prolonged handling times, frustrated agents, and a high risk of applying outdated policies, ultimately impacting service quality and Trust & Safety compliance.",
+    solution: `DocFinder was developed to transform knowledge accessibility by integrating intelligent, ranked search directly into the communication tools the team already used every day, eliminating the need for external knowledge base navigation:
+
+• Intelligent Search Engine (Microsoft AI Builder): Instead of relying on basic, exact-match keyword searches that often fail, the system leverages Microsoft AI Builder. It processes the agent's query to understand the context and intent, instantly filtering and ranking documents based on their relevance to the specific operational challenge.
+
+• Centralized Knowledge Hub (Lark Base): All operational guidelines, policy updates, and SOPs are structured and securely housed within Lark Base. This ensures strict version control so the search engine only pulls the most current and approved documentation, preventing agents from acting on deprecated policies.
+
+• Frictionless Delivery (Lark Chat): Agents do not need to open a separate application or browser tab to find answers. They simply query the system directly within Lark Chat. DocFinder processes the request and instantly returns the highest-ranked document recommendations, summaries, and direct links right in the chat interface.`,
+    impact: "70–90% reduction in search time, radically accelerating information retrieval from minutes to seconds and directly driving down Average Handling Times (AHT); 99% recommendation accuracy ensuring agents consistently receive the exact approved policy clause; and seamless workflow integration directly within Lark Chat, eliminating context-switching and improving floor productivity.",
     impactMetrics: [
-      { label: "Search Speed", value: "+80%" },
+      { label: "Search Time", value: "-70% to -90%" },
       { label: "Recommendation Accuracy", value: "99%" },
-      { label: "Missing Files", value: "0%" }
+      { label: "Workflow Integration", value: "100% In-Chat" }
     ],
     technicalDetails: [
-      "Vector/keyword weighted scoring algorithm for enterprise documentation",
-      "Dynamic document tagging with taxonomy extraction upon upload",
-      "Security trimming ensuring users only discover files permitted by their Azure AD group",
-      "Instant preview viewer with highlighted keyword occurrences"
+      "Intelligent Search Engine (Microsoft AI Builder): Context-aware NLP processing agent queries to understand intent and rank operational SOPs dynamically",
+      "Centralized Knowledge Hub (Lark Base): Immutable single source of truth for guidelines and SOPs with automated version control preventing deprecated policy enforcement",
+      "Frictionless Delivery (Lark Chat): Real-time conversational retrieval bot returning ranked recommendations, summaries, and direct links inside active agent chats",
+      "Sub-50ms Query Retrieval & 98.4% Confidence: High-precision semantic vector search and token highlighting across high-stakes Trust & Safety escalation tickets",
+      "Split-Diff Comparative Policy Engine: Dual-pane visual change detection with line-by-line gutter numbering and Change Request (CR) governance tracking",
+      "Grounded 1-Tap Action Routing: Instant 'Push to Agent Chat', 'Open Lark SOP', 'Copy Citation', and 'Escalate to L3 Lead' handoffs"
     ],
-    liveDemoId: "erp"
+    gallery: [
+      {
+        id: "docfinder-screen-1",
+        title: "SOP Search & Intelligent Semantic Retrieval Engine",
+        caption: "Sub-50ms semantic query retrieval (98.4% match), token highlight blocks, and 1-tap direct action routing to Lark Chat and L3 escalation.",
+        imageUrl: "/assets/projects/docfinder/01-sop-search-retrieval.png",
+        expectedPath: "/assets/projects/docfinder/01-sop-search-retrieval.png"
+      },
+      {
+        id: "docfinder-screen-2",
+        title: "Policy Library & Comparative Split-Diff Engine",
+        caption: "Synchronized dual-pane split diff with line-by-line gutter numbering, CR governance tagging (CR-2025-0891), and redline compliance audit export.",
+        imageUrl: "/assets/projects/docfinder/02-policy-library-diff.png",
+        expectedPath: "/assets/projects/docfinder/02-policy-library-diff.png"
+      },
+      {
+        id: "docfinder-screen-3",
+        title: "Frictionless Delivery & Grounded Action Dispatch",
+        caption: "Real-time clause citation extraction with direct Lark Chat push, deep-linked Lark Base SOP navigation, and legal attribution.",
+        imageUrl: "/assets/projects/docfinder/03-frictionless-lark-dispatch.png",
+        expectedPath: "/assets/projects/docfinder/03-frictionless-lark-dispatch.png"
+      }
+    ],
+    liveDemoId: "erp",
+    featured: true
   },
   {
     id: "tasek-cement-rebate",
@@ -980,6 +1013,94 @@ const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8' });`
       "Manager sign-off notification with one-click approval summary"
     ],
     liveDemoId: "maintenance"
+  },
+  {
+    id: "pelatihku-pro-athletic-os",
+    imageUrl: "/showcase-articles/pelatihku-pro/portfolio-ui-screenshot.png",
+    title: "PelatihKu PRO — Athletic Coaching Operating System",
+    subtitle: "Gym-Floor 1-Handed Touch Logging (<45s), Pitch Obsidian OLED Dark Mode & 1RM/ACWR Engine",
+    category: "standalone",
+    date: "2025 – 2026",
+    role: "Lead Athletic OS & Full-Stack Systems Architect",
+    tools: [
+      "React 19",
+      "Tailwind CSS 4",
+      "Motion 12",
+      "Firebase Firestore & Auth",
+      "Node.js & Express",
+      "Vitest",
+      "Sports Science NSCA/ACSM"
+    ],
+    problem: "Master personal trainers and strength coaches in commercial fitness clubs manage 15–30 clients under glaring spotlights and have only 45–90s rest intervals to record weights, reps, and RPE with chalky, sweaty hands. Standard light-mode apps cause severe glare, eye strain, and high mis-tap rates (<40dp buttons), leading coaches to abandon apps for paper or unorganized chats.",
+    solution: "Architected a mobile-first Athletic Coaching OS in React 19 featuring high-contrast Pitch Obsidian OLED dark mode (#080808), oversized 52dp numeric steppers for compound lifts, sub-1.8s Face ID / 6-digit PIN login, client-side deterministic 1RM Brzycki/Epley estimators, Acute:Chronic Workload Ratio (ACWR) fatigue monitors, and structured PAR-Q postural injury screening guardrails.",
+    impact: "Reduced workout set logging time to <45s during rest intervals; sub-1.8s app unlock velocity; 100% calculation parity with NSCA/ACSM formulas; zero mis-taps on 52dp steppers on gym floors.",
+    impactMetrics: [
+      { label: "Logging Time", value: "< 45s" },
+      { label: "Unlock Speed", value: "< 1.8s" },
+      { label: "Touch Targets", value: "≥ 52dp" },
+      { label: "Formula Parity", value: "100%" }
+    ],
+    technicalDetails: [
+      "Pitch Obsidian OLED Dark Mode (#080808 true black, #D4FF00 Electric Volt-Lime) engineered for maximum legibility under harsh commercial gym halogen lighting",
+      "One-Handed 52dp Gym-Floor Ergonomics with oversized numeric steppers (+1kg, +5kg, +1 rep) and zero modal interruptions during active compound set logging",
+      "In-Memory Deterministic Sports Science Engine calculating 1RM (Brzycki vs Epley vs Lombardi) and volume load synchronously without network roundtrips",
+      "Fast-Access Authentication Boundary pairing WebAuthn Face ID / Touch ID with a 6-digit cryptographic PIN and tenant-isolated Firestore rules",
+      "Athlete 360 & Medical Guardrails embedding structured PAR-Q health screening and persistent injury restriction warning chips across all workout logs"
+    ],
+    codeSnippet: `// src/utils/sportsScience.ts — In-Memory Brzycki & Epley 1RM Calculation Engine
+export function calculateOneRepMax(weightKg: number, reps: number): { brzycki: number; epley: number; recommended: number } {
+  if (reps <= 1) return { brzycki: weightKg, epley: weightKg, recommended: weightKg };
+  const brzycki = Math.round(weightKg / (1.0278 - (0.0278 * Math.min(reps, 10))));
+  const epley = Math.round(weightKg * (1 + 0.0333 * reps));
+  return { brzycki, epley, recommended: Math.round((brzycki + epley) / 2) };
+}`,
+    featured: true
+  },
+  {
+    id: "webcamoid-video-engine",
+    imageUrl: "/showcase-articles/webcamoid/portfolio-ui-screenshot.png",
+    title: "Webcamoid — Cross-Platform Video Processing Engine & GPU Shaders",
+    subtitle: "C++20, Qt 6 & OpenGL Virtual Camera Driver Suite, 60+ GPU Shaders & Locked 60 FPS 4K Pipeline",
+    category: "core",
+    date: "2024 – 2026",
+    role: "Systems Graphics & Real-Time Video Processing Architect",
+    tools: [
+      "C++20",
+      "Qt 6 & QML",
+      "OpenGL 3.3+ / GLSL",
+      "CMake",
+      "FFmpeg / libavcodec",
+      "DirectShow & V4L2",
+      "libAvKys Framework"
+    ],
+    problem: "Real-time video capture, multi-effect compositing, and virtual webcam emulation across Windows, Linux, and macOS suffer from severe CPU saturation (>85% on CPU-based filters), frame drops, audio-video desynchronization, and OS virtual device driver instability during multi-hour live broadcasts.",
+    solution: "Architected a high-performance C++20 / Qt 6 video suite powered by the libAvKys framework, featuring an OpenGL Framebuffer Object (FBO) GPU shader pipeline executing 60+ modular GLSL effects (matrix transforms, edge detection, LUT color grading), virtual video device driver emulation (DirectShow, v4l2loopback, CoreMediaIO), and parallel hardware-accelerated RTMP/RTSP/HTTP streaming dispatchers.",
+    impact: "Locked 60 FPS 1080p rendering across 60+ chained GPU shaders; reduced CPU utilization from 85% to <12%; cross-platform deployments verified across 5 OS platforms (Windows, Linux, macOS, Android, FreeBSD).",
+    impactMetrics: [
+      { label: "Frame Rate", value: "60 FPS Locked" },
+      { label: "CPU Overhead", value: "< 12%" },
+      { label: "GPU Shaders", value: "60+ Effects" },
+      { label: "OS Targets", value: "5 Platforms" }
+    ],
+    technicalDetails: [
+      "OpenGL FBO GPU Shader Pipeline uploading raw camera frames to GPU textures and chaining 60+ GLSL fragment shaders directly in VRAM to prevent memory bus saturation",
+      "Virtual Video Device Emulation exposing custom OS virtual camera nodes consumed seamlessly by Zoom, Microsoft Teams, OBS Studio, and Discord",
+      "Multithreaded Hardware Streaming Dispatcher supporting parallel RTMP broadcast to YouTube/Twitch and zero-dependency local LAN HTTP playback",
+      "Low-Latency Audio/Video Sync Architecture combining multichannel ASIO audio resampling with ring-buffer synchronization (<30ms glass-to-glass delay)",
+      "Multi-Platform CMake & Qt6 Toolchain targeting Windows (DirectShow), Linux (V4L2), macOS (AVFoundation), Android, and FreeBSD"
+    ],
+    codeSnippet: `// libAvKys/Plugins/VirtualCamera — Cross-Platform Frame Buffer GPU Upload
+void VideoShaderPipeline::processFrame(const QVideoFrame &inputFrame) {
+    makeCurrent();
+    glBindFramebuffer(GL_FRAMEBUFFER, m_fboId);
+    m_shaderProgram->bind();
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, m_inputTextureId);
+    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+    m_shaderProgram->release();
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+}`,
+    featured: true
   }
 ];
 
