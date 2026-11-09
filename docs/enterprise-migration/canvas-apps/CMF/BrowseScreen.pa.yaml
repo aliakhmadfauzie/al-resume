@@ -1,0 +1,47 @@
+# ==============================================================================
+# Microsoft Power Apps Canvas Source Code (Power Fx YAML)
+# Application: Credit Management Form (CMF)
+# Department: Finance & Commercial Credit
+# Screen: BrowseScreen (Filterable Transaction Gallery)
+# ==============================================================================
+
+BrowseScreen As Screen:
+  Properties:
+    Fill: =RGBA(248, 250, 252, 1)
+    OnVisible: |
+      =UpdateContext({ locSearchQuery: "", locFilterStatus: "All" });
+      ClearCollect(colCMFRecords,
+          {
+              ID: "CMF-2026-0322",
+              Title: "Wilmar Europe B.V. - Annual Fatty Alcohol Credit Limit Renewal (USD 2.5M)",
+              Category: "Commercial Buyer Credit Terms",
+              Submitter: "Tan Siew Ling (Commercial Sales Manager)",
+              Location: "Penang Oleo Complex (HQ) · Commercial Sales Dept",
+              Priority: "HIGH",
+              Stage: "Stage 3: Commercial Director Review"
+          }
+      )
+  Children:
+    - conMainGallery As groupContainer.verticalAutoLayoutContainer:
+        Properties:
+          Width: =Parent.Width
+          Height: =Parent.Height
+          PaddingLeft: 32
+          PaddingRight: 32
+          PaddingTop: 24
+        Children:
+          - galItems As gallery.galleryVertical:
+              Properties:
+                Width: =Parent.Width - 64
+                Height: 500
+                Items: =colCMFRecords
+                TemplateSize: 72
+              Children:
+                - btnViewDetails As button:
+                    Properties:
+                      Text: ="View Details →"
+                      Fill: =ColorValue("#1E3A8A")
+                      Color: =RGBA(255, 255, 255, 1)
+                      OnSelect: |
+                        =Set(varSelectedCMF, ThisItem);
+                        Navigate(DetailsScreen, ScreenTransition.Fade)

@@ -1,0 +1,57 @@
+# ==============================================================================
+# Microsoft Power Apps Canvas Source Code (Power Fx YAML)
+# Application: Medical Claims & Healthcare Benefits (MCL)
+# Department: Human Resources
+# Screen: LoginScreen (Enterprise Gateway)
+# ==============================================================================
+
+LoginScreen As Screen:
+  Properties:
+    Fill: =RGBA(248, 250, 252, 1)
+    LoadingSpinnerColor: =RGBA(0, 108, 76, 1)
+    OnVisible: |
+      =UpdateContext({
+          locSelectedPlant: "Penang",
+          locAppCode: "MCL",
+          locDepartment: "Human Resources"
+      })
+  Children:
+    - conTopBar As groupContainer.horizontalAutoLayoutContainer:
+        Properties:
+          Height: 48
+          Width: =Parent.Width
+          Fill: =RGBA(0, 90, 158, 1)
+        Children:
+          - lblTitle As label:
+              Properties:
+                Text: ="Power Apps  |  IOI Acidchem  |  MCL"
+                Color: =RGBA(255, 255, 255, 1)
+                Size: 13
+                FontWeight: =FontWeight.Bold
+    - conLoginCard As groupContainer.verticalAutoLayoutContainer:
+        Properties:
+          X: =(Parent.Width - Self.Width) / 2
+          Y: =(Parent.Height - Self.Height) / 2
+          Width: 520
+          Height: 580
+          Fill: =RGBA(255, 255, 255, 1)
+          RadiusTopLeft: 16
+          RadiusTopRight: 16
+          RadiusBottomLeft: 16
+          RadiusBottomRight: 16
+          BorderColor: =RGBA(226, 232, 240, 1)
+          BorderThickness: 1
+          PaddingLeft: 40
+          PaddingRight: 40
+          PaddingTop: 36
+          PaddingBottom: 32
+        Children:
+          - btnSignInM365 As button:
+              Properties:
+                Width: =Parent.Width - 80
+                Height: 50
+                Fill: =ColorValue("#0F766E")
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Text: ="Sign In with Microsoft 365 Work Account"
+                OnSelect: =Navigate(BrowseScreen, ScreenTransition.Fade)

@@ -1,0 +1,628 @@
+# ==============================================================================
+# Microsoft Power Apps Canvas Source Code (Power Fx YAML)
+# Application: IOI Acidchem Enterprise Platform - v2
+# Screen: DetailsScreen (Dossier & Multi-Stage Approval Workflow Stepper)
+# Author: Lead Power Platform Architect
+# Compliance: WCAG 2.1 AA Compliant, Screen Triplet Architecture
+# ==============================================================================
+
+DetailsScreen As Screen:
+  Properties:
+    Fill: =RGBA(248, 250, 252, 1)
+    LoadingSpinnerColor: =RGBA(0, 108, 76, 1)
+    OnVisible: |
+      =UpdateContext({
+          locIsApproving: false,
+          locApprovalRemarks: "",
+          locShowRejectModal: false
+      })
+
+  Children:
+    # Universal Top Bar
+    - conTopBarDetail As groupContainer.horizontalAutoLayoutContainer:
+        Properties:
+          Height: 48
+          Width: =Parent.Width
+          Fill: =RGBA(0, 90, 158, 1)
+          LayoutAlignItems: =LayoutAlignItems.Center
+          LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+          PaddingLeft: 16
+          PaddingRight: 16
+        Children:
+          - conBrandDetail As groupContainer.horizontalAutoLayoutContainer:
+              Properties:
+                Height: =Parent.Height
+                LayoutAlignItems: =LayoutAlignItems.Center
+                LayoutGap: 12
+              Children:
+                - icoWaffleDetail As icon.Waffle:
+                    Properties:
+                      Color: =RGBA(255, 255, 255, 1)
+                      Height: 20
+                      Width: 20
+                - lblAppTitleDetail As label:
+                    Properties:
+                      Text: ="Microsoft Power Apps  |  IOI Acidchem Enterprise Platform"
+                      Color: =RGBA(255, 255, 255, 1)
+                      FontWeight: =FontWeight.Semibold
+                      Size: 13
+                - lblEnvDetail As label:
+                    Properties:
+                      Text: ="PROD v2.4"
+                      Color: =RGBA(255, 255, 255, 1)
+                      Fill: =RGBA(255, 255, 255, 0.2)
+                      PaddingLeft: 8
+                      PaddingRight: 8
+                      PaddingTop: 2
+                      PaddingBottom: 2
+                      RadiusTopLeft: 4
+                      RadiusTopRight: 4
+                      RadiusBottomLeft: 4
+                      RadiusBottomRight: 4
+                      Size: 10
+                      FontWeight: =FontWeight.Bold
+
+          - conUserDetail As groupContainer.horizontalAutoLayoutContainer:
+              Properties:
+                Height: =Parent.Height
+                LayoutAlignItems: =LayoutAlignItems.Center
+                LayoutGap: 12
+              Children:
+                - conUserPillDetail As groupContainer.horizontalAutoLayoutContainer:
+                    Properties:
+                      Fill: =RGBA(255, 255, 255, 0.15)
+                      RadiusTopLeft: 16
+                      RadiusTopRight: 16
+                      RadiusBottomLeft: 16
+                      RadiusBottomRight: 16
+                      PaddingLeft: 6
+                      PaddingRight: 12
+                      PaddingTop: 4
+                      PaddingBottom: 4
+                      LayoutAlignItems: =LayoutAlignItems.Center
+                      LayoutGap: 8
+                    Children:
+                      - btnAvatarDetail As button:
+                          Properties:
+                            Text: ="AF"
+                            Fill: =RGBA(0, 108, 76, 1)
+                            Color: =RGBA(255, 255, 255, 1)
+                            FontWeight: =FontWeight.Bold
+                            Size: 10
+                            Width: 24
+                            Height: 24
+                            RadiusTopLeft: 12
+                            RadiusTopRight: 12
+                            RadiusBottomLeft: 12
+                            RadiusBottomRight: 12
+                            DisplayMode: =DisplayMode.View
+                      - lblUserNameDetail As label:
+                          Properties:
+                            Text: ="Ali Akhmad Fauzie (Lead Architect)"
+                            Color: =RGBA(255, 255, 255, 1)
+                            Size: 11
+                            FontWeight: =FontWeight.Semibold
+
+    # Sticky Command Bar
+    - conCommandBar As groupContainer.horizontalAutoLayoutContainer:
+        Properties:
+          Y: 48
+          Width: =Parent.Width
+          Height: 64
+          Fill: =RGBA(255, 255, 255, 1)
+          BorderColor: =RGBA(226, 232, 240, 1)
+          BorderThickness: 1
+          LayoutAlignItems: =LayoutAlignItems.Center
+          LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+          PaddingLeft: 32
+          PaddingRight: 32
+
+        Children:
+          - conCommandLeft As groupContainer.horizontalAutoLayoutContainer:
+              Properties:
+                LayoutAlignItems: =LayoutAlignItems.Center
+                LayoutGap: 16
+              Children:
+                - btnBackToList As button:
+                    Properties:
+                      Text: ="← Back to Requests"
+                      Fill: =RGBA(255, 255, 255, 1)
+                      Color: =RGBA(51, 65, 85, 1)
+                      BorderColor: =RGBA(203, 213, 225, 1)
+                      BorderThickness: 1
+                      FontWeight: =FontWeight.Semibold
+                      Size: 12
+                      Height: 36
+                      RadiusTopLeft: 6
+                      RadiusTopRight: 6
+                      RadiusBottomLeft: 6
+                      RadiusBottomRight: 6
+                      OnSelect: =Navigate(BrowseScreen, ScreenTransition.Fade)
+
+                - conDossierIdGroup As groupContainer.verticalAutoLayoutContainer:
+                    Properties:
+                      LayoutGap: 2
+                    Children:
+                      - conIdStatusRow As groupContainer.horizontalAutoLayoutContainer:
+                          Properties:
+                            LayoutGap: 8
+                            LayoutAlignItems: =LayoutAlignItems.Center
+                          Children:
+                            - lblDetailId As label:
+                                Properties:
+                                  Text: ="ITSSR-2026-0941"
+                                  Color: =RGBA(0, 120, 212, 1)
+                                  FontWeight: =FontWeight.ExtraBold
+                                  Size: 15
+                            - lblDetailPriority As label:
+                                Properties:
+                                  Text: ="● URGENT"
+                                  Fill: =RGBA(255, 241, 242, 1)
+                                  Color: =RGBA(190, 18, 60, 1)
+                                  FontWeight: =FontWeight.Bold
+                                  Size: 10
+                                  PaddingLeft: 6
+                                  PaddingRight: 6
+                                  PaddingTop: 2
+                                  PaddingBottom: 2
+                                  RadiusTopLeft: 4
+                                  RadiusTopRight: 4
+                                  RadiusBottomLeft: 4
+                                  RadiusBottomRight: 4
+                            - lblDetailStage As label:
+                                Properties:
+                                  Text: ="Stage 3 of 4: Plant GM Sign-off"
+                                  Fill: =RGBA(255, 251, 235, 1)
+                                  Color: =RGBA(180, 83, 9, 1)
+                                  FontWeight: =FontWeight.Bold
+                                  Size: 10
+                                  PaddingLeft: 6
+                                  PaddingRight: 6
+                                  PaddingTop: 2
+                                  PaddingBottom: 2
+                                  RadiusTopLeft: 4
+                                  RadiusTopRight: 4
+                                  RadiusBottomLeft: 4
+                                  RadiusBottomRight: 4
+                      - lblDetailTimestamp As label:
+                          Properties:
+                            Text: ="Submitted 09 Nov 2026, 08:30 AM MYT · Johor Pasir Gudang Plant 2"
+                            Color: =RGBA(100, 116, 139, 1)
+                            Size: 10.5
+
+          - conCommandActions As groupContainer.horizontalAutoLayoutContainer:
+              Properties:
+                LayoutAlignItems: =LayoutAlignItems.Center
+                LayoutGap: 10
+              Children:
+                - btnPrintDossier As button:
+                    Properties:
+                      Text: ="🖨️ Print Dossier"
+                      Fill: =RGBA(255, 255, 255, 1)
+                      Color: =RGBA(51, 65, 85, 1)
+                      BorderColor: =RGBA(203, 213, 225, 1)
+                      BorderThickness: 1
+                      FontWeight: =FontWeight.Semibold
+                      Size: 12
+                      Height: 38
+                      RadiusTopLeft: 6
+                      RadiusTopRight: 6
+                      RadiusBottomLeft: 6
+                      RadiusBottomRight: 6
+
+                - btnRejectRequest As button:
+                    Properties:
+                      Text: ="❌ Reject with Remarks"
+                      Fill: =RGBA(255, 241, 242, 1)
+                      Color: =RGBA(190, 18, 60, 1)
+                      BorderColor: =RGBA(254, 205, 211, 1)
+                      BorderThickness: 1
+                      FontWeight: =FontWeight.Bold
+                      Size: 12
+                      Height: 38
+                      RadiusTopLeft: 6
+                      RadiusTopRight: 6
+                      RadiusBottomLeft: 6
+                      RadiusBottomRight: 6
+
+                - btnApproveRequest As button:
+                    Properties:
+                      Text: ="✓ Endorse & Approve (Plant GM)"
+                      Fill: =RGBA(0, 108, 76, 1)
+                      Color: =RGBA(255, 255, 255, 1)
+                      FontWeight: =FontWeight.Bold
+                      Size: 12.5
+                      Height: 38
+                      PaddingLeft: 16
+                      PaddingRight: 16
+                      RadiusTopLeft: 6
+                      RadiusTopRight: 6
+                      RadiusBottomLeft: 6
+                      RadiusBottomRight: 6
+                      OnSelect: |
+                        =Notify("Request ITSSR-2026-0941 approved. Dispatched to IT Fulfillment.", NotificationType.Success);
+                        Navigate(BrowseScreen, ScreenTransition.Cover)
+
+    # Main Body 2-Column Split
+    - conDetailBody As groupContainer.horizontalAutoLayoutContainer:
+        Properties:
+          Y: 112
+          Width: =Parent.Width
+          Height: =Parent.Height - 112
+          PaddingLeft: 32
+          PaddingRight: 32
+          PaddingTop: 20
+          PaddingBottom: 20
+          LayoutGap: 24
+
+        Children:
+          # Left Column (Dossier Sections - 65% width)
+          - conLeftDossier As groupContainer.verticalAutoLayoutContainer:
+              Properties:
+                Width: =(Parent.Width - 88) * 0.65
+                LayoutGap: 16
+
+              Children:
+                # Section 1: Submitter Info
+                - conCardSubmitter As groupContainer.verticalAutoLayoutContainer:
+                    Properties:
+                      Width: =Parent.Width
+                      Fill: =RGBA(255, 255, 255, 1)
+                      BorderColor: =RGBA(226, 232, 240, 1)
+                      BorderThickness: 1
+                      RadiusTopLeft: 10
+                      RadiusTopRight: 10
+                      RadiusBottomLeft: 10
+                      RadiusBottomRight: 10
+                      PaddingLeft: 18
+                      PaddingRight: 18
+                      PaddingTop: 14
+                      PaddingBottom: 14
+                      LayoutGap: 10
+                    Children:
+                      - lblSec1Title As label:
+                          Properties:
+                            Text: ="👤  Submitter & Operational Location"
+                            FontWeight: =FontWeight.Bold
+                            Color: =RGBA(15, 23, 42, 1)
+                            Size: 13
+                      - conSubmitterGrid As groupContainer.horizontalAutoLayoutContainer:
+                          Properties:
+                            Width: =Parent.Width - 36
+                            LayoutGap: 20
+                          Children:
+                            - conSubCol1 As groupContainer.verticalAutoLayoutContainer:
+                                Properties:
+                                  Width: 160
+                                  LayoutGap: 2
+                                Children:
+                                  - lblField1Label As label:
+                                      Properties:
+                                        Text: ="SUBMITTER NAME"
+                                        Size: 9.5
+                                        FontWeight: =FontWeight.Bold
+                                        Color: =RGBA(100, 116, 139, 1)
+                                  - lblField1Val As label:
+                                      Properties:
+                                        Text: ="Ir. Ahmad Faisal"
+                                        Size: 12.5
+                                        FontWeight: =FontWeight.Bold
+                                        Color: =RGBA(15, 23, 42, 1)
+
+                            - conSubCol2 As groupContainer.verticalAutoLayoutContainer:
+                                Properties:
+                                  Width: 160
+                                  LayoutGap: 2
+                                Children:
+                                  - lblField2Label As label:
+                                      Properties:
+                                        Text: ="BADGE / EMP ID"
+                                        Size: 9.5
+                                        FontWeight: =FontWeight.Bold
+                                        Color: =RGBA(100, 116, 139, 1)
+                                  - lblField2Val As label:
+                                      Properties:
+                                        Text: ="IOI-JH-4482"
+                                        Size: 12.5
+                                        FontWeight: =FontWeight.Bold
+                                        Color: =RGBA(15, 23, 42, 1)
+
+                            - conSubCol3 As groupContainer.verticalAutoLayoutContainer:
+                                Properties:
+                                  Width: 200
+                                  LayoutGap: 2
+                                Children:
+                                  - lblField3Label As label:
+                                      Properties:
+                                        Text: ="PLANT FACILITY & UNIT"
+                                        Size: 9.5
+                                        FontWeight: =FontWeight.Bold
+                                        Color: =RGBA(100, 116, 139, 1)
+                                  - lblField3Val As label:
+                                      Properties:
+                                        Text: ="Johor Plant 2 · Rack 4B"
+                                        Size: 12.5
+                                        FontWeight: =FontWeight.Bold
+                                        Color: =RGBA(15, 23, 42, 1)
+
+                # Section 2: Problem Description
+                - conCardProblem As groupContainer.verticalAutoLayoutContainer:
+                    Properties:
+                      Width: =Parent.Width
+                      Fill: =RGBA(255, 255, 255, 1)
+                      BorderColor: =RGBA(226, 232, 240, 1)
+                      BorderThickness: 1
+                      RadiusTopLeft: 10
+                      RadiusTopRight: 10
+                      RadiusBottomLeft: 10
+                      RadiusBottomRight: 10
+                      PaddingLeft: 18
+                      PaddingRight: 18
+                      PaddingTop: 14
+                      PaddingBottom: 14
+                      LayoutGap: 10
+                    Children:
+                      - lblSec2Title As label:
+                          Properties:
+                            Text: ="⚙️  Technical Scope & Problem Narrative"
+                            FontWeight: =FontWeight.Bold
+                            Color: =RGBA(15, 23, 42, 1)
+                            Size: 13
+                      - lblHeadlineLabel As label:
+                          Properties:
+                            Text: ="INCIDENT HEADLINE"
+                            Size: 9.5
+                            FontWeight: =FontWeight.Bold
+                            Color: =RGBA(100, 116, 139, 1)
+                      - lblHeadlineVal As label:
+                          Properties:
+                            Text: ="Plant Boiler Control DCS Network Gateway Intermittent Failure"
+                            FontWeight: =FontWeight.Bold
+                            Color: =RGBA(15, 23, 42, 1)
+                            Size: 14
+                      - htmlNarrativeBox As htmlText:
+                          Properties:
+                            HtmlText: ="<div style='background:#F8FAFC; border:1px solid #E2E8F0; border-radius:6px; padding:12px; font-size:12.5px; color:#334155; line-height:1.5;'>The primary industrial network switch connecting the Yokogawa Centum VP Distributed Control System (DCS) to the plant supervisory network has exhibited recurring packet dropouts exceeding 40%. This intermittently drops telemetry from fractionation boiler steam pressure sensors. Immediate hardware replacement is required to maintain safety interlock redundancy.</div>"
+                            Width: =Parent.Width - 36
+                            Height: 80
+
+                # Section 3: Attachments
+                - conCardAttachments As groupContainer.verticalAutoLayoutContainer:
+                    Properties:
+                      Width: =Parent.Width
+                      Fill: =RGBA(255, 255, 255, 1)
+                      BorderColor: =RGBA(226, 232, 240, 1)
+                      BorderThickness: 1
+                      RadiusTopLeft: 10
+                      RadiusTopRight: 10
+                      RadiusBottomLeft: 10
+                      RadiusBottomRight: 10
+                      PaddingLeft: 18
+                      PaddingRight: 18
+                      PaddingTop: 14
+                      PaddingBottom: 14
+                      LayoutGap: 10
+                    Children:
+                      - lblSec3Title As label:
+                          Properties:
+                            Text: ="📎  Verification Evidences & Logs (2 Files)"
+                            FontWeight: =FontWeight.Bold
+                            Color: =RGBA(15, 23, 42, 1)
+                            Size: 13
+                      - conFilesRow As groupContainer.horizontalAutoLayoutContainer:
+                          Properties:
+                            Width: =Parent.Width - 36
+                            LayoutGap: 14
+                          Children:
+                            - conFile1 As groupContainer.horizontalAutoLayoutContainer:
+                                Properties:
+                                  Width: (Parent.Width - 14) / 2
+                                  Fill: =RGBA(248, 250, 252, 1)
+                                  BorderColor: =RGBA(226, 232, 240, 1)
+                                  BorderThickness: 1
+                                  RadiusTopLeft: 6
+                                  RadiusTopRight: 6
+                                  RadiusBottomLeft: 6
+                                  RadiusBottomRight: 6
+                                  PaddingLeft: 10
+                                  PaddingRight: 10
+                                  PaddingTop: 8
+                                  PaddingBottom: 8
+                                  LayoutAlignItems: =LayoutAlignItems.Center
+                                  LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                                Children:
+                                  - lblFile1Desc As label:
+                                      Properties:
+                                        Text: ="📄 DCS_Diagnostic_Dump.log (3.4 MB)"
+                                        FontWeight: =FontWeight.Semibold
+                                        Size: 11
+                                  - btnFile1View As button:
+                                      Properties:
+                                        Text: ="Open"
+                                        Fill: =RGBA(255, 255, 255, 1)
+                                        Color: =RGBA(0, 108, 76, 1)
+                                        BorderColor: =RGBA(203, 213, 225, 1)
+                                        BorderThickness: 1
+                                        Height: 26
+                                        Size: 10
+
+                            - conFile2 As groupContainer.horizontalAutoLayoutContainer:
+                                Properties:
+                                  Width: (Parent.Width - 14) / 2
+                                  Fill: =RGBA(248, 250, 252, 1)
+                                  BorderColor: =RGBA(226, 232, 240, 1)
+                                  BorderThickness: 1
+                                  RadiusTopLeft: 6
+                                  RadiusTopRight: 6
+                                  RadiusBottomLeft: 6
+                                  RadiusBottomRight: 6
+                                  PaddingLeft: 10
+                                  PaddingRight: 10
+                                  PaddingTop: 8
+                                  PaddingBottom: 8
+                                  LayoutAlignItems: =LayoutAlignItems.Center
+                                  LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                                Children:
+                                  - lblFile2Desc As label:
+                                      Properties:
+                                        Text: ="📑 Yokogawa_Quote_YMY.pdf (1.2 MB)"
+                                        FontWeight: =FontWeight.Semibold
+                                        Size: 11
+                                  - btnFile2View As button:
+                                      Properties:
+                                        Text: ="Open"
+                                        Fill: =RGBA(255, 255, 255, 1)
+                                        Color: =RGBA(0, 108, 76, 1)
+                                        BorderColor: =RGBA(203, 213, 225, 1)
+                                        BorderThickness: 1
+                                        Height: 26
+                                        Size: 10
+
+          # Right Column (Workflow Timeline Stepper - 35% width)
+          - conRightTimeline As groupContainer.verticalAutoLayoutContainer:
+              Properties:
+                Width: =(Parent.Width - 88) * 0.35
+                LayoutGap: 16
+
+              Children:
+                - conCardWorkflow As groupContainer.verticalAutoLayoutContainer:
+                    Properties:
+                      Width: =Parent.Width
+                      Fill: =RGBA(255, 255, 255, 1)
+                      BorderColor: =RGBA(226, 232, 240, 1)
+                      BorderThickness: 1
+                      RadiusTopLeft: 10
+                      RadiusTopRight: 10
+                      RadiusBottomLeft: 10
+                      RadiusBottomRight: 10
+                      PaddingLeft: 18
+                      PaddingRight: 18
+                      PaddingTop: 16
+                      PaddingBottom: 16
+                      LayoutGap: 14
+
+                    Children:
+                      - lblWfTitle As label:
+                          Properties:
+                            Text: ="🛡️  Multi-Stage Approval Workflow"
+                            FontWeight: =FontWeight.Bold
+                            Color: =RGBA(15, 23, 42, 1)
+                            Size: 13
+
+                      # Stage 1
+                      - conStage1 As groupContainer.verticalAutoLayoutContainer:
+                          Properties:
+                            Width: =Parent.Width - 36
+                            LayoutGap: 2
+                          Children:
+                            - lblStg1Name As label:
+                                Properties:
+                                  Text: ="✓ Stage 1: Request Created"
+                                  Color: =RGBA(4, 120, 87, 1)
+                                  FontWeight: =FontWeight.Bold
+                                  Size: 11.5
+                            - lblStg1Sub As label:
+                                Properties:
+                                  Text: ="Ir. Ahmad Faisal · 09 Nov 2026, 08:30 AM"
+                                  Color: =RGBA(100, 116, 139, 1)
+                                  Size: 10.5
+
+                      # Stage 2
+                      - conStage2 As groupContainer.verticalAutoLayoutContainer:
+                          Properties:
+                            Width: =Parent.Width - 36
+                            LayoutGap: 2
+                          Children:
+                            - lblStg2Name As label:
+                                Properties:
+                                  Text: ="✓ Stage 2: HOD Technical Sign-off"
+                                  Color: =RGBA(4, 120, 87, 1)
+                                  FontWeight: =FontWeight.Bold
+                                  Size: 11.5
+                            - lblStg2Sub As label:
+                                Properties:
+                                  Text: ="Ir. K. Raman (Head of Eng) · 09:15 AM"
+                                  Color: =RGBA(100, 116, 139, 1)
+                                  Size: 10.5
+
+                      # Stage 3
+                      - conStage3 As groupContainer.verticalAutoLayoutContainer:
+                          Properties:
+                            Width: =Parent.Width - 36
+                            Fill: =RGBA(255, 251, 235, 1)
+                            BorderColor: =RGBA(253, 230, 138, 1)
+                            BorderThickness: 1
+                            RadiusTopLeft: 6
+                            RadiusTopRight: 6
+                            RadiusBottomLeft: 6
+                            RadiusBottomRight: 6
+                            PaddingLeft: 10
+                            PaddingRight: 10
+                            PaddingTop: 8
+                            PaddingBottom: 8
+                            LayoutGap: 2
+                          Children:
+                            - lblStg3Name As label:
+                                Properties:
+                                  Text: ="● Stage 3: Plant GM Sign-off (CURRENT)"
+                                  Color: =RGBA(180, 83, 9, 1)
+                                  FontWeight: =FontWeight.Bold
+                                  Size: 11.5
+                            - lblStg3Sub As label:
+                                Properties:
+                                  Text: ="Dato' B. H. Lim (Plant GM) · SLA < 4h"
+                                  Color: =RGBA(180, 83, 9, 1)
+                                  Size: 10.5
+
+                      # Stage 4
+                      - conStage4 As groupContainer.verticalAutoLayoutContainer:
+                          Properties:
+                            Width: =Parent.Width - 36
+                            LayoutGap: 2
+                          Children:
+                            - lblStg4Name As label:
+                                Properties:
+                                  Text: ="○ Stage 4: IT Dispatch & Fulfillment"
+                                  Color: =RGBA(148, 163, 184, 1)
+                                  FontWeight: =FontWeight.Bold
+                                  Size: 11.5
+                            - lblStg4Sub As label:
+                                Properties:
+                                  Text: ="Network Infrastructure Team (Johor)"
+                                  Color: =RGBA(148, 163, 184, 1)
+                                  Size: 10.5
+
+                # Cryptographic Audit Seal
+                - conCardHash As groupContainer.verticalAutoLayoutContainer:
+                    Properties:
+                      Width: =Parent.Width
+                      Fill: =RGBA(248, 250, 252, 1)
+                      BorderColor: =RGBA(226, 232, 240, 1)
+                      BorderThickness: 1
+                      RadiusTopLeft: 10
+                      RadiusTopRight: 10
+                      RadiusBottomLeft: 10
+                      RadiusBottomRight: 10
+                      PaddingLeft: 14
+                      PaddingRight: 14
+                      PaddingTop: 12
+                      PaddingBottom: 12
+                      LayoutGap: 6
+                    Children:
+                      - lblHashHeading As label:
+                          Properties:
+                            Text: ="CRYPTOGRAPHIC AUDIT SEAL"
+                            FontWeight: =FontWeight.Bold
+                            Color: =RGBA(51, 65, 85, 1)
+                            Size: 9.5
+                      - lblHashVal As label:
+                          Properties:
+                            Text: ="SHA256: 7f83b165...e482"
+                            FontWeight: =FontWeight.Semibold
+                            Color: =RGBA(100, 116, 139, 1)
+                            Size: 10
+                      - lblHashNotice As label:
+                          Properties:
+                            Text: ="Tamper-proof record logged in Azure Dataverse Security Store."
+                            Color: =RGBA(148, 163, 184, 1)
+                            Size: 9.5

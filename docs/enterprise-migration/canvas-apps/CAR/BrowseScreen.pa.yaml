@@ -1,0 +1,47 @@
+# ==============================================================================
+# Microsoft Power Apps Canvas Source Code (Power Fx YAML)
+# Application: Capital Appropriation Request (CAR)
+# Department: Finance & Accounting
+# Screen: BrowseScreen (Filterable Transaction Gallery)
+# ==============================================================================
+
+BrowseScreen As Screen:
+  Properties:
+    Fill: =RGBA(248, 250, 252, 1)
+    OnVisible: |
+      =UpdateContext({ locSearchQuery: "", locFilterStatus: "All" });
+      ClearCollect(colCARRecords,
+          {
+              ID: "CAR-2026-0158",
+              Title: "Fractionation Column 3 High-Pressure Steam Turbine Retrofit (RM 1.85M)",
+              Category: "Plant Machinery Capital Expenditure (CAPEX)",
+              Submitter: "Ir. Lim Seng Chye (Chief Plant Engineer)",
+              Location: "Johor Pasir Gudang · Energy & Steam Generation Facility",
+              Priority: "URGENT",
+              Stage: "Stage 3: Financial Controller Review"
+          }
+      )
+  Children:
+    - conMainGallery As groupContainer.verticalAutoLayoutContainer:
+        Properties:
+          Width: =Parent.Width
+          Height: =Parent.Height
+          PaddingLeft: 32
+          PaddingRight: 32
+          PaddingTop: 24
+        Children:
+          - galItems As gallery.galleryVertical:
+              Properties:
+                Width: =Parent.Width - 64
+                Height: 500
+                Items: =colCARRecords
+                TemplateSize: 72
+              Children:
+                - btnViewDetails As button:
+                    Properties:
+                      Text: ="View Details →"
+                      Fill: =ColorValue("#1E3A8A")
+                      Color: =RGBA(255, 255, 255, 1)
+                      OnSelect: |
+                        =Set(varSelectedCAR, ThisItem);
+                        Navigate(DetailsScreen, ScreenTransition.Fade)

@@ -1,0 +1,47 @@
+# ==============================================================================
+# Microsoft Power Apps Canvas Source Code (Power Fx YAML)
+# Application: External Access Form (EAF)
+# Department: Information Technology
+# Screen: BrowseScreen (Filterable Transaction Gallery)
+# ==============================================================================
+
+BrowseScreen As Screen:
+  Properties:
+    Fill: =RGBA(248, 250, 252, 1)
+    OnVisible: |
+      =UpdateContext({ locSearchQuery: "", locFilterStatus: "All" });
+      ClearCollect(colEAFRecords,
+          {
+              ID: "EAF-2026-0412",
+              Title: "Yokogawa Engineering Remote Telemetry & Diagnostics VPN Tunnel",
+              Category: "Remote Access & Vendor Security",
+              Submitter: "K. S. Tan (IT Security Specialist)",
+              Location: "Penang Oleo Complex (HQ) · IT Security Perimeter",
+              Priority: "HIGH",
+              Stage: "Stage 3: CISO Security Review"
+          }
+      )
+  Children:
+    - conMainGallery As groupContainer.verticalAutoLayoutContainer:
+        Properties:
+          Width: =Parent.Width
+          Height: =Parent.Height
+          PaddingLeft: 32
+          PaddingRight: 32
+          PaddingTop: 24
+        Children:
+          - galItems As gallery.galleryVertical:
+              Properties:
+                Width: =Parent.Width - 64
+                Height: 500
+                Items: =colEAFRecords
+                TemplateSize: 72
+              Children:
+                - btnViewDetails As button:
+                    Properties:
+                      Text: ="View Details →"
+                      Fill: =ColorValue("#006C4C")
+                      Color: =RGBA(255, 255, 255, 1)
+                      OnSelect: |
+                        =Set(varSelectedEAF, ThisItem);
+                        Navigate(DetailsScreen, ScreenTransition.Fade)

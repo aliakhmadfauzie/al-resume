@@ -1,0 +1,47 @@
+# ==============================================================================
+# Microsoft Power Apps Canvas Source Code (Power Fx YAML)
+# Application: Internal Quality Audit & Non-Conformance Reporting (NCRINTEAUDI)
+# Department: Quality Assurance
+# Screen: BrowseScreen (Filterable Transaction Gallery)
+# ==============================================================================
+
+BrowseScreen As Screen:
+  Properties:
+    Fill: =RGBA(248, 250, 252, 1)
+    OnVisible: |
+      =UpdateContext({ locSearchQuery: "", locFilterStatus: "All" });
+      ClearCollect(colNCRINTEAUDIRecords,
+          {
+              ID: "NCR-2026-0104",
+              Title: "ISO 9001 Clause 8.5.4 Warehouse Temperature Controlled Storage Segregation",
+              Category: "Internal Quality Audit Non-Conformance",
+              Submitter: "Lee Mei Ling (Lead Quality Auditor)",
+              Location: "Penang Oleo Complex · Warehouse Bay 2B (Refined Soap Noodles)",
+              Priority: "NORMAL",
+              Stage: "Stage 3: Root Cause & CAPA Submission"
+          }
+      )
+  Children:
+    - conMainGallery As groupContainer.verticalAutoLayoutContainer:
+        Properties:
+          Width: =Parent.Width
+          Height: =Parent.Height
+          PaddingLeft: 32
+          PaddingRight: 32
+          PaddingTop: 24
+        Children:
+          - galItems As gallery.galleryVertical:
+              Properties:
+                Width: =Parent.Width - 64
+                Height: 500
+                Items: =colNCRINTEAUDIRecords
+                TemplateSize: 72
+              Children:
+                - btnViewDetails As button:
+                    Properties:
+                      Text: ="View Details →"
+                      Fill: =ColorValue("#4338CA")
+                      Color: =RGBA(255, 255, 255, 1)
+                      OnSelect: |
+                        =Set(varSelectedNCRINTEAUDI, ThisItem);
+                        Navigate(DetailsScreen, ScreenTransition.Fade)

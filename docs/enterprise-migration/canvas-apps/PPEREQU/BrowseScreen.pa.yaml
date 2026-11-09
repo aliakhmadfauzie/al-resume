@@ -1,0 +1,47 @@
+# ==============================================================================
+# Microsoft Power Apps Canvas Source Code (Power Fx YAML)
+# Application: Personal Protective Equipment Requisition (PPEREQU)
+# Department: Safety, Health & Environment
+# Screen: BrowseScreen (Filterable Transaction Gallery)
+# ==============================================================================
+
+BrowseScreen As Screen:
+  Properties:
+    Fill: =RGBA(248, 250, 252, 1)
+    OnVisible: |
+      =UpdateContext({ locSearchQuery: "", locFilterStatus: "All" });
+      ClearCollect(colPPEREQURecords,
+          {
+              ID: "PPE-2026-0561",
+              Title: "Level B Chemical Splash Suits & Acid Vapor Respirator Cartridges Requisition",
+              Category: "Hazardous Environment Protective Gear",
+              Submitter: "Zainal Abidin (Shift Team Leader)",
+              Location: "Penang Oleo Complex · Chlor-Alkali & Acid Fractionation Unit",
+              Priority: "NORMAL",
+              Stage: "Stage 3: Safety Officer Approval"
+          }
+      )
+  Children:
+    - conMainGallery As groupContainer.verticalAutoLayoutContainer:
+        Properties:
+          Width: =Parent.Width
+          Height: =Parent.Height
+          PaddingLeft: 32
+          PaddingRight: 32
+          PaddingTop: 24
+        Children:
+          - galItems As gallery.galleryVertical:
+              Properties:
+                Width: =Parent.Width - 64
+                Height: 500
+                Items: =colPPEREQURecords
+                TemplateSize: 72
+              Children:
+                - btnViewDetails As button:
+                    Properties:
+                      Text: ="View Details →"
+                      Fill: =ColorValue("#B45309")
+                      Color: =RGBA(255, 255, 255, 1)
+                      OnSelect: |
+                        =Set(varSelectedPPEREQU, ThisItem);
+                        Navigate(DetailsScreen, ScreenTransition.Fade)

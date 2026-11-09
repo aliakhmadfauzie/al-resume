@@ -1,0 +1,47 @@
+# ==============================================================================
+# Microsoft Power Apps Canvas Source Code (Power Fx YAML)
+# Application: Leave Management System (LVE)
+# Department: Human Resources
+# Screen: BrowseScreen (Filterable Transaction Gallery)
+# ==============================================================================
+
+BrowseScreen As Screen:
+  Properties:
+    Fill: =RGBA(248, 250, 252, 1)
+    OnVisible: |
+      =UpdateContext({ locSearchQuery: "", locFilterStatus: "All" });
+      ClearCollect(colLVERecords,
+          {
+              ID: "LVE-2026-1182",
+              Title: "Annual Shift Leave Request & Certified Relief Engineer Coverage",
+              Category: "Shift Operations Leave",
+              Submitter: "Siti Nur Aishah (Senior Boiler Engineer)",
+              Location: "Johor Pasir Gudang · Oleochemical Fractionation Unit",
+              Priority: "NORMAL",
+              Stage: "Stage 3: Shift Superintendent Sign-off"
+          }
+      )
+  Children:
+    - conMainGallery As groupContainer.verticalAutoLayoutContainer:
+        Properties:
+          Width: =Parent.Width
+          Height: =Parent.Height
+          PaddingLeft: 32
+          PaddingRight: 32
+          PaddingTop: 24
+        Children:
+          - galItems As gallery.galleryVertical:
+              Properties:
+                Width: =Parent.Width - 64
+                Height: 500
+                Items: =colLVERecords
+                TemplateSize: 72
+              Children:
+                - btnViewDetails As button:
+                    Properties:
+                      Text: ="View Details →"
+                      Fill: =ColorValue("#0F766E")
+                      Color: =RGBA(255, 255, 255, 1)
+                      OnSelect: |
+                        =Set(varSelectedLVE, ThisItem);
+                        Navigate(DetailsScreen, ScreenTransition.Fade)

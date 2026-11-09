@@ -1,0 +1,47 @@
+# ==============================================================================
+# Microsoft Power Apps Canvas Source Code (Power Fx YAML)
+# Application: Medical Claims & Healthcare Benefits (MCL)
+# Department: Human Resources
+# Screen: BrowseScreen (Filterable Transaction Gallery)
+# ==============================================================================
+
+BrowseScreen As Screen:
+  Properties:
+    Fill: =RGBA(248, 250, 252, 1)
+    OnVisible: |
+      =UpdateContext({ locSearchQuery: "", locFilterStatus: "All" });
+      ClearCollect(colMCLRecords,
+          {
+              ID: "MCL-2026-0749",
+              Title: "Specialist Occupational Health Examination & Audiometric Testing Claim",
+              Category: "Occupational Healthcare & Wellness",
+              Submitter: "Mohd Radzi (Plant Mechanical Technician)",
+              Location: "Penang Oleo Complex (HQ) · Safety & Medical Center",
+              Priority: "NORMAL",
+              Stage: "Stage 3: HR Benefits Verification"
+          }
+      )
+  Children:
+    - conMainGallery As groupContainer.verticalAutoLayoutContainer:
+        Properties:
+          Width: =Parent.Width
+          Height: =Parent.Height
+          PaddingLeft: 32
+          PaddingRight: 32
+          PaddingTop: 24
+        Children:
+          - galItems As gallery.galleryVertical:
+              Properties:
+                Width: =Parent.Width - 64
+                Height: 500
+                Items: =colMCLRecords
+                TemplateSize: 72
+              Children:
+                - btnViewDetails As button:
+                    Properties:
+                      Text: ="View Details →"
+                      Fill: =ColorValue("#0F766E")
+                      Color: =RGBA(255, 255, 255, 1)
+                      OnSelect: |
+                        =Set(varSelectedMCL, ThisItem);
+                        Navigate(DetailsScreen, ScreenTransition.Fade)

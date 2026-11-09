@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Browse - IT Support & Service Requests</title>
+  <style>
+    
+  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+  
+  :root {
+    --primary: #006C4C;
+    --primary-hover: #00563B;
+    --primary-light: #E8F5EE;
+    --primary-border: #89F8C7;
+    --powerapps-blue: #0078D4;
+    --powerapps-dark: #005A9E;
+    --surface-bg: #F8FAFC;
+    --card-bg: #FFFFFF;
+    --border-subtle: #E2E8F0;
+    --border-strong: #CBD5E1;
+    --text-main: #0F172A;
+    --text-muted: #475569;
+    --text-faint: #94A3B8;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--surface-bg);
+    color: var(--text-main);
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Microsoft Power Apps Universal Top Header Bar */
+  .powerapps-topbar {
+    height: 48px;
+    background: #005A9E;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    font-size: 13px;
+    font-weight: 500;
+    z-index: 50;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+  }
+  .powerapps-waffle {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .powerapps-waffle:hover { background: rgba(255,255,255,0.15); }
+  .powerapps-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .brand-badge {
+    background: rgba(255,255,255,0.18);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  .powerapps-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .user-pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.12);
+    padding: 4px 10px 4px 6px;
+    border-radius: 20px;
+    font-size: 12px;
+  }
+  .user-avatar {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: #006C4C;
+    color: white;
+    font-weight: 700;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px solid #FFFFFF;
+  }
+
+  /* Core Badges */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1;
+  }
+  .badge-emerald { background: #ECFDF5; color: #047857; border: 1px solid #A7F3D0; }
+  .badge-amber { background: #FFFBEB; color: #B45309; border: 1px solid #FDE68A; }
+  .badge-blue { background: #EFF6FF; color: #1D4ED8; border: 1px solid #BFDBFE; }
+  .badge-rose { background: #FFF1F2; color: #BE123C; border: 1px solid #FECDD3; }
+  .badge-slate { background: #F1F5F9; color: #475569; border: 1px solid #CBD5E1; }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    border: 1px solid transparent;
+  }
+  .btn-primary { background: #006C4C; color: white; box-shadow: 0 1px 2px rgba(0,108,76,0.25); }
+  .btn-powerapps { background: #0078D4; color: white; box-shadow: 0 1px 2px rgba(0,120,212,0.25); }
+  .btn-secondary { background: #FFFFFF; color: #334155; border-color: #CBD5E1; }
+  .btn-secondary:hover { background: #F8FAFC; border-color: #94A3B8; }
+  .btn-danger { background: #FFF1F2; color: #BE123C; border-color: #FECDD3; }
+
+  /* Cards & Elev */
+  .card {
+    background: #FFFFFF;
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.04);
+  }
+
+    .layout-root {
+      flex: 1;
+      display: flex;
+      overflow: hidden;
+    }
+    /* Sidebar */
+    .sidebar {
+      width: 260px;
+      background: #FFFFFF;
+      border-right: 1px solid var(--border-subtle);
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+    }
+    .sidebar-header {
+      padding: 16px;
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .sidebar-menu {
+      flex: 1;
+      padding: 12px 10px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .menu-heading {
+      font-size: 11px;
+      font-weight: 700;
+      color: #94A3B8;
+      text-transform: uppercase;
+      letter-spacing: 0.75px;
+      padding: 8px 10px 4px 10px;
+    }
+    .menu-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 12px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #475569;
+      cursor: pointer;
+    }
+    .menu-item:hover { background: #F8FAFC; color: #0F172A; }
+    .menu-item.active { background: #E8F5EE; color: #006C4C; border-left: 3px solid #006C4C; }
+    .menu-badge { margin-left: auto; background: #006C4C; color: white; padding: 2px 7px; border-radius: 10px; font-size: 11px; font-weight: 700; }
+
+    /* Main Area */
+    .main-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      padding: 24px 32px;
+      gap: 20px;
+      background: #F8FAFC;
+    }
+
+    /* KPI Grid */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .kpi-card {
+      background: white;
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 18px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    }
+    .kpi-title { font-size: 12px; font-weight: 600; color: #64748B; text-transform: uppercase; letter-spacing: 0.5px; }
+    .kpi-value { font-size: 28px; font-weight: 800; color: #0F172A; letter-spacing: -0.5px; }
+    .kpi-sub { font-size: 12px; font-weight: 600; display: flex; align-items: center; gap: 4px; }
+
+    /* Filter Bar */
+    .filter-bar {
+      background: white;
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    }
+    .search-box {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #F8FAFC;
+      border: 1px solid #CBD5E1;
+      border-radius: 8px;
+      padding: 8px 14px;
+      font-size: 13px;
+    }
+    .search-box input {
+      border: none;
+      background: transparent;
+      outline: none;
+      width: 100%;
+      font-size: 13px;
+      color: #0F172A;
+      font-family: inherit;
+    }
+    .select-pill {
+      border: 1px solid #CBD5E1;
+      background: white;
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-size: 13px;
+      font-weight: 500;
+      color: #334155;
+    }
+
+    /* Tabs */
+    .tabs-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 2px solid #E2E8F0;
+      padding-bottom: 0px;
+    }
+    .tab-btn {
+      padding: 10px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #64748B;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -2px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .tab-btn.active {
+      color: #006C4C;
+      border-bottom-color: #006C4C;
+    }
+
+    /* Table */
+    .table-card {
+      background: white;
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 13px;
+    }
+    th {
+      background: #F8FAFC;
+      padding: 12px 18px;
+      font-weight: 700;
+      color: #475569;
+      font-size: 11.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    td {
+      padding: 14px 18px;
+      border-bottom: 1px solid #F1F5F9;
+      color: #334155;
+      vertical-align: middle;
+    }
+    tr:hover td { background: #FAFCFF; }
+    .req-id {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 600;
+      color: #0078D4;
+    }
+    .pagination-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px;
+      background: white;
+      border-top: 1px solid var(--border-subtle);
+      font-size: 12px;
+      color: #64748B;
+    }
+  </style>
+</head>
+<body>
+  <!-- Top Bar -->
+  <div class="powerapps-topbar">
+    <div class="powerapps-brand">
+      <div class="powerapps-waffle">
+        <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor">
+          <circle cx="2" cy="2" r="1.5"/><circle cx="8" cy="2" r="1.5"/><circle cx="14" cy="2" r="1.5"/>
+          <circle cx="2" cy="8" r="1.5"/><circle cx="8" cy="8" r="1.5"/><circle cx="14" cy="8" r="1.5"/>
+          <circle cx="2" cy="14" r="1.5"/><circle cx="8" cy="14" r="1.5"/><circle cx="14" cy="14" r="1.5"/>
+        </svg>
+      </div>
+      <span style="font-weight: 600;">Power Apps</span>
+      <span style="color: rgba(255,255,255,0.4);">|</span>
+      <span>IOI Acidchem Enterprise Platform</span>
+      <span class="brand-badge">Prod v2.4</span>
+    </div>
+    <div class="powerapps-actions">
+      <span style="font-size: 12px; opacity: 0.85;">Penang Oleochemical Complex</span>
+      <div class="user-pill">
+        <div class="user-avatar">AF</div>
+        <span>Ali Akhmad Fauzie (Lead Architect)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="layout-root">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="sidebar-header">
+        <div style="width: 32px; height: 32px; border-radius: 8px; background: #006C4C; color: white; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:14px;">IOI</div>
+        <div>
+          <div style="font-weight: 700; font-size: 13px; color: #0F172A;">IT Operations Suite</div>
+          <div style="font-size: 11px; color: #64748B;">M2: Support & Services</div>
+        </div>
+      </div>
+      <div class="sidebar-menu">
+        <div class="menu-heading">Main Navigation</div>
+        <div class="menu-item">
+          <span>📊</span> Dashboard Overview
+        </div>
+        <div class="menu-item active">
+          <span>🛠️</span> IT Support (ITSSR)
+          <span class="menu-badge">14</span>
+        </div>
+        <div class="menu-item">
+          <span>🔑</span> External Access (EAF)
+        </div>
+        <div class="menu-item">
+          <span>🖥️</span> Hardware Inventory
+        </div>
+        <div class="menu-item">
+          <span>🔄</span> SAP Change Requests
+        </div>
+
+        <div class="menu-heading">Other Departments</div>
+        <div class="menu-item">
+          <span>💰</span> Finance (CAR / CMF)
+        </div>
+        <div class="menu-item">
+          <span>👥</span> HR (LVE / MCL)
+        </div>
+        <div class="menu-item">
+          <span>🦺</span> SHE Compliance
+        </div>
+        <div class="menu-item">
+          <span>⚙️</span> Plant Maintenance
+        </div>
+        <div class="menu-item">
+          <span>🔍</span> Quality Assurance (QA)
+        </div>
+      </div>
+    </div>
+
+    <!-- Main -->
+    <div class="main-content">
+      <!-- Title & CTA -->
+      <div style="display: flex; align-items: center; justify-content: space-between;">
+        <div>
+          <h1 style="font-size: 22px; font-weight: 800; color: #0F172A; letter-spacing: -0.3px;">IT Support & Service Requests (ITSSR)</h1>
+          <p style="font-size: 13px; color: #64748B; margin-top: 2px;">Centralized ticketing for plant automation, hardware allocation, and SAP enterprise systems across Penang & Johor.</p>
+        </div>
+        <button class="btn btn-primary" style="padding: 10px 18px; font-size: 14px;">
+          <span style="font-size: 16px;">+</span> New Service Request
+        </button>
+      </div>
+
+      <!-- KPI Bar -->
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-title">Active Queue (This Month)</div>
+          <div class="kpi-value">1,428</div>
+          <div class="kpi-sub" style="color: #047857;">▲ +12% from last month</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-title">Pending Approvals</div>
+          <div class="kpi-value" style="color: #B45309;">18</div>
+          <div class="kpi-sub" style="color: #BE123C;">4 Critical / SLA &lt; 4h</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-title">Resolved & Closed</div>
+          <div class="kpi-value">389</div>
+          <div class="kpi-sub" style="color: #047857;">✓ 99.2% SLA On-Time</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-title">Avg Turnaround Time</div>
+          <div class="kpi-value">1.6 <span style="font-size: 16px; font-weight: 600; color: #64748B;">Days</span></div>
+          <div class="kpi-sub" style="color: #047857;">▼ -0.4 days vs benchmark</div>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="tabs-row">
+        <div class="tab-btn active">All Requests (1,428)</div>
+        <div class="tab-btn">My Submissions (12)</div>
+        <div class="tab-btn">Pending My Approval <span class="badge badge-amber" style="padding:2px 6px; font-size:11px;">5</span></div>
+        <div class="tab-btn">Critical Outages <span class="badge badge-rose" style="padding:2px 6px; font-size:11px;">2</span></div>
+        <div class="tab-btn">Archived / Historical</div>
+      </div>
+
+      <!-- Filter Controls -->
+      <div class="filter-bar">
+        <div class="search-box">
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#64748B">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+          </svg>
+          <input type="text" value="DCS Gateway" placeholder="Filter by Request ID, Submitter, Asset Tag...">
+        </div>
+        <select class="select-pill"><option>All Plants (Penang & Johor)</option><option>Penang Oleo Complex</option><option>Johor Pasir Gudang</option></select>
+        <select class="select-pill"><option>All Priorities</option><option>Urgent / Critical</option><option>High</option><option>Normal</option></select>
+        <button class="btn btn-secondary">
+          <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+          Export
+        </button>
+      </div>
+
+      <!-- Table -->
+      <div class="table-card">
+        <table>
+          <thead>
+            <tr>
+              <th>Request ID</th>
+              <th>System / Subject</th>
+              <th>Submitter</th>
+              <th>Plant Facility</th>
+              <th>Priority</th>
+              <th>Submitted Date</th>
+              <th>Workflow Stage</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background: #FFFBEB;">
+              <td class="req-id">ITSSR-2026-0941</td>
+              <td>
+                <div style="font-weight: 700; color: #0F172A;">Plant Boiler Control DCS Network Gateway Failure</div>
+                <div style="font-size: 11px; color: #64748B;">Hardware & Automation · Tag: DCS-GW-JOHOR-02</div>
+              </td>
+              <td>
+                <div style="font-weight: 600;">Ir. Ahmad Faisal</div>
+                <div style="font-size: 11px; color: #64748B;">Lead Process Eng</div>
+              </td>
+              <td><span class="badge badge-slate">Johor Pasir Gudang</span></td>
+              <td><span class="badge badge-rose">● URGENT</span></td>
+              <td>Today, 08:30 AM</td>
+              <td><span class="badge badge-amber">Pending Plant GM Sign-off</span></td>
+              <td>
+                <button class="btn btn-primary" style="padding: 6px 12px; font-size: 12px;">Review</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="req-id">ITSSR-2026-0938</td>
+              <td>
+                <div style="font-weight: 700; color: #0F172A;">SAP S/4HANA Transport Request (TR-84920)</div>
+                <div style="font-size: 11px; color: #64748B;">ERP Core · Commercial Logistics Dispatch Module</div>
+              </td>
+              <td>
+                <div style="font-weight: 600;">Siti Nurhaliza</div>
+                <div style="font-size: 11px; color: #64748B;">Supply Chain Exec</div>
+              </td>
+              <td><span class="badge badge-slate">Penang HQ</span></td>
+              <td><span class="badge badge-amber">● HIGH</span></td>
+              <td>Yesterday, 16:30</td>
+              <td><span class="badge badge-blue">IT Security Triage</span></td>
+              <td>
+                <button class="btn btn-secondary" style="padding: 6px 12px; font-size: 12px;">View</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="req-id">ITSSR-2026-0935</td>
+              <td>
+                <div style="font-weight: 700; color: #0F172A;">Ruggedized Barcode Scanner Replacement - Bay 4</div>
+                <div style="font-size: 11px; color: #64748B;">Hardware Replacement · Zebra TC57 Scanner</div>
+              </td>
+              <td>
+                <div style="font-weight: 600;">Tan Chee Keong</div>
+                <div style="font-size: 11px; color: #64748B;">Warehouse Superv.</div>
+              </td>
+              <td><span class="badge badge-slate">Penang Tank Farm</span></td>
+              <td><span class="badge badge-blue">NORMAL</span></td>
+              <td>07 Nov 2026</td>
+              <td><span class="badge badge-blue">Fulfillment In Progress</span></td>
+              <td>
+                <button class="btn btn-secondary" style="padding: 6px 12px; font-size: 12px;">View</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="req-id">ITSSR-2026-0929</td>
+              <td>
+                <div style="font-weight: 700; color: #0F172A;">VPN & Domino-to-M365 Mailbox Archive Recovery</div>
+                <div style="font-size: 11px; color: #64748B;">Legacy Migration Archive · Finance Partition</div>
+              </td>
+              <td>
+                <div style="font-weight: 600;">Grace Wong</div>
+                <div style="font-size: 11px; color: #64748B;">Financial Controller</div>
+              </td>
+              <td><span class="badge badge-slate">Penang HQ</span></td>
+              <td><span class="badge badge-blue">NORMAL</span></td>
+              <td>06 Nov 2026</td>
+              <td><span class="badge badge-emerald">Closed - Resolved</span></td>
+              <td>
+                <button class="btn btn-secondary" style="padding: 6px 12px; font-size: 12px;">View</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="pagination-bar">
+          <div>Showing <strong>1 to 4</strong> of <strong>1,428</strong> entries</div>
+          <div style="display:flex; gap:6px;">
+            <button class="btn btn-secondary" style="padding: 4px 10px; font-size: 12px;">Previous</button>
+            <button class="btn btn-primary" style="padding: 4px 10px; font-size: 12px;">1</button>
+            <button class="btn btn-secondary" style="padding: 4px 10px; font-size: 12px;">2</button>
+            <button class="btn btn-secondary" style="padding: 4px 10px; font-size: 12px;">Next</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

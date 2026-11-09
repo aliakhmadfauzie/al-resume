@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>OOS-Lab-Chemical-Quarantine-Disposition-Flow — Microsoft Power Automate Modern Designer</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #FAF9F8;
+      color: #323130;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Modern Power Automate Studio Top Header */
+    .designer-top-bar {
+      height: 52px;
+      background-color: #FFFFFF;
+      border-bottom: 1px solid #EDEBE9;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      z-index: 100;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+    .top-bar-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .back-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #EDEBE9;
+      background: #F3F2F1;
+      cursor: pointer;
+    }
+    .flow-brand-icon {
+      width: 26px;
+      height: 26px;
+    }
+    .flow-title-box {
+      display: flex;
+      flex-direction: column;
+    }
+    .flow-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: #201F1E;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .edit-pencil {
+      color: #605E5C;
+      font-size: 13px;
+    }
+    .flow-breadcrumbs {
+      font-size: 11px;
+      color: #605E5C;
+    }
+    .top-bar-center {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .env-chip {
+      background: #EFF6FC;
+      border: 1px solid #C7E0F4;
+      color: #0078D4;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .env-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #107C41;
+    }
+    .top-bar-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .btn-save {
+      background-color: #0078D4;
+      color: #FFFFFF;
+      border: none;
+      padding: 7px 18px;
+      border-radius: 4px;
+      font-size: 13px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 2px 4px rgba(0,120,212,0.2);
+    }
+    .btn-checker {
+      background-color: #F3F2F1;
+      border: 1px solid #D2D0CE;
+      color: #201F1E;
+      padding: 6px 14px;
+      border-radius: 4px;
+      font-size: 13px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .badge-clean {
+      background: #DFF6DD;
+      color: #107C41;
+      font-size: 11px;
+      padding: 2px 6px;
+      border-radius: 8px;
+      font-weight: 700;
+    }
+    .btn-test {
+      background-color: #F3F2F1;
+      border: 1px solid #D2D0CE;
+      color: #201F1E;
+      padding: 6px 14px;
+      border-radius: 4px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+    .copilot-toggle {
+      border: 1px solid #EDEBE9;
+      background: #FAF9F8;
+      padding: 6px 12px;
+      border-radius: 16px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #5C2D91;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #004E8C;
+      color: #FFFFFF;
+      font-size: 12px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Main Workspace Layout */
+    .designer-main-body {
+      flex: 1;
+      display: flex;
+      position: relative;
+      height: calc(1080px - 52px);
+    }
+
+    /* Canvas Area */
+    .canvas-viewport {
+      flex: 1;
+      position: relative;
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding: 40px 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      /* Authentic modern designer dot grid */
+      background-color: #F8F7F6;
+      background-image: radial-gradient(#D2D0CE 1.2px, transparent 1.2px);
+      background-size: 24px 24px;
+    }
+
+    .flow-pipeline-container {
+      width: 820px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 80px;
+    }
+
+    .flow-node-wrapper {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Modern Card Node Styling */
+    .flow-card {
+      width: 680px;
+      min-height: 74px;
+      background: #FFFFFF;
+      border: 1px solid #EDEBE9;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+      display: flex;
+      align-items: center;
+      padding: 12px 18px;
+      position: relative;
+      transition: all 0.15s ease-in-out;
+      cursor: pointer;
+    }
+    .flow-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      border-color: #C8C6C4;
+    }
+    .flow-card.selected {
+      border: 2px solid #0078D4;
+      box-shadow: 0 0 0 1px #0078D4, 0 8px 20px rgba(0,120,212,0.18);
+    }
+    .flow-card.catch-card {
+      border-left: 5px solid #D83B01;
+      background: #FFFDFB;
+    }
+
+    .card-icon-box {
+      width: 40px;
+      height: 40px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 14px;
+      flex-shrink: 0;
+    }
+    .card-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .card-header-line {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .card-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #201F1E;
+    }
+    .active-badge {
+      background: #0078D4;
+      color: #FFFFFF;
+      font-size: 9px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
+      letter-spacing: 0.5px;
+    }
+    .runafter-badge {
+      background: #FDF3EB;
+      color: #D83B01;
+      border: 1px solid #F9D9C3;
+      font-size: 9px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    .card-subtext {
+      font-size: 12px;
+      color: #605E5C;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 520px;
+    }
+    .node-kebab {
+      background: none;
+      border: none;
+      color: #A19F9D;
+      font-size: 16px;
+      padding: 4px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    /* Connecting Lines & Plus Circle */
+    .connector-line {
+      width: 2px;
+      height: 42px;
+      background-color: #8A8886;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .plus-circle {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #FFFFFF;
+      border: 1.5px solid #8A8886;
+      color: #605E5C;
+      font-size: 13px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+    }
+    .plus-circle:hover {
+      background: #0078D4;
+      border-color: #0078D4;
+      color: #FFFFFF;
+    }
+
+    /* Condition Branching */
+    .branching-container {
+      width: 720px;
+      display: flex;
+      justify-content: space-between;
+      margin: 12px 0 6px 0;
+      position: relative;
+    }
+    .branch-line {
+      width: 48%;
+      background: #FFFFFF;
+      border: 1px solid #EDEBE9;
+      border-radius: 6px;
+      padding: 10px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+    }
+    .true-branch { border-top: 3px solid #107C41; }
+    .false-branch { border-top: 3px solid #D83B01; }
+    .branch-pill {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
+      width: fit-content;
+    }
+    .true-pill { background: #DFF6DD; color: #107C41; }
+    .false-pill { background: #FDF3EB; color: #D83B01; }
+    .branch-subnode {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: #323130;
+      font-weight: 500;
+    }
+
+    /* Right Side Configuration Flyout Panel */
+    .property-panel {
+      width: 480px;
+      background: #FFFFFF;
+      border-left: 1px solid #EDEBE9;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      box-shadow: -4px 0 16px rgba(0,0,0,0.05);
+      z-index: 90;
+    }
+    .panel-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid #EDEBE9;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .panel-header-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .panel-icon-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .panel-action-name {
+      font-size: 15px;
+      font-weight: 600;
+      color: #201F1E;
+    }
+    .panel-close-btn {
+      background: none;
+      border: none;
+      font-size: 18px;
+      color: #605E5C;
+      cursor: pointer;
+    }
+
+    /* Panel Tabs */
+    .panel-tabs {
+      display: flex;
+      border-bottom: 1px solid #EDEBE9;
+      background: #FAF9F8;
+    }
+    .panel-tab {
+      padding: 10px 18px;
+      font-size: 13px;
+      font-weight: 500;
+      color: #605E5C;
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+    }
+    .panel-tab.active {
+      color: #0078D4;
+      font-weight: 600;
+      border-bottom-color: #0078D4;
+      background: #FFFFFF;
+    }
+
+    /* Panel Content */
+    .panel-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .panel-field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .field-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: #323130;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .info-icon {
+      color: #8A8886;
+      font-size: 11px;
+      cursor: help;
+    }
+    .fluent-dropdown {
+      height: 36px;
+      border: 1px solid #8A8886;
+      border-radius: 4px;
+      padding: 0 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 13px;
+      background: #FFFFFF;
+    }
+    .fluent-input {
+      height: 36px;
+      border: 1px solid #8A8886;
+      border-radius: 4px;
+      padding: 0 12px;
+      display: flex;
+      align-items: center;
+      font-size: 13px;
+      background: #FFFFFF;
+    }
+    .fluent-textarea {
+      min-height: 80px;
+      border: 1px solid #8A8886;
+      border-radius: 4px;
+      padding: 8px 12px;
+      font-size: 12px;
+      line-height: 1.5;
+      background: #FFFFFF;
+      font-family: inherit;
+    }
+    .fluent-input-with-pill {
+      min-height: 38px;
+      border: 1px solid #0078D4;
+      border-radius: 4px;
+      padding: 4px 8px;
+      display: flex;
+      align-items: center;
+      background: #FFFFFF;
+      box-shadow: 0 0 0 1px #0078D4;
+    }
+    .dynamic-pill-content {
+      background: #EFF6FC;
+      border: 1px solid #C7E0F4;
+      color: #0078D4;
+      padding: 3px 8px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .pill-fx {
+      font-size: 11px;
+      color: #5C2D91;
+    }
+
+    .panel-footer {
+      padding: 14px 20px;
+      border-top: 1px solid #EDEBE9;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #FAF9F8;
+    }
+    .btn-panel-action {
+      background: #0078D4;
+      color: #FFFFFF;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 4px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    /* Floating Canvas Controls */
+    .canvas-hud-controls {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      background: #FFFFFF;
+      border: 1px solid #EDEBE9;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      display: flex;
+      align-items: center;
+      padding: 4px 12px;
+      gap: 12px;
+      z-index: 50;
+      font-size: 12px;
+      font-weight: 600;
+      color: #605E5C;
+    }
+    .hud-btn {
+      background: none;
+      border: none;
+      font-size: 14px;
+      color: #323130;
+      cursor: pointer;
+    }
+    .minimap-preview {
+      position: absolute;
+      bottom: 24px;
+      right: 504px;
+      width: 140px;
+      height: 90px;
+      background: #FFFFFF;
+      border: 1px solid #EDEBE9;
+      border-radius: 6px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      padding: 6px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      align-items: center;
+    }
+    .minimap-title {
+      font-size: 9px;
+      color: #8A8886;
+      font-weight: 700;
+      align-self: flex-start;
+    }
+    .minimap-wireframe {
+      width: 100%;
+      height: 60px;
+      background: #F3F2F1;
+      border-radius: 3px;
+      position: relative;
+    }
+    .minimap-viewport-box {
+      position: absolute;
+      top: 10px;
+      left: 25px;
+      width: 90px;
+      height: 38px;
+      border: 1.5px solid #0078D4;
+      background: rgba(0,120,212,0.1);
+      border-radius: 2px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <header class="designer-top-bar">
+    <div class="top-bar-left">
+      <button class="back-btn" title="Back to Flows">
+        <svg width="14" height="14" viewBox="0 0 14 14"><path d="M9 2L4 7L9 12" stroke="#323130" stroke-width="1.8" fill="none"/></svg>
+      </button>
+      <div class="flow-brand-icon">
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+          <rect width="26" height="26" rx="5" fill="#0078D4"/>
+          <path d="M7 13C7 9.68 9.68 7 13 7C16.32 7 19 9.68 19 13C19 16.32 16.32 19 13 19" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="13" cy="13" r="3" fill="#50E6FF"/>
+        </svg>
+      </div>
+      <div class="flow-title-box">
+        <div class="flow-title">
+          <span>OOS-Lab-Chemical-Quarantine-Disposition-Flow</span>
+          <span class="edit-pencil">✎</span>
+        </div>
+        <div class="flow-breadcrumbs">Cloud flows > Automated flows > IOI Acidchem Modernization Suite</div>
+      </div>
+    </div>
+
+    <div class="top-bar-center">
+      <div class="env-chip">
+        <div class="env-dot"></div>
+        <span>IOI Acidchem PROD (Default)</span>
+      </div>
+    </div>
+
+    <div class="top-bar-right">
+      <button class="btn-save">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 2H10L12 4V12H2V2Z" stroke="white" stroke-width="1.5"/><rect x="4" y="2" width="5" height="3" fill="white"/></svg>
+        Save
+      </button>
+      <button class="btn-checker">
+        Flow checker
+        <span class="badge-clean">0 errors</span>
+      </button>
+      <button class="btn-test">Test</button>
+      <div class="copilot-toggle">
+        ✨ Copilot Active
+      </div>
+      <div class="avatar" title="Ir. Ahmad Faisal (Admin)">AF</div>
+    </div>
+  </header>
+
+  <!-- Main Designer Viewport -->
+  <main class="designer-main-body">
+
+    <!-- Interactive Canvas -->
+    <div class="canvas-viewport">
+      <div class="flow-pipeline-container">
+        
+      <!-- Step Node: When an OOS variance is detected -->
+      <div class="flow-node-wrapper">
+        <div class="flow-card  " id="node-trigger">
+          <div class="card-left-accent"></div>
+          <div class="card-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="4" fill="#0078D4"/><circle cx="10" cy="10" r="4.5" fill="#50E6FF"/><circle cx="15" cy="14" r="4.5" fill="#004E8C"/><circle cx="9" cy="14" r="4" fill="#FFFFFF"/></svg>
+          </div>
+          <div class="card-content">
+            <div class="card-header-line">
+              <span class="card-title">When an OOS variance is detected</span>
+              
+              
+            </div>
+            <div class="card-subtext">QC_OOS_Master · Lab test variance logged</div>
+          </div>
+          <div class="card-actions">
+            <button class="node-kebab" title="More options">•••</button>
+          </div>
+        </div>
+
+        
+
+        
+          <div class="connector-line">
+            <div class="plus-circle" title="Insert a new step">+</div>
+          </div>
+        
+      </div>
+    
+
+      <!-- Step Node: HTTP - Lock Storage Tank to QUARANTINE in SAP ERP -->
+      <div class="flow-node-wrapper">
+        <div class="flow-card selected " id="node-sap-quarantine">
+          <div class="card-left-accent"></div>
+          <div class="card-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="4" fill="#107C41"/><path d="M7 12H17M13 8L17 12L13 16" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="card-content">
+            <div class="card-header-line">
+              <span class="card-title">HTTP - Lock Storage Tank to QUARANTINE in SAP ERP</span>
+              <span class="active-badge">EDITING</span>
+              
+            </div>
+            <div class="card-subtext">Instantly lock automated loading valves and tanker filling arms</div>
+          </div>
+          <div class="card-actions">
+            <button class="node-kebab" title="More options">•••</button>
+          </div>
+        </div>
+
+        
+
+        
+          <div class="connector-line">
+            <div class="plus-circle" title="Insert a new step">+</div>
+          </div>
+        
+      </div>
+    
+
+      <!-- Step Node: Send SMS / Priority Push Alert - Refinery Superintendent -->
+      <div class="flow-node-wrapper">
+        <div class="flow-card  " id="node-sms-alert">
+          <div class="card-left-accent"></div>
+          <div class="card-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="4" fill="#0078D4"/><path d="M6 7H18V17H6V7Z" fill="white" fill-opacity="0.2"/><path d="M6 7L12 12L18 7" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </div>
+          <div class="card-content">
+            <div class="card-header-line">
+              <span class="card-title">Send SMS / Priority Push Alert - Refinery Superintendent</span>
+              
+              
+            </div>
+            <div class="card-subtext">Alert Production Head: Batch #B26-092 quarantined</div>
+          </div>
+          <div class="card-actions">
+            <button class="node-kebab" title="More options">•••</button>
+          </div>
+        </div>
+
+        
+
+        
+          <div class="connector-line">
+            <div class="plus-circle" title="Insert a new step">+</div>
+          </div>
+        
+      </div>
+    
+
+      <!-- Step Node: Start and wait for an approval (V2) - Chief Chemist Disposition -->
+      <div class="flow-node-wrapper">
+        <div class="flow-card  " id="node-approval-disposition">
+          <div class="card-left-accent"></div>
+          <div class="card-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="4" fill="#742774"/><path d="M7 12.5L10 15.5L17 8.5" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="card-content">
+            <div class="card-header-line">
+              <span class="card-title">Start and wait for an approval (V2) - Chief Chemist Disposition</span>
+              
+              
+            </div>
+            <div class="card-subtext">Options: Re-fractionation, Down-blending, or Downgrade to Technical Grade</div>
+          </div>
+          <div class="card-actions">
+            <button class="node-kebab" title="More options">•••</button>
+          </div>
+        </div>
+
+        
+
+        
+          <div class="connector-line">
+            <div class="plus-circle" title="Insert a new step">+</div>
+          </div>
+        
+      </div>
+    
+
+      <!-- Step Node: Condition - Released or Reprocessed? -->
+      <div class="flow-node-wrapper">
+        <div class="flow-card  " id="node-condition">
+          <div class="card-left-accent"></div>
+          <div class="card-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="4" fill="#D83B01"/><path d="M12 7L17 12L12 17L7 12L12 7Z" fill="white"/></svg>
+          </div>
+          <div class="card-content">
+            <div class="card-header-line">
+              <span class="card-title">Condition - Released or Reprocessed?</span>
+              
+              
+            </div>
+            <div class="card-subtext">equals(outputs('Start_and_wait_for_an_approval')?['body/outcome'], 'Release')</div>
+          </div>
+          <div class="card-actions">
+            <button class="node-kebab" title="More options">•••</button>
+          </div>
+        </div>
+
+        
+          <div class="branching-container">
+            <div class="branch-line true-branch">
+              <div class="branch-pill true-pill">✓ True (Approved / Validated)</div>
+              <div class="branch-subnode">
+                <span class="subnode-icon">📦</span>
+                <span class="subnode-text">Execute Primary Business Updates</span>
+              </div>
+            </div>
+            <div class="branch-line false-branch">
+              <div class="branch-pill false-pill">✕ False (Rejected / Exception)</div>
+              <div class="branch-subnode">
+                <span class="subnode-icon">⚠️</span>
+                <span class="subnode-text">Route Rejection / Halt Workflow</span>
+              </div>
+            </div>
+          </div>
+        
+
+        
+          <div class="connector-line">
+            <div class="plus-circle" title="Insert a new step">+</div>
+          </div>
+        
+      </div>
+    
+
+      <!-- Step Node: HTTP - Unlock SAP Tank Quality Status -->
+      <div class="flow-node-wrapper">
+        <div class="flow-card  " id="node-sap-release">
+          <div class="card-left-accent"></div>
+          <div class="card-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="4" fill="#107C41"/><path d="M7 12H17M13 8L17 12L13 16" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="card-content">
+            <div class="card-header-line">
+              <span class="card-title">HTTP - Unlock SAP Tank Quality Status</span>
+              
+              
+            </div>
+            <div class="card-subtext">Update SAP QM inspection lot with disposition certificate</div>
+          </div>
+          <div class="card-actions">
+            <button class="node-kebab" title="More options">•••</button>
+          </div>
+        </div>
+
+        
+
+        
+          <div class="connector-line">
+            <div class="plus-circle" title="Insert a new step">+</div>
+          </div>
+        
+      </div>
+    
+
+      <!-- Step Node: Scope - Catch (Quality Safeguard Interlock) -->
+      <div class="flow-node-wrapper">
+        <div class="flow-card  catch-card" id="node-catch">
+          <div class="card-left-accent"></div>
+          <div class="card-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="4" fill="#486860"/><rect x="6" y="6" width="12" height="12" stroke="white" stroke-width="1.8" stroke-dasharray="2 2"/></svg>
+          </div>
+          <div class="card-content">
+            <div class="card-header-line">
+              <span class="card-title">Scope - Catch (Quality Safeguard Interlock)</span>
+              
+              <span class="runafter-badge">RUNS AFTER FAILURE</span>
+            </div>
+            <div class="card-subtext">Ensure tank remains strictly locked if error occurs during flow</div>
+          </div>
+          <div class="card-actions">
+            <button class="node-kebab" title="More options">•••</button>
+          </div>
+        </div>
+
+        
+
+        
+      </div>
+    
+      </div>
+    </div>
+
+    <!-- Floating HUD Zoom Controls -->
+    <div class="canvas-hud-controls">
+      <button class="hud-btn">-</button>
+      <span>100%</span>
+      <button class="hud-btn">+</button>
+      <span style="color:#EDEBE9">|</span>
+      <button class="hud-btn" title="Fit to Screen">⛶</button>
+    </div>
+
+    <!-- Minimap Preview -->
+    <div class="minimap-preview">
+      <div class="minimap-title">MINI-MAP</div>
+      <div class="minimap-wireframe">
+        <div class="minimap-viewport-box"></div>
+      </div>
+    </div>
+
+    <!-- Right Side Configuration Panel -->
+    <aside class="property-panel">
+      <div class="panel-header">
+        <div class="panel-header-title">
+          <div class="panel-icon-badge">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="4" fill="#107C41"/><path d="M7 12H17M13 8L17 12L13 16" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="panel-action-name">HTTP - Lock Storage Tank to QUARANTINE in SAP ERP</div>
+        </div>
+        <button class="panel-close-btn" title="Close Panel">✕</button>
+      </div>
+
+      <div class="panel-tabs">
+        <div class="panel-tab active">Parameters</div>
+        <div class="panel-tab">Settings</div>
+        <div class="panel-tab">Code view</div>
+        <div class="panel-tab">About</div>
+      </div>
+
+      <div class="panel-body">
+        
+      <div class="panel-field-group">
+        <label class="field-label">
+          <span>Method</span>
+          <span class="info-icon" title="Field documentation">ⓘ</span>
+        </label>
+        
+        <div class="fluent-dropdown">
+          <span>PUT</span>
+          <svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 4L6 8L10 4" stroke="#605E5C" stroke-width="1.5" fill="none"/></svg>
+        </div>
+      
+      </div>
+    
+
+      <div class="panel-field-group">
+        <label class="field-label">
+          <span>URI</span>
+          <span class="info-icon" title="Field documentation">ⓘ</span>
+        </label>
+        
+        <div class="fluent-input-with-pill">
+          <div class="dynamic-pill-content">
+            <span class="pill-fx">⚡</span>
+            <span>https://sap-gateway.ioi.internal/api/qm/storage-tanks/quarantine</span>
+          </div>
+        </div>
+      
+      </div>
+    
+
+      <div class="panel-field-group">
+        <label class="field-label">
+          <span>Headers</span>
+          <span class="info-icon" title="Field documentation">ⓘ</span>
+        </label>
+        
+        <div class="fluent-textarea">Authorization: Bearer @{variables('SAP_Auth_Token')}<br>Content-Type: application/json<br>x-facility: JOHOR_PLANT_2</div>
+      
+      </div>
+    
+
+      <div class="panel-field-group">
+        <label class="field-label">
+          <span>Body</span>
+          <span class="info-icon" title="Field documentation">ⓘ</span>
+        </label>
+        
+        <div class="fluent-textarea">{<br>  "storageTankId": "@{triggerOutputs()?['body/StorageTankID']}",<br>  "batchNumber": "@{triggerOutputs()?['body/BatchNumber']}",<br>  "productGrade": "Triple Pressed Stearic Acid (TPSA)",<br>  "quarantineStatus": "LOCKED_QUALITY_HOLD",<br>  "varianceReason": "Acid Value 203.2 mg KOH/g (Specification Limit: 206.0 - 210.0)",<br>  "chemistBadge": "@{triggerOutputs()?['body/ChemistBadgeNo']}"<br>}</div>
+      
+      </div>
+    
+      </div>
+
+      <div class="panel-footer">
+        <span style="font-size:11px; color:#605E5C;">⚡ Optimized for IOI Enterprise Gateway</span>
+        <button class="btn-panel-action">Done</button>
+      </div>
+    </aside>
+
+  </main>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+# ==============================================================================
+# Microsoft Power Apps Canvas Source Code (Power Fx YAML)
+# Application: Incident & Accident Investigation Reporting (SHEINCIACCI)
+# Department: Safety, Health & Environment
+# Screen: EditScreen (Transactional Multi-Step Intake)
+# ==============================================================================
+
+EditScreen As Screen:
+  Properties:
+    Fill: =RGBA(248, 250, 252, 1)
+  Children:
+    - conFormCard As groupContainer.verticalAutoLayoutContainer:
+        Properties:
+          X: =(Parent.Width - Self.Width) / 2
+          Y: 80
+          Width: 1080
+          Fill: =RGBA(255, 255, 255, 1)
+          BorderColor: =RGBA(226, 232, 240, 1)
+          BorderThickness: 1
+          RadiusTopLeft: 12
+          RadiusTopRight: 12
+          RadiusBottomLeft: 12
+          RadiusBottomRight: 12
+          PaddingLeft: 28
+          PaddingRight: 28
+        Children:
+          - btnProceed As button:
+              Properties:
+                Text: ="Submit to SHE_IncidentMaster"
+                Fill: =ColorValue("#B45309")
+                Color: =RGBA(255, 255, 255, 1)
+                OnSelect: |
+                  =Notify("SHEINCIACCI record successfully submitted to Dataverse.", NotificationType.Success);
+                  Navigate(BrowseScreen, ScreenTransition.Fade)

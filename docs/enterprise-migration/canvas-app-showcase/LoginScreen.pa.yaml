@@ -1,0 +1,322 @@
+# ==============================================================================
+# Microsoft Power Apps Canvas Source Code (Power Fx YAML)
+# Application: IOI Acidchem Enterprise Platform - v2
+# Screen: LoginScreen (Enterprise Single Sign-On & Facility Gateway)
+# Author: Lead Power Platform Architect
+# Compliance: WCAG 2.1 AA Compliant, Enterprise Security IOIP-04
+# ==============================================================================
+
+LoginScreen As Screen:
+  Properties:
+    Fill: =RGBA(248, 250, 252, 1)
+    LoadingSpinnerColor: =RGBA(0, 108, 76, 1)
+    OnVisible: |
+      =UpdateContext({
+          locSelectedPlant: "Penang",
+          locAuthError: false,
+          locIsAuthenticating: false,
+          locAppVersion: "v2.4.0-prod",
+          locSlaUptime: "99.98%"
+      });
+      Set(varCurrentTheme, {
+          Primary: RGBA(0, 108, 76, 1),
+          PrimaryHover: RGBA(0, 86, 59, 1),
+          PrimaryLight: RGBA(232, 245, 238, 1),
+          PowerAppsBlue: RGBA(0, 120, 212, 1),
+          Surface: RGBA(248, 250, 252, 1),
+          Card: RGBA(255, 255, 255, 1),
+          Border: RGBA(226, 232, 240, 1),
+          TextMain: RGBA(15, 23, 42, 1),
+          TextMuted: RGBA(100, 116, 139, 1)
+      })
+
+  Children:
+    # --------------------------------------------------------------------------
+    # Universal Microsoft 365 Enterprise Header
+    # --------------------------------------------------------------------------
+    - conTopBar As groupContainer.horizontalAutoLayoutContainer:
+        Properties:
+          Height: 48
+          Width: =Parent.Width
+          Fill: =RGBA(0, 90, 158, 1)
+          LayoutAlignItems: =LayoutAlignItems.Center
+          LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+          PaddingLeft: 16
+          PaddingRight: 16
+        Children:
+          - conBrandGroup As groupContainer.horizontalAutoLayoutContainer:
+              Properties:
+                Height: =Parent.Height
+                LayoutAlignItems: =LayoutAlignItems.Center
+                LayoutGap: 12
+              Children:
+                - icoWaffle As icon.Waffle:
+                    Properties:
+                      Color: =RGBA(255, 255, 255, 1)
+                      Height: 20
+                      Width: 20
+                - lblSuiteTitle As label:
+                    Properties:
+                      Text: ="Microsoft Power Apps  |  IOI Acidchem Enterprise Platform"
+                      Color: =RGBA(255, 255, 255, 1)
+                      FontWeight: =FontWeight.Semibold
+                      Size: 13
+                - lblEnvBadge As label:
+                    Properties:
+                      Text: ="PROD v2.4"
+                      Color: =RGBA(255, 255, 255, 1)
+                      Fill: =RGBA(255, 255, 255, 0.2)
+                      PaddingLeft: 8
+                      PaddingRight: 8
+                      PaddingTop: 2
+                      PaddingBottom: 2
+                      RadiusTopLeft: 4
+                      RadiusTopRight: 4
+                      RadiusBottomLeft: 4
+                      RadiusBottomRight: 4
+                      Size: 10
+                      FontWeight: =FontWeight.Bold
+
+          - conHeaderRight As groupContainer.horizontalAutoLayoutContainer:
+              Properties:
+                Height: =Parent.Height
+                LayoutAlignItems: =LayoutAlignItems.Center
+                LayoutGap: 12
+              Children:
+                - lblSecurityTag As label:
+                    Properties:
+                      Text: ="Secured by Microsoft Entra ID"
+                      Color: =RGBA(255, 255, 255, 0.85)
+                      Size: 11
+                - imgTenantLogo As image:
+                    Properties:
+                      Image: ="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg"
+                      Height: 18
+                      Width: 18
+
+    # --------------------------------------------------------------------------
+    # Central Authentication Card
+    # --------------------------------------------------------------------------
+    - conLoginCard As groupContainer.verticalAutoLayoutContainer:
+        Properties:
+          X: =(Parent.Width - Self.Width) / 2
+          Y: =(Parent.Height - Self.Height) / 2 + 10
+          Width: 520
+          Height: 610
+          Fill: =RGBA(255, 255, 255, 0.98)
+          RadiusTopLeft: 16
+          RadiusTopRight: 16
+          RadiusBottomLeft: 16
+          RadiusBottomRight: 16
+          DropShadow: =DropShadow.ExtraLarge
+          BorderColor: =RGBA(226, 232, 240, 1)
+          BorderThickness: 1
+          PaddingLeft: 40
+          PaddingRight: 40
+          PaddingTop: 36
+          PaddingBottom: 32
+          LayoutGap: 20
+
+        Children:
+          # IOI Header & Uptime Badge
+          - conCardHeader As groupContainer.horizontalAutoLayoutContainer:
+              Properties:
+                Width: =Parent.Width - 80
+                LayoutAlignItems: =LayoutAlignItems.Center
+                LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+              Children:
+                - conEmblem As groupContainer.horizontalAutoLayoutContainer:
+                    Properties:
+                      LayoutAlignItems: =LayoutAlignItems.Center
+                      LayoutGap: 12
+                    Children:
+                      - btnLogoIcon As button:
+                          Properties:
+                            Text: ="IOI"
+                            Fill: =RGBA(0, 108, 76, 1)
+                            Color: =RGBA(255, 255, 255, 1)
+                            FontWeight: =FontWeight.ExtraBold
+                            Size: 18
+                            Width: 48
+                            Height: 48
+                            RadiusTopLeft: 12
+                            RadiusTopRight: 12
+                            RadiusBottomLeft: 12
+                            RadiusBottomRight: 12
+                            DisplayMode: =DisplayMode.View
+                      - conEmblemText As groupContainer.verticalAutoLayoutContainer:
+                          Properties:
+                            LayoutGap: 2
+                          Children:
+                            - lblEmblemTitle As label:
+                                Properties:
+                                  Text: ="IOI ACIDCHEM"
+                                  Color: =RGBA(0, 108, 76, 1)
+                                  FontWeight: =FontWeight.Bold
+                                  Size: 16
+                            - lblEmblemSubtitle As label:
+                                Properties:
+                                  Text: ="ENTERPRISE PORTAL v2"
+                                  Color: =RGBA(100, 116, 139, 1)
+                                  FontWeight: =FontWeight.Semibold
+                                  Size: 10
+                - lblSlaChip As label:
+                    Properties:
+                      Text: ="● 99.98% Uptime"
+                      Fill: =RGBA(236, 253, 245, 1)
+                      Color: =RGBA(4, 120, 87, 1)
+                      BorderColor: =RGBA(167, 243, 208, 1)
+                      BorderThickness: 1
+                      PaddingLeft: 8
+                      PaddingRight: 8
+                      PaddingTop: 4
+                      PaddingBottom: 4
+                      RadiusTopLeft: 6
+                      RadiusTopRight: 6
+                      RadiusBottomLeft: 6
+                      RadiusBottomRight: 6
+                      Size: 11
+                      FontWeight: =FontWeight.Bold
+
+          # Title & Guidance
+          - conTextIntro As groupContainer.verticalAutoLayoutContainer:
+              Properties:
+                Width: =Parent.Width - 80
+                LayoutGap: 6
+              Children:
+                - lblLoginHeading As label:
+                    Properties:
+                      Text: ="Sign In to Your Workspace"
+                      Color: =RGBA(15, 23, 42, 1)
+                      FontWeight: =FontWeight.ExtraBold
+                      Size: 20
+                - lblLoginLead As label:
+                    Properties:
+                      Text: ="Access modernized applications across 23 manufacturing, finance, engineering, and compliance divisions."
+                      Color: =RGBA(100, 116, 139, 1)
+                      Size: 12
+                      Wrap: true
+
+          # Plant Facility Selector
+          - conPlantSelector As groupContainer.verticalAutoLayoutContainer:
+              Properties:
+                Width: =Parent.Width - 80
+                LayoutGap: 8
+              Children:
+                - lblPlantLabel As label:
+                    Properties:
+                      Text: ="SELECT MANUFACTURING FACILITY"
+                      FontWeight: =FontWeight.Bold
+                      Color: =RGBA(51, 65, 85, 1)
+                      Size: 11
+                - conPlantPills As groupContainer.horizontalAutoLayoutContainer:
+                    Properties:
+                      Width: =Parent.Width
+                      LayoutGap: 12
+                    Children:
+                      - btnPlantPenang As button:
+                          Properties:
+                            Text: =If(locSelectedPlant = "Penang", "● Penang Oleo Complex (HQ)", "○ Penang Oleo Complex (HQ)")
+                            Width: =(Parent.Width - 12) / 2
+                            Height: 46
+                            Fill: =If(locSelectedPlant = "Penang", RGBA(240, 253, 244, 1), RGBA(255, 255, 255, 1))
+                            Color: =If(locSelectedPlant = "Penang", RGBA(0, 108, 76, 1), RGBA(51, 65, 85, 1))
+                            BorderColor: =If(locSelectedPlant = "Penang", RGBA(0, 108, 76, 1), RGBA(226, 232, 240, 1))
+                            BorderThickness: =If(locSelectedPlant = "Penang", 2, 1)
+                            FontWeight: =FontWeight.Bold
+                            Size: 11
+                            RadiusTopLeft: 8
+                            RadiusTopRight: 8
+                            RadiusBottomLeft: 8
+                            RadiusBottomRight: 8
+                            OnSelect: =UpdateContext({locSelectedPlant: "Penang"})
+
+                      - btnPlantJohor As button:
+                          Properties:
+                            Text: =If(locSelectedPlant = "Johor", "● Johor Pasir Gudang", "○ Johor Pasir Gudang")
+                            Width: =(Parent.Width - 12) / 2
+                            Height: 46
+                            Fill: =If(locSelectedPlant = "Johor", RGBA(240, 253, 244, 1), RGBA(255, 255, 255, 1))
+                            Color: =If(locSelectedPlant = "Johor", RGBA(0, 108, 76, 1), RGBA(51, 65, 85, 1))
+                            BorderColor: =If(locSelectedPlant = "Johor", RGBA(0, 108, 76, 1), RGBA(226, 232, 240, 1))
+                            BorderThickness: =If(locSelectedPlant = "Johor", 2, 1)
+                            FontWeight: =FontWeight.Bold
+                            Size: 11
+                            RadiusTopLeft: 8
+                            RadiusTopRight: 8
+                            RadiusBottomLeft: 8
+                            RadiusBottomRight: 8
+                            OnSelect: =UpdateContext({locSelectedPlant: "Johor"})
+
+          # Primary SSO Button
+          - btnSignInM365 As button:
+              Properties:
+                Width: =Parent.Width - 80
+                Height: 50
+                Fill: =RGBA(0, 108, 76, 1)
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Size: 14
+                Text: ="Sign In with Microsoft 365 Work Account"
+                RadiusTopLeft: 10
+                RadiusTopRight: 10
+                RadiusBottomLeft: 10
+                RadiusBottomRight: 10
+                DropShadow: =DropShadow.Light
+                OnSelect: |
+                  =UpdateContext({locIsAuthenticating: true});
+                  Set(varUserSession, {
+                      User: User(),
+                      Plant: locSelectedPlant,
+                      Role: "Lead Power Platform Architect",
+                      SessionId: GUID()
+                  });
+                  Navigate(BrowseScreen, ScreenTransition.Fade)
+
+          # Compliance Notice
+          - conNoticeBox As groupContainer.horizontalAutoLayoutContainer:
+              Properties:
+                Width: =Parent.Width - 80
+                Fill: =RGBA(248, 250, 252, 1)
+                BorderColor: =RGBA(226, 232, 240, 1)
+                BorderThickness: 1
+                RadiusTopLeft: 8
+                RadiusTopRight: 8
+                RadiusBottomLeft: 8
+                RadiusBottomRight: 8
+                PaddingLeft: 12
+                PaddingRight: 12
+                PaddingTop: 10
+                PaddingBottom: 10
+                LayoutGap: 10
+                LayoutAlignItems: =LayoutAlignItems.Start
+              Children:
+                - icoLock As icon.Lock:
+                    Properties:
+                      Width: 16
+                      Height: 16
+                      Color: =RGBA(2, 132, 199, 1)
+                - lblNoticeText As label:
+                    Properties:
+                      Width: =Parent.Width - 44
+                      Text: ="Restricted Enterprise System: Access governed by Corporate IT Policy IOIP-04. Multi-factor authentication (MFA) and device compliance strictly enforced."
+                      Color: =RGBA(100, 116, 139, 1)
+                      Size: 10.5
+                      Wrap: true
+
+          # Card Footer Metadata
+          - conCardFooter As groupContainer.horizontalAutoLayoutContainer:
+              Properties:
+                Width: =Parent.Width - 80
+                LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+              Children:
+                - lblBuildInfo As label:
+                    Properties:
+                      Text: ="Build v2.4.0 · Modernized Power Fx"
+                      Color: =RGBA(148, 163, 184, 1)
+                      Size: 10.5
+                - lblHelpdeskContact As label:
+                    Properties:
+                      Text: ="IT Helpdesk: ext 4357"
+                      Color: =RGBA(148, 163, 184, 1)
+                      Size: 10.5

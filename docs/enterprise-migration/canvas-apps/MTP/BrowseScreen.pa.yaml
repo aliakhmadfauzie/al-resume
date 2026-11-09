@@ -1,0 +1,47 @@
+# ==============================================================================
+# Microsoft Power Apps Canvas Source Code (Power Fx YAML)
+# Application: Preventive Maintenance & Turnaround Planning (MTP)
+# Department: Plant Maintenance
+# Screen: BrowseScreen (Filterable Transaction Gallery)
+# ==============================================================================
+
+BrowseScreen As Screen:
+  Properties:
+    Fill: =RGBA(248, 250, 252, 1)
+    OnVisible: |
+      =UpdateContext({ locSearchQuery: "", locFilterStatus: "All" });
+      ClearCollect(colMTPRecords,
+          {
+              ID: "MTP-2026-0044",
+              Title: "FY2027 Major Plant Turnaround & DOSH Steam Boiler Statutory Inspection",
+              Category: "Plant Turnaround & Overhaul Scheduling",
+              Submitter: "Mohd Shahril (Turnaround Coordinator)",
+              Location: "Penang Oleo Complex · Steam Generation & Acid Plant 1",
+              Priority: "HIGH",
+              Stage: "Stage 3: Safety Isolation & LOTO Review"
+          }
+      )
+  Children:
+    - conMainGallery As groupContainer.verticalAutoLayoutContainer:
+        Properties:
+          Width: =Parent.Width
+          Height: =Parent.Height
+          PaddingLeft: 32
+          PaddingRight: 32
+          PaddingTop: 24
+        Children:
+          - galItems As gallery.galleryVertical:
+              Properties:
+                Width: =Parent.Width - 64
+                Height: 500
+                Items: =colMTPRecords
+                TemplateSize: 72
+              Children:
+                - btnViewDetails As button:
+                    Properties:
+                      Text: ="View Details →"
+                      Fill: =ColorValue("#9A3412")
+                      Color: =RGBA(255, 255, 255, 1)
+                      OnSelect: |
+                        =Set(varSelectedMTP, ThisItem);
+                        Navigate(DetailsScreen, ScreenTransition.Fade)

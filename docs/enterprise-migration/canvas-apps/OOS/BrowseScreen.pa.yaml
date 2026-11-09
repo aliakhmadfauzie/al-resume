@@ -1,0 +1,47 @@
+# ==============================================================================
+# Microsoft Power Apps Canvas Source Code (Power Fx YAML)
+# Application: Laboratory Out-of-Specification & CAPA Management (OOS)
+# Department: Quality Control
+# Screen: BrowseScreen (Filterable Transaction Gallery)
+# ==============================================================================
+
+BrowseScreen As Screen:
+  Properties:
+    Fill: =RGBA(248, 250, 252, 1)
+    OnVisible: |
+      =UpdateContext({ locSearchQuery: "", locFilterStatus: "All" });
+      ClearCollect(colOOSRecords,
+          {
+              ID: "OOS-2026-0318",
+              Title: "Refined Glycerine USP Grade 99.7% Batch Moisture Content Deviation (0.34%)",
+              Category: "Laboratory Quality Deviation",
+              Submitter: "Nurul Huda (Senior Analytical Chemist)",
+              Location: "Johor Pasir Gudang · QC Central Analytical Laboratory",
+              Priority: "HIGH",
+              Stage: "Stage 3: Laboratory Investigation & Re-test"
+          }
+      )
+  Children:
+    - conMainGallery As groupContainer.verticalAutoLayoutContainer:
+        Properties:
+          Width: =Parent.Width
+          Height: =Parent.Height
+          PaddingLeft: 32
+          PaddingRight: 32
+          PaddingTop: 24
+        Children:
+          - galItems As gallery.galleryVertical:
+              Properties:
+                Width: =Parent.Width - 64
+                Height: 500
+                Items: =colOOSRecords
+                TemplateSize: 72
+              Children:
+                - btnViewDetails As button:
+                    Properties:
+                      Text: ="View Details →"
+                      Fill: =ColorValue("#4338CA")
+                      Color: =RGBA(255, 255, 255, 1)
+                      OnSelect: |
+                        =Set(varSelectedOOS, ThisItem);
+                        Navigate(DetailsScreen, ScreenTransition.Fade)

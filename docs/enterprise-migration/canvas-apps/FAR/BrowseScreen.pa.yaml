@@ -1,0 +1,47 @@
+# ==============================================================================
+# Microsoft Power Apps Canvas Source Code (Power Fx YAML)
+# Application: Equipment Failure Analysis Report (FAR)
+# Department: Plant Maintenance
+# Screen: BrowseScreen (Filterable Transaction Gallery)
+# ==============================================================================
+
+BrowseScreen As Screen:
+  Properties:
+    Fill: =RGBA(248, 250, 252, 1)
+    OnVisible: |
+      =UpdateContext({ locSearchQuery: "", locFilterStatus: "All" });
+      ClearCollect(colFARRecords,
+          {
+              ID: "FAR-2026-0215",
+              Title: "Fractionation Boiler Feedwater High-Pressure Multistage Pump Bearing Seizure",
+              Category: "Rotating Equipment Reliability Failure",
+              Submitter: "Ir. Chen Wei Kang (Reliability Engineer)",
+              Location: "Johor Pasir Gudang · Utility Boiler Island 1",
+              Priority: "HIGH",
+              Stage: "Stage 3: Reliability Engineer RCFA"
+          }
+      )
+  Children:
+    - conMainGallery As groupContainer.verticalAutoLayoutContainer:
+        Properties:
+          Width: =Parent.Width
+          Height: =Parent.Height
+          PaddingLeft: 32
+          PaddingRight: 32
+          PaddingTop: 24
+        Children:
+          - galItems As gallery.galleryVertical:
+              Properties:
+                Width: =Parent.Width - 64
+                Height: 500
+                Items: =colFARRecords
+                TemplateSize: 72
+              Children:
+                - btnViewDetails As button:
+                    Properties:
+                      Text: ="View Details →"
+                      Fill: =ColorValue("#9A3412")
+                      Color: =RGBA(255, 255, 255, 1)
+                      OnSelect: |
+                        =Set(varSelectedFAR, ThisItem);
+                        Navigate(DetailsScreen, ScreenTransition.Fade)

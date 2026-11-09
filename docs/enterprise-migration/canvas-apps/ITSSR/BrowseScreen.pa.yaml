@@ -1,0 +1,47 @@
+# ==============================================================================
+# Microsoft Power Apps Canvas Source Code (Power Fx YAML)
+# Application: IT Support & Service Request (ITSSR)
+# Department: Information Technology
+# Screen: BrowseScreen (Filterable Transaction Gallery)
+# ==============================================================================
+
+BrowseScreen As Screen:
+  Properties:
+    Fill: =RGBA(248, 250, 252, 1)
+    OnVisible: |
+      =UpdateContext({ locSearchQuery: "", locFilterStatus: "All" });
+      ClearCollect(colITSSRRecords,
+          {
+              ID: "ITSSR-2026-0941",
+              Title: "Plant Boiler Control DCS Network Gateway Failure",
+              Category: "Plant Automation & SCADA / DCS Hardware",
+              Submitter: "Ir. Ahmad Faisal (Lead Process Eng)",
+              Location: "Johor Pasir Gudang (Plant 2) · Control Room Rack 4B",
+              Priority: "URGENT",
+              Stage: "Stage 3: Plant GM Sign-off"
+          }
+      )
+  Children:
+    - conMainGallery As groupContainer.verticalAutoLayoutContainer:
+        Properties:
+          Width: =Parent.Width
+          Height: =Parent.Height
+          PaddingLeft: 32
+          PaddingRight: 32
+          PaddingTop: 24
+        Children:
+          - galItems As gallery.galleryVertical:
+              Properties:
+                Width: =Parent.Width - 64
+                Height: 500
+                Items: =colITSSRRecords
+                TemplateSize: 72
+              Children:
+                - btnViewDetails As button:
+                    Properties:
+                      Text: ="View Details →"
+                      Fill: =ColorValue("#006C4C")
+                      Color: =RGBA(255, 255, 255, 1)
+                      OnSelect: |
+                        =Set(varSelectedITSSR, ThisItem);
+                        Navigate(DetailsScreen, ScreenTransition.Fade)

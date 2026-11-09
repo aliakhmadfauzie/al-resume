@@ -1,0 +1,38 @@
+# ==============================================================================
+# Microsoft Power Apps Canvas Source Code (Power Fx YAML)
+# Application: Preventive Maintenance & Turnaround Planning (MTP)
+# Department: Plant Maintenance
+# Screen: DetailsScreen (Dossier & Workflow State Machine)
+# ==============================================================================
+
+DetailsScreen As Screen:
+  Properties:
+    Fill: =RGBA(248, 250, 252, 1)
+  Children:
+    - conCommandBar As groupContainer.horizontalAutoLayoutContainer:
+        Properties:
+          Height: 64
+          Width: =Parent.Width
+          Fill: =RGBA(255, 255, 255, 1)
+          BorderColor: =RGBA(226, 232, 240, 1)
+          BorderThickness: 1
+        Children:
+          - btnApprove As button:
+              Properties:
+                Text: ="✓ Approve & Dispatch"
+                Fill: =ColorValue("#9A3412")
+                Color: =RGBA(255, 255, 255, 1)
+                OnSelect: |
+                  =Notify("MTP Record Approved", NotificationType.Success);
+                  Navigate(BrowseScreen, ScreenTransition.Cover)
+    - conDetailDossier As groupContainer.horizontalAutoLayoutContainer:
+        Properties:
+          Width: =Parent.Width
+          Height: =Parent.Height - 112
+        Children:
+          - conLeftInfo As groupContainer.verticalAutoLayoutContainer:
+              Properties:
+                Width: =Parent.Width * 0.65
+          - conRightWorkflow As groupContainer.verticalAutoLayoutContainer:
+              Properties:
+                Width: =Parent.Width * 0.35

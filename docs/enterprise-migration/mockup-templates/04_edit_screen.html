@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Edit - New Service Request</title>
+  <style>
+    
+  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+  
+  :root {
+    --primary: #006C4C;
+    --primary-hover: #00563B;
+    --primary-light: #E8F5EE;
+    --primary-border: #89F8C7;
+    --powerapps-blue: #0078D4;
+    --powerapps-dark: #005A9E;
+    --surface-bg: #F8FAFC;
+    --card-bg: #FFFFFF;
+    --border-subtle: #E2E8F0;
+    --border-strong: #CBD5E1;
+    --text-main: #0F172A;
+    --text-muted: #475569;
+    --text-faint: #94A3B8;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--surface-bg);
+    color: var(--text-main);
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Microsoft Power Apps Universal Top Header Bar */
+  .powerapps-topbar {
+    height: 48px;
+    background: #005A9E;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    font-size: 13px;
+    font-weight: 500;
+    z-index: 50;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+  }
+  .powerapps-waffle {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .powerapps-waffle:hover { background: rgba(255,255,255,0.15); }
+  .powerapps-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .brand-badge {
+    background: rgba(255,255,255,0.18);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  .powerapps-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .user-pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.12);
+    padding: 4px 10px 4px 6px;
+    border-radius: 20px;
+    font-size: 12px;
+  }
+  .user-avatar {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: #006C4C;
+    color: white;
+    font-weight: 700;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px solid #FFFFFF;
+  }
+
+  /* Core Badges */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1;
+  }
+  .badge-emerald { background: #ECFDF5; color: #047857; border: 1px solid #A7F3D0; }
+  .badge-amber { background: #FFFBEB; color: #B45309; border: 1px solid #FDE68A; }
+  .badge-blue { background: #EFF6FF; color: #1D4ED8; border: 1px solid #BFDBFE; }
+  .badge-rose { background: #FFF1F2; color: #BE123C; border: 1px solid #FECDD3; }
+  .badge-slate { background: #F1F5F9; color: #475569; border: 1px solid #CBD5E1; }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    border: 1px solid transparent;
+  }
+  .btn-primary { background: #006C4C; color: white; box-shadow: 0 1px 2px rgba(0,108,76,0.25); }
+  .btn-powerapps { background: #0078D4; color: white; box-shadow: 0 1px 2px rgba(0,120,212,0.25); }
+  .btn-secondary { background: #FFFFFF; color: #334155; border-color: #CBD5E1; }
+  .btn-secondary:hover { background: #F8FAFC; border-color: #94A3B8; }
+  .btn-danger { background: #FFF1F2; color: #BE123C; border-color: #FECDD3; }
+
+  /* Cards & Elev */
+  .card {
+    background: #FFFFFF;
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.04);
+  }
+
+    .layout-root {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      background: #F8FAFC;
+    }
+    .stepper-header {
+      background: white;
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 16px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .stepper-track {
+      display: flex;
+      align-items: center;
+      width: 760px;
+    }
+    .step-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #64748B;
+    }
+    .step-item.active { color: #006C4C; }
+    .step-item.done { color: #006C4C; }
+    .step-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #E2E8F0;
+      color: #64748B;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .step-item.active .step-num {
+      background: #006C4C;
+      color: white;
+      box-shadow: 0 0 0 3px rgba(0, 108, 76, 0.2);
+    }
+    .step-item.done .step-num {
+      background: #ECFDF5;
+      color: #047857;
+      border: 1.5px solid #047857;
+    }
+    .step-divider {
+      flex: 1;
+      height: 2px;
+      background: #E2E8F0;
+      margin: 0 12px;
+    }
+    .step-divider.done { background: #006C4C; }
+
+    /* Form Container */
+    .form-body {
+      padding: 24px 32px;
+      max-width: 1100px;
+      margin: 0 auto;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .form-card {
+      background: white;
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .form-label {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #334155;
+    }
+    .form-input, .form-select, .form-textarea {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid #CBD5E1;
+      border-radius: 8px;
+      font-size: 13.5px;
+      color: #0F172A;
+      font-family: inherit;
+      background: white;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      border-color: #006C4C;
+      box-shadow: 0 0 0 3px rgba(0,108,76,0.12);
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .radio-card-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+    .radio-card {
+      border: 1.5px solid #E2E8F0;
+      border-radius: 8px;
+      padding: 12px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .radio-card.selected {
+      border-color: #BE123C;
+      background: #FFF1F2;
+    }
+    .upload-zone {
+      border: 2px dashed #CBD5E1;
+      border-radius: 10px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: #F8FAFC;
+      cursor: pointer;
+    }
+    .footer-action-bar {
+      position: sticky;
+      bottom: 0;
+      background: white;
+      border-top: 1px solid var(--border-subtle);
+      padding: 16px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 20;
+    }
+  </style>
+</head>
+<body>
+  <!-- Top Bar -->
+  <div class="powerapps-topbar">
+    <div class="powerapps-brand">
+      <div class="powerapps-waffle">
+        <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor">
+          <circle cx="2" cy="2" r="1.5"/><circle cx="8" cy="2" r="1.5"/><circle cx="14" cy="2" r="1.5"/>
+          <circle cx="2" cy="8" r="1.5"/><circle cx="8" cy="8" r="1.5"/><circle cx="14" cy="8" r="1.5"/>
+          <circle cx="2" cy="14" r="1.5"/><circle cx="8" cy="14" r="1.5"/><circle cx="14" cy="14" r="1.5"/>
+        </svg>
+      </div>
+      <span style="font-weight: 600;">Power Apps</span>
+      <span style="color: rgba(255,255,255,0.4);">|</span>
+      <span>IOI Acidchem Enterprise Platform</span>
+      <span class="brand-badge">Prod v2.4</span>
+    </div>
+    <div class="powerapps-actions">
+      <div class="user-pill">
+        <div class="user-avatar">AF</div>
+        <span>Ali Akhmad Fauzie (Lead Architect)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="layout-root">
+    <!-- Stepper Header -->
+    <div class="stepper-header">
+      <div class="stepper-track">
+        <div class="step-item done">
+          <div class="step-num">✓</div>
+          <span>1. Submitter Info</span>
+        </div>
+        <div class="step-divider done"></div>
+        <div class="step-item active">
+          <div class="step-num">2</div>
+          <span>2. Technical Specifications</span>
+        </div>
+        <div class="step-divider"></div>
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <span>3. Vendor & Quotation</span>
+        </div>
+        <div class="step-divider"></div>
+        <div class="step-item">
+          <div class="step-num">4</div>
+          <span>4. Review & Submit</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Form Container -->
+    <div class="form-body">
+      <div>
+        <h2 style="font-size: 20px; font-weight: 800; color: #0F172A;">Technical Specifications & Asset Allocation</h2>
+        <p style="font-size: 13px; color: #64748B; margin-top: 2px;">Enter failure telemetry and hardware specifics. High severity requests automatically trigger plant emergency routing.</p>
+      </div>
+
+      <div class="form-card">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Service Request Category *</label>
+            <select class="form-select">
+              <option selected>Plant Automation & SCADA / DCS Hardware</option>
+              <option>SAP Enterprise Systems & Transports</option>
+              <option>Network Infrastructure & Plant Wi-Fi</option>
+              <option>End-User Hardware & Laptops</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Subcategory *</label>
+            <select class="form-select">
+              <option selected>Industrial Gateway / Switch Replacement</option>
+              <option>Sensor Telemetry Cable Fault</option>
+              <option>Server Operating System Failure</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Severity Radio Cards -->
+        <div class="form-group">
+          <label class="form-label">Severity Level & Operational Risk *</label>
+          <div class="radio-card-grid">
+            <div class="radio-card">
+              <span style="font-size:12px; font-weight:700; color:#475569;">Low (P4)</span>
+              <span style="font-size:11px; color:#64748B;">Cosmetic / Non-critical</span>
+            </div>
+            <div class="radio-card">
+              <span style="font-size:12px; font-weight:700; color:#2563EB;">Medium (P3)</span>
+              <span style="font-size:11px; color:#64748B;">Single workstation</span>
+            </div>
+            <div class="radio-card">
+              <span style="font-size:12px; font-weight:700; color:#D97706;">High (P2)</span>
+              <span style="font-size:11px; color:#64748B;">Department delay</span>
+            </div>
+            <div class="radio-card selected">
+              <span style="font-size:12px; font-weight:700; color:#BE123C;">Critical (P1)</span>
+              <span style="font-size:11px; color:#9F1239;">Production shutdown threat</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Asset Tag Lookup *</label>
+            <input type="text" class="form-input" value="DCS-GW-JOHOR-02 (Cisco IE-3400 Industrial)" placeholder="Type asset tag or scan barcode...">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Physical Plant Bay / Unit Location *</label>
+            <input type="text" class="form-input" value="Fractionation Unit 2 - Control Room Rack 4B">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Problem Headline *</label>
+          <input type="text" class="form-input" value="Plant Boiler Control DCS Network Gateway Intermittent Link Loss">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Detailed Failure Observations & Symptoms *</label>
+          <textarea class="form-textarea" rows="4">Recurring packet loss (>40%) observed on Ethernet port 3 of the gateway switch. Intermittent signal drops from steam pressure transmitter PT-2041. Power supply voltages tested normal (24VDC steady). Urgent replacement unit requested to restore redundancy.</textarea>
+          <div style="font-size:11px; color:#94A3B8; text-align:right;">284 / 2,000 characters</div>
+        </div>
+
+        <!-- File Upload Zone -->
+        <div class="form-group">
+          <label class="form-label">Upload Diagnostic Evidence & Photographs (Up to 25MB)</label>
+          <div class="upload-zone">
+            <svg width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="#006C4C">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+            </svg>
+            <div style="font-weight:700; font-size:13px; color:#0F172A;">Click to upload or drag and drop network logs or fault photos</div>
+            <div style="font-size:11.5px; color:#64748B;">Supported: PNG, JPG, PDF, LOG, TXT (Maximum 5 files)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Action Bar -->
+    <div class="footer-action-bar">
+      <div style="display:flex; align-items:center; gap:8px;">
+        <button class="btn btn-secondary">Save as Draft (Ctrl+S)</button>
+        <span style="font-size: 11.5px; color: #94A3B8;">● Auto-saved 12s ago</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:12px;">
+        <button class="btn btn-secondary">← Step 1: Submitter Info</button>
+        <button class="btn btn-primary" style="background:#006C4C; padding: 10px 20px;">Proceed to Step 3: Quotation →</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

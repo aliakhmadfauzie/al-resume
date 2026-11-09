@@ -1,0 +1,47 @@
+# ==============================================================================
+# Microsoft Power Apps Canvas Source Code (Power Fx YAML)
+# Application: Container Shipment Dispatch & Tanker Inspection (CSD)
+# Department: Logistics & Supply Chain
+# Screen: BrowseScreen (Filterable Transaction Gallery)
+# ==============================================================================
+
+BrowseScreen As Screen:
+  Properties:
+    Fill: =RGBA(248, 250, 252, 1)
+    OnVisible: |
+      =UpdateContext({ locSearchQuery: "", locFilterStatus: "All" });
+      ClearCollect(colCSDRecords,
+          {
+              ID: "CSD-2026-0892",
+              Title: "24,000L Liquid Bulk Fatty Acid ISO Tanker Pre-Loading 18-Point Cleanliness Clearance",
+              Category: "Bulk Liquid Logistics & Export Dispatch",
+              Submitter: "P. Arumugam (Senior Logistics Inspector)",
+              Location: "Penang Oleo Complex · Terminal Bay 4 & Weighbridge 1",
+              Priority: "NORMAL",
+              Stage: "Stage 3: Loading Clearance Authorization"
+          }
+      )
+  Children:
+    - conMainGallery As groupContainer.verticalAutoLayoutContainer:
+        Properties:
+          Width: =Parent.Width
+          Height: =Parent.Height
+          PaddingLeft: 32
+          PaddingRight: 32
+          PaddingTop: 24
+        Children:
+          - galItems As gallery.galleryVertical:
+              Properties:
+                Width: =Parent.Width - 64
+                Height: 500
+                Items: =colCSDRecords
+                TemplateSize: 72
+              Children:
+                - btnViewDetails As button:
+                    Properties:
+                      Text: ="View Details →"
+                      Fill: =ColorValue("#0369A1")
+                      Color: =RGBA(255, 255, 255, 1)
+                      OnSelect: |
+                        =Set(varSelectedCSD, ThisItem);
+                        Navigate(DetailsScreen, ScreenTransition.Fade)
