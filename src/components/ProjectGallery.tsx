@@ -388,6 +388,8 @@ export const ProjectGallery: React.FC<ProjectGalleryProps> = ({
 
   const currentSlot = slots[activeIndex] || slots[0];
   if (!currentSlot) return null;
+  const nextSlot = slots[(activeIndex + 1) % slots.length];
+  const prevSlot = slots[(activeIndex - 1 + slots.length) % slots.length];
 
   const displayTitle = projectTitle || item?.title || 'Project Deliverables';
 
@@ -723,13 +725,20 @@ export const ProjectGallery: React.FC<ProjectGalleryProps> = ({
               className="flex-1 flex items-center justify-center my-4 overflow-hidden relative"
               onClick={(e) => e.stopPropagation()}
             >
+              {/* Floating Previous Button with Previous Image Title */}
               <button
                 type="button"
                 onClick={prevSlide}
-                className="absolute left-2 sm:left-4 p-3 rounded-full bg-[var(--bg-surface)]/90 text-white border border-[var(--border-subtle)] hover:border-[var(--border-focus)] transition-colors z-20 shadow-lg"
-                aria-label="Previous deliverable"
+                className="absolute left-2 sm:left-4 group flex items-center gap-2 p-2 sm:px-3 sm:py-2.5 rounded-full bg-[var(--bg-surface)]/95 text-white border border-[var(--border-subtle)] hover:border-[var(--border-focus)] hover:bg-[var(--bg-surface-elevated)] transition-all z-20 shadow-xl max-w-[180px] sm:max-w-[260px] min-h-[44px] cursor-pointer"
+                aria-label={`Previous: ${prevSlot?.title || 'Previous'}`}
               >
-                <ChevronLeft className="w-5 h-5" />
+                <ChevronLeft className="w-5 h-5 shrink-0 text-[var(--text-accent)] group-hover:-translate-x-0.5 transition-transform" />
+                <div className="flex flex-col text-left min-w-0 hidden md:block">
+                  <span className="text-[9px] font-mono uppercase tracking-wider text-[var(--text-tertiary)]">Previous</span>
+                  <span className="text-xs font-medium text-[var(--text-secondary)] truncate block">
+                    {prevSlot?.title}
+                  </span>
+                </div>
               </button>
 
               <motion.div
@@ -761,15 +770,47 @@ export const ProjectGallery: React.FC<ProjectGalleryProps> = ({
                     />
                   </div>
                 )}
+
+                {/* Mobile & Desktop Quick Next Bar with Next Image Title */}
+                <div className="mt-3 flex items-center justify-between gap-3 w-full max-w-2xl px-2">
+                  <button
+                    type="button"
+                    onClick={prevSlide}
+                    className="text-xs font-mono text-[var(--text-secondary)] hover:text-white flex items-center gap-1 min-h-[44px] px-2 py-1 max-w-[45%] truncate cursor-pointer"
+                    title={prevSlot?.title}
+                  >
+                    <ChevronLeft className="w-4 h-4 shrink-0" />
+                    <span className="truncate">Prev: {prevSlot?.title}</span>
+                  </button>
+                  <span className="text-xs font-mono text-[var(--text-accent)] font-semibold shrink-0 px-1">
+                    {activeIndex + 1} / {slots.length}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={nextSlide}
+                    className="text-xs font-mono text-[var(--text-accent)] hover:text-white flex items-center gap-1 min-h-[44px] px-3 py-1 font-semibold max-w-[45%] truncate cursor-pointer bg-[var(--bg-surface-elevated)]/80 rounded border border-[var(--border-subtle)] hover:border-[var(--border-accent)] transition-all"
+                    title={nextSlot?.title}
+                  >
+                    <span className="truncate">Next: {nextSlot?.title}</span>
+                    <ChevronRight className="w-4 h-4 shrink-0" />
+                  </button>
+                </div>
               </motion.div>
 
+              {/* Floating Next Button with Next Image Title */}
               <button
                 type="button"
                 onClick={nextSlide}
-                className="absolute right-2 sm:right-4 p-3 rounded-full bg-[var(--bg-surface)]/90 text-white border border-[var(--border-subtle)] hover:border-[var(--border-focus)] transition-colors z-20 shadow-lg"
-                aria-label="Next deliverable"
+                className="absolute right-2 sm:right-4 group flex items-center gap-2 p-2 sm:px-3 sm:py-2.5 rounded-full bg-[var(--bg-surface)]/95 text-white border border-[var(--border-subtle)] hover:border-[var(--border-focus)] hover:bg-[var(--bg-surface-elevated)] transition-all z-20 shadow-xl max-w-[180px] sm:max-w-[260px] min-h-[44px] cursor-pointer"
+                aria-label={`Next: ${nextSlot?.title || 'Next'}`}
               >
-                <ChevronRight className="w-5 h-5" />
+                <div className="flex flex-col text-right min-w-0 hidden md:block">
+                  <span className="text-[9px] font-mono uppercase tracking-wider text-[var(--text-accent)]">Next Deliverable</span>
+                  <span className="text-xs font-medium text-[var(--text-primary)] truncate block">
+                    {nextSlot?.title}
+                  </span>
+                </div>
+                <ChevronRight className="w-5 h-5 shrink-0 text-[var(--text-accent)] group-hover:translate-x-0.5 transition-transform" />
               </button>
             </div>
 
@@ -933,6 +974,8 @@ export const ProjectCardGalleryPreview: React.FC<ProjectCardGalleryPreviewProps>
 
   const currentSlot = slots[activeIndex] || slots[0];
   if (!currentSlot) return null;
+  const nextSlot = slots[(activeIndex + 1) % slots.length];
+  const prevSlot = slots[(activeIndex - 1 + slots.length) % slots.length];
 
   // Build ordered candidate list: custom override -> expected path -> verified showcase article -> screenshot
   const candidateUrls = React.useMemo(() => {

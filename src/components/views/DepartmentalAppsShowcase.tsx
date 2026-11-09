@@ -11,6 +11,8 @@ import {
   Eye,
   ChevronDown,
   ChevronUp,
+  ChevronLeft,
+  ChevronRight,
   ExternalLink,
   ShieldCheck,
   Zap
@@ -20,21 +22,40 @@ interface DepartmentalAppsShowcaseProps {
   onOpenProjectDetail?: (project: any) => void;
 }
 
+interface AppScreenItem {
+  key: 'login' | 'browse' | 'details' | 'edit' | 'flow';
+  name: string;
+  url: string;
+}
+
+export const getAppScreensList = (app: DepartmentalAppItem): AppScreenItem[] => [
+  { key: 'login', name: `${app.name} — Login & Identity Gate`, url: app.screens[0].imagePath },
+  { key: 'browse', name: `${app.name} — Operational Dashboard & SVG Visuals`, url: app.screens[1].imagePath },
+  { key: 'details', name: `${app.name} — Details & Approval Stepper`, url: app.screens[2].imagePath },
+  { key: 'edit', name: `${app.name} — Dynamic Intake Form`, url: app.screens[3].imagePath },
+  { key: 'flow', name: `Power Automate: ${app.workflow.flowName}`, url: app.workflow.screenshot }
+];
+
 export const DepartmentalAppsShowcase: React.FC<DepartmentalAppsShowcaseProps> = () => {
   const [activeDepartment, setActiveDepartment] = useState<string>('all');
   const [activeScreens, setActiveScreens] = useState<Record<string, 'login' | 'browse' | 'details' | 'edit' | 'flow'>>({});
   const [expandedCode, setExpandedCode] = useState<Record<string, boolean>>({});
-  const [activeLightboxImage, setActiveLightboxImage] = useState<{ url: string; title: string } | null>(null);
+  const [activeLightbox, setActiveLightbox] = useState<{ appCode: string; screenIndex: number } | null>(null);
 
-  // Keyboard accessibility and body scroll-lock for 1080p Lightbox modal
+  // Keyboard accessibility, body scroll-lock, and arrow key screen navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
+      if (!activeLightbox) return;
       if (e.key === 'Escape') {
-        setActiveLightboxImage(null);
+        setActiveLightbox(null);
+      } else if (e.key === 'ArrowRight') {
+        setActiveLightbox(prev => (prev ? { ...prev, screenIndex: (prev.screenIndex + 1) % 5 } : null));
+      } else if (e.key === 'ArrowLeft') {
+        setActiveLightbox(prev => (prev ? { ...prev, screenIndex: (prev.screenIndex - 1 + 5) % 5 } : null));
       }
     };
 
-    if (activeLightboxImage) {
+    if (activeLightbox) {
       window.addEventListener('keydown', handleKeyDown);
       document.body.style.overflow = 'hidden';
     }
@@ -43,7 +64,7 @@ export const DepartmentalAppsShowcase: React.FC<DepartmentalAppsShowcaseProps> =
       window.removeEventListener('keydown', handleKeyDown);
       document.body.style.overflow = '';
     };
-  }, [activeLightboxImage]);
+  }, [activeLightbox]);
 
   const departments = [
     { id: 'all', label: 'All Departments (13)' },
@@ -224,7 +245,10 @@ export const DepartmentalAppsShowcase: React.FC<DepartmentalAppsShowcaseProps> =
 
                 {/* Screen Preview Container with Lightbox Trigger */}
                 <div
-                  onClick={() => setActiveLightboxImage({ url: currentImagePath, title: currentScreenLabel })}
+                  onClick={() => {
+                    const screenIdx = ['login', 'browse', 'details', 'edit', 'flow'].indexOf(currentScreenKey);
+                    setActiveLightbox({ appCode: app.code, screenIndex: screenIdx >= 0 ? screenIdx : 1 });
+                  }}
                   className="relative aspect-video rounded-[var(--radius-sm)] overflow-hidden border border-[var(--border-subtle)] bg-[#0d1117] group cursor-pointer"
                 >
                   <img
@@ -313,43 +337,136 @@ export const DepartmentalAppsShowcase: React.FC<DepartmentalAppsShowcaseProps> =
         })}
       </div>
 
-      {/* Lightbox Modal for 1080p Image Viewing */}
+      {/* Lightbox Modal with Next / Prev and Image Titles */}
       <AnimatePresence>
-        {activeLightboxImage && (
-          <div
-            onClick={() => setActiveLightboxImage(null)}
-            className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-8 cursor-zoom-out animate-in fade-in duration-200"
-          >
+        {activeLightbox && (() => {
+          const currentApp = DEPARTMENTAL_APPS.find(a => a.code === activeLightbox.appCode) || filteredApps[0];
+          const screens = getAppScreensList(currentApp);
+          const currentScreen = screens[activeLightbox.screenIndex] || screens[0];
+          const nextIdx = (activeLightbox.screenIndex + 1) % screens.length;
+          const prevIdx = (activeLightbox.screenIndex - 1 + screens.length) % screens.length;
+          const nextScreen = screens[nextIdx];
+          const prevScreen = screens[prevIdx];
+
+          const goToNext = () => setActiveLightbox({ ...activeLightbox, screenIndex: nextIdx });
+          const goToPrev = () => setActiveLightbox({ ...activeLightbox, screenIndex: prevIdx });
+
+          return (
             <div
-              role="dialog"
-              aria-modal="true"
-              aria-label={activeLightboxImage.title}
-              onClick={e => e.stopPropagation()}
-              className="relative max-w-6xl w-full bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-[var(--radius-lg)] overflow-hidden shadow-2xl flex flex-col"
+              onClick={() => setActiveLightbox(null)}
+              className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-2 sm:p-6 cursor-zoom-out animate-in fade-in duration-200"
             >
-              <div className="flex items-center justify-between px-6 py-4 border-b border-[var(--border-subtle)] bg-[var(--bg-primary)]">
-                <span className="text-sm font-mono text-[var(--text-primary)] font-semibold truncate pr-4">
-                  {activeLightboxImage.title}
-                </span>
-                <button
-                  type="button"
-                  autoFocus
-                  onClick={() => setActiveLightboxImage(null)}
-                  className="min-h-[44px] sm:min-h-[36px] px-3 py-1.5 text-xs font-mono font-medium text-[var(--text-secondary)] hover:text-white rounded bg-[var(--bg-surface)] border border-[var(--border-subtle)] hover:border-[var(--border-accent)] transition-all flex items-center justify-center shrink-0"
-                >
-                  Close (Esc)
-                </button>
-              </div>
-              <div className="p-2 sm:p-4 bg-[#090a0d] flex items-center justify-center max-h-[80vh] overflow-auto">
-                <img
-                  src={activeLightboxImage.url}
-                  alt={activeLightboxImage.title}
-                  className="max-h-[75vh] w-auto object-contain rounded-[var(--radius-sm)] shadow-lg"
-                />
+              <div
+                role="dialog"
+                aria-modal="true"
+                aria-label={currentScreen.name}
+                onClick={e => e.stopPropagation()}
+                className="relative max-w-6xl w-full bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-[var(--radius-lg)] overflow-hidden shadow-2xl flex flex-col max-h-[96dvh]"
+              >
+                {/* Header Bar */}
+                <div className="flex items-center justify-between px-4 sm:px-6 py-3 border-b border-[var(--border-subtle)] bg-[var(--bg-primary)] gap-2">
+                  <div className="min-w-0 flex items-center gap-2">
+                    <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 shrink-0">
+                      {currentApp.code} · {activeLightbox.screenIndex + 1} of {screens.length}
+                    </span>
+                    <span className="text-xs sm:text-sm font-mono text-[var(--text-primary)] font-semibold truncate">
+                      {currentScreen.name}
+                    </span>
+                  </div>
+                  <button
+                    type="button"
+                    autoFocus
+                    onClick={() => setActiveLightbox(null)}
+                    className="min-h-[44px] sm:min-h-[36px] px-3 py-1.5 text-xs font-mono font-medium text-[var(--text-secondary)] hover:text-white rounded bg-[var(--bg-surface)] border border-[var(--border-subtle)] hover:border-[var(--border-accent)] transition-all flex items-center justify-center shrink-0 cursor-pointer"
+                  >
+                    Close (Esc)
+                  </button>
+                </div>
+
+                {/* Viewport Area with Floating Left / Right Buttons displaying Next / Prev Title */}
+                <div className="relative p-2 sm:p-4 bg-[#090a0d] flex-1 flex items-center justify-center overflow-hidden min-h-[360px] max-h-[72vh]">
+                  {/* Previous Button with Previous Image Title */}
+                  <button
+                    type="button"
+                    onClick={goToPrev}
+                    className="absolute left-2 sm:left-4 z-20 group flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-2.5 rounded-full bg-[var(--bg-surface)]/95 hover:bg-[var(--bg-surface-elevated)] text-white border border-[var(--border-subtle)] hover:border-[var(--border-focus)] transition-all shadow-xl min-h-[44px] max-w-[200px] sm:max-w-[280px] cursor-pointer"
+                    aria-label={`Previous: ${prevScreen.name}`}
+                  >
+                    <ChevronLeft className="w-5 h-5 shrink-0 text-[var(--text-accent)] group-hover:-translate-x-0.5 transition-transform" />
+                    <div className="flex flex-col text-left min-w-0 hidden xs:block sm:block">
+                      <span className="text-[9px] font-mono uppercase tracking-wider text-[var(--text-tertiary)]">Previous</span>
+                      <span className="text-xs font-medium text-[var(--text-secondary)] truncate block">
+                        {prevScreen.name}
+                      </span>
+                    </div>
+                  </button>
+
+                  <img
+                    key={currentScreen.url}
+                    src={currentScreen.url}
+                    alt={currentScreen.name}
+                    className="max-h-[68vh] w-auto max-w-full object-contain rounded-[var(--radius-sm)] shadow-2xl"
+                  />
+
+                  {/* Next Button with Next Image Title */}
+                  <button
+                    type="button"
+                    onClick={goToNext}
+                    className="absolute right-2 sm:right-4 z-20 group flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-2.5 rounded-full bg-[var(--bg-surface)]/95 hover:bg-[var(--bg-surface-elevated)] text-white border border-[var(--border-subtle)] hover:border-[var(--border-focus)] transition-all shadow-xl min-h-[44px] max-w-[200px] sm:max-w-[280px] cursor-pointer"
+                    aria-label={`Next: ${nextScreen.name}`}
+                  >
+                    <div className="flex flex-col text-right min-w-0 hidden xs:block sm:block">
+                      <span className="text-[9px] font-mono uppercase tracking-wider text-[var(--text-accent)]">Next Screen</span>
+                      <span className="text-xs font-medium text-[var(--text-primary)] truncate block">
+                        {nextScreen.name}
+                      </span>
+                    </div>
+                    <ChevronRight className="w-5 h-5 shrink-0 text-[var(--text-accent)] group-hover:translate-x-0.5 transition-transform" />
+                  </button>
+                </div>
+
+                {/* Bottom Fast Next / Prev Navigation Bar with Titles for Mobile & Desktop */}
+                <div className="px-4 py-2.5 border-t border-[var(--border-subtle)] bg-[var(--bg-primary)] flex items-center justify-between gap-3 font-mono text-xs">
+                  <button
+                    type="button"
+                    onClick={goToPrev}
+                    className="min-h-[44px] sm:min-h-[36px] px-3 py-1.5 rounded bg-[var(--bg-surface)] border border-[var(--border-subtle)] text-[var(--text-secondary)] hover:text-white flex items-center gap-1.5 transition-all max-w-[45%] truncate cursor-pointer"
+                  >
+                    <ChevronLeft className="w-4 h-4 shrink-0" />
+                    <span className="truncate">Prev: {prevScreen.name}</span>
+                  </button>
+
+                  <div className="flex items-center gap-1.5 shrink-0">
+                    {screens.map((s, idx) => (
+                      <button
+                        key={s.key}
+                        type="button"
+                        onClick={() => setActiveLightbox({ ...activeLightbox, screenIndex: idx })}
+                        className={`min-w-8 min-h-8 sm:min-w-7 sm:min-h-7 rounded text-[11px] font-mono flex items-center justify-center transition-colors cursor-pointer ${
+                          idx === activeLightbox.screenIndex
+                            ? 'bg-[var(--accent-blue)] text-[#090a0d] font-bold shadow-xs'
+                            : 'bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:text-white border border-[var(--border-subtle)]'
+                        }`}
+                        title={s.name}
+                      >
+                        {idx + 1}
+                      </button>
+                    ))}
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={goToNext}
+                    className="min-h-[44px] sm:min-h-[36px] px-3 py-1.5 rounded bg-[var(--bg-surface)] border border-[var(--border-accent)] text-[var(--text-accent)] hover:text-white flex items-center gap-1.5 transition-all max-w-[45%] font-semibold truncate cursor-pointer"
+                  >
+                    <span className="truncate">Next: {nextScreen.name}</span>
+                    <ChevronRight className="w-4 h-4 shrink-0" />
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-        )}
+          );
+        })()}
       </AnimatePresence>
     </section>
   );
