@@ -30,7 +30,7 @@ import {
   LINKEDIN_TESTIMONIALS,
   KEY_METRICS
 } from '../../data/portfolioData';
-import type { ProjectItem, MigrationSlice } from '../../types';
+import type { ProjectItem, MigrationSlice, ExperienceItem } from '../../types';
 import { ContactActions } from '../ContactActions';
 import { ProjectCardGalleryPreview } from '../ProjectGallery';
 
