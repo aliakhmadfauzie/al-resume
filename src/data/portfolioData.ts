@@ -155,7 +155,7 @@ ITSSR_BrowseScreen As Screen:
   {
     id: "putri-garmenthub-erp",
     imageUrl: "/showcase-articles/putri-garmenthub/portfolio-ui-screenshot.png",
-    title: "Putri App — GarmentHub Workshop ERP & 4-Pocket Cash Flow",
+    title: "GarmentHub Workshop ERP & Cash Flow Management",
     subtitle: "Offline-First Garment Manufacturing ERP & Multi-Pocket Financial Ledger PWA (v2.12.11)",
     category: "standalone",
     date: "2025 – 2026",

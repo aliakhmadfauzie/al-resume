@@ -186,7 +186,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
   const demosList = [
     { id: 'ats-automation', title: 'ATS Automation & Q1–Q10 Gate', domain: 'Flagship Systems', icon: <Terminal className="w-4 h-4" /> },
     { id: 'she-matrix', title: 'IOI DOSH 5×5 SHE Matrix', domain: 'Flagship Systems', icon: <ShieldCheck className="w-4 h-4" /> },
-    { id: 'garment-erp', title: 'Putri 4-Pocket & SPK ERP', domain: 'Flagship Systems', icon: <Layers className="w-4 h-4" /> },
+    { id: 'garment-erp', title: 'GarmentHub Cash Flow & SPK ERP', domain: 'Flagship Systems', icon: <Layers className="w-4 h-4" /> },
     { id: 'rebate', title: 'Tasek Rebate Simulator (RM 0.20)', domain: 'Flagship Systems', icon: <TrendingUp className="w-4 h-4" /> },
     { id: 'finops', title: 'FinOps Spend Portal', domain: 'M365 Slices', icon: <DollarSign className="w-4 h-4" /> },
     { id: 'it-service', title: 'Industrial Nexus ITSM', domain: 'M365 Slices', icon: <Cpu className="w-4 h-4" /> },
@@ -1255,13 +1255,13 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
         </div>
       )}
 
-      {/* DEMO 9: Putri GarmentHub 4-Pocket Cash Sharding & SPK Multi-Drop QC Engine */}
+      {/* DEMO 9: GarmentHub Workshop ERP & Cash Flow Management */}
       {activeDemo === 'garment-erp' && (
         <div className="space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[var(--bg-surface)] p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)]">
             <div>
               <span className="text-xs font-mono text-[var(--text-accent)] font-medium">
-                Putri GarmentHub v2.12.11 · calculations.ts · CashFlowContext.tsx
+                GarmentHub v2.12.11 · calculations.ts · CashFlowContext.tsx
               </span>
               <h2 className="text-xl font-semibold text-[var(--text-primary)]">
                 SPK Multi-Drop QC Defect Engine &amp; 4-Pocket RBAC Cash Ledger

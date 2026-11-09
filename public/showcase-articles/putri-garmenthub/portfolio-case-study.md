@@ -1,10 +1,10 @@
 ![Project Main Interface](./portfolio-ui-screenshot.png)
 
-# Putri App — GarmentHub Workshop ERP & 4-Pocket Cash Flow Platform
+# GarmentHub Workshop ERP & Cash Flow Management
 
 ## 1. Project Overview & Problem Solved
 
-**Putri GarmentHub (`v2.12.11`)** is an enterprise-grade, offline-first garment manufacturing ERP and multi-pocket financial ledger Progressive Web Application (PWA) custom-engineered for **Putri Konveksi**, a high-volume apparel production workshop and online marketplace seller (Shopee/TikTok Shop).
+**GarmentHub Workshop ERP & Cash Flow Management (`v2.12.11`)** is an enterprise-grade, offline-first garment manufacturing ERP and multi-pocket financial ledger Progressive Web Application (PWA) custom-engineered for **Putri Konveksi**, a high-volume apparel production workshop and online marketplace seller (Shopee/TikTok Shop).
 
 ### The Core Business Problem
 Small-to-medium garment workshops (*konveksi*) face deeply intertwined production and accounting challenges that generic point-of-sale or accounting software cannot model:
