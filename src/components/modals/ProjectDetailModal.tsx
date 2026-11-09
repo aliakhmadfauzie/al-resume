@@ -137,14 +137,14 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
               <h4 className="text-xs font-mono text-[var(--text-tertiary)] font-medium">
                 01 · Operational Challenge
               </h4>
-              <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{problemText}</p>
+              <p className="text-sm text-[var(--text-secondary)] leading-relaxed whitespace-pre-line">{problemText}</p>
             </div>
 
             <div className="bg-[var(--bg-primary)] p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-2.5">
               <h4 className="text-xs font-mono text-[var(--text-accent)] font-medium">
                 02 · Architected Solution
               </h4>
-              <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{solutionText}</p>
+              <p className="text-sm text-[var(--text-secondary)] leading-relaxed whitespace-pre-line">{solutionText}</p>
             </div>
           </div>
 

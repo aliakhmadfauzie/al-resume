@@ -680,25 +680,26 @@ const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8' });`
   },
   {
     id: "pulsetrack",
-    title: "PulseTrack",
-    subtitle: "Real-time Operations & Agent Status Automation",
+    title: "PulseTrack: Real-Time Agent Status System",
+    subtitle: "Centralized Workforce Management & Production Floor Compliance Automation",
     category: "core",
     date: "Oct 2024",
     role: "Power Platform solution delivery & automation design",
-    tools: ["Power Apps", "Power Automate", "SharePoint", "Microsoft Forms"],
-    problem: "Agent status was captured via WhatsApp, requiring heavy manual roll-up for team leads, leading to delays and inaccuracies.",
-    solution: "Implemented a structured status capture system on SharePoint with an automated reporting workflow, providing real-time visibility.",
-    impact: "90% less manual reporting; 98% status accuracy; 60–80% reduction in team-lead workload.",
+    tools: ["Microsoft Forms", "Power Automate", "SharePoint", "Power BI", "Microsoft Teams"],
+    problem: "PulseTrack is a centralized, real-time workforce management and compliance tracking system. It was built to solve a severe operational bottleneck: a strict no-phone policy on the production floor meant Team Leaders were not allowed to bring their phones to their desks. To check if a missing agent had updated their status via unauthorized external messaging tools like WhatsApp, Team Leaders had to continuously walk back and forth to the locker room. This caused massive time waste, delayed response times, data fragmentation, and heavy manual overhead.",
+    solution: "PulseTrack provides an end-to-end automated workforce status pipeline across Microsoft 365:\n\n• Intake: Agents use a standardized Microsoft Form to submit their status updates, specifically when reporting they will be on sick leave or running late.\n\n• Automation: Microsoft Power Automate instantly parses these submissions and writes them to a secure, centralized SharePoint list that Team Leaders can access directly from their production floor laptops, eliminating the need to check their phones.\n\n• Visibility: A live Power BI dashboard visualizes the entire floor's schedule adherence, current headcount, and cumulative time-in-state.\n\n• Alerting: Microsoft Teams integrations push automated alerts to Team Leaders when SLA thresholds are breached, or critically, when the volume of agents calling in sick exceeds the maximum allowable capacity for the shift.",
+    impact: "90% reduction in manual reporting and status tracking overhead; 98% accuracy in real-time status updates and attendance tracking; 60–80% reduction in Team Leader administrative workload by eliminating locker trips and manual verification, allowing leaders to remain on the floor managing operations.",
     impactMetrics: [
-      { label: "Manual Reporting", value: "-90%" },
-      { label: "Status Accuracy", value: "98%" },
-      { label: "Team Lead Workload", value: "-70%" }
+      { label: "Manual Tracking Overhead", value: "-90%" },
+      { label: "Status & Attendance Accuracy", value: "98%" },
+      { label: "TL Administrative Workload", value: "-60% to -80%" }
     ],
     technicalDetails: [
-      "SharePoint Online schema optimized for concurrent agent logging",
-      "Automated Power Automate schedule & webhook trigger for instantaneous roll-up",
-      "Adaptive Cards delivered directly to Microsoft Teams leadership channel",
-      "Role-based access ensuring data privacy across regional squads"
+      "Standardized Intake: Microsoft Form for structured agent submissions (sick leave, late arrival, schedule updates) replacing unmonitored external messaging",
+      "Automated Processing: Microsoft Power Automate instant cloud flows parsing payloads and writing to a secure, centralized SharePoint list in real time",
+      "Zero-Phone Floor Accessibility: Direct laptop access on the production floor for Team Leaders, eliminating repeated locker room trips and preserving strict security compliance",
+      "Live Operational Visibility: Power BI floor telemetry dashboard tracking schedule adherence, active headcount, and cumulative time-in-state",
+      "Capacity & SLA Alerting: Microsoft Teams automated push notifications triggering upon SLA threshold breaches or when shift sick-call volume exceeds maximum allowable capacity"
     ],
     liveDemoId: "it-service",
     featured: true
@@ -1189,7 +1190,7 @@ export const WORK_EXPERIENCE: ExperienceItem[] = [
       "Policy Creation & SOP Authoring: Directly authored, created, and updated operational policy documentation, decision trees, and standard operating procedures (SOPs) for Trust & Safety (content moderation) and Advertising Integrity (Ads Review), translating complex client policy changes into clear frontline enforcement standards.",
       "Conducting Training & Nesting Academies: Designed instructional materials and directly conducted onboarding training bootcamps, nesting clinics, and refresher workshops, coaching frontline specialists and raising 90-day associate competency from 78% to 94%.",
       "BPO Floor Leadership & Scaling: Commanded daily 24/7 BPO operations scaling headcount by 380% (from 9 to 34 multilingual associates across 7 APAC language pods: Indonesian, Chinese Mainland, Korean, Japanese, English, Thai, Vietnamese) in Trust & Safety, Ads Review, and Omnichannel Live Chat/Email, sustaining >98%+ contractual SLA compliance.",
-      "Continuous Improvement & Automation: Executed Six Sigma DMAIC process controls reducing Average Handling Time (AHT) by 25%; engineered PulseTrack real-time productivity tracker and SmartFlow automated intake, cutting manual queue reporting by 90%."
+      "Continuous Improvement & Automation: Executed Six Sigma DMAIC process controls reducing Average Handling Time (AHT) by 25%; engineered PulseTrack real-time agent status tracking system (cutting manual reporting by 90%, achieving 98% status accuracy, and eliminating locker room trips under floor zero-phone policies to reduce TL admin workload by 60–80%) and SmartFlow automated intake."
     ],
     iconUrl: "/assets/logos/concentrix.png"
   },
@@ -3600,7 +3601,7 @@ export const EXECUTIVE_CAREER_NARRATIVE: ExecutiveCareerNarrative = {
       subtitle: "The Stakes & Legacy Baggage",
       content: `Before stepping into enterprise solution architecture, I spent four years on the operations floor at Accenture and Concentrix. I started in August 2017 writing PL/SQL queries and forecasting queues as a frontline Data Analyst. Over four merit promotions, I moved from frontline analytics to Junior Team Lead, Team Lead, and Senior Team Lead at Accenture, followed by serving as Operations Team Manager (QA, Policy & Training) at Concentrix directing cross-functional customer support and trust-and-safety delivery across seven APAC markets.
 
-Floor management taught me how systems actually fail. At Concentrix, we scaled a multilingual operations pod from 9 to 34 agents handling seven international jurisdictions. When queue spikes hit, our biggest friction was not agent motivation—it was tooling blindness. Shift handovers and agent statuses were tracked through chaotic WhatsApp groups. Team leads burned two to three hours every shift manually tallying agent availability in spreadsheets instead of coaching underperforming queues. During customer triage, agents toggled between four disconnected browser tabs, bleeding 110 seconds of pure navigation latency on every single ticket.
+Floor management taught me how systems actually fail. At Concentrix, we scaled a multilingual operations pod from 9 to 34 agents handling seven international jurisdictions. When queue spikes hit, our biggest friction was not agent motivation—it was tooling blindness. Due to a strict zero-phone policy on the production floor, Team Leaders were not allowed mobile phones at their desks; to check if a missing agent had sent a sick leave notice or tardiness update via WhatsApp, Team Leaders were forced to continuously walk back and forth to the locker room. This caused severe response delays, fragmented attendance logs, and hours burned manually compiling spreadsheets instead of coaching queues. During customer triage, agents toggled between four disconnected browser tabs, bleeding 110 seconds of pure navigation latency on every single ticket.
 
 Later, when I transitioned into enterprise modernization at IOI Oleochemical, that same operational breakdown existed at industrial scale across 28 business units. A single document revision required chasing physical sign-offs from production to quality control, then to heads of department and marketing. In quality management, Corrective and Preventive Actions (CAPAs) averaged 45 business days to investigate and close because follow-ups sat inside unmonitored Domino background agents. Overdue chasing was done manually, and 30-day post-implementation effectiveness verification lagged at a dismal 61%.
 
@@ -3651,7 +3652,7 @@ In Quality and Industrial Safety, paper-based incident forms were replaced by Sl
 • CAPA investigation closure time plummeted from 45 business days to 12 business days (a 73% acceleration), while 30-day post-implementation effectiveness verification adherence jumped from 61% to a perfect 100%.
 • Chemical plant safety equipment compliance reached 99.4%, and consignment rebate approval cycles dropped from 3 days to under 15 minutes.
 
-This same operational discipline reinforced team leadership on the frontline. At Accenture, when a major regional platform outage triggered an 800% ticket surge across Southeast Asian e-commerce queues, I commanded real-time queue recovery, stabilizing operations and restoring full contractual SLA adherence within 48 hours without associate burnout—an achievement recognized with the prestigious Hang Tuah Distinction and the Accenture Diamond Award. Later at Concentrix, the internal tools I built—PulseTrack and SmartFlow—slashed manual reporting by 90% and eliminated 110 seconds of tab-switching latency per ticket. My operations squad maintained a 98%+ contractual SLA compliance record while scaling 380% across seven countries, holding annualized staff attrition below 5%.
+This same operational discipline reinforced team leadership on the frontline. At Accenture, when a major regional platform outage triggered an 800% ticket surge across Southeast Asian e-commerce queues, I commanded real-time queue recovery, stabilizing operations and restoring full contractual SLA adherence within 48 hours without associate burnout—an achievement recognized with the prestigious Hang Tuah Distinction and the Accenture Diamond Award. Later at Concentrix, the internal tools I built—PulseTrack (centralized Forms + Power Automate + SharePoint + Power BI agent status system with Teams threshold alerting) and SmartFlow—slashed manual reporting by 90%, achieved 98% status accuracy, cut TL admin workload by 60–80% by eliminating locker trips, and eliminated 110 seconds of tab-switching latency per ticket. My operations squad maintained a 98%+ contractual SLA compliance record while scaling 380% across seven countries, holding annualized staff attrition below 5%.
 
 Whether commanding frontline crisis response across 34 agents or validating GxP compliance across 7,878 YAML screens for an industrial enterprise, the core lesson remained identical: lasting digital transformation happens only when technical architecture respects frontline operational realities and regulatory rigor.`
     }
@@ -3701,9 +3702,9 @@ Whether commanding frontline crisis response across 34 agents or validating GxP 
     },
     {
       dimension: "Frontline Operations Reporting",
-      before: "2–3 hrs/shift compiling agent status from WhatsApp into Excel; 4 tabs toggled",
-      after: "Centralized SharePoint + Power Automate workflow (PulseTrack & SmartFlow)",
-      delta: "90% reduction in manual reporting; 110s tab latency eliminated per interaction"
+      before: "2–3 hrs/shift compiling agent status from WhatsApp into Excel; locker room trips due to strict no-phone floor policy",
+      after: "Centralized M365 Forms + Power Automate + SharePoint + Power BI + Teams Alerts (PulseTrack & SmartFlow)",
+      delta: "90% less manual reporting; 98% status accuracy; 60–80% TL admin workload reduction; 110s tab latency eliminated"
     },
     {
       dimension: "Incident Command & SLA Delivery",
