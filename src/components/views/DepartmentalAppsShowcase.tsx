@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { DEPARTMENTAL_APPS, DepartmentalAppItem } from '../../data/powerPlatformAppsData';
 import {
@@ -25,6 +25,25 @@ export const DepartmentalAppsShowcase: React.FC<DepartmentalAppsShowcaseProps> =
   const [activeScreens, setActiveScreens] = useState<Record<string, 'login' | 'browse' | 'details' | 'edit' | 'flow'>>({});
   const [expandedCode, setExpandedCode] = useState<Record<string, boolean>>({});
   const [activeLightboxImage, setActiveLightboxImage] = useState<{ url: string; title: string } | null>(null);
+
+  // Keyboard accessibility and body scroll-lock for 1080p Lightbox modal
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setActiveLightboxImage(null);
+      }
+    };
+
+    if (activeLightboxImage) {
+      window.addEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = 'hidden';
+    }
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = '';
+    };
+  }, [activeLightboxImage]);
 
   const departments = [
     { id: 'all', label: 'All Departments (13)' },
@@ -86,16 +105,21 @@ export const DepartmentalAppsShowcase: React.FC<DepartmentalAppsShowcaseProps> =
       </div>
 
       {/* Filter Tabs */}
-      <div className="flex flex-wrap gap-1.5 p-1 rounded-[var(--radius-sm)] bg-[var(--bg-primary)] border border-[var(--border-subtle)] items-center">
+      <div 
+        role="tablist" 
+        aria-label="Department Categories"
+        className="flex flex-wrap gap-2 p-1.5 rounded-[var(--radius-sm)] bg-[var(--bg-primary)] border border-[var(--border-subtle)] items-center"
+      >
         {departments.map(dept => (
           <button
             key={dept.id}
+            role="tab"
+            aria-selected={activeDepartment === dept.id}
             onClick={() => setActiveDepartment(dept.id)}
-            aria-pressed={activeDepartment === dept.id}
-            className={`px-3 py-1.5 rounded-[4px] text-xs font-medium transition-colors whitespace-nowrap ${
+            className={`min-h-[44px] sm:min-h-[36px] px-3.5 py-2 rounded-[var(--radius-sm)] text-xs font-medium transition-all whitespace-nowrap focus-visible:outline-2 focus-visible:outline-[var(--accent-blue)] ${
               activeDepartment === dept.id
-                ? 'bg-[var(--accent-blue)] text-[#090a0d] font-semibold'
-                : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+                ? 'bg-[var(--accent-blue)] text-[#090a0d] font-bold shadow-xs'
+                : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-surface)]'
             }`}
           >
             {dept.label}
@@ -168,9 +192,13 @@ export const DepartmentalAppsShowcase: React.FC<DepartmentalAppsShowcaseProps> =
                 </div>
               </div>
 
-              {/* Interactive Screen & Flow Switcher Tabs */}
+              {/* Interactive Screen & Flow Switcher Tabs (48dp Mobile Touch Ergonomics) */}
               <div className="space-y-2">
-                <div className="flex flex-wrap gap-1 bg-[var(--bg-surface)] p-1 rounded-[var(--radius-sm)] border border-[var(--border-subtle)]">
+                <div 
+                  role="tablist"
+                  aria-label={`${app.name} screen viewpoints`}
+                  className="grid grid-cols-5 gap-1.5 bg-[var(--bg-surface)] p-1.5 rounded-[var(--radius-sm)] border border-[var(--border-subtle)]"
+                >
                   {[
                     { key: 'login', label: 'Login' },
                     { key: 'browse', label: 'Dashboard' },
@@ -180,8 +208,10 @@ export const DepartmentalAppsShowcase: React.FC<DepartmentalAppsShowcaseProps> =
                   ].map(tab => (
                     <button
                       key={tab.key}
+                      role="tab"
+                      aria-selected={currentScreenKey === tab.key}
                       onClick={() => handleScreenChange(app.code, tab.key as any)}
-                      className={`flex-1 min-w-[50px] py-1 text-[11px] font-mono text-center rounded transition-colors ${
+                      className={`min-h-[44px] sm:min-h-[36px] px-1 py-1.5 text-[11px] sm:text-xs font-mono font-medium text-center rounded transition-all select-none active:scale-95 focus-visible:outline-2 focus-visible:outline-[var(--accent-blue)] flex items-center justify-center ${
                         currentScreenKey === tab.key
                           ? 'bg-[var(--accent-blue)] text-[#090a0d] font-bold shadow-xs'
                           : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-primary)]'
@@ -291,17 +321,21 @@ export const DepartmentalAppsShowcase: React.FC<DepartmentalAppsShowcaseProps> =
             className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-8 cursor-zoom-out animate-in fade-in duration-200"
           >
             <div
+              role="dialog"
+              aria-modal="true"
+              aria-label={activeLightboxImage.title}
               onClick={e => e.stopPropagation()}
               className="relative max-w-6xl w-full bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-[var(--radius-lg)] overflow-hidden shadow-2xl flex flex-col"
             >
               <div className="flex items-center justify-between px-6 py-4 border-b border-[var(--border-subtle)] bg-[var(--bg-primary)]">
-                <span className="text-sm font-mono text-[var(--text-primary)] font-semibold">
+                <span className="text-sm font-mono text-[var(--text-primary)] font-semibold truncate pr-4">
                   {activeLightboxImage.title}
                 </span>
                 <button
                   type="button"
+                  autoFocus
                   onClick={() => setActiveLightboxImage(null)}
-                  className="text-xs font-mono text-[var(--text-secondary)] hover:text-white px-2 py-1 rounded bg-[var(--bg-surface)] border border-[var(--border-subtle)]"
+                  className="min-h-[44px] sm:min-h-[36px] px-3 py-1.5 text-xs font-mono font-medium text-[var(--text-secondary)] hover:text-white rounded bg-[var(--bg-surface)] border border-[var(--border-subtle)] hover:border-[var(--border-accent)] transition-all flex items-center justify-center shrink-0"
                 >
                   Close (Esc)
                 </button>
