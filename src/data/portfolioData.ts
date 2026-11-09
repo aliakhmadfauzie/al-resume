@@ -854,7 +854,7 @@ const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8' });`
     category: "security",
     date: "2025",
     role: "Service request lifecycle & routing framework",
-    tools: ["Power Apps", "Power Automate", "SharePoint", "Dataverse"],
+    tools: ["Power Apps", "Power Automate", "SharePoint MainDB", "Power Fx"],
     problem: "Lotus Notes service tickets had hidden site routing and no structured requestor close-out, leading to poor closure rates and ticket hoarding.",
     solution: "Designed a Submit → Admin Triage → Assign → Resolve → Requestor Accept & Rate → Close lifecycle. Added a 72-hour accept window and 30-day automatic close.",
     impact: "56 mapped columns; 5 flows; 5 screens; 95% on-time resolution; automated audit trail.",
@@ -920,10 +920,10 @@ const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8' });`
 
 export const MIGRATION_OVERVIEW = {
   title: "IOI Oleo Lotus Domino → Microsoft 365 Enterprise Migration",
-  period: "2023 – 2025",
-  role: "Lead Solution Architect & Power Apps Rebuild Slice Delivery",
-  scope: "Architected the enterprise migration of 365+ Lotus Domino applications across 28+ business units to Microsoft 365, SharePoint Online, OneDrive, Teams, and Dataverse.",
-  sliceDelivery: "Spearheaded the rebuild and deployment of 16-23 production Canvas & Model-Driven Power Apps, 878 Canvas screens, and 400+ custom React/TypeScript components as a live operational slice.",
+  period: "2024 – 2026",
+  role: "Lead Enterprise Modernization & Full-Stack Solution Architect",
+  scope: "Architected the complete decommissioning of 365+ Lotus Domino databases across 28+ business units to Microsoft 365, SharePoint Online MainDB partitioned lists, and Power Platform, eliminating $960,000/year in licensing overhead.",
+  sliceDelivery: "Delivered the 13 Departmental Power Apps Suite (52 production-ready 1080p Canvas screens) and 13 modern Power Automate cloud workflows as the primary operational output across 7 departments.",
   complexityTiers: {
     high: 24,
     medium: 28,
@@ -940,7 +940,7 @@ export const MIGRATION_OVERVIEW = {
     {
       name: "Customer Requirement Review & EnMS",
       type: "Cross-Department & Multi-Site",
-      resolution: "Unified disparate Johor/Penang routing behaviors and QA/Marketing approval paths into single Dataverse-backed architectures."
+      resolution: "Unified disparate Johor/Penang routing behaviors and QA/Marketing approval paths into single MainDB_{Dept} partitioned SharePoint architectures saving $960K/yr."
     },
     {
       name: "Yearly Database Silos (e.g. CCCAR 2026, Sampling)",

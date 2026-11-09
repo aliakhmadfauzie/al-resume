@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { CORE_PROJECTS, MIGRATION_OVERVIEW, MIGRATION_SLICES } from '../../data/portfolioData';
+import { CORE_PROJECTS, MIGRATION_OVERVIEW } from '../../data/portfolioData';
 import { ProjectCardGalleryPreview } from '../ProjectGallery';
 import { DepartmentalAppsShowcase } from './DepartmentalAppsShowcase';
 import {
@@ -24,8 +24,7 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [projectTechFilter, setProjectTechFilter] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
-  const [sliceCategoryFilter, setSliceCategoryFilter] = useState<string>('all');
-  const [sliceTechFilter, setSliceTechFilter] = useState<string>('all');
+
 
   const filteredProjects = useMemo(() => {
     return CORE_PROJECTS.filter((proj) => {
@@ -48,23 +47,7 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
     });
   }, [selectedCategory, projectTechFilter, searchQuery]);
 
-  const filteredSlices = useMemo(() => {
-    return MIGRATION_SLICES.filter((slice) => {
-      let matchesCat = true;
-      if (sliceCategoryFilter === 'quality') matchesCat = ['A', 'B'].includes(slice.letter);
-      else if (sliceCategoryFilter === 'operations') matchesCat = ['C', 'D'].includes(slice.letter);
-      else if (sliceCategoryFilter === 'governance') matchesCat = ['E', 'F'].includes(slice.letter);
 
-      let matchesTech = true;
-      if (sliceTechFilter !== 'all') {
-        matchesTech = slice.tools.some((t) =>
-          t.toLowerCase().includes(sliceTechFilter.toLowerCase())
-        );
-      }
-
-      return matchesCat && matchesTech;
-    });
-  }, [sliceCategoryFilter, sliceTechFilter]);
 
   return (
     <div className="space-y-12 py-6">
@@ -190,116 +173,33 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
           </div>
         )}
 
-        {/* 6 Migration Slices Grid */}
-        <div className="space-y-4 pt-4 border-t border-[var(--border-subtle)]">
-          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
-            <h3 className="text-sm font-semibold text-[var(--text-primary)]">
-              Migration Slices (Interactive Domain Breakdown)
-            </h3>
-
-            <div className="flex flex-wrap gap-2">
-              <div className="flex flex-wrap gap-1 p-1 rounded-[var(--radius-sm)] bg-[var(--bg-primary)] border border-[var(--border-subtle)] items-center">
-                {[
-                  { id: 'all', label: 'All BUs' },
-                  { id: 'quality', label: 'Quality & QA' },
-                  { id: 'operations', label: 'Operations & IT' },
-                  { id: 'governance', label: 'Master Data & CI' }
-                ].map((filter) => (
-                  <button
-                    key={filter.id}
-                    onClick={() => setSliceCategoryFilter(filter.id)}
-                    aria-pressed={sliceCategoryFilter === filter.id}
-                    className={`px-3 py-1 rounded-[4px] text-xs font-medium transition-colors whitespace-nowrap ${
-                      sliceCategoryFilter === filter.id
-                        ? 'bg-[var(--accent-blue)] text-[#090a0d]'
-                        : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
-                    }`}
-                  >
-                    {filter.label}
-                  </button>
-                ))}
-              </div>
-
-              <div className="flex flex-wrap gap-1 p-1 rounded-[var(--radius-sm)] bg-[var(--bg-primary)] border border-[var(--border-subtle)] items-center">
-                {[
-                  { id: 'all', label: 'All Tech' },
-                  { id: 'power apps', label: 'Power Apps' },
-                  { id: 'dataverse', label: 'Dataverse' },
-                  { id: 'sap', label: 'SAP' }
-                ].map((filter) => (
-                  <button
-                    key={filter.id}
-                    onClick={() => setSliceTechFilter(filter.id)}
-                    aria-pressed={sliceTechFilter === filter.id}
-                    className={`px-3 py-1 rounded-[4px] text-xs font-medium transition-colors whitespace-nowrap ${
-                      sliceTechFilter === filter.id
-                        ? 'bg-[var(--bg-surface-elevated)] text-[var(--text-primary)] border border-[var(--border-focus)]'
-                        : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
-                    }`}
-                  >
-                    {filter.label}
-                  </button>
-                ))}
-              </div>
-            </div>
+        {/* Production Modernization Output Callout */}
+        <div className="pt-4 border-t border-[var(--border-subtle)] flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[var(--bg-primary)] p-4 sm:p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)]">
+          <div className="space-y-1">
+            <span className="text-xs font-mono text-[var(--text-accent)] font-semibold uppercase">
+              Production Modernization Deliverables
+            </span>
+            <h4 className="text-base font-semibold text-[var(--text-primary)]">
+              13 Departmental Power Apps Suite &amp; 52 Production 1080p Screens
+            </h4>
+            <p className="text-xs text-[var(--text-secondary)] leading-relaxed max-w-2xl">
+              The direct operational output of retiring the 365+ Lotus Domino databases: 52 client-ready Canvas screens following the 4-Screen Quadruplet Standard and 13 modern cloud workflows replacing legacy Domino forms across 7 operating departments.
+            </p>
           </div>
-
-          <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <AnimatePresence mode="popLayout">
-              {filteredSlices.map((slice) => (
-                <motion.div
-                  layout
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -8 }}
-                  whileHover={{ y: -2.5 }}
-                  transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-                  key={slice.id}
-                  className="h-full"
-                >
-                  <div
-                      className="relative h-full bg-[var(--bg-primary)] hover:bg-[var(--bg-surface-elevated)] p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] hover:border-orange-500/40 hover:shadow-[0_12px_32px_-8px_rgba(0,0,0,0.5),0_0_24px_-4px_rgba(249,115,22,0.1)] space-y-3 group flex flex-col justify-between transition-all duration-200"
-                  >
-                    <div className="space-y-2.5">
-                      <div className="flex items-center justify-between">
-                        <span className="w-8 h-8 rounded-[var(--radius-sm)] bg-[var(--bg-surface)] border border-[var(--border-subtle)] group-hover:border-orange-500/30 text-[var(--text-accent)] font-mono font-semibold text-sm flex items-center justify-center transition-colors">
-                          {slice.letter}
-                        </span>
-                        <span className="text-xs font-mono text-[var(--text-secondary)] tabular-nums">
-                          {slice.appCount} Rebuilt Apps
-                        </span>
-                      </div>
-
-                      <h4 className="text-base font-semibold text-[var(--text-primary)] group-hover:text-[var(--text-accent)] transition-colors">
-                        {slice.title}
-                      </h4>
-
-                      <p className="text-sm text-[var(--text-secondary)] line-clamp-3 leading-relaxed">
-                        {slice.problem}
-                      </p>
-                    </div>
-
-                    <div className="pt-3 border-t border-[var(--border-subtle)] space-y-2">
-                      <div className="flex items-start space-x-2 text-sm text-[var(--text-primary)] font-medium">
-                        <TrendingUp className="w-3.5 h-3.5 text-[var(--text-accent)] shrink-0" />
-                        <span className="line-clamp-2 leading-relaxed">{slice.impact}</span>
-                      </div>
-
-                      <div className="flex items-center justify-between text-xs font-medium text-[var(--text-accent)]">
-                        <a href={`#/projects/${encodeURIComponent(slice.id)}`} className="case-study-link" aria-label={`View case study: ${slice.title}`}>View case study</a>
-                        <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-200" />
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </AnimatePresence>
-          </motion.div>
+          <a
+            href="#departmental-apps-showcase"
+            className="inline-flex items-center space-x-2 px-4 py-2.5 rounded-[var(--radius-sm)] bg-[var(--interactive-primary)] text-[#090a0d] hover:bg-orange-400 font-semibold text-xs transition-colors shrink-0 whitespace-nowrap self-start sm:self-center"
+          >
+            <span>Explore 13 Apps &amp; 52 Screens</span>
+            <ArrowRight className="w-4 h-4" />
+          </a>
         </div>
       </section>
 
       {/* Modernization Catalog: 13 Departmental Applications & Automated Workflows */}
-      <DepartmentalAppsShowcase />
+      <div id="departmental-apps-showcase">
+        <DepartmentalAppsShowcase />
+      </div>
 
       {/* Filter and Search Bar for Standalone & Core Projects */}
       <section className="space-y-6 pt-2">
