@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { CORE_PROJECTS, MIGRATION_OVERVIEW, MIGRATION_SLICES } from '../../data/portfolioData';
 import { ProjectCardGalleryPreview } from '../ProjectGallery';
+import { DepartmentalAppsShowcase } from './DepartmentalAppsShowcase';
 import {
   Search,
   Database,
@@ -296,6 +297,9 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
           </motion.div>
         </div>
       </section>
+
+      {/* Modernization Catalog: 13 Departmental Applications & Automated Workflows */}
+      <DepartmentalAppsShowcase />
 
       {/* Filter and Search Bar for Standalone & Core Projects */}
       <section className="space-y-6 pt-2">

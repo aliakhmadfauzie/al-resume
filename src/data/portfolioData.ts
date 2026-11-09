@@ -89,41 +89,63 @@ if ssot_text:
   },
   {
     id: "power-platform-portfolio",
-    imageUrl: "/showcase-articles/power-platform-portfolio/portfolio-ui-screenshot.png",
-    title: "Enterprise Architecture Sandbox Portfolio",
-    subtitle: "Interactive 7-Simulator Executive Showcase & Migration Explorer",
+    imageUrl: "/assets/gallery/power-platform-portfolio/01-executive-hero.png",
+    title: "Enterprise Power Platform Modernization & 13-App Architecture",
+    subtitle: "52 Production-Ready Canvas Screens, 13 Modern Power Automate Flows & 7 Departmental Modules",
     category: "standalone",
-    date: "2025",
-    role: "Principal Solution Architect & Full-Stack Modernization Engineer",
+    date: "2025 – 2026",
+    role: "Principal Solution Architect & Full-Lifecycle Modernization Engineer",
     repoUrl: "https://github.com/aliakhmadfauzie/power-platform-portfolio",
     tools: [
-      "React 19",
-      "TypeScript 5.8",
-      "Tailwind CSS 4",
-      "Motion (Framer Motion 12)",
-      "Vite 6",
-      "Power Platform Architecture",
-      "Dataverse"
+      "Power Apps Canvas (.pa.yaml)",
+      "Power Automate Modern v3",
+      "Power Fx",
+      "SharePoint Online MainDB",
+      "Microsoft Dataverse",
+      "React 19 & TypeScript 5.8",
+      "Python AST Toolchain",
+      "Playwright CDP"
     ],
-    problem: "Production enterprise systems (financial rebate engines, ISO 9001/27001 document registries, SAP warehouse portals) reside inside NDA-locked corporate tenants protected by Azure AD Conditional Access and DLP policies, making static PDFs insufficient for technical evaluators.",
-    solution: "Architected an interactive single-page executive showcase and live operational sandbox embedding 7 functional enterprise simulators, a 6-slice Domino-to-M365 migration explorer, polymorphic TypeScript inspection drawers, and a WCAG-compliant focus-trapped CV viewer.",
-    impact: "7 live operational enterprise simulators; 365+ database migration telemetry across 6 domain slices; sub-second Rollup vendor chunking.",
+    problem: "365+ legacy Lotus Domino departmental databases across 28+ business units at IOI Acidchem / IOI Group suffered from unindexed rich-text data silos, fragile email-dependent approvals with high failure rates, and zero mobile responsiveness across manufacturing plant floors.",
+    solution: "Architected a full-scale enterprise modernization pipeline compiling declarative Power Fx Canvas YAML (4-Screen Quadruplet Standard: Login, Browse, Details, Edit), 13 event-driven Power Automate cloud workflows with Scope-Catch resilience, and an interactive React 19 executive showcase.",
+    impact: "13 mission-critical enterprise applications fully rebuilt across 7 core departments; 52 client-ready 1920×1080 screens verified via headless Chrome; 13 Power Automate Modern Designer cloud flows replacing legacy Domino macros.",
     impactMetrics: [
-      { label: "Live Simulators", value: "7 Apps" },
-      { label: "Migration Slices", value: "6 Domains" },
-      { label: "Canvas Screens", value: "878" }
+      { label: "Modernized Apps", value: "13 Suite" },
+      { label: "Verified Screens", value: "52 UI" },
+      { label: "Cloud Workflows", value: "13 Flows" }
     ],
     technicalDetails: [
-      "Reactive 7-Component Statutory Rebate Simulator enforcing the RM 0.20/metric tonne ceiling in real time with atomic cross-view deep linking",
-      "Polymorphic TypeScript discriminated union narrowing (ProjectItem | MigrationSlice) powering a unified slide-over specification drawer",
-      "WCAG-compliant custom keyboard focus trap (Tab / Shift+Tab boundary wrapping, Escape dismissal) and print-ready PDF stylesheet in ResumeModal",
-      "Rollup manual vendor chunk splitting (react-vendor, ui-vendor) and resilient external image fallback handlers"
+      "Standardized 4-Screen Quadruplet Architecture (LoginScreen, BrowseScreen, DetailsScreen, EditScreen) across all 13 departmental modules with 48px touch ergonomics and WCAG 2.1 AA compliance",
+      "Event-driven Power Automate Modern UI Cloud Flows with pre-filtered trigger conditions, multi-tier executive approvals, and Scope - Try / Catch exception handling alerting SecOps channels",
+      "Bidirectional REST integrations with SAP ERP (PM breakdown work orders, HCM medical claims payroll export, SD credit limits, and QM storage tank quarantine holds)",
+      "Bespoke Python AST & schema compiler toolchain (design/canvas-apps-tools) transforming legacy Domino DXL forms into type-safe Power Fx Canvas YAML without GUI drag-and-drop",
+      "Automated Playwright CDP test harness systematically auditing DOM accessibility trees and rendering pixel-perfect visual regression screenshots at 1920×1080 resolution"
     ],
-    codeSnippet: `// LiveDemosView.tsx — 7-Component Statutory Rebate Ceiling Engine
-const rawRebatePerTonne = Math.max(0, rebateBaseRate + rebateDistance + rebateSpecialTerm + rebateSeasonal + rebateTax - rebateCreditDeduction);
-const cappedRebatePerTonne = Math.min(rawRebatePerTonne, 0.20);
-const isCapped = rawRebatePerTonne > 0.20;
-const totalRebateAmountRM = (cappedRebatePerTonne * rebateVolume).toFixed(2);`,
+    codeSnippet: `// Power Fx Canvas YAML Screen Quadruplet Standard (ITSSR_BrowseScreen.pa.yaml)
+ITSSR_BrowseScreen As Screen:
+    Properties:
+        Fill: RGBA(250, 249, 248, 1)
+        OnVisible: |-
+            =Set(varActiveTab, "All");
+            Set(varSearchQuery, "");
+            Concurrent(
+                ClearCollect(colActiveTickets, Filter(MainDB_IT_Ext_Support, RequestStatus.Value <> "Resolved")),
+                ClearCollect(colSLAAlerts, Filter(MainDB_IT_Ext_Support, Priority.Value = "URGENT"))
+            );
+    Children:
+        - conMetricStrip As groupContainer.horizontalAutoLayoutContainer:
+            Properties:
+                Height: 90
+                Fill: RGBA(255, 255, 255, 1)
+                DropShadow: DropShadow.Light
+        - galTicketLedger As gallery.galleryVertical:
+            Properties:
+                Items: |-
+                    =SortByColumns(
+                        Filter(colActiveTickets, varSearchQuery in Title Or varSearchQuery in Category.Value),
+                        "Created",
+                        SortOrder.Descending
+                    )`,
     liveDemoId: "rebate",
     featured: true
   },

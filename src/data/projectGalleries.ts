@@ -35,24 +35,45 @@ export const PROJECT_GALLERY_MAP: Record<string, ProjectGalleryItem[]> = {
   'power-platform-portfolio': [
     {
       id: 'ppp-1',
-      title: 'Executive Modernization Hero & Telemetry Matrix',
-      caption: 'High-contrast telemetry overview highlighting 365+ migrated Lotus Domino databases, 28+ BUs, and 878 Power Apps screens.',
+      title: 'Executive Modernization Hero & Live Production Portal',
+      caption: 'Live operational dashboard of IOI Acidchem Enterprise Platform (v2) with persistent modular navigation and 1,428 active transactional tickets.',
       expectedPath: '/assets/gallery/power-platform-portfolio/01-executive-hero.png',
       imageUrl: '/assets/gallery/power-platform-portfolio/01-executive-hero.png'
     },
     {
       id: 'ppp-2',
-      title: '6-Slice Domino Migration Explorer & Consolidation Matrix',
-      caption: 'Interactive domain filter across Slices A–F displaying 314 unique app groups and Dataverse schema consolidations.',
-      expectedPath: '/assets/gallery/power-platform-portfolio/02-migration-slices.png',
-      imageUrl: '/assets/gallery/power-platform-portfolio/02-migration-slices.png'
+      title: 'Screen 1: Entra ID Single Sign-On Gateway & Plant Facility Selector',
+      caption: 'Corporate authentication gateway with multi-plant facility scope (Penang Complex vs. Johor Pasir Gudang), IOIP-04 compliance notice, and 99.98% SLA telemetry.',
+      expectedPath: '/assets/gallery/power-platform-portfolio/02-login-sso-gateway.png',
+      imageUrl: '/assets/gallery/power-platform-portfolio/02-login-sso-gateway.png'
     },
     {
       id: 'ppp-3',
-      title: '7 Embedded Live Enterprise Simulators',
-      caption: 'Interactive browser sandbox running the Tasek 7-component rebate engine, FinOps portal, and AI Builder SOP classifier.',
-      expectedPath: '/assets/gallery/power-platform-portfolio/03-live-simulators.png',
-      imageUrl: '/assets/gallery/power-platform-portfolio/03-live-simulators.png'
+      title: 'Screen 2: High-Density Transactional Browse Gallery & KPI Telemetry',
+      caption: '4-metric operational KPI strip, dynamic multi-state filter bar (All, My Requests, Pending Sign-off), status chips, and quick-action dossier triggers.',
+      expectedPath: '/assets/gallery/power-platform-portfolio/03-browse-transaction-gallery.png',
+      imageUrl: '/assets/gallery/power-platform-portfolio/03-browse-transaction-gallery.png'
+    },
+    {
+      id: 'ppp-4',
+      title: 'Screen 3: Two-Column Dossier & Interactive 4-Stage Approval Stepper',
+      caption: 'Enterprise split layout (65% problem scope & quotation attachments / 35% approval timeline) featuring cryptographic SHA-256 audit seal.',
+      expectedPath: '/assets/gallery/power-platform-portfolio/04-details-approval-stepper.png',
+      imageUrl: '/assets/gallery/power-platform-portfolio/04-details-approval-stepper.png'
+    },
+    {
+      id: 'ppp-5',
+      title: 'Screen 4: 4-Step Transactional Intake Wizard & Dynamic Category Matrix',
+      caption: 'Stepped wizard intake with cascading category dropdowns, severity radio card matrix, auto-filling asset lookup, and drag-and-drop diagnostic evidence zone.',
+      expectedPath: '/assets/gallery/power-platform-portfolio/05-edit-intake-wizard.png',
+      imageUrl: '/assets/gallery/power-platform-portfolio/05-edit-intake-wizard.png'
+    },
+    {
+      id: 'ppp-6',
+      title: 'Power Automate: Modern UI Designer & Multi-Tier Approval Flow',
+      caption: 'Event-driven cloud workflow on SharePoint MainDB_IT_Ext_Support with addHours SLA deadline math, dual-tier approvals, and Scope-Catch exception resilience.',
+      expectedPath: '/assets/gallery/power-platform-portfolio/06-power-automate-modern-designer.png',
+      imageUrl: '/assets/gallery/power-platform-portfolio/06-power-automate-modern-designer.png'
     }
   ],
   'ioi-acidchem-she-platform': [

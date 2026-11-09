@@ -11,3 +11,6 @@ coverage/
 scripts/
 master_portfolio.md
 .superpowers/
+*.exe
+.agents/
+agent_skill_pipelines/
