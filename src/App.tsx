@@ -39,7 +39,7 @@ const ViewLoader: React.FC = () => (
 export default function App() {
   const route = useRoute();
   const currentTab = route.tab;
-  const selectedProject = [...CORE_PROJECTS, ...MIGRATION_SLICES].find(item => item.id === route.projectId) || null;
+  const selectedProject = [...CORE_PROJECTS, ...MIGRATION_SLICES].find(item => item.id === route.projectId || (route.projectId === 'power-platform-portfolio' && item.id === 'ioi-acidchem-she-platform')) || null;
   const isProjectDetailOpen = Boolean(selectedProject);
   const isResumeOpen = route.overlay === 'resume';
   const isContactOpen = route.overlay === 'contact';

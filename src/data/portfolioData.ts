@@ -88,13 +88,13 @@ if ssot_text:
     featured: true
   },
   {
-    id: "power-platform-portfolio",
-    imageUrl: "/assets/gallery/power-platform-portfolio/01-executive-hero.png",
-    title: "Enterprise Power Platform Modernization & 13-App Architecture",
-    subtitle: "52 Production-Ready Canvas Screens, 13 Modern Power Automate Flows & 7 Departmental Modules",
-    category: "standalone",
-    date: "2025 – 2026",
-    role: "Principal Solution Architect & Full-Lifecycle Modernization Engineer",
+    id: "ioi-acidchem-she-platform",
+    imageUrl: "/showcase-articles/enterprise-m365-ioi/portfolio-ui-screenshot.png",
+    title: "IOI Oleo Enterprise Modernization & Departmental Power Apps Suite",
+    subtitle: "Decommissioned 365+ Lotus Domino DBs into 13 Departmental Power Apps (52 1080p Screens), $960K/yr License Avoidance & DOSH 5×5 SHE Suite",
+    category: "core",
+    date: "2024 – 2026",
+    role: "Lead Enterprise Modernization & Full-Stack Solution Architect",
     repoUrl: "https://github.com/aliakhmadfauzie/power-platform-portfolio",
     tools: [
       "Power Apps Canvas (.pa.yaml)",
@@ -104,21 +104,24 @@ if ssot_text:
       "Microsoft Dataverse",
       "React 19 & TypeScript 5.8",
       "Python AST Toolchain",
+      "DOSH 5×5 Risk Matrix",
       "Playwright CDP"
     ],
-    problem: "365+ legacy Lotus Domino departmental databases across 28+ business units at IOI Acidchem / IOI Group suffered from unindexed rich-text data silos, fragile email-dependent approvals with high failure rates, and zero mobile responsiveness across manufacturing plant floors.",
-    solution: "Architected a full-scale enterprise modernization pipeline compiling declarative Power Fx Canvas YAML (4-Screen Quadruplet Standard: Login, Browse, Details, Edit), 13 event-driven Power Automate cloud workflows with Scope-Catch resilience, and an interactive React 19 executive showcase.",
-    impact: "13 mission-critical enterprise applications fully rebuilt across 7 core departments; 52 client-ready 1920×1080 screens verified via headless Chrome; 13 Power Automate Modern Designer cloud flows replacing legacy Domino macros.",
+    problem: "365+ legacy IBM Lotus Domino databases across 28+ business units at IOI Oleochemicals / Acidchem (Penang Prai & Johor chemical plants) trapped critical workflows in unindexed rich-text silos, manual paper/email approvals with 3–5 day turnarounds, and non-mobile interfaces. Default enterprise migration onto premium Power Platform / Dataverse connectors for 2,000+ users would cost $960,000+/year, while uncurated migration threatened 360+ SharePoint list sprawl.",
+    solution: "Architected a full-scale legacy modernization program delivering: 1) The 13 Departmental Power Apps Suite across 7 core departments (IT, Safety/SHE, QA/QC, Finance, Production, HR, Supply Chain) based on the 4-Screen Quadruplet Standard with 52 production-ready 1080p screens; 2) 13 event-driven Power Automate cloud workflows with Scope Try/Catch resilience replacing Domino macros; 3) The dedicated DOSH/SIRIM Chemical Safety & Environment (SHE) Suite (5×5 HIRADC Matrix, 5-Whys CAPA, PPE stock alerts); 4) A Single MainDB_{Dept} partitioned SharePoint architecture saving $960K/year in licensing, validated across 7,878 .pa.yaml screens via an automated Python AST compiler.",
+    impact: "Successfully decommissioned 365+ Lotus Domino databases across 28+ business units with zero unplanned plant downtime; $960K/yr in licensing eliminated; 13 mission-critical departmental apps deployed; 52 client-ready 1920×1080 screens verified; -73% CAPA resolution duration; 99.4% DOSH/SIRIM PPE safety compliance.",
     impactMetrics: [
       { label: "Modernized Apps", value: "13 Suite" },
+      { label: "License Saved", value: "$960K/yr" },
       { label: "Verified Screens", value: "52 UI" },
-      { label: "Cloud Workflows", value: "13 Flows" }
+      { label: "Risk Engine", value: "DOSH 5×5" }
     ],
     technicalDetails: [
       "Standardized 4-Screen Quadruplet Architecture (LoginScreen, BrowseScreen, DetailsScreen, EditScreen) across all 13 departmental modules with 48px touch ergonomics and WCAG 2.1 AA compliance",
       "Event-driven Power Automate Modern UI Cloud Flows with pre-filtered trigger conditions, multi-tier executive approvals, and Scope - Try / Catch exception handling alerting SecOps channels",
-      "Bidirectional REST integrations with SAP ERP (PM breakdown work orders, HCM medical claims payroll export, SD credit limits, and QM storage tank quarantine holds)",
-      "Bespoke Python AST & schema compiler toolchain (design/canvas-apps-tools) transforming legacy Domino DXL forms into type-safe Power Fx Canvas YAML without GUI drag-and-drop",
+      "Single MainDB_{Dept} List per Site (MainDB_IT, MainDB_IT_JHR, MainDB_SHE) with an indexed FormCode discriminator (DEC-2026-001), eliminating 361-list sprawl and saving $960K/yr in premium connectors",
+      "Automated Power Apps YAML v3.0 static validator (_validate_pa.py) checking Properties indentation hierarchy, multiline block scalars, leading '=' Power Fx prefixes, and control name uniqueness across 7,878 screens",
+      "Interactive DOSH/SIRIM 5×5 HIRADC Risk Matrix Heatmap (Likelihood × Severity), 5-Tier Hierarchy of Controls, 5-Whys Root Cause Investigation (SHEAI/SHEICAR), and multi-plant PPE threshold alerting",
       "Automated Playwright CDP test harness systematically auditing DOM accessibility trees and rendering pixel-perfect visual regression screenshots at 1920×1080 resolution"
     ],
     codeSnippet: `// Power Fx Canvas YAML Screen Quadruplet Standard (ITSSR_BrowseScreen.pa.yaml)
@@ -146,49 +149,6 @@ ITSSR_BrowseScreen As Screen:
                         "Created",
                         SortOrder.Descending
                     )`,
-    liveDemoId: "rebate",
-    featured: true
-  },
-  {
-    id: "ioi-acidchem-she-platform",
-    imageUrl: "/showcase-articles/enterprise-m365-ioi/portfolio-ui-screenshot.png",
-    title: "IOI Enterprise M365 Migration & Acidchem SHE Platform",
-    subtitle: "7,878 Power Apps YAML Screens, $960K/yr License Avoidance & DOSH 5×5 SHE Suite",
-    category: "core",
-    date: "2025 – 2026",
-    role: "Lead Enterprise Modernization & Full-Stack Solution Architect",
-    tools: [
-      "React 19",
-      "TypeScript 5.7",
-      "Power Apps Canvas (.pa.yaml)",
-      "@microsoft/power-apps SDK",
-      "SharePoint Online MainDB",
-      "Power Automate",
-      "TanStack Query v5 & Jotai",
-      "Python AST Validator"
-    ],
-    problem: "361+ Lotus Domino forms across 28+ departments at IOI Corporation / Acidchem (Penang & Johor chemical plants) suffered from 3–5 day paper/email turnarounds, while premium Power Platform connectors for 2,000+ users would cost $960,000+/year and 361 separate SharePoint lists would cause severe governance drift.",
-    solution: "Engineered a Dual-Track Modernization Program housing 7,878 Power Apps YAML screens, 16 production .msapp packages, a 400+ file React 19 code-first mirror, a Single MainDB_{Dept} SharePoint architecture with indexed FormCode discriminators, and a dedicated DOSH/SIRIM Chemical Plant SHE Suite (5×5 HIRADC Matrix, 5-Whys CAPA, PPE stock alerts).",
-    impact: "$960K+/yr premium licensing avoided via MainDB_{Dept} standard-connector architecture; 7,878 .pa.yaml screens statically verified; 99.4% DOSH/SIRIM PPE compliance across Penang & Johor plants.",
-    impactMetrics: [
-      { label: "YAML Screens", value: "7,878" },
-      { label: "License Saved", value: "$960K/yr" },
-      { label: "Risk Matrix", value: "DOSH 5×5" }
-    ],
-    technicalDetails: [
-      "Single MainDB_{Dept} List per Site (MainDB_IT, MainDB_IT_JHR, MainDB_SHE) with an indexed FormCode discriminator (DEC-2026-001), eliminating 361-list sprawl and saving $960K/yr in premium connectors",
-      "Automated Power Apps YAML v3.0 static validator (_validate_pa.py) checking Properties indentation hierarchy, multiline block scalars, leading '=' Power Fx prefixes, and control name uniqueness across 7,878 screens",
-      "SharePoint GUID & URL canonicalizer (audit-power-config.mjs) preventing placeholder GUIDs and multi-encoded URL drift across 13+ data sources in CI",
-      "Interactive DOSH/SIRIM 5×5 HIRADC Risk Matrix Heatmap (Likelihood × Severity), 5-Tier Hierarchy of Controls, 5-Whys Root Cause Investigation (SHEAI/SHEICAR), and multi-plant PPE threshold alerting"
-    ],
-    codeSnippet: `// ioi-she-platform/src/services/sheService.ts — DOSH 5x5 HIRADC Risk Scoring
-export function calculateRiskScore(likelihood: number, severity: number): { score: number; level: RiskLevel } {
-  const score = likelihood * severity;
-  let level: RiskLevel = "LOW";
-  if (score >= 15) level = "HIGH";
-  else if (score >= 5) level = "MEDIUM";
-  return { score, level };
-}`,
     liveDemoId: "she-matrix",
     featured: true
   },

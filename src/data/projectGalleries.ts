@@ -36,7 +36,7 @@ export const PROJECT_GALLERY_MAP: Record<string, ProjectGalleryItem[]> = {
     {
       id: 'ppp-1',
       title: 'Executive Modernization Hero & Live Production Portal',
-      caption: 'Live operational dashboard of IOI Acidchem Enterprise Platform (v2) with persistent modular navigation and 1,428 active transactional tickets.',
+      caption: 'Live operational dashboard of IOI Acidchem Enterprise Platform (v2) with persistent modular navigation and 1,428 active transactional tickets across Penang and Johor facilities.',
       expectedPath: '/assets/gallery/power-platform-portfolio/01-executive-hero.png',
       imageUrl: '/assets/gallery/power-platform-portfolio/01-executive-hero.png'
     },
@@ -74,9 +74,72 @@ export const PROJECT_GALLERY_MAP: Record<string, ProjectGalleryItem[]> = {
       caption: 'Event-driven cloud workflow on SharePoint MainDB_IT_Ext_Support with addHours SLA deadline math, dual-tier approvals, and Scope-Catch exception resilience.',
       expectedPath: '/assets/gallery/power-platform-portfolio/06-power-automate-modern-designer.png',
       imageUrl: '/assets/gallery/power-platform-portfolio/06-power-automate-modern-designer.png'
+    },
+    {
+      id: 'ioi-she-1',
+      title: 'Executive SHE Telemetry & 5×5 DOSH Risk Heatmap',
+      caption: 'Real-time safety dashboard across Penang Acidchem and Johor Pan-Century plants with 482 Safe Work Days and interactive L×S matrix.',
+      expectedPath: '/assets/gallery/ioi-acidchem-she-platform/01-she-dashboard.png',
+      imageUrl: '/assets/gallery/ioi-acidchem-she-platform/01-she-dashboard.png'
+    },
+    {
+      id: 'ioi-she-2',
+      title: 'HIRADC Risk Register & 5-Tier Hierarchy of Controls',
+      caption: 'Chemical hazard assessment workbench for 240°C fatty acid sampling and 50% NaOH unloading with live L×S sliders.',
+      expectedPath: '/assets/gallery/ioi-acidchem-she-platform/02-hiradc-register.png',
+      imageUrl: '/assets/gallery/ioi-acidchem-she-platform/02-hiradc-register.png'
+    },
+    {
+      id: 'ioi-she-3',
+      title: '5-Whys Incident Investigation (SHEAI/SHEICAR) & PPE Stock',
+      caption: 'Structured causal chain workbench paired with multi-plant SIRIM/DOSH PPE minimum threshold reorder alerts.',
+      expectedPath: '/assets/gallery/ioi-acidchem-she-platform/03-incident-capa.png',
+      imageUrl: '/assets/gallery/ioi-acidchem-she-platform/03-incident-capa.png'
     }
   ],
   'ioi-acidchem-she-platform': [
+    {
+      id: 'ioi-app-1',
+      title: 'Executive Modernization Hero & Live Production Portal',
+      caption: 'Live operational dashboard of IOI Acidchem Enterprise Platform (v2) with persistent modular navigation and 1,428 active transactional tickets across Penang and Johor facilities.',
+      expectedPath: '/assets/gallery/power-platform-portfolio/01-executive-hero.png',
+      imageUrl: '/assets/gallery/power-platform-portfolio/01-executive-hero.png'
+    },
+    {
+      id: 'ioi-app-2',
+      title: 'Screen 1: Entra ID Single Sign-On Gateway & Plant Facility Selector',
+      caption: 'Corporate authentication gateway with multi-plant facility scope (Penang Complex vs. Johor Pasir Gudang), IOIP-04 compliance notice, and 99.98% SLA telemetry.',
+      expectedPath: '/assets/gallery/power-platform-portfolio/02-login-sso-gateway.png',
+      imageUrl: '/assets/gallery/power-platform-portfolio/02-login-sso-gateway.png'
+    },
+    {
+      id: 'ioi-app-3',
+      title: 'Screen 2: High-Density Transactional Browse Gallery & KPI Telemetry',
+      caption: '4-metric operational KPI strip, dynamic multi-state filter bar (All, My Requests, Pending Sign-off), status chips, and quick-action dossier triggers.',
+      expectedPath: '/assets/gallery/power-platform-portfolio/03-browse-transaction-gallery.png',
+      imageUrl: '/assets/gallery/power-platform-portfolio/03-browse-transaction-gallery.png'
+    },
+    {
+      id: 'ioi-app-4',
+      title: 'Screen 3: Two-Column Dossier & Interactive 4-Stage Approval Stepper',
+      caption: 'Enterprise split layout (65% problem scope & quotation attachments / 35% approval timeline) featuring cryptographic SHA-256 audit seal.',
+      expectedPath: '/assets/gallery/power-platform-portfolio/04-details-approval-stepper.png',
+      imageUrl: '/assets/gallery/power-platform-portfolio/04-details-approval-stepper.png'
+    },
+    {
+      id: 'ioi-app-5',
+      title: 'Screen 4: 4-Step Transactional Intake Wizard & Dynamic Category Matrix',
+      caption: 'Stepped wizard intake with cascading category dropdowns, severity radio card matrix, auto-filling asset lookup, and drag-and-drop diagnostic evidence zone.',
+      expectedPath: '/assets/gallery/power-platform-portfolio/05-edit-intake-wizard.png',
+      imageUrl: '/assets/gallery/power-platform-portfolio/05-edit-intake-wizard.png'
+    },
+    {
+      id: 'ioi-app-6',
+      title: 'Power Automate: Modern UI Designer & Multi-Tier Approval Flow',
+      caption: 'Event-driven cloud workflow on SharePoint MainDB_IT_Ext_Support with addHours SLA deadline math, dual-tier approvals, and Scope-Catch exception resilience.',
+      expectedPath: '/assets/gallery/power-platform-portfolio/06-power-automate-modern-designer.png',
+      imageUrl: '/assets/gallery/power-platform-portfolio/06-power-automate-modern-designer.png'
+    },
     {
       id: 'ioi-she-1',
       title: 'Executive SHE Telemetry & 5×5 DOSH Risk Heatmap',

@@ -98,13 +98,13 @@ export const DepartmentalAppsShowcase: React.FC<DepartmentalAppsShowcaseProps> =
         <div className="space-y-2">
           <div className="flex items-center space-x-2 text-xs font-mono text-[var(--text-accent)] font-medium">
             <Layers className="w-4 h-4 text-emerald-400" />
-            <span>Modernization Catalog · 13 Production Applications</span>
+            <span>IOI Oleochemicals Modernization Deliverables · 13 Production Applications</span>
           </div>
           <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-[var(--text-primary)] tracking-tight">
-            Departmental Power Apps &amp; Automate Workflows
+            13 Departmental Power Apps &amp; Automate Workflows
           </h2>
           <p className="text-sm text-[var(--text-secondary)] max-w-3xl leading-relaxed">
-            Standardized enterprise quadruplets (Login, Dashboard, Details, Edit) featuring persistent context-aware navigation, domain-driven color theming, and dynamic operational telemetry, paired with modern Power Automate cloud workflows.
+            Core production deliverable of the 365+ Lotus Domino database decommissioning program: standardized enterprise 4-screen quadruplets (Login SSO, Operational Dashboard, Details Stepper, Dynamic Intake) with 52 client-ready 1080p screens and 13 modern Power Automate cloud workflows.
           </p>
         </div>
 

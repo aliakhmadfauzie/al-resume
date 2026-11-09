@@ -6,6 +6,9 @@
 > **Local Workspace:** `C:\Users\AL_AAF\Project\04_portfolio_and_resumes\al-resume-projects\power-platform-portfolio`  
 > **Role:** Principal Solution Architect & Full-Stack Modernization Engineer
 
+> [!NOTE]
+> **Unified Enterprise Engagement Context:** The 13 Departmental Power Apps and modern cloud workflows showcased in this architecture are the concrete production deliverables and operational output of the **IOI Oleo Lotus Domino Modernization Program**. For the full chemical plant case study and telemetry, see [IOI Oleo Enterprise Modernization & Departmental Power Apps Suite](../enterprise-m365-ioi/portfolio-case-study.md).
+
 ---
 
 ## 1. Project Overview & Problem Solved
