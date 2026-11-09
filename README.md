@@ -29,8 +29,8 @@
 This repository houses the complete design system, UI assets, and architecture specifications for the **IOI Oleo Enterprise Modernization Project**:
 
 - **Scope**: Replaced 365+ fragmented Lotus Domino databases (`.nsf`), eliminating **$960K/year** in software licensing with zero operational downtime.
-- **Unified Quadruplet UX**: Standardized every single application into a 4-screen quadruplet (`LoginScreen`, `BrowseScreen`, `DetailsScreen`, `EditScreen`).
-- **13 Flagship Production Systems**: Full implementations across IT (`ITSSR`, `ITAMR`), HR (`HRONB`, `HRTRV`), Finance (`FINEXP`, `FINCAP`), Safety (`SHEINC`, `SHEAUD`), Engineering (`MAINTWO`, `MAINTCAL`), QA (`QANCR`), QC (`QCAPPR`), and Logistics (`LOGDD`).
+- **Unified Quadruplet UX & Bespoke Archetypes**: Standardized every single application into a 4-screen quadruplet (`LoginScreen`, `BrowseScreen`, `DetailsScreen`, `EditScreen`), with 13 completely distinct UI archetypes tailored to operational environments (no generic UI slop; featuring ITIL command centers, Gantt turnaround schedulers, tribology wear matrices, and weighbridge terminal gates).
+- **13 Flagship Production Systems**: Full implementations across IT (`ITSSR`, `EAF`), HR (`LVE`, `MCL`), Finance (`CAR`, `CMF`), Safety (`SHEINCIACCI`, `PPEREQU`), Engineering (`FAR`, `MTP`), QA (`NCRINTEAUDI`), QC (`OOS`), and Logistics (`CSD`).
 - **Power Automate Cloud Flows**: 13 automated multi-stage approval flows featuring modern designer canvases, parallel branch routing, SAP RFC ERP synchronization, and automated Teams/Email approval triggers.
 - **Declarative Power Fx Source Code**: 52 production-ready `.pa.yaml` screen source files stored in [`docs/enterprise-migration/canvas-apps/`](docs/enterprise-migration/canvas-apps/).
 
