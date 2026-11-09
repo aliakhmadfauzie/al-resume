@@ -17,7 +17,7 @@
 ## 🌟 Interactive Highlights
 
 - **Flagship Enterprise Power Platform Showcase**: Interactive deep-dive into the modernization of **365+ legacy Lotus Domino databases** into a consolidated Microsoft Power Platform ecosystem for IOI Oleo / IOI Acidchem.
-- **Departmental Apps & Flows Catalog**: Real-time filtering across 8 business domains (IT, HR, Finance, SHE, Maintenance, QA, QC, Logistics) with a 5-way screen switcher (`Login`, `Browse`, `Details`, `Edit`, `⚡ Cloud Flow`), 1080p image zoom modal, and expandable Power Fx YAML / Automate flow drawer.
+- **Departmental Apps & Flows Catalog**: Real-time filtering across 8 business domains (IT, HR, Finance, SHE, Maintenance, QA, QC, Logistics) with a 5-way screen switcher (`Login`, `Dashboard`, `Details`, `Edit`, `⚡ Cloud Flow`), 1080p image zoom modal, and expandable Power Fx YAML / Automate flow drawer.
 - **AI Career Concierge**: Conversational assistant grounded in professional experience, tech stack proficiency, and project outcomes powered by Google Gemini.
 - **Enterprise Case Studies**: Interactive case studies spanning PropTech (LewiHouse), B2B Logistics (SaltDistribute), and Enterprise Chemical Manufacturing Modernization (IOI Acidchem).
 - **Architecture & Competency Visualizer**: Dynamic visual representation of competencies across Enterprise Platforms (Power Platform / SAP / Dataverse), Mobile (React Native / Kotlin), and Cloud (Firebase / GCP / Azure).
@@ -29,12 +29,17 @@
 This repository houses the complete design system, UI assets, and architecture specifications for the **IOI Oleo Enterprise Modernization Project**:
 
 - **Scope**: Replaced 365+ fragmented Lotus Domino databases (`.nsf`), eliminating **$960K/year** in software licensing with zero operational downtime.
-- **Unified Quadruplet UX & Bespoke Archetypes**: Standardized every single application into a 4-screen quadruplet (`LoginScreen`, `BrowseScreen`, `DetailsScreen`, `EditScreen`), with 13 completely distinct UI archetypes tailored to operational environments (no generic UI slop; featuring ITIL command centers, Gantt turnaround schedulers, tribology wear matrices, and weighbridge terminal gates).
+- **Unified Quadruplet UX & Bespoke Archetypes**: Standardized every single application into a 4-screen quadruplet (`LoginScreen`, `DashboardScreen`, `DetailsScreen`, `EditScreen`), with 13 completely distinct UI archetypes tailored to operational environments (no generic UI slop; featuring ITIL command centers, Gantt turnaround schedulers, tribology wear matrices, and weighbridge terminal gates).
+- **Dynamic Dashboards & Interactive Visualizations**: Replaced static browse screens with operational command dashboards featuring 4 domain KPI trend cards and authentic interactive SVG data visualizations (24h incident curves, 7-day shift Gantt bars, Centrifuge FFT vibration waveforms, GC-MS fatty acid peak spectra, USL/LSL tolerance gauges, CapEx waterfall charts, and AR aging histograms).
+- **Context-Aware Persistent Navigation**: Engineered an unbroken 260px left sidebar persistently anchored across all 4 screens (`Login`, `Dashboard`, `Details`, `Edit`), dynamically reflecting the specific application's sub-navigation and active screen context.
+- **Domain-Driven Color Theming**: Enforced 100% strict color discipline per app based on industry psychology (e.g. Electric Blue for IT, Workforce Mint for HR, Clinical Green for Medical, Gold & Charcoal for CapEx, Safety Amber for Incident Logs, Industrial Rust for Reliability, Biotech Cyan for LIMS), strictly complying with WCAG AA/AAA accessibility standards.
 - **13 Flagship Production Systems**: Full implementations across IT (`ITSSR`, `EAF`), HR (`LVE`, `MCL`), Finance (`CAR`, `CMF`), Safety (`SHEINCIACCI`, `PPEREQU`), Engineering (`FAR`, `MTP`), QA (`NCRINTEAUDI`), QC (`OOS`), and Logistics (`CSD`).
 - **Power Automate Cloud Flows**: 13 automated multi-stage approval flows featuring modern designer canvases, parallel branch routing, SAP RFC ERP synchronization, and automated Teams/Email approval triggers.
 - **Declarative Power Fx Source Code**: 52 production-ready `.pa.yaml` screen source files stored in [`docs/enterprise-migration/canvas-apps/`](docs/enterprise-migration/canvas-apps/).
 
-📖 **Detailed Handbook**: For full technical specifications, architecture diagrams, and field mapping schemas, see [`docs/enterprise-migration/README.md`](docs/enterprise-migration/README.md).
+📖 **Detailed Handbooks & Reports**:
+- For full technical specifications, architecture diagrams, and field mapping schemas, see [`docs/enterprise-migration/README.md`](docs/enterprise-migration/README.md).
+- For the design system modernization, persistent navigation, and SVG visualization audit, see [`docs/bespoke_ui_modernization_report.md`](docs/bespoke_ui_modernization_report.md).
 
 ---
 

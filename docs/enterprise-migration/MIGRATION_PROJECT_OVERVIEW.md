@@ -43,9 +43,13 @@ End-to-end enterprise modernization repository migrating legacy **HCL / Lotus Do
 
 The platform architecture modernizes 20+ departmental workflows into modular suites within **IOI Acidchem Enterprise Platform (v2)**. A showcase catalog of **13 flagship applications** across 7 departments has been engineered with full client-ready UI mockups and complete declarative Power Fx Canvas YAML code:
 
-* **52 High-Fidelity UI Mockups:** 1920×1080 pixel-perfect screenshots located in [`mockups/apps/`](./mockups/apps/) (4 core screens per application: `LoginScreen`, `BrowseScreen`, `DetailsScreen`, `EditScreen`).
+* **52 High-Fidelity UI Mockups:** 1920×1080 pixel-perfect screenshots located in [`mockups/apps/`](./mockups/apps/) (4 core screens per application: `LoginScreen`, `DashboardScreen`, `DetailsScreen`, `EditScreen`).
+* **Operational Command Dashboards:** Replaced static browse screens with dynamic analytical dashboards featuring 4 domain KPI trend cards and authentic interactive SVG data visualizations (7-day shift Gantt bars, Centrifuge FFT vibration waveforms, GC-MS fatty acid peak spectra, USL/LSL tolerance gauges, CapEx waterfall charts, and AR aging histograms).
+* **Context-Aware Persistent Navigation:** Fixed 260px left sidebar persistently anchored across all 4 screens with domain-specific sub-navigation and dynamic active state highlighting.
+* **Domain-Driven Color Theming:** 100% strict color discipline per app based on industry psychology, compliant with WCAG AA/AAA accessibility standards.
 * **52 Declarative Power Fx YAML Definitions:** Functional Canvas v3 YAML definitions located in [`canvas-apps/`](./canvas-apps/) (`*.pa.yaml`).
 * **13 Power Automate Modern UI Workflows:** Full-resolution (1920×1080) Modern Designer mockups located in [`power-automate/mockups/`](./power-automate/mockups/) and complete specifications in [`power-automate/workflows/`](./power-automate/workflows/). Detailed master guide in [**`POWER_AUTOMATE_WORKFLOWS.md`**](./POWER_AUTOMATE_WORKFLOWS.md).
+* **Live Portfolio Integration & Deployment:** Fully synchronized to the main portfolio repo at [`C:\Users\AL_AAF\Project\04_portfolio_and_resumes\Al-resume v2`](file:///C:/Users/AL_AAF/Project/04_portfolio_and_resumes/Al-resume%20v2) and deployed live to [**https://aliakhmadfauzie.web.app**](https://aliakhmadfauzie.web.app).
 
 | Department | Application Code | Application Title | 4 Visual Mockups | 4 Power Fx Screen YAMLs |
 | :--- | :--- | :--- | :--- | :--- |

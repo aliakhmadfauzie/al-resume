@@ -92,7 +92,7 @@ To demonstrate client-ready visual craft, strict micro-spacing, and enterprise W
 | Screen | Visual Mockup Artifact | Functional Source Code | Design Rationale & Enterprise Ergonomics |
 | :--- | :--- | :--- | :--- |
 | **1. Login Screen** | [01_LoginScreen.png](./mockups/01_LoginScreen.png) | [`LoginScreen.pa.yaml`](./canvas-app-showcase/LoginScreen.pa.yaml) | Microsoft Entra ID SSO gateway, multi-plant selector (Penang HQ vs. Johor Pasir Gudang), corporate security notice (IOIP-04), and 99.98% SLA telemetry. |
-| **2. Browse Screen** | [02_BrowseScreen.png](./mockups/02_BrowseScreen.png) | [`BrowseScreen.pa.yaml`](./canvas-app-showcase/BrowseScreen.pa.yaml) | 4-metric KPI telemetry grid, responsive filter bar (`Ctrl+K`), status chips, and high-density transactional gallery with quick-action dossier triggers. |
+| **2. Dashboard Screen** | [02_BrowseScreen.png](./mockups/02_BrowseScreen.png) | [`BrowseScreen.pa.yaml`](./canvas-app-showcase/BrowseScreen.pa.yaml) | Dynamic operational command dashboard with 4 domain KPI trend cards, interactive SVG data visualizations (7-day shift Gantt bars, Centrifuge FFT vibration waveforms, GC-MS peak spectra, USL/LSL tolerance gauges, CapEx waterfall charts, and AR aging histograms), and live operational queue. |
 | **3. Details Screen** | [03_DetailsScreen.png](./mockups/03_DetailsScreen.png) | [`DetailsScreen.pa.yaml`](./canvas-app-showcase/DetailsScreen.pa.yaml) | Two-column split layout (65%/35%): Technical problem scope, quotation attachments, interactive 4-stage approval stepper, and SHA-256 cryptographic audit seal. |
 | **4. Edit Screen** | [04_EditScreen.png](./mockups/04_EditScreen.png) | [`EditScreen.pa.yaml`](./canvas-app-showcase/EditScreen.pa.yaml) | 4-step wizard stepper header, cascading category dropdowns, severity radio card matrix, auto-filling asset lookup, and drag-and-drop diagnostic evidence zone. |
 
@@ -101,7 +101,7 @@ To demonstrate client-ready visual craft, strict micro-spacing, and enterprise W
 #### 1. Login Screen (Enterprise Single Sign-On & Facility Gateway)
 ![01_LoginScreen](./mockups/01_LoginScreen.png)
 
-#### 2. Browse Screen (Filterable Request & Transaction Gallery Hub)
+#### 2. Dashboard Screen (Operational Command & Analytical Visualization Hub)
 ![02_BrowseScreen](./mockups/02_BrowseScreen.png)
 
 #### 3. Details Screen (Dossier & Multi-Stage Approval Workflow Stepper)

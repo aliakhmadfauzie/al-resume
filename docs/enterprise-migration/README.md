@@ -26,12 +26,12 @@ Every migrated departmental application is engineered adhering to a strict **4-S
 ┌─────────────────────────────────────────────────────────────────────────────┐
 │                       ENTERPRISE QUADRUPLET ARCHITECTURE                    │
 ├──────────────────┬──────────────────┬──────────────────┬────────────────────┤
-│ 1. LOGIN SCREEN  │ 2. BROWSE SCREEN │ 3. DETAILS SCREEN│ 4. EDIT SCREEN     │
-│ (SSO & Role Gate)│ (Queue & Search) │ (Approval Trail) │ (Intake Wizard)    │
+│ 1. LOGIN SCREEN  │ 2. DASHBOARD SCR │ 3. DETAILS SCREEN│ 4. EDIT SCREEN     │
+│ (SSO & Role Gate)│ (KPIs & Visuals) │ (Approval Trail) │ (Intake Wizard)    │
 │                  │                  │                  │                    │
-│ • Azure AD SSO   │ • Search & Filter│ • Progress Stepper│ • Form Validation │
-│ • Role Gate Check│ • Paginated Grid │ • Line Items View│ • Multi-Step Wizard│
-│ • Facility Picker│ • Status Badges  │ • Digital Sign-off│ • Attachment Drop │
+│ • Azure AD SSO   │ • 4 Metric Trends│ • Progress Stepper│ • Form Validation │
+│ • Role Gate Check│ • SVG Analytics  │ • Line Items View│ • Multi-Step Wizard│
+│ • Facility Picker│ • Operational Q  │ • Digital Sign-off│ • Attachment Drop │
 └──────────────────┴──────────────────┴──────────────────┴────────────────────┘
                                      │
                                      ▼
@@ -41,20 +41,21 @@ Every migrated departmental application is engineered adhering to a strict **4-S
         │ • Multi-Stage Approval Routing & Parallel Sign-offs    │
         │ • ERP Integration (SAP RFC / Oracle BAPI sync)         │
         │ • Automated Notifications & Immutable Audit Log       │
+        │ • Persistent 260px Context-Aware Left Navigation       │
         └────────────────────────────────────────────────────────┘
 ```
 
 ### The 4 Core Screens
 1. **`LoginScreen` (SSO & Role-Based Access Control)**:
-   - Azure Active Directory (Entra ID) single sign-on with automatic token renewal.
+   - Azure Active Directory (Entra ID) single sign-on with automatic token renewal and smart card PIV authentication.
    - User profile hydration via `Office365Users.UserProfileV2()`.
    - Security role gate checking against Dataverse User Roles (Operator, Reviewer, HOD, Plant Manager).
    - Facility and operating plant selector (`Penang Plant 1`, `Plant 2`, `Praai Terminal`).
-2. **`BrowseScreen` (Active Work Queue & Master-Detail Gallery)**:
-   - Zero-polling gallery fed by indexed Dataverse views and optimized OData delegation queries.
-   - Real-time search by Reference Number, Batch ID, Requester, or Department.
-   - Color-coded SLA status chips (`Draft`, `Under Review`, `Approved`, `Rejected`, `Closed`).
-   - Sticky action bar with responsive bulk-export to Excel/CSV.
+   - Persistent 260px left sidebar displaying system branding, security compliance badges, and active authentication state.
+2. **`DashboardScreen` (Operational Command & Analytics Dashboard)**:
+   - High-density analytical command dashboard populated with 4 domain-specific KPI trend cards (MTTR, Vibration RMS, LTIFR, CapEx ROI).
+   - Real-time interactive SVG visualizations: 24h incident spline curves, 7-day shift Gantt bars, Centrifuge FFT vibration waveforms, GC-MS fatty acid peak spectra, USL/LSL tolerance band gauges, and AR aging histograms.
+   - Live operational work queue with SLA countdown badges and direct record inspection triggers.
 3. **`DetailsScreen` (Approval Stepper & Line-Item Inspection)**:
    - Visual 4-stage approval stepper (`Draft` ➔ `HOD Endorsement` ➔ `EHS/Quality Sign-Off` ➔ `Plant Manager Authorization`).
    - Collapsible sections for financial cost allocation, root-cause 5-Why analysis, or item breakdown.
@@ -64,6 +65,23 @@ Every migrated departmental application is engineered adhering to a strict **4-S
    - Deep declarative Power Fx field validation preventing invalid data states before write.
    - File attachment drop-zone integrating directly with SharePoint Online / Azure Blob document libraries.
 
+### Context-Aware Persistent Navigation & Domain Theming
+- **Persistent 260px Left Sidebar:** Maintained across all 4 screens to guarantee orientation, brand consistency, and immediate access to contextual sub-modules. Active tabs update dynamically (`Login` -> `Dashboard` -> `Details` -> `Edit`).
+- **Domain-Driven Color Theming:** 100% strict color palette derived from industry psychology with WCAG AA/AAA compliance:
+  - *IT / Cloud:* Cyber Navy & Electric Blue (`#3B82F6`)
+  - *Perimeter Security:* Security Slate & Indigo (`#6366F1`)
+  - *HR & Roster:* Workforce Mint & Emerald (`#10B981`)
+  - *Occupational Health:* Clinical Green (`#059669`) & Emergency Crimson (`#EF4444`)
+  - *Capital Finance:* Executive Charcoal & Polished Gold (`#D97706`)
+  - *Global Credit:* Trade Sapphire & Financial Cobalt (`#2563EB`)
+  - *Process Safety:* Safety Amber & Carbon Slate (`#D97706`)
+  - *Safety Store:* High-Vis Store Orange (`#EA580C`)
+  - *Reliability Engineering:* Industrial Steel & Rust (`#EA580C` / `#334155`)
+  - *Plant Turnaround:* Warning Hazard Yellow & Asphalt (`#EAB308`)
+  - *Quality Assurance:* ISO Royal Indigo (`#6366F1`)
+  - *Laboratory LIMS:* Biotech Cyan & Deep Lab Slate (`#06B6D4`)
+  - *Port Logistics:* Terminal Port Azure & Harbor Navy (`#0284C7`)
+
 ---
 
 ## 3. The 13 Departmental Applications Suite
@@ -72,19 +90,19 @@ The suite covers 8 core business units across chemical manufacturing and plant o
 
 | # | Code | Application Name | Business Department | Primary Power Automate Trigger | Target Database / ERP |
 |---|---|---|---|---|---|
-| 1 | `ITSSR` | IT Support Service Request | Information Technology | Dataverse `OnRecordCreated` | Dataverse / ServiceNow Gateway |
-| 2 | `ITAMR` | Hardware Asset & Peripheral Management | Information Technology | SharePoint `ItemCreated` (Asset Queue) | SharePoint Online / SAP Fixed Assets |
-| 3 | `HRONB` | Employee Onboarding & Equipment Provisioning | Human Resources | Dataverse `OnStageChange` (Hire) | Dataverse / Active Directory / SAP HR |
-| 4 | `HRTRV` | Travel Request & Expense Authorization | Human Resources | SharePoint `ItemCreated` (Trip Itinerary) | SharePoint / Concur / SAP FI |
-| 5 | `FINEXP` | Operational Expense Reimbursement | Finance & Accounting | Dataverse `OnCreated` (Expense Claim) | Dataverse / SAP Financials (FI/CO) |
-| 6 | `FINCAP` | Capital Expenditure (AFCE) Authorization | Finance & Accounting | Dataverse `OnCreated` (AFCE Request) | Dataverse / SAP Project Systems (PS) |
-| 7 | `SHEINC` | Safety Incident & Near-Miss Investigation | Safety, Health & Environment | SharePoint `ItemCreated` (Incident Log) | SharePoint / EHS Regulatory Portal |
-| 8 | `SHEAUD` | Hazardous Work Permit & EHS Compliance | Safety, Health & Environment | Dataverse `OnCreated` (Hot Work Permit) | Dataverse / Safety Cloud |
-| 9 | `MAINTWO` | Work Order & Preventive Maintenance | Engineering & Maintenance | Dataverse `OnRecordCreated` (Breakdown) | Dataverse / SAP Plant Maintenance (PM) |
-| 10 | `MAINTCAL` | Equipment Calibration & Service Dispatch | Engineering & Maintenance | Recurrence Schedule + Dataverse Trigger | Dataverse / Fluke Calibration Database |
-| 11 | `QANCR` | Non-Conformance Report & Corrective Action | Quality Assurance | Dataverse `OnRecordCreated` (OOS Flag) | Dataverse / SAP Quality Management (QM) |
-| 12 | `QCAPPR` | Finished Goods & Raw Material CoA Approval | Quality Control | Dataverse `OnRecordCreated` (Lab CoA) | Dataverse / LIMS / SAP Batch Release |
-| 13 | `LOGDD` | Dispatch Delivery Order & Gate Pass Clearance | Logistics & Supply Chain | Dataverse `OnRecordCreated` (Truck Arrived) | Dataverse / SAP Sales & Distribution (SD) |
+| 1 | `ITSSR` | IT Support & Service Request | Information Technology | Dataverse `OnRecordCreated` | Dataverse / ServiceNow Gateway |
+| 2 | `EAF` | External Access Form & Perimeter Security | Information Technology | Dataverse `OnRecordCreated` (VPN Request) | Dataverse / Cisco AnyConnect / AD |
+| 3 | `LVE` | Leave Management & Shift Handover | Human Resources | Dataverse `OnRecordCreated` (Leave Apply) | Dataverse / SAP HR (HCM) |
+| 4 | `MCL` | Medical Claims & Healthcare Benefits | Human Resources | SharePoint `ItemCreated` (Receipt Upload) | SharePoint / AIA Insurance Gateway |
+| 5 | `CAR` | Capital Appropriation Request (CapEx) | Finance & Accounting | Dataverse `OnRecordCreated` (AFCE Request) | Dataverse / SAP Project Systems (PS) |
+| 6 | `CMF` | Credit Management & Trade Exposure | Finance & Commercial Credit | Dataverse `OnRecordCreated` (Credit Review) | Dataverse / D&B API / SAP FI |
+| 7 | `SHEINCIACCI` | Safety Incident & DOSH Reporting | Safety, Health & Environment | SharePoint `ItemCreated` (Incident Log) | SharePoint / DOSH JKKP Portal |
+| 8 | `PPEREQU` | PPE Requisition & Safety Store | Safety, Health & Environment | Dataverse `OnRecordCreated` (Order Voucher) | Dataverse / SAP Material Mgmt (MM) |
+| 9 | `FAR` | Equipment Failure Analysis Report | Engineering & Maintenance | Dataverse `OnRecordCreated` (Breakdown Log) | Dataverse / SAP Plant Maintenance (PM) |
+| 10 | `MTP` | Preventive Maintenance & Turnaround | Engineering & Maintenance | Recurrence Schedule + Dataverse Trigger | Dataverse / SAP PM / Primavera P6 |
+| 11 | `NCRINTEAUDI` | ISO Audit & Non-Conformance Report | Quality Assurance | Dataverse `OnRecordCreated` (Audit Finding)| Dataverse / SAP Quality Management (QM) |
+| 12 | `OOS` | Laboratory Out-of-Specification | Quality Control | Dataverse `OnRecordCreated` (OOS Flag) | Dataverse / LIMS / SAP Batch Release |
+| 13 | `CSD` | Container Shipment & Weighbridge | Logistics & Supply Chain | Dataverse `OnRecordCreated` (Tanker Arrived) | Dataverse / SAP Sales & Distribution (SD) |
 
 ---
 
@@ -95,6 +113,7 @@ All generated files, specifications, and assets are structured cleanly across th
 ```
 Al-resume v2/
 ├── docs/
+│   ├── bespoke_ui_modernization_report.md     <-- Bespoke UI modernization, persistent nav & SVG charts audit
 │   └── enterprise-migration/
 │       ├── README.md                          <-- This architecture handbook
 │       ├── PORTFOLIO.md                       <-- Master Portfolio & specs breakdown
@@ -146,9 +165,9 @@ Follow this exact step-by-step guide to integrate additional applications into t
 
 ### Step 1: Capture or Generate Visual Mockups
 For every new application, generate 5 web-safe, high-definition PNG images:
-1. `01-loginscreen.png`: SSO login screen with user profile & facility picker.
-2. `02-browsescreen.png`: Filterable master queue with KPI badges.
-3. `03-detailsscreen.png`: Stepper progress, line-item table, and signature pad.
+1. `01-loginscreen.png`: SSO login screen with user profile, facility picker, and persistent 260px left sidebar.
+2. `02-browsescreen.png`: Dynamic operational command dashboard with 4 domain KPI trend cards, interactive SVG visualizations (e.g. Gantt, FFT waveform, GC-MS curves, or aging histograms), and active work queues.
+3. `03-detailsscreen.png`: Stepper progress, line-item table, and digital signature pad.
 4. `04-editscreen.png`: Dynamic intake wizard with validation error gates.
 5. `{app_code}-flow-designer.png`: Power Automate Modern Canvas flow visualization.
 
@@ -159,7 +178,7 @@ Place them into the repository at:
 ### Step 2: Add Declarative Power Fx YAML Source Files
 Create a new directory at `docs/enterprise-migration/canvas-apps/{APP_CODE}/` containing:
 - `LoginScreen.pa.yaml`
-- `BrowseScreen.pa.yaml`
+- `BrowseScreen.pa.yaml` (or `DashboardScreen.pa.yaml`)
 - `DetailsScreen.pa.yaml`
 - `EditScreen.pa.yaml`
 
@@ -187,12 +206,12 @@ Open [`src/data/powerPlatformAppsData.ts`](file:///C:/Users/AL_AAF/Project/04_po
     login: {
       title: 'SSO & Access Gateway',
       image: '/assets/power-apps/apps/newapp/01-loginscreen.png',
-      description: 'Azure AD authentication and role dispatch'
+      description: 'Azure AD authentication, PIV smart card reader, and persistent sidebar'
     },
     browse: {
-      title: 'Active Work Queue',
+      title: 'Operational Command Dashboard',
       image: '/assets/power-apps/apps/newapp/02-browsescreen.png',
-      description: 'Dataverse delegation gallery with multi-criteria filters'
+      description: 'Analytical KPI cards, interactive SVG charts, and live operational queue'
     },
     details: {
       title: 'Detailed Inspection & Sign-Off',
