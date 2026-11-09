@@ -730,6 +730,7 @@ const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8' });`
   },
   {
     id: "smartflow",
+    imageUrl: "/assets/projects/smartflow/executive-rag-matrix.png",
     title: "SmartFlow: Enterprise Business Request & Resource Automation Engine",
     subtitle: "Parallel-Processing M365 Orchestration Engine for Client Changes & Resource Provisioning",
     category: "core",
@@ -751,6 +752,43 @@ const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8' });`
       "Executive RAG Telemetry: Embedded Power BI dashboard visualizing real-time departmental Red/Amber/Green readiness and bottleneck triage",
       "Automated Milestone Alerting: Microsoft Teams Adaptive Cards alerting Project Managers upon phase completion or escalation risks for upcoming go-live deadlines",
       "Zero-Defect Enforcement: Hardcoded validation gates guaranteeing 100% of new agents are captured in billing projections and certified before floor deployment"
+    ],
+    gallery: [
+      {
+        id: "smartflow-screen-1",
+        title: "Executive RAG Readiness Dashboard & Critical Path",
+        caption: "Real-time Red/Amber/Green departmental readiness matrix, T-minus milestone pacing, and active MercadoPay Global 10-agent scale progression.",
+        imageUrl: "/assets/projects/smartflow/executive-rag-matrix.png",
+        expectedPath: "/assets/projects/smartflow/executive-rag-matrix.png"
+      },
+      {
+        id: "smartflow-screen-2",
+        title: "Dynamic Intake Portal & Multi-Department Request Builder",
+        caption: "Guided 3-step structured configuration flow capturing headcount scaling, CEFR language requirements, shift differentials, and instant OPEX impact.",
+        imageUrl: "/assets/projects/smartflow/dynamic-intake-portal.png",
+        expectedPath: "/assets/projects/smartflow/dynamic-intake-portal.png"
+      },
+      {
+        id: "smartflow-screen-3",
+        title: "Departmental Execution Hub & Parallel Workbenches",
+        caption: "Parallel workbenches for Operations seating, Finance billing ledgers, Recruitment pipeline, and Training SME overload rebalancing.",
+        imageUrl: "/assets/projects/smartflow/departmental-execution-hub.png",
+        expectedPath: "/assets/projects/smartflow/departmental-execution-hub.png"
+      },
+      {
+        id: "smartflow-screen-4",
+        title: "Compliance Audit Trail & Microsoft Teams Telemetry",
+        caption: "Immutable SHA-256 transaction journal, Microsoft Graph webhook latency monitors (18ms), and interactive Teams bot escalation cards.",
+        imageUrl: "/assets/projects/smartflow/compliance-audit-teams-log.png",
+        expectedPath: "/assets/projects/smartflow/compliance-audit-teams-log.png"
+      },
+      {
+        id: "smartflow-screen-5",
+        title: "Dynamic Request Builder & Financial Impact Simulation",
+        caption: "Live calculation engine simulating monthly OPEX ($41,200), gross margin (+36.4%), hardware thin-client requirements, and workstation allocation.",
+        imageUrl: "/assets/projects/smartflow/dynamic-intake-request-builder.png",
+        expectedPath: "/assets/projects/smartflow/dynamic-intake-request-builder.png"
+      }
     ],
     liveDemoId: "finops",
     featured: true

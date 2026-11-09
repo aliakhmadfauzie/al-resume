@@ -484,6 +484,43 @@ export const PROJECT_GALLERY_MAP: Record<string, ProjectGalleryItem[]> = {
       imageUrl: '/assets/projects/pulsetrack/agent-self-service-portal.png'
     }
   ],
+  smartflow: [
+    {
+      id: 'smartflow-screen-1',
+      title: 'Executive RAG Readiness Dashboard & Critical Path',
+      caption: 'Real-time Red/Amber/Green departmental readiness matrix, T-minus milestone pacing, and active MercadoPay Global 10-agent scale progression.',
+      expectedPath: '/assets/projects/smartflow/executive-rag-matrix.png',
+      imageUrl: '/assets/projects/smartflow/executive-rag-matrix.png'
+    },
+    {
+      id: 'smartflow-screen-2',
+      title: 'Dynamic Intake Portal & Multi-Department Request Builder',
+      caption: 'Guided 3-step structured configuration flow capturing headcount scaling, CEFR language requirements, shift differentials, and instant OPEX impact.',
+      expectedPath: '/assets/projects/smartflow/dynamic-intake-portal.png',
+      imageUrl: '/assets/projects/smartflow/dynamic-intake-portal.png'
+    },
+    {
+      id: 'smartflow-screen-3',
+      title: 'Departmental Execution Hub & Parallel Workbenches',
+      caption: 'Parallel workbenches for Operations seating, Finance billing ledgers, Recruitment pipeline, and Training SME overload rebalancing.',
+      expectedPath: '/assets/projects/smartflow/departmental-execution-hub.png',
+      imageUrl: '/assets/projects/smartflow/departmental-execution-hub.png'
+    },
+    {
+      id: 'smartflow-screen-4',
+      title: 'Compliance Audit Trail & Microsoft Teams Telemetry',
+      caption: 'Immutable SHA-256 transaction journal, Microsoft Graph webhook latency monitors (18ms), and interactive Teams bot escalation cards.',
+      expectedPath: '/assets/projects/smartflow/compliance-audit-teams-log.png',
+      imageUrl: '/assets/projects/smartflow/compliance-audit-teams-log.png'
+    },
+    {
+      id: 'smartflow-screen-5',
+      title: 'Dynamic Request Builder & Financial Impact Simulation',
+      caption: 'Live calculation engine simulating monthly OPEX ($41,200), gross margin (+36.4%), hardware thin-client requirements, and workstation allocation.',
+      expectedPath: '/assets/projects/smartflow/dynamic-intake-request-builder.png',
+      imageUrl: '/assets/projects/smartflow/dynamic-intake-request-builder.png'
+    }
+  ]
 };
 
 /**
