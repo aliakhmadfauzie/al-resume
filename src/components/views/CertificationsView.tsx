@@ -119,7 +119,7 @@ export const CertificationsView: React.FC = () => {
       {/* ====================================================================
           01. HEADER & CREDENTIAL SUMMARY BAR
          ==================================================================== */}
-      <header className="rounded-[var(--radius-lg)] bg-[var(--bg-surface)] border border-[var(--border-subtle)] p-6 sm:p-8 space-y-6 shadow-[var(--shadow-card)]">
+      <header id="section-certifications-header" className="rounded-[var(--radius-lg)] bg-[var(--bg-surface)] border border-[var(--border-subtle)] p-6 sm:p-8 space-y-6 shadow-[var(--shadow-card)]">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
           <div className="space-y-2.5 max-w-3xl">
             <p className="text-xs font-mono text-[var(--text-accent)] font-semibold tracking-wider uppercase">
@@ -198,7 +198,7 @@ export const CertificationsView: React.FC = () => {
       {/* ====================================================================
           02. INTERACTIVE FILTER, SEARCH & MASONRY CONTROLS
          ==================================================================== */}
-      <section className="space-y-6">
+      <section id="section-credentials-grid" className="space-y-6">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 bg-[var(--bg-surface)] p-4 rounded-[var(--radius-md)] border border-[var(--border-subtle)]">
           {/* Segmented Category Filter Controls */}
           <div

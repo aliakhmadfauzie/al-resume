@@ -12,7 +12,7 @@ export const InterviewModeView: React.FC = () => {
   return (
     <div className="space-y-10 py-6">
       {/* Header */}
-      <div className="space-y-4 border-b border-[var(--border-subtle)] pb-8">
+      <div id="section-interview-header" className="space-y-4 border-b border-[var(--border-subtle)] pb-8">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <p className="text-xs font-mono text-[var(--text-accent)] font-medium">
             01 · Career story &amp; architecture decisions
@@ -64,7 +64,7 @@ export const InterviewModeView: React.FC = () => {
 
       {/* VIEW 1: EXECUTIVE CAREER NARRATIVE (FOUR-BEAT ARC) */}
       {activeViewMode === 'narrative' ? (
-        <div className="space-y-10">
+        <div id="section-career-narrative" className="space-y-10">
           {/* The Hook */}
           <div className="rounded-[var(--radius-lg)] bg-gradient-to-br from-[#1a130b] via-[var(--bg-surface)] to-[var(--bg-surface)] border border-[#f97316]/30 p-6 sm:p-8 space-y-3 relative overflow-hidden shadow-lg">
             <div className="flex items-center space-x-2 text-[#f97316] text-xs font-mono font-bold uppercase tracking-wider">
@@ -185,7 +185,7 @@ export const InterviewModeView: React.FC = () => {
         </div>
       ) : (
         /* VIEW 2: ARCHITECTURAL SCENARIOS */
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <div id="section-defense-topics" className="grid grid-cols-1 lg:grid-cols-12 gap-6">
           {/* Left Sidebar: Questions List */}
           <div className="lg:col-span-4 space-y-3">
             <h2 className="text-xs font-mono text-[var(--text-secondary)] font-medium px-1">

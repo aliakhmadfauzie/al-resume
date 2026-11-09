@@ -68,7 +68,7 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
       </div>
 
       {/* Flagship Banner: IOI Oleo Domino Migration */}
-      <section className="bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-[var(--radius-lg)] p-4 sm:p-6 md:p-8 space-y-6 shadow-[var(--shadow-card)]">
+      <section id="section-migration-hero" className="bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-[var(--radius-lg)] p-4 sm:p-6 md:p-8 space-y-6 shadow-[var(--shadow-card)]">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-[var(--border-subtle)] pb-6">
           <div className="space-y-1.5">
             <div className="flex items-center space-x-2 text-xs font-mono text-[var(--text-accent)] font-medium">
@@ -109,7 +109,7 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
 
         {/* Consolidation Strategy Section */}
         {MIGRATION_OVERVIEW.consolidationStats && (
-          <div className="pt-2 space-y-4">
+          <div id="section-consolidation" className="pt-2 space-y-4">
             <h3 className="text-xs font-mono text-[var(--text-primary)] font-medium flex items-center space-x-2">
               <FolderGit2 className="w-4 h-4 text-[var(--text-accent)]" />
               <span>Consolidation &amp; Schema Modernization Telemetry</span>
@@ -202,7 +202,7 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
       </div>
 
       {/* Filter and Search Bar for Standalone & Core Projects */}
-      <section className="space-y-6 pt-2">
+      <section id="section-case-studies" className="space-y-6 pt-2">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 sm:gap-4 bg-[var(--bg-surface)] p-3.5 sm:p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)]">
           <div className="flex flex-wrap gap-1.5 sm:gap-2">
             {[

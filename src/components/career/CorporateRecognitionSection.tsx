@@ -27,6 +27,7 @@ import { HonorAwardItem, DeansListSemesterDetail } from '../../types';
 import { OrganizationLogo } from '../OrganizationLogo';
 
 interface CorporateRecognitionSectionProps {
+  id?: string;
   sectionNumber?: string;
   sectionTitle?: string;
   className?: string;
@@ -35,6 +36,7 @@ interface CorporateRecognitionSectionProps {
 type FilterCategory = 'all' | 'enterprise' | 'academic';
 
 export const CorporateRecognitionSection: React.FC<CorporateRecognitionSectionProps> = ({
+  id = 'section-recognition',
   sectionNumber = '03 · Honors & Academic Awards',
   sectionTitle = 'Corporate & Institutional Recognition',
   className = ''
@@ -128,7 +130,7 @@ export const CorporateRecognitionSection: React.FC<CorporateRecognitionSectionPr
   };
 
   return (
-    <section className={`space-y-6 pt-6 border-t border-[var(--border-subtle)] ${className}`}>
+    <section id={id} className={`space-y-6 pt-6 border-t border-[var(--border-subtle)] ${className}`}>
       {/* ====================================================================
           01. SECTION HEADER & METADATA
          ==================================================================== */}

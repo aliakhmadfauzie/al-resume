@@ -70,7 +70,7 @@ export const ExperienceView: React.FC = () => {
   return (
     <div className="space-y-12 py-6">
       {/* LinkedIn Profile Identity Header */}
-      <div className="rounded-[var(--radius-lg)] bg-[var(--bg-surface)] border border-[var(--border-subtle)] p-4 sm:p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-[var(--shadow-card)]">
+      <div id="section-experience-header" className="rounded-[var(--radius-lg)] bg-[var(--bg-surface)] border border-[var(--border-subtle)] p-4 sm:p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-[var(--shadow-card)]">
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-5">
           <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-[var(--interactive-primary)] shadow-[0_0_24px_rgba(249,115,22,0.28)] shrink-0">
             <img
@@ -148,10 +148,12 @@ export const ExperienceView: React.FC = () => {
       </div>
 
       {/* Interactive Dual-Track Root-and-Branch Career Map */}
-      <DualCareerBranchVisualizer />
+      <div id="section-career-branches">
+        <DualCareerBranchVisualizer />
+      </div>
 
       {/* Chronological Employment Records */}
-      <div className="space-y-6 pt-4 border-t border-[var(--border-subtle)]">
+      <div id="section-timeline" className="space-y-6 pt-4 border-t border-[var(--border-subtle)]">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2">
           <div>
             <p className="text-xs font-mono text-[var(--text-accent)] font-semibold uppercase">

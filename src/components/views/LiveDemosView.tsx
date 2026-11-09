@@ -199,7 +199,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
   return (
     <div className="space-y-8 py-6">
       {/* Page Header */}
-      <div className="space-y-3 border-b border-[var(--border-subtle)] pb-8">
+      <div id="section-demos-header" className="space-y-3 border-b border-[var(--border-subtle)] pb-8">
         <p className="text-xs font-mono text-[var(--text-accent)] font-medium">
           01 · Interactive Enterprise Application Sandbox
         </p>
@@ -244,7 +244,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
       </p>
 
       {/* Demo Selector Tabs with Domain Groups */}
-      <div className="space-y-3 border-b border-[var(--border-subtle)] pb-4">
+      <div id="section-demos-selector" className="space-y-3 border-b border-[var(--border-subtle)] pb-4">
         <div className="flex items-center space-x-2 overflow-x-auto pb-2">
           {demosList.map((d) => {
             const isActive = activeDemo === d.id;
@@ -267,6 +267,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
         </div>
       </div>
 
+      <div id="section-active-simulation">
       {/* DEMO 1: FinOps Spend Portal */}
       {activeDemo === 'finops' && (
         <div className="space-y-6">
@@ -1586,6 +1587,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'fin
           </div>
         </div>
       )}
+      </div>
     </div>
   );
 };

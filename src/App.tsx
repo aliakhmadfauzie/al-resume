@@ -7,6 +7,7 @@ import { ArrowUp } from 'lucide-react';
 import { NavTab, ProjectItem, MigrationSlice } from './types';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
+import { FloatingPageIndicator } from './components/FloatingPageIndicator';
 import { VibrantAmbientBackground } from './components/canvas/VibrantAmbientBackground';
 import { HomeView } from './components/views/HomeView';
 import { CinematicDoorGate, PersonaType } from './components/gate/CinematicDoorGate';
@@ -236,6 +237,9 @@ export default function App() {
           </motion.div>
         </AnimatePresence>
       </main>
+
+      {/* Desktop Floating Right-Side Dynamic Page Indicator */}
+      <FloatingPageIndicator currentTab={currentTab} />
 
       {/* 3D WebGL Motion Status Indicator & Toggle */}
       <div className="fixed bottom-4 left-4 sm:bottom-6 sm:left-6 z-40 flex items-center space-x-2">

@@ -123,6 +123,7 @@ export function HomeView({
           SECTION 1: HERO & ABOVE-THE-FOLD REAL ESTATE (6-SECOND RECRUITER GATE)
           ========================================================================= */}
       <section 
+        id="section-hero"
         aria-labelledby="home-title" 
         className="relative grid lg:grid-cols-12 gap-8 lg:gap-10 items-start rounded-3xl p-4 sm:p-8 -mx-4 sm:-mx-8 overflow-hidden"
       >
@@ -796,6 +797,7 @@ export function HomeView({
           Eliminates false floors; anchors eyes to numerals, currency, and percentages.
           ========================================================================= */}
       <section
+        id="section-metrics"
         aria-labelledby="proof-ticker-title"
         className="glass-card p-6 sm:p-8 border border-[var(--border-subtle)] relative overflow-hidden"
       >
@@ -1578,7 +1580,7 @@ export function HomeView({
           SECTION 4: CURATED PROJECT HIGHLIGHTS (STAR / XYZ FRAMEWORK)
           Front-loaded impact verbs and bolded numerical anchors.
           ========================================================================= */}
-      <section aria-labelledby="selected-work-title" className="space-y-8">
+      <section id="section-work" aria-labelledby="selected-work-title" className="space-y-8">
         <div className="flex flex-wrap gap-4 justify-between items-end">
           <div>
             <p className="section-eyebrow">
@@ -1759,7 +1761,7 @@ export function HomeView({
       {/* =========================================================================
           SECTION 6: SELECTED CREDENTIALS & INDUSTRY ACCREDITATIONS
           ========================================================================= */}
-      <section aria-labelledby="credentials-title" className="space-y-8">
+      <section id="section-credentials" aria-labelledby="credentials-title" className="space-y-8">
         <div className="flex flex-wrap justify-between items-end gap-4">
           <div>
             <p className="section-eyebrow">Professional Rigor</p>
@@ -1795,7 +1797,7 @@ export function HomeView({
           SECTION 7: SOCIAL PROOF & TESTIMONIALS
           ========================================================================= */}
       {LINKEDIN_TESTIMONIALS.length > 0 && (
-        <section aria-labelledby="testimonials-title" className="space-y-8">
+        <section id="section-testimonials" aria-labelledby="testimonials-title" className="space-y-8">
           <div>
             <p className="section-eyebrow">Social Proof</p>
             <h2 id="testimonials-title" className="section-title">

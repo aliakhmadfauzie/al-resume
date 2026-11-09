@@ -552,7 +552,7 @@ export const SkillsView: React.FC = () => {
       </div>
 
       {/* SECTION 1: Split-Pane Executive Ledger (Anti-Slop Zero-Truncation Layout) */}
-      <section className="space-y-6">
+      <section id="section-skills-ledger" className="space-y-6">
         {/* Domain Selection Tabs (Industrial Geometry rounded-sm, max 6px radius) */}
         <div className="flex flex-wrap gap-2 border-b border-[var(--border-subtle)] pb-4">
           {domainPillars.map((domain) => {
@@ -696,7 +696,7 @@ export const SkillsView: React.FC = () => {
       </section>
 
       {/* SECTION 2: Power Platform Enterprise Architecture Suite (5-Tier Spec) */}
-      <section className="space-y-6 pt-4">
+      <section id="section-arch-suite" className="space-y-6 pt-4">
         <div className="border-b border-[var(--border-subtle)] pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-3">
           <div>
             <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-[var(--radius-sm)] bg-[var(--interactive-subtle-bg)] border border-[var(--interactive-subtle-border)] text-xs font-mono text-[var(--text-accent)] font-semibold uppercase tracking-wider mb-2">
@@ -849,7 +849,7 @@ export const SkillsView: React.FC = () => {
       </section>
 
       {/* SECTION 3: Pro-Code Extensions & Development Stack */}
-      <section className="space-y-4">
+      <section id="section-procode-stack" className="space-y-4">
         <div className="border-b border-[var(--border-subtle)] pb-3">
           <p className="text-xs font-mono text-[var(--text-accent)] font-medium">03 · Pro-Code Engineering</p>
           <h2
@@ -887,7 +887,7 @@ export const SkillsView: React.FC = () => {
       </section>
 
       {/* SECTION 4: ALM & Enterprise Governance + Core Business Competencies */}
-      <section className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <section id="section-alm-governance" className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* ALM & Governance */}
         <div className="bg-[var(--bg-surface)] p-6 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-4 shadow-[var(--shadow-card)]">
           <div className="flex items-center justify-between border-b border-[var(--border-subtle)] pb-3">
