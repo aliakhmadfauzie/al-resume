@@ -85,6 +85,25 @@ Whether commanding frontline crisis response across 34 agents or validating GxP 
 
 ---
 
+## Google XYZ Resume Bullets (Lead / Staff Software Engineer & Solutions Architect)
+
+* **Enterprise Modernization & Cost Optimization:**  
+  *Architected and executed an end-to-end migration pipeline converting **365+ legacy Lotus Domino databases** into a unified Microsoft Power Platform and Dataverse ecosystem, eliminating **\$960K/year in legacy licensing costs** and establishing a zero-downtime cutover across 23 manufacturing departments by engineering custom Python AST schema compilers and declarative Power Fx YAML generators.*
+
+* **System Design & Declarative Tooling:**  
+  *Eliminated manual GUI drag-and-drop development across **13 mission-critical enterprise systems** (52 production screens) by engineering an automated code-generation toolchain that authored modular **Power Fx Canvas YAML** validated through a headless **Playwright CDP** testing harness.*
+
+* **Enterprise UI/UX & Data Visualization:**  
+  *Eradicated visual homogenization across 13 industrial applications by replacing generic list screens with **high-density operational dashboards** featuring bespoke SVG visualizations (FFT vibration spectra, GC-MS chromatograms, 7-day shift Gantts, and CapEx waterfall charts), boosting stakeholder engagement and achieving **100% WCAG AA/AAA contrast compliance**.*
+
+* **Process Automation & ERP Synchronization:**  
+  *Orchestrated **13 enterprise Power Automate cloud flows** with multi-tier approval state machines, parallel approval routing, and automated SAP RFC ERP integration, accelerating cross-departmental approval cycles from multi-day manual delays to real-time automated processing.*
+
+* **Full-Stack Portfolio Engineering:**  
+  *Engineered and deployed a responsive, high-performance developer portfolio and digital architecture resume using **React 19, Vite, and Tailwind CSS 4**, featuring an integrated Google Gemini AI conversational concierge, sub-7-second production builds, and automated CI/CD deployment to **Firebase Hosting**.*
+
+---
+
 ## Locked Context Flags
 
 - **`[FLAG-GXP-01: System Validation Standard]`** $\rightarrow$ **Locked:** GAMP 5 Category 4 Configured Software with URS, FS, and IQ/OQ/PQ verification.

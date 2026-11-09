@@ -40,6 +40,8 @@ This repository houses the complete design system, UI assets, and architecture s
 📖 **Detailed Handbooks & Reports**:
 - For full technical specifications, architecture diagrams, and field mapping schemas, see [`docs/enterprise-migration/README.md`](docs/enterprise-migration/README.md).
 - For the design system modernization, persistent navigation, and SVG visualization audit, see [`docs/bespoke_ui_modernization_report.md`](docs/bespoke_ui_modernization_report.md).
+- For the Product Portfolio Architecture review (ADRs, Google XYZ resume bullets, LinkedIn breakdowns), see [`docs/PRODUCT_PORTFOLIO_REVIEW.md`](docs/PRODUCT_PORTFOLIO_REVIEW.md).
+- For the Recommendation-First consultative engineering guardrail proposal, see [`docs/RECOMMENDATION_FIRST_LEARNING_PROPOSAL.md`](docs/RECOMMENDATION_FIRST_LEARNING_PROPOSAL.md).
 
 ---
 
