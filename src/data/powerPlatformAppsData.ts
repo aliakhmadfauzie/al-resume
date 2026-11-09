@@ -47,7 +47,7 @@ export const DEPARTMENTAL_APPS: DepartmentalAppItem[] = [
     ],
     screens: [
       { id: 'login', name: 'Login Screen', imagePath: '/assets/power-apps/apps/itssr/01-loginscreen.png' },
-      { id: 'browse', name: 'Browse Screen', imagePath: '/assets/power-apps/apps/itssr/02-browsescreen.png' },
+      { id: 'browse', name: 'Dashboard Screen', imagePath: '/assets/power-apps/apps/itssr/02-browsescreen.png' },
       { id: 'details', name: 'Details Screen', imagePath: '/assets/power-apps/apps/itssr/03-detailsscreen.png' },
       { id: 'edit', name: 'Edit Screen', imagePath: '/assets/power-apps/apps/itssr/04-editscreen.png' }
     ],
@@ -97,7 +97,7 @@ export const DEPARTMENTAL_APPS: DepartmentalAppItem[] = [
     ],
     screens: [
       { id: 'login', name: 'Login Screen', imagePath: '/assets/power-apps/apps/eaf/01-loginscreen.png' },
-      { id: 'browse', name: 'Browse Screen', imagePath: '/assets/power-apps/apps/eaf/02-browsescreen.png' },
+      { id: 'browse', name: 'Dashboard Screen', imagePath: '/assets/power-apps/apps/eaf/02-browsescreen.png' },
       { id: 'details', name: 'Details Screen', imagePath: '/assets/power-apps/apps/eaf/03-detailsscreen.png' },
       { id: 'edit', name: 'Edit Screen', imagePath: '/assets/power-apps/apps/eaf/04-editscreen.png' }
     ],
@@ -141,7 +141,7 @@ export const DEPARTMENTAL_APPS: DepartmentalAppItem[] = [
     ],
     screens: [
       { id: 'login', name: 'Login Screen', imagePath: '/assets/power-apps/apps/lve/01-loginscreen.png' },
-      { id: 'browse', name: 'Browse Screen', imagePath: '/assets/power-apps/apps/lve/02-browsescreen.png' },
+      { id: 'browse', name: 'Dashboard Screen', imagePath: '/assets/power-apps/apps/lve/02-browsescreen.png' },
       { id: 'details', name: 'Details Screen', imagePath: '/assets/power-apps/apps/lve/03-detailsscreen.png' },
       { id: 'edit', name: 'Edit Screen', imagePath: '/assets/power-apps/apps/lve/04-editscreen.png' }
     ],
@@ -184,7 +184,7 @@ export const DEPARTMENTAL_APPS: DepartmentalAppItem[] = [
     ],
     screens: [
       { id: 'login', name: 'Login Screen', imagePath: '/assets/power-apps/apps/mcl/01-loginscreen.png' },
-      { id: 'browse', name: 'Browse Screen', imagePath: '/assets/power-apps/apps/mcl/02-browsescreen.png' },
+      { id: 'browse', name: 'Dashboard Screen', imagePath: '/assets/power-apps/apps/mcl/02-browsescreen.png' },
       { id: 'details', name: 'Details Screen', imagePath: '/assets/power-apps/apps/mcl/03-detailsscreen.png' },
       { id: 'edit', name: 'Edit Screen', imagePath: '/assets/power-apps/apps/mcl/04-editscreen.png' }
     ],
@@ -226,7 +226,7 @@ export const DEPARTMENTAL_APPS: DepartmentalAppItem[] = [
     ],
     screens: [
       { id: 'login', name: 'Login Screen', imagePath: '/assets/power-apps/apps/car/01-loginscreen.png' },
-      { id: 'browse', name: 'Browse Screen', imagePath: '/assets/power-apps/apps/car/02-browsescreen.png' },
+      { id: 'browse', name: 'Dashboard Screen', imagePath: '/assets/power-apps/apps/car/02-browsescreen.png' },
       { id: 'details', name: 'Details Screen', imagePath: '/assets/power-apps/apps/car/03-detailsscreen.png' },
       { id: 'edit', name: 'Edit Screen', imagePath: '/assets/power-apps/apps/car/04-editscreen.png' }
     ],
@@ -268,7 +268,7 @@ export const DEPARTMENTAL_APPS: DepartmentalAppItem[] = [
     ],
     screens: [
       { id: 'login', name: 'Login Screen', imagePath: '/assets/power-apps/apps/cmf/01-loginscreen.png' },
-      { id: 'browse', name: 'Browse Screen', imagePath: '/assets/power-apps/apps/cmf/02-browsescreen.png' },
+      { id: 'browse', name: 'Dashboard Screen', imagePath: '/assets/power-apps/apps/cmf/02-browsescreen.png' },
       { id: 'details', name: 'Details Screen', imagePath: '/assets/power-apps/apps/cmf/03-detailsscreen.png' },
       { id: 'edit', name: 'Edit Screen', imagePath: '/assets/power-apps/apps/cmf/04-editscreen.png' }
     ],
@@ -309,7 +309,7 @@ export const DEPARTMENTAL_APPS: DepartmentalAppItem[] = [
     ],
     screens: [
       { id: 'login', name: 'Login Screen', imagePath: '/assets/power-apps/apps/sheinciacci/01-loginscreen.png' },
-      { id: 'browse', name: 'Browse Screen', imagePath: '/assets/power-apps/apps/sheinciacci/02-browsescreen.png' },
+      { id: 'browse', name: 'Dashboard Screen', imagePath: '/assets/power-apps/apps/sheinciacci/02-browsescreen.png' },
       { id: 'details', name: 'Details Screen', imagePath: '/assets/power-apps/apps/sheinciacci/03-detailsscreen.png' },
       { id: 'edit', name: 'Edit Screen', imagePath: '/assets/power-apps/apps/sheinciacci/04-editscreen.png' }
     ],
@@ -350,7 +350,7 @@ export const DEPARTMENTAL_APPS: DepartmentalAppItem[] = [
     ],
     screens: [
       { id: 'login', name: 'Login Screen', imagePath: '/assets/power-apps/apps/pperequ/01-loginscreen.png' },
-      { id: 'browse', name: 'Browse Screen', imagePath: '/assets/power-apps/apps/pperequ/02-browsescreen.png' },
+      { id: 'browse', name: 'Dashboard Screen', imagePath: '/assets/power-apps/apps/pperequ/02-browsescreen.png' },
       { id: 'details', name: 'Details Screen', imagePath: '/assets/power-apps/apps/pperequ/03-detailsscreen.png' },
       { id: 'edit', name: 'Edit Screen', imagePath: '/assets/power-apps/apps/pperequ/04-editscreen.png' }
     ],
@@ -391,7 +391,7 @@ export const DEPARTMENTAL_APPS: DepartmentalAppItem[] = [
     ],
     screens: [
       { id: 'login', name: 'Login Screen', imagePath: '/assets/power-apps/apps/far/01-loginscreen.png' },
-      { id: 'browse', name: 'Browse Screen', imagePath: '/assets/power-apps/apps/far/02-browsescreen.png' },
+      { id: 'browse', name: 'Dashboard Screen', imagePath: '/assets/power-apps/apps/far/02-browsescreen.png' },
       { id: 'details', name: 'Details Screen', imagePath: '/assets/power-apps/apps/far/03-detailsscreen.png' },
       { id: 'edit', name: 'Edit Screen', imagePath: '/assets/power-apps/apps/far/04-editscreen.png' }
     ],
@@ -432,7 +432,7 @@ export const DEPARTMENTAL_APPS: DepartmentalAppItem[] = [
     ],
     screens: [
       { id: 'login', name: 'Login Screen', imagePath: '/assets/power-apps/apps/mtp/01-loginscreen.png' },
-      { id: 'browse', name: 'Browse Screen', imagePath: '/assets/power-apps/apps/mtp/02-browsescreen.png' },
+      { id: 'browse', name: 'Dashboard Screen', imagePath: '/assets/power-apps/apps/mtp/02-browsescreen.png' },
       { id: 'details', name: 'Details Screen', imagePath: '/assets/power-apps/apps/mtp/03-detailsscreen.png' },
       { id: 'edit', name: 'Edit Screen', imagePath: '/assets/power-apps/apps/mtp/04-editscreen.png' }
     ],
@@ -473,7 +473,7 @@ export const DEPARTMENTAL_APPS: DepartmentalAppItem[] = [
     ],
     screens: [
       { id: 'login', name: 'Login Screen', imagePath: '/assets/power-apps/apps/ncrinteaudi/01-loginscreen.png' },
-      { id: 'browse', name: 'Browse Screen', imagePath: '/assets/power-apps/apps/ncrinteaudi/02-browsescreen.png' },
+      { id: 'browse', name: 'Dashboard Screen', imagePath: '/assets/power-apps/apps/ncrinteaudi/02-browsescreen.png' },
       { id: 'details', name: 'Details Screen', imagePath: '/assets/power-apps/apps/ncrinteaudi/03-detailsscreen.png' },
       { id: 'edit', name: 'Edit Screen', imagePath: '/assets/power-apps/apps/ncrinteaudi/04-editscreen.png' }
     ],
@@ -513,7 +513,7 @@ export const DEPARTMENTAL_APPS: DepartmentalAppItem[] = [
     ],
     screens: [
       { id: 'login', name: 'Login Screen', imagePath: '/assets/power-apps/apps/oos/01-loginscreen.png' },
-      { id: 'browse', name: 'Browse Screen', imagePath: '/assets/power-apps/apps/oos/02-browsescreen.png' },
+      { id: 'browse', name: 'Dashboard Screen', imagePath: '/assets/power-apps/apps/oos/02-browsescreen.png' },
       { id: 'details', name: 'Details Screen', imagePath: '/assets/power-apps/apps/oos/03-detailsscreen.png' },
       { id: 'edit', name: 'Edit Screen', imagePath: '/assets/power-apps/apps/oos/04-editscreen.png' }
     ],
@@ -554,7 +554,7 @@ export const DEPARTMENTAL_APPS: DepartmentalAppItem[] = [
     ],
     screens: [
       { id: 'login', name: 'Login Screen', imagePath: '/assets/power-apps/apps/csd/01-loginscreen.png' },
-      { id: 'browse', name: 'Browse Screen', imagePath: '/assets/power-apps/apps/csd/02-browsescreen.png' },
+      { id: 'browse', name: 'Dashboard Screen', imagePath: '/assets/power-apps/apps/csd/02-browsescreen.png' },
       { id: 'details', name: 'Details Screen', imagePath: '/assets/power-apps/apps/csd/03-detailsscreen.png' },
       { id: 'edit', name: 'Edit Screen', imagePath: '/assets/power-apps/apps/csd/04-editscreen.png' }
     ],

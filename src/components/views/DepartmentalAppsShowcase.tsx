@@ -64,7 +64,7 @@ export const DepartmentalAppsShowcase: React.FC<DepartmentalAppsShowcaseProps> =
             Departmental Power Apps &amp; Automate Workflows
           </h2>
           <p className="text-sm text-[var(--text-secondary)] max-w-3xl leading-relaxed">
-            Standardized enterprise quadruplets (Login, Browse, Details, Edit) engineered in declarative Power Fx Canvas YAML paired with modern Power Automate cloud workflows and verified via Playwright CDP headless capture.
+            Standardized enterprise quadruplets (Login, Dashboard, Details, Edit) featuring persistent context-aware navigation, domain-driven color theming, and dynamic operational telemetry, paired with modern Power Automate cloud workflows.
           </p>
         </div>
 
@@ -173,7 +173,7 @@ export const DepartmentalAppsShowcase: React.FC<DepartmentalAppsShowcaseProps> =
                 <div className="flex flex-wrap gap-1 bg-[var(--bg-surface)] p-1 rounded-[var(--radius-sm)] border border-[var(--border-subtle)]">
                   {[
                     { key: 'login', label: 'Login' },
-                    { key: 'browse', label: 'Browse' },
+                    { key: 'browse', label: 'Dashboard' },
                     { key: 'details', label: 'Details' },
                     { key: 'edit', label: 'Edit' },
                     { key: 'flow', label: '⚡ Flow' }
