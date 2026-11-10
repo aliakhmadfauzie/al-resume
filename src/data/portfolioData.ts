@@ -30,8 +30,8 @@ export const PERSONAL_INFO = {
   linkedInHandle: "linkedin.com/in/aliakhmadf",
   github: "https://github.com/aliakhmadfauzie",
   avatarUrl: "/assets/profile/ali-avatar.jpg",
-  yearsExperience: "9+ Years",
-  summary: "A results-driven Power Platform solution architect and operations leader specializing in migrating legacy systems (Lotus Notes) to modern Microsoft 365 ecosystems. Proven track record in designing end-to-end automation workflows, AI-enhanced processes, and robust governance frameworks that deliver 80–90% reductions in manual workload, >98% SLA compliance, and 90%+ data accuracy across Quality, Warehouse, HR, and IT."
+  yearsExperience: "9+ Years (Software since 2022)",
+  summary: "A results-driven Power Platform and Full-Stack Solution Architect with software engineering expertise since 2022 and 9+ years of overall operational and technical leadership. Specializing in enterprise legacy modernization (Lotus Notes to M365/Dataverse), designing end-to-end automation workflows, AI-enhanced processes, and robust governance frameworks that deliver $960K/yr in licensing avoidance, >98% SLA compliance, and zero unplanned plant downtime."
 };
 
 export const KEY_METRICS = [
@@ -2005,7 +2005,7 @@ export const TRUST_SIGNALS: TrustSignal[] = [
   {
     icon: "groups",
     title: "Cross-Regional Operations Leadership",
-    detail: "9+ years leading technical delivery, BPO operations, and executive stakeholder alignment across Malaysia and Indonesia.",
+    detail: "9+ years total operational tenure (with software development since 2022) leading technical delivery, BPO operations, and executive stakeholder alignment across Malaysia and Indonesia.",
     category: "leadership"
   },
   {

@@ -266,9 +266,10 @@ export function HomeView({
           {/* Inverted Pyramid Value Proposition (Dynamic based on selected persona) */}
           {activePersona === 'software' ? (
             <p className="text-base sm:text-lg lg:text-xl leading-relaxed text-[var(--text-secondary)] max-w-2xl">
-              <strong className="text-[var(--text-primary)]">9+ years</strong> of full-stack engineering expertise across{' '}
+              <strong className="text-[var(--text-primary)]">Enterprise Solutions Architect &amp; Full-Stack Engineer</strong> developing modern software systems since <strong className="text-cyan-400">2022</strong> across{' '}
               <strong className="text-[var(--text-primary)]">React 19</strong>,{' '}
-              <strong className="text-[var(--text-primary)]">TypeScript</strong>, and{' '}
+              <strong className="text-[var(--text-primary)]">TypeScript</strong>,{' '}
+              <strong className="text-[var(--text-primary)]">Power Platform</strong>, and{' '}
               <strong className="text-[var(--text-primary)]">Cloud Architecture</strong>. Built zero-downtime microservices,
               automated distributed ETL pipelines, and validated{' '}
               <strong className="text-cyan-400">7,878 resilient interfaces</strong> with sub-second latencies.
@@ -289,7 +290,7 @@ export function HomeView({
             </p>
           ) : (
             <p className="text-base sm:text-lg lg:text-xl leading-relaxed text-[var(--text-secondary)] max-w-2xl">
-              <strong className="text-[var(--text-primary)]">9+ years</strong> of dual-track engineering &amp; operational leadership across{' '}
+              <strong className="text-[var(--text-primary)]">9+ years</strong> of total professional excellence (Operations Leadership since 2017 &amp; Software Engineering since <strong className="text-cyan-400">2022</strong>) across{' '}
               <strong className="text-[var(--text-primary)]">IOI Corporation</strong>,{' '}
               <strong className="text-[var(--text-primary)]">Concentrix CVG</strong>, and{' '}
               <strong className="text-[var(--text-primary)]">Accenture</strong>. Architected migrations retiring{' '}
@@ -1738,7 +1739,7 @@ export function HomeView({
           </p>
         ) : (
           <p className="text-base text-[var(--text-secondary)] leading-relaxed max-w-3xl">
-            A battle-tested Enterprise Solutions Architect and Operations Team Manager with 9+ years directing mission-critical enterprise systems and high-volume BPO operations across IOI Corporation, Concentrix CVG, and Accenture. Proven track record retiring 365+ legacy databases saving $960,000/year under GAMP 5 compliance, while commanding 34 direct reports across 7 APAC language pods in Trust &amp; Safety, Content Moderation, and Customer Support—sustaining &gt;98% contractual SLA compliance, leading the QA Department, and cutting AHT by 25% via Six Sigma DMAIC.
+            A battle-tested Enterprise Solutions Architect and Operations Leader with 9+ years of professional delivery—commanding high-volume BPO operations since 2017 and engineering modern software architectures since 2022 across IOI Corporation, Concentrix CVG, and Accenture. Proven track record retiring 365+ legacy databases saving $960,000/year under GAMP 5 compliance, while commanding 34 direct reports across 7 APAC language pods in Trust &amp; Safety, Content Moderation, and Customer Support—sustaining &gt;98% contractual SLA compliance, leading the QA Department, and cutting AHT by 25% via Six Sigma DMAIC.
           </p>
         )}
 

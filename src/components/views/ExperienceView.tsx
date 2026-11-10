@@ -128,7 +128,7 @@ export const ExperienceView: React.FC = () => {
         <div className="bg-[var(--bg-surface)] p-3 sm:p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-1">
           <p className="text-[10px] sm:text-[11px] font-mono uppercase tracking-wider text-[var(--text-tertiary)]">CAREER TENURE</p>
           <p className="text-xl sm:text-3xl font-extrabold text-[var(--text-accent)] font-mono">9+ Years</p>
-          <p className="text-[11px] sm:text-xs text-[var(--text-secondary)]">Modernization &amp; Ops Leadership</p>
+          <p className="text-[11px] sm:text-xs text-[var(--text-secondary)]">Total Career · Software Since 2022</p>
         </div>
         <div className="bg-[var(--bg-surface)] p-3 sm:p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-1">
           <p className="text-[10px] sm:text-[11px] font-mono uppercase tracking-wider text-[var(--text-tertiary)]">MERIT ADVANCEMENT</p>
