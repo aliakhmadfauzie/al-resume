@@ -177,13 +177,29 @@
 }
 
 @layer base {
+  html {
+    overflow-x: hidden;
+    max-width: 100%;
+    -webkit-text-size-adjust: 100%;
+    touch-action: manipulation;
+  }
+
   body {
     font-family: var(--font-sans);
     background-color: var(--bg-default);
     color: var(--text-primary);
     overflow-x: hidden;
+    max-width: 100%;
     font-size: var(--text-body);
     line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* iOS Auto-Zoom Immunity: Force font-size >= 16px on all form inputs on touch devices */
+  input, select, textarea {
+    font-size: 1rem;
+    touch-action: manipulation;
   }
 
   code, pre, .font-mono {
@@ -492,18 +508,21 @@ a:focus-visible {
 
 /* Shared controls and quiet-motion behavior. */
 @layer components {
-.action-primary, .action-secondary { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; min-height: 44px; padding: .7rem 1rem; border-radius: 8px; font-size: .875rem; font-weight: 600; cursor: pointer; transition: background-color .15s, border-color .15s; }
+.action-primary, .action-secondary { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; min-height: 48px; padding: .75rem 1.15rem; border-radius: 10px; font-size: .875rem; font-weight: 600; cursor: pointer; touch-action: manipulation; user-select: none; transition: background-color .15s, border-color .15s, transform .12s; }
+.action-primary:active, .action-secondary:active { transform: scale(0.98); }
 .action-primary { background: var(--interactive-primary); color: var(--text-on-interactive); border: 1px solid var(--interactive-primary); }
 .action-primary:hover { background: var(--interactive-primary-hover); }
 .action-secondary { background: var(--bg-surface); border: 1px solid var(--border-subtle); color: var(--text-primary); }
 .action-secondary:hover { border-color: var(--border-focus); background: var(--bg-surface-elevated); }
-.dialog-close { width: 44px; height: 44px; flex-shrink: 0; display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--border-subtle); border-radius: 8px; cursor: pointer; }
-.nav-link { display: inline-flex; align-items: center; min-height: 44px; padding: .65rem .8rem; font-size: .875rem; border-radius: 8px; color: var(--text-secondary); }
+.dialog-close { width: 48px; height: 48px; min-width: 48px; min-height: 48px; flex-shrink: 0; display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--border-subtle); border-radius: 10px; cursor: pointer; touch-action: manipulation; transition: transform .12s, background-color .15s; }
+.dialog-close:active { transform: scale(0.95); }
+.nav-link { display: inline-flex; align-items: center; min-height: 48px; padding: .7rem .9rem; font-size: .875rem; border-radius: 10px; color: var(--text-secondary); touch-action: manipulation; transition: background-color .15s, color .15s, transform .12s; }
+.nav-link:active { transform: scale(0.98); }
 .nav-link:hover, .nav-link-active { background: var(--interactive-subtle-bg); color: var(--text-accent); }
 .nav-link-active { box-shadow: inset 0 -2px var(--interactive-primary); }
 .section-eyebrow { font-size: .875rem; font-weight: 600; color: var(--text-accent); margin-bottom: .5rem; }
 .section-title { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; line-height: 1.25; letter-spacing: -.025em; }
-.case-study-link { display: inline-flex; align-items: center; min-height: 44px; text-decoration: underline; text-underline-offset: 4px; }
+.case-study-link { display: inline-flex; align-items: center; min-height: 48px; text-decoration: underline; text-underline-offset: 4px; touch-action: manipulation; }
 }
 #main-content:focus { outline: none; }
 .portfolio-dialog { margin: auto; max-height: 94dvh; box-shadow: 0 24px 100px #0008; }

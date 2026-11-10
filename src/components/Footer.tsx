@@ -38,18 +38,18 @@ export const Footer: React.FC<FooterProps> = ({
             </div>
           </div>
 
-          {/* Center: Quick Links (3 Sub-Columns Matching Reference) */}
+          {/* Center: Quick Links (Responsive Sub-Columns) */}
           <div className="md:col-span-5 space-y-2.5">
             <h4 className="text-xs font-semibold text-[var(--text-primary)]">
               Quick Links
             </h4>
-            <div className="grid grid-cols-3 gap-4 text-xs text-[var(--text-tertiary)]">
-              <ul className="space-y-1.5">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 text-xs text-[var(--text-tertiary)]">
+              <ul className="space-y-2">
                 <li>
                   <button
                     type="button"
                     onClick={() => scrollToHomeAnchor('section-about')}
-                    className="hover:text-[var(--text-accent)] transition-colors cursor-pointer"
+                    className="hover:text-[var(--text-accent)] transition-colors cursor-pointer py-1 block text-left"
                   >
                     About
                   </button>
@@ -58,7 +58,7 @@ export const Footer: React.FC<FooterProps> = ({
                   <button
                     type="button"
                     onClick={() => scrollToHomeAnchor('section-services')}
-                    className="hover:text-[var(--text-accent)] transition-colors cursor-pointer"
+                    className="hover:text-[var(--text-accent)] transition-colors cursor-pointer py-1 block text-left"
                   >
                     Services
                   </button>
@@ -67,19 +67,19 @@ export const Footer: React.FC<FooterProps> = ({
                   <button
                     type="button"
                     onClick={() => onSelectTab('projects')}
-                    className="hover:text-[var(--text-accent)] transition-colors cursor-pointer"
+                    className="hover:text-[var(--text-accent)] transition-colors cursor-pointer py-1 block text-left"
                   >
                     Projects
                   </button>
                 </li>
               </ul>
 
-              <ul className="space-y-1.5">
+              <ul className="space-y-2">
                 <li>
                   <button
                     type="button"
                     onClick={() => onSelectTab('skills')}
-                    className="hover:text-[var(--text-accent)] transition-colors cursor-pointer"
+                    className="hover:text-[var(--text-accent)] transition-colors cursor-pointer py-1 block text-left"
                   >
                     Tech Stack
                   </button>
@@ -88,7 +88,7 @@ export const Footer: React.FC<FooterProps> = ({
                   <button
                     type="button"
                     onClick={() => onSelectTab('demos')}
-                    className="hover:text-[var(--text-accent)] transition-colors cursor-pointer"
+                    className="hover:text-[var(--text-accent)] transition-colors cursor-pointer py-1 block text-left"
                   >
                     Simulators
                   </button>
@@ -97,19 +97,19 @@ export const Footer: React.FC<FooterProps> = ({
                   <button
                     type="button"
                     onClick={() => onSelectTab('experience')}
-                    className="hover:text-[var(--text-accent)] transition-colors cursor-pointer"
+                    className="hover:text-[var(--text-accent)] transition-colors cursor-pointer py-1 block text-left"
                   >
                     Experience
                   </button>
                 </li>
               </ul>
 
-              <ul className="space-y-1.5">
+              <ul className="space-y-2 col-span-2 sm:col-span-1">
                 <li>
                   <button
                     type="button"
                     onClick={() => onSelectTab('interview')}
-                    className="hover:text-[var(--text-accent)] transition-colors cursor-pointer"
+                    className="hover:text-[var(--text-accent)] transition-colors cursor-pointer py-1 block text-left"
                   >
                     Architecture Q&amp;A
                   </button>
@@ -118,7 +118,7 @@ export const Footer: React.FC<FooterProps> = ({
                   <button
                     type="button"
                     onClick={onOpenContact}
-                    className="hover:text-[var(--text-accent)] transition-colors cursor-pointer"
+                    className="hover:text-[var(--text-accent)] transition-colors cursor-pointer py-1 block text-left"
                   >
                     Contact
                   </button>
@@ -127,7 +127,7 @@ export const Footer: React.FC<FooterProps> = ({
                   <button
                     type="button"
                     onClick={onOpenResume}
-                    className="hover:text-[var(--text-accent)] transition-colors cursor-pointer"
+                    className="hover:text-[var(--text-accent)] transition-colors cursor-pointer py-1 block text-left"
                   >
                     Executive CV
                   </button>
@@ -141,17 +141,17 @@ export const Footer: React.FC<FooterProps> = ({
             <h4 className="text-xs font-semibold text-[var(--text-primary)]">
               Let&apos;s Connect
             </h4>
-            <div className="flex items-center space-x-2.5">
+            <div className="flex items-center space-x-2">
               <a
                 id="footer-link-github"
                 aria-label="Ali Akhmad Fauzie GitHub Profile"
                 href={PERSONAL_INFO.github}
                 target="_blank"
                 rel="noreferrer"
-                className="w-8 h-8 rounded-[var(--radius-sm)] bg-[#13151c] hover:bg-[var(--interactive-subtle-bg)] text-[var(--text-secondary)] hover:text-[var(--text-accent)] flex items-center justify-center transition-colors border border-[var(--border-subtle)] hover:border-[var(--interactive-subtle-border)]"
+                className="w-11 h-11 min-w-[44px] min-h-[44px] rounded-xl bg-[#13151c] hover:bg-[var(--interactive-subtle-bg)] text-[var(--text-secondary)] hover:text-[var(--text-accent)] flex items-center justify-center transition-all border border-[var(--border-subtle)] hover:border-[var(--interactive-subtle-border)] active:scale-95 touch-manipulation"
                 title="GitHub Profile"
               >
-                <Github className="w-4 h-4" />
+                <Github className="w-5 h-5" />
               </a>
               <a
                 id="footer-link-linkedin"
@@ -159,30 +159,30 @@ export const Footer: React.FC<FooterProps> = ({
                 href={PERSONAL_INFO.linkedIn}
                 target="_blank"
                 rel="noreferrer"
-                className="w-8 h-8 rounded-[var(--radius-sm)] bg-[#13151c] hover:bg-[var(--interactive-subtle-bg)] text-[var(--text-secondary)] hover:text-[var(--text-accent)] flex items-center justify-center transition-colors border border-[var(--border-subtle)] hover:border-[var(--interactive-subtle-border)]"
+                className="w-11 h-11 min-w-[44px] min-h-[44px] rounded-xl bg-[#13151c] hover:bg-[var(--interactive-subtle-bg)] text-[var(--text-secondary)] hover:text-[var(--text-accent)] flex items-center justify-center transition-all border border-[var(--border-subtle)] hover:border-[var(--interactive-subtle-border)] active:scale-95 touch-manipulation"
                 title="LinkedIn Profile"
               >
-                <Linkedin className="w-4 h-4" />
+                <Linkedin className="w-5 h-5" />
               </a>
               <button
                 id="footer-btn-resume"
                 aria-label="Open Executive Resume Modal"
                 type="button"
                 onClick={onOpenResume}
-                className="w-8 h-8 rounded-[var(--radius-sm)] bg-[#13151c] hover:bg-[var(--interactive-subtle-bg)] text-[var(--text-secondary)] hover:text-[var(--text-accent)] flex items-center justify-center transition-colors border border-[var(--border-subtle)] hover:border-[var(--interactive-subtle-border)] cursor-pointer"
+                className="w-11 h-11 min-w-[44px] min-h-[44px] rounded-xl bg-[#13151c] hover:bg-[var(--interactive-subtle-bg)] text-[var(--text-secondary)] hover:text-[var(--text-accent)] flex items-center justify-center transition-all border border-[var(--border-subtle)] hover:border-[var(--interactive-subtle-border)] cursor-pointer active:scale-95 touch-manipulation"
                 title="Executive Resume"
               >
-                <FileText className="w-4 h-4" />
+                <FileText className="w-5 h-5" />
               </button>
               <button
                 id="footer-btn-email"
                 aria-label="Open Contact Message Modal"
                 type="button"
                 onClick={onOpenContact}
-                className="w-8 h-8 rounded-[var(--radius-sm)] bg-[#13151c] hover:bg-[var(--interactive-subtle-bg)] text-[var(--text-secondary)] hover:text-[var(--text-accent)] flex items-center justify-center transition-colors border border-[var(--border-subtle)] hover:border-[var(--interactive-subtle-border)] cursor-pointer"
+                className="w-11 h-11 min-w-[44px] min-h-[44px] rounded-xl bg-[#13151c] hover:bg-[var(--interactive-subtle-bg)] text-[var(--text-secondary)] hover:text-[var(--text-accent)] flex items-center justify-center transition-all border border-[var(--border-subtle)] hover:border-[var(--interactive-subtle-border)] cursor-pointer active:scale-95 touch-manipulation"
                 title="Send Message"
               >
-                <Mail className="w-4 h-4" />
+                <Mail className="w-5 h-5" />
               </button>
             </div>
           </div>

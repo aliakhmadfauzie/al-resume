@@ -169,49 +169,49 @@ export function HomeView({
             {/* In-Page Quick Perspective Switcher */}
             {onPersonaChange && (
               <div
-                className="inline-flex items-center p-0.5 rounded-full bg-[#0d1017]/85 border border-white/10 text-xs font-mono backdrop-blur-md shadow-sm"
+                className="inline-flex items-center p-1 rounded-full bg-[#0d1017]/90 border border-white/10 text-xs font-mono backdrop-blur-md shadow-sm touch-manipulation"
                 role="group"
                 aria-label="Tailor portfolio perspective"
               >
                 <button
                   type="button"
                   onClick={() => onPersonaChange('software')}
-                  className={`flex items-center gap-1 px-2.5 py-1 rounded-full transition-all cursor-pointer ${
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full min-h-[36px] transition-all cursor-pointer active:scale-95 touch-manipulation ${
                     activePersona === 'software'
                       ? 'bg-cyan-500/25 text-cyan-300 font-bold border border-cyan-500/40 shadow-[0_0_10px_rgba(6,182,212,0.3)]'
                       : 'text-slate-400 hover:text-slate-200'
                   }`}
                   title="Software Developer view"
                 >
-                  <Cpu size={11} />
+                  <Cpu size={13} />
                   <span>Developer</span>
                 </button>
 
                 <button
                   type="button"
                   onClick={() => onPersonaChange('operations')}
-                  className={`flex items-center gap-1 px-2.5 py-1 rounded-full transition-all cursor-pointer ${
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full min-h-[36px] transition-all cursor-pointer active:scale-95 touch-manipulation ${
                     activePersona === 'operations'
                       ? 'bg-orange-500/25 text-orange-300 font-bold border border-orange-500/40 shadow-[0_0_10px_rgba(249,115,22,0.3)]'
                       : 'text-slate-400 hover:text-slate-200'
                   }`}
                   title="Operations Team Manager view"
                 >
-                  <Users size={11} />
+                  <Users size={13} />
                   <span>Operations</span>
                 </button>
 
                 <button
                   type="button"
                   onClick={() => onPersonaChange('both')}
-                  className={`flex items-center gap-1 px-2 py-1 rounded-full transition-all cursor-pointer ${
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full min-h-[36px] transition-all cursor-pointer active:scale-95 touch-manipulation ${
                     activePersona === 'both'
                       ? 'bg-purple-500/25 text-purple-300 font-bold border border-purple-500/40 shadow-[0_0_10px_rgba(168,85,247,0.3)]'
                       : 'text-slate-400 hover:text-slate-200'
                   }`}
                   title="Unified Hybrid view"
                 >
-                  <Sparkles size={11} />
+                  <Sparkles size={13} />
                   <span>All</span>
                 </button>
 
@@ -800,7 +800,7 @@ export function HomeView({
       <section
         id="section-metrics"
         aria-labelledby="proof-ticker-title"
-        className="glass-card p-6 sm:p-8 border border-[var(--border-subtle)] relative overflow-hidden"
+        className="glass-card p-4 sm:p-6 md:p-8 border border-[var(--border-subtle)] relative overflow-hidden"
       >
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[var(--border-subtle)]">
           <div>
@@ -820,19 +820,19 @@ export function HomeView({
           </span>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 pt-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 pt-6">
           {activeMetrics.map((metric, idx) => (
             <div
               key={idx}
-              className="space-y-1.5 p-4 rounded-xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] hover:border-[var(--interactive-subtle-border)] transition-colors"
+              className="space-y-1.5 p-3.5 sm:p-4 rounded-xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] hover:border-[var(--interactive-subtle-border)] transition-colors"
             >
-              <p className="text-xs font-mono font-medium tracking-wider uppercase text-[var(--text-tertiary)]">
+              <p className="text-xs font-mono font-medium tracking-wider uppercase text-[var(--text-tertiary)] truncate">
                 {metric.label}
               </p>
-              <p className="text-2xl sm:text-4xl font-black text-[var(--text-accent)] font-mono tracking-tight">
+              <p className="text-2xl sm:text-4xl font-black text-[var(--text-accent)] font-mono tracking-tight tabular-nums truncate">
                 {metric.value}
               </p>
-              <p className="text-xs text-[var(--text-secondary)] leading-snug">{metric.subtext}</p>
+              <p className="text-xs text-[var(--text-secondary)] leading-snug line-clamp-2">{metric.subtext}</p>
             </div>
           ))}
         </div>

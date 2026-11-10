@@ -194,7 +194,7 @@ export const CinematicDoorGate: React.FC<CinematicDoorGateProps> = ({
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
-          className="fixed inset-0 z-[99999] bg-[#05070c] flex items-center justify-center select-none overflow-hidden"
+          className="fixed inset-0 z-[99999] h-dvh max-w-full bg-[#05070c] flex items-center justify-center select-none overflow-hidden touch-manipulation"
           style={{ perspective: '1200px' }}
           role="dialog"
           aria-modal="true"
@@ -489,7 +489,7 @@ export const CinematicDoorGate: React.FC<CinematicDoorGateProps> = ({
                 type="button"
                 onClick={() => handleChoose('both')}
                 disabled={phase !== 'cracked'}
-                className="hover:text-slate-200 underline decoration-slate-600 underline-offset-4 transition-colors cursor-pointer"
+                className="hover:text-slate-200 underline decoration-slate-600 underline-offset-4 transition-colors cursor-pointer min-h-[44px] inline-flex items-center active:scale-95 touch-manipulation"
               >
                 Both (Hybrid) →
               </button>
@@ -497,7 +497,7 @@ export const CinematicDoorGate: React.FC<CinematicDoorGateProps> = ({
               <button
                 type="button"
                 onClick={handleFastSkip}
-                className="hover:text-white transition-colors cursor-pointer flex items-center gap-1"
+                className="hover:text-white transition-colors cursor-pointer inline-flex items-center gap-1 min-h-[44px] active:scale-95 touch-manipulation"
                 aria-label="Skip entrance gate"
               >
                 <span>Skip [ESC]</span>

@@ -142,7 +142,7 @@ export const CertificationsView: React.FC = () => {
               href={PERSONAL_INFO.linkedIn}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center space-x-2 px-4 py-2.5 rounded-[var(--radius-sm)] bg-gradient-to-r from-[#f97316] to-[#fb923c] text-[#090a0d] text-xs font-bold shadow-[0_4px_18px_rgba(249,115,22,0.3)] transition-all"
+              className="inline-flex items-center space-x-2 px-4 py-2.5 min-h-[44px] rounded-[var(--radius-sm)] bg-gradient-to-r from-[#f97316] to-[#fb923c] text-[#090a0d] text-xs font-bold shadow-[0_4px_18px_rgba(249,115,22,0.3)] transition-all active:scale-95 touch-manipulation"
             >
               <span>Verify on LinkedIn</span>
               <ExternalLink className="w-3.5 h-3.5" />
@@ -150,7 +150,7 @@ export const CertificationsView: React.FC = () => {
             <a
               href="/assets/profile/Resume.pdf"
               download="Ali_Akhmad_Fauzie_Resume.pdf"
-              className="inline-flex items-center space-x-2 px-4 py-2.5 rounded-[var(--radius-sm)] bg-[#0f1117] hover:bg-[var(--bg-surface-elevated)] text-[var(--text-primary)] text-xs font-medium border border-[var(--border-subtle)] hover:border-[var(--border-focus)] transition-colors"
+              className="inline-flex items-center space-x-2 px-4 py-2.5 min-h-[44px] rounded-[var(--radius-sm)] bg-[#0f1117] hover:bg-[var(--bg-surface-elevated)] text-[var(--text-primary)] text-xs font-medium border border-[var(--border-subtle)] hover:border-[var(--border-focus)] transition-colors active:scale-95 touch-manipulation"
             >
               <Download className="w-3.5 h-3.5 text-[var(--text-accent)]" />
               <span>Transcript PDF</span>
@@ -220,9 +220,9 @@ export const CertificationsView: React.FC = () => {
                   type="button"
                   aria-pressed={isSelected}
                   onClick={() => setSelectedCategory(cat)}
-                  className={`px-3 py-2 rounded-[var(--radius-sm)] text-xs font-medium transition-colors cursor-pointer whitespace-nowrap ${
+                  className={`px-3 py-2 min-h-[44px] rounded-[var(--radius-sm)] text-xs font-medium transition-all cursor-pointer whitespace-nowrap active:scale-95 touch-manipulation flex items-center justify-center ${
                     isSelected
-                      ? 'bg-[var(--interactive-primary)] text-[#090a0d] font-bold'
+                      ? 'bg-[var(--interactive-primary)] text-[#090a0d] font-bold shadow-xs'
                       : 'bg-[#0f1117] text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--border-subtle)]'
                   }`}
                 >
@@ -250,7 +250,8 @@ export const CertificationsView: React.FC = () => {
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search credential, skill, or ID..."
                 aria-label="Search certifications"
-                className="w-full pl-8 pr-3 py-2 rounded-[var(--radius-sm)] bg-[#0f1117] border border-[var(--border-subtle)] focus:border-[var(--border-focus)] text-xs text-[var(--text-primary)] placeholder-[var(--text-tertiary)] outline-none"
+                inputMode="search"
+                className="w-full pl-8 pr-3 py-2.5 min-h-[44px] rounded-[var(--radius-sm)] bg-[#0f1117] border border-[var(--border-subtle)] focus:border-[var(--border-focus)] text-base sm:text-xs text-[var(--text-primary)] placeholder-[var(--text-tertiary)] outline-none touch-manipulation"
               />
             </div>
 
@@ -258,7 +259,7 @@ export const CertificationsView: React.FC = () => {
               id="cert-toggle-expand-all"
               type="button"
               onClick={() => setExpandAllMetadata((prev) => !prev)}
-              className={`inline-flex items-center space-x-1.5 px-3 py-2 rounded-[var(--radius-sm)] text-xs font-mono border transition-colors cursor-pointer whitespace-nowrap ${
+              className={`inline-flex items-center space-x-1.5 px-3 py-2 min-h-[44px] rounded-[var(--radius-sm)] text-xs font-mono border transition-all cursor-pointer whitespace-nowrap active:scale-95 touch-manipulation ${
                 expandAllMetadata
                   ? 'bg-[var(--interactive-subtle-bg)] text-[var(--text-accent)] border-[var(--interactive-subtle-border)]'
                   : 'bg-[#0f1117] text-[var(--text-secondary)] hover:text-[var(--text-primary)] border-[var(--border-subtle)]'

@@ -562,9 +562,9 @@ export const SkillsView: React.FC = () => {
                 key={domain.id}
                 onClick={() => setSelectedDomainId(domain.id)}
                 aria-pressed={isSelected}
-                className={`flex items-center space-x-2.5 px-4 py-2.5 rounded-[var(--radius-sm)] text-xs font-mono transition-all border ${
+                className={`flex items-center space-x-2.5 px-4 py-2.5 min-h-[44px] rounded-[var(--radius-sm)] text-xs font-mono transition-all border cursor-pointer active:scale-95 touch-manipulation ${
                   isSelected
-                    ? 'bg-[var(--accent-blue)] text-[#090a0d] border-[var(--accent-blue)] shadow-sm'
+                    ? 'bg-[var(--accent-blue)] text-[#090a0d] border-[var(--accent-blue)] shadow-sm font-bold'
                     : 'bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] border-[var(--border-subtle)] hover:border-[var(--border-focus)]'
                 }`}
               >
@@ -965,9 +965,9 @@ export const SkillsView: React.FC = () => {
           <button
             onClick={() => setMobileTab('tools')}
             aria-pressed={mobileTab === 'tools'}
-            className={`flex-1 py-2 text-xs font-medium rounded-[var(--radius-sm)] transition-colors whitespace-nowrap ${
+            className={`flex-1 py-2.5 min-h-[44px] text-xs font-medium rounded-[var(--radius-sm)] transition-all whitespace-nowrap active:scale-95 touch-manipulation ${
               mobileTab === 'tools'
-                ? 'bg-[var(--bg-surface-elevated)] text-[var(--text-primary)] border border-[var(--border-subtle)]'
+                ? 'bg-[var(--bg-surface-elevated)] text-[var(--text-primary)] border border-[var(--border-subtle)] font-bold'
                 : 'text-[var(--text-secondary)]'
             }`}
           >
@@ -976,9 +976,9 @@ export const SkillsView: React.FC = () => {
           <button
             onClick={() => setMobileTab('impact')}
             aria-pressed={mobileTab === 'impact'}
-            className={`flex-1 py-2 text-xs font-medium rounded-[var(--radius-sm)] transition-colors whitespace-nowrap ${
+            className={`flex-1 py-2.5 min-h-[44px] text-xs font-medium rounded-[var(--radius-sm)] transition-all whitespace-nowrap active:scale-95 touch-manipulation ${
               mobileTab === 'impact'
-                ? 'bg-[var(--bg-surface-elevated)] text-[var(--text-primary)] border border-[var(--border-subtle)]'
+                ? 'bg-[var(--bg-surface-elevated)] text-[var(--text-primary)] border border-[var(--border-subtle)] font-bold'
                 : 'text-[var(--text-secondary)]'
             }`}
           >

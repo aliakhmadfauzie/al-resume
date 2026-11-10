@@ -23,7 +23,7 @@ export const InterviewModeView: React.FC = () => {
             <button
               onClick={() => setActiveViewMode('narrative')}
               aria-pressed={activeViewMode === 'narrative'}
-              className={`flex items-center space-x-2 px-3.5 py-1.5 rounded-md text-xs font-mono transition-all ${
+              className={`flex items-center space-x-2 px-3.5 py-2 min-h-[44px] rounded-md text-xs font-mono transition-all cursor-pointer active:scale-95 touch-manipulation ${
                 activeViewMode === 'narrative'
                   ? 'bg-[var(--interactive-primary)] text-[#090a0d] font-bold shadow-sm'
                   : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
@@ -35,7 +35,7 @@ export const InterviewModeView: React.FC = () => {
             <button
               onClick={() => setActiveViewMode('scenarios')}
               aria-pressed={activeViewMode === 'scenarios'}
-              className={`flex items-center space-x-2 px-3.5 py-1.5 rounded-md text-xs font-mono transition-all ${
+              className={`flex items-center space-x-2 px-3.5 py-2 min-h-[44px] rounded-md text-xs font-mono transition-all cursor-pointer active:scale-95 touch-manipulation ${
                 activeViewMode === 'scenarios'
                   ? 'bg-[var(--interactive-primary)] text-[#090a0d] font-bold shadow-sm'
                   : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
@@ -200,7 +200,7 @@ export const InterviewModeView: React.FC = () => {
                     key={topic.id}
                     onClick={() => setSelectedTopicId(topic.id)}
                     aria-pressed={selectedTopicId === topic.id}
-                    className={`w-full text-left p-4 rounded-[var(--radius-md)] transition-colors border ${
+                    className={`w-full text-left p-4 rounded-[var(--radius-md)] transition-all border cursor-pointer active:scale-[0.99] touch-manipulation min-h-[44px] ${
                       isSelected
                         ? 'bg-[var(--bg-surface-elevated)] text-[var(--text-primary)] border-[var(--border-focus)]'
                         : 'bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:bg-[var(--bg-surface-elevated)] border-[var(--border-subtle)]'

@@ -175,7 +175,7 @@ export default function App() {
 
   return (
     <MotionConfig reducedMotion={isMotionActive ? "never" : "always"}>
-    <div className="min-h-screen bg-[var(--bg-canvas)] text-[var(--text-primary)] flex flex-col relative selection:bg-[var(--interactive-primary)] selection:text-[#090a0d] overflow-x-hidden">
+    <div className="min-h-dvh max-w-full bg-[var(--bg-canvas)] text-[var(--text-primary)] flex flex-col relative selection:bg-[var(--interactive-primary)] selection:text-[#090a0d] overflow-x-hidden">
       <a href="#main-content" onClick={event => { event.preventDefault(); document.getElementById('main-content')?.focus(); }} className="skip-link">Skip to content</a>
       {/* Scroll Progress Bar (Top Edge) */}
       <motion.div
@@ -196,7 +196,7 @@ export default function App() {
 
       {route.projectId && !selectedProject && <div role="status" className="max-w-7xl mx-auto p-4 text-sm">This case study could not be found. <a href="#/projects" className="underline text-[var(--text-accent)]">Browse all projects</a></div>}
       {/* Main Page View Container */}
-      <main id="main-content" tabIndex={-1} className="relative z-10 flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-28 sm:pb-32 overflow-x-hidden">
+      <main id="main-content" tabIndex={-1} className="relative z-10 flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-4 sm:pt-6 pb-[calc(6.5rem+env(safe-area-inset-bottom,16px))] overflow-x-hidden">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentTab}

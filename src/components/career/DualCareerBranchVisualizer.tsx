@@ -594,11 +594,11 @@ export const DualCareerBranchVisualizer: React.FC = () => {
         </div>
 
         {/* Interactive Track Switcher Pills */}
-        <div className="flex items-center gap-1.5 p-1 rounded-[var(--radius-sm)] bg-[#090a0d] border border-[var(--border-subtle)] shrink-0 overflow-x-auto">
+        <div className="flex items-center gap-1.5 p-1 rounded-[var(--radius-sm)] bg-[#090a0d] border border-[var(--border-subtle)] shrink-0 overflow-x-auto touch-pan-x scrollbar-none">
           <button
             type="button"
             onClick={() => setActiveBranch('both')}
-            className={`px-3 py-1.5 rounded-[var(--radius-sm)] text-xs font-mono font-medium transition-all cursor-pointer ${
+            className={`px-3 py-2 min-h-[44px] rounded-[var(--radius-sm)] text-xs font-mono font-medium transition-all cursor-pointer active:scale-95 touch-manipulation ${
               activeBranch === 'both'
                 ? 'bg-[var(--interactive-primary)] text-[#090a0d] font-bold shadow-md'
                 : 'text-[var(--text-secondary)] hover:text-white'
@@ -612,7 +612,7 @@ export const DualCareerBranchVisualizer: React.FC = () => {
               setActiveBranch('software');
               if (selectedMilestone && !selectedMilestone.startsWith('software')) setSelectedMilestone('software-current');
             }}
-            className={`px-3 py-1.5 rounded-[var(--radius-sm)] text-xs font-mono font-medium transition-all cursor-pointer ${
+            className={`px-3 py-2 min-h-[44px] rounded-[var(--radius-sm)] text-xs font-mono font-medium transition-all cursor-pointer active:scale-95 touch-manipulation ${
               activeBranch === 'software'
                 ? 'bg-[#00dbe7] text-[#090a0d] font-bold shadow-md'
                 : 'text-[var(--text-secondary)] hover:text-white'
@@ -626,7 +626,7 @@ export const DualCareerBranchVisualizer: React.FC = () => {
               setActiveBranch('operations');
               if (selectedMilestone && !selectedMilestone.startsWith('ops')) setSelectedMilestone('ops-concentrix');
             }}
-            className={`px-3 py-1.5 rounded-[var(--radius-sm)] text-xs font-mono font-medium transition-all cursor-pointer ${
+            className={`px-3 py-2 min-h-[44px] rounded-[var(--radius-sm)] text-xs font-mono font-medium transition-all cursor-pointer active:scale-95 touch-manipulation ${
               activeBranch === 'operations'
                 ? 'bg-[#f59e0b] text-[#090a0d] font-bold shadow-md'
                 : 'text-[var(--text-secondary)] hover:text-white'
@@ -707,7 +707,7 @@ export const DualCareerBranchVisualizer: React.FC = () => {
         </div>
 
         {/* ── Interactive Masterpiece SVG Conduit Tree ── */}
-        <div className="relative rounded-xl bg-[#090b10] border border-white/10 p-2 sm:p-4 overflow-x-auto">
+        <div className="relative rounded-xl bg-[#090b10] border border-white/10 p-2 sm:p-4 overflow-x-auto touch-pan-x scrollbar-thin">
           {/* Legend Strip */}
           <div className="flex flex-wrap items-center justify-between gap-2 px-2 pb-2 text-[11px] font-mono text-neutral-400 border-b border-white/5">
             <div className="flex items-center gap-4">
@@ -725,7 +725,7 @@ export const DualCareerBranchVisualizer: React.FC = () => {
               </span>
             </div>
             <span className="text-[10px] text-neutral-400">
-              💡 Click any node on the tree to inspect evidence telemetry
+              💡 Tap any node to inspect evidence (Swipe horizontally on mobile)
             </span>
           </div>
 

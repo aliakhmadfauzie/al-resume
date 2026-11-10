@@ -51,10 +51,10 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose, onOpe
     <Dialog onClose={onClose} labelledBy="resume-modal-title" className="resume-dialog w-[calc(100%-1rem)] max-w-4xl p-0 border-0 bg-transparent text-[var(--text-primary)]">
       <div
         id="resume-modal-container"
-        className="relative w-full max-w-4xl bg-[var(--bg-surface)] border-t sm:border border-[var(--border-subtle)] rounded-t-[var(--radius-lg)] sm:rounded-[var(--radius-lg)] shadow-2xl flex flex-col h-[90vh] max-h-[90vh]"
+        className="relative w-full max-w-4xl bg-[var(--bg-surface)] border-t sm:border border-[var(--border-subtle)] rounded-t-[var(--radius-lg)] sm:rounded-[var(--radius-lg)] shadow-2xl flex flex-col h-[92dvh] max-h-[92dvh]"
       >
         {/* Top Header Bar */}
-        <div className="flex flex-wrap items-center justify-between gap-3 px-4 sm:px-6 py-4 border-b border-[var(--border-subtle)] bg-[var(--bg-primary)] shrink-0">
+        <div className="flex flex-wrap items-center justify-between gap-3 px-4 sm:px-6 py-3.5 sm:py-4 border-b border-[var(--border-subtle)] bg-[var(--bg-primary)] shrink-0">
           <div>
             <h2 id="resume-modal-title" className="text-sm font-semibold text-[var(--text-primary)] tracking-tight">
               Executive Resume &amp; LinkedIn Credentials
@@ -69,7 +69,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose, onOpe
               id="resume-btn-copy"
               onClick={handleCopyLink}
               aria-label="Copy link to resume"
-              className="p-2 rounded-[var(--radius-sm)] bg-[var(--bg-surface)] hover:bg-[var(--bg-surface-elevated)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--border-subtle)] transition-colors"
+              className="min-w-[44px] min-h-[44px] p-2 rounded-[var(--radius-sm)] bg-[var(--bg-surface)] hover:bg-[var(--bg-surface-elevated)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--border-subtle)] transition-all flex items-center justify-center cursor-pointer active:scale-95 touch-manipulation"
               title="Copy link to resume"
             >
               {copied ? <Check className="w-4 h-4 text-[var(--text-accent)]" /> : <Copy className="w-4 h-4" />}
@@ -78,7 +78,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose, onOpe
             <a
               href="/assets/profile/Resume.pdf"
               download="Ali_Akhmad_Fauzie_Resume.pdf"
-              className="hidden sm:flex items-center space-x-1.5 px-3.5 py-2 rounded-[var(--radius-sm)] bg-[#14161f] hover:bg-[var(--interactive-subtle-bg)] text-[var(--text-accent)] border border-[var(--interactive-subtle-border)] text-xs font-medium transition-colors"
+              className="hidden sm:flex items-center space-x-1.5 px-3.5 py-2 min-h-[44px] rounded-[var(--radius-sm)] bg-[#14161f] hover:bg-[var(--interactive-subtle-bg)] text-[var(--text-accent)] border border-[var(--interactive-subtle-border)] text-xs font-medium transition-colors cursor-pointer active:scale-95 touch-manipulation"
             >
               <Download className="w-3.5 h-3.5" />
               <span>Resume PDF</span>
@@ -87,7 +87,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose, onOpe
             <button
               id="resume-btn-print"
               onClick={handlePrint}
-              className="hidden sm:flex items-center space-x-1.5 px-4 py-2 rounded-[var(--radius-sm)] bg-[var(--interactive-primary)] hover:bg-[var(--interactive-primary-hover)] text-[#090a0d] text-xs font-bold transition-colors"
+              className="hidden sm:flex items-center space-x-1.5 px-4 py-2 min-h-[44px] rounded-[var(--radius-sm)] bg-[var(--interactive-primary)] hover:bg-[var(--interactive-primary-hover)] text-[#090a0d] text-xs font-bold transition-colors cursor-pointer active:scale-95 touch-manipulation"
             >
               <Download className="w-3.5 h-3.5" />
               <span>Print / Save PDF</span>
@@ -97,9 +97,9 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose, onOpe
               id="resume-btn-close"
               onClick={onClose}
               aria-label="Close modal"
-              className="p-2 rounded-[var(--radius-sm)] bg-[var(--bg-surface)] hover:bg-[var(--bg-surface-elevated)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--border-subtle)] transition-colors"
+              className="min-w-[44px] min-h-[44px] p-2 rounded-[var(--radius-sm)] bg-[var(--bg-surface)] hover:bg-[var(--bg-surface-elevated)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--border-subtle)] transition-all flex items-center justify-center cursor-pointer active:scale-95 touch-manipulation"
             >
-              <X className="w-4 h-4" />
+              <X className="w-5 h-5" />
             </button>
           </div>
         </div>
@@ -319,27 +319,27 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose, onOpe
         </div>
 
         {/* Footer Actions */}
-        <div className="px-6 py-4 border-t border-[var(--border-subtle)] bg-[var(--bg-primary)] flex flex-wrap gap-3 items-center justify-between">
-          <span className="text-xs text-[var(--text-tertiary)] font-mono">
+        <div className="px-4 sm:px-6 py-3.5 sm:py-4 border-t border-[var(--border-subtle)] bg-[var(--bg-primary)] flex flex-col sm:flex-row gap-3 items-stretch sm:items-center justify-between">
+          <span className="text-xs text-[var(--text-tertiary)] font-mono text-center sm:text-left">
             {PERSONAL_INFO.name} (AL) · linkedin.com/in/aliakhmadf
           </span>
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center justify-center sm:justify-end gap-2 sm:gap-3">
             <button
               onClick={onClose}
-              className="px-4 py-2 rounded-[var(--radius-sm)] text-xs font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] bg-[var(--bg-surface)] border border-[var(--border-subtle)]"
+              className="flex-1 sm:flex-initial px-4 py-2.5 min-h-[44px] rounded-[var(--radius-sm)] text-xs font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] bg-[var(--bg-surface)] border border-[var(--border-subtle)] cursor-pointer active:scale-95 touch-manipulation flex items-center justify-center"
             >
               Close
             </button>
             <a
               href="/assets/profile/LinkedIn_Profile.pdf"
               download="Ali_Akhmad_Fauzie_LinkedIn_Profile.pdf"
-              className="px-4 py-2 rounded-[var(--radius-sm)] text-xs font-mono text-[var(--text-accent)] bg-[#14161f] border border-[var(--interactive-subtle-border)] hover:bg-[var(--interactive-subtle-bg)]"
+              className="flex-1 sm:flex-initial px-4 py-2.5 min-h-[44px] rounded-[var(--radius-sm)] text-xs font-mono text-[var(--text-accent)] bg-[#14161f] border border-[var(--interactive-subtle-border)] hover:bg-[var(--interactive-subtle-bg)] cursor-pointer active:scale-95 touch-manipulation flex items-center justify-center text-center"
             >
               LinkedIn PDF
             </a>
             <button
               onClick={handlePrint}
-              className="flex items-center space-x-2 px-5 py-2 rounded-[var(--radius-sm)] text-xs font-bold bg-[var(--interactive-primary)] text-[#090a0d] hover:bg-[var(--interactive-primary-hover)] transition-colors"
+              className="w-full sm:w-auto flex items-center justify-center space-x-2 px-5 py-2.5 min-h-[44px] rounded-[var(--radius-sm)] text-xs font-bold bg-[var(--interactive-primary)] text-[#090a0d] hover:bg-[var(--interactive-primary-hover)] transition-all cursor-pointer active:scale-95 touch-manipulation"
             >
               <Download className="w-3.5 h-3.5" />
               <span>Print / Save PDF</span>

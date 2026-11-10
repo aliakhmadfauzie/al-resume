@@ -42,7 +42,7 @@ export function Navbar({ currentTab, onOpenContact, onOpenResume, onOpenDoorGate
       className={`nav-link ${currentTab === item.tab ? 'nav-link-active' : ''}`}>{item.label}</a>
   );
   return (
-    <header ref={headerRef} className="sticky top-0 z-50 border-b border-[var(--nav-border)] bg-[var(--nav-surface)] backdrop-blur-md"
+    <header ref={headerRef} className="sticky top-0 z-50 border-b border-[var(--nav-border)] bg-[var(--nav-surface)] backdrop-blur-md pt-[env(safe-area-inset-top,0px)]"
       onKeyDown={(event) => {
         if (event.key !== 'Escape') return;
         if (mobileOpen) { setMobileOpen(false); menuRef.current?.focus(); }
@@ -50,9 +50,12 @@ export function Navbar({ currentTab, onOpenContact, onOpenResume, onOpenDoorGate
       }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="min-h-18 flex items-center justify-between gap-3">
-          <a href="#/home" onClick={() => window.scrollTo({ top: 0, behavior: "instant" })} id="nav-brand-logo" aria-label="Ali Akhmad Fauzie, home" className="flex items-center gap-3 min-w-0 py-3">
-            <span aria-hidden="true" className="text-[var(--text-accent)] font-mono font-bold text-xl hidden sm:block">&lt;/&gt;</span>
-            <span className="min-w-0"><span className="block text-sm sm:text-base font-bold tracking-wide">ALI AKHMAD FAUZIE, B.I.B.M. (HONS.)</span><span className="block mt-1 text-xs text-[var(--text-tertiary)]">Technology &amp; operations</span></span>
+          <a href="#/home" onClick={() => window.scrollTo({ top: 0, behavior: "instant" })} id="nav-brand-logo" aria-label="Ali Akhmad Fauzie, home" className="flex items-center gap-2.5 min-w-0 py-2.5">
+            <span aria-hidden="true" className="text-[var(--text-accent)] font-mono font-bold text-xl hidden sm:block shrink-0">&lt;/&gt;</span>
+            <span className="min-w-0 truncate">
+              <span className="block text-xs sm:text-base font-bold tracking-wide truncate">ALI AKHMAD FAUZIE, B.I.B.M. (HONS.)</span>
+              <span className="block text-[11px] sm:text-xs text-[var(--text-tertiary)] truncate">Enterprise Architecture &amp; Operations</span>
+            </span>
           </a>
           <nav aria-label="Primary" className="hidden xl:flex items-center gap-1">
             {primary.map(link)}
@@ -71,20 +74,20 @@ export function Navbar({ currentTab, onOpenContact, onOpenResume, onOpenDoorGate
             </details>
           </nav>
           <div className="flex items-center gap-2 shrink-0">
-            <button id="nav-btn-contact" type="button" className="action-secondary hidden sm:inline-flex" onClick={onOpenContact}>Contact</button>
-            <button ref={menuRef} id="nav-btn-mobile-menu" type="button" className="dialog-close xl:hidden" aria-label={mobileOpen ? 'Close navigation' : 'Open navigation'} aria-expanded={mobileOpen} aria-controls="mobile-navigation" onClick={() => setMobileOpen(!mobileOpen)}>{mobileOpen ? <X size={20} /> : <Menu size={20} />}</button>
+            <button id="nav-btn-contact" type="button" className="action-secondary hidden sm:inline-flex min-h-[48px]" onClick={onOpenContact}>Contact</button>
+            <button ref={menuRef} id="nav-btn-mobile-menu" type="button" className="dialog-close xl:hidden min-w-[48px] min-h-[48px] active:scale-95 transition-transform" aria-label={mobileOpen ? 'Close navigation' : 'Open navigation'} aria-expanded={mobileOpen} aria-controls="mobile-navigation" onClick={() => setMobileOpen(!mobileOpen)}>{mobileOpen ? <X size={22} /> : <Menu size={22} />}</button>
           </div>
         </div>
-        {mobileOpen && <nav id="mobile-navigation" aria-label="Mobile primary" className="xl:hidden pb-4 grid grid-cols-2 gap-2">
+        {mobileOpen && <nav id="mobile-navigation" aria-label="Mobile primary" className="xl:hidden pb-4 pt-1 grid grid-cols-2 gap-2 max-h-[calc(100dvh-5rem)] overflow-y-auto">
           {[...primary, ...secondary].map(link)}
           {onOpenDoorGate && (
-            <button type="button" className="nav-link text-left flex items-center gap-1.5" onClick={() => { setMobileOpen(false); onOpenDoorGate(); }}>
-              <DoorOpen size={14} className="text-amber-400" />
+            <button type="button" className="nav-link text-left flex items-center gap-1.5 min-h-[48px] active:scale-[0.98]" onClick={() => { setMobileOpen(false); onOpenDoorGate(); }}>
+              <DoorOpen size={16} className="text-amber-400" />
               <span>3D Entrance Gate</span>
             </button>
           )}
-          <button type="button" className="nav-link text-left" onClick={() => { setMobileOpen(false); onOpenResume(); }}>View resume</button>
-          <button type="button" className="action-primary col-span-2" onClick={() => { setMobileOpen(false); onOpenContact(); }}>Contact Ali</button>
+          <button type="button" className="nav-link text-left min-h-[48px] active:scale-[0.98]" onClick={() => { setMobileOpen(false); onOpenResume(); }}>View resume</button>
+          <button type="button" className="action-primary col-span-2 min-h-[48px] active:scale-[0.98]" onClick={() => { setMobileOpen(false); onOpenContact(); }}>Contact Ali</button>
         </nav>}
       </div>
     </header>

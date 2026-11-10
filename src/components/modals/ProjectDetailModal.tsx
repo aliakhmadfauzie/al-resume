@@ -40,25 +40,25 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
     <Dialog onClose={onClose} label={itemTitle} className="w-[calc(100%-1.5rem)] max-w-4xl p-0 border-0 bg-transparent text-[var(--text-primary)]">
       <div
         id="project-detail-modal-container"
-        className="relative w-full max-w-3xl sm:max-w-4xl max-h-[92vh] bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-[var(--radius-lg)] shadow-2xl overflow-hidden flex flex-col animate-in zoom-in-95 duration-200"
+        className="relative w-full max-w-3xl sm:max-w-4xl max-h-[92dvh] bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-[var(--radius-lg)] shadow-2xl overflow-hidden flex flex-col animate-in zoom-in-95 duration-200"
       >
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-5 border-b border-[var(--border-subtle)] bg-[var(--bg-primary)]">
-          <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 rounded-[var(--radius-sm)] bg-[var(--bg-surface)] border border-[var(--border-subtle)] flex items-center justify-center text-[var(--text-accent)] font-mono font-semibold">
+        <div className="flex items-center justify-between px-4 sm:px-6 py-4 sm:py-5 border-b border-[var(--border-subtle)] bg-[var(--bg-primary)]">
+          <div className="flex items-center space-x-3 min-w-0 pr-2">
+            <div className="w-10 h-10 rounded-[var(--radius-sm)] bg-[var(--bg-surface)] border border-[var(--border-subtle)] flex items-center justify-center text-[var(--text-accent)] font-mono font-semibold shrink-0">
               {isMigrationSlice ? (
                 (project as MigrationSlice).letter
               ) : (
                 <Workflow className="w-5 h-5" />
               )}
             </div>
-            <div>
-              <span className="text-xs font-mono text-[var(--text-accent)] font-medium">
+            <div className="min-w-0">
+              <span className="text-xs font-mono text-[var(--text-accent)] font-medium truncate block">
                 {isMigrationSlice
                   ? `IOI Domino Migration · Slice ${(project as MigrationSlice).letter}`
                   : 'Enterprise Architecture Case Study'}
               </span>
-              <h2 className="text-lg font-semibold text-[var(--text-primary)] tracking-tight leading-tight mt-0.5">
+              <h2 className="text-base sm:text-lg font-semibold text-[var(--text-primary)] tracking-tight leading-tight mt-0.5 truncate">
                 {itemTitle}
               </h2>
             </div>
@@ -67,7 +67,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
           <button
             type="button"
             onClick={onClose}
-            className="p-2 rounded-[var(--radius-sm)] bg-[var(--bg-surface)] hover:bg-[var(--bg-surface-elevated)] text-[var(--text-secondary)] hover:text-white border border-[var(--border-subtle)] transition-colors"
+            className="min-w-[44px] min-h-[44px] p-2 rounded-[var(--radius-sm)] bg-[var(--bg-surface)] hover:bg-[var(--bg-surface-elevated)] text-[var(--text-secondary)] hover:text-white border border-[var(--border-subtle)] transition-all flex items-center justify-center cursor-pointer active:scale-95 touch-manipulation shrink-0"
             aria-label="Close modal"
           >
             <X className="w-5 h-5" />
@@ -255,11 +255,11 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
         </div>
 
         {/* Footer with Demo Trigger */}
-        <div className="px-6 py-4 border-t border-[var(--border-subtle)] bg-[var(--bg-primary)] flex items-center justify-between">
+        <div className="px-4 sm:px-6 py-3.5 sm:py-4 border-t border-[var(--border-subtle)] bg-[var(--bg-primary)] flex items-center justify-between gap-3">
           <button
             type="button"
             onClick={onClose}
-            className="px-4 py-2 rounded-[var(--radius-sm)] text-xs font-medium text-[var(--text-secondary)] hover:text-white bg-[var(--bg-surface)] border border-[var(--border-subtle)]"
+            className="px-4 py-2.5 min-h-[44px] rounded-[var(--radius-sm)] text-xs font-medium text-[var(--text-secondary)] hover:text-white bg-[var(--bg-surface)] border border-[var(--border-subtle)] transition-all cursor-pointer active:scale-95 touch-manipulation flex items-center justify-center"
           >
             Close
           </button>
@@ -271,7 +271,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
                 onClose();
                 onLaunchDemo(project.liveDemoId!);
               }}
-              className="flex items-center space-x-2 px-5 py-2 rounded-[var(--radius-sm)] text-xs font-semibold bg-[var(--accent-blue)] text-[#090a0d] hover:bg-[var(--accent-blue-hover)] transition-colors"
+              className="flex items-center space-x-2 px-5 py-2.5 min-h-[44px] rounded-[var(--radius-sm)] text-xs font-semibold bg-[var(--accent-blue)] text-[#090a0d] hover:bg-[var(--accent-blue-hover)] transition-all cursor-pointer active:scale-95 touch-manipulation"
             >
               <MonitorPlay className="w-4 h-4" />
               <span>Open simulator</span>

@@ -558,10 +558,10 @@ export const ProjectGallery: React.FC<ProjectGalleryProps> = ({
             <button
               type="button"
               onClick={prevSlide}
-              className="p-1 rounded-[4px] bg-[var(--bg-default)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--border-subtle)]"
+              className="min-w-[36px] min-h-[36px] sm:min-w-[32px] sm:min-h-[32px] p-2 sm:p-1.5 rounded-[var(--radius-sm)] bg-[var(--bg-default)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--border-subtle)] flex items-center justify-center transition-all cursor-pointer active:scale-95 touch-manipulation"
               aria-label="Previous slide"
             >
-              <ChevronLeft className="w-3.5 h-3.5" />
+              <ChevronLeft className="w-4 h-4" />
             </button>
             <span className="text-[11px] font-mono text-[var(--text-tertiary)] px-1.5 tabular-nums">
               {activeIndex + 1} / {slots.length}
@@ -569,18 +569,18 @@ export const ProjectGallery: React.FC<ProjectGalleryProps> = ({
             <button
               type="button"
               onClick={nextSlide}
-              className="p-1 rounded-[4px] bg-[var(--bg-default)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--border-subtle)]"
+              className="min-w-[36px] min-h-[36px] sm:min-w-[32px] sm:min-h-[32px] p-2 sm:p-1.5 rounded-[var(--radius-sm)] bg-[var(--bg-default)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--border-subtle)] flex items-center justify-center transition-all cursor-pointer active:scale-95 touch-manipulation"
               aria-label="Next slide"
             >
-              <ChevronRight className="w-3.5 h-3.5" />
+              <ChevronRight className="w-4 h-4" />
             </button>
             <button
               type="button"
               onClick={() => setLightboxOpen(true)}
-              className="p-1 rounded-[4px] bg-[var(--bg-default)] text-[var(--text-accent)] hover:bg-[var(--bg-surface-elevated)] border border-[var(--border-subtle)]"
+              className="min-w-[36px] min-h-[36px] sm:min-w-[32px] sm:min-h-[32px] p-2 sm:p-1.5 rounded-[var(--radius-sm)] bg-[var(--bg-default)] text-[var(--text-accent)] hover:bg-[var(--bg-surface-elevated)] border border-[var(--border-subtle)] flex items-center justify-center transition-all cursor-pointer active:scale-95 touch-manipulation"
               aria-label="Open image gallery"
             >
-              <Maximize2 className="w-3.5 h-3.5" />
+              <Maximize2 className="w-4 h-4" />
             </button>
           </div>
         </div>

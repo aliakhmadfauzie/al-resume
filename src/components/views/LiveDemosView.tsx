@@ -393,7 +393,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'reb
 
       {/* Demo Selector Tabs */}
       <div id="section-demos-selector" className="space-y-3 border-b border-[var(--border-subtle)] pb-4">
-        <div className="flex items-center space-x-2 overflow-x-auto pb-2">
+        <div className="flex items-center space-x-2 overflow-x-auto pb-2 scrollbar-none touch-pan-x">
           {demoIds.map((id) => {
             const d = demosMeta[id];
             const isActive = activeDemo === id;
@@ -402,7 +402,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'reb
                 key={d.id}
                 onClick={() => navigate('demos?demo=' + encodeURIComponent(d.id))}
                 aria-pressed={isActive}
-                className={`flex items-center space-x-2 px-3.5 py-2 rounded-[var(--radius-sm)] text-xs font-medium whitespace-nowrap transition-colors cursor-pointer ${
+                className={`flex items-center space-x-2 px-3.5 py-2.5 min-h-[44px] rounded-[var(--radius-sm)] text-xs sm:text-sm font-medium whitespace-nowrap transition-all cursor-pointer active:scale-95 touch-manipulation ${
                   isActive
                     ? 'bg-[var(--accent-blue)] text-[#090a0d] font-bold shadow-sm'
                     : 'bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-surface-elevated)] border border-[var(--border-subtle)]'
@@ -539,7 +539,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'reb
                       <select
                         value={rebateCustomer}
                         onChange={(e) => setRebateCustomer(e.target.value)}
-                        className="w-full px-3 py-2 rounded-lg bg-slate-50 border border-slate-300 text-xs font-medium text-slate-800 focus:outline-none focus:border-blue-500 focus:bg-white"
+                        className="w-full px-3 py-2.5 rounded-lg bg-slate-50 border border-slate-300 text-base sm:text-xs font-medium text-slate-800 min-h-[44px] focus:outline-none focus:border-blue-500 focus:bg-white touch-manipulation"
                       >
                         <option value="CUST-8802: Mega Ready-Mix Sdn Bhd (Class A)">CUST-8802: Mega Ready-Mix Sdn Bhd (Class A · 1,200t)</option>
                         <option value="CUST-7714: Sunway Precast Concrete Sdn Bhd (Class A+)">CUST-7714: Sunway Precast Concrete Sdn Bhd (Class A+ · 2,400t)</option>
@@ -815,7 +815,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'reb
                         value={docQuery}
                         onChange={(e) => setDocQuery(e.target.value)}
                         placeholder="Type operational challenge, SOP clause, or deviation..."
-                        className="w-full pl-10 pr-3.5 py-3 rounded-xl bg-slate-50 border border-slate-300 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:bg-white resize-none"
+                        className="w-full pl-10 pr-3.5 py-3 rounded-xl bg-slate-50 border border-slate-300 text-base sm:text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:bg-white resize-none touch-manipulation"
                       />
                     </div>
 
@@ -1078,42 +1078,44 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'reb
                   </div>
 
                   {/* 5x5 Matrix Interactive Grid */}
-                  <div className="lg:col-span-6 bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-4">
+                  <div className="lg:col-span-6 bg-white p-4 sm:p-6 rounded-xl border border-slate-200 shadow-sm space-y-4">
                     <div className="flex items-center justify-between border-b border-slate-100 pb-3">
                       <span className="text-xs font-mono font-bold text-slate-700 uppercase">
                         Interactive 5×5 DOSH/SIRIM Matrix
                       </span>
-                      <span className="text-[11px] text-slate-500">Click any cell to inspect</span>
+                      <span className="text-[11px] text-slate-500">Tap cell to inspect</span>
                     </div>
 
-                    <div className="grid grid-cols-5 gap-2 font-mono text-xs">
-                      {[5, 4, 3, 2, 1].map((sev) =>
-                        [1, 2, 3, 4, 5].map((lik) => {
-                          const cellScore = lik * sev;
-                          const isSelected = lik === hiradcLikelihood && sev === hiradcSeverity;
-                          return (
-                            <button
-                              key={`${sev}-${lik}`}
-                              onClick={() => {
-                                setHiradcLikelihood(lik);
-                                setHiradcSeverity(sev);
-                              }}
-                              className={`p-2.5 rounded-lg border text-center transition-all cursor-pointer ${
-                                isSelected
-                                  ? 'bg-slate-900 text-white border-slate-900 scale-105 font-extrabold shadow-md'
-                                  : cellScore >= 15
-                                  ? 'bg-red-50 text-red-700 border-red-200 hover:bg-red-100'
-                                  : cellScore >= 5
-                                  ? 'bg-amber-50 text-amber-800 border-amber-200 hover:bg-amber-100'
-                                  : 'bg-emerald-50 text-emerald-800 border-emerald-200 hover:bg-emerald-100'
-                              }`}
-                            >
-                              <div className="text-sm font-bold">{cellScore}</div>
-                              <div className="text-[9px] opacity-75">L{lik}×S{sev}</div>
-                            </button>
-                          );
-                        })
-                      )}
+                    <div className="overflow-x-auto pb-2 touch-pan-x">
+                      <div className="grid grid-cols-5 gap-1.5 sm:gap-2 font-mono text-xs min-w-[280px]">
+                        {[5, 4, 3, 2, 1].map((sev) =>
+                          [1, 2, 3, 4, 5].map((lik) => {
+                            const cellScore = lik * sev;
+                            const isSelected = lik === hiradcLikelihood && sev === hiradcSeverity;
+                            return (
+                              <button
+                                key={`${sev}-${lik}`}
+                                onClick={() => {
+                                  setHiradcLikelihood(lik);
+                                  setHiradcSeverity(sev);
+                                }}
+                                className={`p-2 sm:p-2.5 min-h-[44px] rounded-lg border text-center transition-all cursor-pointer active:scale-95 touch-manipulation ${
+                                  isSelected
+                                    ? 'bg-slate-900 text-white border-slate-900 scale-105 font-extrabold shadow-md'
+                                    : cellScore >= 15
+                                    ? 'bg-red-50 text-red-700 border-red-200 hover:bg-red-100'
+                                    : cellScore >= 5
+                                    ? 'bg-amber-50 text-amber-800 border-amber-200 hover:bg-amber-100'
+                                    : 'bg-emerald-50 text-emerald-800 border-emerald-200 hover:bg-emerald-100'
+                                }`}
+                              >
+                                <div className="text-sm font-bold">{cellScore}</div>
+                                <div className="text-[9px] opacity-75">L{lik}×S{sev}</div>
+                              </button>
+                            );
+                          })
+                        )}
+                      </div>
                     </div>
 
                     <div className="pt-2 flex items-center justify-between text-xs text-slate-500 font-mono">
@@ -1226,7 +1228,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'reb
                         rows={3}
                         value={atsBulletInput}
                         onChange={(e) => setAtsBulletInput(e.target.value)}
-                        className="w-full rounded-xl bg-slate-50 border border-slate-300 p-3 text-xs font-mono text-slate-900 focus:outline-none focus:border-blue-500 focus:bg-white"
+                        className="w-full rounded-xl bg-slate-50 border border-slate-300 p-3 text-base sm:text-xs font-mono text-slate-900 focus:outline-none focus:border-blue-500 focus:bg-white touch-manipulation"
                       />
 
                       <div className={`p-3.5 rounded-xl border font-mono text-xs flex items-center justify-between ${
@@ -1650,18 +1652,18 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'reb
                   </span>
                 </div>
 
-                <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex flex-col sm:flex-row items-center gap-3">
+                <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
                   <input
                     type="text"
                     placeholder="Log new IT incident or attendance exception (e.g. Lotus Domino DB replication delay)..."
                     value={newTicketTitle}
                     onChange={(e) => setNewTicketTitle(e.target.value)}
-                    className="flex-1 w-full px-3.5 py-2.5 rounded-lg bg-slate-50 border border-slate-300 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-indigo-500 focus:bg-white"
+                    className="flex-1 w-full px-3.5 py-2.5 rounded-lg bg-slate-50 border border-slate-300 text-base sm:text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-indigo-500 focus:bg-white min-h-[44px] touch-manipulation"
                   />
                   <select
                     value={newTicketPriority}
                     onChange={(e) => setNewTicketPriority(e.target.value)}
-                    className="px-3 py-2.5 rounded-lg bg-slate-50 border border-slate-300 text-xs font-medium text-slate-800"
+                    className="px-3 py-2.5 rounded-lg bg-slate-50 border border-slate-300 text-base sm:text-xs font-medium text-slate-800 min-h-[44px] touch-manipulation"
                   >
                     <option value="High">High Priority</option>
                     <option value="Medium">Medium Priority</option>
@@ -1684,7 +1686,7 @@ export const LiveDemosView: React.FC<LiveDemosViewProps> = ({ initialDemo = 'reb
                       ]);
                       setNewTicketTitle('');
                     }}
-                    className="px-5 py-2.5 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold whitespace-nowrap cursor-pointer transition-colors"
+                    className="px-5 py-2.5 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white text-sm sm:text-xs font-bold whitespace-nowrap cursor-pointer transition-all min-h-[44px] active:scale-95 touch-manipulation flex items-center justify-center"
                   >
                     Submit Ticket
                   </button>

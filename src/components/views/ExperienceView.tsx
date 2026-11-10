@@ -169,7 +169,7 @@ export const ExperienceView: React.FC = () => {
         </div>
 
         {/* Tag Filters */}
-      <div className="flex items-center space-x-2 overflow-x-auto pb-2">
+      <div className="flex items-center space-x-2 overflow-x-auto pb-2 scrollbar-none touch-pan-x">
         <span className="text-xs font-mono text-[var(--text-tertiary)] shrink-0 flex items-center space-x-1.5">
           <Filter className="w-3.5 h-3.5" />
           <span>Filter Competency:</span>
@@ -180,9 +180,9 @@ export const ExperienceView: React.FC = () => {
               key={tag}
               onClick={() => setSelectedTag(tag)}
               aria-pressed={selectedTag === tag}
-              className={`px-3 py-1.5 rounded-[var(--radius-sm)] text-xs font-medium whitespace-nowrap transition-colors cursor-pointer ${
+              className={`px-3.5 py-2 min-h-[44px] rounded-[var(--radius-sm)] text-xs font-medium whitespace-nowrap transition-all cursor-pointer active:scale-95 touch-manipulation ${
                 selectedTag === tag
-                  ? 'bg-[var(--interactive-primary)] text-[#090a0d] font-bold'
+                  ? 'bg-[var(--interactive-primary)] text-[#090a0d] font-bold shadow-xs'
                   : 'bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--border-subtle)]'
               }`}
             >
@@ -398,7 +398,7 @@ export const ExperienceView: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setVisibleCertCount((prev) => Math.min(prev + 6, LINKEDIN_CERTIFICATIONS.length))}
-                  className="px-3.5 py-2 rounded-lg bg-[var(--interactive-subtle-bg)] hover:bg-[var(--interactive-subtle-border)] border border-[var(--interactive-subtle-border)] text-xs font-semibold text-[var(--text-accent)] transition-all cursor-pointer flex items-center gap-1.5"
+                  className="px-3.5 py-2 min-h-[44px] rounded-lg bg-[var(--interactive-subtle-bg)] hover:bg-[var(--interactive-subtle-border)] border border-[var(--interactive-subtle-border)] text-xs font-semibold text-[var(--text-accent)] transition-all cursor-pointer active:scale-95 touch-manipulation flex items-center gap-1.5"
                 >
                   <Sparkles size={13} className="text-orange-400" />
                   <span>Show More (+{Math.min(6, LINKEDIN_CERTIFICATIONS.length - visibleCertCount)})</span>
@@ -406,7 +406,7 @@ export const ExperienceView: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setVisibleCertCount(LINKEDIN_CERTIFICATIONS.length)}
-                  className="px-3.5 py-2 rounded-lg bg-[var(--bg-canvas)] hover:bg-[var(--bg-surface)] border border-[var(--border-subtle)] text-xs font-mono text-[var(--text-secondary)] transition-all cursor-pointer"
+                  className="px-3.5 py-2 min-h-[44px] rounded-lg bg-[var(--bg-canvas)] hover:bg-[var(--bg-surface)] border border-[var(--border-subtle)] text-xs font-mono text-[var(--text-secondary)] transition-all cursor-pointer active:scale-95 touch-manipulation flex items-center justify-center"
                 >
                   Show All ({LINKEDIN_CERTIFICATIONS.length})
                 </button>
@@ -415,7 +415,7 @@ export const ExperienceView: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setVisibleCertCount(6)}
-                className="px-3.5 py-2 rounded-lg bg-[var(--bg-canvas)] hover:bg-[var(--bg-surface)] border border-[var(--border-subtle)] text-xs font-semibold text-[var(--text-secondary)] transition-all cursor-pointer"
+                className="px-3.5 py-2 min-h-[44px] rounded-lg bg-[var(--bg-canvas)] hover:bg-[var(--bg-surface)] border border-[var(--border-subtle)] text-xs font-semibold text-[var(--text-secondary)] transition-all cursor-pointer active:scale-95 touch-manipulation flex items-center justify-center"
               >
                 Collapse to Top 6
               </button>
@@ -423,7 +423,7 @@ export const ExperienceView: React.FC = () => {
 
             <a
               href="#/certifications"
-              className="px-3.5 py-2 rounded-lg bg-[var(--interactive-primary)] hover:opacity-90 text-black text-xs font-bold transition-all inline-flex items-center gap-1.5 cursor-pointer"
+              className="px-3.5 py-2 min-h-[44px] rounded-lg bg-[var(--interactive-primary)] hover:opacity-90 text-black text-xs font-bold transition-all inline-flex items-center justify-center gap-1.5 cursor-pointer active:scale-95 touch-manipulation"
             >
               <span>Explore Certifications Hub</span>
               <ExternalLink size={13} />

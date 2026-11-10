@@ -224,9 +224,9 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
                 key={cat.id}
                 onClick={() => setSelectedCategory(cat.id)}
                 aria-pressed={selectedCategory === cat.id}
-                className={`px-3.5 py-1.5 rounded-[var(--radius-sm)] text-xs font-medium transition-colors whitespace-nowrap ${
+                className={`min-h-[44px] px-3.5 py-2 rounded-[var(--radius-sm)] text-xs font-medium transition-all whitespace-nowrap active:scale-95 touch-manipulation cursor-pointer flex items-center justify-center ${
                   selectedCategory === cat.id
-                    ? 'bg-[var(--accent-blue)] text-[#090a0d]'
+                    ? 'bg-[var(--accent-blue)] text-[#090a0d] font-semibold'
                     : 'bg-[var(--bg-primary)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--border-subtle)]'
                 }`}
               >
@@ -241,10 +241,11 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
             <input
               id="project-search"
               type="search"
+              inputMode="search"
               placeholder="Filter by keyword, tool, problem..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-3.5 py-2 rounded-[var(--radius-sm)] bg-[var(--bg-primary)] border border-[var(--border-subtle)] focus:border-[var(--border-focus)] focus:outline-none text-sm text-[var(--text-primary)] placeholder-[var(--text-tertiary)] transition-colors"
+              className="w-full min-h-[48px] pl-9 pr-3.5 py-2.5 rounded-[var(--radius-sm)] bg-[var(--bg-primary)] border border-[var(--border-subtle)] focus:border-[var(--border-focus)] focus:outline-none text-base text-[var(--text-primary)] placeholder-[var(--text-tertiary)] transition-colors touch-manipulation"
             />
           </div>
         </div>
