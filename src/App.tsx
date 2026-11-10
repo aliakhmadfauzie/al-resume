@@ -224,7 +224,12 @@ export default function App() {
                 />
               )}
 
-              {currentTab === 'skills' && <SkillsView />}
+              {currentTab === 'skills' && (
+                <SkillsView
+                  activePersona={activePersona}
+                  onPersonaChange={handlePersonaChange}
+                />
+              )}
 
               {currentTab === 'experience' && <ExperienceView />}
 
@@ -309,6 +314,8 @@ export default function App() {
             isOpen={isResumeOpen}
             onClose={closeOverlay}
             onOpenContact={() => openOverlay('contact')}
+            activePersona={activePersona}
+            onPersonaChange={handlePersonaChange}
           />
         )}
 

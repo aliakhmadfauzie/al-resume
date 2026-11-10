@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import {
   POWER_PLATFORM_ARCH_SUITE,
@@ -66,9 +66,39 @@ interface CompetencyDomainPillar {
   categories: CompetencyCategory[];
 }
 
-export const SkillsView: React.FC = () => {
-  const [selectedDomainId, setSelectedDomainId] = useState<string>('regulatory-gamp');
+interface SkillsViewProps {
+  activePersona?: 'software' | 'operations' | 'both';
+  onPersonaChange?: (persona: 'software' | 'operations' | 'both') => void;
+}
+
+export const SkillsView: React.FC<SkillsViewProps> = ({
+  activePersona = 'both',
+  onPersonaChange
+}) => {
+  const [selectedPersona, setSelectedPersona] = useState<'software' | 'operations' | 'both'>(activePersona);
+
+  useEffect(() => {
+    setSelectedPersona(activePersona);
+  }, [activePersona]);
+
+  const [selectedDomainId, setSelectedDomainId] = useState<string>(() => {
+    return activePersona === 'operations' ? 'six-sigma-leadership' : 'regulatory-gamp';
+  });
   const [mobileTab, setMobileTab] = useState<'tools' | 'impact'>('tools');
+
+  const handleSelectPersona = (p: 'software' | 'operations' | 'both') => {
+    setSelectedPersona(p);
+    if (onPersonaChange) {
+      onPersonaChange(p);
+    }
+    if (p === 'operations') {
+      setSelectedDomainId('six-sigma-leadership');
+    } else if (p === 'software') {
+      setSelectedDomainId('enterprise-architecture');
+    } else {
+      setSelectedDomainId('six-sigma-leadership');
+    }
+  };
 
   // Aggregate technology usage from all projects and migration slices
   const techUsage = useMemo(() => {
@@ -85,273 +115,191 @@ export const SkillsView: React.FC = () => {
     return Object.entries(counts).sort((a, b) => b[1] - a[1]);
   }, []);
 
-  // Split-Pane Executive Ledger Domains: Deepened 5-Pillar Architecture
-  const domainPillars: CompetencyDomainPillar[] = useMemo(
-    () => [
-      {
-        id: 'regulatory-gamp',
+  // ALL AVAILABLE DOMAIN PILLARS
+  const allPillars: Record<string, CompetencyDomainPillar> = useMemo(
+    () => ({
+      // PILLAR: SIX SIGMA DMAIC & OPERATIONS LEADERSHIP (MAIN HIGHLIGHT FOR OPERATIONS)
+      'six-sigma-leadership': {
+        id: 'six-sigma-leadership',
         index: '01',
-        label: 'GAMP 5 Category 4 & 21 CFR Part 11 Regulatory Compliance',
-        shortLabel: 'GAMP 5 & 21 CFR Part 11',
-        headline: 'URS/FS Verification, ALCOA+ Data Integrity, Dual-Factor E-Signatures & Audit Trails',
+        label: 'Six Sigma DMAIC & Frontline Operations Leadership',
+        shortLabel: 'Operations Leadership & DMAIC',
+        headline: '380% Pod Scaling across 7 APAC Markets, 800% Surge Recovery & DMAIC Controls',
         description:
-          'Full lifecycle computerized systems validation (CSV) under GAMP 5 Category 4 Configured Software with Good Documentation Practice (GDocP). Engineered ALCOA+ data integrity, Azure AD 2FA electronic signatures, and tamper-proof immutable audit trails across regulated chemical manufacturing complexes.',
-        verifiedMetric: '100% GDocP Adherence',
-        metricLabel: 'Zero Unapproved SOPs on Floor',
-        provenanceAnchor: 'IOI Acidchem & Manufacturing QMS',
-        icon: <ShieldCheck className="w-4 h-4 text-[var(--text-accent)]" />,
+          'Directing cross-functional service delivery, customer experience, and quality assurance squads. Scaling from 9 to 34 agents across 7 countries, stabilizing high-severity crisis outages within 48 hours, managing 3-shift rotational rosters, and eliminating 110 seconds of handling latency.',
+        verifiedMetric: '380% Pod Scaling',
+        metricLabel: '>98% Contractual SLA Sustained',
+        provenanceAnchor: 'Accenture Diamond & Hang Tuah Award',
+        icon: <Users className="w-4 h-4 text-[var(--text-accent)]" />,
         categories: [
           {
-            category: 'GAMP 5 Cat 4 Validation & ALCOA+ Integrity',
-            icon: <FileCheck2 className="w-4 h-4 text-[var(--text-accent)]" />,
+            category: 'BPO Floor Supervision, Shift Rostering & SLA Governance',
+            icon: <Activity className="w-4 h-4 text-[var(--text-accent)]" />,
             skills: [
               {
-                title: 'GAMP 5 Category 4 CSV Validation Protocols',
-                scopeTag: 'URS, FS, IQ/OQ/PQ',
-                provenance: 'GAMP 5 Cat 4 CSV Framework'
+                title: 'BPO Industry Leadership & Call Center Supervision',
+                scopeTag: 'Floor Operations Command',
+                provenance: 'Accenture & Concentrix Ops'
               },
               {
-                title: 'ALCOA+ Data Integrity Lifecycle in Code',
-                scopeTag: 'Attributable & Original',
-                provenance: 'Immutable Master Records'
+                title: 'Rotational Shift Management (3-Shift Schedule & Handover Protocols)',
+                scopeTag: '24/7 Floor Adherence',
+                provenance: 'Sustained >98% Contractual SLA'
               },
               {
-                title: 'Controlled Document Canonical Identifier Syntax',
-                scopeTag: '[SITE]-[DEPT]-[TYPE]-[REV]',
-                provenance: 'Standardized SOP Taxonomy'
+                title: 'Erlang-C Capacity Forecasting & Shift Rostering',
+                scopeTag: 'Workforce Management (WFM)',
+                provenance: '3 Daily Factory/Ops Shifts'
               },
               {
-                title: 'Programmatic Obsolescence Watermarking',
-                scopeTag: 'OBSOLETE - ARCHIVED',
-                provenance: 'Zero Unapproved Floor SOPs'
+                title: 'Six Sigma DMAIC Cycle-Time Optimization (-25% AHT)',
+                scopeTag: 'AHT Reduction -25%',
+                provenance: 'Ishikawa 5-Whys Root Cause'
               },
               {
-                title: 'Mandatory "Reason for Change" Delta Prompts',
-                scopeTag: 'Audit Trail Deltas',
-                provenance: 'Field-Level Diff Logging'
+                title: 'Crisis Incident Command & 800% Surge Recovery in 48h',
+                scopeTag: 'Platform Outage Command',
+                provenance: 'Hang Tuah & Diamond Award'
               },
               {
-                title: 'Defect Taxonomy & Ishikawa 5-Whys Analysis',
-                scopeTag: 'Root Cause Analysis',
-                provenance: 'Regulatory Inspection Ready'
+                title: 'Omnichannel Governance (Live Chat, Email & T&S Queues)',
+                scopeTag: 'Multi-Channel Balancing',
+                provenance: 'Contractual SLA >98% Adherence'
               }
             ]
           },
           {
-            category: '21 CFR Part 11 Electronic Records & E-Signatures',
-            icon: <BookOpen className="w-4 h-4 text-[var(--text-accent)]" />,
+            category: 'People Management, Talent Coaching & Quality Governance',
+            icon: <GraduationCap className="w-4 h-4 text-[var(--text-accent)]" />,
             skills: [
               {
-                title: 'Azure AD Dual-Factor (2FA) Electronic Signatures',
-                scopeTag: '21 CFR Part 11 Intent',
-                provenance: 'Preparer / Reviewer / Approver'
+                title: 'Team Management & Structured 1-on-1 Performance Reviews',
+                scopeTag: 'Associate Mentorship',
+                provenance: '9 to 34 Associates Supervised'
               },
               {
-                title: 'Immutable Non-Repudiation Audit Logging',
-                scopeTag: 'UTC Time, Role, Client IP',
-                provenance: 'Azure AD Conditional Access'
+                title: 'Agent Competency Upskilling Framework (78% to 94%)',
+                scopeTag: 'Floor Quality Lift',
+                provenance: 'Coaching Refresher Clinics'
               },
               {
-                title: 'Automated CAPA Escalation Flows (7, 14, 30-Day)',
-                scopeTag: 'SLA Escalations',
-                provenance: '-73% Turnaround: 45d → 12d'
+                title: 'Talent Retention & Nesting Pod Transition (<5% Attrition)',
+                scopeTag: '<5% Annualized Attrition',
+                provenance: 'Structured Nesting Academies'
               },
               {
-                title: '30-Day Post-Implementation Effectiveness Checks',
-                scopeTag: '100% Adherence',
-                provenance: 'Power Automate QA Sign-Off'
+                title: 'QA Department Operations & Dispute Adjudication',
+                scopeTag: 'Dispute Arbitration',
+                provenance: 'Inter-Rater Reliability Calibration'
               },
               {
-                title: 'ISO 9001, ISO 27001 & DOSH/SIRIM Statutory Audits',
-                scopeTag: 'Statutory Readiness',
-                provenance: '0 Export Container Holds'
+                title: 'Weekly Business Reviews (WBRs) & Executive Scorecards',
+                scopeTag: 'Executive Governance',
+                provenance: 'Remediated Defect Clusters'
               },
               {
-                title: 'Quality Calibration Sessions & Scorecard Governance',
-                scopeTag: 'Inter-Rater Reliability',
-                provenance: 'Bi-Weekly Pod Calibration'
+                title: 'English Proficiency in Multinational Escalations',
+                scopeTag: 'Cross-Border Command',
+                provenance: '7 APAC International Markets'
               }
             ]
           }
         ]
       },
-      {
-        id: 'react-offline-systems',
+
+      // PILLAR: OPERATIONAL TOOLING & TELEMETRY AUTOMATION (TOOLING SKILL STILL PART OF IT)
+      'operational-tooling-automation': {
+        id: 'operational-tooling-automation',
         index: '02',
-        label: 'Modern React 19, TypeScript & Offline-First Systems',
-        shortLabel: 'React 19 & Offline Systems',
-        headline: '0ms Synchronous Hydration, 4-Pocket Financial Ledgers & Zero-TBT Architecture',
+        label: 'Operational Tooling, PulseTrack & Telemetry Automation',
+        shortLabel: 'Operational Tooling & Telemetry',
+        headline: 'PulseTrack Suite, SmartFlow Escalation Engine, AI Builder NLP Routing & Single-Pane Telemetry',
         description:
-          'Engineering high-performance client-side web applications and offline-first PWAs. Eliminating 6,070ms Total Blocking Time (TBT) over unstable industrial plant Wi-Fi through 0ms synchronous local hydration, atomic multi-collection Firestore synchronization, and strict role-based access control.',
-        verifiedMetric: '0ms Sync Hydration',
-        metricLabel: '-6,070ms Mobile TBT Eliminated',
-        provenanceAnchor: 'Putri GarmentHub ERP & Jastip OMS',
-        icon: <Cpu className="w-4 h-4 text-[var(--text-accent)]" />,
+          'Engineering specialized operational tooling and automated reporting systems for call center and BPO environments. Eliminating ~90% of manual reporting friction, saving 120+ leadership hours weekly, and replacing disorganized WhatsApp/spreadsheet handoffs with single-pane telemetry.',
+        verifiedMetric: '120+ Hours / Week',
+        metricLabel: 'Frontline Leadership Admin Time Saved',
+        provenanceAnchor: 'PulseTrack & SmartFlow Operations Suite',
+        icon: <Zap className="w-4 h-4 text-[var(--text-accent)]" />,
         categories: [
           {
-            category: 'React 19 & High-Performance Web Engineering',
-            icon: <Code2 className="w-4 h-4 text-[var(--text-accent)]" />,
+            category: 'Single-Pane Operational Automation & Telemetry',
+            icon: <Gauge className="w-4 h-4 text-[var(--text-accent)]" />,
             skills: [
               {
-                title: 'React 19 Concurrency & Modern Action Hooks',
-                scopeTag: 'useActionState & Suspense',
-                provenance: 'Zero-Lag Optimistic UI'
+                title: 'PulseTrack Operations Suite (Attendance & Shift Monitor)',
+                scopeTag: 'Real-Time Floor Tracking',
+                provenance: '98% Floor Attendance Precision'
               },
               {
-                title: 'Strict TypeScript 5.8 Polymorphism & Discrimination',
-                scopeTag: 'Discriminated Unions',
-                provenance: 'Zero "any" Type Assertions'
+                title: 'SmartFlow SLA Escalation Engine (Power Automate)',
+                scopeTag: 'Automated Breach Triggers',
+                provenance: 'SLA Handoff: 4h → <45m'
               },
               {
-                title: 'Tailwind CSS v4 OKLCH Design Tokens & Dark Mode Physics',
-                scopeTag: 'WCAG 2.2 AA / APCA',
-                provenance: '60-30-10 Tone Architecture'
+                title: 'CS Resolver NLP Intelligent Routing (AI Builder)',
+                scopeTag: 'NLP Ticket Classification',
+                provenance: '40–60% Misclassification Cut'
               },
               {
-                title: 'Rollup Vendor Chunk Splitting & Asset Optimization',
-                scopeTag: 'react-vendor & ui-vendor',
-                provenance: 'Sub-Second Chunk Compilation'
+                title: '90% Manual Reporting Workload Elimination',
+                scopeTag: 'SharePoint + Power Automate',
+                provenance: 'Replaced WhatsApp Spreadsheets'
               },
               {
-                title: 'Motion (Framer Motion 12) & 3D Ambient WebGL Acceleration',
-                scopeTag: 'GPU-Accelerated Visuals',
-                provenance: 'Reduced-Motion Accessible'
+                title: 'Single-Pane Operational Tooling (Tab-Switching Latency)',
+                scopeTag: 'Single Pane of Glass',
+                provenance: '110s Latency Eliminated'
               },
               {
-                title: 'WCAG Accessible Dialogs & Keyboard Focus Traps',
-                scopeTag: 'Tab / Shift+Tab Trap',
-                provenance: 'Accessible Modal Primitives'
+                title: 'Shift Telemetry Dashboards (Power BI & SharePoint Online)',
+                scopeTag: 'Operational Analytics',
+                provenance: '+15% Operational Throughput'
               }
             ]
           },
           {
-            category: 'Offline-First Resilience & Distributed Cloud Storage',
-            icon: <Database className="w-4 h-4 text-[var(--text-accent)]" />,
+            category: 'Enterprise Tooling & Escalation Architecture',
+            icon: <Layers className="w-4 h-4 text-[var(--text-accent)]" />,
             skills: [
               {
-                title: '0ms Local-First Synchronous Hydration Engine',
-                scopeTag: 'storageAdapter.ts',
-                provenance: '2,500ms Network Race Wrapper'
+                title: 'Microsoft Power Platform (Power Apps, Power Automate, Power BI)',
+                scopeTag: 'Low-Code Rapid Prototyping',
+                provenance: '2022 Discovery at Accenture'
               },
               {
-                title: 'Offline Mutation Queueing & Conflict Resolution',
-                scopeTag: 'updatedAt >= serverTime',
-                provenance: 'Chronology Preservation'
+                title: 'Microsoft Dataverse & SharePoint Online Data Models',
+                scopeTag: 'Relational Schemas',
+                provenance: '1.4M Operational Audit Records'
               },
               {
-                title: 'Atomic 4-Pocket Segregated Financial Ledgers',
-                scopeTag: 'writeBatch Commits',
-                provenance: 'Kas Profit Isolated at Context'
+                title: 'Salesforce CRM, Zendesk & Jira Ticketing Workflows',
+                scopeTag: 'Enterprise CRM/Service Desk',
+                provenance: 'Tier-2 Escalation SME'
               },
               {
-                title: 'Zero-Polling Firebase Firestore Realtime Listeners',
-                scopeTag: 'Snapshot Lifecycle',
-                provenance: 'Mandatory Unsubscribe Cleanup'
+                title: 'T-SQL / SQL Operational Reporting & Ad-Hoc Analytics',
+                scopeTag: 'Data Extraction & Audit',
+                provenance: 'Data Analyst to Senior Lead'
               },
               {
-                title: 'B2B SaaS Multi-Tenant Licensing State Machine',
-                scopeTag: 'Active / Grace Period',
-                provenance: '14-Day SLA Read-Only Window'
+                title: 'Multi-Tenant Policy Authoring & Escalation Matrices',
+                scopeTag: 'Operational Governance',
+                provenance: 'Edge-Case Decision Trees'
               },
               {
-                title: 'Multi-Drop SPK QC Defect & Penalty Mathematics',
-                scopeTag: 'Cumulative Intake Math',
-                provenance: 'Pro-Rata Inventory Restocking'
+                title: 'Advertising Integrity & Merchant Fraud Mitigation',
+                scopeTag: 'Trust & Safety Operations',
+                provenance: 'Ads Review Authenticity'
               }
             ]
           }
         ]
       },
-      {
-        id: 'tri-engine-ai-automation',
-        index: '03',
-        label: 'Tri-Engine AI Gateway & Playwright Automation',
-        shortLabel: 'Tri-Engine AI & Automation',
-        headline: 'Groq/Gemini Multi-Provider Routers, 10-Gate PDF Quality Suites & SPA Bots',
-        description:
-          'Building autonomous AI automation backends and browser robots with zero hallucination risk. Tri-Engine AI task routing between ultra-fast inference (Groq Llama-3.3 @ 240ms) and structured reasoning (Google Gemini Flash), 10 deterministic PDF quality gates, and Workday-hardened Playwright wizards.',
-        verifiedMetric: '0% Metric Drift',
-        metricLabel: 'Q1–Q10 Deterministic Quality Gates',
-        provenanceAnchor: 'ATS Automation Command Center',
-        icon: <Bot className="w-4 h-4 text-[var(--text-accent)]" />,
-        categories: [
-          {
-            category: 'Tri-Engine AI Routing & Multi-LLM FinOps',
-            icon: <Sparkles className="w-4 h-4 text-[var(--text-accent)]" />,
-            skills: [
-              {
-                title: 'Task-Specific AI Gateway Routing (ai_gateway.py)',
-                scopeTag: 'Groq Llama-3.3 vs Gemini',
-                provenance: 'Fast vs Structured Splitting'
-              },
-              {
-                title: 'Cross-Process fcntl File Locking & Quota Defense',
-                scopeTag: 'Rolling 60s RPM/RPD',
-                provenance: 'Zero 429 Drops via Failover'
-              },
-              {
-                title: 'Automatic Tool-Call to JSON-Schema Prompt Inlining',
-                scopeTag: 'Structured Output Fallback',
-                provenance: 'Guaranteed Pydantic Schemas'
-              },
-              {
-                title: 'Multimodal Receipt OCR Extraction (Gemini 2.5 Flash)',
-                scopeTag: 'Type.OBJECT Schema',
-                provenance: 'Foreign-Script Thermal Receipts'
-              },
-              {
-                title: 'Multi-Currency FX Arbitrage Spread Mathematics',
-                scopeTag: 'Dual-Profit Accounting',
-                provenance: '4-Currency Real-Time Ledger'
-              },
-              {
-                title: 'Automated WhatsApp Customer Draft Generation',
-                scopeTag: 'html5-qrcode & WebRTC',
-                provenance: '1-Tap Substitution Blast'
-              }
-            ]
-          },
-          {
-            category: 'Deterministic Quality Verification & Browser Automation',
-            icon: <Terminal className="w-4 h-4 text-[var(--text-accent)]" />,
-            skills: [
-              {
-                title: '10-Gate PDF Quality Verification Suite (Q1–Q10)',
-                scopeTag: 'ReportLab & PyPDF',
-                provenance: 'Zero Fabricated Metrics Blocked'
-              },
-              {
-                title: 'Regex Single Source of Truth Cross-Referencing',
-                scopeTag: 'MASTER_SOURCE_OF_TRUTH',
-                provenance: 'Metric Fidelity Enforcement'
-              },
-              {
-                title: 'Workday-Hardened Playwright Automation (app_bot_v6.py)',
-                scopeTag: 'SHA-256 Response Cache',
-                provenance: 'Option-Aware Disk Caching'
-              },
-              {
-                title: 'Hidden File Input Bypass & Resume Parse Detection',
-                scopeTag: 'DOM Trap Mitigation',
-                provenance: '100% Wizard Completion'
-              },
-              {
-                title: 'ARIA Listbox Traverser & 3.0s Next Button Stability',
-                scopeTag: 'Resilient Locators',
-                provenance: 'Inert Next Button Resolver'
-              },
-              {
-                title: 'Case-Insensitive Multi-Portal Profile Synchronization',
-                scopeTag: 'XPath Locator Engine',
-                provenance: 'HITL Pause & Verification'
-              }
-            ]
-          }
-        ]
-      },
-      {
+
+      // PILLAR: ENTERPRISE MODERNIZATION & POWER PLATFORM ARCHITECTURE
+      'enterprise-architecture': {
         id: 'enterprise-architecture',
-        index: '04',
+        index: '03',
         label: 'Enterprise Modernization & Power Platform Architecture',
         shortLabel: 'Enterprise Architecture',
         headline: '365+ Domino DBs Retired, $960K/yr License Avoidance & 7,878 YAML Screens',
@@ -436,96 +384,316 @@ export const SkillsView: React.FC = () => {
           }
         ]
       },
-      {
-        id: 'six-sigma-leadership',
-        index: '05',
-        label: 'Six Sigma DMAIC & Frontline Operations Leadership',
-        shortLabel: 'Six Sigma & Operations',
-        headline: '380% Pod Scaling across 7 APAC Markets, 800% Surge Recovery & DMAIC Controls',
+
+      // PILLAR: MODERN REACT 19 & OFFLINE SYSTEMS
+      'react-offline-systems': {
+        id: 'react-offline-systems',
+        index: '04',
+        label: 'Modern React 19, TypeScript & Offline-First Systems',
+        shortLabel: 'React 19 & Offline Systems',
+        headline: '0ms Synchronous Hydration, 4-Pocket Financial Ledgers & Zero-TBT Architecture',
         description:
-          'Directing cross-functional service delivery, customer experience, and quality assurance squads. Scaling from 9 to 34 agents across 7 countries, stabilizing high-severity crisis outages within 48 hours, and eliminating 110 seconds of handling latency.',
-        verifiedMetric: '380% Pod Scaling',
-        metricLabel: '>98% Contractual SLA Sustained',
-        provenanceAnchor: 'Accenture Diamond & Hang Tuah Award',
-        icon: <Users className="w-4 h-4 text-[var(--text-accent)]" />,
+          'Engineering high-performance client-side web applications and offline-first PWAs. Eliminating 6,070ms Total Blocking Time (TBT) over unstable industrial plant Wi-Fi through 0ms synchronous local hydration, atomic multi-collection Firestore synchronization, and strict role-based access control.',
+        verifiedMetric: '0ms Sync Hydration',
+        metricLabel: '-6,070ms Mobile TBT Eliminated',
+        provenanceAnchor: 'Putri GarmentHub ERP & Jastip OMS',
+        icon: <Cpu className="w-4 h-4 text-[var(--text-accent)]" />,
         categories: [
           {
-            category: 'Six Sigma DMAIC & Operational Process Engineering',
-            icon: <Activity className="w-4 h-4 text-[var(--text-accent)]" />,
+            category: 'React 19 & High-Performance Web Engineering',
+            icon: <Code2 className="w-4 h-4 text-[var(--text-accent)]" />,
             skills: [
               {
-                title: 'Six Sigma DMAIC Cycle-Time Optimization',
-                scopeTag: 'AHT Reduction -25%',
-                provenance: 'Ishikawa 5-Whys Root Cause'
+                title: 'React 19 Concurrency & Modern Action Hooks',
+                scopeTag: 'useActionState & Suspense',
+                provenance: 'Zero-Lag Optimistic UI'
               },
               {
-                title: 'Single-Pane Operational Tooling (PulseTrack & SmartFlow)',
-                scopeTag: 'Tab-Switching Latency',
-                provenance: '110s Latency Eliminated'
+                title: 'Strict TypeScript 5.8 Polymorphism & Discrimination',
+                scopeTag: 'Discriminated Unions',
+                provenance: 'Zero "any" Type Assertions'
               },
               {
-                title: 'Erlang-C Capacity Forecasting & Shift Rostering',
-                scopeTag: 'Rotational Shift Balancing',
-                provenance: '3 Daily Factory Shifts'
+                title: 'Tailwind CSS v4 OKLCH Design Tokens & Dark Mode Physics',
+                scopeTag: 'WCAG 2.2 AA / APCA',
+                provenance: '60-30-10 Tone Architecture'
               },
               {
-                title: '90% Manual Reporting Workload Elimination',
-                scopeTag: 'SharePoint + Power Automate',
-                provenance: 'Replaced WhatsApp Spreadsheets'
+                title: 'Rollup Vendor Chunk Splitting & Asset Optimization',
+                scopeTag: 'react-vendor & ui-vendor',
+                provenance: 'Sub-Second Chunk Compilation'
               },
               {
-                title: 'QA Department Operations & Dispute Adjudication',
-                scopeTag: 'Dispute Arbitration',
-                provenance: 'Accenture & Concentrix Ops'
+                title: 'Motion (Framer Motion 12) & 3D Ambient WebGL Acceleration',
+                scopeTag: 'GPU-Accelerated Visuals',
+                provenance: 'Reduced-Motion Accessible'
               },
               {
-                title: 'Omnichannel Governance (Live Chat, Email & T&S Queues)',
-                scopeTag: 'Multi-Channel Balancing',
-                provenance: 'Contractual SLA >98% Adherence'
+                title: 'WCAG Accessible Dialogs & Keyboard Focus Traps',
+                scopeTag: 'Tab / Shift+Tab Trap',
+                provenance: 'Accessible Modal Primitives'
               }
             ]
           },
           {
-            category: 'Crisis Incident Command & Talent Development',
-            icon: <GraduationCap className="w-4 h-4 text-[var(--text-accent)]" />,
+            category: 'Offline-First Resilience & Distributed Cloud Storage',
+            icon: <Database className="w-4 h-4 text-[var(--text-accent)]" />,
             skills: [
               {
-                title: '800% Queue Crisis Surge Recovery in 48 Hours',
-                scopeTag: 'Platform Outage Command',
-                provenance: 'Hang Tuah & Diamond Award'
+                title: '0ms Local-First Synchronous Hydration Engine',
+                scopeTag: 'storageAdapter.ts',
+                provenance: '2,500ms Network Race Wrapper'
               },
               {
-                title: 'Cross-Border Operational Scaling (9 to 34 Agents)',
-                scopeTag: '380% Squad Expansion',
-                provenance: '7 APAC International Markets'
+                title: 'Offline Mutation Queueing & Conflict Resolution',
+                scopeTag: 'updatedAt >= serverTime',
+                provenance: 'Chronology Preservation'
               },
               {
-                title: 'Talent Retention & Nesting Pod Transition',
-                scopeTag: '<5% Annualized Attrition',
-                provenance: 'Structured Nesting Academies'
+                title: 'Atomic 4-Pocket Segregated Financial Ledgers',
+                scopeTag: 'writeBatch Commits',
+                provenance: 'Kas Profit Isolated at Context'
               },
               {
-                title: 'Agent Competency Upskilling Framework (78% to 94%)',
-                scopeTag: 'Floor Quality Lift',
-                provenance: 'Coaching Refresher Clinics'
+                title: 'Zero-Polling Firebase Firestore Realtime Listeners',
+                scopeTag: 'Snapshot Lifecycle',
+                provenance: 'Mandatory Unsubscribe Cleanup'
               },
               {
-                title: 'Advertising Integrity & Merchant Fraud Mitigation',
-                scopeTag: 'Ads Review Authenticity',
-                provenance: 'E-Commerce Trust & Safety'
+                title: 'B2B SaaS Multi-Tenant Licensing State Machine',
+                scopeTag: 'Active / Grace Period',
+                provenance: '14-Day SLA Read-Only Window'
               },
               {
-                title: 'Multi-Tenant Policy Authoring & Escalation Matrices',
-                scopeTag: 'Operational Governance',
-                provenance: 'Edge-Case Decision Trees'
+                title: 'Multi-Drop SPK QC Defect & Penalty Mathematics',
+                scopeTag: 'Cumulative Intake Math',
+                provenance: 'Pro-Rata Inventory Restocking'
+              }
+            ]
+          }
+        ]
+      },
+
+      // PILLAR: TRI-ENGINE AI & PLAYWRIGHT AUTOMATION
+      'tri-engine-ai-automation': {
+        id: 'tri-engine-ai-automation',
+        index: '05',
+        label: 'Tri-Engine AI Gateway & Playwright Automation',
+        shortLabel: 'Tri-Engine AI & Automation',
+        headline: 'Groq/Gemini Multi-Provider Routers, 10-Gate PDF Quality Suites & SPA Bots',
+        description:
+          'Building autonomous AI automation backends and browser robots with zero hallucination risk. Tri-Engine AI task routing between ultra-fast inference (Groq Llama-3.3 @ 240ms) and structured reasoning (Google Gemini Flash), 10 deterministic PDF quality gates, and Workday-hardened Playwright wizards.',
+        verifiedMetric: '0% Metric Drift',
+        metricLabel: 'Q1–Q10 Deterministic Quality Gates',
+        provenanceAnchor: 'ATS Automation Command Center',
+        icon: <Bot className="w-4 h-4 text-[var(--text-accent)]" />,
+        categories: [
+          {
+            category: 'Tri-Engine AI Routing & Multi-LLM FinOps',
+            icon: <Sparkles className="w-4 h-4 text-[var(--text-accent)]" />,
+            skills: [
+              {
+                title: 'Task-Specific AI Gateway Routing (ai_gateway.py)',
+                scopeTag: 'Groq Llama-3.3 vs Gemini',
+                provenance: 'Fast vs Structured Splitting'
+              },
+              {
+                title: 'Cross-Process fcntl File Locking & Quota Defense',
+                scopeTag: 'Rolling 60s RPM/RPD',
+                provenance: 'Zero 429 Drops via Failover'
+              },
+              {
+                title: 'Automatic Tool-Call to JSON-Schema Prompt Inlining',
+                scopeTag: 'Structured Output Fallback',
+                provenance: 'Guaranteed Pydantic Schemas'
+              },
+              {
+                title: 'Multimodal Receipt OCR Extraction (Gemini 2.5 Flash)',
+                scopeTag: 'Type.OBJECT Schema',
+                provenance: 'Foreign-Script Thermal Receipts'
+              },
+              {
+                title: 'Multi-Currency FX Arbitrage Spread Mathematics',
+                scopeTag: 'Dual-Profit Accounting',
+                provenance: '4-Currency Real-Time Ledger'
+              },
+              {
+                title: 'Automated WhatsApp Customer Draft Generation',
+                scopeTag: 'html5-qrcode & WebRTC',
+                provenance: '1-Tap Substitution Blast'
+              }
+            ]
+          },
+          {
+            category: 'Deterministic Quality Verification & Browser Automation',
+            icon: <Terminal className="w-4 h-4 text-[var(--text-accent)]" />,
+            skills: [
+              {
+                title: '10-Gate PDF Quality Verification Suite (Q1–Q10)',
+                scopeTag: 'ReportLab & PyPDF',
+                provenance: 'Zero Fabricated Metrics Blocked'
+              },
+              {
+                title: 'Regex Single Source of Truth Cross-Referencing',
+                scopeTag: 'MASTER_SOURCE_OF_TRUTH',
+                provenance: 'Metric Fidelity Enforcement'
+              },
+              {
+                title: 'Workday-Hardened Playwright Automation (app_bot_v6.py)',
+                scopeTag: 'SHA-256 Response Cache',
+                provenance: 'Option-Aware Disk Caching'
+              },
+              {
+                title: 'Hidden File Input Bypass & Resume Parse Detection',
+                scopeTag: 'DOM Trap Mitigation',
+                provenance: '100% Wizard Completion'
+              },
+              {
+                title: 'ARIA Listbox Traverser & 3.0s Next Button Stability',
+                scopeTag: 'Resilient Locators',
+                provenance: 'Inert Next Button Resolver'
+              },
+              {
+                title: 'Case-Insensitive Multi-Portal Profile Synchronization',
+                scopeTag: 'XPath Locator Engine',
+                provenance: 'HITL Pause & Verification'
+              }
+            ]
+          }
+        ]
+      },
+
+      // PILLAR: GAMP 5 & 21 CFR PART 11 REGULATORY COMPLIANCE
+      'regulatory-gamp': {
+        id: 'regulatory-gamp',
+        index: '06',
+        label: 'GAMP 5 Category 4 & 21 CFR Part 11 Regulatory Compliance',
+        shortLabel: 'GAMP 5 & 21 CFR Part 11',
+        headline: 'URS/FS Verification, ALCOA+ Data Integrity, Dual-Factor E-Signatures & Audit Trails',
+        description:
+          'Full lifecycle computerized systems validation (CSV) under GAMP 5 Category 4 Configured Software with Good Documentation Practice (GDocP). Engineered ALCOA+ data integrity, Azure AD 2FA electronic signatures, and tamper-proof immutable audit trails across regulated chemical manufacturing complexes.',
+        verifiedMetric: '100% GDocP Adherence',
+        metricLabel: 'Zero Unapproved SOPs on Floor',
+        provenanceAnchor: 'IOI Acidchem & Manufacturing QMS',
+        icon: <ShieldCheck className="w-4 h-4 text-[var(--text-accent)]" />,
+        categories: [
+          {
+            category: 'GAMP 5 Cat 4 Validation & ALCOA+ Integrity',
+            icon: <FileCheck2 className="w-4 h-4 text-[var(--text-accent)]" />,
+            skills: [
+              {
+                title: 'GAMP 5 Category 4 CSV Validation Protocols',
+                scopeTag: 'URS, FS, IQ/OQ/PQ',
+                provenance: 'GAMP 5 Cat 4 CSV Framework'
+              },
+              {
+                title: 'ALCOA+ Data Integrity Lifecycle in Code',
+                scopeTag: 'Attributable & Original',
+                provenance: 'Immutable Master Records'
+              },
+              {
+                title: 'Controlled Document Canonical Identifier Syntax',
+                scopeTag: '[SITE]-[DEPT]-[TYPE]-[REV]',
+                provenance: 'Standardized SOP Taxonomy'
+              },
+              {
+                title: 'Programmatic Obsolescence Watermarking',
+                scopeTag: 'OBSOLETE - ARCHIVED',
+                provenance: 'Zero Unapproved Floor SOPs'
+              },
+              {
+                title: 'Mandatory "Reason for Change" Delta Prompts',
+                scopeTag: 'Audit Trail Deltas',
+                provenance: 'Field-Level Diff Logging'
+              },
+              {
+                title: 'Defect Taxonomy & Ishikawa 5-Whys Analysis',
+                scopeTag: 'Root Cause Analysis',
+                provenance: 'Regulatory Inspection Ready'
+              }
+            ]
+          },
+          {
+            category: '21 CFR Part 11 Electronic Records & E-Signatures',
+            icon: <BookOpen className="w-4 h-4 text-[var(--text-accent)]" />,
+            skills: [
+              {
+                title: 'Azure AD Dual-Factor (2FA) Electronic Signatures',
+                scopeTag: '21 CFR Part 11 Intent',
+                provenance: 'Preparer / Reviewer / Approver'
+              },
+              {
+                title: 'Immutable Non-Repudiation Audit Logging',
+                scopeTag: 'UTC Time, Role, Client IP',
+                provenance: 'Azure AD Conditional Access'
+              },
+              {
+                title: 'Automated CAPA Escalation Flows (7, 14, 30-Day)',
+                scopeTag: 'SLA Escalations',
+                provenance: '-73% Turnaround: 45d → 12d'
+              },
+              {
+                title: '30-Day Post-Implementation Effectiveness Checks',
+                scopeTag: '100% Adherence',
+                provenance: 'Power Automate QA Sign-Off'
+              },
+              {
+                title: 'ISO 9001, ISO 27001 & DOSH/SIRIM Statutory Audits',
+                scopeTag: 'Statutory Readiness',
+                provenance: '0 Export Container Holds'
+              },
+              {
+                title: 'Quality Calibration Sessions & Scorecard Governance',
+                scopeTag: 'Inter-Rater Reliability',
+                provenance: 'Bi-Weekly Pod Calibration'
               }
             ]
           }
         ]
       }
-    ],
+    }),
     []
   );
+
+  // Dynamic ordering of Domain Pillars based on Active Persona
+  // STRICT RULE: When operations (Team Manager) profile is selected, managerial skills are the FIRST to discuss / main highlight, followed by tooling skills!
+  const domainPillars: CompetencyDomainPillar[] = useMemo(() => {
+    let pillarOrder: string[] = [];
+
+    if (selectedPersona === 'operations') {
+      // Operations Team Leader: Managerial & Six Sigma Leadership FIRST, then Operational Tooling, then Quality & Systems
+      pillarOrder = [
+        'six-sigma-leadership',
+        'operational-tooling-automation',
+        'regulatory-gamp',
+        'enterprise-architecture',
+        'react-offline-systems'
+      ];
+    } else if (selectedPersona === 'software') {
+      // Software Developer: Architecture & Full-Stack Web FIRST
+      pillarOrder = [
+        'enterprise-architecture',
+        'react-offline-systems',
+        'tri-engine-ai-automation',
+        'regulatory-gamp',
+        'six-sigma-leadership'
+      ];
+    } else {
+      // Both (Hybrid): Balanced representation
+      pillarOrder = [
+        'six-sigma-leadership',
+        'enterprise-architecture',
+        'operational-tooling-automation',
+        'react-offline-systems',
+        'regulatory-gamp'
+      ];
+    }
+
+    return pillarOrder.map((key, idx) => ({
+      ...allPillars[key],
+      index: String(idx + 1).padStart(2, '0')
+    }));
+  }, [selectedPersona, allPillars]);
 
   const activeDomain = useMemo(() => {
     return (
@@ -535,19 +703,72 @@ export const SkillsView: React.FC = () => {
 
   return (
     <div className="space-y-12 py-6">
-      {/* Page Header */}
-      <div className="space-y-3 border-b border-[var(--border-subtle)] pb-8">
-        <p className="text-xs font-mono text-[var(--text-accent)] font-medium">
-          01 · Executive Competency Ledger &amp; Provenance Matrix
-        </p>
-        <h1
-          className="font-semibold text-[var(--text-primary)] tracking-tight"
-          style={{ fontSize: 'var(--text-h1)', lineHeight: 1.2 }}
-        >
-          Technical Mastery &amp; Operational Governance
-        </h1>
+      {/* Page Header with Persona Switcher */}
+      <div className="space-y-4 border-b border-[var(--border-subtle)] pb-8">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <p className="text-xs font-mono text-[var(--text-accent)] font-medium">
+              01 · Executive Competency Ledger &amp; Provenance Matrix
+            </p>
+            <h1
+              className="font-semibold text-[var(--text-primary)] tracking-tight mt-1"
+              style={{ fontSize: 'var(--text-h1)', lineHeight: 1.2 }}
+            >
+              {selectedPersona === 'operations'
+                ? 'Operations Leadership & Technical Tooling Mastery'
+                : selectedPersona === 'software'
+                ? 'Software Engineering & Enterprise Architecture'
+                : 'Technical Mastery & Operational Governance'}
+            </h1>
+          </div>
+
+          {/* In-Page Persona Switcher Pill */}
+          <div className="flex items-center gap-1.5 bg-[var(--bg-surface)] p-1 rounded-[var(--radius-sm)] border border-[var(--border-subtle)] shrink-0 self-start sm:self-auto">
+            <button
+              type="button"
+              onClick={() => handleSelectPersona('software')}
+              className={`px-3 py-1.5 rounded-[var(--radius-sm)] text-xs font-mono transition-all flex items-center space-x-1.5 active:scale-95 touch-manipulation cursor-pointer ${
+                selectedPersona === 'software'
+                  ? 'bg-[var(--accent-blue)] text-[#090a0d] font-bold shadow-sm'
+                  : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+              }`}
+            >
+              <Briefcase className="w-3.5 h-3.5" />
+              <span>Software</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => handleSelectPersona('operations')}
+              className={`px-3 py-1.5 rounded-[var(--radius-sm)] text-xs font-mono transition-all flex items-center space-x-1.5 active:scale-95 touch-manipulation cursor-pointer ${
+                selectedPersona === 'operations'
+                  ? 'bg-[var(--accent-blue)] text-[#090a0d] font-bold shadow-sm'
+                  : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+              }`}
+            >
+              <Users className="w-3.5 h-3.5" />
+              <span>Operations Leader</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => handleSelectPersona('both')}
+              className={`px-3 py-1.5 rounded-[var(--radius-sm)] text-xs font-mono transition-all flex items-center space-x-1.5 active:scale-95 touch-manipulation cursor-pointer ${
+                selectedPersona === 'both'
+                  ? 'bg-[var(--accent-blue)] text-[#090a0d] font-bold shadow-sm'
+                  : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+              }`}
+            >
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>Both (Hybrid)</span>
+            </button>
+          </div>
+        </div>
+
         <p className="text-base text-[var(--text-secondary)] max-w-3xl leading-relaxed">
-          High-density executive ledger cross-referencing core competencies with verified production evidence, GxP/ALCOA+ standards, and quantifiable enterprise impact.
+          {selectedPersona === 'operations'
+            ? 'Executive competency ledger highlighting frontline BPO team management, contractual SLA governance, rotational shift leadership, and Six Sigma DMAIC optimization—supported by custom low-code tooling and automation suites.'
+            : selectedPersona === 'software'
+            ? 'High-density software engineering ledger cross-referencing full-stack React 19, TypeScript, Power Platform AST verification, and offline-first cloud data architectures.'
+            : 'Comprehensive dual-track competency ledger balancing frontline operations team leadership with full-stack software development and enterprise modernization.'}
         </p>
       </div>
 
@@ -695,19 +916,64 @@ export const SkillsView: React.FC = () => {
         </div>
       </section>
 
-      {/* SECTION 2: Power Platform Enterprise Architecture Suite (5-Tier Spec) */}
-      <section id="section-arch-suite" className="space-y-6 pt-4">
+      {/* SECTION 2: Operations Service Delivery & Governance (Elevated when Operations is selected) */}
+      <section id="section-ops-governance" className="space-y-6 pt-4">
         <div className="border-b border-[var(--border-subtle)] pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-3">
           <div>
             <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-[var(--radius-sm)] bg-[var(--interactive-subtle-bg)] border border-[var(--interactive-subtle-border)] text-xs font-mono text-[var(--text-accent)] font-semibold uppercase tracking-wider mb-2">
-              <Layers className="w-3.5 h-3.5 text-[var(--interactive-primary)]" />
-              <span>02 · Enterprise Architecture Stack</span>
+              <Users className="w-3.5 h-3.5 text-[var(--interactive-primary)]" />
+              <span>02 · Frontline Operations &amp; Service Delivery</span>
             </div>
             <h2
               className="font-bold text-[var(--text-primary)] tracking-tight"
               style={{ fontSize: 'var(--text-h2)', lineHeight: 1.2 }}
             >
-              Power Platform Enterprise Architecture Suite
+              Executive Service Delivery &amp; Operational Governance Pillars
+            </h2>
+            <p className="text-sm text-[var(--text-secondary)] mt-1.5 max-w-3xl leading-relaxed">
+              Core management disciplines governing 24/7 BPO operations, rotational shift handovers, Lean Six Sigma DMAIC cycle-time reductions, and agent coaching pipelines.
+            </p>
+          </div>
+          <span className="text-xs font-mono text-[var(--text-accent)] bg-[#0f1117] border border-[var(--border-subtle)] px-3 py-1.5 rounded-[var(--radius-sm)] shrink-0 self-start sm:self-auto">
+            {BUSINESS_COMPETENCIES.length} Executive Disciplines
+          </span>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {BUSINESS_COMPETENCIES.map((comp, idx) => (
+            <div
+              key={idx}
+              className="bg-[var(--bg-surface)] p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] hover:border-[var(--border-focus)] transition-colors space-y-3 shadow-[var(--shadow-card)]"
+            >
+              <div className="flex items-center gap-2.5">
+                <div className="w-8 h-8 rounded-[var(--radius-sm)] bg-[var(--bg-primary)] border border-[var(--border-subtle)] flex items-center justify-center text-[var(--text-accent)] shrink-0">
+                  <TrendingUp className="w-4 h-4" />
+                </div>
+                <h3 className="text-sm font-semibold text-[var(--text-primary)]">
+                  {comp.title}
+                </h3>
+              </div>
+              <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
+                {comp.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* SECTION 3: Power Platform Architecture & Tooling Suite */}
+      <section id="section-arch-suite" className="space-y-6 pt-4">
+        <div className="border-b border-[var(--border-subtle)] pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+          <div>
+            <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-[var(--radius-sm)] bg-[var(--interactive-subtle-bg)] border border-[var(--interactive-subtle-border)] text-xs font-mono text-[var(--text-accent)] font-semibold uppercase tracking-wider mb-2">
+              <Layers className="w-3.5 h-3.5 text-[var(--interactive-primary)]" />
+              <span>03 · Enterprise Tooling &amp; Architecture Stack</span>
+            </div>
+            <h2
+              className="font-bold text-[var(--text-primary)] tracking-tight"
+              style={{ fontSize: 'var(--text-h2)', lineHeight: 1.2 }}
+            >
+              Power Platform &amp; Operational Tooling Architecture
             </h2>
             <p className="text-sm text-[var(--text-secondary)] mt-1.5 max-w-3xl leading-relaxed">
               5-Tier architectural framework governing enterprise data persistence, application user experience, automated workflow orchestration, real-time analytics/AI, and zero-trust security.
@@ -848,16 +1114,21 @@ export const SkillsView: React.FC = () => {
         </div>
       </section>
 
-      {/* SECTION 3: Pro-Code Extensions & Development Stack */}
-      <section id="section-procode-stack" className="space-y-4">
-        <div className="border-b border-[var(--border-subtle)] pb-3">
-          <p className="text-xs font-mono text-[var(--text-accent)] font-medium">03 · Pro-Code Engineering</p>
-          <h2
-            className="font-medium text-[var(--text-primary)] tracking-tight mt-1"
-            style={{ fontSize: 'var(--text-h2)', lineHeight: 1.25 }}
-          >
-            Development Stack &amp; Custom PCF Extensions
-          </h2>
+      {/* SECTION 4: Development Stack & ALM Governance */}
+      <section id="section-procode-stack" className="space-y-6">
+        <div className="border-b border-[var(--border-subtle)] pb-3 flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
+          <div>
+            <p className="text-xs font-mono text-[var(--text-accent)] font-medium">04 · Technical Tooling &amp; Pro-Code Engineering</p>
+            <h2
+              className="font-medium text-[var(--text-primary)] tracking-tight mt-1"
+              style={{ fontSize: 'var(--text-h2)', lineHeight: 1.25 }}
+            >
+              Development Stack &amp; Custom Extensions
+            </h2>
+          </div>
+          <span className="text-xs font-mono text-[var(--text-tertiary)]">
+            TypeScript 5.8 · React 19 · Power Fx · Python 3.11+
+          </span>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -886,77 +1157,14 @@ export const SkillsView: React.FC = () => {
         </div>
       </section>
 
-      {/* SECTION 4: ALM & Enterprise Governance + Core Business Competencies */}
-      <section id="section-alm-governance" className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* ALM & Governance */}
-        <div className="bg-[var(--bg-surface)] p-6 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-4 shadow-[var(--shadow-card)]">
-          <div className="flex items-center justify-between border-b border-[var(--border-subtle)] pb-3">
-            <div className="flex items-center gap-2">
-              <GitBranch className="w-4 h-4 text-[var(--text-accent)]" />
-              <h3 className="text-sm font-semibold text-[var(--text-primary)]">
-                ALM &amp; Enterprise Governance
-              </h3>
-            </div>
-            <span className="text-xs font-mono text-[var(--text-tertiary)]">CI/CD &amp; DLP</span>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-            {GOVERNANCE_ITEMS.map((gov, idx) => (
-              <div
-                key={idx}
-                className="p-3.5 rounded-[var(--radius-sm)] bg-[var(--bg-primary)] border border-[var(--border-subtle)] space-y-1.5"
-              >
-                <div className="flex items-center gap-2">
-                  <Code2 className="w-3.5 h-3.5 text-[var(--text-accent)] shrink-0" />
-                  <h4 className="text-xs font-semibold text-[var(--text-primary)]">{gov.name}</h4>
-                </div>
-                <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-                  {gov.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Core Business Competencies */}
-        <div className="bg-[var(--bg-surface)] p-6 rounded-[var(--radius-md)] border border-[var(--border-subtle)] space-y-4 shadow-[var(--shadow-card)]">
-          <div className="flex items-center justify-between border-b border-[var(--border-subtle)] pb-3">
-            <div className="flex items-center gap-2">
-              <Award className="w-4 h-4 text-[var(--text-accent)]" />
-              <h3 className="text-sm font-semibold text-[var(--text-primary)]">
-                Executive Service Delivery Pillars
-              </h3>
-            </div>
-            <span className="text-xs font-mono text-[var(--text-tertiary)]">Operations</span>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-            {BUSINESS_COMPETENCIES.map((comp, idx) => (
-              <div
-                key={idx}
-                className="p-3.5 rounded-[var(--radius-sm)] bg-[var(--bg-primary)] border border-[var(--border-subtle)] space-y-1.5"
-              >
-                <div className="flex items-center gap-2">
-                  <TrendingUp className="w-3.5 h-3.5 text-[var(--text-accent)] shrink-0" />
-                  <h4 className="text-xs font-semibold text-[var(--text-primary)]">
-                    {comp.title}
-                  </h4>
-                </div>
-                <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-                  {comp.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* SECTION 5: Technology Utilization Telemetry across Production Apps */}
       <section className="bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-[var(--radius-lg)] p-6 sm:p-8 space-y-6 shadow-[var(--shadow-card)]">
         <div className="space-y-1">
-          <p className="text-xs font-mono text-[var(--text-accent)] font-medium">04 · Production Footprint</p>
+          <p className="text-xs font-mono text-[var(--text-accent)] font-medium">05 · Production Footprint &amp; Verified Telemetry</p>
           <h2 className="text-lg sm:text-xl font-medium text-[var(--text-primary)] tracking-tight">
-            Technology Utilization Matrix Across 16+ Rebuilt Systems
+            {selectedPersona === 'operations'
+              ? 'Operational Telemetry & Performance Governance Metrics'
+              : 'Technology Utilization Matrix Across 16+ Rebuilt Systems'}
           </h2>
         </div>
 

@@ -117,6 +117,29 @@ export function HomeView({
     return WORK_EXPERIENCE.slice(0, 3);
   }, [activePersona]);
 
+  // Dynamic PDF download mapping based on selected profile
+  const activePdf = useMemo(() => {
+    if (activePersona === 'operations') {
+      return {
+        url: '/assets/profile/Ali_Akhmad_Fauzie_Operations_Team_Leader_Resume.pdf',
+        filename: 'Ali_Akhmad_Fauzie_Operations_Team_Leader_Resume.pdf',
+        label: 'Download Operations Leader CV (PDF)'
+      };
+    }
+    if (activePersona === 'software') {
+      return {
+        url: '/assets/profile/Ali_Akhmad_Fauzie_Software_Developer_Resume.pdf',
+        filename: 'Ali_Akhmad_Fauzie_Software_Developer_Resume.pdf',
+        label: 'Download Software Developer CV (PDF)'
+      };
+    }
+    return {
+      url: '/assets/profile/Ali_Akhmad_Fauzie_Hybrid_Resume.pdf',
+      filename: 'Ali_Akhmad_Fauzie_Hybrid_Resume.pdf',
+      label: 'Download Executive CV (PDF)'
+    };
+  }, [activePersona]);
+
   return (
     <div className="space-y-16 sm:space-y-24 py-6 sm:py-12">
       {/* =========================================================================
@@ -305,12 +328,12 @@ export function HomeView({
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
             <a
               id="hero-btn-download-cv"
-              href="/assets/profile/Resume.pdf"
-              download="Ali_Akhmad_Fauzie_Resume.pdf"
+              href={activePdf.url}
+              download={activePdf.filename}
               className="action-primary text-base font-semibold px-6 py-3.5 rounded-xl min-h-[48px] inline-flex items-center justify-center gap-2.5 shadow-[0_4px_20px_rgba(249,115,22,0.35)]"
             >
               <Download size={19} />
-              <span>Download Executive CV (PDF)</span>
+              <span>{activePdf.label}</span>
             </a>
             <a
               id="hero-btn-view-demos"
