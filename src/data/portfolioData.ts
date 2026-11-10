@@ -91,9 +91,9 @@ if ssot_text:
     id: "ioi-acidchem-she-platform",
     imageUrl: "/showcase-articles/enterprise-m365-ioi/portfolio-ui-screenshot.png",
     title: "IOI Oleo Enterprise Modernization & Departmental Power Apps Suite",
-    subtitle: "Decommissioned 365+ Lotus Domino DBs into 13 Departmental Power Apps (52 1080p Screens), $960K/yr License Avoidance & DOSH 5×5 SHE Suite",
+    subtitle: "6-Month Migration: Decommissioned 365+ Lotus Domino DBs into 13 Departmental Power Apps (52 1080p Screens), $960K/yr License Avoidance",
     category: "core",
-    date: "2024 – 2026",
+    date: "Aug 2025 – Jan 2026 (6-Month Build)",
     role: "Lead Enterprise Modernization & Full-Stack Solution Architect",
     repoUrl: "https://github.com/aliakhmadfauzie/power-platform-portfolio",
     tools: [
@@ -878,11 +878,11 @@ const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8' });`
   {
     id: "tasek-cement-rebate",
     imageUrl: "/assets/gallery/tasek-cement-rebate/02_dashboard.png",
-    title: "Tasek Cement Rebate Approval System",
-    subtitle: "Formula-Driven High-Volume Financial Approval Engine",
+    title: "Tasek Cement Commercial e-Rebate System",
+    subtitle: "Formula-Driven High-Volume Financial Approval Engine (2nd Tasek Project)",
     category: "standalone",
-    date: "Nov–Dec 2023",
-    role: "Rebate calculation + multi-level approval workflow",
+    date: "Jun–Jul 2025",
+    role: "Lead Enterprise Architect & Financial Workflow Engineer",
     tools: ["Power Apps", "Power Automate", "Powerbiz", "Dataverse"],
     problem: "Rebate approvals took 2–3 days via email and manual checks, creating cashflow friction and human error.",
     solution: "Reduced to a ~15-minute workflow with a multi-level Sales → Group COO approval path. Implemented a seven-component rebate formula with a cap of 0.20 RM/metric tonne. Synchronized with purchase orders without creating POs inside the app.",
@@ -974,27 +974,52 @@ const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8' });`
     featured: true
   },
   {
-    id: "staff-requisition",
-    title: "Staff Requisition Form & Vacancy Control",
-    subtitle: "Four-Tier Headcount Governance & Interview Enforcement",
+    id: "tasek-cement-eprocurement",
+    title: "Tasek Cement e-Procurement System",
+    subtitle: "Multi-Tier Purchase Requisition & SAP OData Ledgers (1st Tasek Project)",
     category: "standalone",
-    date: "Nov–Dec 2023",
-    role: "Vacancy control & interview logging enforcement",
-    tools: ["Power Apps", "Power Automate", "SharePoint"],
-    problem: "Vacancies could be advertised without a completed four-tier requisition and interview log, causing unauthorized budget commitments.",
-    solution: "Enforced that no vacancy is advertised without an approved requisition. Added an optional CFO gate for new headcount and a mandatory five-working-day internal advertisement lockout.",
-    impact: "Stronger hiring governance, 100% compliant headcount budget, and zero unapproved postings.",
+    date: "Apr–May 2025",
+    role: "Lead Power Platform & ERP Integration Architect",
+    tools: ["Power Apps", "Power Automate", "SharePoint", "SAP OData", "Dataverse"],
+    problem: "Manual purchase requisition routing and paper-based quotation comparisons caused 14-day procurement delays and untracked financial commitments across manufacturing plants.",
+    solution: "Engineered an automated e-Procurement and RFQ approval platform with 4-tier delegation of authority, automated purchase order ledger verification, and bidirectional SAP balance synchronization.",
+    impact: "Cut vendor quotation and PR approval cycle by 65%; 100% purchase order compliance against financial authority limits; zero unapproved commitments.",
     impactMetrics: [
-      { label: "Hiring Compliance", value: "100%" },
-      { label: "Internal Lockout", value: "5 Days" },
-      { label: "Audit Readiness", value: "100%" }
+      { label: "Cycle Speed", value: "65% Faster" },
+      { label: "PO Compliance", value: "100%" },
+      { label: "Approval Tiers", value: "4 Levels" }
     ],
     technicalDetails: [
-      "Strict state-machine workflow: Draft → Line Manager → HR Head → CFO (if new headcount) → Published",
-      "Automated 5-working-day lock preventing external posting before internal employee visibility",
-      "Interview candidate evaluation scorecard with digital signatures"
+      "Strict state-machine workflow: Requester Draft → HOD Review → Procurement Specialist → General Manager / CFO Sign-off",
+      "SAP OData balance checks verifying available GL account budget prior to RFQ submission",
+      "Multi-vendor quotation comparison ledger with weighted commercial scoring",
+      "Immutable cryptographic audit logging and automated PDF PO generation"
     ],
     liveDemoId: "erp"
+  },
+  {
+    id: "texchem-qms",
+    title: "Texchem Enterprise Quality Management System (QMS)",
+    subtitle: "ISO 9001 Digital Quality Control & CAPA Workflow Platform (1st Freelance Client)",
+    category: "standalone",
+    date: "Jan–Mar 2025",
+    role: "Principal Solutions Architect & Modernization Consultant",
+    tools: ["React 19", "TypeScript", "Power Apps", "Power Automate", "Dataverse", "SharePoint"],
+    problem: "Texchem industrial manufacturing units relied on fragmented document control, manual inspection sheets, and paper CAPA forms, slowing defect investigations to over 30 days.",
+    solution: "Architected a modern Enterprise QMS featuring digital document lifecycle management (Draft → Review → QA Approved), automated CAPA 5-Whys root cause tracking, and rapid React/TypeScript interactive prototypes for executive stakeholder sign-off.",
+    impact: "Closed 1st independent freelance SOW (RM 70k+ pipeline); accelerated document change requests by 75%; 100% audit traceability across quality events.",
+    impactMetrics: [
+      { label: "Cycle Speed", value: "+75% Faster" },
+      { label: "Audit Trail", value: "100% GDocP" },
+      { label: "Turnaround", value: "72-Hr POC" }
+    ],
+    technicalDetails: [
+      "End-to-end controlled document lifecycle with automated revision stamping and obsolescence watermarking",
+      "CAPA investigation state machine with automated 7, 14, and 30-day escalation timers",
+      "Interactive 5-Whys root-cause diagramming and digital sign-off gates",
+      "Rapid React/TypeScript interactive prototypes validating UX workflows within 72 hours"
+    ],
+    liveDemoId: "she-matrix"
   },
   {
     id: "ask-lark",
@@ -1295,17 +1320,26 @@ export const FREELANCE_CLIENTS: ClientRosterItem[] = [
     id: "client-texchem",
     name: "Texchem",
     industry: "Conglomerate & Industrial Manufacturing",
-    role: "Enterprise Solutions Architect & Modernization Consultant",
-    scope: "Rapid React/TypeScript Prototypes, SOW Scoping, Workflow Optimization & Digital Modernization",
+    role: "Freelance Software Developer & Solutions Consultant",
+    scope: "1st Freelance Client (Jan–Mar 2025): Engineered Enterprise Quality Management System (QMS), digital CAPA tracking, inspection workflows, and rapid React/TypeScript interactive prototypes.",
     logoUrl: "/assets/logos/texchem.png",
     logoId: "texchem"
+  },
+  {
+    id: "client-tasek-cement",
+    name: "Tasek Cement",
+    industry: "Building Materials & Cement Manufacturing",
+    role: "Enterprise Workflow & Power Automate Architect",
+    scope: "2 Consecutive Projects (Apr–Jul 2025): Delivered (1) e-Procurement approval system with purchase order ledgers, followed by (2) the high-volume Commercial e-Rebate System with deterministic 7-component formula and statutory RM 0.20/t ceiling.",
+    logoUrl: "/assets/logos/tasek-cement.png",
+    logoId: "tasek-cement"
   },
   {
     id: "client-ioi-acidchem",
     name: "IOI Acidchem",
     industry: "Oleochemicals & Agro-Industrial",
     role: "Lotus Domino to M365 / Dataverse Enterprise Migration Architect",
-    scope: "365+ Form Cutover, DOSH 5x5 SHE Platform, 878 Canvas Screens & Dataverse Relational Modeling",
+    scope: "6-Month Full-Scale Migration (Aug 2025–Jan 2026): Decommissioned 365+ legacy Lotus Domino DBs across 28 BUs into 13 departmental Power Apps (52 screens), partitioned MainDB schema, DOSH 5x5 SHE suite, and $960K/yr license avoidance.",
     logoUrl: "/assets/logos/ioi-acidchem.png",
     logoId: "ioi-acidchem"
   },
@@ -1317,15 +1351,6 @@ export const FREELANCE_CLIENTS: ClientRosterItem[] = [
     scope: "Enterprise Pre-Sales Architectures, Automated Workflows & Systems Modernization Roadmap",
     logoUrl: "/assets/logos/nippon-paint.png",
     logoId: "nippon-paint"
-  },
-  {
-    id: "client-tasek-cement",
-    name: "Tasek Cement",
-    industry: "Building Materials & Cement Manufacturing",
-    role: "Enterprise Workflow & Power Automate Architect",
-    scope: "15-Minute 5-Tier Commercial Rebate Approval Engine & Multi-Tier ERP Integration",
-    logoUrl: "/assets/logos/tasek-cement.png",
-    logoId: "tasek-cement"
   },
   {
     id: "client-ipenet",
@@ -1341,7 +1366,7 @@ export const FREELANCE_CLIENTS: ClientRosterItem[] = [
 export const WORK_EXPERIENCE: ExperienceItem[] = [
   {
     id: "exp-freelance",
-    role: "Enterprise Solutions Architect & Pre-Sales Lead",
+    role: "Freelance Software Developer & Enterprise Power Platform Architect",
     company: "Self-Employed / Independent Contractor",
     companyLogoId: "general",
     clients: [
@@ -1392,7 +1417,7 @@ export const WORK_EXPERIENCE: ExperienceItem[] = [
       }
     ],
     location: "Remote",
-    period: "Feb 2025 – Present",
+    period: "Jan 2025 – Present",
     isCurrent: true,
     tags: [
       "Pre-Sales",
@@ -1408,22 +1433,22 @@ export const WORK_EXPERIENCE: ExperienceItem[] = [
       "IPENET"
     ],
     bulletPoints: [
-      "Partnered with flagship enterprise clients including Texchem, IOI Acidchem, Nippon Paint, Tasek Cement (Hong Leong Asia), and IPENET Solutions to architect digital workflows, systems cutovers, and rapid modernization prototypes.",
-      "Closed RM 70,000+ in signed SOWs by converting discovery sessions into delivery contracts using rapid React/TypeScript prototypes and Dataverse architectures.",
-      "Led a 3-person technical pod; managed sprint milestones, billable capacity, and QA to deliver client solutions on schedule with no scope overruns.",
-      "Scoped and secured executive sign-off for modernization of 365+ legacy applications across 28 business units to Microsoft 365/SharePoint/Dataverse, defining a phased commercial roadmap.",
-      "Expanded account value by 35% through workflow optimization and cross-selling integrations and ongoing automation support while sustaining 30-35% project margins.",
-      "Accelerated sales velocity by delivering working POCs within 72 hours, shortening enterprise sales cycles by ~2 weeks."
+      "Launched independent freelance consulting in January 2025 as Software Developer & Enterprise Power Platform Architect, delivering end-to-end commercial solutions across enterprise manufacturing and chemicals.",
+      "1st Freelance Client — Texchem (Jan–Mar 2025): Architected Enterprise Quality Management System (QMS) and digital CAPA tracking, closing RM 70,000+ in signed SOWs using rapid React/TypeScript prototypes.",
+      "Tasek Cement Engagements (Apr–Jul 2025): Delivered 2 consecutive projects: (1) e-Procurement approval workflow with SAP OData balance verification, followed immediately by (2) Commercial e-Rebate System with deterministic 7-component formula, statutory RM 0.20/t cap, and 15-minute turnaround.",
+      "IOI Oleochemicals 6-Month Migration (Aug 2025–Jan 2026): Architected and led full-scale 6-month migration retiring 365+ legacy Lotus Domino databases across 28 business units into 13 Departmental Power Apps (52 1080p screens), DOSH 5x5 SHE suite, and saving $960K/yr in licensing.",
+      "Pre-Sales & Continuing Growth: Formulated technical architectures and automated workflow roadmaps for Nippon Paint and IPENET Solutions, sustaining 72-hour POC turnarounds and 30-35% project margins.",
+      "Led a 3-person technical pod; managed sprint milestones, billable capacity, and QA to deliver client solutions on schedule with no scope overruns."
     ],
     iconUrl: "/assets/logos/tasek-cement.png"
   },
   {
     id: "exp-concentrix",
-    role: "Operations Team Manager (QA, Policy & Training)",
+    role: "Operations Team Manager (QA, Policy & Training) & Full-Stack Systems Lead",
     company: "Concentrix CVG",
     companyLogoId: "concentrix",
     location: "Kuala Lumpur, Malaysia",
-    period: "May 2023 – Apr 2025",
+    period: "May 2023 – Dec 2024",
     tags: [
       "QA Department & Auditing",
       "Weekly Business Review (WBR)",
@@ -1448,7 +1473,8 @@ export const WORK_EXPERIENCE: ExperienceItem[] = [
       "Policy Creation & SOP Authoring: Directly authored, created, and updated operational policy documentation, decision trees, and standard operating procedures (SOPs) for Trust & Safety (content moderation) and Advertising Integrity (Ads Review), translating complex client policy changes into clear frontline enforcement standards.",
       "Conducting Training & Nesting Academies: Designed instructional materials and directly conducted onboarding training bootcamps, nesting clinics, and refresher workshops, coaching frontline specialists and raising 90-day associate competency from 78% to 94%.",
       "BPO Floor Leadership & Scaling: Commanded daily 24/7 BPO operations scaling headcount by 380% (from 9 to 34 multilingual associates across 7 APAC language pods: Indonesian, Chinese Mainland, Korean, Japanese, English, Thai, Vietnamese) in Trust & Safety, Ads Review, and Omnichannel Live Chat/Email, sustaining >98%+ contractual SLA compliance.",
-      "Continuous Improvement & Automation: Executed Six Sigma DMAIC process controls reducing Average Handling Time (AHT) by 25%; engineered PulseTrack real-time agent status tracking system (cutting manual reporting by 90%, achieving 98% status accuracy, and eliminating locker room trips under floor zero-phone policies to reduce TL admin workload by 60–80%) and SmartFlow parallel resource automation engine (dispatching simultaneous task payloads across Operations, Finance, Recruitment, and Training to cut admin overhead by 80% with 100% real-time transparency)."
+      "Pro-Code Programming & Full-Stack Expansion: Expanded beyond low-code into pro-code software development (TypeScript, React, Node.js, Python), architecting internal operational engines and commercial PWAs (Putri GarmentHub, SaltDistribute).",
+      "Continuous Improvement & Automation: Executed Six Sigma DMAIC process controls reducing Average Handling Time (AHT) by 25%; engineered PulseTrack real-time agent status tracking system (cutting manual reporting by 90%, achieving 98% status accuracy, and eliminating locker room trips under floor zero-phone policies to reduce TL admin workload by 60–80%), SmartFlow parallel resource automation engine, and DocFinder AI-powered search."
     ],
     iconUrl: "/assets/logos/concentrix.png"
   },
@@ -1458,7 +1484,7 @@ export const WORK_EXPERIENCE: ExperienceItem[] = [
     company: "Accenture",
     companyLogoId: "accenture",
     location: "Kuala Lumpur, Malaysia",
-    period: "Jan 2021 – Nov 2022",
+    period: "Jan 2021 – Dec 2022",
     tags: [
       "Promotions",
       "Senior Leadership",
@@ -1474,7 +1500,8 @@ export const WORK_EXPERIENCE: ExperienceItem[] = [
     bulletPoints: [
       "Promoted to Senior Team Lead directing cross-functional BPO operations across Trust & Safety, advertising review integrity, and multilingual customer support for 25–34 direct reports spanning 7 global APAC markets, sustaining >90–98% SLA compliance.",
       "Partnered cross-functionally with QA auditors, Policy specialists, and SMEs to standardize edge-case resolutions, eliminate quality blind spots, and run structured calibration sessions.",
-      "Conducted training delivery and coaching academies for frontline specialists; pioneered Power Platform adoption across the operations floor in 2021 (Power Apps, Power Automate, Power BI), cutting handling costs by 15% and incident triage duration by 60%.",
+      "Software Engineering Discovery (2022): Started learning software development in 2022 while at Accenture; mastered Microsoft Power Apps and Power Automate, building and implementing internal automated workflows and operational projects directly within the company.",
+      "Operations Automation & Tooling: Engineered SharePoint-backed incident triage logs and automated routing flows that cut handling costs by 15% and incident triage duration by 60% with live Power BI executive dashboards.",
       "Maintained annualized attrition below 5% through structured 1-on-1 coaching, QA audit loops, and career progression ladders, earning the prestigious Hang Tuah Award and the Accenture Diamond Award."
     ],
     iconUrl: "/assets/logos/accenture.png"
@@ -3857,7 +3884,7 @@ export const EXECUTIVE_CAREER_NARRATIVE: ExecutiveCareerNarrative = {
       beatNumber: 1,
       title: "The Broken Status Quo",
       subtitle: "The Stakes & Legacy Baggage",
-      content: `Before stepping into enterprise solution architecture, I spent four years on the operations floor at Accenture and Concentrix. I started in August 2017 writing PL/SQL queries and forecasting queues as a frontline Data Analyst. Over four merit promotions, I moved from frontline analytics to Junior Team Lead, Team Lead, and Senior Team Lead at Accenture, followed by serving as Operations Team Manager (QA, Policy & Training) at Concentrix directing cross-functional customer support and trust-and-safety delivery across seven APAC markets.
+      content: `Before launching my independent consulting practice, I spent years on the operations floor at Accenture and Concentrix. I started in August 2017 writing PL/SQL queries and forecasting queues as a frontline Data Analyst. Over multiple merit promotions, I rose to Senior Team Lead at Accenture. In 2022, while serving at Accenture, I discovered software development—learning Microsoft Power Apps and Power Automate to engineer internal automation tools and incident management platforms that solved real operational bottlenecks on our floor. That breakthrough ignited my pivot into engineering: I subsequently expanded into pro-code programming and full-stack development (TypeScript, React, Node.js, Python), building operational platforms at Concentrix and commercial PWAs.
 
 Floor management taught me how systems actually fail. At Concentrix, we scaled a multilingual operations pod from 9 to 34 agents handling seven international jurisdictions. When queue spikes hit, our biggest friction was not agent motivation—it was tooling blindness. Due to a strict zero-phone policy on the production floor, Team Leaders were not allowed mobile phones at their desks; to check if a missing agent had sent a sick leave notice or tardiness update via WhatsApp, Team Leaders were forced to continuously walk back and forth to the locker room. This caused severe response delays, fragmented attendance logs, and hours burned manually compiling spreadsheets instead of coaching queues. During customer triage, agents toggled between four disconnected browser tabs, bleeding 110 seconds of pure navigation latency on every single ticket.
 
@@ -3869,7 +3896,9 @@ The compliance exposure was acute. Under Good Manufacturing and Documentation Pr
       beatNumber: 2,
       title: "The Epiphany",
       subtitle: "The Architectural Pivot & GDocP Foundation",
-      content: `The standard consulting playbook for retiring Lotus Domino is brute-force replication: buy Microsoft Power Apps Premium licenses for all 2,000+ users, provision 361 separate SharePoint lists or Dataverse tables, and recreate forms one by one.
+      content: `In January 2025, I launched my independent consulting practice as a Freelance Software Developer and Enterprise Power Platform Architect. My first client was Texchem, where I built an Enterprise Quality Management System (QMS) and digital CAPA workflows. Immediately following, I partnered with Tasek Cement on two consecutive high-stakes projects: first, the e-Procurement approval system with purchase order ledgers, followed directly by their Commercial e-Rebate approval engine (enforcing a statutory RM 0.20/t cap with a 15-minute SLA).
+
+Following these engagements, I was entrusted by IOI Oleochemicals with a monumental 6-month migration build: decommissioning 365+ legacy Lotus Domino databases across 28 business units into Microsoft 365 and Dataverse. The standard consulting playbook for retiring Lotus Domino is brute-force replication: buy Microsoft Power Apps Premium licenses for all 2,000+ users, provision 361 separate SharePoint lists or Dataverse tables, and recreate forms one by one.
 
 I rejected that approach immediately. 
 

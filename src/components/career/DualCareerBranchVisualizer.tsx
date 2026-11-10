@@ -252,72 +252,76 @@ export const DualCareerBranchVisualizer: React.FC = () => {
 
   const softwareMilestones: Record<string, MilestoneDetail> = {
     'software-current': {
-      period: 'Feb 2025 – Present',
-      role: 'Enterprise Solutions Architect & Pre-Sales Lead',
-      company: 'Self-Employed / Modernization Contractor',
-      headline: 'Commercial Pre-Sales, Architecture Roadmapping & Pod Leadership',
+      period: 'Jan 2025 – Present',
+      role: 'Freelance Software Developer & Enterprise Architect',
+      company: 'Independent Consulting (Texchem, Tasek, IOI, Nippon Paint, IPENET)',
+      headline: 'Texchem QMS (1st Client) → Tasek e-Procurement & e-Rebate → 6-Month IOI Migration',
       category: 'software',
       leadershipSalesHighlights: [
-        'Closed RM 70,000+ in signed Statements of Work (SOW) by pitching rapid interactive prototypes to executive buyers.',
-        'Led a 3-person specialized engineering pod; owned sprint milestones, billable burn rates, and QA delivery.',
-        'Accelerated enterprise sales velocity by delivering production-grade POCs in 72 hours, reducing sales cycles by 2 weeks.',
-        'Expanded account contract value by 35% through continuous workflow integration and retainer automation support.'
+        'Launched independent consulting practice in January 2025 as Freelance Software Developer & Enterprise Power Platform Architect.',
+        '1st Client Engagement — Texchem (Jan–Mar 2025): Architected Enterprise QMS and CAPA tracking, closing RM 70k+ SOWs with 72-hr interactive prototypes.',
+        'Tasek Cement Engagements (Apr–Jul 2025): Delivered 2 consecutive projects: (1) e-Procurement approval system with SAP OData balance checks, followed immediately by (2) Commercial e-Rebate System (15-min SLA, RM 0.20/t cap).',
+        'IOI Oleochemicals 6-Month Migration (Aug 2025–Jan 2026): Architected and led full 6-month migration retiring 365+ Lotus Domino databases into 13 Departmental Apps, saving $960K/yr.',
+        'Pre-Sales Roadmaps: Formulated technical architectures and automation flows for Nippon Paint and IPENET Solutions with 72-hour working POC turnarounds.'
       ],
       techOrOpsHighlights: [
-        'Architected 365+ legacy Lotus Domino form cutovers into Dataverse, SharePoint, and React 19 apps across 28 BUs.',
-        'Engineered an orchestration pipeline with 50+ specialized AI agents and 12 CI/CD automation pipelines.',
-        'Enforced zero-trust Dataverse security roles, polymorphic lookups, and Field-Level Security.'
+        'Engineered Texchem QMS with digital document lifecycle, automated CAPA 5-Whys root-cause tracking, and GDocP audit trails.',
+        'Architected Tasek Cement e-Procurement system (SAP OData balance ledgers) and Commercial e-Rebate approval engine (7-component formula with statutory RM 0.20/t ceiling).',
+        'Delivered IOI 6-Month Migration: 13 Departmental Power Apps Suite (52 1080p screens), DOSH 5x5 SHE risk matrix, and single-table MainDB partitioned architecture saving $960K/yr in licensing.'
       ],
       metrics: [
-        { label: 'SOWs Closed', value: 'RM 70k+', color: '#00dbe7' },
-        { label: 'Apps Modernized', value: '365+', color: '#38bdf8' },
-        { label: 'POC Turnaround', value: '72 Hours', color: '#22c55e' },
-        { label: 'Account Expansion', value: '+35%', color: '#f59e0b' }
+        { label: 'IOI Migration', value: '6 Months', color: '#00dbe7' },
+        { label: 'Tasek Systems', value: '2 Consecutive', color: '#38bdf8' },
+        { label: '1st Client SOW', value: 'RM 70k+', color: '#22c55e' },
+        { label: 'Domino Cutover', value: '365+ DBs', color: '#f59e0b' }
       ],
-      tags: ['Pre-Sales Lead', 'SOW Negotiation', 'React 19', 'TypeScript', 'Dataverse', 'AI Orchestration']
+      tags: ['Freelance Launch (Jan 2025)', 'Texchem QMS', 'Tasek e-Procurement', 'Tasek e-Rebate', 'IOI 6-Mo Migration', 'Power Platform', 'Dataverse']
     },
     'software-fullstack': {
-      period: '2023 – 2025',
-      role: 'Lead Full-Stack Web & Mobile Engineer',
-      company: 'Independent Commercial Tooling',
-      headline: 'High-Impact Logistics, E-Commerce & Business Platforms',
+      period: '2023 – 2024',
+      role: 'Full-Stack Software Engineer & Internal Tools Developer',
+      company: 'Independent Commercial Tooling & Concentrix',
+      headline: 'Pro-Code Programming Expansion: Modern Web, Mobile PWAs & Operational Engines',
       category: 'software',
       leadershipSalesHighlights: [
-        'Direct client stakeholder alignment for wholesale merchants, retail salons, and regional Jastip operators.',
-        'Conducted user research, pricing model validation, and commercial MVP scoping.'
+        'Expanded beyond low-code into pro-code full-stack software development (TypeScript, React, Node.js, Python).',
+        'Direct stakeholder alignment for commercial wholesale platforms, manufacturing workshops, and cross-border logistics.',
+        'Led end-to-end product ownership, user journey mapping, and commercial MVP scoping.'
       ],
       techOrOpsHighlights: [
-        'SaltDistribute: Built dual-platform wholesale logistics system (React Native Expo 54 + PWA) with Firestore zero-polling sync.',
-        'Warung Dewasa: Architected headless E-Commerce PWA with compositor-threaded 60fps animations and Nominatim COD geocoding.',
-        'Jastip CRM: Engineered state-machine order flow, multi-currency expense ledger, and Gemini multimodal receipt OCR.'
+        'Built internal operational platforms at Concentrix: PulseTrack (real-time telemetry) and SmartFlow (parallel multi-department automation), winning 2x Innovation Competitions.',
+        'Architected DocFinder intelligent search engine integrating Microsoft AI Builder and Lark Base to cut search time by 70–90% with 99% recommendation accuracy.',
+        'Engineered commercial fullstack PWAs: Putri GarmentHub ERP (offline-first financial ledger) and SaltDistribute (React Native Expo 54 + PWA with zero-polling sync).'
       ],
       metrics: [
-        { label: 'Platforms Built', value: '5 Live PWAs', color: '#00dbe7' },
-        { label: 'Sync Polling', value: 'Zero (Push)', color: '#22c55e' },
-        { label: 'Lighthouse Score', value: '98/100', color: '#38bdf8' }
+        { label: 'Full-Stack Apps', value: '6+ Live Apps', color: '#00dbe7' },
+        { label: 'Offline Sync', value: '0ms Hydration', color: '#22c55e' },
+        { label: 'Innovation Wins', value: '2x Champion', color: '#38bdf8' }
       ],
-      tags: ['React Native', 'Expo SDK 54', 'Firebase', 'State Machines', 'Product Ownership']
+      tags: ['Pro-Code Fullstack', 'React 19', 'TypeScript', 'Node.js', 'Python', 'Firebase', 'Expo 54', 'PulseTrack', 'DocFinder']
     },
     'software-initiator': {
-      period: '2021 – 2022',
-      role: 'Floor Automation & Power Platform Pioneer',
+      period: '2022',
+      role: 'Software Engineering Discovery & Power Platform Pioneer',
       company: 'Accenture',
-      headline: 'Grassroots Engineering & Citizen Developer Catalyst',
+      headline: 'Discovered Software Engineering in 2022: Power Apps & Automate on Internal Floor',
       category: 'software',
       leadershipSalesHighlights: [
-        'Championed no-code/low-code innovation to senior service delivery directors, proving 15% immediate operational gain.',
-        'Trained junior team members to adopt automated triage tools, establishing internal engineering champion network.'
+        'Started software development journey in 2022 while serving as Senior Team Lead at Accenture.',
+        'Championed citizen development and automation to senior service delivery directors, proving 15% immediate operational gain.',
+        'Trained frontline leads on automated incident triage, establishing grassroots automation culture.'
       ],
       techOrOpsHighlights: [
-        'Pioneered Power Platform adoption across the operations floor in 2021.',
-        'Engineered SharePoint-backed incident logs, Power Automate escalation flows, and live Power BI executive dashboards.',
-        'Cut incident triage duration by 60% through structured automated routing.'
+        'Learned Microsoft Power Apps and Power Automate in 2022, building and implementing internal automation projects within Accenture.',
+        'Engineered SharePoint-backed incident logs, automated escalation flows, and live Power BI executive dashboards.',
+        'Cut incident triage duration by 60% and reduced operational handling costs by 15% across floor queues.'
       ],
       metrics: [
+        { label: 'Learned In', value: '2022', color: '#00dbe7' },
         { label: 'Triage Time', value: '-60%', color: '#22c55e' },
-        { label: 'Floor Efficiency', value: '+15%', color: '#00dbe7' }
+        { label: 'Handling Costs', value: '-15%', color: '#38bdf8' }
       ],
-      tags: ['Power Apps', 'Power Automate', 'Power BI', 'SQL Analytics', 'Innovation Champion']
+      tags: ['Learned Software (2022)', 'Power Apps', 'Power Automate', 'Accenture Internal', 'Power BI']
     }
   };
 
@@ -558,10 +562,10 @@ export const DualCareerBranchVisualizer: React.FC = () => {
 
   // SVG Coordinates for the bifurcation nodes
   const nodeCoords: Record<string, { x: number; y: number; label: string; year: string; branch: 'software' | 'operations' | 'root'; color: string }> = {
-    'software-current': { x: 170, y: 45, label: 'Enterprise Architect & Pre-Sales', year: '2025–Pres', branch: 'software', color: '#00dbe7' },
-    'software-fullstack': { x: 250, y: 110, label: 'Full-Stack Commercial PWAs', year: '2023–25', branch: 'software', color: '#00dbe7' },
-    'software-initiator': { x: 340, y: 165, label: 'Power Platform Pioneer', year: '2021–22', branch: 'software', color: '#00dbe7' },
-    'ops-concentrix': { x: 770, y: 45, label: 'Operations Team Mgr (34 Reports)', year: '2023–25', branch: 'operations', color: '#f59e0b' },
+    'software-current': { x: 170, y: 45, label: 'Freelance Dev & Enterprise Arch', year: 'Jan 2025–Pres', branch: 'software', color: '#00dbe7' },
+    'software-fullstack': { x: 250, y: 110, label: 'Full-Stack & Pro-Code Eng', year: '2023–24', branch: 'software', color: '#00dbe7' },
+    'software-initiator': { x: 340, y: 165, label: 'Software Discovery (Accenture)', year: '2022', branch: 'software', color: '#00dbe7' },
+    'ops-concentrix': { x: 770, y: 45, label: 'Operations Team Mgr (34 Reports)', year: '2023–24', branch: 'operations', color: '#f59e0b' },
     'ops-accenture-sr-lead': { x: 680, y: 110, label: 'Senior Team Lead (7 Markets)', year: '2021–22', branch: 'operations', color: '#f59e0b' },
     'ops-accenture-lead': { x: 600, y: 165, label: 'Operations Team Lead', year: '2019–20', branch: 'operations', color: '#f59e0b' },
     'ops-accenture-jr-lead': { x: 520, y: 205, label: 'Junior Team Lead', year: '2018–19', branch: 'operations', color: '#f59e0b' },
