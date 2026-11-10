@@ -60,13 +60,13 @@ export function HomeView({
   // Dynamic curated flagship projects reordered based on active persona
   const featuredProjectIds = useMemo(() => {
     if (activePersona === 'operations') {
-      return ['pulsetrack', 'smartflow', 'cs-resolver'];
+      return ['document-finder', 'tasek-cement-rebate', 'pulsetrack'];
     }
     if (activePersona === 'software') {
-      return ['ats-automation', 'ioi-acidchem-she-platform', 'putri-garmenthub-erp'];
+      return ['ioi-acidchem-she-platform', 'tasek-cement-rebate', 'document-finder'];
     }
-    // Hybrid (Both Tracks): Balanced 2 Software Architecture + 2 Operations Telemetry Flagships
-    return ['ioi-acidchem-she-platform', 'pulsetrack', 'ats-automation', 'smartflow'];
+    // Hybrid (Both Tracks): Top 3 Biggest Impact Flagships (Enterprise Architecture, FinOps & AI Operations)
+    return ['ioi-acidchem-she-platform', 'tasek-cement-rebate', 'document-finder'];
   }, [activePersona]);
 
   // Dynamic empirical metrics based on active persona
@@ -101,7 +101,7 @@ export function HomeView({
     .filter((p): p is ProjectItem => Boolean(p));
 
   // Fallback to top items if any specific ID is missing
-  const displayProjects = featuredProjects.length > 0 ? featuredProjects : CORE_PROJECTS.slice(0, 4);
+  const displayProjects = featuredProjects.length > 0 ? featuredProjects : CORE_PROJECTS.slice(0, 3);
 
   // Dynamic career experience cards reordered based on active persona
   const featuredExperiences = useMemo(() => {
@@ -1595,7 +1595,7 @@ export function HomeView({
                 ? 'Flagship Operational Solutions &amp; Floor Systems.'
                 : activePersona === 'software'
                 ? 'Problems Solved. Systems Delivered With Verifiable Impact.'
-                : 'Balanced Deliverables: Enterprise Architecture & Operations Telemetry.'}
+                : 'Highest-Impact Deliverables: Enterprise Architecture, FinOps & AI Operations.'}
             </h2>
           </div>
           <a href="#/projects" className="action-secondary">
@@ -1607,18 +1607,23 @@ export function HomeView({
           <div className="flex flex-wrap items-center justify-between gap-3 p-3.5 rounded-xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] text-xs">
             <div className="flex items-center gap-2">
               <span className="w-2.5 h-2.5 rounded-full bg-cyan-400" />
-              <span className="font-mono text-cyan-300 font-bold">Track 01 (Software):</span>
-              <span className="text-[var(--text-secondary)]">Enterprise Modernization &amp; Full-Stack AI Architecture</span>
+              <span className="font-mono text-cyan-300 font-bold">Pillar 01 (Architecture):</span>
+              <span className="text-[var(--text-secondary)]">IOI Oleo ($960K/yr Saved · 365+ DBs Decommissioned)</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-orange-400" />
-              <span className="font-mono text-orange-300 font-bold">Track 02 (Operations):</span>
-              <span className="text-[var(--text-secondary)]">34-Agent Floor Telemetry &amp; BPO Automation</span>
+              <span className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
+              <span className="font-mono text-emerald-300 font-bold">Pillar 02 (FinOps):</span>
+              <span className="text-[var(--text-secondary)]">Tasek Cement (99% Faster · RM 0.20/t Cap &amp; ERP Sync)</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="w-2.5 h-2.5 rounded-full bg-purple-400" />
+              <span className="font-mono text-purple-300 font-bold">Pillar 03 (AI Operations):</span>
+              <span className="text-[var(--text-secondary)]">DocFinder (70–90% Search Drop · 99% Accuracy)</span>
             </div>
           </div>
         )}
 
-        <div className={`grid md:grid-cols-2 ${activePersona === 'both' ? 'xl:grid-cols-2' : 'xl:grid-cols-3'} gap-6`}>
+        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
           {displayProjects.map(project => (
             <article
               key={project.id}
