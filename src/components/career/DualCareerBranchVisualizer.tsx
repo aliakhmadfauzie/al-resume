@@ -289,14 +289,14 @@ export const DualCareerBranchVisualizer: React.FC = () => {
         'Led end-to-end product ownership, user journey mapping, and commercial MVP scoping.'
       ],
       techOrOpsHighlights: [
-        'Built internal operational platforms at Concentrix: PulseTrack (real-time telemetry) and SmartFlow (parallel multi-department automation), winning 2x Innovation Competitions.',
+        'Built internal operational platforms at Concentrix: PulseTrack (real-time telemetry) and SmartFlow (parallel multi-department automation).',
         'Architected DocFinder intelligent search engine integrating Microsoft AI Builder and Lark Base to cut search time by 70–90% with 99% recommendation accuracy.',
         'Engineered commercial fullstack PWAs: Putri GarmentHub ERP (offline-first financial ledger) and SaltDistribute (React Native Expo 54 + PWA with zero-polling sync).'
       ],
       metrics: [
         { label: 'Full-Stack Apps', value: '6+ Live Apps', color: '#00dbe7' },
         { label: 'Offline Sync', value: '0ms Hydration', color: '#22c55e' },
-        { label: 'Innovation Wins', value: '2x Champion', color: '#38bdf8' }
+        { label: 'Platform Speed', value: 'sub-1s Latency', color: '#38bdf8' }
       ],
       tags: ['Pro-Code Fullstack', 'React 19', 'TypeScript', 'Node.js', 'Python', 'Firebase', 'Expo 54', 'PulseTrack', 'DocFinder']
     },
@@ -304,10 +304,11 @@ export const DualCareerBranchVisualizer: React.FC = () => {
       period: '2022',
       role: 'Software Engineering Discovery & Power Platform Pioneer',
       company: 'Accenture',
-      headline: 'Discovered Software Engineering in 2022: Power Apps & Automate on Internal Floor',
+      headline: 'Discovered Software Engineering in 2022: Innovation Team & 2-Time Innovation Competition Winner',
       category: 'software',
       leadershipSalesHighlights: [
         'Started software development journey in 2022 while serving as Senior Team Lead at Accenture.',
+        'Core member of the operational Innovation Team; crowned Winner of the Enterprise Innovation Competition for 2 consecutive years respectively (2022).',
         'Championed citizen development and automation to senior service delivery directors, proving 15% immediate operational gain.',
         'Trained frontline leads on automated incident triage, establishing grassroots automation culture.'
       ],
@@ -318,10 +319,11 @@ export const DualCareerBranchVisualizer: React.FC = () => {
       ],
       metrics: [
         { label: 'Learned In', value: '2022', color: '#00dbe7' },
+        { label: 'Innovation Win', value: '2x Champion (2022)', color: '#38bdf8' },
         { label: 'Triage Time', value: '-60%', color: '#22c55e' },
-        { label: 'Handling Costs', value: '-15%', color: '#38bdf8' }
+        { label: 'Handling Costs', value: '-15%', color: '#f59e0b' }
       ],
-      tags: ['Learned Software (2022)', 'Power Apps', 'Power Automate', 'Accenture Internal', 'Power BI']
+      tags: ['Learned Software (2022)', 'Innovation Team', '2x Innovation Winner (2022)', 'Power Apps', 'Power Automate', 'Accenture Internal', 'Power BI']
     }
   };
 
@@ -357,27 +359,28 @@ export const DualCareerBranchVisualizer: React.FC = () => {
       period: 'Jan 2021 – Nov 2022',
       role: 'Senior Team Lead / Service Delivery Lead',
       company: 'Accenture',
-      headline: 'Promoted to Senior Team Lead: Trust & Safety, Ads Integrity, QA/Policy Alignment & Diamond Award',
+      headline: 'Promoted to Senior Team Lead: Trust & Safety, Ads Integrity, 2x Innovation Winner (2022) & Diamond Award',
       category: 'operations',
       promotionBadge: '★ Promoted to Senior Team Lead',
       leadershipSalesHighlights: [
         'Promoted to Senior Team Lead directing cross-functional BPO operations across Trust & Safety, advertising integrity, and multilingual customer support for 25–34 direct reports across 7 global APAC markets.',
+        'Innovation Team & 2-Time Innovation Competition Winner (2022): Core driver on the Innovation Team, winning the enterprise competition for automated operational workflows.',
         'Partnered cross-functionally with QA auditors, Policy specialists, and SMEs to standardize edge-case resolutions, eliminate quality blind spots, and run structured calibration sessions.',
         'Delivered frontline training modules and nesting mentorship for incoming cohorts, driving first-contact resolution (FCR) improvements and holding team attrition below 5%.',
         'Received the prestigious Hang Tuah Award (July 2021) as top-performing Team Lead and the Accenture Diamond Award for sustained client delivery excellence.'
       ],
       techOrOpsHighlights: [
-        'Pioneered Power Platform adoption across the operations floor in 2021 (Power Apps, Power Automate, Power BI), cutting handling costs by 15%.',
+        'Pioneered Power Platform adoption across the operations floor in 2021–2022 (Power Apps, Power Automate, Power BI), cutting handling costs by 15%.',
         'Cut critical incident triage time by 60% through standardized escalation protocols and data-driven triage tooling.',
         'Led Weekly Business Reviews (WBRs) with multinational stakeholders to eliminate defect outliers.'
       ],
       metrics: [
         { label: 'Team Size', value: '25–34 Reports', color: '#f59e0b' },
-        { label: 'Markets Led', value: '7 APAC/Global', color: '#fbbf24' },
+        { label: 'Innovation Win', value: '2x Winner (2022)', color: '#00dbe7' },
         { label: 'Team Retention', value: '<5% Attrition', color: '#22c55e' },
-        { label: 'Recognition', value: 'Diamond Award', color: '#38bdf8' }
+        { label: 'Recognition', value: 'Diamond & Hang Tuah', color: '#38bdf8' }
       ],
-      tags: ['Promoted Senior Lead', 'BPO Operations', 'Trust & Safety', 'Ads Review', 'QA Calibration', 'Policy & SME', 'Training Delivery', 'Diamond Award']
+      tags: ['Promoted Senior Lead', 'Innovation Team (2022)', '2x Innovation Winner', 'BPO Operations', 'Trust & Safety', 'Ads Review', 'QA Calibration', 'Diamond Award']
     },
     'ops-accenture-lead': {
       period: 'Jun 2019 – Dec 2020',

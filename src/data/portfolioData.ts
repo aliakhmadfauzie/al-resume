@@ -1453,8 +1453,6 @@ export const WORK_EXPERIENCE: ExperienceItem[] = [
       "QA Department & Auditing",
       "Weekly Business Review (WBR)",
       "Client Quality Representative",
-      "Innovation Team",
-      "2x Innovation Winner",
       "Policy Creation",
       "Training Delivery",
       "Trust & Safety",
@@ -1468,7 +1466,6 @@ export const WORK_EXPERIENCE: ExperienceItem[] = [
     ],
     bulletPoints: [
       "Client WBR Quality Representation: Served as the primary client-facing Weekly Business Review (WBR) representative for Quality, leading weekly calibration panels, error variance triage, and contractual SLA compliance sign-offs with global client leadership.",
-      "Innovation Team & 2-Time Innovation Competition Winner: Core driver on the operational Innovation Team; crowned the Winner of the Enterprise Innovation Competition for 2 consecutive years respectively for engineering PulseTrack real-time productivity telemetry and automated queue orchestrators.",
       "QA Department Leadership & Transaction Auditing: Directed QA department workflows, conducted deep-dive transaction audits across live chat and email cases, and led calibration panels to eliminate scoring variance and defect outliers.",
       "Policy Creation & SOP Authoring: Directly authored, created, and updated operational policy documentation, decision trees, and standard operating procedures (SOPs) for Trust & Safety (content moderation) and Advertising Integrity (Ads Review), translating complex client policy changes into clear frontline enforcement standards.",
       "Conducting Training & Nesting Academies: Designed instructional materials and directly conducted onboarding training bootcamps, nesting clinics, and refresher workshops, coaching frontline specialists and raising 90-day associate competency from 78% to 94%.",
@@ -1489,6 +1486,8 @@ export const WORK_EXPERIENCE: ExperienceItem[] = [
       "Promotions",
       "Senior Leadership",
       "BPO Operations",
+      "Innovation Team",
+      "2x Innovation Competition Winner (2022)",
       "Trust & Safety",
       "Ads Review",
       "QA & Policy",
@@ -1499,6 +1498,7 @@ export const WORK_EXPERIENCE: ExperienceItem[] = [
     promotionBadge: "★ Promoted to Senior Team Lead",
     bulletPoints: [
       "Promoted to Senior Team Lead directing cross-functional BPO operations across Trust & Safety, advertising review integrity, and multilingual customer support for 25–34 direct reports spanning 7 global APAC markets, sustaining >90–98% SLA compliance.",
+      "Innovation Team & 2-Time Innovation Competition Winner (2022): Core driver on the operational Innovation Team; crowned Winner of the Enterprise Innovation Competition for 2 consecutive years respectively (2022) for pioneering internal operational automation tools (Power Apps, Power Automate) that eliminated queue friction and elevated floor delivery quality.",
       "Partnered cross-functionally with QA auditors, Policy specialists, and SMEs to standardize edge-case resolutions, eliminate quality blind spots, and run structured calibration sessions.",
       "Software Engineering Discovery (2022): Started learning software development in 2022 while at Accenture; mastered Microsoft Power Apps and Power Automate, building and implementing internal automated workflows and operational projects directly within the company.",
       "Operations Automation & Tooling: Engineered SharePoint-backed incident triage logs and automated routing flows that cut handling costs by 15% and incident triage duration by 60% with live Power BI executive dashboards.",
@@ -3271,6 +3271,23 @@ export const LINKEDIN_CERTIFICATIONS: CertificationItem[] = [
 
 export const LINKEDIN_HONORS_AWARDS: HonorAwardItem[] = [
   {
+    "id": "award-accenture-innovation-winner-2022",
+    "title": "Innovation Team & 2-Time Innovation Competition Winner",
+    "issuer": "Accenture",
+    "organization": "Accenture",
+    "organizationLogoId": "accenture",
+    "departmentOrScope": "Operational Innovation & Grassroots Automation",
+    "year": "2022",
+    "shortDate": "2022",
+    "tier": "pinnacle",
+    "category": "enterprise",
+    "isMarqueeMilestone": true,
+    "highlightBadge": "2-Time Innovation Competition Winner (2022)",
+    "metricHighlight": "Winner for 2 Years Respectively · Core Innovation Team · Grassroots Automation",
+    "description": "Core driver on the operational Innovation Team at Accenture; crowned Winner of the Enterprise Innovation Competition (2 Years Respectively / 2022) for pioneering internal operational automation tools, driving grassroots hackathons, and developing automated queue telemetry.",
+    "verificationUrl": "https://www.linkedin.com/in/aliakhmadf/details/honors/"
+  },
+  {
     "id": "award-accenture-hang-tuah",
     "title": "Hang Tuah Award — Best Team Lead Distinction",
     "issuer": "Accenture",
@@ -3546,6 +3563,23 @@ export const LINKEDIN_HONORS_AWARDS: HonorAwardItem[] = [
 
 export const CONSOLIDATED_HONORS_AWARDS: HonorAwardItem[] = [
   // 01. Enterprise Pinnacle Milestones
+  {
+    "id": "award-accenture-innovation-winner-2022",
+    "title": "Innovation Team & 2-Time Innovation Competition Winner",
+    "issuer": "Accenture",
+    "organization": "Accenture",
+    "organizationLogoId": "accenture",
+    "departmentOrScope": "Operational Innovation & Grassroots Automation",
+    "year": "2022",
+    "shortDate": "2022",
+    "tier": "pinnacle",
+    "category": "enterprise",
+    "isMarqueeMilestone": true,
+    "highlightBadge": "2-Time Innovation Competition Winner (2022)",
+    "metricHighlight": "Winner for 2 Years Respectively · Core Innovation Team · Grassroots Automation",
+    "description": "Core driver on the operational Innovation Team at Accenture; crowned Winner of the Enterprise Innovation Competition (2 Years Respectively / 2022) for pioneering internal operational automation tools, driving grassroots hackathons, and developing automated queue telemetry.",
+    "verificationUrl": "https://www.linkedin.com/in/aliakhmadf/details/honors/"
+  },
   {
     "id": "award-accenture-hang-tuah",
     "title": "Hang Tuah Award — Best Team Lead Distinction",

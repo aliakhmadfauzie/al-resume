@@ -443,7 +443,7 @@ export function HomeView({
                     </li>
                     <li className="flex items-center gap-1.5">
                       <CheckCircle2 size={13} className="text-emerald-400 shrink-0" />
-                      <span><strong>2× Innovation Winner:</strong> Enterprise Competition</span>
+                      <span><strong>2× Innovation Winner (2022):</strong> Enterprise Competition</span>
                     </li>
                     <li className="flex items-center gap-1.5">
                       <CheckCircle2 size={13} className="text-emerald-400 shrink-0" />
@@ -666,7 +666,7 @@ export function HomeView({
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle2 size={13} className="text-orange-400 shrink-0 mt-0.5" />
-                  <span><strong>Innovation Team &amp; Tooling:</strong> Core member of the Innovation Team; Winner of the Enterprise Innovation Competition for 2 consecutive years respectively.</span>
+                  <span><strong>Innovation Team &amp; Tooling (2022):</strong> Core member of the Innovation Team; Winner of the Enterprise Innovation Competition for 2 consecutive years respectively (2022).</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle2 size={13} className="text-orange-400 shrink-0 mt-0.5" />
@@ -713,7 +713,7 @@ export function HomeView({
                     <span>Track 2: Operations Management &amp; SLA Governance</span>
                   </p>
                   <p className="text-[11px] text-slate-300 leading-snug">
-                    Operations Team Manager commanding 34 agents across 7 APAC language pods; QA Department lead, Trust &amp; Safety / Ads Review, and 2× Innovation Winner.
+                    Operations Team Manager commanding 34 agents across 7 APAC language pods; QA Department lead, Trust &amp; Safety / Ads Review, and 2× Innovation Winner (2022).
                   </p>
                 </div>
               </div>
@@ -740,11 +740,11 @@ export function HomeView({
               </p>
             ) : activePersona === 'software' ? (
               <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
-                Architect of <strong>365+ production database cutovers</strong> securing <strong>$960K/yr license avoidance</strong> with 0h downtime across 28 BUs; Winner of the <strong>Enterprise Innovation Award (2 Years Respectively)</strong> for automated workflow telemetry.
+                Architect of <strong>365+ production database cutovers</strong> securing <strong>$960K/yr license avoidance</strong> with 0h downtime across 28 BUs; Winner of the <strong>Enterprise Innovation Award (2022 / 2 Years Respectively)</strong> for automated workflow telemetry.
               </p>
             ) : (
               <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
-                Recipient of the <strong>Hang Tuah Distinction</strong>, <strong>Accenture Diamond Award</strong>, and <strong>2× Enterprise Innovation Competition Winner</strong> across cloud telemetry and crisis incident stabilization.
+                Recipient of the <strong>Hang Tuah Distinction</strong>, <strong>Accenture Diamond Award</strong>, and <strong>2× Enterprise Innovation Competition Winner (2022)</strong> across cloud telemetry and crisis incident stabilization.
               </p>
             )}
 
@@ -752,7 +752,7 @@ export function HomeView({
               <div className="pt-2 border-t border-[var(--border-subtle)] space-y-1.5 text-xs text-[var(--text-secondary)]">
                 <div className="flex items-start gap-2">
                   <Sparkles size={14} className="text-orange-400 shrink-0 mt-0.5" />
-                  <span><strong>Innovation Competition Winner (2 Years Respectively):</strong> Crowned consecutive back-to-back winner on the operational Innovation Team for automating frontline queue telemetry &amp; PulseTrack.</span>
+                  <span><strong>Innovation Competition Winner (2022 / 2 Years Respectively):</strong> Crowned consecutive back-to-back winner on the operational Innovation Team for automating frontline queue telemetry &amp; internal workflows.</span>
                 </div>
                 <div className="flex items-start gap-2">
                   <ShieldCheck size={14} className="text-orange-400 shrink-0 mt-0.5" />
@@ -885,10 +885,10 @@ export function HomeView({
                 <span>Client WBR &amp; Innovation</span>
               </div>
               <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
-                Primary client-facing Weekly Business Review (WBR) Quality lead. Winner of the Enterprise Innovation Competition for 2 consecutive years respectively.
+                Primary client-facing Weekly Business Review (WBR) Quality lead. Winner of the Enterprise Innovation Competition for 2 consecutive years respectively (2022).
               </p>
               <div className="text-[10px] font-mono text-orange-300 pt-1 border-t border-[var(--border-subtle)]">
-                2x Innovation Winner · WBR Governance
+                2x Innovation Winner (2022) · WBR Governance
               </div>
             </div>
           </div>
@@ -970,11 +970,11 @@ export function HomeView({
                   </span>
                 </div>
                 <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
-                  Hands-on QA Department auditing, client Weekly Business Reviews (WBRs), policy creation, and 2× Enterprise Innovation Winner.
+                  Hands-on QA Department auditing, client Weekly Business Reviews (WBRs), policy creation, and 2× Enterprise Innovation Winner (2022).
                 </p>
               </div>
               <div className="text-[10px] font-mono text-orange-300 pt-1 border-t border-[var(--border-subtle)]">
-                96–99% Quality · 2× Innovation Winner
+                96–99% Quality · 2× Innovation Winner (2022)
               </div>
             </div>
           </div>
@@ -1180,7 +1180,7 @@ export function HomeView({
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-white">People Leadership, Coaching &amp; Innovation Team</h3>
-                  <p className="text-xs text-orange-400 font-mono mt-0.5">GROW Coaching · Innovation Competition Winner · DMAIC</p>
+                  <p className="text-xs text-orange-400 font-mono mt-0.5">GROW Coaching · Innovation Competition Winner (2022) · DMAIC</p>
                 </div>
 
                 {/* Sub-block 1: Main Roles and Responsibilities */}
@@ -1218,7 +1218,7 @@ export function HomeView({
                   <ul className="space-y-1 text-xs text-[var(--text-secondary)]">
                     <li className="flex items-start gap-1.5">
                       <CheckCircle2 size={13} className="text-orange-400 shrink-0 mt-0.5" />
-                      <span><strong>Winner of Innovation Competition (2 Years Respectively)</strong> as part of the core Innovation Team.</span>
+                      <span><strong>Winner of Innovation Competition (2 Years Respectively / 2022)</strong> as part of the core Innovation Team.</span>
                     </li>
                     <li className="flex items-start gap-1.5">
                       <CheckCircle2 size={13} className="text-orange-400 shrink-0 mt-0.5" />
@@ -1242,7 +1242,7 @@ export function HomeView({
                   Skills &amp; Methodologies Applied:
                 </p>
                 <div className="flex flex-wrap gap-1.5 text-xs font-mono text-orange-300">
-                  <span className="px-2 py-0.5 rounded bg-orange-500/10 border border-orange-500/20">Innovation Team Leadership</span>
+                  <span className="px-2 py-0.5 rounded bg-orange-500/10 border border-orange-500/20">Innovation Team Leadership (2022)</span>
                   <span className="px-2 py-0.5 rounded bg-orange-500/10 border border-orange-500/20">PulseTrack Telemetry</span>
                   <span className="px-2 py-0.5 rounded bg-orange-500/10 border border-orange-500/20">GROW Coaching Framework</span>
                   <span className="px-2 py-0.5 rounded bg-orange-500/10 border border-orange-500/20">Skill vs. Will Diagnostics</span>
