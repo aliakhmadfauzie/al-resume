@@ -1,9 +1,20 @@
 import React, { useState } from 'react';
 import { INTERVIEW_TOPICS, EXECUTIVE_CAREER_NARRATIVE } from '../../data/portfolioData';
-import { Layers, Sparkles, CheckCircle2, Code2, BookOpen, ShieldCheck, Flame, ArrowRight, Table } from 'lucide-react';
+import { Layers, Sparkles, CheckCircle2, Code2, BookOpen, ShieldCheck, Flame, ArrowRight, Table, Presentation } from 'lucide-react';
+import { ExecutiveInterviewDeck } from '../interview/ExecutiveInterviewDeck';
 
-export const InterviewModeView: React.FC = () => {
-  const [activeViewMode, setActiveViewMode] = useState<'narrative' | 'scenarios'>('narrative');
+interface InterviewModeViewProps {
+  onOpenResume?: () => void;
+  onOpenContact?: () => void;
+  onLaunchDemo?: (demoId: string) => void;
+}
+
+export const InterviewModeView: React.FC<InterviewModeViewProps> = ({
+  onOpenResume,
+  onOpenContact,
+  onLaunchDemo
+}) => {
+  const [activeViewMode, setActiveViewMode] = useState<'pitch-deck' | 'narrative' | 'scenarios'>('pitch-deck');
   const [selectedTopicId, setSelectedTopicId] = useState<string>(INTERVIEW_TOPICS[0].id);
 
   const currentTopic =
@@ -15,11 +26,23 @@ export const InterviewModeView: React.FC = () => {
       <div id="section-interview-header" className="space-y-4 border-b border-[var(--border-subtle)] pb-8">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <p className="text-xs font-mono text-[var(--text-accent)] font-medium">
-            01 · Career story &amp; architecture decisions
+            01 · Interview Presentation &amp; Architecture Decisions
           </p>
           
           {/* View Mode Switcher */}
           <div className="inline-flex rounded-lg bg-[var(--bg-surface)] p-1 border border-[var(--border-subtle)]">
+            <button
+              onClick={() => setActiveViewMode('pitch-deck')}
+              aria-pressed={activeViewMode === 'pitch-deck'}
+              className={`flex items-center space-x-2 px-3.5 py-2 min-h-[44px] rounded-md text-xs font-mono transition-all cursor-pointer active:scale-95 touch-manipulation ${
+                activeViewMode === 'pitch-deck'
+                  ? 'bg-[var(--interactive-primary)] text-[#090a0d] font-bold shadow-sm'
+                  : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+              }`}
+            >
+              <Presentation className="w-3.5 h-3.5" />
+              <span>Interview Pitch Deck</span>
+            </button>
             <button
               onClick={() => setActiveViewMode('narrative')}
               aria-pressed={activeViewMode === 'narrative'}
@@ -30,7 +53,7 @@ export const InterviewModeView: React.FC = () => {
               }`}
             >
               <BookOpen className="w-3.5 h-3.5" />
-              <span>Career story</span>
+              <span>Career Story</span>
             </button>
             <button
               onClick={() => setActiveViewMode('scenarios')}
@@ -42,7 +65,7 @@ export const InterviewModeView: React.FC = () => {
               }`}
             >
               <Layers className="w-3.5 h-3.5" />
-              <span>Architectural Scenarios</span>
+              <span>Architecture Scenarios</span>
             </button>
           </div>
         </div>
@@ -51,19 +74,34 @@ export const InterviewModeView: React.FC = () => {
           className="font-semibold text-[var(--text-primary)] tracking-tight"
           style={{ fontSize: 'var(--text-h1)', lineHeight: 1.2 }}
         >
-          {activeViewMode === 'narrative'
-            ? 'Career story & architecture decisions'
-            : 'Architecture decisions & tradeoffs'}
+          {activeViewMode === 'pitch-deck'
+            ? 'Executive Introduction & Interview Pitch Deck'
+            : activeViewMode === 'narrative'
+            ? 'Career Story & Architecture Decisions'
+            : 'Architecture Decisions & Tradeoffs'}
         </h1>
         <p className="text-base text-[var(--text-secondary)] max-w-3xl leading-relaxed">
-          {activeViewMode === 'narrative'
+          {activeViewMode === 'pitch-deck'
+            ? 'Interactive introduction slides prepared for Hiring Managers & Operations Managers evaluating Team Leader roles in Content Moderation (Trust & Safety) and Customer Service Operations.'
+            : activeViewMode === 'narrative'
             ? 'A story-driven career narrative following the Career story: from frontline BPO operations and crisis response to $960K/yr Domino-to-M365 enterprise modernization and GAMP 5 / GxP compliance.'
             : 'Structured answers to enterprise modernization scenarios, real-world technical tradeoffs, Domino-to-Dataverse cutovers, and pro-code ALM deployment strategies.'}
         </p>
       </div>
 
-      {/* VIEW 1: EXECUTIVE CAREER NARRATIVE (FOUR-BEAT ARC) */}
-      {activeViewMode === 'narrative' ? (
+      {/* VIEW 1: EXECUTIVE INTERVIEW PITCH DECK (SLIDES) */}
+      {activeViewMode === 'pitch-deck' && (
+        <div id="section-interview-deck">
+          <ExecutiveInterviewDeck
+            onOpenResume={onOpenResume}
+            onOpenContact={onOpenContact}
+            onLaunchDemo={onLaunchDemo}
+          />
+        </div>
+      )}
+
+      {/* VIEW 2: EXECUTIVE CAREER NARRATIVE (FOUR-BEAT ARC) */}
+      {activeViewMode === 'narrative' && (
         <div id="section-career-narrative" className="space-y-10">
           {/* The Hook */}
           <div className="rounded-[var(--radius-lg)] bg-gradient-to-br from-[#1a130b] via-[var(--bg-surface)] to-[var(--bg-surface)] border border-[#f97316]/30 p-6 sm:p-8 space-y-3 relative overflow-hidden shadow-lg">
@@ -104,97 +142,27 @@ export const InterviewModeView: React.FC = () => {
                     </div>
                   </div>
 
-                  <div className="text-sm text-[var(--text-secondary)] leading-relaxed whitespace-pre-line space-y-3">
+                  <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
                     {beat.content}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Impact Delta Table */}
-          <div className="rounded-[var(--radius-lg)] bg-[var(--bg-surface)] border border-[var(--border-subtle)] p-6 sm:p-8 space-y-4">
-            <div className="flex items-center space-x-2 text-[var(--text-accent)] text-xs font-mono font-semibold uppercase tracking-wider">
-              <Table className="w-4 h-4" />
-              <span>The Impact Delta · Before vs. After Transformation</span>
-            </div>
-
-            <div className="overflow-x-auto">
-              <table className="w-full text-left text-xs border-collapse">
-                <thead>
-                  <tr className="border-b border-[var(--border-subtle)] text-[var(--text-secondary)] font-mono">
-                    <th className="py-3 px-3 font-semibold">Dimension</th>
-                    <th className="py-3 px-3 font-semibold">Broken Status Quo (Before)</th>
-                    <th className="py-3 px-3 font-semibold">Engineered Transformation (After)</th>
-                    <th className="py-3 px-3 font-semibold text-[var(--text-accent)]">Verifiable Delta</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-[var(--border-subtle)]">
-                  {EXECUTIVE_CAREER_NARRATIVE.impactDelta.map((row, idx) => (
-                    <tr key={idx} className="hover:bg-[var(--bg-surface-elevated)] transition-colors">
-                      <td className="py-3 px-3 font-medium text-[var(--text-primary)] whitespace-nowrap">
-                        {row.dimension}
-                      </td>
-                      <td className="py-3 px-3 text-[var(--text-secondary)]">
-                        {row.before}
-                      </td>
-                      <td className="py-3 px-3 text-[var(--text-secondary)]">
-                        {row.after}
-                      </td>
-                      <td className="py-3 px-3 font-semibold text-[var(--text-accent)]">
-                        {row.delta}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          {/* Locked Context Flags */}
-          <div className="rounded-[var(--radius-lg)] bg-[var(--bg-surface)] border border-[var(--border-subtle)] p-6 space-y-4">
-            <div className="flex items-center space-x-2 text-[var(--text-accent)] text-xs font-mono font-semibold uppercase tracking-wider">
-              <ShieldCheck className="w-4 h-4" />
-              <span>Locked Context Flags · 11 Production Parameters Verified</span>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              {EXECUTIVE_CAREER_NARRATIVE.lockedFlags.map((flag) => (
-                <div
-                  key={flag.id}
-                  className="p-3 rounded-md bg-[var(--bg-primary)] border border-[var(--border-subtle)] text-xs space-y-1"
-                >
-                  <div className="flex items-center justify-between">
-                    <span className="font-mono text-[var(--text-accent)] font-semibold text-[11px]">
-                      {flag.id}
-                    </span>
-                    <span className="text-[10px] text-emerald-400 font-mono uppercase font-bold">
-                      ✓ Verified
-                    </span>
-                  </div>
-                  <p className="font-medium text-[var(--text-primary)]">
-                    {flag.name}
-                  </p>
-                  <p className="text-[var(--text-secondary)] text-[11px] leading-relaxed">
-                    {flag.value}
                   </p>
                 </div>
               ))}
             </div>
           </div>
         </div>
-      ) : (
-        /* VIEW 2: ARCHITECTURAL SCENARIOS */
-        <div id="section-defense-topics" className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          {/* Left Sidebar: Questions List */}
-          <div className="lg:col-span-4 space-y-3">
-            <h2 className="text-xs font-mono text-[var(--text-secondary)] font-medium px-1">
-              Architecture Scenarios
-            </h2>
+      )}
 
-            <div className="space-y-2">
+      {/* VIEW 3: ARCHITECTURAL SCENARIOS & TRADEOFFS */}
+      {activeViewMode === 'scenarios' && (
+        <div id="section-architectural-scenarios" className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          {/* Left Navigation: Scenario List */}
+          <div className="lg:col-span-4 space-y-2 lg:sticky lg:top-24">
+            <h2 className="text-xs font-mono text-[var(--text-accent)] uppercase tracking-wider font-semibold px-2 mb-3">
+              // Technical Scenarios ({INTERVIEW_TOPICS.length})
+            </h2>
+            <div className="space-y-1.5">
               {INTERVIEW_TOPICS.map((topic) => {
-                const isSelected = topic.id === selectedTopicId;
+                const isSelected = selectedTopicId === topic.id;
                 return (
                   <button
                     key={topic.id}

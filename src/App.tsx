@@ -237,7 +237,13 @@ export default function App() {
 
               {currentTab === 'demos' && <LiveDemosView key={activeDemoId} initialDemo={activeDemoId} />}
 
-              {currentTab === 'interview' && <InterviewModeView />}
+              {currentTab === 'interview' && (
+                <InterviewModeView
+                  onOpenResume={() => openOverlay('resume')}
+                  onOpenContact={() => openOverlay('contact')}
+                  onLaunchDemo={handleLaunchDemo}
+                />
+              )}
             </Suspense>
           </motion.div>
         </AnimatePresence>

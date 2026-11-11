@@ -33,6 +33,7 @@ import {
 import type { ProjectItem, MigrationSlice, ExperienceItem } from '../../types';
 import { ContactActions } from '../ContactActions';
 import { ProjectCardGalleryPreview } from '../ProjectGallery';
+import { ExecutiveInterviewDeck } from '../interview/ExecutiveInterviewDeck';
 
 const ArchitectureMotionHero = lazy(() =>
   import('../ArchitectureMotionHero').then(module => ({ default: module.ArchitectureMotionHero }))
@@ -346,7 +347,7 @@ export function HomeView({
           </div>
 
           {/* Quick-Access Secondary Interactive Viewer Link */}
-          <div className="flex flex-wrap items-center gap-4 text-sm text-[var(--text-tertiary)] pt-1">
+          <div className="flex flex-wrap items-center gap-3 pt-1">
             <button
               type="button"
               onClick={onOpenResume}
@@ -355,6 +356,19 @@ export function HomeView({
               <FileText size={16} />
               <span>Read complete resume online in modal viewer</span>
             </button>
+
+            <a
+              href="#section-interview-pitch-deck"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById('section-interview-pitch-deck')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="min-h-11 text-xs sm:text-sm font-semibold text-orange-400 hover:text-orange-300 inline-flex items-center gap-2 transition-all cursor-pointer bg-orange-500/10 hover:bg-orange-500/20 px-3.5 py-1.5 rounded-lg border border-orange-500/30"
+            >
+              <Sparkles size={15} className="text-orange-400" />
+              <span>Interview Presentation Slides (Content Moderation &amp; Customer Service)</span>
+              <ArrowRight size={13} />
+            </a>
           </div>
 
           {/* Frictionless Recruiter Contact Fast-Row */}
@@ -814,6 +828,35 @@ export function HomeView({
             </a>
           </div>
         </aside>
+      </section>
+
+      {/* =========================================================================
+          INTERACTIVE SECTION: EXECUTIVE INTERVIEW INTRODUCTION SLIDES
+          ========================================================================= */}
+      <section id="section-interview-pitch-deck" className="space-y-4 pt-2">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[var(--border-subtle)] pb-4">
+          <div>
+            <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-orange-500/10 border border-orange-500/30 text-xs font-mono text-orange-400 font-semibold uppercase tracking-wider mb-1.5">
+              <Sparkles size={13} className="text-orange-400" />
+              <span>Live Interview Presentation Section</span>
+            </div>
+            <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+              Interactive Introduction Slides for Hiring &amp; Operations Managers
+            </h2>
+            <p className="text-sm text-neutral-400 mt-1 max-w-3xl leading-relaxed">
+              Executive presentation deck designed for interview introductions evaluating Team Leader roles in Content Moderation (Trust &amp; Safety) and Customer Service Operations. Toggle roles, inspect verified JD responsibilities, and review the 30-60-90 day operational blueprint.
+            </p>
+          </div>
+        </div>
+
+        <ExecutiveInterviewDeck
+          onOpenResume={onOpenResume}
+          onOpenContact={() => {
+            document.getElementById('contact-actions')?.scrollIntoView({ behavior: 'smooth' });
+          }}
+          onLaunchDemo={onLaunchDemo}
+          defaultRole={activePersona === 'operations' ? 'content-moderation' : 'both'}
+        />
       </section>
 
       {/* =========================================================================
